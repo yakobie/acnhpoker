@@ -97,6 +97,7 @@
             this.slotBtn1.Size = new System.Drawing.Size(75, 75);
             this.slotBtn1.TabIndex = 9;
             this.slotBtn1.Tag = "1";
+            this.slotBtn1.Text = "slot 1";
             this.slotBtn1.UseVisualStyleBackColor = false;
             this.slotBtn1.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -112,6 +113,7 @@
             this.button1.Size = new System.Drawing.Size(75, 75);
             this.button1.TabIndex = 10;
             this.button1.Tag = "2";
+            this.button1.Text = "slot2";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -127,6 +129,7 @@
             this.button2.Size = new System.Drawing.Size(75, 75);
             this.button2.TabIndex = 11;
             this.button2.Tag = "3";
+            this.button2.Text = "slot3";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -142,6 +145,7 @@
             this.button3.Size = new System.Drawing.Size(75, 75);
             this.button3.TabIndex = 12;
             this.button3.Tag = "4";
+            this.button3.Text = "slot4";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -157,6 +161,7 @@
             this.button4.Size = new System.Drawing.Size(75, 75);
             this.button4.TabIndex = 13;
             this.button4.Tag = "5";
+            this.button4.Text = "slot5";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -172,6 +177,7 @@
             this.button5.Size = new System.Drawing.Size(75, 75);
             this.button5.TabIndex = 14;
             this.button5.Tag = "6";
+            this.button5.Text = "slot6";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -187,6 +193,7 @@
             this.button6.Size = new System.Drawing.Size(75, 75);
             this.button6.TabIndex = 15;
             this.button6.Tag = "7";
+            this.button6.Text = "slot7";
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -202,6 +209,7 @@
             this.button7.Size = new System.Drawing.Size(75, 75);
             this.button7.TabIndex = 16;
             this.button7.Tag = "8";
+            this.button7.Text = "slot8";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -217,6 +225,7 @@
             this.button8.Size = new System.Drawing.Size(75, 75);
             this.button8.TabIndex = 17;
             this.button8.Tag = "9";
+            this.button8.Text = "slot9";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -232,6 +241,7 @@
             this.button9.Size = new System.Drawing.Size(75, 75);
             this.button9.TabIndex = 18;
             this.button9.Tag = "10";
+            this.button9.Text = "slot10";
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -247,6 +257,7 @@
             this.button10.Size = new System.Drawing.Size(75, 75);
             this.button10.TabIndex = 28;
             this.button10.Tag = "20";
+            this.button10.Text = "slot20";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -262,6 +273,7 @@
             this.button11.Size = new System.Drawing.Size(75, 75);
             this.button11.TabIndex = 27;
             this.button11.Tag = "19";
+            this.button11.Text = "slot19";
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -277,6 +289,7 @@
             this.button12.Size = new System.Drawing.Size(75, 75);
             this.button12.TabIndex = 26;
             this.button12.Tag = "18";
+            this.button12.Text = "slot18";
             this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -292,6 +305,7 @@
             this.button13.Size = new System.Drawing.Size(75, 75);
             this.button13.TabIndex = 25;
             this.button13.Tag = "17";
+            this.button13.Text = "slot17";
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -307,6 +321,7 @@
             this.button14.Size = new System.Drawing.Size(75, 75);
             this.button14.TabIndex = 24;
             this.button14.Tag = "16";
+            this.button14.Text = "slot16";
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -322,6 +337,7 @@
             this.button15.Size = new System.Drawing.Size(75, 75);
             this.button15.TabIndex = 23;
             this.button15.Tag = "15";
+            this.button15.Text = "slot 15";
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -337,6 +353,7 @@
             this.button16.Size = new System.Drawing.Size(75, 75);
             this.button16.TabIndex = 22;
             this.button16.Tag = "14";
+            this.button16.Text = "slot14";
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -352,6 +369,7 @@
             this.button17.Size = new System.Drawing.Size(75, 75);
             this.button17.TabIndex = 21;
             this.button17.Tag = "13";
+            this.button17.Text = "slot13";
             this.button17.UseVisualStyleBackColor = false;
             this.button17.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -367,6 +385,7 @@
             this.button18.Size = new System.Drawing.Size(75, 75);
             this.button18.TabIndex = 20;
             this.button18.Tag = "12";
+            this.button18.Text = "slot12";
             this.button18.UseVisualStyleBackColor = false;
             this.button18.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -382,6 +401,7 @@
             this.button19.Size = new System.Drawing.Size(75, 75);
             this.button19.TabIndex = 19;
             this.button19.Tag = "11";
+            this.button19.Text = "slot11";
             this.button19.UseVisualStyleBackColor = false;
             this.button19.Click += new System.EventHandler(this.slotBtn_Click);
             // 
@@ -400,7 +420,6 @@
             this.itemGridView.Size = new System.Drawing.Size(337, 459);
             this.itemGridView.TabIndex = 29;
             this.itemGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.itemGridView_CellFormatting);
-            this.itemGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.itemGridView_CellMouseDoubleClick);
             this.itemGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.itemGridView_CellMouseUp);
             // 
             // customIdBtn
@@ -414,7 +433,7 @@
             this.customIdBtn.Name = "customIdBtn";
             this.customIdBtn.Size = new System.Drawing.Size(75, 56);
             this.customIdBtn.TabIndex = 31;
-            this.customIdBtn.Text = "poke custom";
+            this.customIdBtn.Text = "spawn item";
             this.customIdBtn.UseVisualStyleBackColor = false;
             this.customIdBtn.Click += new System.EventHandler(this.customIdBtn_Click);
             // 
@@ -471,7 +490,7 @@
             this.customAmountTxt.Name = "customAmountTxt";
             this.customAmountTxt.Size = new System.Drawing.Size(154, 56);
             this.customAmountTxt.TabIndex = 35;
-            this.customAmountTxt.Text = "";
+            this.customAmountTxt.Text = "1";
             this.customAmountTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.customAmountTxt_KeyPress);
             // 
             // label1

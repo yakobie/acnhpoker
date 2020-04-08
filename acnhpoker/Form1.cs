@@ -96,7 +96,9 @@ namespace acnhpoker
                         this.pictureBox1.Invoke((MethodInvoker)delegate
                         {
                             this.pictureBox1.BackColor = System.Drawing.Color.Red;
+
                         });
+                        MessageBox.Show("Could not connect to the botbase server, Go to https://github.com/KingLycosa/acnhpoker for help.");
                     }
                 }).Start();
             }
@@ -167,7 +169,26 @@ namespace acnhpoker
 
         private void customIdBtn_Click(object sender, EventArgs e)
         {
+            if (customIdTextbox.Text == "")
+            {
+                MessageBox.Show("Please enter an ID before sending item");
+                return;
+            }
+
+            if (s == null || s.Connected == false)
+            {
+                MessageBox.Show("Please connect to the switch first");
+                return;
+            }
+
+            if (customAmountTxt.Text == "")
+            {
+                MessageBox.Show("Please enter an amount");
+                return;
+            }
+
             utilities.SpawnItem(s, selectedSlot, customIdTextbox.Text, int.Parse(customAmountTxt.Text));
+
         }
 
         private void customIdTextbox_KeyPress(object sender, KeyPressEventArgs e)
@@ -250,14 +271,6 @@ namespace acnhpoker
                 }
 
             }
-        }
-
-        private void itemGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if(s != null && s.Connected)
-                utilities.SpawnItem(s, selectedSlot, itemGridView.Rows[e.RowIndex].Cells[2].Value.ToString(), 1);
-            else
-                pictureBox1.BackColor = System.Drawing.Color.Red;
         }
 
 
