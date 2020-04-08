@@ -7,7 +7,6 @@ Spawns items for you on Animal Crossing New Horizons using [sys-botbase](https:/
 ## Installation
 
 Pre Requisites:
-
 *a nintendo switch capable of running unsigned code
 *[This](https://github.com/olliz0r/sys-botbase) installed on your switch.
 *Animal Crossing?
@@ -15,7 +14,7 @@ Pre Requisites:
 Windows:
 
 ```sh
-open the exe :) it just werks
+open the exe :)
 ```
 
 OS X & Linux:
@@ -28,7 +27,7 @@ alternative coming soon
 
 ## Usage example
 
-https://streamable.com/kx2xr1
+https://streamable.com/76otct
 
 
 ## Release History
