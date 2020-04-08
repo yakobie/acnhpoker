@@ -1,5 +1,5 @@
-# Product Name
-> Short blurb about what your product does.
+# ACNHPoker
+> Seriously, someone please come up with a better name
 
 Spawns items for you on Animal Crossing New Horizons using [sys-botbase](https://github.com/olliz0r/sys-botbase).
 
