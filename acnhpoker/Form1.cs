@@ -107,7 +107,8 @@ namespace acnhpoker
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //probably a way to do this in the form builder but w/e
+            this.Icon = Properties.Resources.ACLeaf;
 
             //load the csv
             itemGridView.DataSource = loadItemCSV("items.csv");
