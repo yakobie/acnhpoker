@@ -7,10 +7,10 @@ Spawns items for you on Animal Crossing New Horizons using [sys-botbase](https:/
 ## Installation
 
 Pre Requisites:
-```sh
-a nintendo switch capable of running unsigned code
-[This](https://github.com/olliz0r/sys-botbase) installed on your switch.
-```
+
+*a nintendo switch capable of running unsigned code
+*[This](https://github.com/olliz0r/sys-botbase) installed on your switch.
+*Animal Crossing?
 
 Windows:
 
