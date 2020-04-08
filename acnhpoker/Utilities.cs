@@ -28,13 +28,25 @@ namespace acnhpoker
             return "0x" + (ItemSlotBase + (( Clamp(slot, 1, 20) - 1 ) * 0x8)).ToString("X");
         }
 
+        public string GetItemCountAddress(int slot)
+        {
+
+            return "0x" + ((ItemSlotBase + ((Clamp(slot, 1, 20) - 1) * 0x8) + 0x4)).ToString("X");
+        }
+
         public bool SpawnItem(Socket socket, int slot, String value, int amount)
         {
             try
             {
                 byte[] msg = Encoding.UTF8.GetBytes("poke " + GetItemSlotAddress(slot) + " " + FormatItemId(value) + "\r\n");
-                Debug.Print("poke " + GetItemSlotAddress(slot) + " " + FormatItemId(value));
                 socket.Send(msg);
+
+                if (amount > 1)
+                {
+                    var itemCount = GetItemCountAddress(slot);
+                    byte[] countMsg = Encoding.UTF8.GetBytes("poke " + itemCount + " " + (amount-1).ToString("X") + "\r\n");
+                    socket.Send(countMsg);
+                }
             }
             catch
             {
