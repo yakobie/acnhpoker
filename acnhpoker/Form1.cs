@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ namespace acnhpoker
         Socket s;
         Utilities utilities = new Utilities();
 
+        private Button selectedButton;
         public int selectedSlot = 1;
         public DataGridViewRow lastRow;
 
@@ -75,6 +77,19 @@ namespace acnhpoker
 
                     if (conSuceded == true)
                     {
+                        try
+                        {
+                            s.EndConnect(result);
+                        }
+                        catch
+                        {
+                            this.pictureBox1.Invoke((MethodInvoker)delegate
+                            {
+                                this.pictureBox1.BackColor = System.Drawing.Color.Red;
+                            });
+                            return;
+                        }
+
                         this.connectBtn.Invoke((MethodInvoker)delegate
                         {
                             this.connectBtn.Enabled = false;
@@ -87,7 +102,9 @@ namespace acnhpoker
                         {
                             this.ipBox.ReadOnly = true;
                         });
-                        s.EndConnect(result);
+
+                        Invoke((MethodInvoker)delegate { updateInventory(); });
+
                     }
 
                     else
@@ -105,6 +122,91 @@ namespace acnhpoker
 
         }
 
+        private string getImagePathFromID(string itemID)
+        {
+            int rowIndex = -1;
+
+            DataGridViewRow row = itemGridView.Rows
+                .Cast<DataGridViewRow>()
+                .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID.ToLower()))
+                .FirstOrDefault();
+
+            if(row == null)
+            {
+                return ""; //row not found
+            } 
+            else
+            {
+                //row found set the index and find the file
+                rowIndex = row.Index;
+
+                string path = @"img\" + itemGridView.Rows[rowIndex].Cells[1].Value.ToString() + @"\" + itemGridView.Rows[rowIndex].Cells[0].Value.ToString() + ".png";
+                if (File.Exists(path))
+                {
+                    return path; //file found
+                }
+                else
+                {
+                    return ""; //file not found
+                }
+            }
+
+        }
+
+        private void updateInventory()
+        {
+            byte[] inventoryBytes = utilities.GetInventory(s);
+            
+            foreach(Button btn in this.Controls.OfType<Button>())
+            {
+                if (btn.Tag == null)
+                    continue;
+
+                if (btn.Tag.ToString() == "")
+                    continue;
+
+                int slotId = int.Parse(btn.Tag.ToString());
+                byte[] slotBytes = new byte[4];
+                byte[] amountBytes = new byte[2];
+
+                int slotOffset = ((slotId - 1) * 0x10);
+                int countOffset = 0x8 + ((slotId - 1) * 0x10);
+
+                Buffer.BlockCopy(inventoryBytes, slotOffset, slotBytes, 0x0, 0x4);
+                Buffer.BlockCopy(inventoryBytes, countOffset, amountBytes, 0x0, 0x2);
+                string itemID = utilities.UnflipItemId(Encoding.ASCII.GetString(slotBytes));
+                
+                //wow i want to gouge my eyeballs out
+                string itemAmountStr = (Convert.ToInt32(Encoding.ASCII.GetString(amountBytes), 16) + 1).ToString();
+
+                btn.Text = "";
+
+                if (itemID == "FFFE")
+                    continue;
+               
+                string itemPath = getImagePathFromID(itemID);
+
+                if (itemPath == "")
+                {
+                    btn.Image = (Image)(new Bitmap(Properties.Resources.ACLeaf.ToBitmap(), new Size(64, 64)));
+                    if(itemAmountStr != "1" || itemAmountStr != "0")
+                    {
+                        btn.Text = itemAmountStr;
+                    }
+                }
+                else
+                {
+                    Image img = Image.FromFile(itemPath);
+                    btn.Image = (Image)(new Bitmap(img, new Size(64, 64)));
+                    if (itemAmountStr != "1")
+                    {
+                        btn.Text = itemAmountStr;
+                    }
+                }
+
+            }
+
+        }
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -163,6 +265,7 @@ namespace acnhpoker
             button.FlatStyle = FlatStyle.Flat;
             button.FlatAppearance.BorderColor = System.Drawing.Color.LightSeaGreen;
             button.FlatAppearance.BorderSize = 1;
+            selectedButton = button;
             selectedSlot = int.Parse(button.Tag.ToString());
             
         }
@@ -188,6 +291,23 @@ namespace acnhpoker
             }
 
             utilities.SpawnItem(s, selectedSlot, customIdTextbox.Text, int.Parse(customAmountTxt.Text));
+
+            string itemPath = getImagePathFromID(customIdTextbox.Text);
+
+            if (itemPath == "")
+            {
+                selectedButton.Image = (Image)(new Bitmap(Properties.Resources.ACLeaf.ToBitmap(), new Size(64, 64)));
+            }
+            else
+            {
+                Image img = Image.FromFile(itemPath);
+                selectedButton.Image = (Image)(new Bitmap(img, new Size(64, 64)));
+            }
+
+            if (customAmountTxt.Text == "1")
+                selectedButton.Text = "";
+            else
+                selectedButton.Text = customAmountTxt.Text;
 
         }
 
@@ -280,6 +400,16 @@ namespace acnhpoker
             }
         }
 
+        private void slotBtn_Paint(object sender, PaintEventArgs e)
+        {
+            var b = sender as Button;
+            var rect = e.ClipRectangle;
+            rect.Inflate(-3, -2);
+            var flags = TextFormatFlags.WordBreak;
 
+            flags |= TextFormatFlags.Top | TextFormatFlags.Left;
+
+            TextRenderer.DrawText(e.Graphics, b.Text, b.Font, rect, Color.White, Color.Black, flags);
+        }
     }
 }
