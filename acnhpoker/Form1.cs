@@ -221,7 +221,14 @@ namespace acnhpoker
 
         private void itemSearchBox_TextChanged(object sender, EventArgs e)
         {
-            (itemGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%'", itemSearchBox.Text);
+            try
+            {
+                (itemGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%'", itemSearchBox.Text);
+            }
+            catch
+            {
+                itemSearchBox.Clear();
+            }
         }
 
         private void itemGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
