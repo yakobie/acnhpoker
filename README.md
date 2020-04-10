@@ -25,7 +25,7 @@ https://github.com/KingLycosa/acnhpoker_linux
 
 ## Usage example
 
-https://streamable.com/76otct
+https://youtu.be/-zztRgmtXig
 
 
 ## Release History
