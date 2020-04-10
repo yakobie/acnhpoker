@@ -37,10 +37,6 @@ https://streamable.com/76otct
 * 0.5
    * Added inventory viewer. No more ugly buttons :)
 
-## Meta
-
-Distributed under the BSD 2 license. See ``LICENSE`` for more information.
-
 ## Contributing
 
 1. Fork it (<https://github.com/KingLycosa/acnhpoker/fork>)
@@ -48,3 +44,8 @@ Distributed under the BSD 2 license. See ``LICENSE`` for more information.
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
+
+
+## Meta
+
+Distributed under the BSD 2 license. See ``LICENSE`` for more information.
