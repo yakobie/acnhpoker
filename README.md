@@ -4,7 +4,7 @@
 Spawns items for you on Animal Crossing New Horizons using [sys-botbase](https://github.com/olliz0r/sys-botbase).
 
 
-##Pre Requisites
+## Pre Requisites
    1. a nintendo switch capable of running unsigned code
    2. [This](https://github.com/olliz0r/sys-botbase) installed on your switch.
    3. Animal Crossing?
@@ -30,8 +30,12 @@ https://streamable.com/76otct
 
 ## Release History
 
-* 0.0.1
+* 0.1
     * Work in progress
+* 0.2
+   * Added some quality of life updates
+* 0.5
+   * Added inventory viewer. No more ugly buttons :)
 
 ## Meta
 
