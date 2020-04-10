@@ -19,9 +19,7 @@ open the exe :)
 
 OS X & Linux:
 
-```sh
-alternative coming soon
-```
+https://github.com/KingLycosa/acnhpoker_linux
 
 
 
