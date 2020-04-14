@@ -47,7 +47,8 @@ namespace acnhpoker
             }
         }
 
-        public byte[] GetInventory(Socket socket)
+        // Gets slots 1-20 (Inventory bank 1)
+        public byte[] GetInventoryBank1(Socket socket)
         {
             try
             {
@@ -67,7 +68,8 @@ namespace acnhpoker
             }
         }
 
-        public byte[] GetInventoryBlock2(Socket socket)
+        // Gets slots 21-40 (Inventory bank 2)
+        public byte[] GetInventoryBank2(Socket socket)
         {
 
             try

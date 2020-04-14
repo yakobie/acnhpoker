@@ -155,10 +155,10 @@ namespace acnhpoker
 
         private void updateInventory()
         {
-            byte[] inventoryBytes = utilities.GetInventory(s);
-            byte[] inventoryBytes2 = utilities.GetInventoryBlock2(s);
+            byte[] inventoryBytesBank1 = utilities.GetInventoryBank1(s);
+            byte[] inventoryBytesBank2 = utilities.GetInventoryBank2(s);
 
-            foreach (Button btn in this.Controls.OfType<Button>())
+            foreach (Button btn in this.pnlBank1.Controls.OfType<Button>())
             {
                 if (btn.Tag == null)
                     continue;
@@ -179,8 +179,8 @@ namespace acnhpoker
                 int slotOffset = ((slotId - 1) * 0x10);
                 int countOffset = 0x8 + ((slotId - 1) * 0x10);
 
-                Buffer.BlockCopy(inventoryBytes, slotOffset, slotBytes, 0x0, 0x4);
-                Buffer.BlockCopy(inventoryBytes, countOffset, amountBytes, 0x0, 0x2);
+                Buffer.BlockCopy(inventoryBytesBank1, slotOffset, slotBytes, 0x0, 0x4);
+                Buffer.BlockCopy(inventoryBytesBank1, countOffset, amountBytes, 0x0, 0x2);
                 string itemID = utilities.UnflipItemId(Encoding.ASCII.GetString(slotBytes));
                 
                 //wow i want to gouge my eyeballs out
@@ -213,8 +213,7 @@ namespace acnhpoker
 
             }
 
-            // TODO: Find better way of handling the drawing of the two "sets" of slots, 2 for loops are not optimal
-            foreach (Button btn in this.Controls.OfType<Button>())
+            foreach (Button btn in this.pnlBank2.Controls.OfType<Button>())
             {
                 if (btn.Tag == null)
                     continue;
@@ -236,8 +235,8 @@ namespace acnhpoker
                 int slotOffset = ((slotId - 1) * 0x10);
                 int countOffset = 0x8 + ((slotId - 1) * 0x10);
 
-                Buffer.BlockCopy(inventoryBytes2, slotOffset, slotBytes, 0x0, 0x4);
-                Buffer.BlockCopy(inventoryBytes2, countOffset, amountBytes, 0x0, 0x2);
+                Buffer.BlockCopy(inventoryBytesBank2, slotOffset, slotBytes, 0x0, 0x4);
+                Buffer.BlockCopy(inventoryBytesBank2, countOffset, amountBytes, 0x0, 0x2);
                 string itemID = utilities.UnflipItemId(Encoding.ASCII.GetString(slotBytes));
 
                 //wow i want to gouge my eyeballs out
