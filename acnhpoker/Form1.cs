@@ -155,9 +155,10 @@ namespace acnhpoker
 
         private void updateInventory()
         {
-            byte[] inventoryBytes = utilities.GetInventory(s);
-            
-            foreach(Button btn in this.Controls.OfType<Button>())
+            byte[] inventoryBytesBank1 = utilities.GetInventoryBank1(s);
+            byte[] inventoryBytesBank2 = utilities.GetInventoryBank2(s);
+
+            foreach (Button btn in this.pnlBank1.Controls.OfType<Button>())
             {
                 if (btn.Tag == null)
                     continue;
@@ -166,14 +167,20 @@ namespace acnhpoker
                     continue;
 
                 int slotId = int.Parse(btn.Tag.ToString());
+
+                if(slotId > 20)
+                {
+                    continue;
+                }
+
                 byte[] slotBytes = new byte[4];
                 byte[] amountBytes = new byte[2];
 
                 int slotOffset = ((slotId - 1) * 0x10);
                 int countOffset = 0x8 + ((slotId - 1) * 0x10);
 
-                Buffer.BlockCopy(inventoryBytes, slotOffset, slotBytes, 0x0, 0x4);
-                Buffer.BlockCopy(inventoryBytes, countOffset, amountBytes, 0x0, 0x2);
+                Buffer.BlockCopy(inventoryBytesBank1, slotOffset, slotBytes, 0x0, 0x4);
+                Buffer.BlockCopy(inventoryBytesBank1, countOffset, amountBytes, 0x0, 0x2);
                 string itemID = utilities.UnflipItemId(Encoding.ASCII.GetString(slotBytes));
                 
                 //wow i want to gouge my eyeballs out
@@ -206,6 +213,61 @@ namespace acnhpoker
 
             }
 
+            foreach (Button btn in this.pnlBank2.Controls.OfType<Button>())
+            {
+                if (btn.Tag == null)
+                    continue;
+
+                if (btn.Tag.ToString() == "")
+                    continue;
+
+                int slotId = int.Parse(btn.Tag.ToString());
+                if (slotId <= 20)
+                {
+                    continue;
+                }
+
+                slotId = slotId - 20;
+
+                byte[] slotBytes = new byte[4];
+                byte[] amountBytes = new byte[2];
+
+                int slotOffset = ((slotId - 1) * 0x10);
+                int countOffset = 0x8 + ((slotId - 1) * 0x10);
+
+                Buffer.BlockCopy(inventoryBytesBank2, slotOffset, slotBytes, 0x0, 0x4);
+                Buffer.BlockCopy(inventoryBytesBank2, countOffset, amountBytes, 0x0, 0x2);
+                string itemID = utilities.UnflipItemId(Encoding.ASCII.GetString(slotBytes));
+
+                //wow i want to gouge my eyeballs out
+                string itemAmountStr = (Convert.ToInt32(Encoding.ASCII.GetString(amountBytes), 16) + 1).ToString();
+
+                btn.Text = "";
+
+                if (itemID == "FFFE")
+                    continue;
+
+                string itemPath = getImagePathFromID(itemID);
+
+                if (itemPath == "")
+                {
+                    btn.Image = (Image)(new Bitmap(Properties.Resources.ACLeaf.ToBitmap(), new Size(64, 64)));
+                    if (itemAmountStr != "1" || itemAmountStr != "0")
+                    {
+                        btn.Text = itemAmountStr;
+                    }
+                }
+                else
+                {
+                    Image img = Image.FromFile(itemPath);
+                    btn.Image = (Image)(new Bitmap(img, new Size(64, 64)));
+                    if (itemAmountStr != "1")
+                    {
+                        btn.Text = itemAmountStr;
+                    }
+                }
+
+            }
         }
 
 

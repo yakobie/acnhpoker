@@ -12,6 +12,7 @@ namespace acnhpoker
     class Utilities
     {
         UInt32 ItemSlotBase = 0xAC3B90C0;
+        UInt32 ItemSlot21Base = 0xAC3B9008;
 
         public Utilities()
         {
@@ -24,26 +25,67 @@ namespace acnhpoker
 
         public string GetItemSlotAddress(int slot)
         {
-            
-            return "0x" + (ItemSlotBase + (( Clamp(slot, 1, 20) - 1 ) * 0x8)).ToString("X");
+            if(slot <= 20)
+            {
+                return "0x" + (ItemSlotBase + ((Clamp(slot, 1, 20) - 1) * 0x8)).ToString("X");
+            } 
+            else
+            {
+                return "0x" + (ItemSlot21Base + ((Clamp(slot, 21, 40) - 21) * 0x8)).ToString("X");
+            }
         }
 
         public string GetItemCountAddress(int slot)
         {
-
-            return "0x" + (ItemSlotBase + ((Clamp(slot, 1, 20) - 1) * 0x8) + 0x4).ToString("X");
+            if(slot <= 20)
+            {
+                return "0x" + (ItemSlotBase + ((Clamp(slot, 1, 20) - 1) * 0x8) + 0x4).ToString("X");
+            }
+            else
+            {
+                return "0x" + (ItemSlot21Base + ((Clamp(slot, 21, 40) - 21) * 0x8) + 0x4).ToString("X");
+            }
         }
 
-        public byte[] GetInventory(Socket socket)
+        // Gets slots 1-20 (Inventory bank 1)
+        public byte[] GetInventoryBank1(Socket socket)
         {
             try
             {
-                byte[] msg = Encoding.UTF8.GetBytes("peek " + GetItemSlotAddress(1) + " 1024\r\n");
-                Debug.Print("peek " + GetItemSlotAddress(1) + " 1024\r\n");
+                byte[] msg = Encoding.UTF8.GetBytes("peek " + GetItemSlotAddress(1) + " 314\r\n");
+                Debug.Print("peek " + GetItemSlotAddress(1) + " 314\r\n");
                 socket.Send(msg);
 
                 byte[] b = new byte[1024];
                 socket.Receive(b);
+
+                return b;
+            }
+            catch
+            {
+                MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                return null;
+            }
+        }
+
+        // Gets slots 21-40 (Inventory bank 2)
+        public byte[] GetInventoryBank2(Socket socket)
+        {
+
+            try
+            {
+                byte[] msg = Encoding.UTF8.GetBytes("peek " + GetItemSlotAddress(21) + " 314\r\n");
+                Debug.Print("peek " + GetItemSlotAddress(21) + " 314\r\n");
+
+                int first = socket.Send(msg);
+                while(!socket.Poll(-1, SelectMode.SelectRead))
+                {
+                    System.Threading.Thread.Sleep(5);
+                }
+                byte[] b = new byte[1024];
+                int first_rec = socket.Receive(b);
+
+
                 return b;
             }
             catch
