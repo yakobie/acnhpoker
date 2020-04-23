@@ -51,7 +51,7 @@ namespace acnhpoker
 
         private void connectBtn_Click(object sender, EventArgs e)
         {
-            
+
 
             string ipPattern = @"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b";
             
@@ -267,7 +267,11 @@ namespace acnhpoker
                 btn.Text = "";
 
                 if (itemID == "FFFE")
+                {
+                    btn.Image = null;
+                    btn.Text = "";
                     continue;
+                }
 
                 string itemPath = getImagePathFromID(itemID);
 
@@ -532,8 +536,6 @@ namespace acnhpoker
                     int slotId = int.Parse(owner.SourceControl.Tag.ToString());
                     utilities.DeleteSlot(s, slotId);
 
-
-
                     var btnParent = (Button)owner.SourceControl;
                     btnParent.Image = null;
                     btnParent.Text = "";
@@ -610,9 +612,7 @@ namespace acnhpoker
 
         private void refreshBtn_Click(object sender, EventArgs e)
         {
-
             updateInventory();
-
         }
     }
 }

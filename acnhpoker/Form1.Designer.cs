@@ -1074,6 +1074,9 @@
             this.Controls.Add(this.connectBtn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.inventoryPanel);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1206, 555);
+            this.MinimumSize = new System.Drawing.Size(1206, 555);
             this.Name = "Form1";
             this.Text = "ACNH Poker";
             this.Load += new System.EventHandler(this.Form1_Load);
