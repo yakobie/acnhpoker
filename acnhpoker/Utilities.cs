@@ -139,5 +139,10 @@ namespace acnhpoker
             return postFlip;
         }
 
+        public void DeleteSlot(Socket s, int slot)
+        {
+            SpawnItem(s, slot, "FFFE", 0);
+        }
+
     }
 }

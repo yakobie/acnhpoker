@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -306,6 +307,13 @@ namespace acnhpoker
             itemGridView.Columns.Insert(3, imageColumn);
             imageColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
 
+
+            if (!File.Exists(Directory.GetCurrentDirectory() + @"img\"))
+            {
+                Debug.Print("not presit");
+            }
+
+
             foreach (DataGridViewColumn c in itemGridView.Columns)
             {
                 c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -314,14 +322,26 @@ namespace acnhpoker
 
         }
 
+        public IEnumerable<T> FindControls<T>(Control control) where T : Control
+        {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => FindControls<T>(ctrl))
+                                      .Concat(controls)
+                                      .Where(c => c.GetType() == typeof(T)).Cast<T>();
+        }
+
         private void slotBtn_Click(object sender, EventArgs e)
         {
             var button = (Button)sender;
 
-            foreach (var b in this.Controls.OfType<Button>())
+            var c = FindControls<Button>(this);
+            foreach (var b in c)
             {
-                
-                b.FlatAppearance.BorderSize = 0;
+                if (b.Tag == null)
+                    continue;
+
+                b.FlatAppearance.BorderSize = 0;                
             }
 
             button.FlatStyle = FlatStyle.Flat;
@@ -472,6 +492,26 @@ namespace acnhpoker
             flags |= TextFormatFlags.Top | TextFormatFlags.Left;
 
             TextRenderer.DrawText(e.Graphics, b.Text, b.Font, rect, Color.White, Color.Black, flags);
+        }
+
+
+        private void deleteItemBtn_Click(object sender, EventArgs e)
+        {
+            ToolStripItem item = (sender as ToolStripItem);
+            if (item != null)
+            {
+                ContextMenuStrip owner = item.Owner as ContextMenuStrip;
+                if (owner != null)
+                {
+                    int slotId = int.Parse(owner.SourceControl.Tag.ToString());
+                    utilities.DeleteSlot(s, slotId);
+
+                    var btnParent = (Button)owner.SourceControl;
+                    btnParent.Image = null;
+                    btnParent.Text = "";
+                    
+                }
+            }
         }
     }
 }
