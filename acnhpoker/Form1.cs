@@ -112,6 +112,11 @@ namespace acnhpoker
                             config.Save(ConfigurationSaveMode.Minimal);
                         });
 
+                        this.refreshBtn.Invoke((MethodInvoker)delegate
+                        {
+                            this.refreshBtn.Visible = true;
+                        });
+
                         Invoke((MethodInvoker)delegate { updateInventory(); });
 
                     }
@@ -191,14 +196,22 @@ namespace acnhpoker
                 Buffer.BlockCopy(inventoryBytesBank1, slotOffset, slotBytes, 0x0, 0x4);
                 Buffer.BlockCopy(inventoryBytesBank1, countOffset, amountBytes, 0x0, 0x2);
                 string itemID = utilities.UnflipItemId(Encoding.ASCII.GetString(slotBytes));
-                
+
+
+                if (itemID == "FFFE")
+                {
+                    btn.Image = null;
+                    btn.Text = "";
+                    continue;
+                }
+
                 //wow i want to gouge my eyeballs out
                 string itemAmountStr = (Convert.ToInt32(Encoding.ASCII.GetString(amountBytes), 16) + 1).ToString();
 
                 btn.Text = "";
 
-                if (itemID == "FFFE")
-                    continue;
+                //if (itemID == "FFFE")
+                //    continue;
                
                 string itemPath = getImagePathFromID(itemID);
 
@@ -519,6 +532,8 @@ namespace acnhpoker
                     int slotId = int.Parse(owner.SourceControl.Tag.ToString());
                     utilities.DeleteSlot(s, slotId);
 
+
+
                     var btnParent = (Button)owner.SourceControl;
                     btnParent.Image = null;
                     btnParent.Text = "";
@@ -590,6 +605,13 @@ namespace acnhpoker
                 else
                     btn.Text = customAmountTxt.Text;
             }
+
+        }
+
+        private void refreshBtn_Click(object sender, EventArgs e)
+        {
+
+            updateInventory();
 
         }
     }

@@ -142,7 +142,10 @@ namespace acnhpoker
 
         public void DeleteSlot(Socket s, int slot)
         {
-            SpawnItem(s, slot, "FFFE", 0);
+            SpawnItem(s, slot, "FFFE", 1);
+            var itemCount = GetItemCountAddress(slot);
+            byte[] countMsg = Encoding.UTF8.GetBytes("poke " + itemCount + " 0x0" + "\r\n");
+            s.Send(countMsg);
         }
 
     }

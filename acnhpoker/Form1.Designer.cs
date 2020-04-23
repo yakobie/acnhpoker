@@ -85,6 +85,7 @@
             this.pnlBank2 = new System.Windows.Forms.Panel();
             this.inventoryPanel = new System.Windows.Forms.Panel();
             this.spawnAllBtn = new System.Windows.Forms.Button();
+            this.refreshBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
@@ -1038,12 +1039,29 @@
             this.spawnAllBtn.UseVisualStyleBackColor = false;
             this.spawnAllBtn.Click += new System.EventHandler(this.spawnAllBtn_Click);
             // 
+            // refreshBtn
+            // 
+            this.refreshBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.refreshBtn.FlatAppearance.BorderSize = 0;
+            this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshBtn.ForeColor = System.Drawing.Color.White;
+            this.refreshBtn.Location = new System.Drawing.Point(745, 12);
+            this.refreshBtn.Name = "refreshBtn";
+            this.refreshBtn.Size = new System.Drawing.Size(80, 24);
+            this.refreshBtn.TabIndex = 62;
+            this.refreshBtn.Text = "refresh";
+            this.refreshBtn.UseVisualStyleBackColor = false;
+            this.refreshBtn.Visible = false;
+            this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1190, 516);
+            this.Controls.Add(this.refreshBtn);
             this.Controls.Add(this.spawnAllBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -1128,6 +1146,7 @@
         private System.Windows.Forms.ContextMenuStrip itemRightClick;
         private System.Windows.Forms.ToolStripMenuItem deleteItemBtn;
         private System.Windows.Forms.Button spawnAllBtn;
+        private System.Windows.Forms.Button refreshBtn;
     }
 }
 
