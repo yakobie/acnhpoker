@@ -84,6 +84,7 @@
             this.pnlBank1 = new System.Windows.Forms.Panel();
             this.pnlBank2 = new System.Windows.Forms.Panel();
             this.inventoryPanel = new System.Windows.Forms.Panel();
+            this.spawnAllBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
@@ -1022,12 +1023,28 @@
             this.inventoryPanel.Size = new System.Drawing.Size(821, 335);
             this.inventoryPanel.TabIndex = 60;
             // 
+            // spawnAllBtn
+            // 
+            this.spawnAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.spawnAllBtn.FlatAppearance.BorderSize = 0;
+            this.spawnAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.spawnAllBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.spawnAllBtn.ForeColor = System.Drawing.Color.White;
+            this.spawnAllBtn.Location = new System.Drawing.Point(709, 443);
+            this.spawnAllBtn.Name = "spawnAllBtn";
+            this.spawnAllBtn.Size = new System.Drawing.Size(116, 56);
+            this.spawnAllBtn.TabIndex = 61;
+            this.spawnAllBtn.Text = "spawn all";
+            this.spawnAllBtn.UseVisualStyleBackColor = false;
+            this.spawnAllBtn.Click += new System.EventHandler(this.spawnAllBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1190, 516);
+            this.Controls.Add(this.spawnAllBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.customAmountTxt);
@@ -1110,6 +1127,7 @@
         private System.Windows.Forms.Panel inventoryPanel;
         private System.Windows.Forms.ContextMenuStrip itemRightClick;
         private System.Windows.Forms.ToolStripMenuItem deleteItemBtn;
+        private System.Windows.Forms.Button spawnAllBtn;
     }
 }
 

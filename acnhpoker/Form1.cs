@@ -526,5 +526,71 @@ namespace acnhpoker
                 }
             }
         }
+
+        private void spawnAllBtn_Click(object sender, EventArgs e)
+        {
+            if (customIdTextbox.Text == "")
+            {
+                MessageBox.Show("Please enter an ID before sending item");
+                return;
+            }
+
+            if (s == null || s.Connected == false)
+            {
+                MessageBox.Show("Please connect to the switch first");
+                return;
+            }
+
+            if (customAmountTxt.Text == "")
+            {
+                MessageBox.Show("Please enter an amount");
+                return;
+            }
+
+            foreach (Button btn in this.pnlBank2.Controls.OfType<Button>())
+            {
+                utilities.SpawnItem(s, int.Parse(btn.Tag.ToString()), customIdTextbox.Text, int.Parse(customAmountTxt.Text));
+
+                string itemPath = getImagePathFromID(customIdTextbox.Text);
+
+                if (itemPath == "")
+                {
+                    btn.Image = (Image)(new Bitmap(Properties.Resources.ACLeaf.ToBitmap(), new Size(64, 64)));
+                }
+                else
+                {
+                    Image img = Image.FromFile(itemPath);
+                    btn.Image = (Image)(new Bitmap(img, new Size(64, 64)));
+                }
+
+                if (customAmountTxt.Text == "1")
+                    btn.Text = "";
+                else
+                    btn.Text = customAmountTxt.Text;
+            }
+
+            foreach (Button btn in this.pnlBank1.Controls.OfType<Button>())
+            {
+                utilities.SpawnItem(s, int.Parse(btn.Tag.ToString()), customIdTextbox.Text, int.Parse(customAmountTxt.Text));
+
+                string itemPath = getImagePathFromID(customIdTextbox.Text);
+
+                if (itemPath == "")
+                {
+                    btn.Image = (Image)(new Bitmap(Properties.Resources.ACLeaf.ToBitmap(), new Size(64, 64)));
+                }
+                else
+                {
+                    Image img = Image.FromFile(itemPath);
+                    btn.Image = (Image)(new Bitmap(img, new Size(64, 64)));
+                }
+
+                if (customAmountTxt.Text == "1")
+                    btn.Text = "";
+                else
+                    btn.Text = customAmountTxt.Text;
+            }
+
+        }
     }
 }
