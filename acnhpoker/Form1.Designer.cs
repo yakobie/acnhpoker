@@ -561,7 +561,7 @@
             this.ipBox.Name = "ipBox";
             this.ipBox.Size = new System.Drawing.Size(133, 20);
             this.ipBox.TabIndex = 34;
-            this.ipBox.Text = "192.168.254.85";
+            this.ipBox.Text = "";
             // 
             // customAmountTxt
             // 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -50,6 +51,8 @@ namespace acnhpoker
 
         private void connectBtn_Click(object sender, EventArgs e)
         {
+            
+
             string ipPattern = @"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b";
             
             if (!Regex.IsMatch(ipBox.Text, ipPattern))
@@ -91,6 +94,8 @@ namespace acnhpoker
                             return;
                         }
 
+                        Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
                         this.connectBtn.Invoke((MethodInvoker)delegate
                         {
                             this.connectBtn.Enabled = false;
@@ -101,7 +106,10 @@ namespace acnhpoker
                         });
                         this.ipBox.Invoke((MethodInvoker)delegate
                         {
+
                             this.ipBox.ReadOnly = true;
+                            config.AppSettings.Settings["ipAddress"].Value = this.ipBox.Text;
+                            config.Save(ConfigurationSaveMode.Minimal);
                         });
 
                         Invoke((MethodInvoker)delegate { updateInventory(); });
@@ -265,6 +273,7 @@ namespace acnhpoker
                     if (itemAmountStr != "1")
                     {
                         btn.Text = itemAmountStr;
+
                     }
                 }
 
@@ -276,6 +285,10 @@ namespace acnhpoker
         {
             //probably a way to do this in the form builder but w/e
             this.Icon = Properties.Resources.ACLeaf;
+
+            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            this.ipBox.Text = ConfigurationManager.AppSettings["ipAddress"];
 
             //load the csv
             itemGridView.DataSource = loadItemCSV("items.csv");
