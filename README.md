@@ -45,6 +45,11 @@ https://youtu.be/-zztRgmtXig
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
+## Donate
+
+If you are considering donation please keep in mind that the donation doesn't get you anything other than my love. You can click the sponser button above if that is okay. Thank you
+
+
 
 ## Meta
 
