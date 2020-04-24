@@ -7,7 +7,7 @@ Spawns items for you on Animal Crossing New Horizons using [sys-botbase](https:/
 ## Pre Requisites
    1. a nintendo switch capable of running unsigned code
    2. [This](https://github.com/olliz0r/sys-botbase) installed on your switch.
-   3. Animal Crossing?
+   3. Animal Crossing Version 1.2.0+
 
 ## Installation
 
