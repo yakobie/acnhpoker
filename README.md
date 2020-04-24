@@ -36,6 +36,9 @@ https://youtu.be/-zztRgmtXig
    * Added some quality of life updates
 * 0.5
    * Added inventory viewer. No more ugly buttons :)
+   
+* 1.0
+   * Added a lotta stuff, check the releases for a full update.
 
 ## Contributing
 
