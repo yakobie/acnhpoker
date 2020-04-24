@@ -54,7 +54,7 @@ namespace acnhpoker
 
 
             string ipPattern = @"\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b";
-            
+
             if (!Regex.IsMatch(ipBox.Text, ipPattern))
             {
                 pictureBox1.BackColor = System.Drawing.Color.Red;
@@ -67,7 +67,7 @@ namespace acnhpoker
             IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ipBox.Text), 6000);
 
 
-            if(s.Connected == false)
+            if (s.Connected == false)
             {
                 //really messed up way to do it but yolo
                 new Thread(() =>
@@ -145,10 +145,10 @@ namespace acnhpoker
                 .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID.ToLower()))
                 .FirstOrDefault();
 
-            if(row == null)
+            if (row == null)
             {
                 return ""; //row not found
-            } 
+            }
             else
             {
                 //row found set the index and find the file
@@ -182,7 +182,7 @@ namespace acnhpoker
 
                 int slotId = int.Parse(btn.Tag.ToString());
 
-                if(slotId > 20)
+                if (slotId > 20)
                 {
                     continue;
                 }
@@ -212,13 +212,13 @@ namespace acnhpoker
 
                 //if (itemID == "FFFE")
                 //    continue;
-               
+
                 string itemPath = getImagePathFromID(itemID);
 
                 if (itemPath == "")
                 {
                     btn.Image = (Image)(new Bitmap(Properties.Resources.ACLeaf.ToBitmap(), new Size(64, 64)));
-                    if(itemAmountStr != "1" || itemAmountStr != "0")
+                    if (itemAmountStr != "1" || itemAmountStr != "0")
                     {
                         btn.Text = itemAmountStr;
                     }
@@ -312,11 +312,11 @@ namespace acnhpoker
 
             //set the ID row invisible
             itemGridView.Columns["ID"].Visible = false;
-            
+
             //change the width of the first two columns
             itemGridView.Columns[0].Width = 150;
             itemGridView.Columns[1].Width = 65;
-            
+
             //select the full row and change color cause windows blue sux
             itemGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             itemGridView.DefaultCellStyle.BackColor = Color.FromArgb(255, 47, 49, 54);
@@ -371,16 +371,16 @@ namespace acnhpoker
             {
                 if (b.Tag == null)
                     continue;
-
-                b.FlatAppearance.BorderSize = 0;                
+                //b.BackColor = 
+                b.FlatAppearance.BorderSize = 0;
             }
 
             button.FlatStyle = FlatStyle.Flat;
             button.FlatAppearance.BorderColor = System.Drawing.Color.LightSeaGreen;
-            button.FlatAppearance.BorderSize = 1;
+            button.FlatAppearance.BorderSize = 3;
             selectedButton = button;
             selectedSlot = int.Parse(button.Tag.ToString());
-            
+
         }
 
         private void customIdBtn_Click(object sender, EventArgs e)
@@ -432,7 +432,7 @@ namespace acnhpoker
                 e.Handled = true;
             }
 
-            if(customIdTextbox.Text.Length >= 4)
+            if (customIdTextbox.Text.Length >= 4)
             {
                 e.Handled = true;
             }
@@ -472,7 +472,7 @@ namespace acnhpoker
                 if (e.ColumnIndex == 3)
                 {
                     string path = @"img\" + itemGridView.Rows[e.RowIndex].Cells[1].Value.ToString() + @"\" + itemGridView.Rows[e.RowIndex].Cells[0].Value.ToString() + ".png";
-                    if(File.Exists(path))
+                    if (File.Exists(path))
                     {
                         Image img = Image.FromFile(path);
                         e.Value = img;
@@ -485,7 +485,7 @@ namespace acnhpoker
 
         private void itemSearchBox_Click(object sender, EventArgs e)
         {
-            if(itemSearchBox.Text == "Search")
+            if (itemSearchBox.Text == "Search")
             {
                 itemSearchBox.Text = "";
                 itemSearchBox.ForeColor = Color.White;
@@ -496,7 +496,7 @@ namespace acnhpoker
 
         private void itemGridView_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if(lastRow != null)
+            if (lastRow != null)
             {
                 lastRow.Height = 22;
             }
@@ -505,7 +505,7 @@ namespace acnhpoker
                 lastRow = itemGridView.Rows[e.RowIndex];
                 itemGridView.Rows[e.RowIndex].Height = 160;
                 customIdTextbox.Text = itemGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
-                if(customAmountTxt.Text == "" || customAmountTxt.Text == "0")
+                if (customAmountTxt.Text == "" || customAmountTxt.Text == "0")
                 {
                     customAmountTxt.Text = "1";
                 }
@@ -540,7 +540,7 @@ namespace acnhpoker
                     var btnParent = (Button)owner.SourceControl;
                     btnParent.Image = null;
                     btnParent.Text = "";
-                    
+
                 }
             }
         }
@@ -614,6 +614,56 @@ namespace acnhpoker
         private void refreshBtn_Click(object sender, EventArgs e)
         {
             updateInventory();
+        }
+
+        private void variationsBtn_Click(object sender, EventArgs e)
+        {
+            if (customIdTextbox.Text == "")
+            {
+                MessageBox.Show("Please enter an ID before sending item");
+                return;
+            }
+
+            if (s == null || s.Connected == false)
+            {
+                MessageBox.Show("Please connect to the switch first");
+                return;
+            }
+
+            if (customAmountTxt.Text == "")
+            {
+                MessageBox.Show("Please enter an amount");
+                return;
+            }
+
+            int slot = 21;
+
+            for (int variation = 1; variation <= 10; variation++)
+            {
+                utilities.SpawnItem(s, slot, customIdTextbox.Text, variation);
+
+                slot++;
+            }
+            updateInventory();
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            for (int slot = 1; slot <= 40; slot++)
+            {
+                utilities.DeleteSlot(s, slot);
+            }
+
+            foreach (Button btn in this.pnlBank1.Controls.OfType<Button>())
+            {
+                btn.Image = null;
+                btn.Text = "";
+            }
+            foreach (Button btn in this.pnlBank2.Controls.OfType<Button>())
+            {
+                btn.Image = null;
+                btn.Text = "";
+            }
         }
     }
 }

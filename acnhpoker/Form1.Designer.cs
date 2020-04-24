@@ -86,6 +86,8 @@
             this.inventoryPanel = new System.Windows.Forms.Panel();
             this.spawnAllBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
+            this.variationsBtn = new System.Windows.Forms.Button();
+            this.clearBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
@@ -1055,12 +1057,44 @@
             this.refreshBtn.Visible = false;
             this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
             // 
+            // variationsBtn
+            // 
+            this.variationsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.variationsBtn.FlatAppearance.BorderSize = 0;
+            this.variationsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.variationsBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.variationsBtn.ForeColor = System.Drawing.Color.White;
+            this.variationsBtn.Location = new System.Drawing.Point(587, 417);
+            this.variationsBtn.Name = "variationsBtn";
+            this.variationsBtn.Size = new System.Drawing.Size(116, 82);
+            this.variationsBtn.TabIndex = 63;
+            this.variationsBtn.Text = "(Danger) Spawn Variations 0-9 to Slot 21-30";
+            this.variationsBtn.UseVisualStyleBackColor = false;
+            this.variationsBtn.Click += new System.EventHandler(this.variationsBtn_Click);
+            // 
+            // clearBtn
+            // 
+            this.clearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.clearBtn.FlatAppearance.BorderSize = 0;
+            this.clearBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearBtn.ForeColor = System.Drawing.Color.White;
+            this.clearBtn.Location = new System.Drawing.Point(709, 383);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(116, 56);
+            this.clearBtn.TabIndex = 64;
+            this.clearBtn.Text = "Clear All";
+            this.clearBtn.UseVisualStyleBackColor = false;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1190, 516);
+            this.Controls.Add(this.clearBtn);
+            this.Controls.Add(this.variationsBtn);
             this.Controls.Add(this.refreshBtn);
             this.Controls.Add(this.spawnAllBtn);
             this.Controls.Add(this.label2);
@@ -1150,6 +1184,8 @@
         private System.Windows.Forms.ToolStripMenuItem deleteItemBtn;
         private System.Windows.Forms.Button spawnAllBtn;
         private System.Windows.Forms.Button refreshBtn;
+        private System.Windows.Forms.Button variationsBtn;
+        private System.Windows.Forms.Button clearBtn;
     }
 }
 
