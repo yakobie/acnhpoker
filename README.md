@@ -36,6 +36,9 @@ https://youtu.be/-zztRgmtXig
    * Added some quality of life updates
 * 0.5
    * Added inventory viewer. No more ugly buttons :)
+   
+* 1.0
+   * Added a lotta stuff, check the releases for a full update.
 
 ## Contributing
 
@@ -44,6 +47,11 @@ https://youtu.be/-zztRgmtXig
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
+
+## Donate
+
+If you are considering donation please keep in mind that the donation doesn't get you anything other than my love. You can click the sponser button above if that is okay. Thank you
+
 
 
 ## Meta
