@@ -12,8 +12,8 @@ namespace acnhpoker
 {
     class Utilities
     {
-        UInt32 ItemSlotBase = 0xAC3B90C0;
-        UInt32 ItemSlot21Base = 0xAC3B9008;
+        UInt32 ItemSlotBase = 0xAC4723D0;
+        UInt32 ItemSlot21Base = 0xAC472318;
 
         public Utilities()
         {
