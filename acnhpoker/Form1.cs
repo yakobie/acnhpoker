@@ -338,9 +338,10 @@ namespace acnhpoker
             imageColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
 
 
-            if (!File.Exists(Directory.GetCurrentDirectory() + @"img\"))
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\" + "img"))
             {
-                Debug.Print("not presit");
+                ImageDownloader imageDownloader = new ImageDownloader();
+                imageDownloader.ShowDialog();
             }
 
 
