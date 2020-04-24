@@ -58,6 +58,7 @@ namespace acnhpoker
                 {
                     progressBar1.Visible = false;
                     extractHere();
+
                 };
 
                 webClient.DownloadFileAsync(new Uri("https://github.com/KingLycosa/acnhpoker/releases/download/0.0001/img.zip"), "temp.zip");
@@ -73,6 +74,7 @@ namespace acnhpoker
         private void extractHere()
         {
             ZipFile.ExtractToDirectory(@".\temp.zip", @".\");
+            File.Delete(@".\temp.zip");
             this.Close();
         }
     }
