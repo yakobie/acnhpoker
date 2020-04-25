@@ -115,6 +115,8 @@ namespace acnhpoker
                         this.refreshBtn.Invoke((MethodInvoker)delegate
                         {
                             this.refreshBtn.Visible = true;
+                            this.Player1Btn.Visible = true;
+                            this.Player2Btn.Visible = true;
                         });
 
                         Invoke((MethodInvoker)delegate { updateInventory(); });
@@ -403,6 +405,12 @@ namespace acnhpoker
                 return;
             }
 
+            if (selectedButton == null)
+            {
+                MessageBox.Show("Please select a slot");
+                return;
+            }
+
             utilities.SpawnItem(s, selectedSlot, customIdTextbox.Text, int.Parse(customAmountTxt.Text));
 
             string itemPath = getImagePathFromID(customIdTextbox.Text);
@@ -664,6 +672,18 @@ namespace acnhpoker
                 btn.Image = null;
                 btn.Text = "";
             }
+        }
+
+        private void Player1Btn_CheckedChanged(object sender, EventArgs e)
+        {
+            utilities.setAddress(1);
+            updateInventory();
+        }
+
+        private void Player2Btn_CheckedChanged(object sender, EventArgs e)
+        {
+            utilities.setAddress(2);
+            updateInventory();
         }
     }
 }

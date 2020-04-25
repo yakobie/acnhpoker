@@ -88,6 +88,8 @@
             this.refreshBtn = new System.Windows.Forms.Button();
             this.variationsBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
+            this.Player1Btn = new System.Windows.Forms.RadioButton();
+            this.Player2Btn = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
@@ -1087,12 +1089,46 @@
             this.clearBtn.UseVisualStyleBackColor = false;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
+            // Player1Btn
+            // 
+            this.Player1Btn.AutoSize = true;
+            this.Player1Btn.Checked = true;
+            this.Player1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Player1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.Player1Btn.ForeColor = System.Drawing.Color.White;
+            this.Player1Btn.Location = new System.Drawing.Point(594, 15);
+            this.Player1Btn.Name = "Player1Btn";
+            this.Player1Btn.Size = new System.Drawing.Size(70, 19);
+            this.Player1Btn.TabIndex = 65;
+            this.Player1Btn.TabStop = true;
+            this.Player1Btn.Text = "Player 1";
+            this.Player1Btn.UseVisualStyleBackColor = true;
+            this.Player1Btn.Visible = false;
+            this.Player1Btn.CheckedChanged += new System.EventHandler(this.Player1Btn_CheckedChanged);
+            // 
+            // Player2Btn
+            // 
+            this.Player2Btn.AutoSize = true;
+            this.Player2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Player2Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.Player2Btn.ForeColor = System.Drawing.Color.White;
+            this.Player2Btn.Location = new System.Drawing.Point(671, 15);
+            this.Player2Btn.Name = "Player2Btn";
+            this.Player2Btn.Size = new System.Drawing.Size(70, 19);
+            this.Player2Btn.TabIndex = 66;
+            this.Player2Btn.Text = "Player 2";
+            this.Player2Btn.UseVisualStyleBackColor = true;
+            this.Player2Btn.Visible = false;
+            this.Player2Btn.CheckedChanged += new System.EventHandler(this.Player2Btn_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1190, 516);
+            this.Controls.Add(this.Player2Btn);
+            this.Controls.Add(this.Player1Btn);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.variationsBtn);
             this.Controls.Add(this.refreshBtn);
@@ -1112,7 +1148,7 @@
             this.MaximumSize = new System.Drawing.Size(1206, 555);
             this.MinimumSize = new System.Drawing.Size(1206, 555);
             this.Name = "Form1";
-            this.Text = "ACNH Poker";
+            this.Text = "ACNH Poker My V1.2.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.itemRightClick.ResumeLayout(false);
@@ -1186,6 +1222,8 @@
         private System.Windows.Forms.Button refreshBtn;
         private System.Windows.Forms.Button variationsBtn;
         private System.Windows.Forms.Button clearBtn;
+        private System.Windows.Forms.RadioButton Player1Btn;
+        private System.Windows.Forms.RadioButton Player2Btn;
     }
 }
 

@@ -148,5 +148,19 @@ namespace acnhpoker
             s.Send(countMsg);
         }
 
+        public void setAddress(int player)
+        {
+            if (player == 1)
+            {
+                ItemSlotBase = 0xAC4723D0;
+                ItemSlot21Base = 0xAC472318;
+            }
+            else if (player == 2)
+            {
+                ItemSlotBase = 0xAC4DFA90;
+                ItemSlot21Base = 0xAC4DF9D8;
+            }
+        }
+
     }
 }
