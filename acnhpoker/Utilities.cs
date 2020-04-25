@@ -54,7 +54,7 @@ namespace acnhpoker
             try
             {
                 byte[] msg = Encoding.UTF8.GetBytes("peek " + GetItemSlotAddress(1) + " 314\r\n");
-                Debug.Print("peek " + GetItemSlotAddress(1) + " 314\r\n");
+                //Debug.Print("peek " + GetItemSlotAddress(1) + " 314\r\n");
                 socket.Send(msg);
 
                 byte[] b = new byte[1024];
@@ -76,7 +76,7 @@ namespace acnhpoker
             try
             {
                 byte[] msg = Encoding.UTF8.GetBytes("peek " + GetItemSlotAddress(21) + " 314\r\n");
-                Debug.Print("peek " + GetItemSlotAddress(21) + " 314\r\n");
+                //Debug.Print("peek " + GetItemSlotAddress(21) + " 314\r\n");
 
                 int first = socket.Send(msg);
                 while(!socket.Poll(-1, SelectMode.SelectRead))
@@ -101,7 +101,7 @@ namespace acnhpoker
             try
             {
                 byte[] msg = Encoding.UTF8.GetBytes("poke " + GetItemSlotAddress(slot) + " " + FormatItemId(value) + "\r\n");
-                Debug.Print(Encoding.ASCII.GetString(msg));
+                //Debug.Print(Encoding.ASCII.GetString(msg));
 
                 socket.Send(msg);
 
@@ -109,8 +109,31 @@ namespace acnhpoker
                 {
                     var itemCount = GetItemCountAddress(slot);
                     byte[] countMsg = Encoding.UTF8.GetBytes("poke " + itemCount + " 0x" + (amount-1).ToString("X") + "\r\n");
+                    Debug.Print(Encoding.ASCII.GetString(countMsg));
                     socket.Send(countMsg);
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+            }
+
+            return false;
+        }
+
+        public bool SpawnRecipe(Socket socket, int slot, String value, String count)
+        {
+            try
+            {
+                byte[] msg = Encoding.UTF8.GetBytes("poke " + GetItemSlotAddress(slot) + " " + FormatItemId(value) + "\r\n");
+                //Debug.Print(Encoding.ASCII.GetString(msg));
+
+                socket.Send(msg);
+
+                var itemCount = GetItemCountAddress(slot);
+                byte[] countMsg = Encoding.UTF8.GetBytes("poke " + itemCount + " " + FormatItemId(count) + "\r\n");
+                Debug.Print(Encoding.ASCII.GetString(countMsg));
+                socket.Send(countMsg);
             }
             catch
             {
@@ -127,6 +150,18 @@ namespace acnhpoker
             string firstHalf = preFlip.Substring(0, 2);
             string secondHalf = preFlip.Substring(2, 2);
             string postFlip = "0x" + secondHalf + firstHalf;
+            //probaby a better way to do this lol
+
+            return postFlip;
+        }
+
+        public string FormatReceipeId(String itemId)
+        {
+            string n0 = String.Concat(Enumerable.Repeat("0", 4 - itemId.Length));
+            string preFlip = String.Concat(n0, itemId);
+            string firstHalf = preFlip.Substring(0, 2);
+            string secondHalf = preFlip.Substring(2, 2);
+            string postFlip = secondHalf + firstHalf;
             //probaby a better way to do this lol
 
             return postFlip;
