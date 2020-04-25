@@ -98,6 +98,7 @@
             this.recipeNum = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.recipeGridView = new System.Windows.Forms.DataGridView();
+            this.clearBtn2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             this.pnlBank1.SuspendLayout();
@@ -1179,6 +1180,7 @@
             // 
             // recipeModePanel
             // 
+            this.recipeModePanel.Controls.Add(this.clearBtn2);
             this.recipeModePanel.Controls.Add(this.spawnRecipeBtn);
             this.recipeModePanel.Controls.Add(this.recipeNum);
             this.recipeModePanel.Controls.Add(this.label4);
@@ -1244,6 +1246,21 @@
             this.recipeGridView.Visible = false;
             this.recipeGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.recipeGridView_CellFormatting);
             this.recipeGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.recipeGridView_CellMouseUp);
+            // 
+            // clearBtn2
+            // 
+            this.clearBtn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.clearBtn2.FlatAppearance.BorderSize = 0;
+            this.clearBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearBtn2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearBtn2.ForeColor = System.Drawing.Color.White;
+            this.clearBtn2.Location = new System.Drawing.Point(700, 19);
+            this.clearBtn2.Name = "clearBtn2";
+            this.clearBtn2.Size = new System.Drawing.Size(116, 30);
+            this.clearBtn2.TabIndex = 65;
+            this.clearBtn2.Text = "Clear All";
+            this.clearBtn2.UseVisualStyleBackColor = false;
+            this.clearBtn2.Click += new System.EventHandler(this.clearBtn2_Click);
             // 
             // Form1
             // 
@@ -1358,6 +1375,7 @@
         private System.Windows.Forms.RichTextBox recipeNum;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView recipeGridView;
+        private System.Windows.Forms.Button clearBtn2;
     }
 }
 

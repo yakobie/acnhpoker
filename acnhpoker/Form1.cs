@@ -720,6 +720,12 @@ namespace acnhpoker
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
+            if (s == null || s.Connected == false)
+            {
+                MessageBox.Show("Please connect to the switch first");
+                return;
+            }
+
             for (int slot = 1; slot <= 40; slot++)
             {
                 utilities.DeleteSlot(s, slot);
@@ -838,6 +844,31 @@ namespace acnhpoker
             }
             selectedButton.Text = recipeNum.Text;
 
+        }
+
+        private void clearBtn2_Click(object sender, EventArgs e)
+        {
+            if (s == null || s.Connected == false)
+            {
+                MessageBox.Show("Please connect to the switch first");
+                return;
+            }
+
+            for (int slot = 1; slot <= 40; slot++)
+            {
+                utilities.DeleteSlot(s, slot);
+            }
+
+            foreach (Button btn in this.pnlBank1.Controls.OfType<Button>())
+            {
+                btn.Image = null;
+                btn.Text = "";
+            }
+            foreach (Button btn in this.pnlBank2.Controls.OfType<Button>())
+            {
+                btn.Image = null;
+                btn.Text = "";
+            }
         }
     }
 }
