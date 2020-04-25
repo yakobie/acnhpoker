@@ -25,6 +25,7 @@ namespace acnhpoker
         private Button selectedButton;
         public int selectedSlot = 1;
         public DataGridViewRow lastRow;
+        public DataGridViewRow recipelastRow;
 
         public Form1()
         {
@@ -211,7 +212,7 @@ namespace acnhpoker
 
                 if (itemID == "16A2")
                 {
-                    string recipePath = @"img\receipe\recipe_icon.png";
+                    string recipePath = @"img\recipes\recipe.png";
 
                     if (File.Exists(recipePath))
                     {
@@ -222,7 +223,7 @@ namespace acnhpoker
                     {
                         btn.Image = (Image)(new Bitmap(Properties.Resources.ACLeaf.ToBitmap(), new Size(64, 64)));
                     }
-                    btn.Text = utilities.FormatReceipeId(Encoding.ASCII.GetString(recipeBytes));
+                    btn.Text = utilities.FormatRecipeId(Encoding.ASCII.GetString(recipeBytes));
                     continue;
                 }
 
@@ -388,12 +389,12 @@ namespace acnhpoker
             }
 
 
-            DataGridViewImageColumn receipeimageColumn = new DataGridViewImageColumn();
-            receipeimageColumn.Name = "Image";
-            receipeimageColumn.HeaderText = "Image";
-            receipeimageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            recipeGridView.Columns.Insert(3, receipeimageColumn);
-            receipeimageColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+            DataGridViewImageColumn recipeimageColumn = new DataGridViewImageColumn();
+            recipeimageColumn.Name = "Image";
+            recipeimageColumn.HeaderText = "Image";
+            recipeimageColumn.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            recipeGridView.Columns.Insert(3, recipeimageColumn);
+            recipeimageColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
 
 
             if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\" + "img"))
@@ -780,11 +781,11 @@ namespace acnhpoker
         private void recipeGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < this.recipeGridView.Rows.Count - 1)
-
             {
                 if (e.ColumnIndex == 3)
                 {
                     string path = @"img\" + recipeGridView.Rows[e.RowIndex].Cells[1].Value.ToString() + @"\" + recipeGridView.Rows[e.RowIndex].Cells[0].Value.ToString() + ".png";
+                    //Debug.Print(path+"\r\n");
                     if (File.Exists(path))
                     {
                         Image img = Image.FromFile(path);
@@ -797,15 +798,15 @@ namespace acnhpoker
 
         private void recipeGridView_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (lastRow != null)
+            if (recipelastRow != null)
             {
-                lastRow.Height = 22;
+                recipelastRow.Height = 22;
             }
             if (e.RowIndex > -1)
             {
-                lastRow = recipeGridView.Rows[e.RowIndex];
+                recipelastRow = recipeGridView.Rows[e.RowIndex];
                 recipeGridView.Rows[e.RowIndex].Height = 160;
-                recipeNum.Text = recipeGridView.Rows[e.RowIndex].Cells[3].Value.ToString();
+                recipeNum.Text = recipeGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
             }
         }
 
@@ -831,7 +832,7 @@ namespace acnhpoker
 
             utilities.SpawnRecipe(s, selectedSlot, "16A2", recipeNum.Text);
 
-            string itemPath = @"img\receipe\recipe_icon.png";
+            string itemPath = @"img\recipes\recipe.png";
 
             if (File.Exists(itemPath))
             {

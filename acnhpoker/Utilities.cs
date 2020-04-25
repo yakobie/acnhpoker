@@ -109,7 +109,7 @@ namespace acnhpoker
                 {
                     var itemCount = GetItemCountAddress(slot);
                     byte[] countMsg = Encoding.UTF8.GetBytes("poke " + itemCount + " 0x" + (amount-1).ToString("X") + "\r\n");
-                    Debug.Print(Encoding.ASCII.GetString(countMsg));
+                    //Debug.Print(Encoding.ASCII.GetString(countMsg));
                     socket.Send(countMsg);
                 }
             }
@@ -132,7 +132,7 @@ namespace acnhpoker
 
                 var itemCount = GetItemCountAddress(slot);
                 byte[] countMsg = Encoding.UTF8.GetBytes("poke " + itemCount + " " + FormatItemId(count) + "\r\n");
-                Debug.Print(Encoding.ASCII.GetString(countMsg));
+                //Debug.Print(Encoding.ASCII.GetString(countMsg));
                 socket.Send(countMsg);
             }
             catch
@@ -155,7 +155,7 @@ namespace acnhpoker
             return postFlip;
         }
 
-        public string FormatReceipeId(String itemId)
+        public string FormatRecipeId(String itemId)
         {
             string n0 = String.Concat(Enumerable.Repeat("0", 4 - itemId.Length));
             string preFlip = String.Concat(n0, itemId);

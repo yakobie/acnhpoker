@@ -94,11 +94,11 @@
             this.itemModeBtn = new System.Windows.Forms.Button();
             this.recipeModeBtn = new System.Windows.Forms.Button();
             this.recipeModePanel = new System.Windows.Forms.Panel();
+            this.clearBtn2 = new System.Windows.Forms.Button();
             this.spawnRecipeBtn = new System.Windows.Forms.Button();
             this.recipeNum = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.recipeGridView = new System.Windows.Forms.DataGridView();
-            this.clearBtn2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             this.pnlBank1.SuspendLayout();
@@ -1190,6 +1190,21 @@
             this.recipeModePanel.TabIndex = 68;
             this.recipeModePanel.Visible = false;
             // 
+            // clearBtn2
+            // 
+            this.clearBtn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.clearBtn2.FlatAppearance.BorderSize = 0;
+            this.clearBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearBtn2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearBtn2.ForeColor = System.Drawing.Color.White;
+            this.clearBtn2.Location = new System.Drawing.Point(700, 19);
+            this.clearBtn2.Name = "clearBtn2";
+            this.clearBtn2.Size = new System.Drawing.Size(116, 30);
+            this.clearBtn2.TabIndex = 65;
+            this.clearBtn2.Text = "Clear All";
+            this.clearBtn2.UseVisualStyleBackColor = false;
+            this.clearBtn2.Click += new System.EventHandler(this.clearBtn2_Click);
+            // 
             // spawnRecipeBtn
             // 
             this.spawnRecipeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -1243,24 +1258,8 @@
             this.recipeGridView.RowHeadersVisible = false;
             this.recipeGridView.Size = new System.Drawing.Size(337, 459);
             this.recipeGridView.TabIndex = 70;
-            this.recipeGridView.Visible = false;
             this.recipeGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.recipeGridView_CellFormatting);
             this.recipeGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.recipeGridView_CellMouseUp);
-            // 
-            // clearBtn2
-            // 
-            this.clearBtn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.clearBtn2.FlatAppearance.BorderSize = 0;
-            this.clearBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clearBtn2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearBtn2.ForeColor = System.Drawing.Color.White;
-            this.clearBtn2.Location = new System.Drawing.Point(700, 19);
-            this.clearBtn2.Name = "clearBtn2";
-            this.clearBtn2.Size = new System.Drawing.Size(116, 30);
-            this.clearBtn2.TabIndex = 65;
-            this.clearBtn2.Text = "Clear All";
-            this.clearBtn2.UseVisualStyleBackColor = false;
-            this.clearBtn2.Click += new System.EventHandler(this.clearBtn2_Click);
             // 
             // Form1
             // 
@@ -1268,6 +1267,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1190, 516);
+            this.Controls.Add(this.itemGridView);
             this.Controls.Add(this.recipeGridView);
             this.Controls.Add(this.recipeModePanel);
             this.Controls.Add(this.recipeModeBtn);
@@ -1278,7 +1278,6 @@
             this.Controls.Add(this.refreshBtn);
             this.Controls.Add(this.ipBox);
             this.Controls.Add(this.itemSearchBox);
-            this.Controls.Add(this.itemGridView);
             this.Controls.Add(this.connectBtn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.inventoryPanel);
@@ -1286,7 +1285,7 @@
             this.MaximumSize = new System.Drawing.Size(1206, 800);
             this.MinimumSize = new System.Drawing.Size(1206, 555);
             this.Name = "Form1";
-            this.Text = "ACNH Poker My V1.2.0";
+            this.Text = "ACNH Poker V1.2.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.itemRightClick.ResumeLayout(false);
