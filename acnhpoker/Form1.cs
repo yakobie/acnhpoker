@@ -142,7 +142,7 @@ namespace acnhpoker
         private string getImagePathFromID(string itemID)
         {
             int rowIndex = -1;
-
+            //Debug.Print("itemID : " + itemID);
             DataGridViewRow row = itemGridView.Rows
                 .Cast<DataGridViewRow>()
                 .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID.ToLower()))
@@ -150,24 +150,30 @@ namespace acnhpoker
 
             if (row == null)
             {
-                return ""; //row not found
+                row = itemGridView.Rows
+                    .Cast<DataGridViewRow>()
+                    .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID))
+                    .FirstOrDefault();
+
+                if (row == null)
+                {
+                    return ""; //row not found
+                }
+            }
+
+            //row found set the index and find the file
+            rowIndex = row.Index;
+
+            string path = @"img\" + itemGridView.Rows[rowIndex].Cells[1].Value.ToString() + @"\" + itemGridView.Rows[rowIndex].Cells[0].Value.ToString() + ".png";
+
+            if (File.Exists(path))
+            {
+                return path; //file found
             }
             else
             {
-                //row found set the index and find the file
-                rowIndex = row.Index;
-
-                string path = @"img\" + itemGridView.Rows[rowIndex].Cells[1].Value.ToString() + @"\" + itemGridView.Rows[rowIndex].Cells[0].Value.ToString() + ".png";
-                if (File.Exists(path))
-                {
-                    return path; //file found
-                }
-                else
-                {
-                    return ""; //file not found
-                }
+                return ""; //file not found
             }
-
         }
 
         private void updateInventory()
@@ -175,8 +181,11 @@ namespace acnhpoker
             byte[] inventoryBytesBank1 = utilities.GetInventoryBank1(s);
             byte[] inventoryBytesBank2 = utilities.GetInventoryBank2(s);
 
+            int i = 0;
+
             foreach (Button btn in this.pnlBank1.Controls.OfType<Button>())
             {
+                i++;
                 if (btn.Tag == null)
                     continue;
 
@@ -202,7 +211,6 @@ namespace acnhpoker
                 Buffer.BlockCopy(inventoryBytesBank1, countOffset, recipeBytes, 0x0, 0x4);
                 string itemID = utilities.UnflipItemId(Encoding.ASCII.GetString(slotBytes));
 
-
                 if (itemID == "FFFE")
                 {
                     btn.Image = null;
@@ -226,6 +234,9 @@ namespace acnhpoker
                     btn.Text = utilities.FormatRecipeId(Encoding.ASCII.GetString(recipeBytes));
                     continue;
                 }
+
+                //Debug.Print(i.ToString() + " " + Encoding.ASCII.GetString(slotBytes));
+                //Debug.Print(i.ToString() + " " + itemID);
 
                 //wow i want to gouge my eyeballs out
                 string itemAmountStr = (Convert.ToInt32(Encoding.ASCII.GetString(amountBytes), 16) + 1).ToString();
@@ -275,12 +286,14 @@ namespace acnhpoker
 
                 byte[] slotBytes = new byte[4];
                 byte[] amountBytes = new byte[2];
+                byte[] recipeBytes = new byte[4];
 
                 int slotOffset = ((slotId - 1) * 0x10);
                 int countOffset = 0x8 + ((slotId - 1) * 0x10);
 
                 Buffer.BlockCopy(inventoryBytesBank2, slotOffset, slotBytes, 0x0, 0x4);
                 Buffer.BlockCopy(inventoryBytesBank2, countOffset, amountBytes, 0x0, 0x2);
+                Buffer.BlockCopy(inventoryBytesBank1, countOffset, recipeBytes, 0x0, 0x4);
                 string itemID = utilities.UnflipItemId(Encoding.ASCII.GetString(slotBytes));
 
                 //wow i want to gouge my eyeballs out
@@ -292,6 +305,23 @@ namespace acnhpoker
                 {
                     btn.Image = null;
                     btn.Text = "";
+                    continue;
+                }
+
+                if (itemID == "16A2")
+                {
+                    string recipePath = @"img\recipes\recipe.png";
+
+                    if (File.Exists(recipePath))
+                    {
+                        Image img = Image.FromFile(recipePath);
+                        btn.Image = (Image)(new Bitmap(img, new Size(64, 64)));
+                    }
+                    else
+                    {
+                        btn.Image = (Image)(new Bitmap(Properties.Resources.ACLeaf.ToBitmap(), new Size(64, 64)));
+                    }
+                    btn.Text = utilities.FormatRecipeId(Encoding.ASCII.GetString(recipeBytes));
                     continue;
                 }
 
@@ -410,6 +440,7 @@ namespace acnhpoker
                 c.HeaderCell.Style.Font = new Font("Arial", 9, FontStyle.Bold);
             }
 
+            this.KeyPreview = true;
         }
 
         public IEnumerable<T> FindControls<T>(Control control) where T : Control
@@ -469,6 +500,8 @@ namespace acnhpoker
             }
 
             utilities.SpawnItem(s, selectedSlot, customIdTextbox.Text, int.Parse(customAmountTxt.Text));
+
+            this.ShowMessage(customIdTextbox.Text);
 
             string itemPath = getImagePathFromID(customIdTextbox.Text);
 
@@ -538,7 +571,7 @@ namespace acnhpoker
 
         private void itemGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < this.itemGridView.Rows.Count - 1)
+            if (e.RowIndex >= 0 && e.RowIndex < this.itemGridView.Rows.Count)
 
             {
                 if (e.ColumnIndex == 3)
@@ -680,12 +713,25 @@ namespace acnhpoker
                 else
                     btn.Text = customAmountTxt.Text;
             }
-
+            this.ShowMessage(customIdTextbox.Text);
         }
 
         private void refreshBtn_Click(object sender, EventArgs e)
         {
+            Boolean hasSearchValue = false;
+            string temp = "";
+            if (itemSearchBox.Text != "Search")
+            {
+                temp = itemSearchBox.Text;
+                itemSearchBox.Clear();
+                hasSearchValue = true;
+            }
             updateInventory();
+
+            if (hasSearchValue)
+            {
+                itemSearchBox.Text = temp;
+            }
         }
 
         private void variationsBtn_Click(object sender, EventArgs e)
@@ -717,6 +763,7 @@ namespace acnhpoker
                 slot++;
             }
             updateInventory();
+            this.ShowMessage(customIdTextbox.Text);
         }
 
         private void clearBtn_Click(object sender, EventArgs e)
@@ -780,7 +827,7 @@ namespace acnhpoker
 
         private void recipeGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < this.recipeGridView.Rows.Count - 1)
+            if (e.RowIndex >= 0 && e.RowIndex < this.recipeGridView.Rows.Count)
             {
                 if (e.ColumnIndex == 3)
                 {
@@ -832,6 +879,8 @@ namespace acnhpoker
 
             utilities.SpawnRecipe(s, selectedSlot, "16A2", recipeNum.Text);
 
+            this.ShowMessage(recipeNum.Text);
+
             string itemPath = @"img\recipes\recipe.png";
 
             if (File.Exists(itemPath))
@@ -869,6 +918,80 @@ namespace acnhpoker
             {
                 btn.Image = null;
                 btn.Text = "";
+            }
+        }
+
+        private void KeyboardKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString() == "F2")
+            {
+                if (this.itemModePanel.Visible == true)
+                {
+                    customIdBtn_Click(sender, e);
+                }
+                else
+                {
+                    spawnRecipeBtn_Click(sender, e);
+                }
+            }
+        }
+
+        private void ShowMessage(string itemID)
+        {
+            int rowIndex = -1;
+
+            var time = new System.Windows.Forms.Timer();
+            time.Interval = 1000; // it will Tick in 1 seconds
+            time.Tick += (s, e) =>
+            {
+                msgLabel.Text = "";
+                time.Stop();
+            };
+            time.Start();
+
+            if (this.itemModePanel.Visible == true)
+            {
+                DataGridViewRow row = itemGridView.Rows
+                .Cast<DataGridViewRow>()
+                .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID.ToLower()))
+                .FirstOrDefault();
+
+                if (row == null)
+                {
+                    row = itemGridView.Rows
+                    .Cast<DataGridViewRow>()
+                    .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID))
+                    .FirstOrDefault();
+
+                    if (row == null)
+                    {
+                        return;
+                    }
+                }
+                rowIndex = row.Index;
+                msgLabel.Text = "Spawn " + itemGridView.Rows[rowIndex].Cells[0].Value.ToString();
+            }
+            else
+            {
+                DataGridViewRow row = recipeGridView.Rows
+                .Cast<DataGridViewRow>()
+                .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID.ToLower()))
+                .FirstOrDefault();
+
+                if (row == null)
+                {
+                    row = recipeGridView.Rows
+                    .Cast<DataGridViewRow>()
+                    .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID))
+                    .FirstOrDefault();
+
+                    if (row == null)
+                    {
+                        return;
+                    }
+                }
+                rowIndex = row.Index;
+                msgLabel.Text = "Spawn " + recipeGridView.Rows[rowIndex].Cells[0].Value.ToString() + " recipe";
             }
         }
     }

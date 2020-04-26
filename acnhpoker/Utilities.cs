@@ -169,7 +169,8 @@ namespace acnhpoker
 
         public string UnflipItemId(String itemId)
         {
-            string firstHalf = itemId.Substring(0, 2).TrimStart(new char[] { '0' });
+            //string firstHalf = itemId.Substring(0, 2).TrimStart(new char[] { '0' });
+            string firstHalf = itemId.Substring(0, 2);
             string secondHalf = itemId.Substring(2, 2).TrimStart(new char[] { '0' });
             string postFlip = secondHalf + firstHalf;
             return postFlip;

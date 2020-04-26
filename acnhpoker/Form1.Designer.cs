@@ -99,6 +99,7 @@
             this.recipeNum = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.recipeGridView = new System.Windows.Forms.DataGridView();
+            this.msgLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             this.pnlBank1.SuspendLayout();
@@ -1261,12 +1262,24 @@
             this.recipeGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.recipeGridView_CellFormatting);
             this.recipeGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.recipeGridView_CellMouseUp);
             // 
+            // msgLabel
+            // 
+            this.msgLabel.AutoSize = true;
+            this.msgLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.msgLabel.ForeColor = System.Drawing.Color.White;
+            this.msgLabel.Location = new System.Drawing.Point(240, 386);
+            this.msgLabel.MinimumSize = new System.Drawing.Size(300, 17);
+            this.msgLabel.Name = "msgLabel";
+            this.msgLabel.Size = new System.Drawing.Size(300, 17);
+            this.msgLabel.TabIndex = 66;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1190, 516);
+            this.Controls.Add(this.msgLabel);
             this.Controls.Add(this.itemGridView);
             this.Controls.Add(this.recipeGridView);
             this.Controls.Add(this.recipeModePanel);
@@ -1287,6 +1300,7 @@
             this.Name = "Form1";
             this.Text = "ACNH Poker V1.2.0";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyboardKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.itemRightClick.ResumeLayout(false);
             this.pnlBank1.ResumeLayout(false);
@@ -1375,6 +1389,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView recipeGridView;
         private System.Windows.Forms.Button clearBtn2;
+        private System.Windows.Forms.Label msgLabel;
     }
 }
 
