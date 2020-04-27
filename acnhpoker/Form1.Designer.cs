@@ -53,7 +53,6 @@
             this.button17 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
-            this.itemGridView = new System.Windows.Forms.DataGridView();
             this.customIdBtn = new System.Windows.Forms.Button();
             this.customIdTextbox = new System.Windows.Forms.RichTextBox();
             this.itemSearchBox = new System.Windows.Forms.RichTextBox();
@@ -86,12 +85,30 @@
             this.inventoryPanel = new System.Windows.Forms.Panel();
             this.spawnAllBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
+            this.variationsBtn = new System.Windows.Forms.Button();
+            this.clearBtn = new System.Windows.Forms.Button();
+            this.Player1Btn = new System.Windows.Forms.RadioButton();
+            this.Player2Btn = new System.Windows.Forms.RadioButton();
+            this.itemGridView = new System.Windows.Forms.DataGridView();
+            this.itemModePanel = new System.Windows.Forms.Panel();
+            this.itemModeBtn = new System.Windows.Forms.Button();
+            this.recipeModeBtn = new System.Windows.Forms.Button();
+            this.recipeModePanel = new System.Windows.Forms.Panel();
+            this.clearBtn2 = new System.Windows.Forms.Button();
+            this.spawnRecipeBtn = new System.Windows.Forms.Button();
+            this.recipeNum = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.recipeGridView = new System.Windows.Forms.DataGridView();
+            this.msgLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
             this.pnlBank1.SuspendLayout();
             this.pnlBank2.SuspendLayout();
             this.inventoryPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
+            this.itemModePanel.SuspendLayout();
+            this.recipeModePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recipeGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // connectBtn
@@ -491,23 +508,6 @@
             this.button19.Click += new System.EventHandler(this.slotBtn_Click);
             this.button19.Paint += new System.Windows.Forms.PaintEventHandler(this.slotBtn_Paint);
             // 
-            // itemGridView
-            // 
-            this.itemGridView.AllowUserToAddRows = false;
-            this.itemGridView.AllowUserToDeleteRows = false;
-            this.itemGridView.AllowUserToResizeRows = false;
-            this.itemGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
-            this.itemGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemGridView.Location = new System.Drawing.Point(839, 40);
-            this.itemGridView.MultiSelect = false;
-            this.itemGridView.Name = "itemGridView";
-            this.itemGridView.ReadOnly = true;
-            this.itemGridView.RowHeadersVisible = false;
-            this.itemGridView.Size = new System.Drawing.Size(337, 459);
-            this.itemGridView.TabIndex = 29;
-            this.itemGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.itemGridView_CellFormatting);
-            this.itemGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.itemGridView_CellMouseUp);
-            // 
             // customIdBtn
             // 
             this.customIdBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -515,11 +515,11 @@
             this.customIdBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customIdBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customIdBtn.ForeColor = System.Drawing.Color.White;
-            this.customIdBtn.Location = new System.Drawing.Point(12, 443);
+            this.customIdBtn.Location = new System.Drawing.Point(3, 29);
             this.customIdBtn.Name = "customIdBtn";
             this.customIdBtn.Size = new System.Drawing.Size(75, 56);
             this.customIdBtn.TabIndex = 31;
-            this.customIdBtn.Text = "spawn item";
+            this.customIdBtn.Text = "Spawn Item";
             this.customIdBtn.UseVisualStyleBackColor = false;
             this.customIdBtn.Click += new System.EventHandler(this.customIdBtn_Click);
             // 
@@ -529,7 +529,7 @@
             this.customIdTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.customIdTextbox.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customIdTextbox.ForeColor = System.Drawing.Color.White;
-            this.customIdTextbox.Location = new System.Drawing.Point(93, 443);
+            this.customIdTextbox.Location = new System.Drawing.Point(84, 29);
             this.customIdTextbox.Multiline = false;
             this.customIdTextbox.Name = "customIdTextbox";
             this.customIdTextbox.Size = new System.Drawing.Size(154, 56);
@@ -571,7 +571,7 @@
             this.customAmountTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.customAmountTxt.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customAmountTxt.ForeColor = System.Drawing.Color.White;
-            this.customAmountTxt.Location = new System.Drawing.Point(257, 443);
+            this.customAmountTxt.Location = new System.Drawing.Point(248, 29);
             this.customAmountTxt.Multiline = false;
             this.customAmountTxt.Name = "customAmountTxt";
             this.customAmountTxt.Size = new System.Drawing.Size(154, 56);
@@ -584,7 +584,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(90, 417);
+            this.label1.Location = new System.Drawing.Point(81, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 16);
             this.label1.TabIndex = 36;
@@ -595,7 +595,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(254, 417);
+            this.label2.Location = new System.Drawing.Point(245, 3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 16);
             this.label2.TabIndex = 37;
@@ -1031,11 +1031,11 @@
             this.spawnAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.spawnAllBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spawnAllBtn.ForeColor = System.Drawing.Color.White;
-            this.spawnAllBtn.Location = new System.Drawing.Point(709, 443);
+            this.spawnAllBtn.Location = new System.Drawing.Point(700, 55);
             this.spawnAllBtn.Name = "spawnAllBtn";
-            this.spawnAllBtn.Size = new System.Drawing.Size(116, 56);
+            this.spawnAllBtn.Size = new System.Drawing.Size(116, 30);
             this.spawnAllBtn.TabIndex = 61;
-            this.spawnAllBtn.Text = "spawn all";
+            this.spawnAllBtn.Text = "Spawn All";
             this.spawnAllBtn.UseVisualStyleBackColor = false;
             this.spawnAllBtn.Click += new System.EventHandler(this.spawnAllBtn_Click);
             // 
@@ -1050,10 +1050,228 @@
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(80, 24);
             this.refreshBtn.TabIndex = 62;
-            this.refreshBtn.Text = "refresh";
+            this.refreshBtn.Text = "Refresh";
             this.refreshBtn.UseVisualStyleBackColor = false;
             this.refreshBtn.Visible = false;
             this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
+            // 
+            // variationsBtn
+            // 
+            this.variationsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.variationsBtn.FlatAppearance.BorderSize = 0;
+            this.variationsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.variationsBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.variationsBtn.ForeColor = System.Drawing.Color.White;
+            this.variationsBtn.Location = new System.Drawing.Point(578, 3);
+            this.variationsBtn.Name = "variationsBtn";
+            this.variationsBtn.Size = new System.Drawing.Size(116, 82);
+            this.variationsBtn.TabIndex = 63;
+            this.variationsBtn.Text = "(Danger) Spawn Variations 0-9 to Slot 21-30";
+            this.variationsBtn.UseVisualStyleBackColor = false;
+            this.variationsBtn.Click += new System.EventHandler(this.variationsBtn_Click);
+            // 
+            // clearBtn
+            // 
+            this.clearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.clearBtn.FlatAppearance.BorderSize = 0;
+            this.clearBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearBtn.ForeColor = System.Drawing.Color.White;
+            this.clearBtn.Location = new System.Drawing.Point(700, 19);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(116, 30);
+            this.clearBtn.TabIndex = 64;
+            this.clearBtn.Text = "Clear All";
+            this.clearBtn.UseVisualStyleBackColor = false;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
+            // 
+            // Player1Btn
+            // 
+            this.Player1Btn.AutoSize = true;
+            this.Player1Btn.Checked = true;
+            this.Player1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Player1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.Player1Btn.ForeColor = System.Drawing.Color.White;
+            this.Player1Btn.Location = new System.Drawing.Point(594, 15);
+            this.Player1Btn.Name = "Player1Btn";
+            this.Player1Btn.Size = new System.Drawing.Size(70, 19);
+            this.Player1Btn.TabIndex = 65;
+            this.Player1Btn.TabStop = true;
+            this.Player1Btn.Text = "Player 1";
+            this.Player1Btn.UseVisualStyleBackColor = true;
+            this.Player1Btn.Visible = false;
+            this.Player1Btn.CheckedChanged += new System.EventHandler(this.Player1Btn_CheckedChanged);
+            // 
+            // Player2Btn
+            // 
+            this.Player2Btn.AutoSize = true;
+            this.Player2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Player2Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.Player2Btn.ForeColor = System.Drawing.Color.White;
+            this.Player2Btn.Location = new System.Drawing.Point(671, 15);
+            this.Player2Btn.Name = "Player2Btn";
+            this.Player2Btn.Size = new System.Drawing.Size(70, 19);
+            this.Player2Btn.TabIndex = 66;
+            this.Player2Btn.Text = "Player 2";
+            this.Player2Btn.UseVisualStyleBackColor = true;
+            this.Player2Btn.Visible = false;
+            this.Player2Btn.CheckedChanged += new System.EventHandler(this.Player2Btn_CheckedChanged);
+            // 
+            // itemGridView
+            // 
+            this.itemGridView.AllowUserToAddRows = false;
+            this.itemGridView.AllowUserToDeleteRows = false;
+            this.itemGridView.AllowUserToResizeRows = false;
+            this.itemGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            this.itemGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemGridView.Location = new System.Drawing.Point(839, 40);
+            this.itemGridView.MultiSelect = false;
+            this.itemGridView.Name = "itemGridView";
+            this.itemGridView.ReadOnly = true;
+            this.itemGridView.RowHeadersVisible = false;
+            this.itemGridView.Size = new System.Drawing.Size(337, 459);
+            this.itemGridView.TabIndex = 29;
+            this.itemGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.itemGridView_CellFormatting);
+            this.itemGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.itemGridView_CellMouseUp);
+            // 
+            // itemModePanel
+            // 
+            this.itemModePanel.Controls.Add(this.customIdBtn);
+            this.itemModePanel.Controls.Add(this.customIdTextbox);
+            this.itemModePanel.Controls.Add(this.customAmountTxt);
+            this.itemModePanel.Controls.Add(this.clearBtn);
+            this.itemModePanel.Controls.Add(this.label1);
+            this.itemModePanel.Controls.Add(this.variationsBtn);
+            this.itemModePanel.Controls.Add(this.label2);
+            this.itemModePanel.Controls.Add(this.spawnAllBtn);
+            this.itemModePanel.Location = new System.Drawing.Point(12, 413);
+            this.itemModePanel.Name = "itemModePanel";
+            this.itemModePanel.Size = new System.Drawing.Size(821, 91);
+            this.itemModePanel.TabIndex = 67;
+            // 
+            // itemModeBtn
+            // 
+            this.itemModeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            this.itemModeBtn.FlatAppearance.BorderSize = 0;
+            this.itemModeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.itemModeBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.itemModeBtn.ForeColor = System.Drawing.Color.White;
+            this.itemModeBtn.Location = new System.Drawing.Point(12, 383);
+            this.itemModeBtn.Name = "itemModeBtn";
+            this.itemModeBtn.Size = new System.Drawing.Size(100, 23);
+            this.itemModeBtn.TabIndex = 68;
+            this.itemModeBtn.Text = "Item Mode";
+            this.itemModeBtn.UseVisualStyleBackColor = false;
+            this.itemModeBtn.Click += new System.EventHandler(this.itemModeBtn_Click);
+            // 
+            // recipeModeBtn
+            // 
+            this.recipeModeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.recipeModeBtn.FlatAppearance.BorderSize = 0;
+            this.recipeModeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.recipeModeBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.recipeModeBtn.ForeColor = System.Drawing.Color.White;
+            this.recipeModeBtn.Location = new System.Drawing.Point(116, 383);
+            this.recipeModeBtn.Name = "recipeModeBtn";
+            this.recipeModeBtn.Size = new System.Drawing.Size(100, 23);
+            this.recipeModeBtn.TabIndex = 69;
+            this.recipeModeBtn.Text = "Recipe Mode";
+            this.recipeModeBtn.UseVisualStyleBackColor = false;
+            this.recipeModeBtn.Click += new System.EventHandler(this.recipeModeBtn_Click);
+            // 
+            // recipeModePanel
+            // 
+            this.recipeModePanel.Controls.Add(this.clearBtn2);
+            this.recipeModePanel.Controls.Add(this.spawnRecipeBtn);
+            this.recipeModePanel.Controls.Add(this.recipeNum);
+            this.recipeModePanel.Controls.Add(this.label4);
+            this.recipeModePanel.Location = new System.Drawing.Point(12, 413);
+            this.recipeModePanel.Name = "recipeModePanel";
+            this.recipeModePanel.Size = new System.Drawing.Size(821, 91);
+            this.recipeModePanel.TabIndex = 68;
+            this.recipeModePanel.Visible = false;
+            // 
+            // clearBtn2
+            // 
+            this.clearBtn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.clearBtn2.FlatAppearance.BorderSize = 0;
+            this.clearBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearBtn2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearBtn2.ForeColor = System.Drawing.Color.White;
+            this.clearBtn2.Location = new System.Drawing.Point(700, 19);
+            this.clearBtn2.Name = "clearBtn2";
+            this.clearBtn2.Size = new System.Drawing.Size(116, 30);
+            this.clearBtn2.TabIndex = 65;
+            this.clearBtn2.Text = "Clear All";
+            this.clearBtn2.UseVisualStyleBackColor = false;
+            this.clearBtn2.Click += new System.EventHandler(this.clearBtn2_Click);
+            // 
+            // spawnRecipeBtn
+            // 
+            this.spawnRecipeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.spawnRecipeBtn.FlatAppearance.BorderSize = 0;
+            this.spawnRecipeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.spawnRecipeBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.spawnRecipeBtn.ForeColor = System.Drawing.Color.White;
+            this.spawnRecipeBtn.Location = new System.Drawing.Point(3, 29);
+            this.spawnRecipeBtn.Name = "spawnRecipeBtn";
+            this.spawnRecipeBtn.Size = new System.Drawing.Size(75, 56);
+            this.spawnRecipeBtn.TabIndex = 31;
+            this.spawnRecipeBtn.Text = "Spawn Recipe";
+            this.spawnRecipeBtn.UseVisualStyleBackColor = false;
+            this.spawnRecipeBtn.Click += new System.EventHandler(this.spawnRecipeBtn_Click);
+            // 
+            // recipeNum
+            // 
+            this.recipeNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.recipeNum.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.recipeNum.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recipeNum.ForeColor = System.Drawing.Color.White;
+            this.recipeNum.Location = new System.Drawing.Point(84, 29);
+            this.recipeNum.Multiline = false;
+            this.recipeNum.Name = "recipeNum";
+            this.recipeNum.Size = new System.Drawing.Size(154, 56);
+            this.recipeNum.TabIndex = 35;
+            this.recipeNum.Text = "006";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(81, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(116, 16);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "Recipe Number";
+            // 
+            // recipeGridView
+            // 
+            this.recipeGridView.AllowUserToAddRows = false;
+            this.recipeGridView.AllowUserToDeleteRows = false;
+            this.recipeGridView.AllowUserToResizeRows = false;
+            this.recipeGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            this.recipeGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.recipeGridView.Location = new System.Drawing.Point(839, 40);
+            this.recipeGridView.MultiSelect = false;
+            this.recipeGridView.Name = "recipeGridView";
+            this.recipeGridView.ReadOnly = true;
+            this.recipeGridView.RowHeadersVisible = false;
+            this.recipeGridView.Size = new System.Drawing.Size(337, 459);
+            this.recipeGridView.TabIndex = 70;
+            this.recipeGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.recipeGridView_CellFormatting);
+            this.recipeGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.recipeGridView_CellMouseUp);
+            // 
+            // msgLabel
+            // 
+            this.msgLabel.AutoSize = true;
+            this.msgLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.msgLabel.ForeColor = System.Drawing.Color.White;
+            this.msgLabel.Location = new System.Drawing.Point(240, 386);
+            this.msgLabel.MinimumSize = new System.Drawing.Size(300, 17);
+            this.msgLabel.Name = "msgLabel";
+            this.msgLabel.Size = new System.Drawing.Size(300, 17);
+            this.msgLabel.TabIndex = 66;
             // 
             // Form1
             // 
@@ -1061,31 +1279,39 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1190, 516);
+            this.Controls.Add(this.msgLabel);
+            this.Controls.Add(this.itemGridView);
+            this.Controls.Add(this.recipeGridView);
+            this.Controls.Add(this.recipeModePanel);
+            this.Controls.Add(this.recipeModeBtn);
+            this.Controls.Add(this.itemModeBtn);
+            this.Controls.Add(this.itemModePanel);
+            this.Controls.Add(this.Player2Btn);
+            this.Controls.Add(this.Player1Btn);
             this.Controls.Add(this.refreshBtn);
-            this.Controls.Add(this.spawnAllBtn);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.customAmountTxt);
             this.Controls.Add(this.ipBox);
             this.Controls.Add(this.itemSearchBox);
-            this.Controls.Add(this.customIdTextbox);
-            this.Controls.Add(this.customIdBtn);
-            this.Controls.Add(this.itemGridView);
             this.Controls.Add(this.connectBtn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.inventoryPanel);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1206, 555);
+            this.MaximumSize = new System.Drawing.Size(1206, 800);
             this.MinimumSize = new System.Drawing.Size(1206, 555);
             this.Name = "Form1";
-            this.Text = "ACNH Poker";
+            this.Text = "ACNH Poker V1.2.0";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyboardKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.itemRightClick.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).EndInit();
             this.pnlBank1.ResumeLayout(false);
             this.pnlBank2.ResumeLayout(false);
             this.inventoryPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).EndInit();
+            this.itemModePanel.ResumeLayout(false);
+            this.itemModePanel.PerformLayout();
+            this.recipeModePanel.ResumeLayout(false);
+            this.recipeModePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recipeGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1115,7 +1341,6 @@
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.DataGridView itemGridView;
         private System.Windows.Forms.Button customIdBtn;
         private System.Windows.Forms.RichTextBox customIdTextbox;
         private System.Windows.Forms.RichTextBox itemSearchBox;
@@ -1150,6 +1375,21 @@
         private System.Windows.Forms.ToolStripMenuItem deleteItemBtn;
         private System.Windows.Forms.Button spawnAllBtn;
         private System.Windows.Forms.Button refreshBtn;
+        private System.Windows.Forms.Button variationsBtn;
+        private System.Windows.Forms.Button clearBtn;
+        private System.Windows.Forms.RadioButton Player1Btn;
+        private System.Windows.Forms.RadioButton Player2Btn;
+        private System.Windows.Forms.DataGridView itemGridView;
+        private System.Windows.Forms.Panel itemModePanel;
+        private System.Windows.Forms.Button recipeModeBtn;
+        private System.Windows.Forms.Button itemModeBtn;
+        private System.Windows.Forms.Panel recipeModePanel;
+        private System.Windows.Forms.Button spawnRecipeBtn;
+        private System.Windows.Forms.RichTextBox recipeNum;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView recipeGridView;
+        private System.Windows.Forms.Button clearBtn2;
+        private System.Windows.Forms.Label msgLabel;
     }
 }
 
