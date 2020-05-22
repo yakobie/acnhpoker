@@ -14,6 +14,7 @@ namespace acnhpoker
         private UInt32 itemData;
         private string imagePath = "";
         private Boolean init = false;
+        private Boolean hide = false;
 
         private string flag1;
         private string flag2;
@@ -110,6 +111,10 @@ namespace acnhpoker
         {
             return flag2;
         }
+        public void setHide(Boolean flag)
+        {
+            hide = flag;
+        }
 
         public void reset()
         {
@@ -157,8 +162,11 @@ namespace acnhpoker
             if (itemID != 0xFFFE) //Empty
             {
                 this.Image = displayItemImage();
-
-                if (flag1 != "00") //Wrapped
+                if (hide)
+                {
+                    return;
+                }
+                else if (flag1 != "00") //Wrapped
                 {
                     if (itemID == 0x16A1) //Inside Bottle
                     {

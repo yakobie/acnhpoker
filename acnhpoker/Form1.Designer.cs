@@ -135,16 +135,16 @@
             this.formToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.eatBtn = new System.Windows.Forms.Button();
             this.poopBtn = new System.Windows.Forms.Button();
+            this.fastBackBtn = new System.Windows.Forms.Button();
+            this.fastNextBtn = new System.Windows.Forms.Button();
+            this.nextBtn = new System.Windows.Forms.Button();
+            this.backBtn = new System.Windows.Forms.Button();
             this.selectedItem = new acnhpoker.inventorySlot();
             this.saveBtn = new System.Windows.Forms.Button();
             this.loadBtn = new System.Windows.Forms.Button();
             this.inventoryLargePanel = new System.Windows.Forms.Panel();
             this.paginationPanel = new System.Windows.Forms.Panel();
-            this.fastBackBtn = new System.Windows.Forms.Button();
             this.pageLabel = new System.Windows.Forms.Label();
-            this.fastNextBtn = new System.Windows.Forms.Button();
-            this.nextBtn = new System.Windows.Forms.Button();
-            this.backBtn = new System.Windows.Forms.Button();
             this.inventoryBtn = new System.Windows.Forms.Button();
             this.critterBtn = new System.Windows.Forms.Button();
             this.otherBtn = new System.Windows.Forms.Button();
@@ -281,6 +281,7 @@
             this.customIdTextbox.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customIdTextbox.ForeColor = System.Drawing.Color.White;
             this.customIdTextbox.Location = new System.Drawing.Point(5, 24);
+            this.customIdTextbox.MaxLength = 4;
             this.customIdTextbox.Multiline = false;
             this.customIdTextbox.Name = "customIdTextbox";
             this.customIdTextbox.Size = new System.Drawing.Size(154, 56);
@@ -323,6 +324,7 @@
             this.customAmountTxt.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customAmountTxt.ForeColor = System.Drawing.Color.White;
             this.customAmountTxt.Location = new System.Drawing.Point(169, 24);
+            this.customAmountTxt.MaxLength = 8;
             this.customAmountTxt.Multiline = false;
             this.customAmountTxt.Name = "customAmountTxt";
             this.customAmountTxt.Size = new System.Drawing.Size(231, 56);
@@ -1348,6 +1350,7 @@
             this.itemGridView.Name = "itemGridView";
             this.itemGridView.ReadOnly = true;
             this.itemGridView.RowHeadersVisible = false;
+            this.itemGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.itemGridView.Size = new System.Drawing.Size(337, 459);
             this.itemGridView.TabIndex = 29;
             this.itemGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.itemGridView_CellFormatting);
@@ -1528,11 +1531,13 @@
             this.recipeNum.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recipeNum.ForeColor = System.Drawing.Color.White;
             this.recipeNum.Location = new System.Drawing.Point(5, 24);
+            this.recipeNum.MaxLength = 4;
             this.recipeNum.Multiline = false;
             this.recipeNum.Name = "recipeNum";
             this.recipeNum.Size = new System.Drawing.Size(154, 56);
             this.recipeNum.TabIndex = 35;
             this.recipeNum.Text = "";
+            this.recipeNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.customIdTextbox_KeyPress);
             // 
             // label4
             // 
@@ -1557,6 +1562,7 @@
             this.recipeGridView.Name = "recipeGridView";
             this.recipeGridView.ReadOnly = true;
             this.recipeGridView.RowHeadersVisible = false;
+            this.recipeGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.recipeGridView.Size = new System.Drawing.Size(337, 459);
             this.recipeGridView.TabIndex = 70;
             this.recipeGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.recipeGridView_CellFormatting);
@@ -1596,7 +1602,7 @@
             this.debugAddress.Name = "debugAddress";
             this.debugAddress.Size = new System.Drawing.Size(319, 56);
             this.debugAddress.TabIndex = 66;
-            this.debugAddress.Text = "AC47D2C4";
+            this.debugAddress.Text = "AC4723D0";
             // 
             // Result1
             // 
@@ -1609,7 +1615,7 @@
             this.Result1.Name = "Result1";
             this.Result1.Size = new System.Drawing.Size(318, 56);
             this.Result1.TabIndex = 72;
-            this.Result1.Text = "AC4723D0";
+            this.Result1.Text = "";
             // 
             // PeekBtn
             // 
@@ -1650,7 +1656,7 @@
             this.Result3.Name = "Result3";
             this.Result3.Size = new System.Drawing.Size(318, 56);
             this.Result3.TabIndex = 74;
-            this.Result3.Text = "";
+            this.Result3.Text = "AC47D2C4";
             // 
             // Result4
             // 
@@ -1677,6 +1683,7 @@
             this.flowerGridView.Name = "flowerGridView";
             this.flowerGridView.ReadOnly = true;
             this.flowerGridView.RowHeadersVisible = false;
+            this.flowerGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.flowerGridView.Size = new System.Drawing.Size(337, 459);
             this.flowerGridView.TabIndex = 76;
             this.flowerGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.flowerGridView_CellFormatting);
@@ -1701,6 +1708,7 @@
             this.flowerID.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowerID.ForeColor = System.Drawing.Color.DarkGray;
             this.flowerID.Location = new System.Drawing.Point(5, 24);
+            this.flowerID.MaxLength = 4;
             this.flowerID.Multiline = false;
             this.flowerID.Name = "flowerID";
             this.flowerID.ReadOnly = true;
@@ -1715,6 +1723,7 @@
             this.flowerValue.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flowerValue.ForeColor = System.Drawing.Color.DarkGray;
             this.flowerValue.Location = new System.Drawing.Point(169, 24);
+            this.flowerValue.MaxLength = 8;
             this.flowerValue.Multiline = false;
             this.flowerValue.Name = "flowerValue";
             this.flowerValue.ReadOnly = true;
@@ -1987,6 +1996,70 @@
             this.poopBtn.Visible = false;
             this.poopBtn.Click += new System.EventHandler(this.poopBtn_Click);
             // 
+            // fastBackBtn
+            // 
+            this.fastBackBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.fastBackBtn.FlatAppearance.BorderSize = 0;
+            this.fastBackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fastBackBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fastBackBtn.ForeColor = System.Drawing.Color.White;
+            this.fastBackBtn.Location = new System.Drawing.Point(3, 3);
+            this.fastBackBtn.Name = "fastBackBtn";
+            this.fastBackBtn.Size = new System.Drawing.Size(48, 24);
+            this.fastBackBtn.TabIndex = 94;
+            this.fastBackBtn.Text = "◄◄";
+            this.formToolTip.SetToolTip(this.fastBackBtn, "-10 Pages");
+            this.fastBackBtn.UseVisualStyleBackColor = false;
+            this.fastBackBtn.Click += new System.EventHandler(this.fastBackBtn_Click);
+            // 
+            // fastNextBtn
+            // 
+            this.fastNextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.fastNextBtn.FlatAppearance.BorderSize = 0;
+            this.fastNextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fastNextBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fastNextBtn.ForeColor = System.Drawing.Color.White;
+            this.fastNextBtn.Location = new System.Drawing.Point(188, 3);
+            this.fastNextBtn.Name = "fastNextBtn";
+            this.fastNextBtn.Size = new System.Drawing.Size(48, 24);
+            this.fastNextBtn.TabIndex = 93;
+            this.fastNextBtn.Text = "►►";
+            this.formToolTip.SetToolTip(this.fastNextBtn, "+10 Pages");
+            this.fastNextBtn.UseVisualStyleBackColor = false;
+            this.fastNextBtn.Click += new System.EventHandler(this.fastNextBtn_Click);
+            // 
+            // nextBtn
+            // 
+            this.nextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.nextBtn.FlatAppearance.BorderSize = 0;
+            this.nextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nextBtn.ForeColor = System.Drawing.Color.White;
+            this.nextBtn.Location = new System.Drawing.Point(156, 3);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(26, 24);
+            this.nextBtn.TabIndex = 91;
+            this.nextBtn.Text = "►";
+            this.formToolTip.SetToolTip(this.nextBtn, "+1 Page");
+            this.nextBtn.UseVisualStyleBackColor = false;
+            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
+            // 
+            // backBtn
+            // 
+            this.backBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.backBtn.FlatAppearance.BorderSize = 0;
+            this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backBtn.ForeColor = System.Drawing.Color.White;
+            this.backBtn.Location = new System.Drawing.Point(57, 3);
+            this.backBtn.Name = "backBtn";
+            this.backBtn.Size = new System.Drawing.Size(26, 24);
+            this.backBtn.TabIndex = 92;
+            this.backBtn.Text = "◄";
+            this.formToolTip.SetToolTip(this.backBtn, "-1 Page");
+            this.backBtn.UseVisualStyleBackColor = false;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
+            // 
             // selectedItem
             // 
             this.selectedItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -2047,7 +2120,6 @@
             this.inventoryLargePanel.Controls.Add(this.inventoryPanel);
             this.inventoryLargePanel.Controls.Add(this.loadBtn);
             this.inventoryLargePanel.Controls.Add(this.waitMsg);
-            this.inventoryLargePanel.Controls.Add(this.itemModePanel);
             this.inventoryLargePanel.Controls.Add(this.saveBtn);
             this.inventoryLargePanel.Controls.Add(this.msgLabel);
             this.inventoryLargePanel.Controls.Add(this.itemSearchBox);
@@ -2055,17 +2127,18 @@
             this.inventoryLargePanel.Controls.Add(this.itemModeBtn);
             this.inventoryLargePanel.Controls.Add(this.selectedItem);
             this.inventoryLargePanel.Controls.Add(this.recipeModeBtn);
-            this.inventoryLargePanel.Controls.Add(this.itemGridView);
             this.inventoryLargePanel.Controls.Add(this.flowerModeBtn);
             this.inventoryLargePanel.Controls.Add(this.playerSelectionPanel);
             this.inventoryLargePanel.Controls.Add(this.selectedID);
             this.inventoryLargePanel.Controls.Add(this.autoRefreshCheckBox);
             this.inventoryLargePanel.Controls.Add(this.selectedData);
-            this.inventoryLargePanel.Controls.Add(this.flowerModePanel);
-            this.inventoryLargePanel.Controls.Add(this.recipeModePanel);
+            this.inventoryLargePanel.Controls.Add(this.paginationPanel);
+            this.inventoryLargePanel.Controls.Add(this.itemGridView);
             this.inventoryLargePanel.Controls.Add(this.flowerGridView);
             this.inventoryLargePanel.Controls.Add(this.recipeGridView);
-            this.inventoryLargePanel.Controls.Add(this.paginationPanel);
+            this.inventoryLargePanel.Controls.Add(this.itemModePanel);
+            this.inventoryLargePanel.Controls.Add(this.flowerModePanel);
+            this.inventoryLargePanel.Controls.Add(this.recipeModePanel);
             this.inventoryLargePanel.Location = new System.Drawing.Point(25, 0);
             this.inventoryLargePanel.Name = "inventoryLargePanel";
             this.inventoryLargePanel.Size = new System.Drawing.Size(1200, 550);
@@ -2084,22 +2157,6 @@
             this.paginationPanel.TabIndex = 96;
             this.paginationPanel.Visible = false;
             // 
-            // fastBackBtn
-            // 
-            this.fastBackBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.fastBackBtn.FlatAppearance.BorderSize = 0;
-            this.fastBackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fastBackBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fastBackBtn.ForeColor = System.Drawing.Color.White;
-            this.fastBackBtn.Location = new System.Drawing.Point(3, 3);
-            this.fastBackBtn.Name = "fastBackBtn";
-            this.fastBackBtn.Size = new System.Drawing.Size(48, 24);
-            this.fastBackBtn.TabIndex = 94;
-            this.fastBackBtn.Text = "◄◄";
-            this.formToolTip.SetToolTip(this.fastBackBtn, "-10 Pages");
-            this.fastBackBtn.UseVisualStyleBackColor = false;
-            this.fastBackBtn.Click += new System.EventHandler(this.fastBackBtn_Click);
-            // 
             // pageLabel
             // 
             this.pageLabel.AutoSize = true;
@@ -2110,54 +2167,6 @@
             this.pageLabel.Size = new System.Drawing.Size(61, 19);
             this.pageLabel.TabIndex = 95;
             this.pageLabel.Text = "Page 1";
-            // 
-            // fastNextBtn
-            // 
-            this.fastNextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.fastNextBtn.FlatAppearance.BorderSize = 0;
-            this.fastNextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fastNextBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fastNextBtn.ForeColor = System.Drawing.Color.White;
-            this.fastNextBtn.Location = new System.Drawing.Point(188, 3);
-            this.fastNextBtn.Name = "fastNextBtn";
-            this.fastNextBtn.Size = new System.Drawing.Size(48, 24);
-            this.fastNextBtn.TabIndex = 93;
-            this.fastNextBtn.Text = "►►";
-            this.formToolTip.SetToolTip(this.fastNextBtn, "+10 Pages");
-            this.fastNextBtn.UseVisualStyleBackColor = false;
-            this.fastNextBtn.Click += new System.EventHandler(this.fastNextBtn_Click);
-            // 
-            // nextBtn
-            // 
-            this.nextBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.nextBtn.FlatAppearance.BorderSize = 0;
-            this.nextBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextBtn.ForeColor = System.Drawing.Color.White;
-            this.nextBtn.Location = new System.Drawing.Point(156, 3);
-            this.nextBtn.Name = "nextBtn";
-            this.nextBtn.Size = new System.Drawing.Size(26, 24);
-            this.nextBtn.TabIndex = 91;
-            this.nextBtn.Text = "►";
-            this.formToolTip.SetToolTip(this.nextBtn, "+1 Page");
-            this.nextBtn.UseVisualStyleBackColor = false;
-            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
-            // 
-            // backBtn
-            // 
-            this.backBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.backBtn.FlatAppearance.BorderSize = 0;
-            this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backBtn.ForeColor = System.Drawing.Color.White;
-            this.backBtn.Location = new System.Drawing.Point(57, 3);
-            this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(26, 24);
-            this.backBtn.TabIndex = 92;
-            this.backBtn.Text = "◄";
-            this.formToolTip.SetToolTip(this.backBtn, "-1 Page");
-            this.backBtn.UseVisualStyleBackColor = false;
-            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // inventoryBtn
             // 
@@ -3513,7 +3522,7 @@
             this.MaximumSize = new System.Drawing.Size(1220, 1000);
             this.MinimumSize = new System.Drawing.Size(1220, 555);
             this.Name = "Form1";
-            this.Text = "ACNH Poker V1.2.0 MyShiLingStar R7";
+            this.Text = "ACNH Poker V1.2.1 MyShiLingStar R 7.1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyboardKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

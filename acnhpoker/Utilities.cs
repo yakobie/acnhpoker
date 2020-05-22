@@ -71,11 +71,11 @@ namespace acnhpoker
         {
             if (slot <= 20)
             {
-                return (0x3 + ItemSlotBase + ((Clamp(slot, 1, 20) - 1) * 0x8)).ToString("X");
+                return "0x" + (0x3 + ItemSlotBase + ((Clamp(slot, 1, 20) - 1) * 0x8)).ToString("X");
             }
             else
             {
-                return (0x3 + ItemSlot21Base + ((Clamp(slot, 21, 40) - 21) * 0x8)).ToString("X");
+                return "0x" + (0x3 + ItemSlot21Base + ((Clamp(slot, 21, 40) - 21) * 0x8)).ToString("X");
             }
         }
 
@@ -89,7 +89,7 @@ namespace acnhpoker
                 SendString(socket, Encoding.UTF8.GetBytes(msg));
 
 
-                byte[] b = new byte[1024];
+                byte[] b = new byte[500];
                 socket.Receive(b);
 
                 return b;
@@ -101,39 +101,18 @@ namespace acnhpoker
             }
         }
 
-        public bool SpawnItem(Socket socket, int slot, String value, int amount)
-        {
-            try
-            {
-                //byte[] msg = Encoding.UTF8.GetBytes("poke " + GetItemSlotAddress(slot) + " " + precedingZeros(value) + "\r\n");
-                string msg = String.Format("poke {0:X8} {1}\r\n", GetItemSlotAddress(slot), precedingZeros(value));
-                Debug.Print("Spawn Item : " + msg);
-                SendString(socket, Encoding.UTF8.GetBytes(msg));
-
-                string countMsg = String.Format("poke {0:X8} {1}\r\n", GetItemCountAddress(slot), precedingZeros((amount - 1).ToString("X")));
-                Debug.Print("Spawn Amount : " + countMsg);
-                SendString(socket, Encoding.UTF8.GetBytes(countMsg));
-
-            }
-            catch
-            {
-                MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
-            }
-
-            return false;
-        }
-
         public bool SpawnItem(Socket socket, int slot, String value, String amount)
         {
             try
             {
-                string msg = String.Format("poke {0:X8} {1}\r\n", GetItemSlotAddress(slot), precedingZeros(value));
-                Debug.Print("Spawn Item : " + msg);
+                string msg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemSlotAddress(slot), flip(precedingZeros(value,8)));
                 SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                string countMsg = String.Format("poke {0:X8} {1}\r\n", GetItemCountAddress(slot), precedingZeros(amount));
-                Debug.Print("Spawn Amount : " + countMsg);
+                string countMsg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemCountAddress(slot), flip(precedingZeros(amount,8)));
                 SendString(socket, Encoding.UTF8.GetBytes(countMsg));
+
+                Debug.Print("Slot : " + slot + " | ID : " + value + " | Amount : " + amount);
+                Debug.Print("Spawn Item : poke " + GetItemSlotAddress(slot) + " 0x" + flip(precedingZeros(value, 8)) + " 0x" + flip(precedingZeros(amount, 8)));
             }
             catch
             {
@@ -143,17 +122,18 @@ namespace acnhpoker
             return false;
         }
 
-        public bool SpawnRecipe(Socket socket, int slot, String value, String count)
+        public bool SpawnRecipe(Socket socket, int slot, String value, String recipeValue)
         {
             try
             {
-                string msg = String.Format("poke {0:X8} {1}\r\n", GetItemSlotAddress(slot), precedingZeros(value));
-                Debug.Print("Spawn Item : " + msg);
+                string msg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemSlotAddress(slot), flip(precedingZeros(value,8)));
                 SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                string countMsg = String.Format("poke {0:X8} {1}\r\n", GetItemCountAddress(slot), precedingZeros(count));
-                Debug.Print("Spawn Amount : " + countMsg);
+                string countMsg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemCountAddress(slot), flip(precedingZeros(recipeValue, 8)));
                 SendString(socket, Encoding.UTF8.GetBytes(countMsg));
+
+                Debug.Print("Slot : " + slot + " | ID : " + value + " | RecipeValue : " + recipeValue);
+                Debug.Print("Spawn recipe : poke " + GetItemSlotAddress(slot) + " 0x" + flip(precedingZeros(value, 8)) + " 0x" + flip(precedingZeros(recipeValue, 8)));
             }
             catch
             {
@@ -163,17 +143,18 @@ namespace acnhpoker
             return false;
         }
 
-        public bool SpawnFlower(Socket socket, int slot, String value, String gene)
+        public bool SpawnFlower(Socket socket, int slot, String value, String flowerValue)
         {
             try
             {
-                string msg = String.Format("poke {0:X8} {1}\r\n", GetItemSlotAddress(slot), precedingZeros(value));
-                Debug.Print("Spawn Item : " + msg);
+                string msg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemSlotAddress(slot), flip(precedingZeros(value,8)));
                 SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                string countMsg = String.Format("poke {0:X8} {1}\r\n", GetItemCountAddress(slot), precedingZeros(gene));
-                Debug.Print("Spawn Amount : " + countMsg);
+                string countMsg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemCountAddress(slot), flip(precedingZeros(flowerValue, 8)));
                 SendString(socket, Encoding.UTF8.GetBytes(countMsg));
+
+                Debug.Print("Slot : " + slot + " | ID : " + value + " | FlowerValue : " + flowerValue);
+                Debug.Print("Spawn Flower : poke " + GetItemSlotAddress(slot) + " 0x" + flip(precedingZeros(value, 8)) + " 0x" + flip(precedingZeros(flowerValue, 8)));
             }
             catch
             {
@@ -183,38 +164,45 @@ namespace acnhpoker
             return false;
         }
 
-        public string precedingZeros(string value)
+        public string flip(string value)
         {
-            string n0 = String.Concat(Enumerable.Repeat("0", 8 - value.Length));
-            string preFlip = String.Concat(n0, value);
-            string first = preFlip.Substring(0, 2);
-            string second = preFlip.Substring(2, 2);
-            string third = preFlip.Substring(4, 2);
-            string fourth = preFlip.Substring(6, 2);
-            string postFlip = "0x" + fourth + third + second + first;
-
-            return postFlip;
+            if (value.Length == 4)
+            {
+                string first = value.Substring(0, 2);
+                string second = value.Substring(2, 2);
+                string postFlip = second + first;
+                return postFlip;
+            }
+            else if (value.Length == 8)
+            {
+                string first = value.Substring(0, 2);
+                string second = value.Substring(2, 2);
+                string third = value.Substring(4, 2);
+                string fourth = value.Substring(6, 2);
+                string postFlip = fourth + third + second + first;
+                return postFlip;
+            }
+            else
+            {
+                return value;
+            }
         }
 
-        public string precedingZeros(string ID, int length)
+        public string precedingZeros(string value, int length)
         {
-            string n0 = String.Concat(Enumerable.Repeat("0", length - ID.Length));
-            string result = String.Concat(n0, ID);
+            string n0 = String.Concat(Enumerable.Repeat("0", length - value.Length));
+            string result = String.Concat(n0, value);
             return result;
         }
 
         public string removeZeros(string ID)
         {
-            string secondHalf = ID.Substring(4, 4);
-            return secondHalf;
+            return ID.Substring(4, 4);
         }
 
         public void DeleteSlot(Socket s, int slot)
         {
-            SpawnItem(s, slot, "FFFE", 1);
-            //var itemCount = GetItemCountAddress(slot);
-            //byte[] countMsg = Encoding.UTF8.GetBytes("poke " + itemCount + " 0x000000000" + "\r\n");
-            //s.Send(countMsg);
+            SpawnItem(s, slot, "FFFE", "0");
         }
 
         public static UInt32[] GetTurnipPrices(Socket socket)
@@ -259,24 +247,12 @@ namespace acnhpoker
                 ItemSlotBase = 0xAB968B78;
                 ItemSlot21Base = 0xAB968C18;
             }
-            else if (player == 10) //House
+            else if (player == 10) //House 1
             {
                 ItemSlotBase = 0xAC472494;
                 ItemSlot21Base = 0xAC472534;
             }
 
-        }
-
-        public void nextPage()
-        {
-            ItemSlotBase = ItemSlotBase + 0x140;
-            ItemSlot21Base = ItemSlot21Base + 0x140;
-        }
-
-        public void previousPage()
-        {
-            ItemSlotBase = ItemSlotBase - 0x140;
-            ItemSlot21Base = ItemSlot21Base - 0x140;
         }
 
         public void gotoRecyclingPage(uint page)
@@ -295,7 +271,7 @@ namespace acnhpoker
         {
             try
             {
-                string msg = String.Format("peek 0x{0:X8} {1}\r\n", address, 500);
+                string msg = String.Format("peek {0:X8} {1}\r\n", address, 500);
                 Debug.Print("Peek : " + msg);
                 SendString(socket, Encoding.UTF8.GetBytes(msg));
 
@@ -315,7 +291,7 @@ namespace acnhpoker
         {
             try
             {
-                string msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", address, value);
+                string msg = String.Format("poke {0:X8} {1}\r\n", address, value);
                 Debug.Print("Poke : " + msg);
                 SendString(socket, Encoding.UTF8.GetBytes(msg));
             }
@@ -328,31 +304,12 @@ namespace acnhpoker
 
         public void setStamina(Socket socket, string value)
         {
-            pokeAddress(socket, staminaAddress.ToString("X"), value);
+            pokeAddress(socket, "0x" + staminaAddress.ToString("X"), value);
         }
 
         public void setFlag1(Socket socket, int slot, string flag)
         {
-            pokeAddress(socket, GetItemFlag1Address(slot), flag);
-        }
-
-        public string Unflipbytes(String itemId)
-        {
-            string first = itemId.Substring(0, 2);
-            string second = itemId.Substring(2, 2);
-            string third = itemId.Substring(4, 2);
-            string fourth = itemId.Substring(6, 2);
-            //string postFlip = fourth + third + " " + second + first;
-            string postFlip = fourth + third + second + first;
-            return postFlip;
-        }
-
-        public string Unflip4bytes(String itemId)
-        {
-            string first = itemId.Substring(0, 2);
-            string second = itemId.Substring(2, 2);
-            string postFlip = second + first;
-            return postFlip;
+            pokeAddress(socket, GetItemFlag1Address(slot), "0x" + flag);
         }
 
         public static byte[] ReadByteArray(Socket socket, long initAddr, int size)
@@ -530,26 +487,6 @@ namespace acnhpoker
                 }
             } while (received < size && buffer[received - 1] != 0xA);
             return received;
-        }
-
-        public void FollowPointer(Socket socket, string address, int addressType = 2)
-        {
-                try
-                {
-                    string msg = String.Format("{0} {1:X8} 8\r\n", peekType[addressType], address);
-                    Debug.Print(msg);
-                    SendString(socket, Encoding.UTF8.GetBytes(msg));
-                    byte[] b = new byte[32];
-                    int first_rec = socket.Receive(b);
-                    Debug.Print(String.Format("Received {0} Bytes", first_rec));
-                    string bufferRepr = Encoding.ASCII.GetString(b, 0, 8);
-                    Debug.Print(bufferRepr);
-                }
-                catch
-                {
-                    MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
-                    return;
-                }
         }
 
         public static byte[] GetTownID(Socket socket)

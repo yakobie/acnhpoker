@@ -139,6 +139,7 @@ namespace acnhpoker
                             this.poopBtn.Visible = true;
                             this.otherBtn.Visible = true;
                             this.wrapSetting.SelectedIndex = 0;
+                            this.selectedItem.setHide(true);
                         });
 
                         Invoke((MethodInvoker)delegate { 
@@ -252,9 +253,9 @@ namespace acnhpoker
                         Buffer.BlockCopy(Bank21to40, countOffset, recipeBytes, 0x0, 0x4);
                     }
 
-                    string itemID = utilities.Unflip4bytes(Encoding.ASCII.GetString(slotBytes));
-                    string itemData = utilities.Unflipbytes(Encoding.ASCII.GetString(dataBytes));
-                    string recipeData = utilities.Unflip4bytes(Encoding.ASCII.GetString(recipeBytes));
+                    string itemID = utilities.flip(Encoding.ASCII.GetString(slotBytes));
+                    string itemData = utilities.flip(Encoding.ASCII.GetString(dataBytes));
+                    string recipeData = utilities.flip(Encoding.ASCII.GetString(recipeBytes));
                     string flag1 = Encoding.ASCII.GetString(flag1Bytes);
                     string flag2 = Encoding.ASCII.GetString(flag2Bytes);
 
@@ -516,6 +517,7 @@ namespace acnhpoker
             {
                 e.Handled = true;
             }
+            if (c >= 'a' && c <= 'f') e.KeyChar = char.ToUpper(c);
         }
 
         private void customAmountTxt_KeyPress(object sender, KeyPressEventArgs e)
@@ -534,6 +536,7 @@ namespace acnhpoker
                 {
                     e.Handled = true;
                 }
+                if (c >= 'a' && c <= 'f') e.KeyChar = char.ToUpper(c);
             }
         }
 
@@ -661,6 +664,7 @@ namespace acnhpoker
 
                     var btnParent = (inventorySlot)owner.SourceControl;
                     btnParent.reset();
+                    System.Media.SystemSounds.Asterisk.Play();
                 }
             }
         }
@@ -699,7 +703,6 @@ namespace acnhpoker
                 Thread spawnAllThread = new Thread(delegate () { spawnAll(itemID, itemAmount); });
                 spawnAllThread.Start();
             }
-
             this.ShowMessage(customIdTextbox.Text);
         }
 
@@ -709,7 +712,7 @@ namespace acnhpoker
 
             foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
             {
-                utilities.SpawnItem(s, int.Parse(btn.Tag.ToString()), itemID, itemAmount);
+                utilities.SpawnItem(s, int.Parse(btn.Tag.ToString()), itemID, (itemAmount - 1).ToString("X"));
                 Invoke((MethodInvoker)delegate
                 {
                     btn.setup(GetNameFromID(itemID, itemSource), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + (itemAmount - 1), 16), GetImagePathFromID(itemID, itemSource));
@@ -717,7 +720,7 @@ namespace acnhpoker
             }
 
             Thread.Sleep(3000);
-
+            System.Media.SystemSounds.Asterisk.Play();
             hideWait();
         }
 
@@ -735,13 +738,14 @@ namespace acnhpoker
             }
 
             Thread.Sleep(3000);
-
+            System.Media.SystemSounds.Asterisk.Play();
             hideWait();
         }
 
         private void refreshBtn_Click(object sender, EventArgs e)
         {
             UpdateInventory();
+            System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void variationsBtn_Click(object sender, EventArgs e)
@@ -766,14 +770,15 @@ namespace acnhpoker
 
             int slot = 21;
 
-            for (int variation = 1; variation <= 10; variation++)
+            for (int variation = 0; variation <= 9; variation++)
             {
-                utilities.SpawnItem(s, slot, customIdTextbox.Text, variation);
+                utilities.SpawnItem(s, slot, customIdTextbox.Text, "0x"+utilities.precedingZeros(variation.ToString("X"),2));
 
                 slot++;
             }
 
             UpdateInventory();
+            System.Media.SystemSounds.Asterisk.Play();
 
             this.ShowMessage(customIdTextbox.Text);
         }
@@ -806,7 +811,7 @@ namespace acnhpoker
             }
 
             Thread.Sleep(3000);
-
+            System.Media.SystemSounds.Asterisk.Play();
             hideWait();
         }
 
@@ -1125,7 +1130,7 @@ namespace acnhpoker
             //Debug.Print(e.KeyCode.ToString());
             if (e.KeyCode.ToString() == "F2" ^ e.KeyCode.ToString() == "Insert")
             {
-                if (selectedButton == null)
+                if (selectedButton == null & s != null)
                 {
                     int firstSlot = findEmpty();
                     if (firstSlot > 0)
@@ -1147,11 +1152,14 @@ namespace acnhpoker
                     spawnFlowerBtn_Click(sender, e);
                 }
 
-                int nextSlot = findEmpty();
-                if (nextSlot > 0)
+                if (s != null)
                 {
-                    selectedSlot = nextSlot;
-                    updateSlot(nextSlot);
+                    int nextSlot = findEmpty();
+                    if (nextSlot > 0)
+                    {
+                        selectedSlot = nextSlot;
+                        updateSlot(nextSlot);
+                    }
                 }
             }
             else if (e.KeyCode.ToString() == "F1")
@@ -1162,10 +1170,218 @@ namespace acnhpoker
             {
                 keyboardCopy(sender,e);
             }
+            else if (e.KeyCode.ToString() == "End")
+            {
+                if (currentPanel == itemModePanel)
+                {
+                    if (itemGridView.Rows.Count <= 0)
+                    {
+                        return;
+                    }
+
+                    if (itemGridView.Rows.Count == 1)
+                    {
+                        lastRow = itemGridView.Rows[itemGridView.CurrentRow.Index];
+                        itemGridView.Rows[itemGridView.CurrentRow.Index].Height = 160;
+
+                        customIdTextbox.Text = itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[2].Value.ToString();
+                        if (hexModeBtn.Tag.ToString() == "Normal")
+                        {
+                            if (customAmountTxt.Text == "" || customAmountTxt.Text == "0")
+                            {
+                                customAmountTxt.Text = "1";
+                            }
+                        }
+                        else
+                        {
+                            hexMode_Click(sender, e);
+                            customAmountTxt.Text = "1";
+                        }
+                        selectedItem.setup(itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[0].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[2].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[2].Value.ToString(), itemSource));
+                        updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
+                    }
+                    else if (itemGridView.CurrentRow.Index + 1 < itemGridView.Rows.Count)
+                    {
+                        if (lastRow != null)
+                        {
+                            lastRow.Height = 22;
+                        }
+                        lastRow = itemGridView.Rows[itemGridView.CurrentRow.Index + 1];
+                        itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Height = 160;
+
+                        customIdTextbox.Text = itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells[2].Value.ToString();
+                        if (hexModeBtn.Tag.ToString() == "Normal")
+                        {
+                            if (customAmountTxt.Text == "" || customAmountTxt.Text == "0")
+                            {
+                                customAmountTxt.Text = "1";
+                            }
+                        }
+                        else
+                        {
+                            hexMode_Click(sender, e);
+                            customAmountTxt.Text = "1";
+                        }
+
+                        selectedItem.setup(itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells[0].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells[2].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells[2].Value.ToString(), itemSource));
+                        updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
+
+                        itemGridView.CurrentCell = itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells[0];
+
+                        //Debug.Print(itemGridView.CurrentRow.Index.ToString());
+                    }
+                }
+                else if (currentPanel == recipeModePanel)
+                {
+                    if (recipeGridView.Rows.Count <= 0)
+                    {
+                        return;
+                    }
+
+                    if (recipeGridView.Rows.Count == 1)
+                    {
+                        recipelastRow = recipeGridView.Rows[recipeGridView.CurrentRow.Index];
+                        recipeGridView.Rows[recipeGridView.CurrentRow.Index].Height = 160;
+
+                        recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[2].Value.ToString();
+
+                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[0].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[2].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[2].Value.ToString(), recipeSource));
+                        updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
+                    }
+                    else if (recipeGridView.CurrentRow.Index + 1 < recipeGridView.Rows.Count)
+                    {
+                        if (recipelastRow != null)
+                        {
+                            recipelastRow.Height = 22;
+                        }
+
+                        recipelastRow = recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1];
+                        recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Height = 160;
+
+                        recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[2].Value.ToString();
+
+                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[0].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[2].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[2].Value.ToString(), recipeSource));
+                        updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
+
+                        recipeGridView.CurrentCell = recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[0];
+                    }
+                }
+                else if (currentPanel == flowerModePanel)
+                {
+
+                }
+            }
+            else if (e.KeyCode.ToString() == "Home")
+            {
+                if (currentPanel == itemModePanel)
+                {
+                    if (itemGridView.Rows.Count <= 0)
+                    {
+                        return;
+                    }
+
+                    if (itemGridView.Rows.Count == 1)
+                    {
+                        lastRow = itemGridView.Rows[itemGridView.CurrentRow.Index];
+                        itemGridView.Rows[itemGridView.CurrentRow.Index].Height = 160;
+
+                        customIdTextbox.Text = itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[2].Value.ToString();
+                        if (hexModeBtn.Tag.ToString() == "Normal")
+                        {
+                            if (customAmountTxt.Text == "" || customAmountTxt.Text == "0")
+                            {
+                                customAmountTxt.Text = "1";
+                            }
+                        }
+                        else
+                        {
+                            hexMode_Click(sender, e);
+                            customAmountTxt.Text = "1";
+                        }
+                        selectedItem.setup(itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[0].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[2].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[2].Value.ToString(), itemSource));
+                        updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
+                    }
+                    else if (itemGridView.CurrentRow.Index > 0)
+                    {
+                        if (lastRow != null)
+                        {
+                            lastRow.Height = 22;
+                        }
+
+                        lastRow = itemGridView.Rows[itemGridView.CurrentRow.Index - 1];
+                        itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Height = 160;
+
+                        customIdTextbox.Text = itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells[2].Value.ToString();
+                        if (hexModeBtn.Tag.ToString() == "Normal")
+                        {
+                            if (customAmountTxt.Text == "" || customAmountTxt.Text == "0")
+                            {
+                                customAmountTxt.Text = "1";
+                            }
+                        }
+                        else
+                        {
+                            hexMode_Click(sender, e);
+                            customAmountTxt.Text = "1";
+                        }
+
+                        selectedItem.setup(itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells[0].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells[2].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells[2].Value.ToString(), itemSource));
+                        updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
+
+                        itemGridView.CurrentCell = itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells[0];
+                    }
+                }
+                else if (currentPanel == recipeModePanel)
+                {
+                    if (recipeGridView.Rows.Count <= 0)
+                    {
+                        return;
+                    }
+
+                    if (recipeGridView.Rows.Count == 1)
+                    {
+                        recipelastRow = recipeGridView.Rows[recipeGridView.CurrentRow.Index];
+                        recipeGridView.Rows[recipeGridView.CurrentRow.Index].Height = 160;
+
+                        recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[2].Value.ToString();
+
+                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[0].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[2].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[2].Value.ToString(), recipeSource));
+                        updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
+                    }
+                    else if (recipeGridView.CurrentRow.Index > 0)
+                    {
+                        if (recipelastRow != null)
+                        {
+                            recipelastRow.Height = 22;
+                        }
+
+                        recipelastRow = recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1];
+                        recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Height = 160;
+
+                        recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells[2].Value.ToString();
+
+                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells[0].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells[2].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells[2].Value.ToString(), recipeSource));
+                        updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
+
+                        recipeGridView.CurrentCell = recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells[0];
+                    }
+                }
+                else if (currentPanel == flowerModePanel)
+                {
+
+                }
+            }
+
         }
 
         private void keyboardCopy(object sender, KeyEventArgs e)
         {
+            if (s == null || s.Connected == false)
+            {
+                MessageBox.Show("Please connect to the switch first");
+                return;
+            }
+
             itemModeBtn_Click(sender, e);
             if (hexModeBtn.Tag.ToString() == "Normal")
             {
@@ -1175,6 +1391,7 @@ namespace acnhpoker
             updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
             customIdTextbox.Text = utilities.precedingZeros(selectedItem.fillItemID(), 4);
             customAmountTxt.Text = utilities.precedingZeros(selectedItem.fillItemData(), 8);
+            System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void deleteBtn_Click(object sender, KeyEventArgs e)
@@ -1192,9 +1409,8 @@ namespace acnhpoker
             }
 
             utilities.DeleteSlot(s, int.Parse(selectedButton.Tag.ToString()));
-
             UpdateInventory();
-
+            System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void ShowMessage(string itemID)
@@ -1281,7 +1497,7 @@ namespace acnhpoker
 
         private void PeekBtn_Click(object sender, EventArgs e)
         {
-            byte[] AddressBank = utilities.peekAddress(s, debugAddress.Text);
+            byte[] AddressBank = utilities.peekAddress(s, "0x" + debugAddress.Text);
 
             byte[] firstBytes = new byte[8];
             byte[] secondBytes = new byte[8];
@@ -1301,10 +1517,10 @@ namespace acnhpoker
             string fourthResult = Encoding.ASCII.GetString(fourthBytes);
             string FullResult = Encoding.ASCII.GetString(FullBytes);
 
-            Result1.Text = utilities.Unflipbytes(firstResult);
-            Result2.Text = utilities.Unflipbytes(secondResult);
-            Result3.Text = utilities.Unflipbytes(thirdResult);
-            Result4.Text = utilities.Unflipbytes(fourthResult);
+            Result1.Text = utilities.flip(firstResult);
+            Result2.Text = utilities.flip(secondResult);
+            Result3.Text = utilities.flip(thirdResult);
+            Result4.Text = utilities.flip(fourthResult);
             FullAddress.Text = FullResult;
         }
 
@@ -1471,12 +1687,12 @@ namespace acnhpoker
 
         private void debugBtn_Click(object sender, EventArgs e)
         {
-            utilities.FollowPointer(s, debugAddress.Text, 0);
+
         }
 
         private void PokeBtn_Click(object sender, EventArgs e)
         {
-            utilities.pokeAddress(s, debugAddress.Text, debugAmount.Text);
+            utilities.pokeAddress(s, "0x" + debugAddress.Text, "0x" + debugAmount.Text);
         }
 
         private void PokeMainBtn_Click(object sender, EventArgs e)
@@ -1487,12 +1703,14 @@ namespace acnhpoker
         private void eatBtn_Click(object sender, EventArgs e)
         {
             utilities.setStamina(s, "10");
+            System.Media.SystemSounds.Asterisk.Play();
             setEatBtn();
         }
 
         private void poopBtn_Click(object sender, EventArgs e)
         {
             utilities.setStamina(s, "0");
+            System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void setEatBtn()
@@ -1675,6 +1893,7 @@ namespace acnhpoker
                         customIdTextbox.Text = utilities.precedingZeros(selectedItem.fillItemID(), 4);
                         customAmountTxt.Text = utilities.precedingZeros(selectedItem.fillItemData(), 8);
                     }
+                    System.Media.SystemSounds.Asterisk.Play();
                 }
             }
         }
@@ -1774,6 +1993,7 @@ namespace acnhpoker
                     var btnParent = (inventorySlot)owner.SourceControl;
                     btnParent.setFlag1(flag);
                     btnParent.refresh();
+                    System.Media.SystemSounds.Asterisk.Play();
                 }
             }
         }
@@ -1808,57 +2028,124 @@ namespace acnhpoker
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
+            /*
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to save your inventory?\n[Warning] Your previous save will be overwritten!", "Load inventory", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
+            {*/
+            try
             {
-                try
+                SaveFileDialog file = new SaveFileDialog()
                 {
-                    byte[] Bank01to20 = utilities.GetInventoryBank(s, 1);
-                    byte[] Bank21to40 = utilities.GetInventoryBank(s, 21);
-                    string Bank1 = Encoding.ASCII.GetString(Bank01to20);
-                    string Bank2 = Encoding.ASCII.GetString(Bank21to40);
+                   Filter = "New Horizons Inventory (*.nhi)|*.nhi",
+                   //FileName = "items.nhi",
+                };
 
-                    Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
-                    config.AppSettings.Settings["save01"].Value = Bank1.Substring(0, 320);
-                    config.AppSettings.Settings["save21"].Value = Bank2.Substring(0, 320);
-                    config.Save(ConfigurationSaveMode.Minimal);
-                    MessageBox.Show("Inventory Saved!");
-                }
-                catch
+                string savepath = Directory.GetCurrentDirectory() + @"\save";
+                //Debug.Print(savepath);
+                if (Directory.Exists(savepath))
                 {
-                    s.Close();
-                    return;
+                    file.InitialDirectory = savepath;
                 }
+                else
+                {
+                    file.InitialDirectory = @"C:\";
+                }
+
+                if (file.ShowDialog() != DialogResult.OK)
+                    return;
+
+                byte[] Bank01to20 = utilities.GetInventoryBank(s, 1);
+                byte[] Bank21to40 = utilities.GetInventoryBank(s, 21);
+                string Bank = Encoding.ASCII.GetString(Bank01to20).Substring(0, 320) + Encoding.ASCII.GetString(Bank21to40).Substring(0, 320);
+                //Debug.Print(Bank);
+
+                byte[] save = new byte[320];
+
+                for (int i = 0; i < Bank.Length / 2 - 1; i++)
+                {
+
+                    string data = String.Concat(Bank[(i * 2)].ToString(), Bank[((i * 2) + 1)].ToString());
+                    //Debug.Print(i.ToString() + " " + data);
+                    save[i] = Convert.ToByte(data, 16);
+                }
+
+                File.WriteAllBytes(file.FileName, save);
+                System.Media.SystemSounds.Asterisk.Play();
+                /*
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+                config.AppSettings.Settings["save01"].Value = Bank1.Substring(0, 320);
+                config.AppSettings.Settings["save21"].Value = Bank2.Substring(0, 320);
+                config.Save(ConfigurationSaveMode.Minimal);
+                MessageBox.Show("Inventory Saved!");
+                */
             }
+            catch
+            {
+                s.Close();
+                return;
+            }
+            //}
         }
 
         private void loadBtn_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to load your inventory?\n[Warning] All of your inventory slots will be overwritten!", "Load inventory", MessageBoxButtons.YesNo);
+            /*DialogResult dialogResult = MessageBox.Show("Are you sure you want to load your inventory?\n[Warning] All of your inventory slots will be overwritten!", "Load inventory", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
+            {*/
+            try
             {
-                try
+                /*
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+                string Bank1 = config.AppSettings.Settings["save01"].Value;
+                string Bank2 = config.AppSettings.Settings["save21"].Value;
+                byte[] Bank01to20 = Encoding.ASCII.GetBytes(Bank1);
+                byte[] Bank21to40 = Encoding.ASCII.GetBytes(Bank2);
+
+                Thread LoadThread = new Thread(delegate () { loadInventory(Bank01to20, Bank21to40); });
+                LoadThread.Start();
+                */
+
+                OpenFileDialog file = new OpenFileDialog()
                 {
-                    Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
-                    string Bank1 = config.AppSettings.Settings["save01"].Value;
-                    string Bank2 = config.AppSettings.Settings["save21"].Value;
-                    byte[] Bank01to20 = Encoding.ASCII.GetBytes(Bank1);
-                    byte[] Bank21to40 = Encoding.ASCII.GetBytes(Bank2);
+                    Filter = "New Horizons Inventory (*.nhi)|*.nhi|All files (*.*)|*.*",
+                    FileName = "items.nhi",
+                };
 
-                    Thread LoadThread = new Thread(delegate () { loadInventory(Bank01to20, Bank21to40); });
-                    LoadThread.Start();
-
+                string savepath = Directory.GetCurrentDirectory() + @"\save";
+                //Debug.Print(savepath);
+                if (Directory.Exists(savepath))
+                {
+                    file.InitialDirectory = savepath;
                 }
-                catch
+                else
                 {
-                    s.Close();
+                    file.InitialDirectory = @"C:\";
+                }
+
+                if (file.ShowDialog() != DialogResult.OK)
                     return;
-                }
 
+                byte[] data = File.ReadAllBytes(file.FileName);
+
+                string bank = "";
+                for (int i = 0; i < data.Length; i++)
+                {
+                    bank = bank + utilities.precedingZeros(((UInt16)data[i]).ToString("X"), 2);
+                }
+                //Debug.Print(bank);
+                Thread LoadThread = new Thread(delegate () { loadInventory(bank); });
+                LoadThread.Start();
             }
+            catch
+            {
+                s.Close();
+                return;
+            }
+
+            //}
         }
 
-        private void loadInventory(byte[] bank01to20, byte[] bank21to40)
+        private void loadInventory(string bank)
         {
             showWait();
 
@@ -1872,65 +2159,41 @@ namespace acnhpoker
 
                 int slotId = int.Parse(btn.Tag.ToString());
 
-                byte[] slotBytes = new byte[4];
-                byte[] dataBytes = new byte[8];
-                byte[] recipeBytes = new byte[4];
-
                 int slotOffset = 0;
                 int countOffset = 0;
-                if (slotId < 21)
-                {
-                    slotOffset = ((slotId - 1) * 0x10);
-                    countOffset = 0x8 + ((slotId - 1) * 0x10);
-                }
-                else
-                {
-                    slotOffset = ((slotId - 21) * 0x10);
-                    countOffset = 0x8 + ((slotId - 21) * 0x10);
-                }
+
+                slotOffset = ((slotId - 1) * 16);
+                countOffset = ((slotId - 1) * 16) + 8;
 
                 string itemID = "";
                 string itemData = "";
-                string recipeData = "";
 
-                if (slotId < 21)
-                {
-                    Buffer.BlockCopy(bank01to20, slotOffset, slotBytes, 0x0, 0x4);
-                    Buffer.BlockCopy(bank01to20, countOffset, dataBytes, 0x0, 0x8);
-                    Buffer.BlockCopy(bank01to20, countOffset, recipeBytes, 0x0, 0x4);
-                }
-                else
-                {
-                    Buffer.BlockCopy(bank21to40, slotOffset, slotBytes, 0x0, 0x4);
-                    Buffer.BlockCopy(bank21to40, countOffset, dataBytes, 0x0, 0x8);
-                    Buffer.BlockCopy(bank21to40, countOffset, recipeBytes, 0x0, 0x4);
-                }
+                string slotBytes = bank.Substring(slotOffset, 8);
+                string dataBytes = bank.Substring(countOffset, 8);
 
-                itemID = utilities.Unflip4bytes(Encoding.ASCII.GetString(slotBytes));
-                itemData = utilities.Unflipbytes(Encoding.ASCII.GetString(dataBytes));
-                recipeData = utilities.Unflip4bytes(Encoding.ASCII.GetString(recipeBytes));
 
-                //Debug.Print("Slot : " + slotId.ToString() + " ID : " + itemID + " Data : " + itemData);
+                itemID = utilities.flip(slotBytes);
+                itemData = utilities.flip(dataBytes);
 
                 utilities.SpawnItem(s, slotId, itemID, itemData);
 
-                Invoke((MethodInvoker)delegate {
-                    UpdateInventory();
-                });
-
             }
 
-            hideWait();
+            Invoke((MethodInvoker)delegate {
+                UpdateInventory();
+            });
 
-            MessageBox.Show("Inventory Loaded!");
+
+            hideWait();
+            System.Media.SystemSounds.Asterisk.Play();
         }
 
         private int findEmpty()
         {
             byte[] Bank01to20 = utilities.GetInventoryBank(s, 1);
             byte[] Bank21to40 = utilities.GetInventoryBank(s, 21);
-            string Bank1 = Encoding.ASCII.GetString(Bank01to20);
-            string Bank2 = Encoding.ASCII.GetString(Bank21to40);
+            //string Bank1 = Encoding.ASCII.GetString(Bank01to20);
+            //string Bank2 = Encoding.ASCII.GetString(Bank21to40);
             //Debug.Print(Bank1);
             //Debug.Print(Bank2);
 
@@ -1948,8 +2211,6 @@ namespace acnhpoker
                     slotOffset = ((slot - 21) * 0x10);
                 }
 
-                string itemID = "";
-
                 if (slot < 21)
                 {
                     Buffer.BlockCopy(Bank01to20, slotOffset, slotBytes, 0x0, 0x4);
@@ -1959,7 +2220,7 @@ namespace acnhpoker
                     Buffer.BlockCopy(Bank21to40, slotOffset, slotBytes, 0x0, 0x4);
                 }
 
-                itemID = utilities.Unflip4bytes(Encoding.ASCII.GetString(slotBytes));
+                string itemID = utilities.flip(Encoding.ASCII.GetString(slotBytes));
 
                 if (itemID == "FFFE")
                 {
@@ -2146,6 +2407,10 @@ namespace acnhpoker
                 setPageLabel();
                 UpdateInventory();
             }
+            else
+            {
+                System.Media.SystemSounds.Asterisk.Play();
+            }
         }
 
         private void backBtn_Click(object sender, EventArgs e)
@@ -2164,12 +2429,17 @@ namespace acnhpoker
                 setPageLabel();
                 UpdateInventory();
             }
+            else
+            {
+                System.Media.SystemSounds.Asterisk.Play();
+            }
         }
 
         private void fastNextBtn_Click(object sender, EventArgs e)
         {
             if (currentPage == maxPage)
             {
+                System.Media.SystemSounds.Asterisk.Play();
                 return;
             }
             if (currentPage + 10 < maxPage)
@@ -2195,6 +2465,7 @@ namespace acnhpoker
                     utilities.gotoHousePage((uint)maxPage);
                 }
                 currentPage = maxPage;
+                System.Media.SystemSounds.Asterisk.Play();
             }
             setPageLabel();
             UpdateInventory();
@@ -2204,6 +2475,7 @@ namespace acnhpoker
         {
             if (currentPage == 1)
             {
+                System.Media.SystemSounds.Asterisk.Play();
                 return;
             }
             if (currentPage - 10 > 1)
@@ -2229,6 +2501,7 @@ namespace acnhpoker
                     utilities.gotoHousePage(1);
                 }
                 currentPage = 1;
+                System.Media.SystemSounds.Asterisk.Play();
             }
             setPageLabel();
             UpdateInventory();
@@ -2257,6 +2530,7 @@ namespace acnhpoker
                 MessageBox.Show("Turnip prices cannot be empty");
                 return;
             }
+            System.Media.SystemSounds.Asterisk.Play();
 
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to set the turnip prices?\n[Warning] All original prices will be overwritten!", "Set turnip prices", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -2271,7 +2545,7 @@ namespace acnhpoker
                 Convert.ToUInt32(turnipBuyPrice.Text, 10)};
                 Utilities.ChangeTurnipPrices(s, prices);
                 UpdateTurnipPrices();
-                MessageBox.Show("Turnip prices updated!");
+                System.Media.SystemSounds.Asterisk.Play();
             }
         }
 
@@ -2352,13 +2626,14 @@ namespace acnhpoker
 
         private void setReactionBtn_Click(object sender, EventArgs e)
         {
+            System.Media.SystemSounds.Asterisk.Play();
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to change your reaction wheel?\n[Warning] Your previous reaction wheel will be overwritten!", "Change Reaction Wheel", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 string reaction1 = (utilities.precedingZeros((reactionSlot1.SelectedIndex + 1).ToString("X"), 2) + utilities.precedingZeros((reactionSlot2.SelectedIndex + 1).ToString("X"), 2) + utilities.precedingZeros((reactionSlot3.SelectedIndex + 1).ToString("X"), 2) + utilities.precedingZeros((reactionSlot4.SelectedIndex + 1).ToString("X"), 2));
                 string reaction2 = (utilities.precedingZeros((reactionSlot5.SelectedIndex + 1).ToString("X"), 2) + utilities.precedingZeros((reactionSlot6.SelectedIndex + 1).ToString("X"), 2) + utilities.precedingZeros((reactionSlot7.SelectedIndex + 1).ToString("X"), 2) + utilities.precedingZeros((reactionSlot8.SelectedIndex + 1).ToString("X"), 2));
                 Utilities.setReaction(s, reaction1, reaction2);
-                MessageBox.Show("Reaction Wheel updated!");
+                System.Media.SystemSounds.Asterisk.Play();
             }
         }
     }
