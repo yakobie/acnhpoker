@@ -94,6 +94,7 @@ https://youtu.be/-zztRgmtXig
     * Added fill remain option for only spawning in empty inventory.
 * R9.1
     * Fixed sea creature spawn to inculde "Pearl"
+    * Update for Game version number 1.3.1    
 * R9.2
     * Fixed broken copy function of R9.
     * Added gene selection boxes for flowers.
