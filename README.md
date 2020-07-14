@@ -9,7 +9,7 @@
 ## Pre Requisites
    1. A nintendo switch capable of running unsigned code
    2. [sys-botbase](https://github.com/olliz0r/sys-botbase) or [USB-Botbase](https://github.com/fishguy6564/USB-Botbase) installed on your switch.
-      2(a). A USB Type-C to USB-A cable or USB Type-C to Type-C cable to connect your switch to your PC if you are using [USB-Botbase](https://github.com/fishguy6564/USB-Botbase)
+   2(a). A USB Type-C to USB-A cable or USB Type-C to Type-C cable to connect your switch to your PC if you are using [USB-Botbase](https://github.com/fishguy6564/USB-Botbase)
    3. A copy of Animal Crossing™: New Horizons for the Nintendo Switch ?
 
 ## Installation
