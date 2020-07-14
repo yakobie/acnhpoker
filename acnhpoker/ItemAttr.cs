@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace acnhpoker
 {
@@ -567,6 +565,8 @@ namespace acnhpoker
                 0X1CCE, // Maple leaves
                 0X3102, // Heart crystals
                 0X0ADB, // Birthday cupcake
+                0X3331, // communicator
+                0X32A8, // pearl
             }
             .Union(isCraftMaterialSet)
             .Union(isFenceSet)

@@ -1,38 +1,78 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Net.Sockets;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace acnhpoker
 {
     class Utilities
     {
-        UInt32 ItemSlotBase = 0xAC4723D0;
-        UInt32 ItemSlot21Base = 0xAC472318;
+        public static UInt32 masterAddress = 0xABA526A8; //0xAC4723D;
 
-        UInt32 MasterRecyclingBase = 0xAB968B78;
-        UInt32 MasterRecycling21Base = 0xAB968C18;
+        public UInt32 ItemSlotBase = masterAddress; // 0xAC4723D0
+        public UInt32 ItemSlot21Base = masterAddress - 0xB8; // 0xAC472318
 
-        UInt32 MasterHouseBase = 0xAC472494;
-        UInt32 MasterHouse21Base = 0xAC472534;
 
-        public const UInt32 TurnipPurchasePriceAddr = 0xAB2B0B38;
-        public const UInt32 TurnipSellPriceAddr = TurnipPurchasePriceAddr + 0xC;
 
-        public const UInt32 TownNameddress = 0xAB075DC8;
+        public static readonly UInt32 MasterRecyclingBase = masterAddress - 0xB09908; // 0xAB968B78
+        public static readonly UInt32 MasterRecycling21Base = MasterRecyclingBase + 0xA0; // 0xAB968C18
 
-        public const UInt32 staminaAddress = 0xB4A11180;
+        public static readonly UInt32 TurnipPurchasePriceAddr = masterAddress - 0x11C19F8;//0x11C1898; // 0xAB2B0B38;
+        public static readonly UInt32 TurnipSellPriceAddr = TurnipPurchasePriceAddr + 0xC; // 0xAB2B0B44
 
-        public const UInt32 reactionAddress = 0xAC47D2C4;
+        public static readonly UInt32 TownNameddress = masterAddress - 0x92D9C8; //AB124CE0 //masterAddress - 0x13FC608;// 0xAB075DC8; 0x2AA1A1A4
 
-        static readonly string[] peekType = new string[3] { "peekMain", "peek", "peekAbsolute" };
+        public static readonly UInt32 staminaAddress = masterAddress + 0x859EC30; //B3FF12D8; 0x859EDB0; // 0xB4A11180;
+
+        public static readonly UInt32 weatherSeed = masterAddress - 0x13FC980; // AA655D28; 0x13FC820; //0xAB075BB0;
+
+
+
+        public static readonly UInt32 player1SlotBase = masterAddress;
+        public static readonly UInt32 player1Slot21Base = player1SlotBase - 0xB8;
+        public static readonly UInt32 reactionAddress = player1SlotBase + 0xAEF4; // 0xAC47D2C4;
+        public static readonly UInt32 MasterHouseBase = player1SlotBase + 0xC4; // 0xAC472494;
+        public static readonly UInt32 MasterHouse21Base = MasterHouseBase + 0xA0; // 0xAC472534‬
+
+        public static readonly UInt32 player2SlotBase = player1SlotBase + 0x6D6D0;//player1SlotBase + 0x6D6C0; // 0xAC4DFA90
+        public static readonly UInt32 player2Slot21Base = player2SlotBase - 0xB8;
+
+        public static readonly UInt32 player3SlotBase = player2SlotBase + 0x6D6D0;//player2SlotBase + 0x6D6C0; // 0xAC54D150
+        public static readonly UInt32 player3Slot21Base = player3SlotBase - 0xB8;
+
+        public static readonly UInt32 player4SlotBase = player3SlotBase + 0x6D6D0;//player3SlotBase + 0x6D6C0; // 0xAC5BA810
+        public static readonly UInt32 player4Slot21Base = player4SlotBase - 0xB8;
+
+
+
+        public const UInt32 InsectAppearPointer = 0x466293F8;
+        public const Int32 InsectDataSize = 2 * (1 + 6 * 12 + 5);
+        public const Int32 InsectNumRecords = 166;
+
+        public const Int32 FishDataSize = 2 * (1 + 3 * 12 + 3);
+
+        public const UInt32 FishRiverAppearPointer = InsectAppearPointer + 0x3F778;
+        public const Int32 FishRiverNumRecords = 100;
+
+        public const UInt32 FishSeaAppearPointer = InsectAppearPointer + 0x55618;
+        public const Int32 FishSeaNumRecords = 76;
+
+
+        public const UInt32 CreatureSeaAppearPointer = InsectAppearPointer - 0x3DCE4;
+        public const Int32 SeaCreatureDataSize = 84;
+        public const Int32 SeaCreatureNumRecords = 41 * 2;
+
+        public static readonly UInt32 freezeTimeAddress = 0x0024CF30;
+        public static readonly UInt32 readTimeAddress = 0x0B973978;
+
+        public static readonly UInt32 wSpeedAddress = 0x00FB725C;
+        public static readonly UInt32 CollisionAddress = 0x00F39150;
+        public static readonly UInt32 aSpeedAddress = 0x034A7EC0;
+
+        //static readonly string[] peekType = new string[3] { "peekMain", "peek", "peekAbsolute" };
 
         public Utilities()
         {
@@ -45,25 +85,49 @@ namespace acnhpoker
 
         public string GetItemSlotAddress(int slot)
         {
-            if(slot <= 20)
+            if (slot <= 20)
             {
                 return "0x" + (ItemSlotBase + ((Clamp(slot, 1, 20) - 1) * 0x8)).ToString("X");
-            } 
+            }
             else
             {
                 return "0x" + (ItemSlot21Base + ((Clamp(slot, 21, 40) - 21) * 0x8)).ToString("X");
             }
         }
 
+        public uint GetItemSlotUIntAddress(int slot)
+        {
+            if (slot <= 20)
+            {
+                return (uint)(ItemSlotBase + ((Clamp(slot, 1, 20) - 1) * 0x8));
+            }
+            else
+            {
+                return (uint)(ItemSlot21Base + ((Clamp(slot, 21, 40) - 21) * 0x8));
+            }
+        }
+
         public string GetItemCountAddress(int slot)
         {
-            if(slot <= 20)
+            if (slot <= 20)
             {
                 return "0x" + (ItemSlotBase + ((Clamp(slot, 1, 20) - 1) * 0x8) + 0x4).ToString("X");
             }
             else
             {
                 return "0x" + (ItemSlot21Base + ((Clamp(slot, 21, 40) - 21) * 0x8) + 0x4).ToString("X");
+            }
+        }
+
+        public uint GetItemCountUIntAddress(int slot)
+        {
+            if (slot <= 20)
+            {
+                return (uint)(ItemSlotBase + ((Clamp(slot, 1, 20) - 1) * 0x8) + 0x4);
+            }
+            else
+            {
+                return (uint)(ItemSlot21Base + ((Clamp(slot, 21, 40) - 21) * 0x8) + 0x4);
             }
         }
 
@@ -79,37 +143,90 @@ namespace acnhpoker
             }
         }
 
-        public byte[] GetInventoryBank(Socket socket, int slot)
+        public byte[] transform(byte[] data)
+        {
+            string bank = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                bank += precedingZeros(((UInt16)data[i]).ToString("X"), 2);
+            }
+            //Debug.Print(bank);
+
+            return Encoding.ASCII.GetBytes(bank);
+        }
+
+        public byte[] stringToByte(string Bank)
+        {
+            byte[] save = new byte[Bank.Length / 2];
+
+            for (int i = 0; i < Bank.Length / 2; i++)
+            {
+
+                string data = String.Concat(Bank[(i * 2)].ToString(), Bank[((i * 2) + 1)].ToString());
+                //Debug.Print(i.ToString() + " " + data);
+                save[i] = Convert.ToByte(data, 16);
+            }
+
+            return save;
+        }
+
+        public byte[] GetInventoryBank(Socket socket, USBBot bot, int slot)
         {
             try
             {
-                //byte[] msg = Encoding.UTF8.GetBytes("peek " + GetItemSlotAddress(slot) + " 160\r\n");
-                string msg = String.Format("peek {0:X8} {1}\r\n", GetItemSlotAddress(slot), 160);
-                //Debug.Print(msg);
-                SendString(socket, Encoding.UTF8.GetBytes(msg));
+                if (bot == null)
+                {
+                    string msg = String.Format("peek {0:X8} {1}\r\n", GetItemSlotAddress(slot), 160);
+                    Debug.Print(msg);
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
+                    /*
+                    byte[] msg = Encoding.UTF8.GetBytes("peek" + GetItemSlotAddress(slot) + " 160\r\n");
+                    socket.Send(msg);
+                    byte[] b = new byte[500];
+                    */
+                    /*
+                    msg = Encoding.UTF8.GetBytes("click X\r\n");
+                    socket.Send(msg);
+                    msg = Encoding.UTF8.GetBytes("click X\r\n");
+                    socket.Send(msg);
+                    */
+                    byte[] b = new byte[1000];
+                    socket.Receive(b);
 
+                    return b;
+                }
+                else
+                {
+                    byte[] b = transform(bot.ReadBytes(GetItemSlotUIntAddress(slot), 160));
 
-                byte[] b = new byte[500];
-                socket.Receive(b);
-
-                return b;
+                    return b;
+                }
             }
             catch
             {
-                MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.\nIf you are using USB connection, try restart your switch as well.");
                 return null;
             }
         }
 
-        public bool SpawnItem(Socket socket, int slot, String value, String amount)
+        public bool SpawnItem(Socket socket, USBBot bot, int slot, String value, String amount)
         {
             try
             {
-                string msg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemSlotAddress(slot), flip(precedingZeros(value,8)));
-                SendString(socket, Encoding.UTF8.GetBytes(msg));
+                if (bot == null)
+                {
+                    string msg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemSlotAddress(slot), flip(precedingZeros(value, 8)));
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                string countMsg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemCountAddress(slot), flip(precedingZeros(amount,8)));
-                SendString(socket, Encoding.UTF8.GetBytes(countMsg));
+                    string countMsg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemCountAddress(slot), flip(precedingZeros(amount, 8)));
+                    SendString(socket, Encoding.UTF8.GetBytes(countMsg));
+                }
+                else
+                {
+                    bot.WriteBytes(stringToByte(flip(precedingZeros(value, 8))), GetItemSlotUIntAddress(slot));
+
+                    bot.WriteBytes(stringToByte(flip(precedingZeros(amount, 8))), GetItemCountUIntAddress(slot));
+                }
 
                 Debug.Print("Slot : " + slot + " | ID : " + value + " | Amount : " + amount);
                 Debug.Print("Spawn Item : poke " + GetItemSlotAddress(slot) + " 0x" + flip(precedingZeros(value, 8)) + " 0x" + flip(precedingZeros(amount, 8)));
@@ -122,15 +239,24 @@ namespace acnhpoker
             return false;
         }
 
-        public bool SpawnRecipe(Socket socket, int slot, String value, String recipeValue)
+        public bool SpawnRecipe(Socket socket, USBBot bot, int slot, String value, String recipeValue)
         {
             try
             {
-                string msg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemSlotAddress(slot), flip(precedingZeros(value,8)));
-                SendString(socket, Encoding.UTF8.GetBytes(msg));
+                if (bot == null)
+                {
+                    string msg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemSlotAddress(slot), flip(precedingZeros(value, 8)));
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                string countMsg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemCountAddress(slot), flip(precedingZeros(recipeValue, 8)));
-                SendString(socket, Encoding.UTF8.GetBytes(countMsg));
+                    string countMsg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemCountAddress(slot), flip(precedingZeros(recipeValue, 8)));
+                    SendString(socket, Encoding.UTF8.GetBytes(countMsg));
+                }
+                else
+                {
+                    bot.WriteBytes(stringToByte(flip(precedingZeros(value, 8))), GetItemSlotUIntAddress(slot));
+
+                    bot.WriteBytes(stringToByte(flip(precedingZeros(recipeValue, 8))), GetItemCountUIntAddress(slot));
+                }
 
                 Debug.Print("Slot : " + slot + " | ID : " + value + " | RecipeValue : " + recipeValue);
                 Debug.Print("Spawn recipe : poke " + GetItemSlotAddress(slot) + " 0x" + flip(precedingZeros(value, 8)) + " 0x" + flip(precedingZeros(recipeValue, 8)));
@@ -143,15 +269,24 @@ namespace acnhpoker
             return false;
         }
 
-        public bool SpawnFlower(Socket socket, int slot, String value, String flowerValue)
+        public bool SpawnFlower(Socket socket, USBBot bot, int slot, String value, String flowerValue)
         {
             try
             {
-                string msg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemSlotAddress(slot), flip(precedingZeros(value,8)));
-                SendString(socket, Encoding.UTF8.GetBytes(msg));
+                if (bot == null)
+                {
+                    string msg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemSlotAddress(slot), flip(precedingZeros(value, 8)));
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                string countMsg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemCountAddress(slot), flip(precedingZeros(flowerValue, 8)));
-                SendString(socket, Encoding.UTF8.GetBytes(countMsg));
+                    string countMsg = String.Format("poke {0:X8} 0x{1}\r\n", GetItemCountAddress(slot), flip(precedingZeros(flowerValue, 8)));
+                    SendString(socket, Encoding.UTF8.GetBytes(countMsg));
+                }
+                else
+                {
+                    bot.WriteBytes(stringToByte(flip(precedingZeros(value, 8))), GetItemSlotUIntAddress(slot));
+
+                    bot.WriteBytes(stringToByte(flip(precedingZeros(flowerValue, 8))), GetItemCountUIntAddress(slot));
+                }
 
                 Debug.Print("Slot : " + slot + " | ID : " + value + " | FlowerValue : " + flowerValue);
                 Debug.Print("Spawn Flower : poke " + GetItemSlotAddress(slot) + " 0x" + flip(precedingZeros(value, 8)) + " 0x" + flip(precedingZeros(flowerValue, 8)));
@@ -195,28 +330,73 @@ namespace acnhpoker
             return result;
         }
 
-        public string removeZeros(string ID)
+        public string turn2bytes(string value)
         {
-            return ID.Substring(4, 4);
+            if (value.Length < 4)
+                return precedingZeros(value, 4);
+            else
+                return value.Substring(value.Length - 4, 4);
         }
 
-        public void DeleteSlot(Socket s, int slot)
+        public void DeleteSlot(Socket s, USBBot bot, int slot)
         {
-            SpawnItem(s, slot, "FFFE", "0");
+            SpawnItem(s, bot, slot, "FFFE", "0");
         }
 
-        public static UInt32[] GetTurnipPrices(Socket socket)
+        public void OverwriteAll(Socket socket, USBBot bot, byte[] buffer1, byte[] buffer2)
+        {
+            if (bot == null)
+            {
+                SendByteArray(socket, GetItemSlotUIntAddress(1), buffer1, 160);
+                SendByteArray(socket, GetItemSlotUIntAddress(21), buffer2, 160);
+            }
+            else
+            {
+                bot.WriteBytes(buffer1, GetItemSlotUIntAddress(1));
+                bot.WriteBytes(buffer2, GetItemSlotUIntAddress(21));
+            }
+        }
+
+        public UInt32[] GetTurnipPrices(Socket socket, USBBot bot)
         {
             UInt32[] result = new UInt32[13];
-            ReadUInt32Array(socket, TurnipPurchasePriceAddr, result, 4, 12);
-            ReadUInt32Array(socket, TurnipSellPriceAddr, result, 4 * 12, 0);
+            if (bot == null)
+            {
+                ReadUInt32Array(socket, TurnipPurchasePriceAddr, result, 4, 12);
+                ReadUInt32Array(socket, TurnipSellPriceAddr, result, 4 * 12, 0);
+            }
+            else
+            {
+                byte[] data = transform(bot.ReadBytes(TurnipPurchasePriceAddr, 100));
+                string bank = Encoding.ASCII.GetString(data);
+
+                result[12] = Convert.ToUInt32(flip(bank.Substring(0, 8)), 16);
+
+                for (int i = 0; i < 12; i++)
+                {
+                    result[i] = Convert.ToUInt32(flip(bank.Substring(24 + (8 * i), 8)), 16);
+                }
+            }
             return result;
         }
 
-        public static bool ChangeTurnipPrices(Socket socket, UInt32[] prices)
+        public bool ChangeTurnipPrices(Socket socket, USBBot bot, UInt32[] prices)
         {
-            SendUInt32Array(socket, TurnipPurchasePriceAddr, prices, 4, 12);
-            SendUInt32Array(socket, TurnipSellPriceAddr, prices, 4 * 12);
+            if (bot == null)
+            {
+                SendUInt32Array(socket, TurnipPurchasePriceAddr, prices, 4, 12);
+                SendUInt32Array(socket, TurnipSellPriceAddr, prices, 4 * 12);
+            }
+            else
+            {
+                byte[] BuyPrice = stringToByte(flip(precedingZeros(prices[12].ToString("X"), 8)));
+                bot.WriteBytes(BuyPrice, TurnipPurchasePriceAddr);
+
+                for (int i = 0; i < 12; i++)
+                {
+                    bot.WriteBytes(stringToByte(flip(precedingZeros(prices[i].ToString("X"), 8))), (uint)(TurnipSellPriceAddr + (4 * i)));
+                }
+            }
             return false;
         }
 
@@ -224,33 +404,33 @@ namespace acnhpoker
         {
             if (player == 1)
             {
-                ItemSlotBase = 0xAC4723D0;
-                ItemSlot21Base = 0xAC472318;
+                ItemSlotBase = player1SlotBase;
+                ItemSlot21Base = player1Slot21Base;
             }
             else if (player == 2)
             {
-                ItemSlotBase = 0xAC4DFA90;
-                ItemSlot21Base = 0xAC4DF9D8;
+                ItemSlotBase = player2SlotBase;
+                ItemSlot21Base = player2Slot21Base;
             }
             else if (player == 3)
             {
-                ItemSlotBase = 0xAC54D150;
-                ItemSlot21Base = 0xAC54D098;
+                ItemSlotBase = player3SlotBase;
+                ItemSlot21Base = player3Slot21Base;
             }
             else if (player == 4)
             {
-                ItemSlotBase = 0xAC5BA810;
-                ItemSlot21Base = 0xAC5BA758;
+                ItemSlotBase = player4SlotBase;
+                ItemSlot21Base = player4Slot21Base;
             }
             else if (player == 9) //Recycling
             {
-                ItemSlotBase = 0xAB968B78;
-                ItemSlot21Base = 0xAB968C18;
+                ItemSlotBase = MasterRecyclingBase;
+                ItemSlot21Base = MasterRecycling21Base;
             }
             else if (player == 10) //House 1
             {
-                ItemSlotBase = 0xAC472494;
-                ItemSlot21Base = 0xAC472534;
+                ItemSlotBase = MasterHouseBase;
+                ItemSlot21Base = MasterHouse21Base;
             }
 
         }
@@ -267,18 +447,27 @@ namespace acnhpoker
             ItemSlot21Base = MasterHouse21Base + ((page - 1) * 0x140);
         }
 
-        public byte[] peekAddress(Socket socket, string address)
+        public byte[] peekAddress(Socket socket, USBBot bot, string address, int size)
         {
             try
             {
-                string msg = String.Format("peek {0:X8} {1}\r\n", address, 500);
-                Debug.Print("Peek : " + msg);
-                SendString(socket, Encoding.UTF8.GetBytes(msg));
+                if (bot == null)
+                {
+                    string msg = String.Format("peek {0:X8} {1}\r\n", address, size);
+                    Debug.Print("Peek : " + msg);
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                byte[] b = new byte[4096];
-                socket.Receive(b);
+                    byte[] b = new byte[330];
+                    socket.Receive(b);
 
-                return b;
+                    return b;
+                }
+                else
+                {
+                    byte[] b = transform(bot.ReadBytes(Convert.ToUInt32(address, 16), size));
+
+                    return b;
+                }
             }
             catch
             {
@@ -287,13 +476,70 @@ namespace acnhpoker
             }
         }
 
-        public void pokeAddress(Socket socket, string address, string value)
+        public void pokeAddress(Socket socket, USBBot bot, string address, string value)
         {
             try
             {
-                string msg = String.Format("poke {0:X8} {1}\r\n", address, value);
-                Debug.Print("Poke : " + msg);
-                SendString(socket, Encoding.UTF8.GetBytes(msg));
+                if (bot == null)
+                {
+                    string msg = String.Format("poke {0:X8} {1}\r\n", address, "0x" + value);
+                    Debug.Print("Poke : " + msg);
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
+                }
+                else
+                {
+                    bot.WriteBytes(stringToByte(value), Convert.ToUInt32(address, 16));
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+            }
+        }
+
+        public byte[] peekMainAddress(Socket socket, USBBot bot, string address, int size)
+        {
+            try
+            {
+                if (bot == null)
+                {
+                    string msg = String.Format("peekMain 0x{0:X8} {1}\r\n", address, size);
+                    Debug.Print("PeekMain : " + msg);
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
+
+                    byte[] b = new byte[330];
+                    socket.Receive(b);
+
+                    return b;
+                }
+                else
+                {
+                    byte[] b = transform(bot.ReadBytes(Convert.ToUInt32(address, 16), size));
+
+                    return b;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                return null;
+            }
+        }
+
+        public void pokeMainAddress(Socket socket, USBBot bot, string address, string value)
+        {
+            try
+            {
+                if (bot == null)
+                {
+                    string msg = String.Format("pokeMain 0x{0:X8} 0x{1}\r\n", address, flip(value));
+                    Debug.Print("PokeMain : " + msg);
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
+                }
+                else
+                {
+                    bot.WriteBytes(stringToByte(value), Convert.ToUInt32(address, 16));
+                }
             }
             catch
             {
@@ -302,14 +548,14 @@ namespace acnhpoker
         }
 
 
-        public void setStamina(Socket socket, string value)
+        public void setStamina(Socket socket, USBBot bot, string value)
         {
-            pokeAddress(socket, "0x" + staminaAddress.ToString("X"), value);
+            pokeAddress(socket, bot, "0x" + staminaAddress.ToString("X"), value);
         }
 
-        public void setFlag1(Socket socket, int slot, string flag)
+        public void setFlag1(Socket socket, USBBot bot, int slot, string flag)
         {
-            pokeAddress(socket, GetItemFlag1Address(slot), "0x" + flag);
+            pokeAddress(socket, bot, GetItemFlag1Address(slot), flag);
         }
 
         public static byte[] ReadByteArray(Socket socket, long initAddr, int size)
@@ -340,6 +586,37 @@ namespace acnhpoker
 
             return null;
         }
+        public static bool SendByteArray(Socket socket, long initAddr, byte[] buffer, int size)
+        {
+            try
+            {
+                // Send in small chunks
+                const int maxBytesTosend = 500;
+                int sent = 0;
+                int bytesToSend = 0;
+                StringBuilder dataTemp = new StringBuilder();
+                string msg;
+                while (sent < size)
+                {
+                    dataTemp.Clear();
+                    bytesToSend = (size - sent > maxBytesTosend) ? maxBytesTosend : size - sent;
+                    for (int i = 0; i < bytesToSend; i++)
+                    {
+                        dataTemp.Append(String.Format("{0:X2}", buffer[sent + i]));
+                    }
+                    msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", initAddr + sent, dataTemp.ToString());
+                    Debug.Print(msg);
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
+                    sent += bytesToSend;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+            }
+
+            return false;
+        }
 
         private static string ReadToIntermediateString(Socket socket, long address, int size)
         {
@@ -347,7 +624,7 @@ namespace acnhpoker
             {
 
                 string msg = String.Format("peek 0x{0:X8} {1}\r\n", address, size);
-                Debug.Print(msg);
+                //Debug.Print(msg);
                 SendString(socket, Encoding.UTF8.GetBytes(msg));
                 byte[] b = new byte[size * 2 + 64];
                 int first_rec = ReceiveString(socket, b);
@@ -489,23 +766,52 @@ namespace acnhpoker
             return received;
         }
 
-        public static byte[] GetTownID(Socket socket)
+        public static byte[] GetTownID(Socket socket, USBBot bot)
         {
-            return ReadByteArray(socket, TownNameddress, 0x1C);
+            if (bot == null)
+            {
+                return ReadByteArray(socket, TownNameddress, 0x1C);
+            }
+            else
+            {
+                return bot.ReadBytes(TownNameddress, 0x1C);
+            }
         }
 
-        public static byte[] getReaction(Socket socket)
+        public static byte[] GetWeatherSeed(Socket socket, USBBot bot)
+        {
+            if (bot == null)
+            {
+                return ReadByteArray(socket, weatherSeed, 0x4);
+            }
+            else
+            {
+                return bot.ReadBytes(weatherSeed, 0x4);
+            }
+        }
+
+        public byte[] getReaction(Socket socket, USBBot bot)
         {
             try
             {
-                string msg = String.Format("peek 0x{0:X8} {1}\r\n", reactionAddress.ToString("x"), 8);
-                Debug.Print("Peek Reaction : " + msg);
-                SendString(socket, Encoding.UTF8.GetBytes(msg));
+                if (bot == null)
+                {
+                    string msg = String.Format("peek 0x{0:X8} {1}\r\n", reactionAddress.ToString("X"), 8);
+                    //Debug.Print("Peek Reaction : " + msg);
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                byte[] b = new byte[4096];
-                socket.Receive(b);
+                    byte[] b = new byte[4096];
+                    socket.Receive(b);
 
-                return b;
+                    return b;
+                }
+                else
+                {
+                    byte[] b = transform(bot.ReadBytes(reactionAddress, 8));
+
+                    return b;
+                }
+
             }
             catch
             {
@@ -514,17 +820,26 @@ namespace acnhpoker
             }
         }
 
-        public static void setReaction(Socket socket, string reaction1, string reaction2)
+        public void setReaction(Socket socket, USBBot bot, string reaction1, string reaction2)
         {
             try
             {
-                string msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", reactionAddress.ToString("x"), reaction1);
-                Debug.Print("Poke Reaction: " + msg);
-                SendString(socket, Encoding.UTF8.GetBytes(msg));
+                if (bot == null)
+                {
+                    string msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", reactionAddress.ToString("x"), reaction1);
+                    Debug.Print("Poke Reaction: " + msg);
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (reactionAddress + 4).ToString("x"), reaction2);
-                Debug.Print("Poke Reaction: " + msg);
-                SendString(socket, Encoding.UTF8.GetBytes(msg));
+                    msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (reactionAddress + 4).ToString("x"), reaction2);
+                    Debug.Print("Poke Reaction: " + msg);
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
+                }
+                else
+                {
+                    bot.WriteBytes(stringToByte(reaction1), reactionAddress);
+
+                    bot.WriteBytes(stringToByte(reaction2), reactionAddress + 4);
+                }
             }
             catch
             {
@@ -532,5 +847,110 @@ namespace acnhpoker
             }
         }
 
+        public static void SendSpawnRate(Socket socket, USBBot bot, byte[] buffer, int index, int type)
+        {
+            if (bot == null)
+            {
+                if (type == 0)
+                {
+                    SendByteArray(socket, InsectAppearPointer + InsectDataSize * index + 0x2, buffer, 12 * 6 * 2);
+                }
+                else if (type == 1)
+                {
+                    SendByteArray(socket, FishRiverAppearPointer + FishDataSize * index + 0x2, buffer, 12 * 3 * 2);
+                }
+                else if (type == 2)
+                {
+                    SendByteArray(socket, FishSeaAppearPointer + FishDataSize * index + 0x2, buffer, 12 * 3 * 2);
+                }
+                else if (type == 3)
+                {
+                    SendByteArray(socket, CreatureSeaAppearPointer + SeaCreatureDataSize * index + 0x2, buffer, 12 * 3 * 2);
+                }
+            }
+            else
+            {
+                if (type == 0)
+                {
+                    bot.WriteBytes(buffer, (uint)(InsectAppearPointer + InsectDataSize * index + 0x2));
+                }
+                else if (type == 1)
+                {
+                    bot.WriteBytes(buffer, (uint)(FishRiverAppearPointer + FishDataSize * index + 0x2));
+                }
+                else if (type == 2)
+                {
+                    bot.WriteBytes(buffer, (uint)(FishSeaAppearPointer + FishDataSize * index + 0x2));
+                }
+                else if (type == 3)
+                {
+                    bot.WriteBytes(buffer, (uint)(CreatureSeaAppearPointer + SeaCreatureDataSize * index + 0x2));
+                }
+            }
+        }
+
+        public static byte[] GetCritterData(Socket socket, USBBot bot, int mode)
+        {
+            if (bot == null)
+            {
+                if (mode == 0)
+                {
+                    return ReadByteArray(socket, InsectAppearPointer, InsectDataSize * InsectNumRecords);
+                }
+                else if (mode == 1)
+                {
+                    return ReadByteArray(socket, FishRiverAppearPointer, FishDataSize * FishRiverNumRecords);
+                }
+                else if (mode == 2)
+                {
+                    return ReadByteArray(socket, FishSeaAppearPointer, FishDataSize * FishSeaNumRecords);
+                }
+                else if (mode == 3)
+                {
+                    return ReadByteArray(socket, CreatureSeaAppearPointer, SeaCreatureDataSize * SeaCreatureNumRecords);
+                }
+                return null;
+            }
+            else
+            {
+                if (mode == 0)
+                {
+                    return ReadLargeBytes(bot, InsectAppearPointer, InsectDataSize * InsectNumRecords);
+                }
+                else if (mode == 1)
+                {
+                    return ReadLargeBytes(bot, FishRiverAppearPointer, FishDataSize * FishRiverNumRecords);
+                }
+                else if (mode == 2)
+                {
+                    return ReadLargeBytes(bot, FishSeaAppearPointer, FishDataSize * FishSeaNumRecords);
+                }
+                else if (mode == 3)
+                {
+                    return ReadLargeBytes(bot, CreatureSeaAppearPointer, SeaCreatureDataSize * SeaCreatureNumRecords);
+                }
+                return null;
+            }
+        }
+
+        private static byte[] ReadLargeBytes(USBBot bot, uint address, int size)
+        {
+            // Read in small chunks
+            byte[] result = new byte[size];
+            const int maxBytesToReceive = 156;
+            int received = 0;
+            int bytesToReceive;
+            while (received < size)
+            {
+                bytesToReceive = (size - received > maxBytesToReceive) ? maxBytesToReceive : size - received;
+                byte[] buffer = bot.ReadBytes((uint)(address + received), bytesToReceive);
+                for (int i = 0; i < bytesToReceive; i++)
+                {
+                    result[received + i] = buffer[i];
+                }
+                received += bytesToReceive;
+            }
+            return result;
+        }
     }
 }

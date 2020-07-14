@@ -117,35 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="itemRightClick.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1, 1</value>
-  </metadata>
-  <metadata name="formToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>117, 0</value>
-  </metadata>
-  <data name="setReactionBtn.ToolTip" xml:space="preserve">
-    <value>No, seriously, I don't know what to write in here.
-
-Reaction wheel (RW) is a type of flywheel used primarily by spacecraft for three-axis attitude control, 
-which does not require rockets or external applicators of torque.</value>
-  </data>
-  <data name="readDataBtn.ToolTip" xml:space="preserve">
-    <value>Read Critter Spawn Data from the game and save it on the program folder.
-
-[Warnng] 
-
-This will overwrite your previously saved spawn data in the follow files:
-InsectAppearParam.bin
-FishAppearRiverParam.bin
-FishAppearSeaParam.bin
-CreatureAppearSeaParam.bin</value>
-  </data>
-  <metadata name="btnToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>214, 0</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>95</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

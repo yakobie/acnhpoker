@@ -91,6 +91,12 @@
             this.Player2Btn = new System.Windows.Forms.RadioButton();
             this.itemGridView = new System.Windows.Forms.DataGridView();
             this.itemModePanel = new System.Windows.Forms.Panel();
+            this.genePanel = new System.Windows.Forms.Panel();
+            this.flowerGeneS = new System.Windows.Forms.ComboBox();
+            this.flowerGeneW = new System.Windows.Forms.ComboBox();
+            this.flowerGeneY = new System.Windows.Forms.ComboBox();
+            this.flowerGeneR = new System.Windows.Forms.ComboBox();
+            this.fillRemainBtn = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.hexModeBtn = new System.Windows.Forms.Button();
             this.wrapSetting = new System.Windows.Forms.ComboBox();
@@ -122,9 +128,7 @@
             this.flowerModeBtn = new System.Windows.Forms.Button();
             this.ChaseBtn = new System.Windows.Forms.Button();
             this.FullAddress = new System.Windows.Forms.RichTextBox();
-            this.DisconnectBtn = new System.Windows.Forms.Button();
             this.autoRefreshCheckBox = new System.Windows.Forms.CheckBox();
-            this.debugBtn = new System.Windows.Forms.Button();
             this.Player3Btn = new System.Windows.Forms.RadioButton();
             this.Player4Btn = new System.Windows.Forms.RadioButton();
             this.playerSelectionPanel = new System.Windows.Forms.Panel();
@@ -139,17 +143,57 @@
             this.fastNextBtn = new System.Windows.Forms.Button();
             this.nextBtn = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
+            this.setReactionBtn = new System.Windows.Forms.Button();
+            this.setTurnipBtn = new System.Windows.Forms.Button();
+            this.unfreezeTimeBtn = new System.Windows.Forms.Button();
+            this.freezeTimeBtn = new System.Windows.Forms.Button();
+            this.speedEnableBtn = new System.Windows.Forms.Button();
+            this.speedDisableBtn = new System.Windows.Forms.Button();
+            this.disableCollisionBtn = new System.Windows.Forms.Button();
+            this.enableCollisionBtn = new System.Windows.Forms.Button();
+            this.animationSpdx0_1 = new System.Windows.Forms.Button();
+            this.animationSpdx1 = new System.Windows.Forms.Button();
+            this.animationSpdx2 = new System.Windows.Forms.Button();
+            this.animationSpdx50 = new System.Windows.Forms.Button();
+            this.settimeBtn = new System.Windows.Forms.Button();
+            this.add1HourBtn = new System.Windows.Forms.Button();
+            this.minus1HourBtn = new System.Windows.Forms.Button();
+            this.readDataBtn = new System.Windows.Forms.Button();
+            this.resetAllBtn = new System.Windows.Forms.Button();
+            this.disableAllBtn = new System.Windows.Forms.Button();
             this.selectedItem = new acnhpoker.inventorySlot();
             this.saveBtn = new System.Windows.Forms.Button();
             this.loadBtn = new System.Windows.Forms.Button();
             this.inventoryLargePanel = new System.Windows.Forms.Panel();
+            this.pacman2 = new System.Windows.Forms.PictureBox();
+            this.selectedFlag2 = new System.Windows.Forms.Label();
+            this.selectedFlag1 = new System.Windows.Forms.Label();
+            this.variationModeButton = new System.Windows.Forms.Button();
             this.paginationPanel = new System.Windows.Forms.Panel();
             this.pageLabel = new System.Windows.Forms.Label();
+            this.debugBtn = new System.Windows.Forms.Button();
             this.inventoryBtn = new System.Windows.Forms.Button();
             this.critterBtn = new System.Windows.Forms.Button();
             this.otherBtn = new System.Windows.Forms.Button();
             this.otherLargePanel = new System.Windows.Forms.Panel();
-            this.setReactionBtn = new System.Windows.Forms.Button();
+            this.SeedTextbox = new System.Windows.Forms.RichTextBox();
+            this.SeedLabel = new System.Windows.Forms.Label();
+            this.pokeMainCheatPanel = new System.Windows.Forms.Panel();
+            this.timePanel = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.minTextbox = new System.Windows.Forms.RichTextBox();
+            this.yearTextbox = new System.Windows.Forms.RichTextBox();
+            this.hourTextbox = new System.Windows.Forms.RichTextBox();
+            this.monthTextbox = new System.Windows.Forms.RichTextBox();
+            this.dayTextbox = new System.Windows.Forms.RichTextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.Label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.reactionSlot2 = new System.Windows.Forms.ComboBox();
             this.reactionSlot3 = new System.Windows.Forms.ComboBox();
@@ -159,7 +203,6 @@
             this.reactionSlot7 = new System.Windows.Forms.ComboBox();
             this.reactionSlot6 = new System.Windows.Forms.ComboBox();
             this.reactionSlot5 = new System.Windows.Forms.ComboBox();
-            this.setTurnipBtn = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -199,21 +242,51 @@
             this.wednesdayAMStar = new System.Windows.Forms.Label();
             this.mondayAMStar = new System.Windows.Forms.Label();
             this.tuesdayAMStar = new System.Windows.Forms.Label();
-            this.unfreezeTimeBtn = new System.Windows.Forms.Button();
-            this.freezeTimeBtn = new System.Windows.Forms.Button();
+            this.USBconnectBtn = new System.Windows.Forms.Button();
+            this.PokeMainBtn = new System.Windows.Forms.Button();
+            this.PeekMainBtn = new System.Windows.Forms.Button();
+            this.critterLargePanel = new System.Windows.Forms.Panel();
+            this.pacman = new System.Windows.Forms.PictureBox();
+            this.pleaseWaitLabel = new System.Windows.Forms.Label();
+            this.seaCreatureBtn = new System.Windows.Forms.Button();
+            this.seaFishBtn = new System.Windows.Forms.Button();
+            this.riverFishBtn = new System.Windows.Forms.Button();
+            this.insectBtn = new System.Windows.Forms.Button();
+            this.critterSearchBox = new System.Windows.Forms.RichTextBox();
+            this.insectGridView = new System.Windows.Forms.DataGridView();
+            this.seaCreatureGridView = new System.Windows.Forms.DataGridView();
+            this.seaFishGridView = new System.Windows.Forms.DataGridView();
+            this.riverFishGridView = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Result5 = new System.Windows.Forms.RichTextBox();
+            this.Result6 = new System.Windows.Forms.RichTextBox();
+            this.Result7 = new System.Windows.Forms.RichTextBox();
+            this.Result8 = new System.Windows.Forms.RichTextBox();
+            this.Result9 = new System.Windows.Forms.RichTextBox();
+            this.btnToolTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             this.inventoryPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).BeginInit();
             this.itemModePanel.SuspendLayout();
+            this.genePanel.SuspendLayout();
             this.recipeModePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recipeGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flowerGridView)).BeginInit();
             this.flowerModePanel.SuspendLayout();
             this.playerSelectionPanel.SuspendLayout();
             this.inventoryLargePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pacman2)).BeginInit();
             this.paginationPanel.SuspendLayout();
             this.otherLargePanel.SuspendLayout();
+            this.pokeMainCheatPanel.SuspendLayout();
+            this.timePanel.SuspendLayout();
+            this.critterLargePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pacman)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.insectGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seaCreatureGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seaFishGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riverFishGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // connectBtn
@@ -223,17 +296,18 @@
             this.connectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.connectBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.connectBtn.ForeColor = System.Drawing.Color.White;
-            this.connectBtn.Location = new System.Drawing.Point(35, 12);
+            this.connectBtn.Location = new System.Drawing.Point(35, 1);
             this.connectBtn.Name = "connectBtn";
             this.connectBtn.Size = new System.Drawing.Size(85, 23);
             this.connectBtn.TabIndex = 0;
+            this.connectBtn.Tag = "connect";
             this.connectBtn.Text = "Connect";
             this.connectBtn.UseVisualStyleBackColor = false;
             this.connectBtn.Click += new System.EventHandler(this.connectBtn_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(123, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(123, 11);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(140, 24);
             this.pictureBox1.TabIndex = 6;
@@ -287,7 +361,9 @@
             this.customIdTextbox.Size = new System.Drawing.Size(154, 56);
             this.customIdTextbox.TabIndex = 32;
             this.customIdTextbox.Text = "";
+            this.customIdTextbox.TextChanged += new System.EventHandler(this.customIdTextbox_TextChanged);
             this.customIdTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.customIdTextbox_KeyPress);
+            this.customIdTextbox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.customIdTextbox_KeyUp);
             // 
             // itemSearchBox
             // 
@@ -295,10 +371,10 @@
             this.itemSearchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.itemSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemSearchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(118)))), ((int)(((byte)(125)))));
-            this.itemSearchBox.Location = new System.Drawing.Point(830, 16);
+            this.itemSearchBox.Location = new System.Drawing.Point(854, 3);
             this.itemSearchBox.Multiline = false;
             this.itemSearchBox.Name = "itemSearchBox";
-            this.itemSearchBox.Size = new System.Drawing.Size(337, 24);
+            this.itemSearchBox.Size = new System.Drawing.Size(319, 24);
             this.itemSearchBox.TabIndex = 33;
             this.itemSearchBox.Text = "Search";
             this.itemSearchBox.Click += new System.EventHandler(this.itemSearchBox_Click);
@@ -310,7 +386,7 @@
             this.ipBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ipBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ipBox.ForeColor = System.Drawing.Color.White;
-            this.ipBox.Location = new System.Drawing.Point(126, 14);
+            this.ipBox.Location = new System.Drawing.Point(126, 13);
             this.ipBox.Multiline = false;
             this.ipBox.Name = "ipBox";
             this.ipBox.Size = new System.Drawing.Size(133, 20);
@@ -327,10 +403,11 @@
             this.customAmountTxt.MaxLength = 8;
             this.customAmountTxt.Multiline = false;
             this.customAmountTxt.Name = "customAmountTxt";
-            this.customAmountTxt.Size = new System.Drawing.Size(231, 56);
+            this.customAmountTxt.Size = new System.Drawing.Size(243, 56);
             this.customAmountTxt.TabIndex = 35;
             this.customAmountTxt.Text = "1";
             this.customAmountTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.customAmountTxt_KeyPress);
+            this.customAmountTxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.customAmountTxt_KeyUp);
             // 
             // label1
             // 
@@ -396,7 +473,7 @@
             this.inventoryPanel.Controls.Add(this.inventory3);
             this.inventoryPanel.Controls.Add(this.inventory2);
             this.inventoryPanel.Controls.Add(this.inventory1);
-            this.inventoryPanel.Location = new System.Drawing.Point(3, 48);
+            this.inventoryPanel.Location = new System.Drawing.Point(27, 48);
             this.inventoryPanel.Name = "inventoryPanel";
             this.inventoryPanel.Size = new System.Drawing.Size(821, 335);
             this.inventoryPanel.TabIndex = 60;
@@ -421,6 +498,7 @@
             this.inventory40.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory40.UseVisualStyleBackColor = false;
             this.inventory40.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory40.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory39
             // 
@@ -442,6 +520,7 @@
             this.inventory39.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory39.UseVisualStyleBackColor = false;
             this.inventory39.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory39.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory38
             // 
@@ -463,6 +542,7 @@
             this.inventory38.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory38.UseVisualStyleBackColor = false;
             this.inventory38.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory38.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory37
             // 
@@ -484,6 +564,7 @@
             this.inventory37.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory37.UseVisualStyleBackColor = false;
             this.inventory37.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory37.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory36
             // 
@@ -505,6 +586,7 @@
             this.inventory36.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory36.UseVisualStyleBackColor = false;
             this.inventory36.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory36.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory35
             // 
@@ -526,6 +608,7 @@
             this.inventory35.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory35.UseVisualStyleBackColor = false;
             this.inventory35.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory35.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory34
             // 
@@ -547,6 +630,7 @@
             this.inventory34.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory34.UseVisualStyleBackColor = false;
             this.inventory34.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory34.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory33
             // 
@@ -568,6 +652,7 @@
             this.inventory33.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory33.UseVisualStyleBackColor = false;
             this.inventory33.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory33.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory32
             // 
@@ -589,6 +674,7 @@
             this.inventory32.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory32.UseVisualStyleBackColor = false;
             this.inventory32.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory32.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory31
             // 
@@ -610,6 +696,7 @@
             this.inventory31.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory31.UseVisualStyleBackColor = false;
             this.inventory31.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory31.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory30
             // 
@@ -631,6 +718,7 @@
             this.inventory30.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory30.UseVisualStyleBackColor = false;
             this.inventory30.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory30.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory29
             // 
@@ -652,6 +740,7 @@
             this.inventory29.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory29.UseVisualStyleBackColor = false;
             this.inventory29.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory29.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory28
             // 
@@ -673,6 +762,7 @@
             this.inventory28.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory28.UseVisualStyleBackColor = false;
             this.inventory28.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory28.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory27
             // 
@@ -694,6 +784,7 @@
             this.inventory27.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory27.UseVisualStyleBackColor = false;
             this.inventory27.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory27.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory26
             // 
@@ -715,6 +806,7 @@
             this.inventory26.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory26.UseVisualStyleBackColor = false;
             this.inventory26.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory26.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory25
             // 
@@ -736,6 +828,7 @@
             this.inventory25.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory25.UseVisualStyleBackColor = false;
             this.inventory25.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory25.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory24
             // 
@@ -757,6 +850,7 @@
             this.inventory24.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory24.UseVisualStyleBackColor = false;
             this.inventory24.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory24.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory23
             // 
@@ -778,6 +872,7 @@
             this.inventory23.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory23.UseVisualStyleBackColor = false;
             this.inventory23.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory23.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory22
             // 
@@ -799,6 +894,7 @@
             this.inventory22.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory22.UseVisualStyleBackColor = false;
             this.inventory22.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory22.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory21
             // 
@@ -820,6 +916,7 @@
             this.inventory21.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory21.UseVisualStyleBackColor = false;
             this.inventory21.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory21.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory20
             // 
@@ -841,6 +938,7 @@
             this.inventory20.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory20.UseVisualStyleBackColor = false;
             this.inventory20.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory20.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory19
             // 
@@ -862,6 +960,7 @@
             this.inventory19.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory19.UseVisualStyleBackColor = false;
             this.inventory19.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory19.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory18
             // 
@@ -883,6 +982,7 @@
             this.inventory18.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory18.UseVisualStyleBackColor = false;
             this.inventory18.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory18.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory17
             // 
@@ -904,6 +1004,7 @@
             this.inventory17.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory17.UseVisualStyleBackColor = false;
             this.inventory17.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory17.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory16
             // 
@@ -925,6 +1026,7 @@
             this.inventory16.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory16.UseVisualStyleBackColor = false;
             this.inventory16.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory16.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory15
             // 
@@ -946,6 +1048,7 @@
             this.inventory15.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory15.UseVisualStyleBackColor = false;
             this.inventory15.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory15.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory14
             // 
@@ -967,6 +1070,7 @@
             this.inventory14.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory14.UseVisualStyleBackColor = false;
             this.inventory14.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory14.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory13
             // 
@@ -988,6 +1092,7 @@
             this.inventory13.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory13.UseVisualStyleBackColor = false;
             this.inventory13.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory13.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory12
             // 
@@ -1009,6 +1114,7 @@
             this.inventory12.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory12.UseVisualStyleBackColor = false;
             this.inventory12.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory12.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory11
             // 
@@ -1030,6 +1136,7 @@
             this.inventory11.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory11.UseVisualStyleBackColor = false;
             this.inventory11.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory11.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory10
             // 
@@ -1051,6 +1158,7 @@
             this.inventory10.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory10.UseVisualStyleBackColor = false;
             this.inventory10.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory10.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory9
             // 
@@ -1072,6 +1180,7 @@
             this.inventory9.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory9.UseVisualStyleBackColor = false;
             this.inventory9.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory9.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory8
             // 
@@ -1093,6 +1202,7 @@
             this.inventory8.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory8.UseVisualStyleBackColor = false;
             this.inventory8.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory8.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory7
             // 
@@ -1114,6 +1224,7 @@
             this.inventory7.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory7.UseVisualStyleBackColor = false;
             this.inventory7.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory7.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory6
             // 
@@ -1135,6 +1246,7 @@
             this.inventory6.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory6.UseVisualStyleBackColor = false;
             this.inventory6.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory6.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory5
             // 
@@ -1156,6 +1268,7 @@
             this.inventory5.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory5.UseVisualStyleBackColor = false;
             this.inventory5.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory5.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory4
             // 
@@ -1177,6 +1290,7 @@
             this.inventory4.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory4.UseVisualStyleBackColor = false;
             this.inventory4.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory4.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory3
             // 
@@ -1198,6 +1312,7 @@
             this.inventory3.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory3.UseVisualStyleBackColor = false;
             this.inventory3.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory3.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory2
             // 
@@ -1219,6 +1334,7 @@
             this.inventory2.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory2.UseVisualStyleBackColor = false;
             this.inventory2.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory2.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // inventory1
             // 
@@ -1240,6 +1356,7 @@
             this.inventory1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.inventory1.UseVisualStyleBackColor = false;
             this.inventory1.Click += new System.EventHandler(this.inventory_Click);
+            this.inventory1.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // spawnAllBtn
             // 
@@ -1248,9 +1365,9 @@
             this.spawnAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.spawnAllBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spawnAllBtn.ForeColor = System.Drawing.Color.White;
-            this.spawnAllBtn.Location = new System.Drawing.Point(637, 50);
+            this.spawnAllBtn.Location = new System.Drawing.Point(638, 13);
             this.spawnAllBtn.Name = "spawnAllBtn";
-            this.spawnAllBtn.Size = new System.Drawing.Size(92, 30);
+            this.spawnAllBtn.Size = new System.Drawing.Size(86, 30);
             this.spawnAllBtn.TabIndex = 61;
             this.spawnAllBtn.Text = "Spawn All";
             this.formToolTip.SetToolTip(this.spawnAllBtn, "Spawn the same item to every inventory slot.\r\n\r\n[Warnng] You will lose all of you" +
@@ -1265,7 +1382,7 @@
             this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refreshBtn.ForeColor = System.Drawing.Color.White;
-            this.refreshBtn.Location = new System.Drawing.Point(756, 0);
+            this.refreshBtn.Location = new System.Drawing.Point(780, 0);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(67, 24);
             this.refreshBtn.TabIndex = 62;
@@ -1281,7 +1398,7 @@
             this.variationsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.variationsBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.variationsBtn.ForeColor = System.Drawing.Color.White;
-            this.variationsBtn.Location = new System.Drawing.Point(515, 4);
+            this.variationsBtn.Location = new System.Drawing.Point(1083, 557);
             this.variationsBtn.Name = "variationsBtn";
             this.variationsBtn.Size = new System.Drawing.Size(116, 76);
             this.variationsBtn.TabIndex = 63;
@@ -1299,9 +1416,9 @@
             this.clearBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearBtn.ForeColor = System.Drawing.Color.White;
-            this.clearBtn.Location = new System.Drawing.Point(637, 16);
+            this.clearBtn.Location = new System.Drawing.Point(638, 59);
             this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(92, 30);
+            this.clearBtn.Size = new System.Drawing.Size(86, 30);
             this.clearBtn.TabIndex = 64;
             this.clearBtn.Text = "Clear All";
             this.formToolTip.SetToolTip(this.clearBtn, "Clear your inventory.\r\n\r\n[Warning] You will lose all of your items.");
@@ -1345,40 +1462,145 @@
             this.itemGridView.AllowUserToResizeRows = false;
             this.itemGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.itemGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemGridView.Location = new System.Drawing.Point(830, 44);
+            this.itemGridView.Location = new System.Drawing.Point(854, 30);
             this.itemGridView.MultiSelect = false;
             this.itemGridView.Name = "itemGridView";
             this.itemGridView.ReadOnly = true;
             this.itemGridView.RowHeadersVisible = false;
             this.itemGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.itemGridView.Size = new System.Drawing.Size(337, 459);
+            this.itemGridView.Size = new System.Drawing.Size(345, 465);
             this.itemGridView.TabIndex = 29;
             this.itemGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.itemGridView_CellFormatting);
             this.itemGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.itemGridView_CellMouseUp);
             // 
             // itemModePanel
             // 
+            this.itemModePanel.Controls.Add(this.genePanel);
+            this.itemModePanel.Controls.Add(this.fillRemainBtn);
             this.itemModePanel.Controls.Add(this.label18);
             this.itemModePanel.Controls.Add(this.customIdTextbox);
             this.itemModePanel.Controls.Add(this.customAmountTxt);
             this.itemModePanel.Controls.Add(this.clearBtn);
             this.itemModePanel.Controls.Add(this.label1);
-            this.itemModePanel.Controls.Add(this.variationsBtn);
             this.itemModePanel.Controls.Add(this.AmountLabel);
-            this.itemModePanel.Controls.Add(this.spawnAllBtn);
             this.itemModePanel.Controls.Add(this.hexModeBtn);
             this.itemModePanel.Controls.Add(this.wrapSetting);
-            this.itemModePanel.Location = new System.Drawing.Point(89, 417);
+            this.itemModePanel.Controls.Add(this.spawnAllBtn);
+            this.itemModePanel.Location = new System.Drawing.Point(113, 417);
             this.itemModePanel.Name = "itemModePanel";
             this.itemModePanel.Size = new System.Drawing.Size(735, 106);
             this.itemModePanel.TabIndex = 67;
+            // 
+            // genePanel
+            // 
+            this.genePanel.Controls.Add(this.flowerGeneS);
+            this.genePanel.Controls.Add(this.flowerGeneW);
+            this.genePanel.Controls.Add(this.flowerGeneY);
+            this.genePanel.Controls.Add(this.flowerGeneR);
+            this.genePanel.Location = new System.Drawing.Point(416, 3);
+            this.genePanel.Name = "genePanel";
+            this.genePanel.Size = new System.Drawing.Size(114, 94);
+            this.genePanel.TabIndex = 96;
+            this.genePanel.Visible = false;
+            // 
+            // flowerGeneS
+            // 
+            this.flowerGeneS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.flowerGeneS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.flowerGeneS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.flowerGeneS.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.flowerGeneS.ForeColor = System.Drawing.Color.White;
+            this.flowerGeneS.FormattingEnabled = true;
+            this.flowerGeneS.ItemHeight = 14;
+            this.flowerGeneS.Items.AddRange(new object[] {
+            "ss : 0",
+            "Ss : 1",
+            "SS : 2"});
+            this.flowerGeneS.Location = new System.Drawing.Point(0, 69);
+            this.flowerGeneS.Name = "flowerGeneS";
+            this.flowerGeneS.Size = new System.Drawing.Size(60, 22);
+            this.flowerGeneS.TabIndex = 100;
+            this.flowerGeneS.SelectionChangeCommitted += new System.EventHandler(this.SelectionChangeCommitted);
+            // 
+            // flowerGeneW
+            // 
+            this.flowerGeneW.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.flowerGeneW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.flowerGeneW.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.flowerGeneW.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.flowerGeneW.ForeColor = System.Drawing.Color.White;
+            this.flowerGeneW.FormattingEnabled = true;
+            this.flowerGeneW.ItemHeight = 14;
+            this.flowerGeneW.Items.AddRange(new object[] {
+            "ww : 0",
+            "Ww : 1",
+            "WW : 2"});
+            this.flowerGeneW.Location = new System.Drawing.Point(0, 46);
+            this.flowerGeneW.Name = "flowerGeneW";
+            this.flowerGeneW.Size = new System.Drawing.Size(60, 22);
+            this.flowerGeneW.TabIndex = 99;
+            this.flowerGeneW.SelectionChangeCommitted += new System.EventHandler(this.SelectionChangeCommitted);
+            // 
+            // flowerGeneY
+            // 
+            this.flowerGeneY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.flowerGeneY.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.flowerGeneY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.flowerGeneY.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.flowerGeneY.ForeColor = System.Drawing.Color.White;
+            this.flowerGeneY.FormattingEnabled = true;
+            this.flowerGeneY.ItemHeight = 14;
+            this.flowerGeneY.Items.AddRange(new object[] {
+            "yy : 0",
+            "Yy : 1",
+            "YY : 2"});
+            this.flowerGeneY.Location = new System.Drawing.Point(0, 23);
+            this.flowerGeneY.Name = "flowerGeneY";
+            this.flowerGeneY.Size = new System.Drawing.Size(60, 22);
+            this.flowerGeneY.TabIndex = 98;
+            this.flowerGeneY.SelectionChangeCommitted += new System.EventHandler(this.SelectionChangeCommitted);
+            // 
+            // flowerGeneR
+            // 
+            this.flowerGeneR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.flowerGeneR.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.flowerGeneR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.flowerGeneR.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.flowerGeneR.ForeColor = System.Drawing.Color.White;
+            this.flowerGeneR.FormattingEnabled = true;
+            this.flowerGeneR.ItemHeight = 14;
+            this.flowerGeneR.Items.AddRange(new object[] {
+            "rr : 0",
+            "Rr : 1",
+            "RR : 2"});
+            this.flowerGeneR.Location = new System.Drawing.Point(0, 0);
+            this.flowerGeneR.Name = "flowerGeneR";
+            this.flowerGeneR.Size = new System.Drawing.Size(60, 22);
+            this.flowerGeneR.TabIndex = 97;
+            this.flowerGeneR.SelectionChangeCommitted += new System.EventHandler(this.SelectionChangeCommitted);
+            // 
+            // fillRemainBtn
+            // 
+            this.fillRemainBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.fillRemainBtn.FlatAppearance.BorderSize = 0;
+            this.fillRemainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fillRemainBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fillRemainBtn.ForeColor = System.Drawing.Color.White;
+            this.fillRemainBtn.Location = new System.Drawing.Point(531, 13);
+            this.fillRemainBtn.Name = "fillRemainBtn";
+            this.fillRemainBtn.Size = new System.Drawing.Size(103, 30);
+            this.fillRemainBtn.TabIndex = 95;
+            this.fillRemainBtn.Text = "Fill Remain";
+            this.formToolTip.SetToolTip(this.fillRemainBtn, "Spawn the same item to every remaining empty inventory slot.");
+            this.fillRemainBtn.UseVisualStyleBackColor = false;
+            this.fillRemainBtn.Click += new System.EventHandler(this.fillRemainBtn_Click);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(406, 37);
+            this.label18.Location = new System.Drawing.Point(545, 48);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(75, 16);
             this.label18.TabIndex = 94;
@@ -1392,7 +1614,7 @@
             this.hexModeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hexModeBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hexModeBtn.ForeColor = System.Drawing.Color.White;
-            this.hexModeBtn.Location = new System.Drawing.Point(295, -1);
+            this.hexModeBtn.Location = new System.Drawing.Point(307, -1);
             this.hexModeBtn.Name = "hexModeBtn";
             this.hexModeBtn.Size = new System.Drawing.Size(105, 24);
             this.hexModeBtn.TabIndex = 89;
@@ -1429,7 +1651,7 @@
             "Black : 3D",
             "Present : 02",
             "Box : 43"});
-            this.wrapSetting.Location = new System.Drawing.Point(406, 56);
+            this.wrapSetting.Location = new System.Drawing.Point(531, 65);
             this.wrapSetting.Name = "wrapSetting";
             this.wrapSetting.Size = new System.Drawing.Size(103, 24);
             this.wrapSetting.TabIndex = 93;
@@ -1439,11 +1661,11 @@
             this.selectedItemName.AutoSize = true;
             this.selectedItemName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.selectedItemName.ForeColor = System.Drawing.Color.White;
-            this.selectedItemName.Location = new System.Drawing.Point(5, 500);
+            this.selectedItemName.Location = new System.Drawing.Point(-1, 498);
             this.selectedItemName.Name = "selectedItemName";
-            this.selectedItemName.Size = new System.Drawing.Size(112, 16);
+            this.selectedItemName.Size = new System.Drawing.Size(81, 16);
             this.selectedItemName.TabIndex = 65;
-            this.selectedItemName.Text = "                          ";
+            this.selectedItemName.Text = "Item Name";
             // 
             // selectedID
             // 
@@ -1474,7 +1696,7 @@
             this.itemModeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.itemModeBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.itemModeBtn.ForeColor = System.Drawing.Color.White;
-            this.itemModeBtn.Location = new System.Drawing.Point(8, 389);
+            this.itemModeBtn.Location = new System.Drawing.Point(117, 389);
             this.itemModeBtn.Name = "itemModeBtn";
             this.itemModeBtn.Size = new System.Drawing.Size(60, 23);
             this.itemModeBtn.TabIndex = 68;
@@ -1489,7 +1711,7 @@
             this.recipeModeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.recipeModeBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.recipeModeBtn.ForeColor = System.Drawing.Color.White;
-            this.recipeModeBtn.Location = new System.Drawing.Point(73, 389);
+            this.recipeModeBtn.Location = new System.Drawing.Point(182, 389);
             this.recipeModeBtn.Name = "recipeModeBtn";
             this.recipeModeBtn.Size = new System.Drawing.Size(60, 23);
             this.recipeModeBtn.TabIndex = 69;
@@ -1502,7 +1724,7 @@
             this.recipeModePanel.Controls.Add(this.clearBtn2);
             this.recipeModePanel.Controls.Add(this.recipeNum);
             this.recipeModePanel.Controls.Add(this.label4);
-            this.recipeModePanel.Location = new System.Drawing.Point(89, 417);
+            this.recipeModePanel.Location = new System.Drawing.Point(113, 417);
             this.recipeModePanel.Name = "recipeModePanel";
             this.recipeModePanel.Size = new System.Drawing.Size(735, 106);
             this.recipeModePanel.TabIndex = 68;
@@ -1515,9 +1737,9 @@
             this.clearBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearBtn2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearBtn2.ForeColor = System.Drawing.Color.White;
-            this.clearBtn2.Location = new System.Drawing.Point(613, 19);
+            this.clearBtn2.Location = new System.Drawing.Point(638, 51);
             this.clearBtn2.Name = "clearBtn2";
-            this.clearBtn2.Size = new System.Drawing.Size(116, 30);
+            this.clearBtn2.Size = new System.Drawing.Size(86, 30);
             this.clearBtn2.TabIndex = 65;
             this.clearBtn2.Text = "Clear All";
             this.formToolTip.SetToolTip(this.clearBtn2, "Clear your inventory.\r\n\r\n[Waring] You will lose all of your items.\r\n");
@@ -1557,13 +1779,13 @@
             this.recipeGridView.AllowUserToResizeRows = false;
             this.recipeGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.recipeGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.recipeGridView.Location = new System.Drawing.Point(830, 44);
+            this.recipeGridView.Location = new System.Drawing.Point(854, 30);
             this.recipeGridView.MultiSelect = false;
             this.recipeGridView.Name = "recipeGridView";
             this.recipeGridView.ReadOnly = true;
             this.recipeGridView.RowHeadersVisible = false;
             this.recipeGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.recipeGridView.Size = new System.Drawing.Size(337, 459);
+            this.recipeGridView.Size = new System.Drawing.Size(345, 465);
             this.recipeGridView.TabIndex = 70;
             this.recipeGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.recipeGridView_CellFormatting);
             this.recipeGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.recipeGridView_CellMouseUp);
@@ -1573,10 +1795,10 @@
             this.msgLabel.AutoSize = true;
             this.msgLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.msgLabel.ForeColor = System.Drawing.Color.White;
-            this.msgLabel.Location = new System.Drawing.Point(206, 392);
-            this.msgLabel.MinimumSize = new System.Drawing.Size(250, 17);
+            this.msgLabel.Location = new System.Drawing.Point(850, 498);
+            this.msgLabel.MinimumSize = new System.Drawing.Size(330, 17);
             this.msgLabel.Name = "msgLabel";
-            this.msgLabel.Size = new System.Drawing.Size(250, 17);
+            this.msgLabel.Size = new System.Drawing.Size(330, 17);
             this.msgLabel.TabIndex = 66;
             // 
             // waitMsg
@@ -1584,7 +1806,7 @@
             this.waitMsg.AutoSize = true;
             this.waitMsg.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.waitMsg.ForeColor = System.Drawing.Color.White;
-            this.waitMsg.Location = new System.Drawing.Point(479, 393);
+            this.waitMsg.Location = new System.Drawing.Point(498, 393);
             this.waitMsg.Name = "waitMsg";
             this.waitMsg.Size = new System.Drawing.Size(100, 16);
             this.waitMsg.TabIndex = 71;
@@ -1678,13 +1900,13 @@
             this.flowerGridView.AllowUserToResizeRows = false;
             this.flowerGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.flowerGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.flowerGridView.Location = new System.Drawing.Point(830, 44);
+            this.flowerGridView.Location = new System.Drawing.Point(854, 30);
             this.flowerGridView.MultiSelect = false;
             this.flowerGridView.Name = "flowerGridView";
             this.flowerGridView.ReadOnly = true;
             this.flowerGridView.RowHeadersVisible = false;
             this.flowerGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.flowerGridView.Size = new System.Drawing.Size(337, 459);
+            this.flowerGridView.Size = new System.Drawing.Size(345, 465);
             this.flowerGridView.TabIndex = 76;
             this.flowerGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.flowerGridView_CellFormatting);
             this.flowerGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.flowerGridView_CellMouseUp);
@@ -1695,8 +1917,7 @@
             this.flowerModePanel.Controls.Add(this.flowerValue);
             this.flowerModePanel.Controls.Add(this.clearBtn3);
             this.flowerModePanel.Controls.Add(this.label3);
-            this.flowerModePanel.Controls.Add(this.spawnAllBtn3);
-            this.flowerModePanel.Location = new System.Drawing.Point(89, 417);
+            this.flowerModePanel.Location = new System.Drawing.Point(113, 417);
             this.flowerModePanel.Name = "flowerModePanel";
             this.flowerModePanel.Size = new System.Drawing.Size(735, 106);
             this.flowerModePanel.TabIndex = 68;
@@ -1738,9 +1959,9 @@
             this.clearBtn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearBtn3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearBtn3.ForeColor = System.Drawing.Color.White;
-            this.clearBtn3.Location = new System.Drawing.Point(613, 19);
+            this.clearBtn3.Location = new System.Drawing.Point(638, 51);
             this.clearBtn3.Name = "clearBtn3";
-            this.clearBtn3.Size = new System.Drawing.Size(116, 30);
+            this.clearBtn3.Size = new System.Drawing.Size(86, 30);
             this.clearBtn3.TabIndex = 64;
             this.clearBtn3.Text = "Clear All";
             this.formToolTip.SetToolTip(this.clearBtn3, "Clear your inventory.\r\n\r\n[Waring] You will lose all of your items.\r\n");
@@ -1765,7 +1986,7 @@
             this.spawnAllBtn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.spawnAllBtn3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.spawnAllBtn3.ForeColor = System.Drawing.Color.White;
-            this.spawnAllBtn3.Location = new System.Drawing.Point(613, 55);
+            this.spawnAllBtn3.Location = new System.Drawing.Point(1083, 675);
             this.spawnAllBtn3.Name = "spawnAllBtn3";
             this.spawnAllBtn3.Size = new System.Drawing.Size(116, 30);
             this.spawnAllBtn3.TabIndex = 61;
@@ -1781,7 +2002,7 @@
             this.flowerModeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.flowerModeBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.flowerModeBtn.ForeColor = System.Drawing.Color.White;
-            this.flowerModeBtn.Location = new System.Drawing.Point(138, 389);
+            this.flowerModeBtn.Location = new System.Drawing.Point(247, 389);
             this.flowerModeBtn.Name = "flowerModeBtn";
             this.flowerModeBtn.Size = new System.Drawing.Size(60, 23);
             this.flowerModeBtn.TabIndex = 77;
@@ -1802,7 +2023,6 @@
             this.ChaseBtn.TabIndex = 78;
             this.ChaseBtn.Text = "Chase";
             this.ChaseBtn.UseVisualStyleBackColor = false;
-            this.ChaseBtn.Visible = false;
             this.ChaseBtn.Click += new System.EventHandler(this.ChaseBtn_Click);
             // 
             // FullAddress
@@ -1818,29 +2038,13 @@
             this.FullAddress.TabIndex = 79;
             this.FullAddress.Text = "";
             // 
-            // DisconnectBtn
-            // 
-            this.DisconnectBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.DisconnectBtn.FlatAppearance.BorderSize = 0;
-            this.DisconnectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DisconnectBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.DisconnectBtn.ForeColor = System.Drawing.Color.White;
-            this.DisconnectBtn.Location = new System.Drawing.Point(35, 12);
-            this.DisconnectBtn.Name = "DisconnectBtn";
-            this.DisconnectBtn.Size = new System.Drawing.Size(85, 23);
-            this.DisconnectBtn.TabIndex = 80;
-            this.DisconnectBtn.Text = "Disconnect";
-            this.DisconnectBtn.UseVisualStyleBackColor = false;
-            this.DisconnectBtn.Visible = false;
-            this.DisconnectBtn.Click += new System.EventHandler(this.DisconnectBtn_Click);
-            // 
             // autoRefreshCheckBox
             // 
             this.autoRefreshCheckBox.AutoSize = true;
             this.autoRefreshCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.autoRefreshCheckBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.autoRefreshCheckBox.ForeColor = System.Drawing.Color.White;
-            this.autoRefreshCheckBox.Location = new System.Drawing.Point(763, 27);
+            this.autoRefreshCheckBox.Location = new System.Drawing.Point(787, 27);
             this.autoRefreshCheckBox.Name = "autoRefreshCheckBox";
             this.autoRefreshCheckBox.Size = new System.Drawing.Size(52, 19);
             this.autoRefreshCheckBox.TabIndex = 81;
@@ -1848,21 +2052,6 @@
             this.autoRefreshCheckBox.UseVisualStyleBackColor = true;
             this.autoRefreshCheckBox.Visible = false;
             this.autoRefreshCheckBox.CheckedChanged += new System.EventHandler(this.autoRefreshCheckBox_CheckedChanged);
-            // 
-            // debugBtn
-            // 
-            this.debugBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.debugBtn.FlatAppearance.BorderSize = 0;
-            this.debugBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.debugBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.debugBtn.ForeColor = System.Drawing.Color.White;
-            this.debugBtn.Location = new System.Drawing.Point(1101, 675);
-            this.debugBtn.Name = "debugBtn";
-            this.debugBtn.Size = new System.Drawing.Size(75, 23);
-            this.debugBtn.TabIndex = 82;
-            this.debugBtn.Text = "Debug";
-            this.debugBtn.UseVisualStyleBackColor = false;
-            this.debugBtn.Click += new System.EventHandler(this.debugBtn_Click);
             // 
             // Player3Btn
             // 
@@ -1900,7 +2089,7 @@
             this.playerSelectionPanel.Controls.Add(this.Player4Btn);
             this.playerSelectionPanel.Controls.Add(this.Player2Btn);
             this.playerSelectionPanel.Controls.Add(this.Player3Btn);
-            this.playerSelectionPanel.Location = new System.Drawing.Point(428, 4);
+            this.playerSelectionPanel.Location = new System.Drawing.Point(452, 4);
             this.playerSelectionPanel.Name = "playerSelectionPanel";
             this.playerSelectionPanel.Size = new System.Drawing.Size(262, 44);
             this.playerSelectionPanel.TabIndex = 85;
@@ -1962,6 +2151,17 @@
             this.debugAmount.TabIndex = 87;
             this.debugAmount.Text = "10";
             // 
+            // formToolTip
+            // 
+            this.formToolTip.AutomaticDelay = 100;
+            this.formToolTip.AutoPopDelay = 5000;
+            this.formToolTip.InitialDelay = 100;
+            this.formToolTip.IsBalloon = true;
+            this.formToolTip.ReshowDelay = 20;
+            this.formToolTip.ShowAlways = true;
+            this.formToolTip.UseAnimation = false;
+            this.formToolTip.UseFading = false;
+            // 
             // eatBtn
             // 
             this.eatBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -1969,14 +2169,13 @@
             this.eatBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.eatBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eatBtn.ForeColor = System.Drawing.Color.White;
-            this.eatBtn.Location = new System.Drawing.Point(428, 364);
+            this.eatBtn.Location = new System.Drawing.Point(428, 271);
             this.eatBtn.Name = "eatBtn";
             this.eatBtn.Size = new System.Drawing.Size(156, 24);
             this.eatBtn.TabIndex = 88;
             this.eatBtn.Text = "eat";
             this.formToolTip.SetToolTip(this.eatBtn, "Set stamina to (10/10)\r\n\r\nSome random fruits a day, keeps the doctor away.");
             this.eatBtn.UseVisualStyleBackColor = false;
-            this.eatBtn.Visible = false;
             this.eatBtn.Click += new System.EventHandler(this.eatBtn_Click);
             // 
             // poopBtn
@@ -1986,14 +2185,13 @@
             this.poopBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.poopBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.poopBtn.ForeColor = System.Drawing.Color.White;
-            this.poopBtn.Location = new System.Drawing.Point(590, 364);
+            this.poopBtn.Location = new System.Drawing.Point(590, 271);
             this.poopBtn.Name = "poopBtn";
             this.poopBtn.Size = new System.Drawing.Size(156, 24);
             this.poopBtn.TabIndex = 133;
             this.poopBtn.Text = "Phantom pooping";
             this.formToolTip.SetToolTip(this.poopBtn, "Set stamina to (0/10)\r\n\r\nWhere did my poop go?\r\n\r\n");
             this.poopBtn.UseVisualStyleBackColor = false;
-            this.poopBtn.Visible = false;
             this.poopBtn.Click += new System.EventHandler(this.poopBtn_Click);
             // 
             // fastBackBtn
@@ -2060,6 +2258,304 @@
             this.backBtn.UseVisualStyleBackColor = false;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
+            // setReactionBtn
+            // 
+            this.setReactionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.setReactionBtn.FlatAppearance.BorderSize = 0;
+            this.setReactionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.setReactionBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setReactionBtn.ForeColor = System.Drawing.Color.White;
+            this.setReactionBtn.Location = new System.Drawing.Point(987, 209);
+            this.setReactionBtn.Name = "setReactionBtn";
+            this.setReactionBtn.Size = new System.Drawing.Size(140, 24);
+            this.setReactionBtn.TabIndex = 148;
+            this.setReactionBtn.Text = "Set Reaction Wheel";
+            this.formToolTip.SetToolTip(this.setReactionBtn, resources.GetString("setReactionBtn.ToolTip"));
+            this.setReactionBtn.UseVisualStyleBackColor = false;
+            this.setReactionBtn.Click += new System.EventHandler(this.setReactionBtn_Click);
+            // 
+            // setTurnipBtn
+            // 
+            this.setTurnipBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.setTurnipBtn.FlatAppearance.BorderSize = 0;
+            this.setTurnipBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.setTurnipBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setTurnipBtn.ForeColor = System.Drawing.Color.White;
+            this.setTurnipBtn.Location = new System.Drawing.Point(248, 79);
+            this.setTurnipBtn.Name = "setTurnipBtn";
+            this.setTurnipBtn.Size = new System.Drawing.Size(120, 24);
+            this.setTurnipBtn.TabIndex = 134;
+            this.setTurnipBtn.Text = "Set Turnip Price";
+            this.formToolTip.SetToolTip(this.setTurnipBtn, "stonks");
+            this.setTurnipBtn.UseVisualStyleBackColor = false;
+            this.setTurnipBtn.Click += new System.EventHandler(this.setTurnipBtn_Click);
+            // 
+            // unfreezeTimeBtn
+            // 
+            this.unfreezeTimeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.unfreezeTimeBtn.FlatAppearance.BorderSize = 0;
+            this.unfreezeTimeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.unfreezeTimeBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unfreezeTimeBtn.ForeColor = System.Drawing.Color.White;
+            this.unfreezeTimeBtn.Location = new System.Drawing.Point(527, 30);
+            this.unfreezeTimeBtn.Name = "unfreezeTimeBtn";
+            this.unfreezeTimeBtn.Size = new System.Drawing.Size(156, 24);
+            this.unfreezeTimeBtn.TabIndex = 136;
+            this.unfreezeTimeBtn.Text = "10 seconds have passed";
+            this.formToolTip.SetToolTip(this.unfreezeTimeBtn, "Unfreeze Time (Sets it back to system clock).\r\n\r\nORA ORA ORA\r\nORA ORA ORA\r\nORA OR" +
+        "A ORA\r\nORA ORA ORA");
+            this.unfreezeTimeBtn.UseVisualStyleBackColor = false;
+            this.unfreezeTimeBtn.Click += new System.EventHandler(this.unfreezeTimeBtn_Click);
+            // 
+            // freezeTimeBtn
+            // 
+            this.freezeTimeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.freezeTimeBtn.FlatAppearance.BorderSize = 0;
+            this.freezeTimeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.freezeTimeBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.freezeTimeBtn.ForeColor = System.Drawing.Color.White;
+            this.freezeTimeBtn.Location = new System.Drawing.Point(365, 30);
+            this.freezeTimeBtn.Name = "freezeTimeBtn";
+            this.freezeTimeBtn.Size = new System.Drawing.Size(156, 24);
+            this.freezeTimeBtn.TabIndex = 135;
+            this.freezeTimeBtn.Text = "Za Wārudo";
+            this.formToolTip.SetToolTip(this.freezeTimeBtn, "Freeze time.\r\n\r\nMUDA MUDA MUDA\r\nMUDA MUDA MUDA\r\nMUDA MUDA MUDA\r\nMUDA MUDA MUDA");
+            this.freezeTimeBtn.UseVisualStyleBackColor = false;
+            this.freezeTimeBtn.Click += new System.EventHandler(this.freezeTimeBtn_Click);
+            // 
+            // speedEnableBtn
+            // 
+            this.speedEnableBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.speedEnableBtn.FlatAppearance.BorderSize = 0;
+            this.speedEnableBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.speedEnableBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.speedEnableBtn.ForeColor = System.Drawing.Color.White;
+            this.speedEnableBtn.Location = new System.Drawing.Point(7, 30);
+            this.speedEnableBtn.Name = "speedEnableBtn";
+            this.speedEnableBtn.Size = new System.Drawing.Size(156, 24);
+            this.speedEnableBtn.TabIndex = 150;
+            this.speedEnableBtn.Text = "x4";
+            this.formToolTip.SetToolTip(this.speedEnableBtn, "Change walk speed to x4 of the normal speed.\r\n\r\nGotta Go Fast!");
+            this.speedEnableBtn.UseVisualStyleBackColor = false;
+            this.speedEnableBtn.Click += new System.EventHandler(this.speedEnableBtn_Click);
+            // 
+            // speedDisableBtn
+            // 
+            this.speedDisableBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.speedDisableBtn.FlatAppearance.BorderSize = 0;
+            this.speedDisableBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.speedDisableBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.speedDisableBtn.ForeColor = System.Drawing.Color.White;
+            this.speedDisableBtn.Location = new System.Drawing.Point(169, 30);
+            this.speedDisableBtn.Name = "speedDisableBtn";
+            this.speedDisableBtn.Size = new System.Drawing.Size(156, 24);
+            this.speedDisableBtn.TabIndex = 151;
+            this.speedDisableBtn.Text = "x1";
+            this.formToolTip.SetToolTip(this.speedDisableBtn, "Reset walk speed to normal.\r\n\r\nWhen life is going way too fast...\r\n");
+            this.speedDisableBtn.UseVisualStyleBackColor = false;
+            this.speedDisableBtn.Click += new System.EventHandler(this.speedDisableBtn_Click);
+            // 
+            // disableCollisionBtn
+            // 
+            this.disableCollisionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.disableCollisionBtn.FlatAppearance.BorderSize = 0;
+            this.disableCollisionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.disableCollisionBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.disableCollisionBtn.ForeColor = System.Drawing.Color.White;
+            this.disableCollisionBtn.Location = new System.Drawing.Point(7, 82);
+            this.disableCollisionBtn.Name = "disableCollisionBtn";
+            this.disableCollisionBtn.Size = new System.Drawing.Size(156, 24);
+            this.disableCollisionBtn.TabIndex = 153;
+            this.disableCollisionBtn.Text = "Disable";
+            this.formToolTip.SetToolTip(this.disableCollisionBtn, "Disable object collision.\r\n\r\nOr no-clipping. Whatever you want to call it...\r\n");
+            this.disableCollisionBtn.UseVisualStyleBackColor = false;
+            this.disableCollisionBtn.Click += new System.EventHandler(this.disableCollisionBtn_Click);
+            // 
+            // enableCollisionBtn
+            // 
+            this.enableCollisionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.enableCollisionBtn.FlatAppearance.BorderSize = 0;
+            this.enableCollisionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.enableCollisionBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enableCollisionBtn.ForeColor = System.Drawing.Color.White;
+            this.enableCollisionBtn.Location = new System.Drawing.Point(169, 82);
+            this.enableCollisionBtn.Name = "enableCollisionBtn";
+            this.enableCollisionBtn.Size = new System.Drawing.Size(156, 24);
+            this.enableCollisionBtn.TabIndex = 154;
+            this.enableCollisionBtn.Text = "Enable";
+            this.formToolTip.SetToolTip(this.enableCollisionBtn, "Enable object collision.\r\n\r\nPlatform 9 3/4 is now closed.\r\n");
+            this.enableCollisionBtn.UseVisualStyleBackColor = false;
+            this.enableCollisionBtn.Click += new System.EventHandler(this.enableCollisionBtn_Click);
+            // 
+            // animationSpdx0_1
+            // 
+            this.animationSpdx0_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.animationSpdx0_1.FlatAppearance.BorderSize = 0;
+            this.animationSpdx0_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.animationSpdx0_1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.animationSpdx0_1.ForeColor = System.Drawing.Color.White;
+            this.animationSpdx0_1.Location = new System.Drawing.Point(89, 137);
+            this.animationSpdx0_1.Name = "animationSpdx0_1";
+            this.animationSpdx0_1.Size = new System.Drawing.Size(75, 24);
+            this.animationSpdx0_1.TabIndex = 156;
+            this.animationSpdx0_1.Text = "x0.1";
+            this.formToolTip.SetToolTip(this.animationSpdx0_1, "Change animation speed to x0.1 of the normal speed.\r\n\r\nJust because you\'re correc" +
+        "t doesn\'t mean you\'re right.\r\n");
+            this.animationSpdx0_1.UseVisualStyleBackColor = false;
+            this.animationSpdx0_1.Click += new System.EventHandler(this.animationSpdx0_1_Click);
+            // 
+            // animationSpdx1
+            // 
+            this.animationSpdx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.animationSpdx1.FlatAppearance.BorderSize = 0;
+            this.animationSpdx1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.animationSpdx1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.animationSpdx1.ForeColor = System.Drawing.Color.White;
+            this.animationSpdx1.Location = new System.Drawing.Point(251, 137);
+            this.animationSpdx1.Name = "animationSpdx1";
+            this.animationSpdx1.Size = new System.Drawing.Size(75, 24);
+            this.animationSpdx1.TabIndex = 157;
+            this.animationSpdx1.Text = "x1";
+            this.formToolTip.SetToolTip(this.animationSpdx1, "Reset animation speed to normal.\r\n\r\nPeople die if they are killed.");
+            this.animationSpdx1.UseVisualStyleBackColor = false;
+            this.animationSpdx1.Click += new System.EventHandler(this.animationSpdx1_Click);
+            // 
+            // animationSpdx2
+            // 
+            this.animationSpdx2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.animationSpdx2.FlatAppearance.BorderSize = 0;
+            this.animationSpdx2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.animationSpdx2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.animationSpdx2.ForeColor = System.Drawing.Color.White;
+            this.animationSpdx2.Location = new System.Drawing.Point(8, 137);
+            this.animationSpdx2.Name = "animationSpdx2";
+            this.animationSpdx2.Size = new System.Drawing.Size(75, 24);
+            this.animationSpdx2.TabIndex = 158;
+            this.animationSpdx2.Text = "x2";
+            this.formToolTip.SetToolTip(this.animationSpdx2, "Change animation speed to x2 of the normal speed.\r\n\r\nThe Archer class really us m" +
+        "ade up of archers!\r\n");
+            this.animationSpdx2.UseVisualStyleBackColor = false;
+            this.animationSpdx2.Click += new System.EventHandler(this.animationSpdx2_Click);
+            // 
+            // animationSpdx50
+            // 
+            this.animationSpdx50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.animationSpdx50.FlatAppearance.BorderSize = 0;
+            this.animationSpdx50.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.animationSpdx50.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.animationSpdx50.ForeColor = System.Drawing.Color.White;
+            this.animationSpdx50.Location = new System.Drawing.Point(170, 137);
+            this.animationSpdx50.Name = "animationSpdx50";
+            this.animationSpdx50.Size = new System.Drawing.Size(75, 24);
+            this.animationSpdx50.TabIndex = 159;
+            this.animationSpdx50.Text = "x50";
+            this.formToolTip.SetToolTip(this.animationSpdx50, "Change animation speed to x50 of the normal speed.\r\n\r\nThen why does Berserker go " +
+        "berserk?\r\n");
+            this.animationSpdx50.UseVisualStyleBackColor = false;
+            this.animationSpdx50.Click += new System.EventHandler(this.animationSpdx50_Click);
+            // 
+            // settimeBtn
+            // 
+            this.settimeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.settimeBtn.FlatAppearance.BorderSize = 0;
+            this.settimeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settimeBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settimeBtn.ForeColor = System.Drawing.Color.White;
+            this.settimeBtn.Location = new System.Drawing.Point(201, 70);
+            this.settimeBtn.Name = "settimeBtn";
+            this.settimeBtn.Size = new System.Drawing.Size(117, 24);
+            this.settimeBtn.TabIndex = 168;
+            this.settimeBtn.Text = "Set Date && Time";
+            this.formToolTip.SetToolTip(this.settimeBtn, "Change the current in game time.\r\n\r\nI see this as an absolute win.");
+            this.settimeBtn.UseVisualStyleBackColor = false;
+            this.settimeBtn.Click += new System.EventHandler(this.settimeBtn_Click);
+            // 
+            // add1HourBtn
+            // 
+            this.add1HourBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.add1HourBtn.FlatAppearance.BorderSize = 0;
+            this.add1HourBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.add1HourBtn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.add1HourBtn.ForeColor = System.Drawing.Color.White;
+            this.add1HourBtn.Location = new System.Drawing.Point(46, 95);
+            this.add1HourBtn.Name = "add1HourBtn";
+            this.add1HourBtn.Size = new System.Drawing.Size(28, 20);
+            this.add1HourBtn.TabIndex = 173;
+            this.add1HourBtn.Text = "+1";
+            this.formToolTip.SetToolTip(this.add1HourBtn, "+1 Hour");
+            this.add1HourBtn.UseVisualStyleBackColor = false;
+            this.add1HourBtn.Click += new System.EventHandler(this.add1HourBtn_Click);
+            // 
+            // minus1HourBtn
+            // 
+            this.minus1HourBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.minus1HourBtn.FlatAppearance.BorderSize = 0;
+            this.minus1HourBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minus1HourBtn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.minus1HourBtn.ForeColor = System.Drawing.Color.White;
+            this.minus1HourBtn.Location = new System.Drawing.Point(14, 95);
+            this.minus1HourBtn.Name = "minus1HourBtn";
+            this.minus1HourBtn.Size = new System.Drawing.Size(28, 20);
+            this.minus1HourBtn.TabIndex = 174;
+            this.minus1HourBtn.Text = "-1";
+            this.formToolTip.SetToolTip(this.minus1HourBtn, "-1 Hour");
+            this.minus1HourBtn.UseVisualStyleBackColor = false;
+            this.minus1HourBtn.Click += new System.EventHandler(this.minus1HourBtn_Click);
+            // 
+            // readDataBtn
+            // 
+            this.readDataBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.readDataBtn.FlatAppearance.BorderSize = 0;
+            this.readDataBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.readDataBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.readDataBtn.ForeColor = System.Drawing.Color.White;
+            this.readDataBtn.Location = new System.Drawing.Point(50, 77);
+            this.readDataBtn.Name = "readDataBtn";
+            this.readDataBtn.Size = new System.Drawing.Size(137, 23);
+            this.readDataBtn.TabIndex = 148;
+            this.readDataBtn.Text = "Read Critter Data";
+            this.formToolTip.SetToolTip(this.readDataBtn, resources.GetString("readDataBtn.ToolTip"));
+            this.readDataBtn.UseVisualStyleBackColor = false;
+            this.readDataBtn.Click += new System.EventHandler(this.readDataBtn_Click);
+            // 
+            // resetAllBtn
+            // 
+            this.resetAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.resetAllBtn.FlatAppearance.BorderSize = 0;
+            this.resetAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.resetAllBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.resetAllBtn.ForeColor = System.Drawing.Color.White;
+            this.resetAllBtn.Location = new System.Drawing.Point(940, 78);
+            this.resetAllBtn.Name = "resetAllBtn";
+            this.resetAllBtn.Size = new System.Drawing.Size(100, 23);
+            this.resetAllBtn.TabIndex = 147;
+            this.resetAllBtn.Tag = "";
+            this.resetAllBtn.Text = "Reset All";
+            this.formToolTip.SetToolTip(this.resetAllBtn, "Reset all of the spawn rate of the corresponding critters to their default value." +
+        "\r\n\r\nNote that some critters have special spawn condition.\r\ni.e. changing spawn r" +
+        "ate do not affect those critters.\r\n");
+            this.resetAllBtn.UseVisualStyleBackColor = false;
+            this.resetAllBtn.Click += new System.EventHandler(this.resetAllBtn_Click);
+            // 
+            // disableAllBtn
+            // 
+            this.disableAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.disableAllBtn.FlatAppearance.BorderSize = 0;
+            this.disableAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.disableAllBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.disableAllBtn.ForeColor = System.Drawing.Color.White;
+            this.disableAllBtn.Location = new System.Drawing.Point(830, 78);
+            this.disableAllBtn.Name = "disableAllBtn";
+            this.disableAllBtn.Size = new System.Drawing.Size(100, 23);
+            this.disableAllBtn.TabIndex = 144;
+            this.disableAllBtn.Tag = "";
+            this.disableAllBtn.Text = "Disable All";
+            this.formToolTip.SetToolTip(this.disableAllBtn, "Set all of the spawn rate of the corresponding critters to 0.\r\n\r\nNote that some c" +
+        "ritters have special spawn condition.\r\ni.e. changing spawn rate do not affect th" +
+        "ose critters.");
+            this.disableAllBtn.UseVisualStyleBackColor = false;
+            this.disableAllBtn.Click += new System.EventHandler(this.disableAllBtn_Click);
+            // 
             // selectedItem
             // 
             this.selectedItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -2070,10 +2566,10 @@
             this.selectedItem.ForeColor = System.Drawing.Color.White;
             this.selectedItem.itemDurability = ((ushort)(0));
             this.selectedItem.itemQuantity = ((ushort)(0));
-            this.selectedItem.Location = new System.Drawing.Point(8, 423);
+            this.selectedItem.Location = new System.Drawing.Point(1, 387);
             this.selectedItem.Margin = new System.Windows.Forms.Padding(0);
             this.selectedItem.Name = "selectedItem";
-            this.selectedItem.Size = new System.Drawing.Size(75, 75);
+            this.selectedItem.Size = new System.Drawing.Size(110, 110);
             this.selectedItem.TabIndex = 41;
             this.selectedItem.Tag = "";
             this.selectedItem.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -2088,7 +2584,7 @@
             this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.saveBtn.ForeColor = System.Drawing.Color.White;
-            this.saveBtn.Location = new System.Drawing.Point(693, 1);
+            this.saveBtn.Location = new System.Drawing.Point(717, 1);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(60, 23);
             this.saveBtn.TabIndex = 89;
@@ -2104,7 +2600,7 @@
             this.loadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loadBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.loadBtn.ForeColor = System.Drawing.Color.White;
-            this.loadBtn.Location = new System.Drawing.Point(693, 25);
+            this.loadBtn.Location = new System.Drawing.Point(717, 25);
             this.loadBtn.Name = "loadBtn";
             this.loadBtn.Size = new System.Drawing.Size(60, 23);
             this.loadBtn.TabIndex = 90;
@@ -2116,7 +2612,11 @@
             // inventoryLargePanel
             // 
             this.inventoryLargePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.inventoryLargePanel.Controls.Add(this.pacman2);
+            this.inventoryLargePanel.Controls.Add(this.selectedFlag2);
+            this.inventoryLargePanel.Controls.Add(this.selectedFlag1);
             this.inventoryLargePanel.Controls.Add(this.selectedItemName);
+            this.inventoryLargePanel.Controls.Add(this.variationModeButton);
             this.inventoryLargePanel.Controls.Add(this.inventoryPanel);
             this.inventoryLargePanel.Controls.Add(this.loadBtn);
             this.inventoryLargePanel.Controls.Add(this.waitMsg);
@@ -2139,10 +2639,57 @@
             this.inventoryLargePanel.Controls.Add(this.itemModePanel);
             this.inventoryLargePanel.Controls.Add(this.flowerModePanel);
             this.inventoryLargePanel.Controls.Add(this.recipeModePanel);
-            this.inventoryLargePanel.Location = new System.Drawing.Point(25, 0);
+            this.inventoryLargePanel.Location = new System.Drawing.Point(0, 0);
             this.inventoryLargePanel.Name = "inventoryLargePanel";
-            this.inventoryLargePanel.Size = new System.Drawing.Size(1200, 550);
+            this.inventoryLargePanel.Size = new System.Drawing.Size(1225, 550);
             this.inventoryLargePanel.TabIndex = 91;
+            // 
+            // pacman2
+            // 
+            this.pacman2.Image = global::ACNHPoker.Properties.Resources.loading;
+            this.pacman2.Location = new System.Drawing.Point(469, 389);
+            this.pacman2.Name = "pacman2";
+            this.pacman2.Size = new System.Drawing.Size(24, 24);
+            this.pacman2.TabIndex = 154;
+            this.pacman2.TabStop = false;
+            this.pacman2.Visible = false;
+            // 
+            // selectedFlag2
+            // 
+            this.selectedFlag2.AutoSize = true;
+            this.selectedFlag2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.selectedFlag2.ForeColor = System.Drawing.Color.White;
+            this.selectedFlag2.Location = new System.Drawing.Point(267, 533);
+            this.selectedFlag2.Name = "selectedFlag2";
+            this.selectedFlag2.Size = new System.Drawing.Size(42, 16);
+            this.selectedFlag2.TabIndex = 139;
+            this.selectedFlag2.Text = "flag2";
+            // 
+            // selectedFlag1
+            // 
+            this.selectedFlag1.AutoSize = true;
+            this.selectedFlag1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.selectedFlag1.ForeColor = System.Drawing.Color.White;
+            this.selectedFlag1.Location = new System.Drawing.Point(206, 533);
+            this.selectedFlag1.Name = "selectedFlag1";
+            this.selectedFlag1.Size = new System.Drawing.Size(42, 16);
+            this.selectedFlag1.TabIndex = 138;
+            this.selectedFlag1.Text = "flag1";
+            // 
+            // variationModeButton
+            // 
+            this.variationModeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.variationModeButton.FlatAppearance.BorderSize = 0;
+            this.variationModeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.variationModeButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.variationModeButton.ForeColor = System.Drawing.Color.White;
+            this.variationModeButton.Location = new System.Drawing.Point(312, 389);
+            this.variationModeButton.Name = "variationModeButton";
+            this.variationModeButton.Size = new System.Drawing.Size(79, 23);
+            this.variationModeButton.TabIndex = 97;
+            this.variationModeButton.Text = "Variation";
+            this.variationModeButton.UseVisualStyleBackColor = false;
+            this.variationModeButton.Click += new System.EventHandler(this.variationModeButton_Click);
             // 
             // paginationPanel
             // 
@@ -2151,7 +2698,7 @@
             this.paginationPanel.Controls.Add(this.fastNextBtn);
             this.paginationPanel.Controls.Add(this.nextBtn);
             this.paginationPanel.Controls.Add(this.backBtn);
-            this.paginationPanel.Location = new System.Drawing.Point(577, 386);
+            this.paginationPanel.Location = new System.Drawing.Point(601, 386);
             this.paginationPanel.Name = "paginationPanel";
             this.paginationPanel.Size = new System.Drawing.Size(240, 34);
             this.paginationPanel.TabIndex = 96;
@@ -2167,6 +2714,22 @@
             this.pageLabel.Size = new System.Drawing.Size(61, 19);
             this.pageLabel.TabIndex = 95;
             this.pageLabel.Text = "Page 1";
+            // 
+            // debugBtn
+            // 
+            this.debugBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.debugBtn.FlatAppearance.BorderSize = 0;
+            this.debugBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.debugBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.debugBtn.ForeColor = System.Drawing.Color.White;
+            this.debugBtn.Location = new System.Drawing.Point(1101, 770);
+            this.debugBtn.Name = "debugBtn";
+            this.debugBtn.Size = new System.Drawing.Size(85, 23);
+            this.debugBtn.TabIndex = 138;
+            this.debugBtn.Tag = "";
+            this.debugBtn.Text = "debug";
+            this.debugBtn.UseVisualStyleBackColor = false;
+            this.debugBtn.Click += new System.EventHandler(this.debugBtn_Click);
             // 
             // inventoryBtn
             // 
@@ -2220,6 +2783,9 @@
             // 
             // otherLargePanel
             // 
+            this.otherLargePanel.Controls.Add(this.SeedTextbox);
+            this.otherLargePanel.Controls.Add(this.SeedLabel);
+            this.otherLargePanel.Controls.Add(this.pokeMainCheatPanel);
             this.otherLargePanel.Controls.Add(this.setReactionBtn);
             this.otherLargePanel.Controls.Add(this.label19);
             this.otherLargePanel.Controls.Add(this.reactionSlot2);
@@ -2277,27 +2843,249 @@
             this.otherLargePanel.Size = new System.Drawing.Size(1200, 550);
             this.otherLargePanel.TabIndex = 94;
             // 
-            // setReactionBtn
+            // SeedTextbox
             // 
-            this.setReactionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.setReactionBtn.FlatAppearance.BorderSize = 0;
-            this.setReactionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.setReactionBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setReactionBtn.ForeColor = System.Drawing.Color.White;
-            this.setReactionBtn.Location = new System.Drawing.Point(987, 304);
-            this.setReactionBtn.Name = "setReactionBtn";
-            this.setReactionBtn.Size = new System.Drawing.Size(140, 24);
-            this.setReactionBtn.TabIndex = 148;
-            this.setReactionBtn.Text = "Set Reaction Wheel";
-            this.setReactionBtn.UseVisualStyleBackColor = false;
-            this.setReactionBtn.Click += new System.EventHandler(this.setReactionBtn_Click);
+            this.SeedTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.SeedTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SeedTextbox.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.SeedTextbox.ForeColor = System.Drawing.Color.White;
+            this.SeedTextbox.Location = new System.Drawing.Point(904, 267);
+            this.SeedTextbox.MaxLength = 4;
+            this.SeedTextbox.Multiline = false;
+            this.SeedTextbox.Name = "SeedTextbox";
+            this.SeedTextbox.Size = new System.Drawing.Size(219, 25);
+            this.SeedTextbox.TabIndex = 175;
+            this.SeedTextbox.Text = "";
+            // 
+            // SeedLabel
+            // 
+            this.SeedLabel.AutoSize = true;
+            this.SeedLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.SeedLabel.ForeColor = System.Drawing.Color.White;
+            this.SeedLabel.Location = new System.Drawing.Point(783, 271);
+            this.SeedLabel.Name = "SeedLabel";
+            this.SeedLabel.Size = new System.Drawing.Size(115, 16);
+            this.SeedLabel.TabIndex = 175;
+            this.SeedLabel.Text = "Weather Seed :";
+            // 
+            // pokeMainCheatPanel
+            // 
+            this.pokeMainCheatPanel.Controls.Add(this.timePanel);
+            this.pokeMainCheatPanel.Controls.Add(this.label20);
+            this.pokeMainCheatPanel.Controls.Add(this.label23);
+            this.pokeMainCheatPanel.Controls.Add(this.unfreezeTimeBtn);
+            this.pokeMainCheatPanel.Controls.Add(this.speedEnableBtn);
+            this.pokeMainCheatPanel.Controls.Add(this.animationSpdx50);
+            this.pokeMainCheatPanel.Controls.Add(this.freezeTimeBtn);
+            this.pokeMainCheatPanel.Controls.Add(this.speedDisableBtn);
+            this.pokeMainCheatPanel.Controls.Add(this.animationSpdx2);
+            this.pokeMainCheatPanel.Controls.Add(this.Label21);
+            this.pokeMainCheatPanel.Controls.Add(this.animationSpdx1);
+            this.pokeMainCheatPanel.Controls.Add(this.disableCollisionBtn);
+            this.pokeMainCheatPanel.Controls.Add(this.animationSpdx0_1);
+            this.pokeMainCheatPanel.Controls.Add(this.enableCollisionBtn);
+            this.pokeMainCheatPanel.Controls.Add(this.label22);
+            this.pokeMainCheatPanel.Location = new System.Drawing.Point(421, 295);
+            this.pokeMainCheatPanel.Name = "pokeMainCheatPanel";
+            this.pokeMainCheatPanel.Size = new System.Drawing.Size(702, 197);
+            this.pokeMainCheatPanel.TabIndex = 161;
+            // 
+            // timePanel
+            // 
+            this.timePanel.Controls.Add(this.minus1HourBtn);
+            this.timePanel.Controls.Add(this.add1HourBtn);
+            this.timePanel.Controls.Add(this.settimeBtn);
+            this.timePanel.Controls.Add(this.label28);
+            this.timePanel.Controls.Add(this.label27);
+            this.timePanel.Controls.Add(this.label26);
+            this.timePanel.Controls.Add(this.label25);
+            this.timePanel.Controls.Add(this.label24);
+            this.timePanel.Controls.Add(this.minTextbox);
+            this.timePanel.Controls.Add(this.yearTextbox);
+            this.timePanel.Controls.Add(this.hourTextbox);
+            this.timePanel.Controls.Add(this.monthTextbox);
+            this.timePanel.Controls.Add(this.dayTextbox);
+            this.timePanel.Location = new System.Drawing.Point(365, 59);
+            this.timePanel.Name = "timePanel";
+            this.timePanel.Size = new System.Drawing.Size(334, 135);
+            this.timePanel.TabIndex = 167;
+            this.timePanel.Visible = false;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label28.ForeColor = System.Drawing.Color.White;
+            this.label28.Location = new System.Drawing.Point(82, 50);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(57, 16);
+            this.label28.TabIndex = 172;
+            this.label28.Text = "Minute";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label27.ForeColor = System.Drawing.Color.White;
+            this.label27.Location = new System.Drawing.Point(11, 50);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(42, 16);
+            this.label27.TabIndex = 171;
+            this.label27.Text = "Hour";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(147, 4);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(33, 16);
+            this.label26.TabIndex = 170;
+            this.label26.Text = "Day";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label25.ForeColor = System.Drawing.Color.White;
+            this.label25.Location = new System.Drawing.Point(79, 4);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(53, 16);
+            this.label25.TabIndex = 169;
+            this.label25.Text = "Month";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label24.ForeColor = System.Drawing.Color.White;
+            this.label24.Location = new System.Drawing.Point(11, 4);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(40, 16);
+            this.label24.TabIndex = 168;
+            this.label24.Text = "Year";
+            // 
+            // minTextbox
+            // 
+            this.minTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.minTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.minTextbox.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.minTextbox.ForeColor = System.Drawing.Color.White;
+            this.minTextbox.Location = new System.Drawing.Point(82, 69);
+            this.minTextbox.MaxLength = 2;
+            this.minTextbox.Multiline = false;
+            this.minTextbox.Name = "minTextbox";
+            this.minTextbox.Size = new System.Drawing.Size(60, 25);
+            this.minTextbox.TabIndex = 166;
+            this.minTextbox.Text = "Minute";
+            // 
+            // yearTextbox
+            // 
+            this.yearTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.yearTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.yearTextbox.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.yearTextbox.ForeColor = System.Drawing.Color.White;
+            this.yearTextbox.Location = new System.Drawing.Point(14, 22);
+            this.yearTextbox.MaxLength = 4;
+            this.yearTextbox.Multiline = false;
+            this.yearTextbox.Name = "yearTextbox";
+            this.yearTextbox.Size = new System.Drawing.Size(60, 25);
+            this.yearTextbox.TabIndex = 162;
+            this.yearTextbox.Text = "Year";
+            // 
+            // hourTextbox
+            // 
+            this.hourTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.hourTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.hourTextbox.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.hourTextbox.ForeColor = System.Drawing.Color.White;
+            this.hourTextbox.Location = new System.Drawing.Point(14, 69);
+            this.hourTextbox.MaxLength = 2;
+            this.hourTextbox.Multiline = false;
+            this.hourTextbox.Name = "hourTextbox";
+            this.hourTextbox.Size = new System.Drawing.Size(60, 25);
+            this.hourTextbox.TabIndex = 165;
+            this.hourTextbox.Text = "Hour";
+            // 
+            // monthTextbox
+            // 
+            this.monthTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.monthTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.monthTextbox.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.monthTextbox.ForeColor = System.Drawing.Color.White;
+            this.monthTextbox.Location = new System.Drawing.Point(82, 22);
+            this.monthTextbox.MaxLength = 2;
+            this.monthTextbox.Multiline = false;
+            this.monthTextbox.Name = "monthTextbox";
+            this.monthTextbox.Size = new System.Drawing.Size(60, 25);
+            this.monthTextbox.TabIndex = 163;
+            this.monthTextbox.Text = "Month";
+            // 
+            // dayTextbox
+            // 
+            this.dayTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.dayTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dayTextbox.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.dayTextbox.ForeColor = System.Drawing.Color.White;
+            this.dayTextbox.Location = new System.Drawing.Point(150, 21);
+            this.dayTextbox.MaxLength = 2;
+            this.dayTextbox.Multiline = false;
+            this.dayTextbox.Name = "dayTextbox";
+            this.dayTextbox.Size = new System.Drawing.Size(60, 25);
+            this.dayTextbox.TabIndex = 164;
+            this.dayTextbox.Text = "Day";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label20.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label20.Location = new System.Drawing.Point(3, 4);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(129, 22);
+            this.label20.TabIndex = 149;
+            this.label20.Text = "Walk Speed :";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label23.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label23.Location = new System.Drawing.Point(361, 4);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(68, 22);
+            this.label23.TabIndex = 160;
+            this.label23.Text = "Time :";
+            // 
+            // Label21
+            // 
+            this.Label21.AutoSize = true;
+            this.Label21.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.Label21.ForeColor = System.Drawing.Color.Gainsboro;
+            this.Label21.Location = new System.Drawing.Point(3, 57);
+            this.Label21.Name = "Label21";
+            this.Label21.Size = new System.Drawing.Size(168, 22);
+            this.Label21.TabIndex = 152;
+            this.Label21.Text = "Object Collision :";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label22.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label22.Location = new System.Drawing.Point(4, 110);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(179, 22);
+            this.label22.TabIndex = 155;
+            this.label22.Text = "Animation Speed :";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(421, 54);
+            this.label19.Location = new System.Drawing.Point(421, 10);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(244, 22);
             this.label19.TabIndex = 147;
@@ -2379,7 +3167,7 @@
             "40: K.K. Slider Sitting (Unused)",
             "41: K.K. nodding (Unused)",
             "42: K.K. thinking (Unused)"});
-            this.reactionSlot2.Location = new System.Drawing.Point(807, 143);
+            this.reactionSlot2.Location = new System.Drawing.Point(807, 82);
             this.reactionSlot2.Name = "reactionSlot2";
             this.reactionSlot2.Size = new System.Drawing.Size(255, 24);
             this.reactionSlot2.TabIndex = 146;
@@ -2460,7 +3248,7 @@
             "40: K.K. Slider Sitting (Unused)",
             "41: K.K. nodding (Unused)",
             "42: K.K. thinking (Unused)"});
-            this.reactionSlot3.Location = new System.Drawing.Point(872, 185);
+            this.reactionSlot3.Location = new System.Drawing.Point(872, 124);
             this.reactionSlot3.Name = "reactionSlot3";
             this.reactionSlot3.Size = new System.Drawing.Size(255, 24);
             this.reactionSlot3.TabIndex = 145;
@@ -2541,7 +3329,7 @@
             "40: K.K. Slider Sitting (Unused)",
             "41: K.K. nodding (Unused)",
             "42: K.K. thinking (Unused)"});
-            this.reactionSlot4.Location = new System.Drawing.Point(807, 227);
+            this.reactionSlot4.Location = new System.Drawing.Point(807, 166);
             this.reactionSlot4.Name = "reactionSlot4";
             this.reactionSlot4.Size = new System.Drawing.Size(255, 24);
             this.reactionSlot4.TabIndex = 144;
@@ -2622,7 +3410,7 @@
             "40: K.K. Slider Sitting (Unused)",
             "41: K.K. nodding (Unused)",
             "42: K.K. thinking (Unused)"});
-            this.reactionSlot1.Location = new System.Drawing.Point(638, 98);
+            this.reactionSlot1.Location = new System.Drawing.Point(638, 37);
             this.reactionSlot1.Name = "reactionSlot1";
             this.reactionSlot1.Size = new System.Drawing.Size(255, 24);
             this.reactionSlot1.TabIndex = 137;
@@ -2703,7 +3491,7 @@
             "40: K.K. Slider Sitting (Unused)",
             "41: K.K. nodding (Unused)",
             "42: K.K. thinking (Unused)"});
-            this.reactionSlot8.Location = new System.Drawing.Point(482, 143);
+            this.reactionSlot8.Location = new System.Drawing.Point(482, 82);
             this.reactionSlot8.Name = "reactionSlot8";
             this.reactionSlot8.Size = new System.Drawing.Size(255, 24);
             this.reactionSlot8.TabIndex = 143;
@@ -2784,7 +3572,7 @@
             "40: K.K. Slider Sitting (Unused)",
             "41: K.K. nodding (Unused)",
             "42: K.K. thinking (Unused)"});
-            this.reactionSlot7.Location = new System.Drawing.Point(425, 186);
+            this.reactionSlot7.Location = new System.Drawing.Point(425, 125);
             this.reactionSlot7.Name = "reactionSlot7";
             this.reactionSlot7.Size = new System.Drawing.Size(255, 24);
             this.reactionSlot7.TabIndex = 142;
@@ -2865,7 +3653,7 @@
             "40: K.K. Slider Sitting (Unused)",
             "41: K.K. nodding (Unused)",
             "42: K.K. thinking (Unused)"});
-            this.reactionSlot6.Location = new System.Drawing.Point(482, 227);
+            this.reactionSlot6.Location = new System.Drawing.Point(482, 166);
             this.reactionSlot6.Name = "reactionSlot6";
             this.reactionSlot6.Size = new System.Drawing.Size(255, 24);
             this.reactionSlot6.TabIndex = 141;
@@ -2946,32 +3734,17 @@
             "40: K.K. Slider Sitting (Unused)",
             "41: K.K. nodding (Unused)",
             "42: K.K. thinking (Unused)"});
-            this.reactionSlot5.Location = new System.Drawing.Point(638, 270);
+            this.reactionSlot5.Location = new System.Drawing.Point(638, 209);
             this.reactionSlot5.Name = "reactionSlot5";
             this.reactionSlot5.Size = new System.Drawing.Size(255, 24);
             this.reactionSlot5.TabIndex = 140;
-            // 
-            // setTurnipBtn
-            // 
-            this.setTurnipBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.setTurnipBtn.FlatAppearance.BorderSize = 0;
-            this.setTurnipBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.setTurnipBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.setTurnipBtn.ForeColor = System.Drawing.Color.White;
-            this.setTurnipBtn.Location = new System.Drawing.Point(248, 79);
-            this.setTurnipBtn.Name = "setTurnipBtn";
-            this.setTurnipBtn.Size = new System.Drawing.Size(120, 24);
-            this.setTurnipBtn.TabIndex = 134;
-            this.setTurnipBtn.Text = "Set Turnip Price";
-            this.setTurnipBtn.UseVisualStyleBackColor = false;
-            this.setTurnipBtn.Click += new System.EventHandler(this.setTurnipBtn_Click);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(424, 331);
+            this.label17.Location = new System.Drawing.Point(424, 246);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(97, 22);
             this.label17.TabIndex = 132;
@@ -3459,35 +4232,355 @@
             this.tuesdayAMStar.Text = "★";
             this.tuesdayAMStar.Visible = false;
             // 
-            // unfreezeTimeBtn
+            // USBconnectBtn
             // 
-            this.unfreezeTimeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.unfreezeTimeBtn.FlatAppearance.BorderSize = 0;
-            this.unfreezeTimeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.unfreezeTimeBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unfreezeTimeBtn.ForeColor = System.Drawing.Color.White;
-            this.unfreezeTimeBtn.Location = new System.Drawing.Point(912, 737);
-            this.unfreezeTimeBtn.Name = "unfreezeTimeBtn";
-            this.unfreezeTimeBtn.Size = new System.Drawing.Size(156, 24);
-            this.unfreezeTimeBtn.TabIndex = 136;
-            this.unfreezeTimeBtn.Text = "Zero";
-            this.unfreezeTimeBtn.UseVisualStyleBackColor = false;
-            this.unfreezeTimeBtn.Click += new System.EventHandler(this.unfreezeTimeBtn_Click);
+            this.USBconnectBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.USBconnectBtn.FlatAppearance.BorderSize = 0;
+            this.USBconnectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.USBconnectBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.USBconnectBtn.ForeColor = System.Drawing.Color.White;
+            this.USBconnectBtn.Location = new System.Drawing.Point(35, 25);
+            this.USBconnectBtn.Name = "USBconnectBtn";
+            this.USBconnectBtn.Size = new System.Drawing.Size(85, 23);
+            this.USBconnectBtn.TabIndex = 137;
+            this.USBconnectBtn.Tag = "connect";
+            this.USBconnectBtn.Text = "USB";
+            this.USBconnectBtn.UseVisualStyleBackColor = false;
+            this.USBconnectBtn.Click += new System.EventHandler(this.USBconnectBtn_Click);
             // 
-            // freezeTimeBtn
+            // PokeMainBtn
             // 
-            this.freezeTimeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.freezeTimeBtn.FlatAppearance.BorderSize = 0;
-            this.freezeTimeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.freezeTimeBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.freezeTimeBtn.ForeColor = System.Drawing.Color.White;
-            this.freezeTimeBtn.Location = new System.Drawing.Point(750, 737);
-            this.freezeTimeBtn.Name = "freezeTimeBtn";
-            this.freezeTimeBtn.Size = new System.Drawing.Size(156, 24);
-            this.freezeTimeBtn.TabIndex = 135;
-            this.freezeTimeBtn.Text = "Za Wārudo";
-            this.freezeTimeBtn.UseVisualStyleBackColor = false;
-            this.freezeTimeBtn.Click += new System.EventHandler(this.freezeTimeBtn_Click);
+            this.PokeMainBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.PokeMainBtn.FlatAppearance.BorderSize = 0;
+            this.PokeMainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PokeMainBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PokeMainBtn.ForeColor = System.Drawing.Color.White;
+            this.PokeMainBtn.Location = new System.Drawing.Point(15, 734);
+            this.PokeMainBtn.Name = "PokeMainBtn";
+            this.PokeMainBtn.Size = new System.Drawing.Size(75, 56);
+            this.PokeMainBtn.TabIndex = 139;
+            this.PokeMainBtn.Text = "PokeMain";
+            this.PokeMainBtn.UseVisualStyleBackColor = false;
+            this.PokeMainBtn.Click += new System.EventHandler(this.PokeMainBtn_Click);
+            // 
+            // PeekMainBtn
+            // 
+            this.PeekMainBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.PeekMainBtn.FlatAppearance.BorderSize = 0;
+            this.PeekMainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PeekMainBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PeekMainBtn.ForeColor = System.Drawing.Color.White;
+            this.PeekMainBtn.Location = new System.Drawing.Point(15, 672);
+            this.PeekMainBtn.Name = "PeekMainBtn";
+            this.PeekMainBtn.Size = new System.Drawing.Size(75, 56);
+            this.PeekMainBtn.TabIndex = 140;
+            this.PeekMainBtn.Text = "PeekMain";
+            this.PeekMainBtn.UseVisualStyleBackColor = false;
+            this.PeekMainBtn.Click += new System.EventHandler(this.PeekMainBtn_Click);
+            // 
+            // critterLargePanel
+            // 
+            this.critterLargePanel.Controls.Add(this.pacman);
+            this.critterLargePanel.Controls.Add(this.pleaseWaitLabel);
+            this.critterLargePanel.Controls.Add(this.readDataBtn);
+            this.critterLargePanel.Controls.Add(this.resetAllBtn);
+            this.critterLargePanel.Controls.Add(this.disableAllBtn);
+            this.critterLargePanel.Controls.Add(this.seaCreatureBtn);
+            this.critterLargePanel.Controls.Add(this.seaFishBtn);
+            this.critterLargePanel.Controls.Add(this.riverFishBtn);
+            this.critterLargePanel.Controls.Add(this.insectBtn);
+            this.critterLargePanel.Controls.Add(this.critterSearchBox);
+            this.critterLargePanel.Controls.Add(this.insectGridView);
+            this.critterLargePanel.Controls.Add(this.seaCreatureGridView);
+            this.critterLargePanel.Controls.Add(this.seaFishGridView);
+            this.critterLargePanel.Controls.Add(this.riverFishGridView);
+            this.critterLargePanel.Location = new System.Drawing.Point(0, 0);
+            this.critterLargePanel.Name = "critterLargePanel";
+            this.critterLargePanel.Size = new System.Drawing.Size(1225, 550);
+            this.critterLargePanel.TabIndex = 141;
+            // 
+            // pacman
+            // 
+            this.pacman.Image = global::ACNHPoker.Properties.Resources.loading;
+            this.pacman.Location = new System.Drawing.Point(861, 51);
+            this.pacman.Name = "pacman";
+            this.pacman.Size = new System.Drawing.Size(24, 24);
+            this.pacman.TabIndex = 153;
+            this.pacman.TabStop = false;
+            this.pacman.Visible = false;
+            // 
+            // pleaseWaitLabel
+            // 
+            this.pleaseWaitLabel.AutoSize = true;
+            this.pleaseWaitLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.pleaseWaitLabel.ForeColor = System.Drawing.Color.White;
+            this.pleaseWaitLabel.Location = new System.Drawing.Point(888, 56);
+            this.pleaseWaitLabel.Name = "pleaseWaitLabel";
+            this.pleaseWaitLabel.Size = new System.Drawing.Size(100, 16);
+            this.pleaseWaitLabel.TabIndex = 152;
+            this.pleaseWaitLabel.Text = "Please Wait...";
+            this.pleaseWaitLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pleaseWaitLabel.Visible = false;
+            // 
+            // seaCreatureBtn
+            // 
+            this.seaCreatureBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.seaCreatureBtn.FlatAppearance.BorderSize = 0;
+            this.seaCreatureBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.seaCreatureBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.seaCreatureBtn.ForeColor = System.Drawing.Color.White;
+            this.seaCreatureBtn.Location = new System.Drawing.Point(667, 27);
+            this.seaCreatureBtn.Name = "seaCreatureBtn";
+            this.seaCreatureBtn.Size = new System.Drawing.Size(110, 23);
+            this.seaCreatureBtn.TabIndex = 143;
+            this.seaCreatureBtn.Text = "Sea Creature";
+            this.seaCreatureBtn.UseVisualStyleBackColor = false;
+            this.seaCreatureBtn.Click += new System.EventHandler(this.seaCreatureBtn_Click);
+            // 
+            // seaFishBtn
+            // 
+            this.seaFishBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.seaFishBtn.FlatAppearance.BorderSize = 0;
+            this.seaFishBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.seaFishBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.seaFishBtn.ForeColor = System.Drawing.Color.White;
+            this.seaFishBtn.Location = new System.Drawing.Point(552, 27);
+            this.seaFishBtn.Name = "seaFishBtn";
+            this.seaFishBtn.Size = new System.Drawing.Size(110, 23);
+            this.seaFishBtn.TabIndex = 142;
+            this.seaFishBtn.Text = "Sea Fish";
+            this.seaFishBtn.UseVisualStyleBackColor = false;
+            this.seaFishBtn.Click += new System.EventHandler(this.seaFishBtn_Click);
+            // 
+            // riverFishBtn
+            // 
+            this.riverFishBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.riverFishBtn.FlatAppearance.BorderSize = 0;
+            this.riverFishBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.riverFishBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.riverFishBtn.ForeColor = System.Drawing.Color.White;
+            this.riverFishBtn.Location = new System.Drawing.Point(437, 27);
+            this.riverFishBtn.Name = "riverFishBtn";
+            this.riverFishBtn.Size = new System.Drawing.Size(110, 23);
+            this.riverFishBtn.TabIndex = 141;
+            this.riverFishBtn.Text = "River Fish";
+            this.riverFishBtn.UseVisualStyleBackColor = false;
+            this.riverFishBtn.Click += new System.EventHandler(this.riverFishBtn_Click);
+            // 
+            // insectBtn
+            // 
+            this.insectBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            this.insectBtn.FlatAppearance.BorderSize = 0;
+            this.insectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.insectBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.insectBtn.ForeColor = System.Drawing.Color.White;
+            this.insectBtn.Location = new System.Drawing.Point(322, 27);
+            this.insectBtn.Name = "insectBtn";
+            this.insectBtn.Size = new System.Drawing.Size(110, 23);
+            this.insectBtn.TabIndex = 140;
+            this.insectBtn.Text = "Insect";
+            this.insectBtn.UseVisualStyleBackColor = false;
+            this.insectBtn.Click += new System.EventHandler(this.insectBtn_Click);
+            // 
+            // critterSearchBox
+            // 
+            this.critterSearchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.critterSearchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.critterSearchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.critterSearchBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(118)))), ((int)(((byte)(125)))));
+            this.critterSearchBox.Location = new System.Drawing.Point(199, 77);
+            this.critterSearchBox.MaxLength = 50;
+            this.critterSearchBox.Multiline = false;
+            this.critterSearchBox.Name = "critterSearchBox";
+            this.critterSearchBox.Size = new System.Drawing.Size(220, 23);
+            this.critterSearchBox.TabIndex = 139;
+            this.critterSearchBox.Text = "Search";
+            this.critterSearchBox.Click += new System.EventHandler(this.critterSearchBox_Click);
+            this.critterSearchBox.TextChanged += new System.EventHandler(this.critterSearchBox_TextChanged);
+            // 
+            // insectGridView
+            // 
+            this.insectGridView.AllowUserToAddRows = false;
+            this.insectGridView.AllowUserToDeleteRows = false;
+            this.insectGridView.AllowUserToResizeRows = false;
+            this.insectGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            this.insectGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.insectGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.insectGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.insectGridView.Location = new System.Drawing.Point(50, 110);
+            this.insectGridView.MultiSelect = false;
+            this.insectGridView.Name = "insectGridView";
+            this.insectGridView.ReadOnly = true;
+            this.insectGridView.RowHeadersVisible = false;
+            this.insectGridView.RowTemplate.Height = 50;
+            this.insectGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.insectGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.insectGridView.Size = new System.Drawing.Size(1130, 394);
+            this.insectGridView.TabIndex = 30;
+            this.insectGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridView_CellContentClick);
+            this.insectGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.GridView_CellFormatting);
+            this.insectGridView.SelectionChanged += new System.EventHandler(this.GridView_SelectionChanged);
+            // 
+            // seaCreatureGridView
+            // 
+            this.seaCreatureGridView.AllowUserToAddRows = false;
+            this.seaCreatureGridView.AllowUserToDeleteRows = false;
+            this.seaCreatureGridView.AllowUserToResizeRows = false;
+            this.seaCreatureGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            this.seaCreatureGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seaCreatureGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.seaCreatureGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.seaCreatureGridView.Location = new System.Drawing.Point(50, 110);
+            this.seaCreatureGridView.MultiSelect = false;
+            this.seaCreatureGridView.Name = "seaCreatureGridView";
+            this.seaCreatureGridView.ReadOnly = true;
+            this.seaCreatureGridView.RowHeadersVisible = false;
+            this.seaCreatureGridView.RowTemplate.Height = 50;
+            this.seaCreatureGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.seaCreatureGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.seaCreatureGridView.Size = new System.Drawing.Size(1130, 394);
+            this.seaCreatureGridView.TabIndex = 151;
+            this.seaCreatureGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridView_CellContentClick);
+            this.seaCreatureGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.GridView_CellFormatting);
+            this.seaCreatureGridView.SelectionChanged += new System.EventHandler(this.GridView_SelectionChanged);
+            // 
+            // seaFishGridView
+            // 
+            this.seaFishGridView.AllowUserToAddRows = false;
+            this.seaFishGridView.AllowUserToDeleteRows = false;
+            this.seaFishGridView.AllowUserToResizeRows = false;
+            this.seaFishGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            this.seaFishGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.seaFishGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.seaFishGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.seaFishGridView.Location = new System.Drawing.Point(50, 110);
+            this.seaFishGridView.MultiSelect = false;
+            this.seaFishGridView.Name = "seaFishGridView";
+            this.seaFishGridView.ReadOnly = true;
+            this.seaFishGridView.RowHeadersVisible = false;
+            this.seaFishGridView.RowTemplate.Height = 50;
+            this.seaFishGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.seaFishGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.seaFishGridView.Size = new System.Drawing.Size(1130, 394);
+            this.seaFishGridView.TabIndex = 150;
+            this.seaFishGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridView_CellContentClick);
+            this.seaFishGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.GridView_CellFormatting);
+            this.seaFishGridView.SelectionChanged += new System.EventHandler(this.GridView_SelectionChanged);
+            // 
+            // riverFishGridView
+            // 
+            this.riverFishGridView.AllowUserToAddRows = false;
+            this.riverFishGridView.AllowUserToDeleteRows = false;
+            this.riverFishGridView.AllowUserToResizeRows = false;
+            this.riverFishGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            this.riverFishGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.riverFishGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.riverFishGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.riverFishGridView.Location = new System.Drawing.Point(50, 110);
+            this.riverFishGridView.MultiSelect = false;
+            this.riverFishGridView.Name = "riverFishGridView";
+            this.riverFishGridView.ReadOnly = true;
+            this.riverFishGridView.RowHeadersVisible = false;
+            this.riverFishGridView.RowTemplate.Height = 50;
+            this.riverFishGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.riverFishGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.riverFishGridView.Size = new System.Drawing.Size(1130, 394);
+            this.riverFishGridView.TabIndex = 149;
+            this.riverFishGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridView_CellContentClick);
+            this.riverFishGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.GridView_CellFormatting);
+            this.riverFishGridView.SelectionChanged += new System.EventHandler(this.GridView_SelectionChanged);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(984, 862);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 23);
+            this.button1.TabIndex = 154;
+            this.button1.Tag = "";
+            this.button1.Text = "debug";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Result5
+            // 
+            this.Result5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Result5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Result5.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Result5.ForeColor = System.Drawing.Color.White;
+            this.Result5.Location = new System.Drawing.Point(427, 737);
+            this.Result5.Multiline = false;
+            this.Result5.Name = "Result5";
+            this.Result5.Size = new System.Drawing.Size(318, 56);
+            this.Result5.TabIndex = 155;
+            this.Result5.Text = "";
+            // 
+            // Result6
+            // 
+            this.Result6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Result6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Result6.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Result6.ForeColor = System.Drawing.Color.White;
+            this.Result6.Location = new System.Drawing.Point(751, 736);
+            this.Result6.Multiline = false;
+            this.Result6.Name = "Result6";
+            this.Result6.Size = new System.Drawing.Size(318, 56);
+            this.Result6.TabIndex = 156;
+            this.Result6.Text = "";
+            // 
+            // Result7
+            // 
+            this.Result7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Result7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Result7.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Result7.ForeColor = System.Drawing.Color.White;
+            this.Result7.Location = new System.Drawing.Point(103, 800);
+            this.Result7.Multiline = false;
+            this.Result7.Name = "Result7";
+            this.Result7.Size = new System.Drawing.Size(318, 56);
+            this.Result7.TabIndex = 157;
+            this.Result7.Text = "";
+            // 
+            // Result8
+            // 
+            this.Result8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Result8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Result8.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Result8.ForeColor = System.Drawing.Color.White;
+            this.Result8.Location = new System.Drawing.Point(429, 800);
+            this.Result8.Multiline = false;
+            this.Result8.Name = "Result8";
+            this.Result8.Size = new System.Drawing.Size(318, 56);
+            this.Result8.TabIndex = 158;
+            this.Result8.Text = "";
+            // 
+            // Result9
+            // 
+            this.Result9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Result9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Result9.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Result9.ForeColor = System.Drawing.Color.White;
+            this.Result9.Location = new System.Drawing.Point(753, 800);
+            this.Result9.Multiline = false;
+            this.Result9.Name = "Result9";
+            this.Result9.Size = new System.Drawing.Size(318, 56);
+            this.Result9.TabIndex = 159;
+            this.Result9.Text = "";
+            // 
+            // btnToolTip
+            // 
+            this.btnToolTip.AutomaticDelay = 100;
+            this.btnToolTip.AutoPopDelay = 5000;
+            this.btnToolTip.InitialDelay = 100;
+            this.btnToolTip.IsBalloon = true;
+            this.btnToolTip.ReshowDelay = 20;
+            this.btnToolTip.ShowAlways = true;
+            this.btnToolTip.UseAnimation = false;
+            this.btnToolTip.UseFading = false;
             // 
             // Form1
             // 
@@ -3495,14 +4588,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1204, 516);
-            this.Controls.Add(this.unfreezeTimeBtn);
-            this.Controls.Add(this.freezeTimeBtn);
+            this.Controls.Add(this.Result9);
+            this.Controls.Add(this.Result8);
+            this.Controls.Add(this.Result7);
+            this.Controls.Add(this.Result6);
+            this.Controls.Add(this.Result5);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.otherBtn);
+            this.Controls.Add(this.PeekMainBtn);
+            this.Controls.Add(this.PokeMainBtn);
+            this.Controls.Add(this.debugBtn);
+            this.Controls.Add(this.connectBtn);
+            this.Controls.Add(this.USBconnectBtn);
+            this.Controls.Add(this.spawnAllBtn3);
             this.Controls.Add(this.critterBtn);
+            this.Controls.Add(this.variationsBtn);
             this.Controls.Add(this.inventoryBtn);
             this.Controls.Add(this.debugAmount);
             this.Controls.Add(this.PokeBtn);
-            this.Controls.Add(this.debugBtn);
             this.Controls.Add(this.FullAddress);
             this.Controls.Add(this.ChaseBtn);
             this.Controls.Add(this.Result4);
@@ -3513,17 +4616,16 @@
             this.Controls.Add(this.debugAddress);
             this.Controls.Add(this.ipBox);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.DisconnectBtn);
-            this.Controls.Add(this.connectBtn);
             this.Controls.Add(this.inventoryLargePanel);
             this.Controls.Add(this.otherLargePanel);
+            this.Controls.Add(this.critterLargePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1220, 1000);
             this.MinimumSize = new System.Drawing.Size(1220, 555);
             this.Name = "Form1";
-            this.Text = "ACNH Poker V1.2.1 MyShiLingStar R 7.1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.LocationChanged += new System.EventHandler(this.Form1_LocationChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyboardKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.itemRightClick.ResumeLayout(false);
@@ -3531,6 +4633,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemGridView)).EndInit();
             this.itemModePanel.ResumeLayout(false);
             this.itemModePanel.PerformLayout();
+            this.genePanel.ResumeLayout(false);
             this.recipeModePanel.ResumeLayout(false);
             this.recipeModePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recipeGridView)).EndInit();
@@ -3541,10 +4644,22 @@
             this.playerSelectionPanel.PerformLayout();
             this.inventoryLargePanel.ResumeLayout(false);
             this.inventoryLargePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pacman2)).EndInit();
             this.paginationPanel.ResumeLayout(false);
             this.paginationPanel.PerformLayout();
             this.otherLargePanel.ResumeLayout(false);
             this.otherLargePanel.PerformLayout();
+            this.pokeMainCheatPanel.ResumeLayout(false);
+            this.pokeMainCheatPanel.PerformLayout();
+            this.timePanel.ResumeLayout(false);
+            this.timePanel.PerformLayout();
+            this.critterLargePanel.ResumeLayout(false);
+            this.critterLargePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pacman)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.insectGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seaCreatureGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seaFishGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.riverFishGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3595,9 +4710,7 @@
         private System.Windows.Forms.Button flowerModeBtn;
         private System.Windows.Forms.Button ChaseBtn;
         private System.Windows.Forms.RichTextBox FullAddress;
-        private System.Windows.Forms.Button DisconnectBtn;
         private System.Windows.Forms.CheckBox autoRefreshCheckBox;
-        private System.Windows.Forms.Button debugBtn;
         private inventorySlot selectedItem;
         private System.Windows.Forms.Label selectedItemName;
         private System.Windows.Forms.Label selectedData;
@@ -3722,6 +4835,71 @@
         private System.Windows.Forms.ComboBox reactionSlot5;
         private System.Windows.Forms.Panel paginationPanel;
         private System.Windows.Forms.Button setReactionBtn;
+        private System.Windows.Forms.Button variationModeButton;
+        private System.Windows.Forms.Label selectedFlag2;
+        private System.Windows.Forms.Label selectedFlag1;
+        private System.Windows.Forms.Button USBconnectBtn;
+        private System.Windows.Forms.Button debugBtn;
+        private System.Windows.Forms.Button PokeMainBtn;
+        private System.Windows.Forms.Button PeekMainBtn;
+        private System.Windows.Forms.Button enableCollisionBtn;
+        private System.Windows.Forms.Button disableCollisionBtn;
+        private System.Windows.Forms.Label Label21;
+        private System.Windows.Forms.Button speedDisableBtn;
+        private System.Windows.Forms.Button speedEnableBtn;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button animationSpdx50;
+        private System.Windows.Forms.Button animationSpdx2;
+        private System.Windows.Forms.Button animationSpdx1;
+        private System.Windows.Forms.Button animationSpdx0_1;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Panel pokeMainCheatPanel;
+        private System.Windows.Forms.RichTextBox yearTextbox;
+        private System.Windows.Forms.RichTextBox minTextbox;
+        private System.Windows.Forms.RichTextBox hourTextbox;
+        private System.Windows.Forms.RichTextBox dayTextbox;
+        private System.Windows.Forms.RichTextBox monthTextbox;
+        private System.Windows.Forms.Panel timePanel;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button settimeBtn;
+        private System.Windows.Forms.Button minus1HourBtn;
+        private System.Windows.Forms.Button add1HourBtn;
+        private System.Windows.Forms.Label SeedLabel;
+        private System.Windows.Forms.RichTextBox SeedTextbox;
+        private System.Windows.Forms.Panel critterLargePanel;
+        private System.Windows.Forms.DataGridView insectGridView;
+        private System.Windows.Forms.RichTextBox critterSearchBox;
+        private System.Windows.Forms.Button insectBtn;
+        private System.Windows.Forms.Button seaCreatureBtn;
+        private System.Windows.Forms.Button seaFishBtn;
+        private System.Windows.Forms.Button riverFishBtn;
+        private System.Windows.Forms.Button resetAllBtn;
+        private System.Windows.Forms.Button disableAllBtn;
+        private System.Windows.Forms.Button readDataBtn;
+        private System.Windows.Forms.DataGridView seaCreatureGridView;
+        private System.Windows.Forms.DataGridView seaFishGridView;
+        private System.Windows.Forms.DataGridView riverFishGridView;
+        private System.Windows.Forms.Label pleaseWaitLabel;
+        private System.Windows.Forms.PictureBox pacman;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RichTextBox Result5;
+        private System.Windows.Forms.RichTextBox Result6;
+        private System.Windows.Forms.RichTextBox Result7;
+        private System.Windows.Forms.RichTextBox Result8;
+        private System.Windows.Forms.RichTextBox Result9;
+        private System.Windows.Forms.ToolTip btnToolTip;
+        private System.Windows.Forms.PictureBox pacman2;
+        private System.Windows.Forms.Button fillRemainBtn;
+        private System.Windows.Forms.Panel genePanel;
+        private System.Windows.Forms.ComboBox flowerGeneS;
+        private System.Windows.Forms.ComboBox flowerGeneW;
+        private System.Windows.Forms.ComboBox flowerGeneY;
+        private System.Windows.Forms.ComboBox flowerGeneR;
     }
 }
 

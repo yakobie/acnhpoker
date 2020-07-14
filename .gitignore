@@ -3,3 +3,4 @@ acnhpoker/bin/
 acnhpoker/obj/
 img/
 *.suo
+/packages/LibUsbDotNet.2.2.28
