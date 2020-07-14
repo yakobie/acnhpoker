@@ -110,11 +110,11 @@ https://youtu.be/-zztRgmtXig
 ## Donate
 
 If you are considering donation please keep in mind that the donation doesn't get you anything other than my love. 
-https://ko-fi.com/myshilingstar
-https://www.paypal.me/myshilingstar
+* https://ko-fi.com/myshilingstar
+* https://www.paypal.me/myshilingstar
 
 Please also consider supporting the original author of ACNHPoker @kinglycosa
-https://ko-fi.com/chad0001
+* https://ko-fi.com/chad0001
 
 ## Meta
 
