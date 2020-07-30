@@ -93,11 +93,13 @@ https://youtu.be/-zztRgmtXig
     * Added new items and recipes of Game version number 1.3.0
     * Added fill remain option for only spawning in empty inventory.
 * R9.1
+    * Update for Game version number 1.3.1
     * Fixed sea creature spawn to inculde "Pearl"
-    * Update for Game version number 1.3.1    
 * R9.2
+    * Update for Game version number 1.4.0
     * Fixed broken copy function of R9.
     * Added gene selection boxes for flowers.
+    * Added Wrap All Item and Unwrap All Item in right click menu.
     * Major bug fix for item spawn and image display.
     
 ## Contributing
