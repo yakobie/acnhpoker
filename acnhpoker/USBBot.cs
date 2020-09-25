@@ -1,21 +1,25 @@
-﻿using System;
+﻿using LibUsbDotNet;
+using System;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Windows.Forms;
-using LibUsbDotNet;
 using LibUsbDotNet.Main;
+using System.Windows.Forms;
+using System.Diagnostics;
 
-namespace acnhpoker
+namespace ACNHPoker
 {
+    
     public class USBBot
     {
+
         private UsbDevice SwDevice;
         private UsbEndpointReader reader;
         private UsbEndpointWriter writer;
 
+        public int MaximumTransferSize { get { return 468; } }
+
         private static readonly Encoding Encoder = Encoding.UTF8;
-        private static byte[] Encode(string command) => Encoder.GetBytes(command + "\r\n");
         private static byte[] Encode(string command, bool addrn = true) => Encoder.GetBytes(addrn ? command + "\r\n" : command);
 
         public static byte[] PokeRaw(uint offset, byte[] data) => Encode($"poke 0x{offset:X8} 0x{string.Concat(data.Select(z => $"{z:X2}"))}", false);
@@ -37,12 +41,13 @@ namespace acnhpoker
 
                 foreach (UsbRegistry ur in UsbDevice.AllDevices)
                 {
-                    if (ur.Vid == 1406 && ur.Pid == 12288)
+                    if (ur.Vid == 0x57e && ur.Pid == 0x3000 && ur.Device != null)
                     {
                         SwDevice = ur.Device;
                     }
                     //System.Diagnostics.Debug.Print(ur.Vid.ToString() + " " + ur.Pid.ToString() + " " + ur.FullName.ToString() + " " + ur.IsAlive.ToString() + "\n");
                 }
+                Debug.Print("UsbDevice.AllDevices -> Exception thrown: 'System.ArgumentException' in mscorlib.dll");
 
                 //SwDevice = UsbDevice.OpenUsbDevice(MyUsbFinder);
 
@@ -53,7 +58,7 @@ namespace acnhpoker
                     MessageBox.Show("Device Not Found.\nPlease try to install the standalone executable of LibUsbDotNet v2.2.8.\nAnd then create a device filter for your Nintendo Switch.");
                     return false;
                 }
-
+                
                 if (SwDevice.IsOpen)
                     SwDevice.Close();
                 SwDevice.Open();

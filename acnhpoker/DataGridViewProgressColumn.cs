@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-namespace acnhpoker
+namespace ACNHPoker
 {
     public class DataGridViewProgressColumn : DataGridViewImageColumn
     {

@@ -833,9 +833,9 @@ wooden-block toy,Housewares,0C86,BlockBrick
 wooden-block wall clock,Housewares,0C88,BlockClock
 wooden-plank sign,Housewares,1604,SignboardWood
 world map,Housewares,31C5,WorldMap
-writing chair,Housewares,0E76,StudyChair
-writing desk,Housewares,0E75,StudyDesk
-writing poster,Housewares,0E00,Studyposter
+study chair,Housewares,0E76,StudyChair
+study desk,Housewares,0E75,StudyDesk
+study poster,Housewares,0E00,Studyposter
 yellow-leaf pile,Housewares,10AE,FallenleavesYellow
 yucca,Housewares,1024,PlantYucca
 zen cushion,Housewares,1B87,CushionJapan

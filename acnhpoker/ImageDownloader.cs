@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.IO;
+using System.IO.Compression;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using System.IO.Compression;
-using System.IO;
-
-namespace acnhpoker
+namespace ACNHPoker
 {
     public partial class ImageDownloader : Form
     {
@@ -20,8 +12,6 @@ namespace acnhpoker
         {
             InitializeComponent();
         }
-
-
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -44,11 +34,11 @@ namespace acnhpoker
             if (File.Exists(path))
             {
                 extractHere();
-            } 
+            }
             else
             {
                 WebClient webClient = new WebClient();
-                webClient.Proxy = GlobalProxySelection.GetEmptyWebProxy();
+                webClient.Proxy = null;
 
                 webClient.DownloadProgressChanged += (s, ez) =>
                 {
@@ -60,7 +50,7 @@ namespace acnhpoker
                     extractHere();
                 };
 
-                webClient.DownloadFileAsync(new Uri("https://github.com/KingLycosa/acnhpoker/releases/download/0.0001/img.zip"), "temp.zip");
+                webClient.DownloadFileAsync(new Uri("https://github.com/MyShiLingStar/ACNHPoker/releases/download/ImgPack/img.zip"), "temp.zip");
             }
 
         }

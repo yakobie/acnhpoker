@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace acnhpoker
+namespace ACNHPoker
 {
     static class ItemAttr
     {
@@ -567,6 +567,10 @@ namespace acnhpoker
                 0X0ADB, // Birthday cupcake
                 0X3331, // communicator
                 0X32A8, // pearl
+                0X166F, // red sparkler
+                0X1122, // bubble blower
+                0X32AE, // blue sparkler
+                0X33AC, // Dream Bell exchange ticket
             }
             .Union(isCraftMaterialSet)
             .Union(isFenceSet)

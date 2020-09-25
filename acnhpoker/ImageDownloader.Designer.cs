@@ -1,4 +1,4 @@
-﻿namespace acnhpoker
+﻿namespace ACNHPoker
 {
     partial class ImageDownloader
     {

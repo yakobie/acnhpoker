@@ -1,20 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using System.IO.Compression;
-using System.IO;
-using System.Diagnostics;
-using System.Threading;
-
-namespace acnhpoker
+namespace ACNHPoker
 {
     public partial class variation : Form
     {
@@ -241,7 +232,7 @@ namespace acnhpoker
                     }
                     selection[j, k].Margin = new System.Windows.Forms.Padding(0);
                     selection[j, k].Size = new System.Drawing.Size(80, 80);
-                    selection[j,k].Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+                    selection[j, k].Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
                     //selection[j, k].setHide(true);
                     selection[j, k].setup(name, id, (uint)(j + (0x20 * k)), path, true);
                     selection[j, k].MouseClick += new System.Windows.Forms.MouseEventHandler(this.variation_MouseClick);
@@ -276,7 +267,7 @@ namespace acnhpoker
                 mainform.Focus();
 
             }
-            
+
         }
 
         private void removeVariation()

@@ -2430,7 +2430,7 @@ tent,Misc,0ABE
 party popper,Misc,0AC1
 Blathers's tent marker,Misc,0AC3
 shop construction kit,Misc,0AC4
-<name>'s tent,Misc,0AC5
+[name]'s tent,Misc,0AC5
 medicine,Misc,0AD9
 wasp nest,Misc,0CBF
 housing kit,Misc,0D15
@@ -2446,7 +2446,7 @@ fish bait,Misc,11C5
 delivery,Misc,1225
 campsite construction kit,Misc,142E
 ocarina,Misc,14C8
-<name>'s kit,Misc,14ED
+[name]'s kit,Misc,14ED
 moving kit,Misc,14EE
 tailors moving kit,Misc,14EF
 shop moving kit,Misc,14F0
@@ -4486,10 +4486,10 @@ pleather skirt,Bottoms,2C4B
 plover skirt,Bottoms,2C38
 plover skirt,Bottoms,2C39
 plover skirt,Bottoms,1548
-polka-dot mini skirt,Bottoms,2F8D
-polka-dot mini skirt,Bottoms,2F90
-polka-dot mini skirt,Bottoms,2F91
-polka-dot mini skirt,Bottoms,2F92
+polka-dot miniskirt,Bottoms,2F8D
+polka-dot miniskirt,Bottoms,2F90
+polka-dot miniskirt,Bottoms,2F91
+polka-dot miniskirt,Bottoms,2F92
 punk pants,Bottoms,1185
 punk pants,Bottoms,2427
 punk pants,Bottoms,2428
@@ -8265,7 +8265,7 @@ Solemn Painting (Fake),Arts,0047
 Academic Painting (Fake),Arts,314C
 Detailed Painting (Fake),Arts,314F
 Scenic Painting (Fake),Arts,3155
-Wild Painting Right Half (Fake),Arts,004C
+Wild Painting Right Half (Real),Arts,004C
 Motherly Statue (Real),Arts,0533
 Gallant Statue (Real),Arts,0535
 Robust Statue (Real),Arts,0537
@@ -8280,7 +8280,7 @@ Tremendous Statue (Real),Arts,30F9
 Warrior Statue (Real),Arts,30FB
 Familiar Statue (Real),Arts,30FD
 Wild Painting Left Half (Real),Arts,311A
-Wild Painting Right Half (Real),Arts,004B
+Wild Painting Right Half (Fake),Arts,004B
 Motherly Statue (Fake),Arts,0534
 Gallant Statue (Fake),Arts,0536
 Robust Statue (Fake),Arts,0538
@@ -8400,3 +8400,30 @@ pirate boots,Shoes,3179
 sea captain's coat(Blue),Tops,1D09
 sea captain's coat(Black),Tops,1D0A
 sea captain's coat(Red),Tops,0C4B
+rodeo-style springy ride-on,Housewares,3279
+Luna's bed,Housewares,33A5
+fireworks-show wall,Wallpaper,33AE
+moon rug,Rugs,33E7
+bubble blower,Misc,1122
+uchiwa fan,Misc,14C7
+tweeter,Misc,166E
+red sparkler,Misc,166F
+pinwheel,Misc,1670
+blue balloon,Misc,1EBD
+blue sparkler,Misc,32AE
+fountain firework,Misc,3332
+used fountain firework,Misc,3333
+red balloon,Misc,3343
+yellow balloon,Misc,3344
+green balloon,Misc,3345
+pink balloon,Misc,3346
+Nook Inc. handheld pennant,Misc,3348
+Dream Bell exchange ticket,Misc,33AC
+grape-harvest basket,Bags,31FD
+bulb bopper,Headwear,2681
+flower bopper,Headwear,2682
+heart bopper,Headwear,2683
+star bopper,Headwear,0A33
+King Tut mask,Headwear,15E7
+Hikoboshi outfit,Dresses,33B8
+Orihime outfit,Dresses,33B7

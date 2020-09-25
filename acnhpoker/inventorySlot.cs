@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace acnhpoker
+namespace ACNHPoker
 {
     public class inventorySlot : System.Windows.Forms.Button
     {
         private string itemName;
-        private UInt16 itemID;
-        private UInt32 itemData;
+        private UInt16 itemID = 0xFFFE;
+        private UInt32 itemData = 0x0;
         private string imagePath = "";
         //private Boolean init = false;
         private Boolean hide = false;
@@ -201,7 +201,7 @@ namespace acnhpoker
         public void reset()
         {
             itemName = "";
-            itemID = 0x0;
+            itemID = 0xFFFE;
             flag1 = "00";
             flag2 = "00";
             itemData = 0x0;

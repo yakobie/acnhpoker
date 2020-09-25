@@ -1,4 +1,4 @@
-﻿namespace acnhpoker
+﻿namespace ACNHPoker
 {
     partial class variation
     {
@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(variation));
             this.furnitureGridView = new System.Windows.Forms.DataGridView();
-            this.selectedItem = new acnhpoker.inventorySlot();
+            this.selectedItem = new ACNHPoker.inventorySlot();
             this.itemIDLabel = new System.Windows.Forms.Label();
             this.infoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureGridView)).BeginInit();
