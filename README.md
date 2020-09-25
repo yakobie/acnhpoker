@@ -68,7 +68,7 @@ https://youtu.be/-zztRgmtXig
     * Added auto refresh setting.
     * Added basic save & loading function for entire inventory.(experimental)
     * Added a Hex option for more advance item spawning.
-      *This release has a large portion of code rewritten. Auto merge with original version is no longer possible.
+      * This release has a large portion of code rewritten. Auto merge with original version is no longer possible.
 * R7
     * Added support for spawning in recycling bin and first character's Home storage.
     * Added support for wrapping items
@@ -101,6 +101,14 @@ https://youtu.be/-zztRgmtXig
     * Added gene selection boxes for flowers.
     * Added Wrap All Item and Unwrap All Item in right click menu.
     * Major bug fix for item spawn and image display.
+* R9.3
+	* Update for Game version number 1.4.1
+* R9.4
+	* Update for Game version number 1.4.2
+	* Added checkbox to retain wrapped item name.
+	* ANCHPoker will now work as a .nhi editor if you do not connect to your switch.
+* R10
+	* Added "Villager Booter" for villager editing.
     
 ## Contributing
 
