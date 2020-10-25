@@ -12,64 +12,94 @@ namespace ACNHPoker
 {
     class Utilities
     {
-        public static UInt32 masterAddress = 0xABADD888;
+        public static UInt32 masterAddress = 0xABC25840; //
 
-        public static UInt32 ItemSlotBase = masterAddress;
-        public static UInt32 ItemSlot21Base = masterAddress - 0xB8; // 0xAC472318
+        public static UInt32 ItemSlotBase = masterAddress; //
+        public static UInt32 ItemSlot21Base = masterAddress - 0xB8; //
 
 
 
-        public static readonly UInt32 MasterRecyclingBase = masterAddress - 0xB40268; // 0xAAF9D620
-        public static readonly UInt32 MasterRecycling21Base = MasterRecyclingBase + 0xA0;
+        public static readonly UInt32 MasterRecyclingBase = masterAddress - 0xB5BE38; //
+        public static readonly UInt32 MasterRecycling21Base = MasterRecyclingBase + 0xA0; //
 
-        public static readonly UInt32 TurnipPurchasePriceAddr = masterAddress - 0x122EE18;// 0xAA8AEA70
-        public static readonly UInt32 TurnipSellPriceAddr = TurnipPurchasePriceAddr + 0xC;
+        public static readonly UInt32 TurnipPurchasePriceAddr = masterAddress - 0x125A568; //
+        public static readonly UInt32 TurnipSellPriceAddr = TurnipPurchasePriceAddr + 0xC; //
 
-        public static readonly UInt32 VillagerAddress = TurnipPurchasePriceAddr - 0x411F40;// 0xAA49CB30
-        public static readonly UInt32 VillagerSize = 0x12AB0;
-        public static readonly UInt32 VillagerMemorySize = 0x5F0;
+        public static readonly UInt32 VillagerAddress = masterAddress - 0x16778E8; //
+        public static readonly UInt32 VillagerSize = 0x13230; //
+        public static readonly UInt32 VillagerOldSize = 0x12AB0; //
+        public static readonly UInt32 VillagerMemorySize = 0x5F0; // TODO
 
-        public static readonly UInt32 VillagerMemoryTinySize = 0x47;
+        public static readonly UInt32 VillagerMemoryTinySize = 0x47; //
 
-        public static readonly UInt32 VillagerMoveoutOffset = 0x11EFA;
-        public static readonly UInt32 VillagerForceMoveoutOffset = 0x11F2C;
+        public static readonly UInt32 VillagerPlayerOffset = 0x5F0; //
+
+        public static readonly UInt32 VillagerMoveoutOffset = 0x1267A; //0x11EFA;
+        public static readonly UInt32 VillagerForceMoveoutOffset = 0x126Ac;//0x11F2C;
         public static readonly UInt32 VillagerFriendshipOffset = 0x46;
-        public static readonly UInt32 VillagerCatchphraseOffset = 0x10014;
+        public static readonly UInt32 VillagerCatchphraseOffset = 0x10794;//0x10014;
 
-        public static readonly UInt32 VillagerHouseAddress = VillagerAddress + 0x40E228; //0xAA8AAD58
-        public static readonly UInt32 VillagerHouseSize = 0x1D4;
-        public static readonly UInt32 VillagerHouseBufferDiff = 0xB057B0;
-        public static readonly UInt32 VillagerHouseOwnerOffset = 0x1C4;
+        public static readonly UInt32 VillagerHouseAddress = 0xAA9C7580; 
+        public static readonly UInt32 VillagerHouseSize = 0x1D4; //
+        public static readonly UInt32 VillagerHouseBufferDiff = 0xB20770; //
+        public static readonly UInt32 VillagerHouseOwnerOffset = 0x1C4; //
 
-        public static readonly UInt32 MysIslandVillagerAddress = 0x3E5A6AF4;
+        public static readonly UInt32 MysIslandVillagerAddress = 0x3E619AFC; //
         public static readonly UInt32 MysIslandVillagerSpecies = MysIslandVillagerAddress + 0x110;
 
-        public static readonly UInt32 TownNameddress = masterAddress - 0x81DBFFA4;
-
-        public static readonly UInt32 staminaAddress = masterAddress + 0x8535240;
-
-        public static readonly UInt32 weatherSeed = masterAddress - 0xA00C6DC4;
 
 
+        public static readonly UInt32 TownNameddress = 0x29D63FD8; //masterAddress - 0x15DE1A0; //? // TODO
 
-        public static readonly UInt32 player1SlotBase = masterAddress;
-        public static readonly UInt32 player1Slot21Base = player1SlotBase - 0xB8;
-        public static readonly UInt32 reactionAddress = player1SlotBase + 0xAEF4;
-        public static readonly UInt32 MasterHouseBase = player1SlotBase + 0xC4;
-        public static readonly UInt32 MasterHouse21Base = MasterHouseBase + 0xA0;
+        public static readonly UInt32 weatherSeed = masterAddress - 0xA01F9CFC; //
 
-        public static readonly UInt32 player2SlotBase = player1SlotBase + 0x74420;
+
+
+        public static readonly UInt32 player1SlotBase = masterAddress; //
+        public static readonly UInt32 player1Slot21Base = player1SlotBase - 0xB8; //
+        public static readonly UInt32 player1HouseBase = player1SlotBase + 0xC4; //
+        public static readonly UInt32 player1House21Base = player1HouseBase + 0xA0; //
+
+        public static readonly UInt32 playerOffset = 0x76390; //
+        public static readonly UInt32 playerReactionAddress = player1SlotBase + 0xAFB4; //
+
+        public static readonly UInt32 player2SlotBase = player1SlotBase + playerOffset; //
         public static readonly UInt32 player2Slot21Base = player2SlotBase - 0xB8;
+        public static readonly UInt32 player2HouseBase = player2SlotBase + 0xC4; //
+        public static readonly UInt32 player2House21Base = player2HouseBase + 0xA0; //
 
-        public static readonly UInt32 player3SlotBase = player2SlotBase + 0x74420;
+        public static readonly UInt32 player3SlotBase = player2SlotBase + playerOffset; //
         public static readonly UInt32 player3Slot21Base = player3SlotBase - 0xB8;
+        public static readonly UInt32 player3HouseBase = player3SlotBase + 0xC4; //
+        public static readonly UInt32 player3House21Base = player3HouseBase + 0xA0; //
 
-        public static readonly UInt32 player4SlotBase = player3SlotBase + 0x74420;
+        public static readonly UInt32 player4SlotBase = player3SlotBase + playerOffset; //
         public static readonly UInt32 player4Slot21Base = player4SlotBase - 0xB8;
+        public static readonly UInt32 player4HouseBase = player4SlotBase + 0xC4; //
+        public static readonly UInt32 player4House21Base = player4HouseBase + 0xA0; //
 
+        public static readonly UInt32 player5SlotBase = player4SlotBase + playerOffset; //
+        public static readonly UInt32 player5Slot21Base = player5SlotBase - 0xB8;
+        public static readonly UInt32 player5HouseBase = player5SlotBase + 0xC4; //
+        public static readonly UInt32 player5House21Base = player5HouseBase + 0xA0; //
 
+        public static readonly UInt32 player6SlotBase = player5SlotBase + playerOffset; //
+        public static readonly UInt32 player6Slot21Base = player6SlotBase - 0xB8;
+        public static readonly UInt32 player6HouseBase = player6SlotBase + 0xC4; //
+        public static readonly UInt32 player6House21Base = player6HouseBase + 0xA0; //
 
-        public const UInt32 InsectAppearPointer = 0x46654978; //0x466548B8; //0x46654978;
+        public static readonly UInt32 player7SlotBase = player6SlotBase + playerOffset; //
+        public static readonly UInt32 player7Slot21Base = player7SlotBase - 0xB8;
+        public static readonly UInt32 player7HouseBase = player7SlotBase + 0xC4; //
+        public static readonly UInt32 player7House21Base = player7HouseBase + 0xA0; //
+
+        public static readonly UInt32 player8SlotBase = player7SlotBase + playerOffset; //
+        public static readonly UInt32 player8Slot21Base = player8SlotBase - 0xB8;
+        public static readonly UInt32 player8HouseBase = player8SlotBase + 0xC4; //
+        public static readonly UInt32 player8House21Base = player8HouseBase + 0xA0; //
+
+        // ---- Critter
+        public const UInt32 InsectAppearPointer = 0x4668F858; //
         public const Int32 InsectDataSize = 2 * (1 + 6 * 12 + 5);
         public const Int32 InsectNumRecords = 166;
 
@@ -81,18 +111,38 @@ namespace ACNHPoker
         public const UInt32 FishSeaAppearPointer = InsectAppearPointer + 0x55618;
         public const Int32 FishSeaNumRecords = 76;
 
-
         public const UInt32 CreatureSeaAppearPointer = InsectAppearPointer - 0x3DCE4;
         public const Int32 SeaCreatureDataSize = 84;
         public const Int32 SeaCreatureNumRecords = 41 * 2;
+        // ----
 
+        // ---- Main
+        public static readonly UInt32 staminaAddress = 0xB4A1EBE0;
 
-        public static readonly UInt32 freezeTimeAddress = 0x00255D90;
-        public static readonly UInt32 readTimeAddress = 0x0B98D978;
+        public static readonly UInt32 freezeTimeAddress = 0x0025AB50; //
+        public static readonly string freezeTimeValue = "D503201F";
+        public static readonly string unfreezeTimeValue = "F9203260";
 
-        public static readonly UInt32 wSpeedAddress = 0x01024ACC; //0x01024BCC;
-        public static readonly UInt32 CollisionAddress = 0x00F9F990; //0x00F9FA90;
-        public static readonly UInt32 aSpeedAddress = 0x035A4360; //0x035A4360;
+        public static readonly UInt32 readTimeAddress = 0x0B9A29C0; //
+
+        public static readonly UInt32 wSpeedAddress = 0x0105BABC; //0x0105B8DC; //
+        public static readonly string wSpeedX1 = "BD51D661";
+        public static readonly string wSpeedX2 = "1E201001";
+        public static readonly string wSpeedX3 = "1E211001";
+        public static readonly string wSpeedX4 = "1E221001";
+
+        public static readonly UInt32 CollisionAddress = 0x00FD5380; //0x00FD51D0; //
+        public static readonly string CollisionDisable = "12800014";
+        public static readonly string CollisionEnable = "B955E014";
+
+        public static readonly UInt32 aSpeedAddress = 0x0360F610; //0x0360F610; //
+        public static readonly string aSpeedX1 = "3F800000";
+        public static readonly string aSpeedX2 = "40000000";
+        public static readonly string aSpeedX5 = "40A00000";
+        public static readonly string aSpeedX50 = "42480000";
+        public static readonly string aSpeedX01 = "3DCCCCCD";
+
+        public static Form1 formControl;
 
         public Utilities()
         {
@@ -493,17 +543,71 @@ namespace ACNHPoker
                 ItemSlotBase = player4SlotBase;
                 ItemSlot21Base = player4Slot21Base;
             }
+            else if (player == 5)
+            {
+                ItemSlotBase = player5SlotBase;
+                ItemSlot21Base = player5Slot21Base;
+            }
+            else if (player == 6)
+            {
+                ItemSlotBase = player6SlotBase;
+                ItemSlot21Base = player6Slot21Base;
+            }
+            else if (player == 7)
+            {
+                ItemSlotBase = player7SlotBase;
+                ItemSlot21Base = player7Slot21Base;
+            }
+            else if (player == 8)
+            {
+                ItemSlotBase = player8SlotBase;
+                ItemSlot21Base = player8Slot21Base;
+            }
             else if (player == 9) //Recycling
             {
                 ItemSlotBase = MasterRecyclingBase;
                 ItemSlot21Base = MasterRecycling21Base;
             }
-            else if (player == 10) //House 1
+            else if (player == 11) //House 1
             {
-                ItemSlotBase = MasterHouseBase;
-                ItemSlot21Base = MasterHouse21Base;
+                ItemSlotBase = player1HouseBase;
+                ItemSlot21Base = player1House21Base;
             }
-
+            else if (player == 12) //House 2
+            {
+                ItemSlotBase = player2HouseBase;
+                ItemSlot21Base = player2House21Base;
+            }
+            else if (player == 13) //House 3
+            {
+                ItemSlotBase = player3HouseBase;
+                ItemSlot21Base = player3House21Base;
+            }
+            else if (player == 14) //House 4
+            {
+                ItemSlotBase = player4HouseBase;
+                ItemSlot21Base = player4House21Base;
+            }
+            else if (player == 15) //House 5
+            {
+                ItemSlotBase = player5HouseBase;
+                ItemSlot21Base = player5House21Base;
+            }
+            else if (player == 16) //House 6
+            {
+                ItemSlotBase = player6HouseBase;
+                ItemSlot21Base = player6House21Base;
+            }
+            else if (player == 17) //House 7
+            {
+                ItemSlotBase = player7HouseBase;
+                ItemSlot21Base = player7House21Base;
+            }
+            else if (player == 18) //House 8
+            {
+                ItemSlotBase = player8HouseBase;
+                ItemSlot21Base = player8House21Base;
+            }
         }
 
         public static void gotoRecyclingPage(uint page)
@@ -512,10 +616,43 @@ namespace ACNHPoker
             ItemSlot21Base = MasterRecycling21Base + ((page - 1) * 0x140);
         }
 
-        public static void gotoHousePage(uint page)
+        public static void gotoHousePage(uint page, int player)
         {
-            ItemSlotBase = MasterHouseBase + ((page - 1) * 0x140);
-            ItemSlot21Base = MasterHouse21Base + ((page - 1) * 0x140);
+            switch (player)
+            {
+                case 1:
+                    ItemSlotBase = player1HouseBase + ((page - 1) * 0x140);
+                    ItemSlot21Base = player1House21Base + ((page - 1) * 0x140);
+                    break;
+                case 2:
+                    ItemSlotBase = player2HouseBase + ((page - 1) * 0x140);
+                    ItemSlot21Base = player2House21Base + ((page - 1) * 0x140);
+                    break;
+                case 3:
+                    ItemSlotBase = player3HouseBase + ((page - 1) * 0x140);
+                    ItemSlot21Base = player3House21Base + ((page - 1) * 0x140);
+                    break;
+                case 4:
+                    ItemSlotBase = player4HouseBase + ((page - 1) * 0x140);
+                    ItemSlot21Base = player4House21Base + ((page - 1) * 0x140);
+                    break;
+                case 5:
+                    ItemSlotBase = player5HouseBase + ((page - 1) * 0x140);
+                    ItemSlot21Base = player5House21Base + ((page - 1) * 0x140);
+                    break;
+                case 6:
+                    ItemSlotBase = player6HouseBase + ((page - 1) * 0x140);
+                    ItemSlot21Base = player6House21Base + ((page - 1) * 0x140);
+                    break;
+                case 7:
+                    ItemSlotBase = player7HouseBase + ((page - 1) * 0x140);
+                    ItemSlot21Base = player7House21Base + ((page - 1) * 0x140);
+                    break;
+                case 8:
+                    ItemSlotBase = player8HouseBase + ((page - 1) * 0x140);
+                    ItemSlot21Base = player8House21Base + ((page - 1) * 0x140);
+                    break;
+            }
         }
 
         public static byte[] peekAddress(Socket socket, USBBot bot, long address, int size)
@@ -630,6 +767,11 @@ namespace ACNHPoker
                 {
                     bytesToReceive = (size - received > maxBytesToReceive) ? maxBytesToReceive : size - received;
                     string bufferRepr = ReadToIntermediateString(socket, initAddr + received, bytesToReceive);
+                    if (bufferRepr == null)
+                    {
+                        formControl.ClearRefresh();
+                        return null;
+                    }
                     for (int i = 0; i < bytesToReceive; i++)
                     {
                         result[received + i] = Convert.ToByte(bufferRepr.Substring(i * 2, 2), 16);
@@ -641,6 +783,7 @@ namespace ACNHPoker
             catch
             {
                 MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                formControl.ClearRefresh();
             }
 
             return null;
@@ -670,6 +813,7 @@ namespace ACNHPoker
             catch
             {
                 MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                formControl.ClearRefresh();
             }
 
             return null;
@@ -723,6 +867,7 @@ namespace ACNHPoker
             catch
             {
                 MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                formControl.ClearRefresh();
             }
 
             return null;
@@ -753,6 +898,7 @@ namespace ACNHPoker
             catch
             {
                 MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                formControl.ClearRefresh();
             }
         }
 
@@ -911,7 +1057,7 @@ namespace ACNHPoker
             }
         }
 
-        public static byte[] getReaction(Socket socket, USBBot bot)
+        public static byte[] getReaction(Socket socket, USBBot bot, int player)
         {
             try
             {
@@ -925,9 +1071,9 @@ namespace ACNHPoker
                     byte[] b = new byte[4096];
                     socket.Receive(b);
                     */
-                    Debug.Print("[Sys] Poke : Reaction " + reactionAddress.ToString("X"));
+                    Debug.Print("[Sys] Poke : Reaction " + (playerReactionAddress + (player * playerOffset)).ToString("X"));
 
-                    byte[] b = ReadByteArray(socket, reactionAddress, 8);
+                    byte[] b = ReadByteArray(socket, (playerReactionAddress + (player * playerOffset)), 8);
 
                     if (b == null)
                     {
@@ -938,9 +1084,9 @@ namespace ACNHPoker
                 }
                 else
                 {
-                    byte[] b = bot.ReadBytes(reactionAddress, 8);
+                    Debug.Print("[Usb] Poke : Reaction " + (playerReactionAddress + (player * playerOffset)).ToString("X"));
 
-                    Debug.Print("[Usb] Poke : Reaction " + reactionAddress.ToString("X"));
+                    byte[] b = bot.ReadBytes((uint)(playerReactionAddress + (player * playerOffset)), 8);
 
                     if (b == null)
                     {
@@ -958,25 +1104,25 @@ namespace ACNHPoker
             }
         }
 
-        public static void setReaction(Socket socket, USBBot bot, string reaction1, string reaction2)
+        public static void setReaction(Socket socket, USBBot bot, int player, string reaction1, string reaction2)
         {
             try
             {
                 if (bot == null)
                 {
-                    string msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", reactionAddress.ToString("x"), reaction1);
+                    string msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (playerReactionAddress + (player * playerOffset)).ToString("x"), reaction1);
                     Debug.Print("Poke Reaction: " + msg);
                     SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                    msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (reactionAddress + 4).ToString("x"), reaction2);
+                    msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", ((playerReactionAddress + (player * playerOffset)) + 4).ToString("x"), reaction2);
                     Debug.Print("Poke Reaction: " + msg);
                     SendString(socket, Encoding.UTF8.GetBytes(msg));
                 }
                 else
                 {
-                    bot.WriteBytes(stringToByte(reaction1), reactionAddress);
+                    bot.WriteBytes(stringToByte(reaction1), (uint)(playerReactionAddress + (player * playerOffset)));
 
-                    bot.WriteBytes(stringToByte(reaction2), reactionAddress + 4);
+                    bot.WriteBytes(stringToByte(reaction2), (uint)((playerReactionAddress + (player * playerOffset)) + 4));
                 }
             }
             catch
@@ -1196,9 +1342,9 @@ namespace ACNHPoker
         {
             if (bot == null)
             {
-                Debug.Print("[Sys] Poke : Moveout " + (VillagerAddress + (num * VillagerSize) + 0x11EFA).ToString("X") + " " + size);
+                Debug.Print("[Sys] Poke : Moveout " + (VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset).ToString("X") + " " + size);
 
-                byte[] b = ReadByteArray(socket, VillagerAddress + (num * VillagerSize) + 0x11EFA, size, ref counter);
+                byte[] b = ReadByteArray(socket, VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset, size, ref counter);
 
                 if (b == null)
                 {
@@ -1209,9 +1355,9 @@ namespace ACNHPoker
             }
             else
             {
-                Debug.Print("[Usb] Poke : Moveout " + (VillagerAddress + (num * VillagerSize) + 0x11EFA).ToString("X") + " " + size);
+                Debug.Print("[Usb] Poke : Moveout " + (VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset).ToString("X") + " " + size);
 
-                byte[] b = ReadLargeBytes(bot, (uint)(VillagerAddress + (num * VillagerSize) + 0x11EFA), size, ref counter);
+                byte[] b = ReadLargeBytes(bot, (uint)(VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset), size, ref counter);
 
                 if (b == null)
                 {
@@ -1441,24 +1587,54 @@ namespace ACNHPoker
             }
         }
 
-        public static void SetFriendship(Socket socket, USBBot bot, int num, string FriendshipFlag = "FF")
+        public static void SetFriendship(Socket socket, USBBot bot, int num, int player, string FriendshipFlag = "FF")
         {
             try
             {
                 if (bot == null)
                 {
-                    string msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerFriendshipOffset).ToString("X"), FriendshipFlag);
+                    string msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset) + VillagerFriendshipOffset).ToString("X"), FriendshipFlag);
                     Debug.Print("Poke Friendship: " + msg);
                     SendString(socket, Encoding.UTF8.GetBytes(msg));
                 }
                 else
                 {
-                    bot.WriteBytes(stringToByte(FriendshipFlag), (uint)(VillagerAddress + (num * VillagerSize) + VillagerFriendshipOffset));
+                    bot.WriteBytes(stringToByte(FriendshipFlag), (uint)(VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset) + VillagerFriendshipOffset));
                 }
             }
             catch
             {
                 MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+            }
+        }
+
+        public static byte[] GetPlayerDataVillager(Socket socket, USBBot bot, int num, int player, int size, ref int counter)
+        {
+            if (bot == null)
+            {
+                Debug.Print("[Sys] Poke : Villager " + player + " " + (VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset)).ToString("X") + " " + num + " " + size);
+
+                byte[] b = ReadByteArray(socket, VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset), size, ref counter);
+
+                if (b == null)
+                {
+                    MessageBox.Show("Wait something is wrong here!? \n\n Villager");
+                }
+
+                return b;
+            }
+            else
+            {
+                Debug.Print("[Usb] Poke : Villager " + player + " " + (VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset)).ToString("X") + " " + num + " " + size);
+
+                byte[] b = ReadLargeBytes(bot, (uint)(VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset)), size, ref counter);
+
+                if (b == null)
+                {
+                    MessageBox.Show("Wait something is wrong here!? \n\n Villager");
+                }
+
+                return b;
             }
         }
 

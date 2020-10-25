@@ -24,16 +24,17 @@ namespace ACNHPoker
             critterLargePanel.Visible = false;
             villagerLargePanel.Visible = true;
             closeVariationMenu();
+            int player = playerSelectorVillager.SelectedIndex;
 
             if (V == null && !firstload)
             {
                 firstload = true;
-                Thread LoadAllVillagerThread = new Thread(delegate () { loadAllVillager(); });
+                Thread LoadAllVillagerThread = new Thread(delegate () { loadAllVillager(player); });
                 LoadAllVillagerThread.Start();
             }
         }
 
-        private void loadAllVillager()
+        private void loadAllVillager(int player)
         {
             if (bot == null)
                 showVillagerWait(25000, "Acquiring villager data...");
@@ -81,7 +82,7 @@ namespace ACNHPoker
                 villagerButton[i].TextAlign = System.Drawing.ContentAlignment.TopCenter;
                 villagerButton[i].ForeColor = System.Drawing.Color.White;
                 villagerButton[i].Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-                int friendship = V[i].Friendship;
+                int friendship = V[i].Friendship[player];
                 villagerButton[i].BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(friendship)))), ((int)(((byte)(friendship / 2)))), ((int)(((byte)(friendship)))));
                 villagerButton[i].FlatAppearance.BorderSize = 0;
                 villagerButton[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -175,126 +176,11 @@ namespace ACNHPoker
                     this.villagerLargePanel.Controls.Remove(villagerButton[i]);
             }
 
-            Thread LoadAllVillagerThread = new Thread(delegate () { loadAllVillager(); });
+            playerSelectorVillager.SelectedIndex = 0;
+            int player = playerSelectorVillager.SelectedIndex;
+
+            Thread LoadAllVillagerThread = new Thread(delegate () { loadAllVillager(player); });
             LoadAllVillagerThread.Start();
-        }
-
-        private void debugVillager_Click(object sender, EventArgs e)
-        {
-            if ((s == null || s.Connected == false) & bot == null)
-            {
-                MessageBox.Show("Please connect to the switch first");
-                return;
-            }
-
-            if (villagerButton != null)
-            {
-                for (int i = 0; i < 10; i++)
-                    this.villagerLargePanel.Controls.Remove(villagerButton[i]);
-            }
-
-            HouseList = new int[10];
-
-            for (int i = 0; i < 10; i++)
-            {
-                byte b = Utilities.GetHouseOwner(s, bot, i, ref counter);
-                HouseList[i] = Convert.ToInt32(b);
-            }
-            Debug.Print(string.Join(" ", HouseList));
-
-
-            V = new Villager[10];
-            villagerButton = new Button[10];
-
-            for (int i = 0; i < 10; i++)
-            {
-                //byte[] b = Utilities.GetVillager(s, bot, i, (int)(0x4 + Utilities.VillagerMemoryTinySize));
-                byte[] b = Utilities.GetVillager(s, bot, i, (int)(Utilities.VillagerMemoryTinySize), ref counter);
-                V[i] = new Villager(b, i)
-                {
-                    HouseIndex = Utilities.FindHouseIndex(i, HouseList)
-                };
-
-                //byte f = Utilities.GetVillagerFlag(s, bot, i, 0x11EC0);
-                byte f = Utilities.GetVillagerHouseFlag(s, bot, V[i].HouseIndex, 0x8, ref counter);
-                V[i].MoveInFlag = Convert.ToInt32(f);
-
-                byte[] move = Utilities.GetMoveout(s, bot, i, (int)0x33, ref counter);
-                V[i].AbandonedHouseFlag = Convert.ToInt32(move[0]);
-                V[i].ForceMoveOutFlag = Convert.ToInt32(move[move.Length - 1]);
-
-                byte[] catchphrase = Utilities.GetCatchphrase(s, bot, i, ref counter);
-                V[i].catchphrase = catchphrase;
-
-                villagerButton[i] = new Button();
-                villagerButton[i].TextAlign = System.Drawing.ContentAlignment.TopCenter;
-                villagerButton[i].ForeColor = System.Drawing.Color.White;
-                villagerButton[i].Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-                int friendship = V[i].Friendship;
-                villagerButton[i].BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(friendship)))), ((int)(((byte)(friendship / 2)))), ((int)(((byte)(friendship)))));
-                villagerButton[i].FlatAppearance.BorderSize = 0;
-                villagerButton[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                if (i < 5)
-                    villagerButton[i].Location = new System.Drawing.Point((i * 128) + (i * 10) + 50, 54);
-                else
-                    villagerButton[i].Location = new System.Drawing.Point(((i - 5) * 128) + ((i - 5) * 10) + 50, 192);
-                villagerButton[i].Name = "villagerBtn" + i.ToString();
-                villagerButton[i].Tag = i;
-                villagerButton[i].Size = new System.Drawing.Size(128, 128);
-                villagerButton[i].UseVisualStyleBackColor = false;
-                Image img;
-                if (V[i].GetRealName() == "ERROR")
-                {
-                    img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetRealName()));
-                }
-                else
-                {
-                    img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetInternalName()));
-                }
-
-                villagerButton[i].Text = V[i].GetRealName() + " : " + V[i].GetInternalName();
-
-                if (V[i].MoveInFlag == 0xC || V[i].MoveInFlag == 0xB)
-                {
-                    if (V[i].IsReal())
-                    {
-                        if (V[i].IsInvited())
-                            villagerButton[i].Text += "\n(Tom Nook Invited)";
-                        else
-                            villagerButton[i].Text += "\n(Moving In)";
-                    }
-                    else
-                        villagerButton[i].Text += "\n(Just Move Out)";
-                }
-                else if (V[i].AbandonedHouseFlag == 0x1 && V[i].ForceMoveOutFlag == 0x0)
-                    villagerButton[i].Text += "\n(Floor Sweeping)";
-                else if (V[i].AbandonedHouseFlag == 0x2 && V[i].ForceMoveOutFlag == 0x1)
-                    villagerButton[i].Text += "\n(Moving Out 1)";
-                else if (V[i].AbandonedHouseFlag == 0x2 && V[i].ForceMoveOutFlag == 0x0)
-                    villagerButton[i].Text += "\n(Moving Out 2)";
-
-                villagerButton[i].Image = (Image)(new Bitmap(img, new Size(110, 110)));
-                villagerButton[i].ImageAlign = ContentAlignment.BottomCenter;
-                villagerButton[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VillagerButton_MouseDown);
-                this.villagerLargePanel.Controls.Add(villagerButton[i]);
-                //Debug.Print(V[i].GetInternalName());
-                //Debug.Print(V[i].GetRealName());
-                villagerButton[i].BringToFront();
-            }
-
-            //Debug.Print(Utilities.ByteToHexString(FindHeader()));
-            header = FindHeader();
-            //LockBox.Checked = true;
-            //Debug.Print(counter.ToString());
-            //Debug.Print(V[0].GetMemory(0).PlayerID.ToString());
-            //Debug.Print(V[0].GetMemory(0).PlayerName);
-            //Debug.Print(V[0].GetMemory(0).TownID.ToString());
-            //Debug.Print(V[0].GetMemory(0).TownName);
-            //byte Friendship = V[0].GetMemory(0).Friendship;
-            //Debug.Print(Friendship.ToString());
-            //byte[] VillagerData = Utilities.GetVillager(s, bot, 0, (int)Utilities.VillagerSize);
-            //File.WriteAllBytes(VillagerFileName, VillagerData);
-            System.Media.SystemSounds.Asterisk.Play();
         }
 
         private byte[] FindHeader()
@@ -305,8 +191,6 @@ namespace ACNHPoker
                 if (V[i] != null)
                 {
                     temp = V[i].GetHeader();
-                    MessageBox.Show("Wait something is wrong here!? \n\n Usable header not found!\n\nPlease at least have a proper functional villager on your island as a template before you use any replace function.\n\n(It is normal if you evict all 10 villagers at the same time.)", "Warning");
-
                     if (temp[0] != 0x0 && temp[1] != 0x0 && temp[2] != 0x0)
                         return temp;
                 }
@@ -319,7 +203,7 @@ namespace ACNHPoker
         {
             for (int j = 0; j < 10; j++)
             {
-                int friendship = V[j].Friendship;
+                int friendship = V[j].Friendship[playerSelectorVillager.SelectedIndex];
                 if (villagerButton[j] != selectedVillagerButton)
                     villagerButton[j].BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(friendship)))), ((int)(((byte)(friendship / 2)))), ((int)(((byte)(friendship)))));
 
@@ -354,35 +238,40 @@ namespace ACNHPoker
                     img = Image.FromFile(Utilities.GetVillagerImage(V[j].GetInternalName()));
                 }
                 villagerButton[j].Image = (Image)(new Bitmap(img, new Size(110, 110)));
+
             }
             if (!clear)
             {
-                selectedVillagerButton.BackColor = System.Drawing.Color.LightSeaGreen;
-
-                int i = Int16.Parse(selectedVillagerButton.Tag.ToString());
-
-                if (blocker == false)
-                    VillagerControl.Enabled = true;
-                else
-                    VillagerControl.Enabled = false;
-
-                if (V[i].MoveInFlag == 0xC || V[i].MoveInFlag == 0xB)
+                if (selectedVillagerButton != null)
                 {
-                    if (V[i].IsReal())
-                        VillagerControl.Enabled = false;
-                }
+                    selectedVillagerButton.BackColor = System.Drawing.Color.LightSeaGreen;
 
-                IndexValue.Text = V[i].Index.ToString();
-                NameValue.Text = V[i].GetRealName();
-                InternalNameValue.Text = V[i].GetInternalName();
-                PersonalityValue.Text = V[i].GetPersonality();
-                FriendShipValue.Text = V[i].Friendship.ToString();
-                HouseIndexValue.Text = V[i].HouseIndex.ToString();
-                MoveInFlag.Text = "0x" + V[i].MoveInFlag.ToString("X");
-                MoveOutValue.Text = "0x" + V[i].AbandonedHouseFlag.ToString("X");
-                ForceMoveOutValue.Text = "0x" + V[i].ForceMoveOutFlag.ToString("X");
-                CatchphraseValue.Text = Encoding.Unicode.GetString(V[i].catchphrase, 0, 44);
-                FullAddress.Text = Utilities.ByteToHexString(V[i].GetHeader());
+                    int i = Int16.Parse(selectedVillagerButton.Tag.ToString());
+
+                    if (blocker == false)
+                        VillagerControl.Enabled = true;
+                    else
+                        VillagerControl.Enabled = false;
+
+                    if (V[i].MoveInFlag == 0xC || V[i].MoveInFlag == 0xB)
+                    {
+                        if (V[i].IsReal())
+                            VillagerControl.Enabled = false;
+                    }
+
+                    IndexValue.Text = V[i].Index.ToString();
+                    NameValue.Text = V[i].GetRealName();
+                    InternalNameValue.Text = V[i].GetInternalName();
+                    PersonalityValue.Text = V[i].GetPersonality();
+                    FriendShipValue.Text = V[i].Friendship[playerSelectorVillager.SelectedIndex].ToString();
+                    HouseIndexValue.Text = V[i].HouseIndex.ToString();
+                    MoveInFlag.Text = "0x" + V[i].MoveInFlag.ToString("X");
+                    MoveOutValue.Text = "0x" + V[i].AbandonedHouseFlag.ToString("X");
+                    ForceMoveOutValue.Text = "0x" + V[i].ForceMoveOutFlag.ToString("X");
+                    CatchphraseValue.Text = Encoding.Unicode.GetString(V[i].catchphrase, 0, 44);
+                    FullAddress.Text = Utilities.ByteToHexString(V[i].GetHeader());
+                    PlayerName.Text = V[i].GetPlayerName(playerSelectorVillager.SelectedIndex);
+                }
             }
 
             System.Media.SystemSounds.Asterisk.Play();
@@ -403,8 +292,8 @@ namespace ACNHPoker
 
             SaveFileDialog file = new SaveFileDialog()
             {
-                Filter = "New Horizons Villager (*.nhv)|*.nhv",
-                FileName = V[i].GetInternalName() + ".nhv",
+                Filter = "New Horizons Villager (*.nhv2)|*.nhv2",
+                FileName = V[i].GetInternalName() + ".nhv2",
             };
 
             string savepath = Directory.GetCurrentDirectory() + @"\save";
@@ -538,9 +427,12 @@ namespace ACNHPoker
             if (IndexValue.Text == "")
                 return;
             int i = Int16.Parse(IndexValue.Text);
-            Utilities.SetFriendship(s, bot, i);
 
-            V[i].Friendship = 255;
+            int player = playerSelectorVillager.SelectedIndex;
+
+            Utilities.SetFriendship(s, bot, i, player);
+
+            V[i].Friendship[player] = 255;
             RefreshVillagerUI(false);
         }
         private void SetFriendshipBtn_Click(object sender, EventArgs e)
@@ -555,9 +447,11 @@ namespace ACNHPoker
             else if (value > 255)
                 value = 255;
 
-            Utilities.SetFriendship(s, bot, i, value.ToString("X"));
+            int player = playerSelectorVillager.SelectedIndex;
 
-            V[i].Friendship = (byte)value;
+            Utilities.SetFriendship(s, bot, i, player, value.ToString("X"));
+
+            V[i].Friendship[player] = (byte)value;
             RefreshVillagerUI(false);
         }
 
@@ -733,21 +627,22 @@ namespace ACNHPoker
                 PleaseWaitPanel.Visible = false;
                 VillagerControl.Enabled = true;
                 //overlay.Visible = false;
-                if (PleaseWaitPanel.Location.X != 744)
-                    PleaseWaitPanel.Location = new Point(744, 330);
+                if (PleaseWaitPanel.Location.X != 780)
+                    PleaseWaitPanel.Location = new Point(780, 330);
                 ProgressTimer.Stop();
             }
         }
 
         private void LoadVillagerBtn_Click(object sender, EventArgs e)
         {
+            
             if (IndexValue.Text == "")
                 return;
             int i = Int16.Parse(IndexValue.Text);
-
+            
             OpenFileDialog file = new OpenFileDialog()
             {
-                Filter = "New Horizons Villager (*.nhv)|*.nhv",
+                Filter = "New Horizons Villager (*.nhv2)|*.nhv2|New Horizons Villager (*.nhv)|*.nhv",
                 //FileName = V[i].GetInternalName() + ".nhv",
             };
 
@@ -766,6 +661,11 @@ namespace ACNHPoker
                 return;
 
             byte[] data = File.ReadAllBytes(file.FileName);
+
+            if (data.Length == Utilities.VillagerOldSize)
+            {
+                data = ConvertToNew(data);
+            }
 
             if (data.Length != Utilities.VillagerSize)
             {
@@ -911,8 +811,8 @@ namespace ACNHPoker
             //byte[] IName = Encoding.Default.GetBytes(lines[lines.Length - 1]);
             string IName = lines[lines.Length - 1];
             string RealName = lines[0];
-            string IVpath = villagerPath + IName + ".nhv";
-            string RVpath = villagerPath + RealName + ".nhv";
+            string IVpath = villagerPath + IName + ".nhv2";
+            string RVpath = villagerPath + RealName + ".nhv2";
             byte[] villagerData;
             byte[] houseData;
 
@@ -939,7 +839,7 @@ namespace ACNHPoker
             }
             else
             {
-                MessageBox.Show("Villager files \"" + IName + ".nhv\" " + "/ \"" + RealName + ".nhv\" " + "not found!", "Villager file not found");
+                MessageBox.Show("Villager files \"" + IName + ".nhv2\" " + "/ \"" + RealName + ".nhv2\" " + "not found!", "Villager file not found");
                 return;
             }
 
@@ -969,6 +869,17 @@ namespace ACNHPoker
 
         private void loadBoth(int i, int j, byte[] villager, byte[] house, string msg)
         {
+            if (villager.Length != Utilities.VillagerSize)
+            {
+                MessageBox.Show("Villager file size incorrect!", "Villager file invalid");
+                return;
+            }
+            if (house.Length != Utilities.VillagerHouseSize)
+            {
+                MessageBox.Show("House file size incorrect!", "House file invalid");
+                return;
+            }
+
             showVillagerWait((int)Utilities.VillagerSize + (int)Utilities.VillagerHouseSize * 2, msg);
 
             blocker = true;
@@ -1052,7 +963,7 @@ namespace ACNHPoker
             V = null;
             villagerButton = null;
             firstload = false;
-            PleaseWaitPanel.Location = new Point(150, 150);
+            PleaseWaitPanel.Location = new Point(170, 150);
         }
 
         private bool checkDuplicate(string iName)
@@ -1151,6 +1062,109 @@ namespace ACNHPoker
                     break;
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string folderPath = @"villager/";
+            foreach (string file in Directory.EnumerateFiles(folderPath, "*.nhv"))
+            {
+                byte[] data = File.ReadAllBytes(file);
+
+                if (data.Length != Utilities.VillagerOldSize)
+                {
+                    MessageBox.Show("Villager file size incorrect!", "Villager file invalid");
+                }
+                else
+                {
+                    byte[] newdata = ConvertToNew(data);
+                    File.WriteAllBytes(file + "2", newdata);
+                }
+            }
+        }
+
+        private static byte[] ConvertToNew(byte[] oldVillager)
+        {
+            byte[] newVillager = new byte[Utilities.VillagerSize];
+
+            Array.Copy(oldVillager, 0, newVillager, 0, 0x2f84);
+
+            for (int i = 0; i < 160; i++)
+            {
+                var src = 0x2f84 + (0x14C * i);
+                var dest = 0x2f84 + (0x158 * i);
+
+                Array.Copy(oldVillager, src, newVillager, dest, 0x14C);
+            }
+
+            Array.Copy(oldVillager, 0xff04, newVillager, 0x10684, oldVillager.Length - 0xff04);
+
+            return newVillager;
+        }
+
+        private void playerSelectorVillager_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!playerSelectorVillagerInit)
+            {
+                playerSelectorVillagerInit = true;
+                return;
+            }
+
+            int player = playerSelectorVillager.SelectedIndex;
+
+            if (player > 0)
+            {
+                if (checkFriendshipInit(player))
+                {
+                    RefreshVillagerUI(false);
+                }
+                else
+                {
+                    Thread LoadFriendshipThread = new Thread(delegate () { loadFriendship(player); });
+                    LoadFriendshipThread.Start();
+                }
+            }
+            else
+            {
+                RefreshVillagerUI(false);
+            }
+        }
+
+        private void loadFriendship(int player)
+        {
+            showVillagerWait(10, "Acquiring Friendship data...");
+
+            if ((s == null || s.Connected == false) & bot == null)
+                return;
+
+            blocker = true;
+
+            for (int i = 0; i < 10; i++)
+            {
+                //byte[] b = Utilities.GetVillager(s, bot, i, (int)(Utilities.VillagerMemoryTinySize), ref counter);
+                byte[] b = Utilities.GetPlayerDataVillager(s, bot, i, player, (int)(Utilities.VillagerMemoryTinySize), ref counter);
+                V[i].TempData[player] = b;
+                V[i].Friendship[player] = b[70];
+            }
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                RefreshVillagerUI(false);
+            });
+
+            blocker = false;
+
+            hideVillagerWait();
+        }
+
+        private bool checkFriendshipInit(int player)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (V[i].Friendship[player] != 0)
+                    return true;
+            }
+            return false;
         }
     }
 }

@@ -190,6 +190,18 @@ Noted that ONLY the name would change but not appearance.
 
 Only works when you are on a mystery island and there is a villager in there.</value>
   </data>
+  <data name="playerSelectorVillager.ToolTip" xml:space="preserve">
+    <value>Change this to select a different friend slot.
+This will allow you to access the friendship value.
+Note that you need to talk to that villager at least once in order for them to know you.
+
+For example : 
+If [Friend 1] is selected but the Player Name is [ N/A ] or Blank,
+it means that villager has not meet anyone on the island yet.
+Go talk to them with one of your player and they will remember them in the [Friend 1] slot.
+The next player talk to them would be on [Friend 2] slot. So and so forth.
+This also means different villager could have different friend order.</value>
+  </data>
   <metadata name="btnToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>214, 0</value>
   </metadata>

@@ -18,19 +18,17 @@ namespace ACNHPoker
             byte[] secondBytes = new byte[4];
             byte[] thirdBytes = new byte[4];
             byte[] fourthBytes = new byte[4];
-            byte[] FullBytes = new byte[16];
 
             Buffer.BlockCopy(AddressBank, 0x0, firstBytes, 0x0, 0x4);
             Buffer.BlockCopy(AddressBank, 0x4, secondBytes, 0x0, 0x4);
             Buffer.BlockCopy(AddressBank, 0x8, thirdBytes, 0x0, 0x4);
-            Buffer.BlockCopy(AddressBank, 0x16, fourthBytes, 0x0, 0x4);
-            Buffer.BlockCopy(AddressBank, 0x0, FullBytes, 0x0, 0x16);
+            Buffer.BlockCopy(AddressBank, 0x12, fourthBytes, 0x0, 0x4);
 
             string firstResult = Utilities.ByteToHexString(firstBytes);
             string secondResult = Utilities.ByteToHexString(secondBytes);
             string thirdResult = Utilities.ByteToHexString(thirdBytes);
             string fourthResult = Utilities.ByteToHexString(fourthBytes);
-            string FullResult = Utilities.ByteToHexString(FullBytes);
+            string FullResult = Utilities.ByteToHexString(AddressBank);
 
             Result1.Text = Utilities.flip(firstResult);
             Result2.Text = Utilities.flip(secondResult);
@@ -113,13 +111,13 @@ namespace ACNHPoker
 
             Result2.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.TownNameddress).ToString("X");
 
-            Result3.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.reactionAddress).ToString("X");
+            Result3.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.playerReactionAddress).ToString("X");
 
             Result4.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.weatherSeed).ToString("X");
 
             Result5.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.MasterRecyclingBase).ToString("X");
 
-            Result6.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.MasterHouseBase).ToString("X");
+            Result6.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.player1HouseBase).ToString("X");
 
             Result7.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.InsectAppearPointer).ToString("X");
 

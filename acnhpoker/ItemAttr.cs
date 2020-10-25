@@ -229,6 +229,25 @@ namespace ACNHPoker
             0x0F5C, // red-mum plant
             0x0F5E, // green-mum plant
             0x1DE3, // lily-of-the-valley plant
+            0x11B1, // S. Orange-pumpkin Sprout
+            0x11B2, // M. Orange-pumpkin Sprout
+            0x11B3, // Lg. Orange-pumpkin Sprout
+            0x11B4, // Ripe Orange-pumpkin Plant
+            0x11B5, // S. Yellow-pumpkin Sprout
+            0x11B6, // M. Yellow-pumpkin Sprout
+            0x11B7, // Lg. Yellow-pumpkin Sprout
+            0x11B8, // Ripe Yellow-pumpkin Plant
+            0x11B9, // S. Green-pumpkin Sprout
+            0x11BA, // M. Green-pumpkin Sprout
+            0x11BB, // Lg. Green-pumpkin Sprout
+            0x11BC, // Ripe Green-pumpkin Sprout
+            0x11BD, // S. White-pumpkin Sprout
+            0x11BE, // M. White-pumpkin Sprout
+            0x11BF, // Lg. White-pumpkin Sprout
+            0x11C0, // Ripe White-pumpkin Sprout
+            0x0BEC, // Small Pumpkin Sprout
+            0x0BED, // Medium Pumpkin Sprout
+            0x110A, // Large Pumpkin Sprout
         };
         private static readonly HashSet<UInt16> isRoseSet = new HashSet<UInt16>
         {
@@ -427,6 +446,7 @@ namespace ACNHPoker
             0x3156, // Bunny Day fence
             0x31D6, // hedge
             0x325E, // wedding fence
+            0x33DB, // Spooky Fence,
         };
         private static readonly HashSet<UInt16> isFlowerSet = new HashSet<UInt16>
         {
@@ -483,6 +503,10 @@ namespace ACNHPoker
             0x0EB5, // pink mums
             0x0EB8, // red mums
             0x1437, // green mums
+            0x11AD, // Orange Pumpkin
+            0x11AE, // Yellow Pumpkin
+            0x11AF, // Green Pumpkin
+            0x11B0, // White Pumpkin
         };
         private static readonly HashSet<UInt16> isFlowerSeedSet = new HashSet<UInt16>
         {
@@ -510,6 +534,7 @@ namespace ACNHPoker
             0x0EAB, // white-mum bag
             0x0EAF, // yellow-mum bag
             0x0EB9, // red-mum bag
+            0x33AB, // Pumpkin Start
         };
         private static readonly HashSet<UInt16> isBushStartSet = new HashSet<UInt16>
         {
@@ -571,6 +596,8 @@ namespace ACNHPoker
                 0X1122, // bubble blower
                 0X32AE, // blue sparkler
                 0X33AC, // Dream Bell exchange ticket
+                0x338C, // Lolipop
+                0x338D, // Candy
             }
             .Union(isCraftMaterialSet)
             .Union(isFenceSet)

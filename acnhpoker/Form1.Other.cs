@@ -977,9 +977,9 @@ namespace ACNHPoker
             if (SaturdayPM >= highest) { saturdayPMStar.Visible = true; } else { saturdayPMStar.Visible = false; };
         }
 
-        private void loadReaction()
+        private void loadReaction(int player = 0)
         {
-            byte[] reactionBank = Utilities.getReaction(s, bot);
+            byte[] reactionBank = Utilities.getReaction(s, bot, player);
             //Debug.Print(Encoding.ASCII.GetString(reactionBank));
 
             byte[] reaction1 = new byte[1];
@@ -1016,6 +1016,7 @@ namespace ACNHPoker
         {
             if (reaction == "00")
             {
+                box.SelectedIndex = -1;
                 return;
             }
             string hexValue = reaction;
@@ -1029,28 +1030,56 @@ namespace ACNHPoker
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to change your reaction wheel?\n[Warning] Your previous reaction wheel will be overwritten!", "Change Reaction Wheel", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                int player = playerSelectorOther.SelectedIndex;
+
                 string reaction1 = (Utilities.precedingZeros((reactionSlot1.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot2.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot3.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot4.SelectedIndex + 1).ToString("X"), 2));
                 string reaction2 = (Utilities.precedingZeros((reactionSlot5.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot6.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot7.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot8.SelectedIndex + 1).ToString("X"), 2));
-                Utilities.setReaction(s, bot, reaction1, reaction2);
+                Utilities.setReaction(s, bot, player,  reaction1, reaction2);
                 System.Media.SystemSounds.Asterisk.Play();
             }
         }
 
-        private void speedEnableBtn_Click(object sender, EventArgs e)
+        private void speedX4Btn_Click(object sender, EventArgs e)
         {
-            speedEnableBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
-            speedDisableBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            speedX1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            speedX2Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            speedX3Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            speedX4Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
 
-            Utilities.pokeMainAddress(s, bot, Utilities.wSpeedAddress.ToString("X"), "1E221001");
+            Utilities.pokeMainAddress(s, bot, Utilities.wSpeedAddress.ToString("X"), Utilities.wSpeedX4);
             System.Media.SystemSounds.Asterisk.Play();
         }
 
-        private void speedDisableBtn_Click(object sender, EventArgs e)
+        private void speedX3Btn_Click(object sender, EventArgs e)
         {
-            speedDisableBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
-            speedEnableBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            speedX1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            speedX2Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            speedX3Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            speedX4Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
-            Utilities.pokeMainAddress(s, bot, Utilities.wSpeedAddress.ToString("X"), "BD4FEE61");
+            Utilities.pokeMainAddress(s, bot, Utilities.wSpeedAddress.ToString("X"), Utilities.wSpeedX3);
+            System.Media.SystemSounds.Asterisk.Play();
+        }
+
+        private void speedX2Btn_Click(object sender, EventArgs e)
+        {
+            speedX1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            speedX2Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            speedX3Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            speedX4Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+
+            Utilities.pokeMainAddress(s, bot, Utilities.wSpeedAddress.ToString("X"), Utilities.wSpeedX2);
+            System.Media.SystemSounds.Asterisk.Play();
+        }
+
+        private void speedX1Btn_Click(object sender, EventArgs e)
+        {
+            speedX1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            speedX2Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            speedX3Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            speedX4Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+
+            Utilities.pokeMainAddress(s, bot, Utilities.wSpeedAddress.ToString("X"), Utilities.wSpeedX1);
             System.Media.SystemSounds.Asterisk.Play();
         }
 
@@ -1059,7 +1088,7 @@ namespace ACNHPoker
             disableCollisionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
             enableCollisionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
-            Utilities.pokeMainAddress(s, bot, Utilities.CollisionAddress.ToString("X"), "12800014");
+            Utilities.pokeMainAddress(s, bot, Utilities.CollisionAddress.ToString("X"), Utilities.CollisionDisable);
             System.Media.SystemSounds.Asterisk.Play();
         }
 
@@ -1068,7 +1097,7 @@ namespace ACNHPoker
             enableCollisionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
             disableCollisionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
-            Utilities.pokeMainAddress(s, bot, Utilities.CollisionAddress.ToString("X"), "B953F814");
+            Utilities.pokeMainAddress(s, bot, Utilities.CollisionAddress.ToString("X"), Utilities.CollisionEnable);
             System.Media.SystemSounds.Asterisk.Play();
         }
 
@@ -1077,7 +1106,7 @@ namespace ACNHPoker
             freezeTimeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
             unfreezeTimeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
-            Utilities.pokeMainAddress(s, bot, Utilities.freezeTimeAddress.ToString("X"), "D503201F");
+            Utilities.pokeMainAddress(s, bot, Utilities.freezeTimeAddress.ToString("X"), Utilities.freezeTimeValue);
             readtime();
             timePanel.Visible = true;
 
@@ -1089,41 +1118,44 @@ namespace ACNHPoker
             unfreezeTimeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
             freezeTimeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
-            Utilities.pokeMainAddress(s, bot, Utilities.freezeTimeAddress.ToString("X"), "F9203260");
+            Utilities.pokeMainAddress(s, bot, Utilities.freezeTimeAddress.ToString("X"), Utilities.unfreezeTimeValue);
             timePanel.Visible = false;
             System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void animationSpdx2_Click(object sender, EventArgs e)
         {
+            animationSpdx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             animationSpdx2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
             animationSpdx0_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             animationSpdx50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            animationSpdx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            animationSpdx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
-            Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), "40000000");
+            Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), Utilities.aSpeedX2);
             System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void animationSpdx0_1_Click(object sender, EventArgs e)
         {
-            animationSpdx0_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
-            animationSpdx2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            animationSpdx50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             animationSpdx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            animationSpdx2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            animationSpdx0_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            animationSpdx50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            animationSpdx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
-            Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), "3DCCCCCD");
+            Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), Utilities.aSpeedX01);
             System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void animationSpdx50_Click(object sender, EventArgs e)
         {
-            animationSpdx50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            animationSpdx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             animationSpdx2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             animationSpdx0_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            animationSpdx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            animationSpdx50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            animationSpdx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
-            Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), "42480000");
+            Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), Utilities.aSpeedX50);
             System.Media.SystemSounds.Asterisk.Play();
         }
 
@@ -1133,8 +1165,21 @@ namespace ACNHPoker
             animationSpdx2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             animationSpdx0_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             animationSpdx50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            animationSpdx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
-            Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), "3F800000");
+            Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), Utilities.aSpeedX1);
+            System.Media.SystemSounds.Asterisk.Play();
+        }
+
+        private void animationSpdx5_Click(object sender, EventArgs e)
+        {
+            animationSpdx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            animationSpdx2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            animationSpdx0_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            animationSpdx50.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            animationSpdx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+
+            Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), Utilities.aSpeedX5);
             System.Media.SystemSounds.Asterisk.Play();
         }
 
@@ -1368,7 +1413,7 @@ namespace ACNHPoker
             if (egg.Tag.ToString() == "Play")
             {
                 string path = AppDomain.CurrentDomain.BaseDirectory;
-                mciSendString("open \"" + path + villagerPath + "Io.nhv" + "\" type mpegvideo alias MediaFile", null, 0, IntPtr.Zero);
+                mciSendString("open \"" + path + villagerPath + "Io.nhv2" + "\" type mpegvideo alias MediaFile", null, 0, IntPtr.Zero);
                 mciSendString("play MediaFile repeat", null, 0, IntPtr.Zero);
                 egg.Tag = "Stop";
             }
@@ -1377,6 +1422,19 @@ namespace ACNHPoker
                 mciSendString("close MediaFile", null, 0, IntPtr.Zero);
                 egg.Tag = "Play";
             }
+        }
+
+        private void playerSelectorOther_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!playerSelectorOtherInit)
+            {
+                playerSelectorOtherInit = true;
+                return;
+            }
+
+            int player = playerSelectorOther.SelectedIndex;
+
+            loadReaction(player);
         }
     }
 }

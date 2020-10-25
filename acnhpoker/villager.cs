@@ -1,5 +1,6 @@
 ﻿using ACNHPoker;
 using System;
+using System.Text;
 
 namespace ACNHPoker
 {
@@ -15,11 +16,11 @@ namespace ACNHPoker
         public int AbandonedHouseFlag { get; set; }
         public int ForceMoveOutFlag { get; set; }
         public byte[] catchphrase { get; set; }
-        public byte Friendship
-        {
-            get => Data[70];
-            set => Data[70] = value;
-        }
+
+        public byte[] Friendship;
+
+        public byte[][] TempData;
+
         public byte Species
         {
             get => Data[0];
@@ -42,6 +43,9 @@ namespace ACNHPoker
         {
             Data = data;
             Index = i;
+            Friendship = new byte[8];
+            TempData = new byte[8][];
+            Friendship[0] = Data[70];
         }
 
         public string GetInternalName()
@@ -90,6 +94,20 @@ namespace ACNHPoker
             byte[] header = new byte[56];
             Buffer.BlockCopy(Data, 0x4, header, 0x0, 56);
             return header;
+        }
+
+        public string GetPlayerName(int player)
+        {
+            if (player <= 0)
+                return Encoding.Unicode.GetString(Data, 36, 20);
+            else
+            {
+                string name = Encoding.Unicode.GetString(TempData[player], 36, 20);
+                if (name == "\0\0\0\0\0\0\0\0\0\0")
+                    return "[ N/A ]";
+                else
+                    return name;
+            }
         }
     }
 }

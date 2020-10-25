@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -137,6 +138,7 @@ namespace ACNHPoker
 
                                 this.refreshBtn.Visible = true;
                                 this.playerSelectionPanel.Visible = true;
+                                this.playerSelectorInventory.Visible = true;
                                 this.autoRefreshCheckBox.Visible = true;
                                 this.saveBtn.Visible = true;
                                 this.loadBtn.Visible = true;
@@ -192,6 +194,7 @@ namespace ACNHPoker
                 connectBtn.Enabled = true;
                 refreshBtn.Visible = false;
                 playerSelectionPanel.Visible = false;
+                playerSelectorInventory.Visible = false;
                 autoRefreshCheckBox.Visible = false;
                 this.USBconnectBtn.Visible = true;
 
@@ -202,6 +205,7 @@ namespace ACNHPoker
                 critterBtn.Visible = false;
                 this.villagerBtn.Visible = false;
                 cleanVillagerPage();
+                offline = true;
 
                 this.connectBtn.Tag = "connect";
                 this.connectBtn.Text = "Connect";
@@ -220,12 +224,16 @@ namespace ACNHPoker
 
         private void refreshTimer_Tick(object sender, EventArgs e)
         {
-            if (s != null && s.Connected == true && autoRefreshCheckBox.Checked)
-                Invoke((MethodInvoker)delegate { UpdateInventory(); });
+            if (s != null && s.Connected == true && autoRefreshCheckBox.Checked && allowUpdate)
+                Invoke((MethodInvoker)delegate { 
+                    UpdateInventory(); 
+                });
         }
 
         private bool UpdateInventory()
         {
+            allowUpdate = false;
+
             byte[] Bank01to20 = Utilities.GetInventoryBank(s, bot, 1);
             if (Bank01to20 == null)
             {
@@ -338,6 +346,7 @@ namespace ACNHPoker
                     continue;
                 }
             }
+            allowUpdate = true;
             return false;
         }
 
@@ -1081,11 +1090,147 @@ namespace ACNHPoker
 
         private void houseBtn_CheckedChanged(object sender, EventArgs e)
         {
-            Utilities.setAddress(10);
+            Utilities.setAddress(11);
             maxPage = 40;
             currentPage = 1;
             showPagination();
             UpdateInventory();
+        }
+
+        private void inventorySelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!playerSelectorInventoryInit)
+            {
+                playerSelectorInventoryInit = true;
+                return;
+            }
+            //Debug.Print(inventorySelector.SelectedIndex.ToString());
+            if (playerSelectorInventory.SelectedIndex < 0)
+                return;
+
+            switch (playerSelectorInventory.SelectedIndex)
+            {
+                case 0:
+                    Utilities.setAddress(1);
+                    maxPage = 1;
+                    currentPage = 1;
+                    hidePagination();
+                    UpdateInventory();
+                    break;
+                case 1:
+                    Utilities.setAddress(2);
+                    maxPage = 1;
+                    currentPage = 1;
+                    hidePagination();
+                    UpdateInventory();
+                    break;
+                case 2:
+                    Utilities.setAddress(3);
+                    maxPage = 1;
+                    currentPage = 1;
+                    hidePagination();
+                    UpdateInventory();
+                    break;
+                case 3:
+                    Utilities.setAddress(4);
+                    maxPage = 1;
+                    currentPage = 1;
+                    hidePagination();
+                    UpdateInventory();
+                    break;
+                case 4:
+                    Utilities.setAddress(5);
+                    maxPage = 1;
+                    currentPage = 1;
+                    hidePagination();
+                    UpdateInventory();
+                    break;
+                case 5:
+                    Utilities.setAddress(6);
+                    maxPage = 1;
+                    currentPage = 1;
+                    hidePagination();
+                    UpdateInventory();
+                    break;
+                case 6:
+                    Utilities.setAddress(7);
+                    maxPage = 1;
+                    currentPage = 1;
+                    hidePagination();
+                    UpdateInventory();
+                    break;
+                case 7:
+                    Utilities.setAddress(8);
+                    maxPage = 1;
+                    currentPage = 1;
+                    hidePagination();
+                    UpdateInventory();
+                    break;
+                case 8: // House
+                    Utilities.setAddress(11);
+                    maxPage = 40;
+                    currentPage = 1;
+                    showPagination();
+                    UpdateInventory();
+                    break;
+                case 9:
+                    Utilities.setAddress(12);
+                    maxPage = 40;
+                    currentPage = 1;
+                    showPagination();
+                    UpdateInventory();
+                    break;
+                case 10:
+                    Utilities.setAddress(13);
+                    maxPage = 40;
+                    currentPage = 1;
+                    showPagination();
+                    UpdateInventory();
+                    break;
+                case 11:
+                    Utilities.setAddress(14);
+                    maxPage = 40;
+                    currentPage = 1;
+                    showPagination();
+                    UpdateInventory();
+                    break;
+                case 12:
+                    Utilities.setAddress(15);
+                    maxPage = 40;
+                    currentPage = 1;
+                    showPagination();
+                    UpdateInventory();
+                    break;
+                case 13:
+                    Utilities.setAddress(16);
+                    maxPage = 40;
+                    currentPage = 1;
+                    showPagination();
+                    UpdateInventory();
+                    break;
+                case 14:
+                    Utilities.setAddress(17);
+                    maxPage = 40;
+                    currentPage = 1;
+                    showPagination();
+                    UpdateInventory();
+                    break;
+                case 15:
+                    Utilities.setAddress(18);
+                    maxPage = 40;
+                    currentPage = 1;
+                    showPagination();
+                    UpdateInventory();
+                    break;
+                case 16: // Re
+                    Utilities.setAddress(9);
+                    maxPage = 2;
+                    currentPage = 1;
+                    showPagination();
+                    UpdateInventory();
+                    break;
+            }
+            System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void itemModeBtn_Click(object sender, EventArgs e)
@@ -1383,14 +1528,17 @@ namespace ACNHPoker
                     selectedSlot = nextSlot;
                     updateSlot(nextSlot);
                 }
+                System.Media.SystemSounds.Asterisk.Play();
             }
             else if (e.KeyCode.ToString() == "F1")
             {
                 deleteBtn_Click(sender, e);
+                System.Media.SystemSounds.Asterisk.Play();
             }
             else if (e.KeyCode.ToString() == "F3")
             {
                 keyboardCopy(sender, e);
+                System.Media.SystemSounds.Asterisk.Play();
             }
             else if (e.KeyCode.ToString() == "End")
             {
@@ -1611,7 +1759,6 @@ namespace ACNHPoker
 
                 }
             }
-
         }
 
         private void keyboardCopy(object sender, KeyEventArgs e)
@@ -1635,7 +1782,6 @@ namespace ACNHPoker
             updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
             customAmountTxt.Text = Utilities.precedingZeros(selectedItem.fillItemData(), 8);
             customIdTextbox.Text = Utilities.precedingZeros(selectedItem.fillItemID(), 4);
-            System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void deleteBtn_Click(object sender, KeyEventArgs e)
@@ -1777,13 +1923,13 @@ namespace ACNHPoker
         {
             if (currentPage < maxPage)
             {
-                if (recyclingBtn.Checked)
+                if (playerSelectorInventory.SelectedIndex == 16)
                 {
                     Utilities.gotoRecyclingPage((uint)(currentPage + 1));
                 }
-                else if (houseBtn.Checked)
+                else if (playerSelectorInventory.SelectedIndex > 7)
                 {
-                    Utilities.gotoHousePage((uint)(currentPage + 1));
+                    Utilities.gotoHousePage((uint)(currentPage + 1), playerSelectorInventory.SelectedIndex - 7);
                 }
                 currentPage++;
                 setPageLabel();
@@ -1799,13 +1945,13 @@ namespace ACNHPoker
         {
             if (currentPage > 1)
             {
-                if (recyclingBtn.Checked)
+                if (playerSelectorInventory.SelectedIndex == 16)
                 {
                     Utilities.gotoRecyclingPage((uint)(currentPage - 1));
                 }
-                else if (houseBtn.Checked)
+                else if (playerSelectorInventory.SelectedIndex > 7)
                 {
-                    Utilities.gotoHousePage((uint)(currentPage - 1));
+                    Utilities.gotoHousePage((uint)(currentPage - 1), playerSelectorInventory.SelectedIndex - 7);
                 }
                 currentPage--;
                 setPageLabel();
@@ -1826,25 +1972,25 @@ namespace ACNHPoker
             }
             if (currentPage + 10 < maxPage)
             {
-                if (recyclingBtn.Checked)
+                if (playerSelectorInventory.SelectedIndex == 16)
                 {
                     Utilities.gotoRecyclingPage((uint)(currentPage + 1));
                 }
-                else if (houseBtn.Checked)
+                else if (playerSelectorInventory.SelectedIndex > 7)
                 {
-                    Utilities.gotoHousePage((uint)(currentPage + 1));
+                    Utilities.gotoHousePage((uint)(currentPage + 10), playerSelectorInventory.SelectedIndex - 7);
                 }
                 currentPage += 10;
             }
             else
             {
-                if (recyclingBtn.Checked)
+                if (playerSelectorInventory.SelectedIndex == 16)
                 {
                     Utilities.gotoRecyclingPage((uint)maxPage);
                 }
-                else if (houseBtn.Checked)
+                else if (playerSelectorInventory.SelectedIndex > 7)
                 {
-                    Utilities.gotoHousePage((uint)maxPage);
+                    Utilities.gotoHousePage((uint)maxPage, playerSelectorInventory.SelectedIndex - 7);
                 }
                 currentPage = maxPage;
                 System.Media.SystemSounds.Asterisk.Play();
@@ -1862,25 +2008,25 @@ namespace ACNHPoker
             }
             if (currentPage - 10 > 1)
             {
-                if (recyclingBtn.Checked)
+                if (playerSelectorInventory.SelectedIndex == 16)
                 {
                     Utilities.gotoRecyclingPage((uint)(currentPage - 10));
                 }
-                else if (houseBtn.Checked)
+                else if (playerSelectorInventory.SelectedIndex > 7)
                 {
-                    Utilities.gotoHousePage((uint)(currentPage - 10));
+                    Utilities.gotoHousePage((uint)(currentPage - 10), playerSelectorInventory.SelectedIndex - 7);
                 }
                 currentPage -= 10;
             }
             else
             {
-                if (recyclingBtn.Checked)
+                if (playerSelectorInventory.SelectedIndex == 16)
                 {
                     Utilities.gotoRecyclingPage(1);
                 }
-                else if (houseBtn.Checked)
+                else if (playerSelectorInventory.SelectedIndex > 7)
                 {
-                    Utilities.gotoHousePage(1);
+                    Utilities.gotoHousePage(1, playerSelectorInventory.SelectedIndex - 7);
                 }
                 currentPage = 1;
                 System.Media.SystemSounds.Asterisk.Play();

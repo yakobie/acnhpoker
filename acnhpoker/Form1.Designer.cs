@@ -149,8 +149,8 @@
             this.setTurnipBtn = new System.Windows.Forms.Button();
             this.unfreezeTimeBtn = new System.Windows.Forms.Button();
             this.freezeTimeBtn = new System.Windows.Forms.Button();
-            this.speedEnableBtn = new System.Windows.Forms.Button();
-            this.speedDisableBtn = new System.Windows.Forms.Button();
+            this.speedX4Btn = new System.Windows.Forms.Button();
+            this.speedX1Btn = new System.Windows.Forms.Button();
             this.disableCollisionBtn = new System.Windows.Forms.Button();
             this.enableCollisionBtn = new System.Windows.Forms.Button();
             this.animationSpdx0_1 = new System.Windows.Forms.Button();
@@ -175,7 +175,13 @@
             this.ReplaceBtn = new System.Windows.Forms.Button();
             this.TransformBtn = new System.Windows.Forms.Button();
             this.DumpHouseBtn = new System.Windows.Forms.Button();
+            this.speedX2Btn = new System.Windows.Forms.Button();
+            this.speedX3Btn = new System.Windows.Forms.Button();
+            this.animationSpdx5 = new System.Windows.Forms.Button();
+            this.playerSelectorVillager = new System.Windows.Forms.ComboBox();
             this.selectedItem = new ACNHPoker.inventorySlot();
+            this.playerSelectorOther = new System.Windows.Forms.ComboBox();
+            this.playerSelectorInventory = new System.Windows.Forms.ComboBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.loadBtn = new System.Windows.Forms.Button();
             this.inventoryLargePanel = new System.Windows.Forms.Panel();
@@ -283,6 +289,7 @@
             this.idbox = new System.Windows.Forms.RichTextBox();
             this.namebox = new System.Windows.Forms.RichTextBox();
             this.villagerLargePanel = new System.Windows.Forms.Panel();
+            this.PlayerNameLabel = new System.Windows.Forms.Label();
             this.overlay = new ACNHPoker.ExtendedPanel();
             this.PleaseWaitPanel = new System.Windows.Forms.Panel();
             this.WaitMessagebox = new System.Windows.Forms.RichTextBox();
@@ -311,6 +318,8 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.IndexLabel = new System.Windows.Forms.Label();
             this.VillagerControl = new System.Windows.Forms.Panel();
+            this.PlayerName = new System.Windows.Forms.RichTextBox();
+            this.MysSelector = new ACNHPoker.VillagerSelector();
             this.IslandSearch = new System.Windows.Forms.TextBox();
             this.VillagerSearch = new System.Windows.Forms.TextBox();
             this.ReplaceSelector = new ACNHPoker.VillagerSelector();
@@ -328,7 +337,6 @@
             this.ProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.egg = new System.Windows.Forms.Button();
             this.VillagerSearchMenu = new AutocompleteMenuNS.AutocompleteMenu();
-            this.MysSelector = new ACNHPoker.VillagerSelector();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             this.inventoryPanel.SuspendLayout();
@@ -396,40 +404,40 @@
             this.unwrapAllItemToolStripMenuItem});
             this.itemRightClick.Name = "itemRightClick";
             this.itemRightClick.ShowImageMargin = false;
-            this.itemRightClick.Size = new System.Drawing.Size(160, 114);
+            this.itemRightClick.Size = new System.Drawing.Size(169, 114);
             // 
             // copyItemBtn
             // 
             this.copyItemBtn.Name = "copyItemBtn";
-            this.copyItemBtn.Size = new System.Drawing.Size(159, 22);
+            this.copyItemBtn.Size = new System.Drawing.Size(168, 22);
             this.copyItemBtn.Text = "Copy Item";
             this.copyItemBtn.Click += new System.EventHandler(this.copyItemBtn_Click);
             // 
             // wrapItemBtn
             // 
             this.wrapItemBtn.Name = "wrapItemBtn";
-            this.wrapItemBtn.Size = new System.Drawing.Size(159, 22);
-            this.wrapItemBtn.Text = "Wrap Item";
+            this.wrapItemBtn.Size = new System.Drawing.Size(168, 22);
+            this.wrapItemBtn.Text = "Wrap Item [ ! ]";
             this.wrapItemBtn.Click += new System.EventHandler(this.wrapItemBtn_Click);
             // 
             // deleteItemBtn
             // 
             this.deleteItemBtn.Name = "deleteItemBtn";
-            this.deleteItemBtn.Size = new System.Drawing.Size(159, 22);
+            this.deleteItemBtn.Size = new System.Drawing.Size(168, 22);
             this.deleteItemBtn.Text = "Delete Item";
             this.deleteItemBtn.Click += new System.EventHandler(this.deleteItemBtn_Click);
             // 
             // wrapAllItemToolStripMenuItem
             // 
             this.wrapAllItemToolStripMenuItem.Name = "wrapAllItemToolStripMenuItem";
-            this.wrapAllItemToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.wrapAllItemToolStripMenuItem.Text = "Wrap All Items";
+            this.wrapAllItemToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.wrapAllItemToolStripMenuItem.Text = "Wrap All Items [ ! ]";
             this.wrapAllItemToolStripMenuItem.Click += new System.EventHandler(this.wrapAllItemToolStripMenuItem_Click);
             // 
             // unwrapAllItemToolStripMenuItem
             // 
             this.unwrapAllItemToolStripMenuItem.Name = "unwrapAllItemToolStripMenuItem";
-            this.unwrapAllItemToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.unwrapAllItemToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.unwrapAllItemToolStripMenuItem.Text = "Unwrap All Items";
             this.unwrapAllItemToolStripMenuItem.Click += new System.EventHandler(this.unwrapAllItemToolStripMenuItem_Click);
             // 
@@ -1745,7 +1753,9 @@
             this.wrapSetting.Name = "wrapSetting";
             this.wrapSetting.Size = new System.Drawing.Size(103, 24);
             this.wrapSetting.TabIndex = 93;
-            this.formToolTip.SetToolTip(this.wrapSetting, "Right click the inventory slot to wrap the item in it.");
+            this.formToolTip.SetToolTip(this.wrapSetting, "[Warning] As of game version v1.5.0, wapping any item that is non-wrappable will " +
+        "turn it into \"tree branch\".\r\nRight click the inventory slot to wrap the item in " +
+        "it.");
             // 
             // RetainNameCheckBox
             // 
@@ -2188,7 +2198,7 @@
             this.playerSelectionPanel.Controls.Add(this.Player4Btn);
             this.playerSelectionPanel.Controls.Add(this.Player2Btn);
             this.playerSelectionPanel.Controls.Add(this.Player3Btn);
-            this.playerSelectionPanel.Location = new System.Drawing.Point(452, 4);
+            this.playerSelectionPanel.Location = new System.Drawing.Point(15, 874);
             this.playerSelectionPanel.Name = "playerSelectionPanel";
             this.playerSelectionPanel.Size = new System.Drawing.Size(262, 44);
             this.playerSelectionPanel.TabIndex = 85;
@@ -2423,37 +2433,38 @@
             this.freezeTimeBtn.UseVisualStyleBackColor = false;
             this.freezeTimeBtn.Click += new System.EventHandler(this.freezeTimeBtn_Click);
             // 
-            // speedEnableBtn
+            // speedX4Btn
             // 
-            this.speedEnableBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.speedEnableBtn.FlatAppearance.BorderSize = 0;
-            this.speedEnableBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.speedEnableBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.speedEnableBtn.ForeColor = System.Drawing.Color.White;
-            this.speedEnableBtn.Location = new System.Drawing.Point(7, 30);
-            this.speedEnableBtn.Name = "speedEnableBtn";
-            this.speedEnableBtn.Size = new System.Drawing.Size(156, 24);
-            this.speedEnableBtn.TabIndex = 150;
-            this.speedEnableBtn.Text = "x4";
-            this.formToolTip.SetToolTip(this.speedEnableBtn, "Change walk speed to x4 of the normal speed.\r\n\r\nGotta Go Fast!");
-            this.speedEnableBtn.UseVisualStyleBackColor = false;
-            this.speedEnableBtn.Click += new System.EventHandler(this.speedEnableBtn_Click);
+            this.speedX4Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.speedX4Btn.FlatAppearance.BorderSize = 0;
+            this.speedX4Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.speedX4Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.speedX4Btn.ForeColor = System.Drawing.Color.White;
+            this.speedX4Btn.Location = new System.Drawing.Point(8, 30);
+            this.speedX4Btn.Name = "speedX4Btn";
+            this.speedX4Btn.Size = new System.Drawing.Size(75, 24);
+            this.speedX4Btn.TabIndex = 150;
+            this.speedX4Btn.Text = "x4";
+            this.formToolTip.SetToolTip(this.speedX4Btn, "Change walk speed to x4 of the normal speed.\r\n\r\nGotta go faster, faster, faster, " +
+        "faster, faster!");
+            this.speedX4Btn.UseVisualStyleBackColor = false;
+            this.speedX4Btn.Click += new System.EventHandler(this.speedX4Btn_Click);
             // 
-            // speedDisableBtn
+            // speedX1Btn
             // 
-            this.speedDisableBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.speedDisableBtn.FlatAppearance.BorderSize = 0;
-            this.speedDisableBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.speedDisableBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.speedDisableBtn.ForeColor = System.Drawing.Color.White;
-            this.speedDisableBtn.Location = new System.Drawing.Point(169, 30);
-            this.speedDisableBtn.Name = "speedDisableBtn";
-            this.speedDisableBtn.Size = new System.Drawing.Size(156, 24);
-            this.speedDisableBtn.TabIndex = 151;
-            this.speedDisableBtn.Text = "x1";
-            this.formToolTip.SetToolTip(this.speedDisableBtn, "Reset walk speed to normal.\r\n\r\nWhen life is going way too fast...\r\n");
-            this.speedDisableBtn.UseVisualStyleBackColor = false;
-            this.speedDisableBtn.Click += new System.EventHandler(this.speedDisableBtn_Click);
+            this.speedX1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            this.speedX1Btn.FlatAppearance.BorderSize = 0;
+            this.speedX1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.speedX1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.speedX1Btn.ForeColor = System.Drawing.Color.White;
+            this.speedX1Btn.Location = new System.Drawing.Point(251, 30);
+            this.speedX1Btn.Name = "speedX1Btn";
+            this.speedX1Btn.Size = new System.Drawing.Size(75, 24);
+            this.speedX1Btn.TabIndex = 151;
+            this.speedX1Btn.Text = "x1";
+            this.formToolTip.SetToolTip(this.speedX1Btn, "Reset walk speed to normal.\r\n\r\nWhen life is going way too fast...");
+            this.speedX1Btn.UseVisualStyleBackColor = false;
+            this.speedX1Btn.Click += new System.EventHandler(this.speedX1Btn_Click);
             // 
             // disableCollisionBtn
             // 
@@ -2467,14 +2478,14 @@
             this.disableCollisionBtn.Size = new System.Drawing.Size(156, 24);
             this.disableCollisionBtn.TabIndex = 153;
             this.disableCollisionBtn.Text = "Disable";
-            this.formToolTip.SetToolTip(this.disableCollisionBtn, "Disable item collision.\r\n\r\nIt is no longer no-clipping.... They keep nerfing this" +
-        " cheat.\r\nYou can not go in water or building...\r\n");
+            this.formToolTip.SetToolTip(this.disableCollisionBtn, "Disable item collision.\r\n\r\nAs of game veriosn v1.5.0, they buff this cheat once a" +
+        "gain to noclipping.");
             this.disableCollisionBtn.UseVisualStyleBackColor = false;
             this.disableCollisionBtn.Click += new System.EventHandler(this.disableCollisionBtn_Click);
             // 
             // enableCollisionBtn
             // 
-            this.enableCollisionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.enableCollisionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
             this.enableCollisionBtn.FlatAppearance.BorderSize = 0;
             this.enableCollisionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enableCollisionBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2495,26 +2506,26 @@
             this.animationSpdx0_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.animationSpdx0_1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.animationSpdx0_1.ForeColor = System.Drawing.Color.White;
-            this.animationSpdx0_1.Location = new System.Drawing.Point(89, 137);
+            this.animationSpdx0_1.Location = new System.Drawing.Point(201, 137);
             this.animationSpdx0_1.Name = "animationSpdx0_1";
-            this.animationSpdx0_1.Size = new System.Drawing.Size(75, 24);
+            this.animationSpdx0_1.Size = new System.Drawing.Size(60, 24);
             this.animationSpdx0_1.TabIndex = 156;
             this.animationSpdx0_1.Text = "x0.1";
             this.formToolTip.SetToolTip(this.animationSpdx0_1, "Change animation speed to x0.1 of the normal speed.\r\n\r\nJust because you\'re correc" +
-        "t doesn\'t mean you\'re right.\r\n");
+        "t doesn\'t mean you\'re right.");
             this.animationSpdx0_1.UseVisualStyleBackColor = false;
             this.animationSpdx0_1.Click += new System.EventHandler(this.animationSpdx0_1_Click);
             // 
             // animationSpdx1
             // 
-            this.animationSpdx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.animationSpdx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
             this.animationSpdx1.FlatAppearance.BorderSize = 0;
             this.animationSpdx1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.animationSpdx1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.animationSpdx1.ForeColor = System.Drawing.Color.White;
-            this.animationSpdx1.Location = new System.Drawing.Point(251, 137);
+            this.animationSpdx1.Location = new System.Drawing.Point(266, 137);
             this.animationSpdx1.Name = "animationSpdx1";
-            this.animationSpdx1.Size = new System.Drawing.Size(75, 24);
+            this.animationSpdx1.Size = new System.Drawing.Size(60, 24);
             this.animationSpdx1.TabIndex = 157;
             this.animationSpdx1.Text = "x1";
             this.formToolTip.SetToolTip(this.animationSpdx1, "Reset animation speed to normal.\r\n\r\nPeople die if they are killed.");
@@ -2528,13 +2539,13 @@
             this.animationSpdx2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.animationSpdx2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.animationSpdx2.ForeColor = System.Drawing.Color.White;
-            this.animationSpdx2.Location = new System.Drawing.Point(8, 137);
+            this.animationSpdx2.Location = new System.Drawing.Point(136, 137);
             this.animationSpdx2.Name = "animationSpdx2";
-            this.animationSpdx2.Size = new System.Drawing.Size(75, 24);
+            this.animationSpdx2.Size = new System.Drawing.Size(60, 24);
             this.animationSpdx2.TabIndex = 158;
             this.animationSpdx2.Text = "x2";
-            this.formToolTip.SetToolTip(this.animationSpdx2, "Change animation speed to x2 of the normal speed.\r\n\r\nThe Archer class really us m" +
-        "ade up of archers!\r\n");
+            this.formToolTip.SetToolTip(this.animationSpdx2, "Change animation speed to x2 of the normal speed.\r\n\r\nThe Archer class really is m" +
+        "ade up of archers!");
             this.animationSpdx2.UseVisualStyleBackColor = false;
             this.animationSpdx2.Click += new System.EventHandler(this.animationSpdx2_Click);
             // 
@@ -2545,13 +2556,13 @@
             this.animationSpdx50.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.animationSpdx50.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.animationSpdx50.ForeColor = System.Drawing.Color.White;
-            this.animationSpdx50.Location = new System.Drawing.Point(170, 137);
+            this.animationSpdx50.Location = new System.Drawing.Point(6, 137);
             this.animationSpdx50.Name = "animationSpdx50";
-            this.animationSpdx50.Size = new System.Drawing.Size(75, 24);
+            this.animationSpdx50.Size = new System.Drawing.Size(60, 24);
             this.animationSpdx50.TabIndex = 159;
             this.animationSpdx50.Text = "x50";
             this.formToolTip.SetToolTip(this.animationSpdx50, "Change animation speed to x50 of the normal speed.\r\n\r\nThen why does Berserker go " +
-        "berserk?\r\n");
+        "berserk?");
             this.animationSpdx50.UseVisualStyleBackColor = false;
             this.animationSpdx50.Click += new System.EventHandler(this.animationSpdx50_Click);
             // 
@@ -2717,7 +2728,7 @@
             this.MaxFriendshipBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MaxFriendshipBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.MaxFriendshipBtn.ForeColor = System.Drawing.Color.White;
-            this.MaxFriendshipBtn.Location = new System.Drawing.Point(690, 361);
+            this.MaxFriendshipBtn.Location = new System.Drawing.Point(692, 361);
             this.MaxFriendshipBtn.Name = "MaxFriendshipBtn";
             this.MaxFriendshipBtn.Size = new System.Drawing.Size(48, 28);
             this.MaxFriendshipBtn.TabIndex = 186;
@@ -2808,11 +2819,12 @@
             this.SetFriendshipBtn.ForeColor = System.Drawing.Color.White;
             this.SetFriendshipBtn.Location = new System.Drawing.Point(575, 361);
             this.SetFriendshipBtn.Name = "SetFriendshipBtn";
-            this.SetFriendshipBtn.Size = new System.Drawing.Size(109, 28);
+            this.SetFriendshipBtn.Size = new System.Drawing.Size(111, 28);
             this.SetFriendshipBtn.TabIndex = 205;
             this.SetFriendshipBtn.Tag = "";
             this.SetFriendshipBtn.Text = "Set Friendship";
-            this.formToolTip.SetToolTip(this.SetFriendshipBtn, "Set the friendship value toward player 1.\r\n\r\nMax is 255 and Min is 25.");
+            this.formToolTip.SetToolTip(this.SetFriendshipBtn, "Set the friendship value toward the selected player.\r\n\r\nMax is 255 and Min is 25." +
+        "");
             this.SetFriendshipBtn.UseVisualStyleBackColor = false;
             this.SetFriendshipBtn.Click += new System.EventHandler(this.SetFriendshipBtn_Click);
             // 
@@ -2867,6 +2879,80 @@
             this.DumpHouseBtn.UseVisualStyleBackColor = false;
             this.DumpHouseBtn.Click += new System.EventHandler(this.DumpHouseBtn_Click);
             // 
+            // speedX2Btn
+            // 
+            this.speedX2Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.speedX2Btn.FlatAppearance.BorderSize = 0;
+            this.speedX2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.speedX2Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.speedX2Btn.ForeColor = System.Drawing.Color.White;
+            this.speedX2Btn.Location = new System.Drawing.Point(170, 30);
+            this.speedX2Btn.Name = "speedX2Btn";
+            this.speedX2Btn.Size = new System.Drawing.Size(75, 24);
+            this.speedX2Btn.TabIndex = 168;
+            this.speedX2Btn.Text = "x2";
+            this.formToolTip.SetToolTip(this.speedX2Btn, "Change walk speed to x2 of the normal speed.\r\n\r\nMovin\' at speed of sound!\r\n");
+            this.speedX2Btn.UseVisualStyleBackColor = false;
+            this.speedX2Btn.Click += new System.EventHandler(this.speedX2Btn_Click);
+            // 
+            // speedX3Btn
+            // 
+            this.speedX3Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.speedX3Btn.FlatAppearance.BorderSize = 0;
+            this.speedX3Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.speedX3Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.speedX3Btn.ForeColor = System.Drawing.Color.White;
+            this.speedX3Btn.Location = new System.Drawing.Point(89, 30);
+            this.speedX3Btn.Name = "speedX3Btn";
+            this.speedX3Btn.Size = new System.Drawing.Size(75, 24);
+            this.speedX3Btn.TabIndex = 169;
+            this.speedX3Btn.Text = "x3";
+            this.formToolTip.SetToolTip(this.speedX3Btn, "Change walk speed to x3 of the normal speed.\r\n\r\nGotta go fast, gotta go fast!");
+            this.speedX3Btn.UseVisualStyleBackColor = false;
+            this.speedX3Btn.Click += new System.EventHandler(this.speedX3Btn_Click);
+            // 
+            // animationSpdx5
+            // 
+            this.animationSpdx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.animationSpdx5.FlatAppearance.BorderSize = 0;
+            this.animationSpdx5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.animationSpdx5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.animationSpdx5.ForeColor = System.Drawing.Color.White;
+            this.animationSpdx5.Location = new System.Drawing.Point(71, 137);
+            this.animationSpdx5.Name = "animationSpdx5";
+            this.animationSpdx5.Size = new System.Drawing.Size(60, 24);
+            this.animationSpdx5.TabIndex = 170;
+            this.animationSpdx5.Text = "x5";
+            this.formToolTip.SetToolTip(this.animationSpdx5, "Change animation speed to x5 of the normal speed.\r\n\r\nSo, you dodged my undodgeabl" +
+        "e blow, Saber!");
+            this.animationSpdx5.UseVisualStyleBackColor = false;
+            this.animationSpdx5.Click += new System.EventHandler(this.animationSpdx5_Click);
+            // 
+            // playerSelectorVillager
+            // 
+            this.playerSelectorVillager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.playerSelectorVillager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.playerSelectorVillager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playerSelectorVillager.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.playerSelectorVillager.ForeColor = System.Drawing.Color.White;
+            this.playerSelectorVillager.FormattingEnabled = true;
+            this.playerSelectorVillager.ItemHeight = 16;
+            this.playerSelectorVillager.Items.AddRange(new object[] {
+            "Friend 1",
+            "Friend 2",
+            "Friend 3",
+            "Friend 4",
+            "Friend 5",
+            "Friend 6",
+            "Friend 7",
+            "Friend 8"});
+            this.playerSelectorVillager.Location = new System.Drawing.Point(268, 24);
+            this.playerSelectorVillager.Name = "playerSelectorVillager";
+            this.playerSelectorVillager.Size = new System.Drawing.Size(109, 24);
+            this.playerSelectorVillager.TabIndex = 177;
+            this.formToolTip.SetToolTip(this.playerSelectorVillager, resources.GetString("playerSelectorVillager.ToolTip"));
+            this.playerSelectorVillager.SelectedIndexChanged += new System.EventHandler(this.playerSelectorVillager_SelectedIndexChanged);
+            // 
             // selectedItem
             // 
             this.selectedItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -2887,6 +2973,64 @@
             this.formToolTip.SetToolTip(this.selectedItem, "Click to spawn selected item.");
             this.selectedItem.UseVisualStyleBackColor = false;
             this.selectedItem.Click += new System.EventHandler(this.selectedItem_Click);
+            // 
+            // playerSelectorOther
+            // 
+            this.playerSelectorOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.playerSelectorOther.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.playerSelectorOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playerSelectorOther.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.playerSelectorOther.ForeColor = System.Drawing.Color.White;
+            this.playerSelectorOther.FormattingEnabled = true;
+            this.playerSelectorOther.ItemHeight = 16;
+            this.playerSelectorOther.Items.AddRange(new object[] {
+            "Player 1",
+            "Player 2",
+            "Player 3",
+            "Player 4",
+            "Player 5",
+            "Player 6",
+            "Player 7",
+            "Player 8"});
+            this.playerSelectorOther.Location = new System.Drawing.Point(987, 37);
+            this.playerSelectorOther.Name = "playerSelectorOther";
+            this.playerSelectorOther.Size = new System.Drawing.Size(140, 24);
+            this.playerSelectorOther.TabIndex = 176;
+            this.playerSelectorOther.SelectedIndexChanged += new System.EventHandler(this.playerSelectorOther_SelectedIndexChanged);
+            // 
+            // playerSelectorInventory
+            // 
+            this.playerSelectorInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.playerSelectorInventory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.playerSelectorInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playerSelectorInventory.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.playerSelectorInventory.ForeColor = System.Drawing.Color.White;
+            this.playerSelectorInventory.FormattingEnabled = true;
+            this.playerSelectorInventory.ItemHeight = 16;
+            this.playerSelectorInventory.Items.AddRange(new object[] {
+            "Player 1",
+            "Player 2",
+            "Player 3",
+            "Player 4",
+            "Player 5",
+            "Player 6",
+            "Player 7",
+            "Player 8",
+            "Player 1 House",
+            "Player 2 House",
+            "Player 3 House",
+            "Player 4 House",
+            "Player 5 House",
+            "Player 6 House",
+            "Player 7 House",
+            "Player 8 House",
+            "Recycling Bin"});
+            this.playerSelectorInventory.Location = new System.Drawing.Point(564, 11);
+            this.playerSelectorInventory.Name = "playerSelectorInventory";
+            this.playerSelectorInventory.Size = new System.Drawing.Size(147, 24);
+            this.playerSelectorInventory.TabIndex = 98;
+            this.playerSelectorInventory.Visible = false;
+            this.playerSelectorInventory.SelectedIndexChanged += new System.EventHandler(this.inventorySelector_SelectedIndexChanged);
             // 
             // saveBtn
             // 
@@ -2921,6 +3065,7 @@
             // inventoryLargePanel
             // 
             this.inventoryLargePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.inventoryLargePanel.Controls.Add(this.playerSelectorInventory);
             this.inventoryLargePanel.Controls.Add(this.pacman2);
             this.inventoryLargePanel.Controls.Add(this.selectedFlag2);
             this.inventoryLargePanel.Controls.Add(this.selectedFlag1);
@@ -2937,7 +3082,6 @@
             this.inventoryLargePanel.Controls.Add(this.selectedItem);
             this.inventoryLargePanel.Controls.Add(this.recipeModeBtn);
             this.inventoryLargePanel.Controls.Add(this.flowerModeBtn);
-            this.inventoryLargePanel.Controls.Add(this.playerSelectionPanel);
             this.inventoryLargePanel.Controls.Add(this.selectedID);
             this.inventoryLargePanel.Controls.Add(this.autoRefreshCheckBox);
             this.inventoryLargePanel.Controls.Add(this.selectedData);
@@ -3038,7 +3182,6 @@
             this.debugVillager.Tag = "";
             this.debugVillager.Text = "debug";
             this.debugVillager.UseVisualStyleBackColor = false;
-            this.debugVillager.Click += new System.EventHandler(this.debugVillager_Click);
             // 
             // debugBtn
             // 
@@ -3108,6 +3251,7 @@
             // 
             // otherLargePanel
             // 
+            this.otherLargePanel.Controls.Add(this.playerSelectorOther);
             this.otherLargePanel.Controls.Add(this.SeedTextbox);
             this.otherLargePanel.Controls.Add(this.SeedLabel);
             this.otherLargePanel.Controls.Add(this.pokeMainCheatPanel);
@@ -3196,14 +3340,17 @@
             // 
             // pokeMainCheatPanel
             // 
+            this.pokeMainCheatPanel.Controls.Add(this.animationSpdx5);
+            this.pokeMainCheatPanel.Controls.Add(this.speedX3Btn);
+            this.pokeMainCheatPanel.Controls.Add(this.speedX2Btn);
             this.pokeMainCheatPanel.Controls.Add(this.timePanel);
             this.pokeMainCheatPanel.Controls.Add(this.label20);
             this.pokeMainCheatPanel.Controls.Add(this.label23);
             this.pokeMainCheatPanel.Controls.Add(this.unfreezeTimeBtn);
-            this.pokeMainCheatPanel.Controls.Add(this.speedEnableBtn);
+            this.pokeMainCheatPanel.Controls.Add(this.speedX4Btn);
             this.pokeMainCheatPanel.Controls.Add(this.animationSpdx50);
             this.pokeMainCheatPanel.Controls.Add(this.freezeTimeBtn);
-            this.pokeMainCheatPanel.Controls.Add(this.speedDisableBtn);
+            this.pokeMainCheatPanel.Controls.Add(this.speedX1Btn);
             this.pokeMainCheatPanel.Controls.Add(this.animationSpdx2);
             this.pokeMainCheatPanel.Controls.Add(this.Label21);
             this.pokeMainCheatPanel.Controls.Add(this.animationSpdx1);
@@ -3385,9 +3532,9 @@
             this.label23.ForeColor = System.Drawing.Color.Gainsboro;
             this.label23.Location = new System.Drawing.Point(361, 4);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(68, 22);
+            this.label23.Size = new System.Drawing.Size(171, 22);
             this.label23.TabIndex = 160;
-            this.label23.Text = "Time :";
+            this.label23.Text = "Freeze/Set Time :";
             // 
             // Label21
             // 
@@ -3418,9 +3565,9 @@
             this.label19.ForeColor = System.Drawing.Color.White;
             this.label19.Location = new System.Drawing.Point(421, 10);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(244, 22);
+            this.label19.Size = new System.Drawing.Size(164, 22);
             this.label19.TabIndex = 147;
-            this.label19.Text = "Player 1 Reaction Wheel :";
+            this.label19.Text = "Reaction Wheel :";
             // 
             // reactionSlot2
             // 
@@ -3491,13 +3638,15 @@
             "39: Clapping (Unused)",
             "3A: Bewilderment",
             "3B: Greetings (Unused)",
-            "3C: Gulliver (Unused)",
-            "3D: Whooaaah (Unused)",
-            "3E: Forehead (Unused)",
-            "3F: Roger (Unused)",
-            "40: K.K. Slider Sitting (Unused)",
-            "41: K.K. nodding (Unused)",
-            "42: K.K. thinking (Unused)"});
+            "3C: Scare (Halloween)",
+            "3D: Haunt (Halloween)",
+            "3E: Gulliver (Unused)",
+            "3F: Wasp (Unused)",
+            "40: Forehead (Unused)",
+            "41: Orville (Unused)",
+            "42: K.K. Slider Sitting (Unused)",
+            "43: K.K. nodding while sitting (Unused)",
+            "44: K.K. thinking while sitting (Unused)"});
             this.reactionSlot2.Location = new System.Drawing.Point(807, 82);
             this.reactionSlot2.Name = "reactionSlot2";
             this.reactionSlot2.Size = new System.Drawing.Size(255, 24);
@@ -3572,13 +3721,15 @@
             "39: Clapping (Unused)",
             "3A: Bewilderment",
             "3B: Greetings (Unused)",
-            "3C: Gulliver (Unused)",
-            "3D: Whooaaah (Unused)",
-            "3E: Forehead (Unused)",
-            "3F: Roger (Unused)",
-            "40: K.K. Slider Sitting (Unused)",
-            "41: K.K. nodding (Unused)",
-            "42: K.K. thinking (Unused)"});
+            "3C: Scare (Halloween)",
+            "3D: Haunt (Halloween)",
+            "3E: Gulliver (Unused)",
+            "3F: Wasp (Unused)",
+            "40: Forehead (Unused)",
+            "41: Orville (Unused)",
+            "42: K.K. Slider Sitting (Unused)",
+            "43: K.K. nodding while sitting (Unused)",
+            "44: K.K. thinking while sitting (Unused)"});
             this.reactionSlot3.Location = new System.Drawing.Point(872, 124);
             this.reactionSlot3.Name = "reactionSlot3";
             this.reactionSlot3.Size = new System.Drawing.Size(255, 24);
@@ -3653,13 +3804,15 @@
             "39: Clapping (Unused)",
             "3A: Bewilderment",
             "3B: Greetings (Unused)",
-            "3C: Gulliver (Unused)",
-            "3D: Whooaaah (Unused)",
-            "3E: Forehead (Unused)",
-            "3F: Roger (Unused)",
-            "40: K.K. Slider Sitting (Unused)",
-            "41: K.K. nodding (Unused)",
-            "42: K.K. thinking (Unused)"});
+            "3C: Scare (Halloween)",
+            "3D: Haunt (Halloween)",
+            "3E: Gulliver (Unused)",
+            "3F: Wasp (Unused)",
+            "40: Forehead (Unused)",
+            "41: Orville (Unused)",
+            "42: K.K. Slider Sitting (Unused)",
+            "43: K.K. nodding while sitting (Unused)",
+            "44: K.K. thinking while sitting (Unused)"});
             this.reactionSlot4.Location = new System.Drawing.Point(807, 166);
             this.reactionSlot4.Name = "reactionSlot4";
             this.reactionSlot4.Size = new System.Drawing.Size(255, 24);
@@ -3734,13 +3887,15 @@
             "39: Clapping (Unused)",
             "3A: Bewilderment",
             "3B: Greetings (Unused)",
-            "3C: Gulliver (Unused)",
-            "3D: Whooaaah (Unused)",
-            "3E: Forehead (Unused)",
-            "3F: Roger (Unused)",
-            "40: K.K. Slider Sitting (Unused)",
-            "41: K.K. nodding (Unused)",
-            "42: K.K. thinking (Unused)"});
+            "3C: Scare (Halloween)",
+            "3D: Haunt (Halloween)",
+            "3E: Gulliver (Unused)",
+            "3F: Wasp (Unused)",
+            "40: Forehead (Unused)",
+            "41: Orville (Unused)",
+            "42: K.K. Slider Sitting (Unused)",
+            "43: K.K. nodding while sitting (Unused)",
+            "44: K.K. thinking while sitting (Unused)"});
             this.reactionSlot1.Location = new System.Drawing.Point(638, 37);
             this.reactionSlot1.Name = "reactionSlot1";
             this.reactionSlot1.Size = new System.Drawing.Size(255, 24);
@@ -3815,13 +3970,15 @@
             "39: Clapping (Unused)",
             "3A: Bewilderment",
             "3B: Greetings (Unused)",
-            "3C: Gulliver (Unused)",
-            "3D: Whooaaah (Unused)",
-            "3E: Forehead (Unused)",
-            "3F: Roger (Unused)",
-            "40: K.K. Slider Sitting (Unused)",
-            "41: K.K. nodding (Unused)",
-            "42: K.K. thinking (Unused)"});
+            "3C: Scare (Halloween)",
+            "3D: Haunt (Halloween)",
+            "3E: Gulliver (Unused)",
+            "3F: Wasp (Unused)",
+            "40: Forehead (Unused)",
+            "41: Orville (Unused)",
+            "42: K.K. Slider Sitting (Unused)",
+            "43: K.K. nodding while sitting (Unused)",
+            "44: K.K. thinking while sitting (Unused)"});
             this.reactionSlot8.Location = new System.Drawing.Point(482, 82);
             this.reactionSlot8.Name = "reactionSlot8";
             this.reactionSlot8.Size = new System.Drawing.Size(255, 24);
@@ -3896,13 +4053,15 @@
             "39: Clapping (Unused)",
             "3A: Bewilderment",
             "3B: Greetings (Unused)",
-            "3C: Gulliver (Unused)",
-            "3D: Whooaaah (Unused)",
-            "3E: Forehead (Unused)",
-            "3F: Roger (Unused)",
-            "40: K.K. Slider Sitting (Unused)",
-            "41: K.K. nodding (Unused)",
-            "42: K.K. thinking (Unused)"});
+            "3C: Scare (Halloween)",
+            "3D: Haunt (Halloween)",
+            "3E: Gulliver (Unused)",
+            "3F: Wasp (Unused)",
+            "40: Forehead (Unused)",
+            "41: Orville (Unused)",
+            "42: K.K. Slider Sitting (Unused)",
+            "43: K.K. nodding while sitting (Unused)",
+            "44: K.K. thinking while sitting (Unused)"});
             this.reactionSlot7.Location = new System.Drawing.Point(425, 125);
             this.reactionSlot7.Name = "reactionSlot7";
             this.reactionSlot7.Size = new System.Drawing.Size(255, 24);
@@ -3977,13 +4136,15 @@
             "39: Clapping (Unused)",
             "3A: Bewilderment",
             "3B: Greetings (Unused)",
-            "3C: Gulliver (Unused)",
-            "3D: Whooaaah (Unused)",
-            "3E: Forehead (Unused)",
-            "3F: Roger (Unused)",
-            "40: K.K. Slider Sitting (Unused)",
-            "41: K.K. nodding (Unused)",
-            "42: K.K. thinking (Unused)"});
+            "3C: Scare (Halloween)",
+            "3D: Haunt (Halloween)",
+            "3E: Gulliver (Unused)",
+            "3F: Wasp (Unused)",
+            "40: Forehead (Unused)",
+            "41: Orville (Unused)",
+            "42: K.K. Slider Sitting (Unused)",
+            "43: K.K. nodding while sitting (Unused)",
+            "44: K.K. thinking while sitting (Unused)"});
             this.reactionSlot6.Location = new System.Drawing.Point(482, 166);
             this.reactionSlot6.Name = "reactionSlot6";
             this.reactionSlot6.Size = new System.Drawing.Size(255, 24);
@@ -4058,13 +4219,15 @@
             "39: Clapping (Unused)",
             "3A: Bewilderment",
             "3B: Greetings (Unused)",
-            "3C: Gulliver (Unused)",
-            "3D: Whooaaah (Unused)",
-            "3E: Forehead (Unused)",
-            "3F: Roger (Unused)",
-            "40: K.K. Slider Sitting (Unused)",
-            "41: K.K. nodding (Unused)",
-            "42: K.K. thinking (Unused)"});
+            "3C: Scare (Halloween)",
+            "3D: Haunt (Halloween)",
+            "3E: Gulliver (Unused)",
+            "3F: Wasp (Unused)",
+            "40: Forehead (Unused)",
+            "41: Orville (Unused)",
+            "42: K.K. Slider Sitting (Unused)",
+            "43: K.K. nodding while sitting (Unused)",
+            "44: K.K. thinking while sitting (Unused)"});
             this.reactionSlot5.Location = new System.Drawing.Point(638, 209);
             this.reactionSlot5.Name = "reactionSlot5";
             this.reactionSlot5.Size = new System.Drawing.Size(255, 24);
@@ -4977,6 +5140,7 @@
             // 
             // villagerLargePanel
             // 
+            this.villagerLargePanel.Controls.Add(this.PlayerNameLabel);
             this.villagerLargePanel.Controls.Add(this.overlay);
             this.villagerLargePanel.Controls.Add(this.PleaseWaitPanel);
             this.villagerLargePanel.Controls.Add(this.MysteryIslandToursLabel);
@@ -5006,6 +5170,17 @@
             this.villagerLargePanel.Size = new System.Drawing.Size(1220, 550);
             this.villagerLargePanel.TabIndex = 164;
             // 
+            // PlayerNameLabel
+            // 
+            this.PlayerNameLabel.AutoSize = true;
+            this.PlayerNameLabel.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.PlayerNameLabel.ForeColor = System.Drawing.Color.White;
+            this.PlayerNameLabel.Location = new System.Drawing.Point(378, 25);
+            this.PlayerNameLabel.Name = "PlayerNameLabel";
+            this.PlayerNameLabel.Size = new System.Drawing.Size(138, 22);
+            this.PlayerNameLabel.TabIndex = 216;
+            this.PlayerNameLabel.Text = "Player Name :";
+            // 
             // overlay
             // 
             this.overlay.BackColor = System.Drawing.Color.Black;
@@ -5022,9 +5197,9 @@
             this.PleaseWaitPanel.Controls.Add(this.VillagerProgressBar);
             this.PleaseWaitPanel.Controls.Add(this.pictureBox2);
             this.PleaseWaitPanel.Controls.Add(this.label29);
-            this.PleaseWaitPanel.Location = new System.Drawing.Point(150, 150);
+            this.PleaseWaitPanel.Location = new System.Drawing.Point(170, 150);
             this.PleaseWaitPanel.Name = "PleaseWaitPanel";
-            this.PleaseWaitPanel.Size = new System.Drawing.Size(441, 63);
+            this.PleaseWaitPanel.Size = new System.Drawing.Size(400, 63);
             this.PleaseWaitPanel.TabIndex = 214;
             this.PleaseWaitPanel.Visible = false;
             // 
@@ -5040,7 +5215,7 @@
             this.WaitMessagebox.Multiline = false;
             this.WaitMessagebox.Name = "WaitMessagebox";
             this.WaitMessagebox.ReadOnly = true;
-            this.WaitMessagebox.Size = new System.Drawing.Size(430, 27);
+            this.WaitMessagebox.Size = new System.Drawing.Size(390, 27);
             this.WaitMessagebox.TabIndex = 215;
             this.WaitMessagebox.Text = "";
             // 
@@ -5051,13 +5226,13 @@
             this.VillagerProgressBar.Location = new System.Drawing.Point(4, 28);
             this.VillagerProgressBar.Maximum = 260;
             this.VillagerProgressBar.Name = "VillagerProgressBar";
-            this.VillagerProgressBar.Size = new System.Drawing.Size(430, 3);
+            this.VillagerProgressBar.Size = new System.Drawing.Size(390, 3);
             this.VillagerProgressBar.TabIndex = 215;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::ACNHPoker.Properties.Resources.loading;
-            this.pictureBox2.Location = new System.Drawing.Point(142, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(133, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(24, 24);
             this.pictureBox2.TabIndex = 216;
@@ -5068,7 +5243,7 @@
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(169, 5);
+            this.label29.Location = new System.Drawing.Point(160, 5);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(100, 16);
             this.label29.TabIndex = 215;
@@ -5349,6 +5524,8 @@
             // VillagerControl
             // 
             this.VillagerControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.VillagerControl.Controls.Add(this.PlayerName);
+            this.VillagerControl.Controls.Add(this.playerSelectorVillager);
             this.VillagerControl.Controls.Add(this.MysSelector);
             this.VillagerControl.Controls.Add(this.IslandSearch);
             this.VillagerControl.Controls.Add(this.VillagerSearch);
@@ -5378,8 +5555,439 @@
             this.VillagerControl.Controls.Add(this.debugVillager);
             this.VillagerControl.Location = new System.Drawing.Point(0, 0);
             this.VillagerControl.Name = "VillagerControl";
-            this.VillagerControl.Size = new System.Drawing.Size(1220, 515);
+            this.VillagerControl.Size = new System.Drawing.Size(1192, 515);
             this.VillagerControl.TabIndex = 215;
+            // 
+            // PlayerName
+            // 
+            this.VillagerSearchMenu.SetAutocompleteMenu(this.PlayerName, null);
+            this.PlayerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.PlayerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerName.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PlayerName.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.PlayerName.ForeColor = System.Drawing.Color.White;
+            this.PlayerName.Location = new System.Drawing.Point(517, 20);
+            this.PlayerName.Multiline = false;
+            this.PlayerName.Name = "PlayerName";
+            this.PlayerName.ReadOnly = true;
+            this.PlayerName.Size = new System.Drawing.Size(121, 30);
+            this.PlayerName.TabIndex = 216;
+            this.PlayerName.Text = "";
+            // 
+            // MysSelector
+            // 
+            this.MysSelector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.MysSelector.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.MysSelector.DropDownHeight = 362;
+            this.MysSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MysSelector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MysSelector.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.MysSelector.ForeColor = System.Drawing.Color.White;
+            this.MysSelector.FormattingEnabled = true;
+            this.MysSelector.IntegralHeight = false;
+            this.MysSelector.ItemHeight = 60;
+            this.MysSelector.Items.AddRange(new object[] {
+            "Admiral : brd06",
+            "Agent S : squ05",
+            "Agnes : pig17",
+            "Al : gor08",
+            "Alfonso : crd00",
+            "Alice : kal01",
+            "Alli : crd01",
+            "Amelia : pbr01",
+            "Anabelle : ant03",
+            "Anchovy : brd02",
+            "Angus : bul00",
+            "Anicotti : mus10",
+            "Ankha : cat19",
+            "Annalisa : ant08",
+            "Annalise : hrs09",
+            "Antonio : ant01",
+            "Apollo : pbr00",
+            "Apple : ham01",
+            "Astrid : kgr05",
+            "Audie : wol12",
+            "Aurora : pgn00",
+            "Ava : chn05",
+            "Avery : pbr05",
+            "Axel : elp06",
+            "Baabara : shp01",
+            "Bam : der01",
+            "Bangle : tig03",
+            "Barold : cbr16",
+            "Bea : dog10",
+            "Beardo : bea13",
+            "Beau : der07",
+            "Becky : chn09",
+            "Bella : mus02",
+            "Benedict : chn01",
+            "Benjamin : dog16",
+            "Bertha : hip03",
+            "Bettina : mus15",
+            "Bianca : tig06",
+            "Biff : hip04",
+            "Big Top : elp02",
+            "Bill : duk00",
+            "Billy : goa02",
+            "Biskit : dog03",
+            "Bitty : hip05",
+            "Blaire : squ01",
+            "Blanche : ost08",
+            "Bluebear : cbr00",
+            "Bob : cat00",
+            "Bonbon : rbt17",
+            "Bones : dog04",
+            "Boomer : pgn10",
+            "Boone : gor02",
+            "Boots : crd02",
+            "Boris : pig09",
+            "Boyd : gor05",
+            "Bree : mus03",
+            "Broccolo : mus12",
+            "Broffina : chn12",
+            "Bruce : der03",
+            "Bubbles : hip02",
+            "Buck : hrs00",
+            "Bud : lon00",
+            "Bunnie : rbt00",
+            "Butch : dog01",
+            "Buzz : pbr03",
+            "Cally : squ11",
+            "Camofrog : flg03",
+            "Canberra : kal08",
+            "Candi : mus08",
+            "Carmen : rbt16",
+            "Caroline : squ06",
+            "Carrie : kgr02",
+            "Cashmere : shp04",
+            "Celia : pbr09",
+            "Cesar : gor00",
+            "Chadder : mus18",
+            "Chai : elp11",
+            "Charlise : bea12",
+            "Chelsea : der10",
+            "Cheri : cbr10",
+            "Cherry : dog17",
+            "Chester : cbr15",
+            "Chevre : goa00",
+            "Chief : wol00",
+            "Chops : pig14",
+            "Chow : bea03",
+            "Chrissy : rbt13",
+            "Claude : rbt11",
+            "Claudia : tig05",
+            "Clay : ham05",
+            "Cleo : hrs07",
+            "Clyde : hrs10",
+            "Coach : bul07",
+            "Cobb : pig08",
+            "Coco : rbt02",
+            "Cole : rbt18",
+            "Colton : hrs11",
+            "Cookie : dog08",
+            "Cousteau : flg10",
+            "Cranston : ost06",
+            "Croque : flg17",
+            "Cube : pgn02",
+            "Curlos : shp08",
+            "Curly : pig00",
+            "Curt : bea02",
+            "Cyd : elp12",
+            "Cyrano : ant00",
+            "Daisy : dog07",
+            "Deena : duk04",
+            "Deirdre : der04",
+            "Del : crd04",
+            "Deli : mnk08",
+            "Derwin : duk08",
+            "Diana : der08",
+            "Diva : flg18",
+            "Dizzy : elp01",
+            "Dobie : wol04",
+            "Doc : rbt10",
+            "Dom : shp15",
+            "Dora : mus00",
+            "Dotty : rbt01",
+            "Drago : crd08",
+            "Drake : duk09",
+            "Drift : flg04",
+            "Ed : hrs06",
+            "Egbert : chn02",
+            "Elise : mnk05",
+            "Ellie : elp07",
+            "Elmer : hrs03",
+            "Eloise : elp03",
+            "Elvis : lon01",
+            "Erik : der09",
+            "Étoile : shp14",
+            "Eugene : kal10",
+            "Eunice : shp02",
+            "Fang : wol06",
+            "Fauna : der00",
+            "Felicity : cat17",
+            "Filbert : squ02",
+            "Flip : mnk06",
+            "Flo : pgn13",
+            "Flora : ost09",
+            "Flurry : ham06",
+            "Francine : rbt12",
+            "Frank : pbr06",
+            "Freckles : duk07",
+            "Freya : wol05",
+            "Friga : pgn04",
+            "Frita : shp11",
+            "Frobert : flg02",
+            "Fuchsia : der06",
+            "Gabi : rbt05",
+            "Gala : pig13",
+            "Gaston : rbt04",
+            "Gayle : crd07",
+            "Genji : rbt08",
+            "Gigi : flg16",
+            "Gladys : ost01",
+            "Gloria : duk15",
+            "Goldie : dog00",
+            "Gonzo : kal04",
+            "Goose : chn00",
+            "Graham : ham02",
+            "Greta : mus16",
+            "Grizzly : bea09",
+            "Groucho : bea06",
+            "Gruff : goa04",
+            "Gwen : pgn05",
+            "Hamlet : ham00",
+            "Hamphrey : ham07",
+            "Hans : gor10",
+            "Harry : hip08",
+            "Hazel : squ18",
+            "Henry : flg19",
+            "Hippeux : hip09",
+            "Hopkins : rbt14",
+            "Hopper : pgn03",
+            "Hornsby : rhn04",
+            "Huck : flg11",
+            "Hugh : pig03",
+            "Iggly : pgn11",
+            "Ike : bea11",
+            "Jacob : brd11",
+            "Jacques : brd16",
+            "Jambette : flg13",
+            "Jay : brd00",
+            "Jeremiah : flg07",
+            "Jitters : brd04",
+            "Joey : duk01",
+            "Judy : cbr19",
+            "Julia : ost05",
+            "Julian : hrs13",
+            "June : cbr13",
+            "Kabuki : cat09",
+            "Katt : cat21",
+            "Keaton : pbr08",
+            "Ken : chn13",
+            "Ketchup : duk13",
+            "Kevin : pig15",
+            "Kid Cat : cat10",
+            "Kidd : goa07",
+            "Kiki : cat04",
+            "Kitt : kgr00",
+            "Kitty : cat14",
+            "Klaus : bea14",
+            "Knox : chn11",
+            "Kody : cbr04",
+            "Kyle : wol10",
+            "Leonardo : tig04",
+            "Leopold : lon04",
+            "Lily : flg00",
+            "Limberg : mus01",
+            "Lionel : lon08",
+            "Lobo : wol01",
+            "Lolly : cat18",
+            "Lopez : der05",
+            "Louie : gor04",
+            "Lucha : brd15",
+            "Lucky : dog02",
+            "Lucy : pig04",
+            "Lyman : kal09",
+            "Mac : dog14",
+            "Maddie : dog09",
+            "Maelle : duk03",
+            "Maggie : pig10",
+            "Mallary : duk06",
+            "Maple : cbr01",
+            "Marcel : dog15",
+            "Marcie : kgr10",
+            "Margie : elp04",
+            "Marina : ocp01",
+            "Marshal : squ17",
+            "Marty : cbr18",
+            "Mathilda : kgr01",
+            "Megan : bea15",
+            "Melba : kal02",
+            "Merengue : rhn07",
+            "Merry : cat16",
+            "Midge : brd08",
+            "Mint : squ09",
+            "Mira : rbt19",
+            "Miranda : duk12",
+            "Mitzi : cat01",
+            "Moe : cat08",
+            "Molly : duk16",
+            "Monique : cat11",
+            "Monty : mnk04",
+            "Moose : mus14",
+            "Mott : lon06",
+            "Muffy : shp12",
+            "Murphy : cbr07",
+            "Nan : goa01",
+            "Nana : mnk01",
+            "Naomi : cow07",
+            "Nate : bea05",
+            "Nibbles : squ04",
+            "Norma : cow06",
+            "O\'Hare : rbt15",
+            "Octavian : ocp00",
+            "Olaf : ant09",
+            "Olive : cbr09",
+            "Olivia : cat03",
+            "Opal : elp00",
+            "Ozzie : kal05",
+            "Pancetti : pig16",
+            "Pango : ant02",
+            "Paolo : elp05",
+            "Papi : hrs12",
+            "Pashmina : goa08",
+            "Pate : duk02",
+            "Patty : cow00",
+            "Paula : bea10",
+            "Peaches : hrs08",
+            "Peanut : squ00",
+            "Pecan : squ03",
+            "Peck : brd17",
+            "Peewee : gor01",
+            "Peggy : pig11",
+            "Pekoe : cbr14",
+            "Penelope : mus17",
+            "Phil : ost07",
+            "Phoebe : ost10",
+            "Pierce : pbr02",
+            "Pietro : shp13",
+            "Pinky : bea01",
+            "Piper : brd05",
+            "Pippy : rbt06",
+            "Plucky : chn10",
+            "Pompom : duk05",
+            "Poncho : cbr02",
+            "Poppy : squ15",
+            "Portia : dog05",
+            "Prince : flg12",
+            "Puck : pgn06",
+            "Puddles : flg06",
+            "Pudge : cbr03",
+            "Punchy : cat06",
+            "Purrl : cat07",
+            "Queenie : ost00",
+            "Quillson : duk17",
+            "Raddle : flg15",
+            "Rasher : pig02",
+            "Raymond : cat23",
+            "Renée : rhn08",
+            "Reneigh : hrs16",
+            "Rex : lon02",
+            "Rhonda : rhn01",
+            "Ribbot : flg01",
+            "Ricky : squ10",
+            "Rilla : gor11",
+            "Rizzo : mus09",
+            "Roald : pgn01",
+            "Robin : brd01",
+            "Rocco : hip00",
+            "Rocket : gor09",
+            "Rod : mus05",
+            "Rodeo : bul01",
+            "Rodney : ham03",
+            "Rolf : tig00",
+            "Rooney : kgr09",
+            "Rory : lon07",
+            "Roscoe : hrs04",
+            "Rosie : cat02",
+            "Rowan : tig01",
+            "Ruby : rbt09",
+            "Rudy : cat20",
+            "Sally : squ07",
+            "Samson : mus04",
+            "Sandy : ost02",
+            "Savannah : hrs02",
+            "Scoot : duk10",
+            "Shari : mnk07",
+            "Sheldon : squ16",
+            "Shep : dog18",
+            "Sherb : goa09",
+            "Simon : mnk02",
+            "Skye : wol09",
+            "Sly : crd06",
+            "Snake : rbt03",
+            "Snooty : ant06",
+            "Soleil : ham04",
+            "Sparro : brd18",
+            "Spike : rhn02",
+            "Spork : pig05",
+            "Sprinkle : pgn14",
+            "Sprocket : ost03",
+            "Static : squ08",
+            "Stella : shp03",
+            "Sterling : pbr07",
+            "Stinky : cat13",
+            "Stitches : cbr05",
+            "Stu : bul03",
+            "Sydney : kal03",
+            "Sylvana : squ14",
+            "Sylvia : kgr06",
+            "T-Bone : bul05",
+            "Tabby : cat12",
+            "Tad : flg09",
+            "Tammi : mnk03",
+            "Tammy : cbr17",
+            "Tangy : cat05",
+            "Tank : rhn00",
+            "Tasha : squ13",
+            "Teddy : bea00",
+            "Tex : pgn12",
+            "Tia : elp10",
+            "Tiffany : rbt07",
+            "Timbra : shp10",
+            "Tipper : cow01",
+            "Toby : rbt20",
+            "Tom : cat15",
+            "Truffles : pig01",
+            "Tucker : elp09",
+            "Tutu : bea07",
+            "Twiggy : brd03",
+            "Tybalt : tig02",
+            "Ursala : bea08",
+            "Velma : goa06",
+            "Vesta : shp00",
+            "Vic : bul08",
+            "Victoria : hrs01",
+            "Violet : gor07",
+            "Vivian : wol08",
+            "Vladimir : cbr06",
+            "Wade : pgn09",
+            "Walker : dog06",
+            "Walt : kgr08",
+            "Wart Jr. : flg05",
+            "Weber : duk11",
+            "Wendy : shp09",
+            "Whitney : wol03",
+            "Willow : shp07",
+            "Winnie : hrs05",
+            "Wolfgang : wol02",
+            "Yuka : kal00",
+            "Zell : der02",
+            "Zucker : ocp02"});
+            this.MysSelector.Location = new System.Drawing.Point(950, 184);
+            this.MysSelector.Name = "MysSelector";
+            this.MysSelector.Size = new System.Drawing.Size(237, 66);
+            this.MysSelector.TabIndex = 222;
             // 
             // IslandSearch
             // 
@@ -6014,7 +6622,7 @@
             this.egg.ForeColor = System.Drawing.Color.White;
             this.egg.Location = new System.Drawing.Point(-1, 0);
             this.egg.Name = "egg";
-            this.egg.Size = new System.Drawing.Size(3, 3);
+            this.egg.Size = new System.Drawing.Size(4, 4);
             this.egg.TabIndex = 0;
             this.egg.TabStop = false;
             this.egg.Tag = "Play";
@@ -6432,421 +7040,6 @@
             this.VillagerSearchMenu.TargetControlWrapper = null;
             this.VillagerSearchMenu.ToolTipDuration = 500;
             // 
-            // MysSelector
-            // 
-            this.MysSelector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.MysSelector.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.MysSelector.DropDownHeight = 362;
-            this.MysSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.MysSelector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MysSelector.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.MysSelector.ForeColor = System.Drawing.Color.White;
-            this.MysSelector.FormattingEnabled = true;
-            this.MysSelector.IntegralHeight = false;
-            this.MysSelector.ItemHeight = 60;
-            this.MysSelector.Items.AddRange(new object[] {
-            "Admiral : brd06",
-            "Agent S : squ05",
-            "Agnes : pig17",
-            "Al : gor08",
-            "Alfonso : crd00",
-            "Alice : kal01",
-            "Alli : crd01",
-            "Amelia : pbr01",
-            "Anabelle : ant03",
-            "Anchovy : brd02",
-            "Angus : bul00",
-            "Anicotti : mus10",
-            "Ankha : cat19",
-            "Annalisa : ant08",
-            "Annalise : hrs09",
-            "Antonio : ant01",
-            "Apollo : pbr00",
-            "Apple : ham01",
-            "Astrid : kgr05",
-            "Audie : wol12",
-            "Aurora : pgn00",
-            "Ava : chn05",
-            "Avery : pbr05",
-            "Axel : elp06",
-            "Baabara : shp01",
-            "Bam : der01",
-            "Bangle : tig03",
-            "Barold : cbr16",
-            "Bea : dog10",
-            "Beardo : bea13",
-            "Beau : der07",
-            "Becky : chn09",
-            "Bella : mus02",
-            "Benedict : chn01",
-            "Benjamin : dog16",
-            "Bertha : hip03",
-            "Bettina : mus15",
-            "Bianca : tig06",
-            "Biff : hip04",
-            "Big Top : elp02",
-            "Bill : duk00",
-            "Billy : goa02",
-            "Biskit : dog03",
-            "Bitty : hip05",
-            "Blaire : squ01",
-            "Blanche : ost08",
-            "Bluebear : cbr00",
-            "Bob : cat00",
-            "Bonbon : rbt17",
-            "Bones : dog04",
-            "Boomer : pgn10",
-            "Boone : gor02",
-            "Boots : crd02",
-            "Boris : pig09",
-            "Boyd : gor05",
-            "Bree : mus03",
-            "Broccolo : mus12",
-            "Broffina : chn12",
-            "Bruce : der03",
-            "Bubbles : hip02",
-            "Buck : hrs00",
-            "Bud : lon00",
-            "Bunnie : rbt00",
-            "Butch : dog01",
-            "Buzz : pbr03",
-            "Cally : squ11",
-            "Camofrog : flg03",
-            "Canberra : kal08",
-            "Candi : mus08",
-            "Carmen : rbt16",
-            "Caroline : squ06",
-            "Carrie : kgr02",
-            "Cashmere : shp04",
-            "Celia : pbr09",
-            "Cesar : gor00",
-            "Chadder : mus18",
-            "Chai : elp11",
-            "Charlise : bea12",
-            "Chelsea : der10",
-            "Cheri : cbr10",
-            "Cherry : dog17",
-            "Chester : cbr15",
-            "Chevre : goa00",
-            "Chief : wol00",
-            "Chops : pig14",
-            "Chow : bea03",
-            "Chrissy : rbt13",
-            "Claude : rbt11",
-            "Claudia : tig05",
-            "Clay : ham05",
-            "Cleo : hrs07",
-            "Clyde : hrs10",
-            "Coach : bul07",
-            "Cobb : pig08",
-            "Coco : rbt02",
-            "Cole : rbt18",
-            "Colton : hrs11",
-            "Cookie : dog08",
-            "Cousteau : flg10",
-            "Cranston : ost06",
-            "Croque : flg17",
-            "Cube : pgn02",
-            "Curlos : shp08",
-            "Curly : pig00",
-            "Curt : bea02",
-            "Cyd : elp12",
-            "Cyrano : ant00",
-            "Daisy : dog07",
-            "Deena : duk04",
-            "Deirdre : der04",
-            "Del : crd04",
-            "Deli : mnk08",
-            "Derwin : duk08",
-            "Diana : der08",
-            "Diva : flg18",
-            "Dizzy : elp01",
-            "Dobie : wol04",
-            "Doc : rbt10",
-            "Dom : shp15",
-            "Dora : mus00",
-            "Dotty : rbt01",
-            "Drago : crd08",
-            "Drake : duk09",
-            "Drift : flg04",
-            "Ed : hrs06",
-            "Egbert : chn02",
-            "Elise : mnk05",
-            "Ellie : elp07",
-            "Elmer : hrs03",
-            "Eloise : elp03",
-            "Elvis : lon01",
-            "Erik : der09",
-            "Étoile : shp14",
-            "Eugene : kal10",
-            "Eunice : shp02",
-            "Fang : wol06",
-            "Fauna : der00",
-            "Felicity : cat17",
-            "Filbert : squ02",
-            "Flip : mnk06",
-            "Flo : pgn13",
-            "Flora : ost09",
-            "Flurry : ham06",
-            "Francine : rbt12",
-            "Frank : pbr06",
-            "Freckles : duk07",
-            "Freya : wol05",
-            "Friga : pgn04",
-            "Frita : shp11",
-            "Frobert : flg02",
-            "Fuchsia : der06",
-            "Gabi : rbt05",
-            "Gala : pig13",
-            "Gaston : rbt04",
-            "Gayle : crd07",
-            "Genji : rbt08",
-            "Gigi : flg16",
-            "Gladys : ost01",
-            "Gloria : duk15",
-            "Goldie : dog00",
-            "Gonzo : kal04",
-            "Goose : chn00",
-            "Graham : ham02",
-            "Greta : mus16",
-            "Grizzly : bea09",
-            "Groucho : bea06",
-            "Gruff : goa04",
-            "Gwen : pgn05",
-            "Hamlet : ham00",
-            "Hamphrey : ham07",
-            "Hans : gor10",
-            "Harry : hip08",
-            "Hazel : squ18",
-            "Henry : flg19",
-            "Hippeux : hip09",
-            "Hopkins : rbt14",
-            "Hopper : pgn03",
-            "Hornsby : rhn04",
-            "Huck : flg11",
-            "Hugh : pig03",
-            "Iggly : pgn11",
-            "Ike : bea11",
-            "Jacob : brd11",
-            "Jacques : brd16",
-            "Jambette : flg13",
-            "Jay : brd00",
-            "Jeremiah : flg07",
-            "Jitters : brd04",
-            "Joey : duk01",
-            "Judy : cbr19",
-            "Julia : ost05",
-            "Julian : hrs13",
-            "June : cbr13",
-            "Kabuki : cat09",
-            "Katt : cat21",
-            "Keaton : pbr08",
-            "Ken : chn13",
-            "Ketchup : duk13",
-            "Kevin : pig15",
-            "Kid Cat : cat10",
-            "Kidd : goa07",
-            "Kiki : cat04",
-            "Kitt : kgr00",
-            "Kitty : cat14",
-            "Klaus : bea14",
-            "Knox : chn11",
-            "Kody : cbr04",
-            "Kyle : wol10",
-            "Leonardo : tig04",
-            "Leopold : lon04",
-            "Lily : flg00",
-            "Limberg : mus01",
-            "Lionel : lon08",
-            "Lobo : wol01",
-            "Lolly : cat18",
-            "Lopez : der05",
-            "Louie : gor04",
-            "Lucha : brd15",
-            "Lucky : dog02",
-            "Lucy : pig04",
-            "Lyman : kal09",
-            "Mac : dog14",
-            "Maddie : dog09",
-            "Maelle : duk03",
-            "Maggie : pig10",
-            "Mallary : duk06",
-            "Maple : cbr01",
-            "Marcel : dog15",
-            "Marcie : kgr10",
-            "Margie : elp04",
-            "Marina : ocp01",
-            "Marshal : squ17",
-            "Marty : cbr18",
-            "Mathilda : kgr01",
-            "Megan : bea15",
-            "Melba : kal02",
-            "Merengue : rhn07",
-            "Merry : cat16",
-            "Midge : brd08",
-            "Mint : squ09",
-            "Mira : rbt19",
-            "Miranda : duk12",
-            "Mitzi : cat01",
-            "Moe : cat08",
-            "Molly : duk16",
-            "Monique : cat11",
-            "Monty : mnk04",
-            "Moose : mus14",
-            "Mott : lon06",
-            "Muffy : shp12",
-            "Murphy : cbr07",
-            "Nan : goa01",
-            "Nana : mnk01",
-            "Naomi : cow07",
-            "Nate : bea05",
-            "Nibbles : squ04",
-            "Norma : cow06",
-            "O\'Hare : rbt15",
-            "Octavian : ocp00",
-            "Olaf : ant09",
-            "Olive : cbr09",
-            "Olivia : cat03",
-            "Opal : elp00",
-            "Ozzie : kal05",
-            "Pancetti : pig16",
-            "Pango : ant02",
-            "Paolo : elp05",
-            "Papi : hrs12",
-            "Pashmina : goa08",
-            "Pate : duk02",
-            "Patty : cow00",
-            "Paula : bea10",
-            "Peaches : hrs08",
-            "Peanut : squ00",
-            "Pecan : squ03",
-            "Peck : brd17",
-            "Peewee : gor01",
-            "Peggy : pig11",
-            "Pekoe : cbr14",
-            "Penelope : mus17",
-            "Phil : ost07",
-            "Phoebe : ost10",
-            "Pierce : pbr02",
-            "Pietro : shp13",
-            "Pinky : bea01",
-            "Piper : brd05",
-            "Pippy : rbt06",
-            "Plucky : chn10",
-            "Pompom : duk05",
-            "Poncho : cbr02",
-            "Poppy : squ15",
-            "Portia : dog05",
-            "Prince : flg12",
-            "Puck : pgn06",
-            "Puddles : flg06",
-            "Pudge : cbr03",
-            "Punchy : cat06",
-            "Purrl : cat07",
-            "Queenie : ost00",
-            "Quillson : duk17",
-            "Raddle : flg15",
-            "Rasher : pig02",
-            "Raymond : cat23",
-            "Renée : rhn08",
-            "Reneigh : hrs16",
-            "Rex : lon02",
-            "Rhonda : rhn01",
-            "Ribbot : flg01",
-            "Ricky : squ10",
-            "Rilla : gor11",
-            "Rizzo : mus09",
-            "Roald : pgn01",
-            "Robin : brd01",
-            "Rocco : hip00",
-            "Rocket : gor09",
-            "Rod : mus05",
-            "Rodeo : bul01",
-            "Rodney : ham03",
-            "Rolf : tig00",
-            "Rooney : kgr09",
-            "Rory : lon07",
-            "Roscoe : hrs04",
-            "Rosie : cat02",
-            "Rowan : tig01",
-            "Ruby : rbt09",
-            "Rudy : cat20",
-            "Sally : squ07",
-            "Samson : mus04",
-            "Sandy : ost02",
-            "Savannah : hrs02",
-            "Scoot : duk10",
-            "Shari : mnk07",
-            "Sheldon : squ16",
-            "Shep : dog18",
-            "Sherb : goa09",
-            "Simon : mnk02",
-            "Skye : wol09",
-            "Sly : crd06",
-            "Snake : rbt03",
-            "Snooty : ant06",
-            "Soleil : ham04",
-            "Sparro : brd18",
-            "Spike : rhn02",
-            "Spork : pig05",
-            "Sprinkle : pgn14",
-            "Sprocket : ost03",
-            "Static : squ08",
-            "Stella : shp03",
-            "Sterling : pbr07",
-            "Stinky : cat13",
-            "Stitches : cbr05",
-            "Stu : bul03",
-            "Sydney : kal03",
-            "Sylvana : squ14",
-            "Sylvia : kgr06",
-            "T-Bone : bul05",
-            "Tabby : cat12",
-            "Tad : flg09",
-            "Tammi : mnk03",
-            "Tammy : cbr17",
-            "Tangy : cat05",
-            "Tank : rhn00",
-            "Tasha : squ13",
-            "Teddy : bea00",
-            "Tex : pgn12",
-            "Tia : elp10",
-            "Tiffany : rbt07",
-            "Timbra : shp10",
-            "Tipper : cow01",
-            "Toby : rbt20",
-            "Tom : cat15",
-            "Truffles : pig01",
-            "Tucker : elp09",
-            "Tutu : bea07",
-            "Twiggy : brd03",
-            "Tybalt : tig02",
-            "Ursala : bea08",
-            "Velma : goa06",
-            "Vesta : shp00",
-            "Vic : bul08",
-            "Victoria : hrs01",
-            "Violet : gor07",
-            "Vivian : wol08",
-            "Vladimir : cbr06",
-            "Wade : pgn09",
-            "Walker : dog06",
-            "Walt : kgr08",
-            "Wart Jr. : flg05",
-            "Weber : duk11",
-            "Wendy : shp09",
-            "Whitney : wol03",
-            "Willow : shp07",
-            "Winnie : hrs05",
-            "Wolfgang : wol02",
-            "Yuka : kal00",
-            "Zell : der02",
-            "Zucker : ocp02"});
-            this.MysSelector.Location = new System.Drawing.Point(950, 184);
-            this.MysSelector.Name = "MysSelector";
-            this.MysSelector.Size = new System.Drawing.Size(237, 66);
-            this.MysSelector.TabIndex = 222;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6869,6 +7062,7 @@
             this.Controls.Add(this.PokeMainBtn);
             this.Controls.Add(this.debugBtn);
             this.Controls.Add(this.connectBtn);
+            this.Controls.Add(this.playerSelectionPanel);
             this.Controls.Add(this.USBconnectBtn);
             this.Controls.Add(this.critterBtn);
             this.Controls.Add(this.variationsBtn);
@@ -7121,8 +7315,8 @@
         private System.Windows.Forms.Button enableCollisionBtn;
         private System.Windows.Forms.Button disableCollisionBtn;
         private System.Windows.Forms.Label Label21;
-        private System.Windows.Forms.Button speedDisableBtn;
-        private System.Windows.Forms.Button speedEnableBtn;
+        private System.Windows.Forms.Button speedX1Btn;
+        private System.Windows.Forms.Button speedX4Btn;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button animationSpdx50;
         private System.Windows.Forms.Button animationSpdx2;
@@ -7242,6 +7436,14 @@
         private System.Windows.Forms.TextBox VillagerSearch;
         private System.Windows.Forms.TextBox IslandSearch;
         private VillagerSelector MysSelector;
+        private System.Windows.Forms.Button speedX3Btn;
+        private System.Windows.Forms.Button speedX2Btn;
+        private System.Windows.Forms.Button animationSpdx5;
+        private System.Windows.Forms.ComboBox playerSelectorInventory;
+        private System.Windows.Forms.ComboBox playerSelectorOther;
+        private System.Windows.Forms.ComboBox playerSelectorVillager;
+        private System.Windows.Forms.RichTextBox PlayerName;
+        private System.Windows.Forms.Label PlayerNameLabel;
     }
 }
 
