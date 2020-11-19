@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -172,6 +173,31 @@ namespace ACNHPoker
 
             Thread SearchThread10 = new Thread(delegate () { SearchAddress(startAddress + diff * 9, endAddress); });
             SearchThread10.Start();
+        }
+
+        private void addressDebug_Click(object sender, EventArgs e)
+        {
+            Debug.Print(Utilities.player1SlotBase.ToString("X"));
+            Debug.Print(Utilities.playerOffset.ToString("X"));
+            Debug.Print(Utilities.Slot21Offset.ToString("X"));
+            Debug.Print(Utilities.HomeOffset.ToString("X"));
+            Debug.Print(Utilities.ReactionOffset.ToString("X"));
+            Debug.Print(Utilities.VillagerAddress.ToString("X"));
+            Debug.Print(Utilities.VillagerSize.ToString("X"));
+            Debug.Print(Utilities.VillagerHouseAddress.ToString("X"));
+            Debug.Print(Utilities.VillagerHouseSize.ToString("X"));
+            Debug.Print(Utilities.VillagerHouseBufferDiff.ToString("X"));
+            Debug.Print(Utilities.MasterRecyclingBase.ToString("X"));
+            Debug.Print(Utilities.TurnipPurchasePriceAddr.ToString("X"));
+            Debug.Print(Utilities.staminaAddress.ToString("X"));
+            Debug.Print(Utilities.wSpeedAddress.ToString("X"));
+            Debug.Print(Utilities.aSpeedAddress.ToString("X"));
+            Debug.Print(Utilities.CollisionAddress.ToString("X"));
+            Debug.Print(Utilities.freezeTimeAddress.ToString("X"));
+            Debug.Print(Utilities.readTimeAddress.ToString("X"));
+            Debug.Print(Utilities.InsectAppearPointer.ToString("X"));
+            Debug.Print(Utilities.TownNameddress.ToString("X"));
+            Debug.Print(Utilities.weatherSeed.ToString("X"));
         }
 
         private void SearchAddress(UInt32 startAddress, UInt32 endAddress)

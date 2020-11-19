@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.connectBtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -87,7 +90,6 @@
             this.inventory1 = new ACNHPoker.inventorySlot();
             this.spawnAllBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
-            this.variationsBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
             this.Player1Btn = new System.Windows.Forms.RadioButton();
             this.Player2Btn = new System.Windows.Forms.RadioButton();
@@ -166,7 +168,6 @@
             this.DumpVillagerBtn = new System.Windows.Forms.Button();
             this.MoveOutBtn = new System.Windows.Forms.Button();
             this.CancelMoveOutBtn = new System.Windows.Forms.Button();
-            this.MaxFriendshipBtn = new System.Windows.Forms.Button();
             this.LoadHouseBtn = new System.Windows.Forms.Button();
             this.ReadMysVillagerBtn = new System.Windows.Forms.Button();
             this.LoadVillagerBtn = new System.Windows.Forms.Button();
@@ -178,19 +179,21 @@
             this.speedX2Btn = new System.Windows.Forms.Button();
             this.speedX3Btn = new System.Windows.Forms.Button();
             this.animationSpdx5 = new System.Windows.Forms.Button();
-            this.playerSelectorVillager = new System.Windows.Forms.ComboBox();
             this.selectedItem = new ACNHPoker.inventorySlot();
             this.playerSelectorOther = new System.Windows.Forms.ComboBox();
             this.playerSelectorInventory = new System.Windows.Forms.ComboBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.loadBtn = new System.Windows.Forms.Button();
             this.inventoryLargePanel = new System.Windows.Forms.Panel();
+            this.Language = new System.Windows.Forms.ComboBox();
+            this.configBtn = new System.Windows.Forms.Button();
             this.pacman2 = new System.Windows.Forms.PictureBox();
             this.selectedFlag2 = new System.Windows.Forms.Label();
             this.selectedFlag1 = new System.Windows.Forms.Label();
             this.variationModeButton = new System.Windows.Forms.Button();
             this.paginationPanel = new System.Windows.Forms.Panel();
             this.pageLabel = new System.Windows.Forms.Label();
+            this.addressDebug = new System.Windows.Forms.Button();
             this.debugVillager = new System.Windows.Forms.Button();
             this.debugBtn = new System.Windows.Forms.Button();
             this.inventoryBtn = new System.Windows.Forms.Button();
@@ -289,7 +292,6 @@
             this.idbox = new System.Windows.Forms.RichTextBox();
             this.namebox = new System.Windows.Forms.RichTextBox();
             this.villagerLargePanel = new System.Windows.Forms.Panel();
-            this.PlayerNameLabel = new System.Windows.Forms.Label();
             this.overlay = new ACNHPoker.ExtendedPanel();
             this.PleaseWaitPanel = new System.Windows.Forms.Panel();
             this.WaitMessagebox = new System.Windows.Forms.RichTextBox();
@@ -318,7 +320,6 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.IndexLabel = new System.Windows.Forms.Label();
             this.VillagerControl = new System.Windows.Forms.Panel();
-            this.PlayerName = new System.Windows.Forms.RichTextBox();
             this.MysSelector = new ACNHPoker.VillagerSelector();
             this.IslandSearch = new System.Windows.Forms.TextBox();
             this.VillagerSearch = new System.Windows.Forms.TextBox();
@@ -333,6 +334,8 @@
             this.FriendShipValue = new System.Windows.Forms.RichTextBox();
             this.DumpAllHouseBtn = new System.Windows.Forms.Button();
             this.DumpMoveOutBtn = new System.Windows.Forms.Button();
+            this.PlayerNameLabel = new System.Windows.Forms.Label();
+            this.PlayerName = new System.Windows.Forms.RichTextBox();
             this.villagerBtn = new System.Windows.Forms.Button();
             this.ProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.egg = new System.Windows.Forms.Button();
@@ -469,7 +472,7 @@
             this.itemSearchBox.Location = new System.Drawing.Point(854, 3);
             this.itemSearchBox.Multiline = false;
             this.itemSearchBox.Name = "itemSearchBox";
-            this.itemSearchBox.Size = new System.Drawing.Size(319, 24);
+            this.itemSearchBox.Size = new System.Drawing.Size(221, 24);
             this.itemSearchBox.TabIndex = 33;
             this.itemSearchBox.Text = "Search";
             this.itemSearchBox.Click += new System.EventHandler(this.itemSearchBox_Click);
@@ -1488,24 +1491,6 @@
             this.refreshBtn.Visible = false;
             this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
             // 
-            // variationsBtn
-            // 
-            this.variationsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.variationsBtn.FlatAppearance.BorderSize = 0;
-            this.variationsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.variationsBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.variationsBtn.ForeColor = System.Drawing.Color.White;
-            this.variationsBtn.Location = new System.Drawing.Point(1083, 557);
-            this.variationsBtn.Name = "variationsBtn";
-            this.variationsBtn.Size = new System.Drawing.Size(116, 76);
-            this.variationsBtn.TabIndex = 63;
-            this.variationsBtn.Text = "(Danger) Spawn Variations 0-9 to Slot 21-30";
-            this.formToolTip.SetToolTip(this.variationsBtn, "[Warning] Variation exceed the normal number would create glitched items.\r\nPlacin" +
-        "g them might cause them to stuck or corrupt your save.\r\n\r\nUSE AT YOUR OWN RISK\r\n" +
-        "");
-            this.variationsBtn.UseVisualStyleBackColor = false;
-            this.variationsBtn.Click += new System.EventHandler(this.variationsBtn_Click);
-            // 
             // clearBtn
             // 
             this.clearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -1559,6 +1544,15 @@
             this.itemGridView.AllowUserToResizeRows = false;
             this.itemGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.itemGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.itemGridView.ColumnHeadersVisible = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.itemGridView.Location = new System.Drawing.Point(854, 30);
             this.itemGridView.MultiSelect = false;
             this.itemGridView.Name = "itemGridView";
@@ -1853,7 +1847,7 @@
             this.clearBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearBtn2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearBtn2.ForeColor = System.Drawing.Color.White;
-            this.clearBtn2.Location = new System.Drawing.Point(638, 51);
+            this.clearBtn2.Location = new System.Drawing.Point(638, 59);
             this.clearBtn2.Name = "clearBtn2";
             this.clearBtn2.Size = new System.Drawing.Size(86, 30);
             this.clearBtn2.TabIndex = 65;
@@ -1885,9 +1879,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(3, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 16);
+            this.label4.Size = new System.Drawing.Size(75, 16);
             this.label4.TabIndex = 37;
-            this.label4.Text = "Recipe Number";
+            this.label4.Text = "Recipe ID";
             // 
             // recipeGridView
             // 
@@ -1896,6 +1890,15 @@
             this.recipeGridView.AllowUserToResizeRows = false;
             this.recipeGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.recipeGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.recipeGridView.ColumnHeadersVisible = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.recipeGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.recipeGridView.Location = new System.Drawing.Point(854, 30);
             this.recipeGridView.MultiSelect = false;
             this.recipeGridView.Name = "recipeGridView";
@@ -2022,6 +2025,15 @@
             this.flowerGridView.AllowUserToResizeRows = false;
             this.flowerGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.flowerGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.flowerGridView.ColumnHeadersVisible = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.flowerGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.flowerGridView.Location = new System.Drawing.Point(854, 30);
             this.flowerGridView.MultiSelect = false;
             this.flowerGridView.Name = "flowerGridView";
@@ -2083,7 +2095,7 @@
             this.clearBtn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearBtn3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearBtn3.ForeColor = System.Drawing.Color.White;
-            this.clearBtn3.Location = new System.Drawing.Point(638, 51);
+            this.clearBtn3.Location = new System.Drawing.Point(638, 59);
             this.clearBtn3.Name = "clearBtn3";
             this.clearBtn3.Size = new System.Drawing.Size(86, 30);
             this.clearBtn3.TabIndex = 64;
@@ -2721,25 +2733,6 @@
             this.CancelMoveOutBtn.UseVisualStyleBackColor = false;
             this.CancelMoveOutBtn.Click += new System.EventHandler(this.CancelMoveOutBtn_Click);
             // 
-            // MaxFriendshipBtn
-            // 
-            this.MaxFriendshipBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.MaxFriendshipBtn.FlatAppearance.BorderSize = 0;
-            this.MaxFriendshipBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MaxFriendshipBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.MaxFriendshipBtn.ForeColor = System.Drawing.Color.White;
-            this.MaxFriendshipBtn.Location = new System.Drawing.Point(692, 361);
-            this.MaxFriendshipBtn.Name = "MaxFriendshipBtn";
-            this.MaxFriendshipBtn.Size = new System.Drawing.Size(48, 28);
-            this.MaxFriendshipBtn.TabIndex = 186;
-            this.MaxFriendshipBtn.Tag = "";
-            this.MaxFriendshipBtn.Text = "Max";
-            this.formToolTip.SetToolTip(this.MaxFriendshipBtn, "Set the friendship value toward player 1 to Max (255).\r\n\r\nAllow them to teach you" +
-        " the Best Friends only Reaction.\r\n(You still need to tigger it for them to talk " +
-        "to you.)\r\n");
-            this.MaxFriendshipBtn.UseVisualStyleBackColor = false;
-            this.MaxFriendshipBtn.Click += new System.EventHandler(this.MaxFriendshipBtn_Click);
-            // 
             // LoadHouseBtn
             // 
             this.LoadHouseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -2822,7 +2815,7 @@
             this.SetFriendshipBtn.Size = new System.Drawing.Size(111, 28);
             this.SetFriendshipBtn.TabIndex = 205;
             this.SetFriendshipBtn.Tag = "";
-            this.SetFriendshipBtn.Text = "Set Friendship";
+            this.SetFriendshipBtn.Text = "Friendship ...";
             this.formToolTip.SetToolTip(this.SetFriendshipBtn, "Set the friendship value toward the selected player.\r\n\r\nMax is 255 and Min is 25." +
         "");
             this.SetFriendshipBtn.UseVisualStyleBackColor = false;
@@ -2927,31 +2920,6 @@
         "e blow, Saber!");
             this.animationSpdx5.UseVisualStyleBackColor = false;
             this.animationSpdx5.Click += new System.EventHandler(this.animationSpdx5_Click);
-            // 
-            // playerSelectorVillager
-            // 
-            this.playerSelectorVillager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.playerSelectorVillager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.playerSelectorVillager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playerSelectorVillager.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.playerSelectorVillager.ForeColor = System.Drawing.Color.White;
-            this.playerSelectorVillager.FormattingEnabled = true;
-            this.playerSelectorVillager.ItemHeight = 16;
-            this.playerSelectorVillager.Items.AddRange(new object[] {
-            "Friend 1",
-            "Friend 2",
-            "Friend 3",
-            "Friend 4",
-            "Friend 5",
-            "Friend 6",
-            "Friend 7",
-            "Friend 8"});
-            this.playerSelectorVillager.Location = new System.Drawing.Point(268, 24);
-            this.playerSelectorVillager.Name = "playerSelectorVillager";
-            this.playerSelectorVillager.Size = new System.Drawing.Size(109, 24);
-            this.playerSelectorVillager.TabIndex = 177;
-            this.formToolTip.SetToolTip(this.playerSelectorVillager, resources.GetString("playerSelectorVillager.ToolTip"));
-            this.playerSelectorVillager.SelectedIndexChanged += new System.EventHandler(this.playerSelectorVillager_SelectedIndexChanged);
             // 
             // selectedItem
             // 
@@ -3065,6 +3033,8 @@
             // inventoryLargePanel
             // 
             this.inventoryLargePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.inventoryLargePanel.Controls.Add(this.Language);
+            this.inventoryLargePanel.Controls.Add(this.configBtn);
             this.inventoryLargePanel.Controls.Add(this.playerSelectorInventory);
             this.inventoryLargePanel.Controls.Add(this.pacman2);
             this.inventoryLargePanel.Controls.Add(this.selectedFlag2);
@@ -3096,6 +3066,48 @@
             this.inventoryLargePanel.Name = "inventoryLargePanel";
             this.inventoryLargePanel.Size = new System.Drawing.Size(1225, 550);
             this.inventoryLargePanel.TabIndex = 91;
+            // 
+            // Language
+            // 
+            this.Language.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Language.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Language.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.Language.ForeColor = System.Drawing.Color.White;
+            this.Language.FormattingEnabled = true;
+            this.Language.ItemHeight = 16;
+            this.Language.Items.AddRange(new object[] {
+            "English",
+            "Japanese",
+            "T. Chinese",
+            "S. Chinese",
+            "Korean",
+            "French",
+            "German",
+            "Spanish",
+            "Italian",
+            "Dutch",
+            "Russian"});
+            this.Language.Location = new System.Drawing.Point(1081, 2);
+            this.Language.Name = "Language";
+            this.Language.Size = new System.Drawing.Size(118, 24);
+            this.Language.TabIndex = 166;
+            this.Language.SelectedIndexChanged += new System.EventHandler(this.Language_SelectedIndexChanged);
+            // 
+            // configBtn
+            // 
+            this.configBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.configBtn.FlatAppearance.BorderSize = 0;
+            this.configBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.configBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.configBtn.ForeColor = System.Drawing.Color.White;
+            this.configBtn.Image = global::ACNHPoker.Properties.Resources.gear;
+            this.configBtn.Location = new System.Drawing.Point(2, 9);
+            this.configBtn.Name = "configBtn";
+            this.configBtn.Size = new System.Drawing.Size(30, 30);
+            this.configBtn.TabIndex = 155;
+            this.configBtn.UseVisualStyleBackColor = false;
+            this.configBtn.Click += new System.EventHandler(this.configBtn_Click);
             // 
             // pacman2
             // 
@@ -3167,6 +3179,22 @@
             this.pageLabel.Size = new System.Drawing.Size(61, 19);
             this.pageLabel.TabIndex = 95;
             this.pageLabel.Text = "Page 1";
+            // 
+            // addressDebug
+            // 
+            this.addressDebug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.addressDebug.FlatAppearance.BorderSize = 0;
+            this.addressDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addressDebug.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.addressDebug.ForeColor = System.Drawing.Color.White;
+            this.addressDebug.Location = new System.Drawing.Point(1081, 557);
+            this.addressDebug.Name = "addressDebug";
+            this.addressDebug.Size = new System.Drawing.Size(85, 23);
+            this.addressDebug.TabIndex = 165;
+            this.addressDebug.Tag = "";
+            this.addressDebug.Text = "debug";
+            this.addressDebug.UseVisualStyleBackColor = false;
+            this.addressDebug.Click += new System.EventHandler(this.addressDebug_Click);
             // 
             // debugVillager
             // 
@@ -5140,7 +5168,6 @@
             // 
             // villagerLargePanel
             // 
-            this.villagerLargePanel.Controls.Add(this.PlayerNameLabel);
             this.villagerLargePanel.Controls.Add(this.overlay);
             this.villagerLargePanel.Controls.Add(this.PleaseWaitPanel);
             this.villagerLargePanel.Controls.Add(this.MysteryIslandToursLabel);
@@ -5169,17 +5196,6 @@
             this.villagerLargePanel.Name = "villagerLargePanel";
             this.villagerLargePanel.Size = new System.Drawing.Size(1220, 550);
             this.villagerLargePanel.TabIndex = 164;
-            // 
-            // PlayerNameLabel
-            // 
-            this.PlayerNameLabel.AutoSize = true;
-            this.PlayerNameLabel.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.PlayerNameLabel.ForeColor = System.Drawing.Color.White;
-            this.PlayerNameLabel.Location = new System.Drawing.Point(378, 25);
-            this.PlayerNameLabel.Name = "PlayerNameLabel";
-            this.PlayerNameLabel.Size = new System.Drawing.Size(138, 22);
-            this.PlayerNameLabel.TabIndex = 216;
-            this.PlayerNameLabel.Text = "Player Name :";
             // 
             // overlay
             // 
@@ -5524,8 +5540,6 @@
             // VillagerControl
             // 
             this.VillagerControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.VillagerControl.Controls.Add(this.PlayerName);
-            this.VillagerControl.Controls.Add(this.playerSelectorVillager);
             this.VillagerControl.Controls.Add(this.MysSelector);
             this.VillagerControl.Controls.Add(this.IslandSearch);
             this.VillagerControl.Controls.Add(this.VillagerSearch);
@@ -5542,7 +5556,6 @@
             this.VillagerControl.Controls.Add(this.DumpAllHouseBufferBtn);
             this.VillagerControl.Controls.Add(this.FriendShipValue);
             this.VillagerControl.Controls.Add(this.DumpAllHouseBtn);
-            this.VillagerControl.Controls.Add(this.MaxFriendshipBtn);
             this.VillagerControl.Controls.Add(this.LoadHouseBtn);
             this.VillagerControl.Controls.Add(this.ReadMysVillagerBtn);
             this.VillagerControl.Controls.Add(this.LoadVillagerBtn);
@@ -5557,22 +5570,6 @@
             this.VillagerControl.Name = "VillagerControl";
             this.VillagerControl.Size = new System.Drawing.Size(1192, 515);
             this.VillagerControl.TabIndex = 215;
-            // 
-            // PlayerName
-            // 
-            this.VillagerSearchMenu.SetAutocompleteMenu(this.PlayerName, null);
-            this.PlayerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.PlayerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerName.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PlayerName.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.PlayerName.ForeColor = System.Drawing.Color.White;
-            this.PlayerName.Location = new System.Drawing.Point(517, 20);
-            this.PlayerName.Multiline = false;
-            this.PlayerName.Name = "PlayerName";
-            this.PlayerName.ReadOnly = true;
-            this.PlayerName.Size = new System.Drawing.Size(121, 30);
-            this.PlayerName.TabIndex = 216;
-            this.PlayerName.Text = "";
             // 
             // MysSelector
             // 
@@ -6546,7 +6543,7 @@
             // FriendShipValue
             // 
             this.VillagerSearchMenu.SetAutocompleteMenu(this.FriendShipValue, null);
-            this.FriendShipValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.FriendShipValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
             this.FriendShipValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FriendShipValue.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
             this.FriendShipValue.ForeColor = System.Drawing.Color.White;
@@ -6554,6 +6551,7 @@
             this.FriendShipValue.MaxLength = 3;
             this.FriendShipValue.Multiline = false;
             this.FriendShipValue.Name = "FriendShipValue";
+            this.FriendShipValue.ReadOnly = true;
             this.FriendShipValue.Size = new System.Drawing.Size(45, 28);
             this.FriendShipValue.TabIndex = 185;
             this.FriendShipValue.Text = "";
@@ -6590,6 +6588,33 @@
             this.DumpMoveOutBtn.Text = "dumpMove";
             this.DumpMoveOutBtn.UseVisualStyleBackColor = false;
             this.DumpMoveOutBtn.Click += new System.EventHandler(this.DumpMoveOutBtn_Click);
+            // 
+            // PlayerNameLabel
+            // 
+            this.PlayerNameLabel.AutoSize = true;
+            this.PlayerNameLabel.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.PlayerNameLabel.ForeColor = System.Drawing.Color.White;
+            this.PlayerNameLabel.Location = new System.Drawing.Point(133, 926);
+            this.PlayerNameLabel.Name = "PlayerNameLabel";
+            this.PlayerNameLabel.Size = new System.Drawing.Size(138, 22);
+            this.PlayerNameLabel.TabIndex = 216;
+            this.PlayerNameLabel.Text = "Player Name :";
+            // 
+            // PlayerName
+            // 
+            this.VillagerSearchMenu.SetAutocompleteMenu(this.PlayerName, null);
+            this.PlayerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.PlayerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PlayerName.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PlayerName.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
+            this.PlayerName.ForeColor = System.Drawing.Color.White;
+            this.PlayerName.Location = new System.Drawing.Point(267, 921);
+            this.PlayerName.Multiline = false;
+            this.PlayerName.Name = "PlayerName";
+            this.PlayerName.ReadOnly = true;
+            this.PlayerName.Size = new System.Drawing.Size(121, 30);
+            this.PlayerName.TabIndex = 216;
+            this.PlayerName.Text = "";
             // 
             // villagerBtn
             // 
@@ -7046,6 +7071,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1204, 516);
+            this.Controls.Add(this.PlayerName);
+            this.Controls.Add(this.PlayerNameLabel);
+            this.Controls.Add(this.addressDebug);
             this.Controls.Add(this.egg);
             this.Controls.Add(this.villagerBtn);
             this.Controls.Add(this.namebox);
@@ -7065,7 +7093,6 @@
             this.Controls.Add(this.playerSelectionPanel);
             this.Controls.Add(this.USBconnectBtn);
             this.Controls.Add(this.critterBtn);
-            this.Controls.Add(this.variationsBtn);
             this.Controls.Add(this.inventoryBtn);
             this.Controls.Add(this.debugAmount);
             this.Controls.Add(this.PokeBtn);
@@ -7132,6 +7159,7 @@
             this.VillagerControl.ResumeLayout(false);
             this.VillagerControl.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -7150,7 +7178,6 @@
         private System.Windows.Forms.ToolStripMenuItem deleteItemBtn;
         private System.Windows.Forms.Button spawnAllBtn;
         private System.Windows.Forms.Button refreshBtn;
-        private System.Windows.Forms.Button variationsBtn;
         private System.Windows.Forms.Button clearBtn;
         private System.Windows.Forms.RadioButton Player1Btn;
         private System.Windows.Forms.RadioButton Player2Btn;
@@ -7395,7 +7422,6 @@
         private System.Windows.Forms.Button CancelMoveOutBtn;
         private System.Windows.Forms.RichTextBox FriendShipValue;
         private System.Windows.Forms.Label FriendShipLabel;
-        private System.Windows.Forms.Button MaxFriendshipBtn;
         private System.Windows.Forms.Button DumpAllHouseBtn;
         private System.Windows.Forms.Button DumpAllHouseBufferBtn;
         private System.Windows.Forms.RichTextBox HouseIndexValue;
@@ -7441,9 +7467,11 @@
         private System.Windows.Forms.Button animationSpdx5;
         private System.Windows.Forms.ComboBox playerSelectorInventory;
         private System.Windows.Forms.ComboBox playerSelectorOther;
-        private System.Windows.Forms.ComboBox playerSelectorVillager;
         private System.Windows.Forms.RichTextBox PlayerName;
         private System.Windows.Forms.Label PlayerNameLabel;
+        private System.Windows.Forms.Button configBtn;
+        private System.Windows.Forms.Button addressDebug;
+        private System.Windows.Forms.ComboBox Language;
     }
 }
 

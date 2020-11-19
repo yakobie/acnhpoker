@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+using System.Xml;
 
 namespace ACNHPoker
 {
@@ -12,9 +15,14 @@ namespace ACNHPoker
         private string imagePath = "";
         //private Boolean init = false;
         private Boolean hide = false;
-
         private string flag1 = "00";
         private string flag2 = "00";
+
+        private PictureBox overlay = new PictureBox();
+        private const string overlayFolder = @"img\";
+        private const string overlayFile = @"PaperRecipe.png";
+        private const string overlayPath = overlayFolder + overlayFile;
+        private Image recipe;
 
         private string containItemName = "";
         public UInt16 itemDurability
@@ -54,7 +62,8 @@ namespace ACNHPoker
 
         public inventorySlot()
         {
-
+            if (File.Exists(overlayPath))
+                recipe = Image.FromFile(overlayPath);
         }
 
         public string displayItemID()
@@ -210,6 +219,8 @@ namespace ACNHPoker
             containItemName = "";
             this.Image = null;
             this.Text = "";
+            if (this.Controls.Contains(overlay))
+                this.Controls.Remove(overlay);
             //init = false;
         }
 
@@ -257,6 +268,8 @@ namespace ACNHPoker
             this.ForeColor = System.Drawing.Color.White;
             this.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.Text = "";
+            if (this.Controls.Contains(overlay))
+                this.Controls.Remove(overlay);
 
             if (itemID != 0xFFFE) //Empty
             {
@@ -273,6 +286,18 @@ namespace ACNHPoker
                         this.Text = "Bottle";
                         this.ForeColor = System.Drawing.Color.LightGreen;
                         this.TextAlign = System.Drawing.ContentAlignment.TopRight;
+                    }
+                    else if (itemID == 0x16A2) // Recipe
+                    {
+                        this.Text = "Wrap";
+                        this.ForeColor = System.Drawing.Color.LightSalmon;
+                        int imageSize = (int)(this.Width * 0.35);
+                        overlay.Size = new Size(imageSize, imageSize);
+                        overlay.BackColor = Color.Transparent;
+                        overlay.Location = new Point(this.Width - imageSize, this.Height - imageSize);
+                        overlay.Image = (new Bitmap(recipe, new Size(imageSize, imageSize)));
+                        this.Controls.Add(overlay);
+                        return;
                     }
                     else
                     {
@@ -330,6 +355,12 @@ namespace ACNHPoker
                 else if (itemID == 0x16A2) // Recipe
                 {
                     this.Text = "";
+                    int imageSize = (int)(this.Width * 0.35);
+                    overlay.Size = new Size(imageSize, imageSize);
+                    overlay.BackColor = Color.Transparent;
+                    overlay.Location = new Point(this.Width - imageSize, this.Height - imageSize);
+                    overlay.Image = (new Bitmap(recipe, new Size(imageSize, imageSize)));
+                    this.Controls.Add(overlay);
                     return;
                 }
                 else if (itemID == 0x1095) // Villager Delivery

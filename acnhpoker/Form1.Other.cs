@@ -148,7 +148,7 @@ namespace ACNHPoker
             else
             {
                 //row found set the index and find the name
-                return (string)row[0];
+                return (string)row[languageSetting];
             }
 
         }
@@ -161,7 +161,9 @@ namespace ACNHPoker
             }
 
             DataRow row = source.Rows.Find(itemID);
-            DataRow VarRow = variationSource.Rows.Find(itemID);
+            DataRow VarRow = null;
+            if (variationSource != null)
+                VarRow = variationSource.Rows.Find(itemID);
 
             if (row == null)
             {
@@ -173,7 +175,7 @@ namespace ACNHPoker
                 string path;
                 if (VarRow != null & source != recipeSource)
                 {
-                    path = @"img\variation\" + VarRow[1] + @"\" + VarRow[3] + ".png";
+                    path = imagePath + VarRow["iName"] + ".png";
                     if (File.Exists(path))
                     {
                         return path;
@@ -181,7 +183,7 @@ namespace ACNHPoker
                     string main = (data & 0xF).ToString();
                     string sub = (((data & 0xFF) - (data & 0xF)) / 0x20).ToString();
                     //Debug.Print("data " + data.ToString("X") + " Main " + main + " Sub " + sub);
-                    path = @"img\variation\" + VarRow[1] + @"\" + VarRow[3] + "_" + main + "_" + sub + ".png";
+                    path = imagePath + VarRow["iName"] + "_Remake_" + main + "_" + sub + ".png";
                     if (File.Exists(path))
                     {
                         return path;
@@ -189,14 +191,41 @@ namespace ACNHPoker
 
                 }
 
-                path = @"img\" + row[1] + @"\" + row[0] + ".png";
+                string imageName = row[1].ToString();
+
+                if (OverrideDict.ContainsKey(imageName))
+                {
+                    path = imagePath + OverrideDict[imageName] + ".png";
+                    if (File.Exists(path))
+                    {
+                        return path;
+                    }
+                }
+
+                path = imagePath + imageName + ".png";
                 if (File.Exists(path))
                 {
-                    return path; //file found
+                    return path;
                 }
                 else
                 {
-                    return ""; //file not found
+                    path = imagePath + imageName + "_Remake_0_0.png";
+                    if (File.Exists(path))
+                    {
+                        return path;
+                    }
+                    else
+                    {
+                        path = imagePath + removeNumber(imageName) + ".png";
+                        if (File.Exists(path))
+                        {
+                            return path;
+                        }
+                        else
+                        {
+                            return "";
+                        }
+                    }
                 }
             }
         }
@@ -225,7 +254,7 @@ namespace ACNHPoker
                     selectedItem.setup(btn);
                     if (selection != null)
                     {
-                        selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4));
+                        selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting);
                     }
                     updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
                     if (selectedItem.fillItemID() == "FFFE")
@@ -253,6 +282,9 @@ namespace ACNHPoker
                 return;
             }
             */
+
+            if (wrapSetting.SelectedIndex < 0)
+                wrapSetting.SelectedIndex = 0;
 
             ToolStripItem item = (sender as ToolStripItem);
             if (item != null)
@@ -1358,6 +1390,7 @@ namespace ACNHPoker
                     this.ipBox.Visible = false;
                     this.pictureBox1.Visible = false;
                     this.pokeMainCheatPanel.Visible = false;
+                    this.configBtn.Visible = false;
                     this.Text += "  |  [Connected via USB]";
 
                     currentGridView = insectGridView;
@@ -1400,6 +1433,7 @@ namespace ACNHPoker
                 this.villagerBtn.Visible = false;
                 this.ipBox.Visible = true;
                 this.pictureBox1.Visible = true;
+                this.configBtn.Visible = true;
                 cleanVillagerPage();
 
                 this.USBconnectBtn.Text = "USB";

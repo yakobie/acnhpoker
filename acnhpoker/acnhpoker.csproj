@@ -134,11 +134,23 @@
     <Compile Include="ExtendedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Friendship.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Friendship.Designer.cs">
+      <DependentUpon>Friendship.cs</DependentUpon>
+    </Compile>
     <Compile Include="MyComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MyProgressBar.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Setting.Designer.cs">
+      <DependentUpon>Setting.cs</DependentUpon>
     </Compile>
     <Compile Include="USBBot.cs" />
     <Compile Include="variation.cs">
@@ -158,18 +170,23 @@
     </Compile>
     <Compile Include="Form1.Item.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Other.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Critter.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Villager.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Debug.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="ImageDownloader.cs">
       <SubType>Form</SubType>
@@ -190,6 +207,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Friendship.resx">
+      <DependentUpon>Friendship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Setting.resx">
+      <DependentUpon>Setting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="variation.resx">
       <DependentUpon>variation.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,7 +229,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="flowers.csv" />
+    <None Include="csv\flowers.csv" />
+    <None Include="csv\items.csv" />
+    <None Include="csv\override.csv" />
+    <None Include="csv\recipes.csv" />
+    <None Include="csv\variations.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -222,7 +249,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="recipe.csv" />
     <None Include="Resources\ACLeaf.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +265,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ACLeaf.ico" />
+    <Content Include="Resources\gear.png" />
     <Content Include="Resources\loading.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

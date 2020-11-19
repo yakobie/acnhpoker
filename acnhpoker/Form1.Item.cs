@@ -19,6 +19,7 @@ namespace ACNHPoker
     {
         private DataTable loadItemCSV(string filePath)
         {
+            /*
             var dt = new DataTable();
 
             File.ReadLines(filePath).Take(1)
@@ -33,6 +34,24 @@ namespace ACNHPoker
 
             if (dt.Columns.Contains("ID"))
                 dt.PrimaryKey = new DataColumn[1] { dt.Columns["ID"] };
+
+            return dt;
+            */
+
+            var dt = new DataTable();
+
+            File.ReadLines(filePath).Take(1)
+                .SelectMany(x => x.Split(new[] { " ; " }, StringSplitOptions.RemoveEmptyEntries))
+                .ToList()
+                .ForEach(x => dt.Columns.Add(x.Trim()));
+
+            File.ReadLines(filePath).Skip(1)
+                .Select(x => x.Split(new[] { " ; " }, StringSplitOptions.RemoveEmptyEntries))
+                .ToList()
+                .ForEach(line => dt.Rows.Add(line));
+
+            if (dt.Columns.Contains("id"))
+                dt.PrimaryKey = new DataColumn[1] { dt.Columns["id"] };
 
             return dt;
         }
@@ -150,6 +169,7 @@ namespace ACNHPoker
                                 this.connectBtn.Tag = "disconnect";
                                 this.connectBtn.Text = "Disconnect";
                                 this.USBconnectBtn.Visible = false;
+                                this.configBtn.Visible = false;
                                 offline = false;
 
                                 UpdateInventory();
@@ -204,6 +224,7 @@ namespace ACNHPoker
                 otherBtn.Visible = false;
                 critterBtn.Visible = false;
                 this.villagerBtn.Visible = false;
+                this.configBtn.Visible = true;
                 cleanVillagerPage();
                 offline = true;
 
@@ -266,10 +287,10 @@ namespace ACNHPoker
                 byte[] dataBytes = new byte[4];
                 byte[] recipeBytes = new byte[2];
 
-                int slotOffset = 0;
-                int countOffset = 0;
-                int flag1Offset = 0;
-                int flag2Offset = 0;
+                int slotOffset;
+                int countOffset;
+                int flag1Offset;
+                int flag2Offset;
                 if (slotId < 21)
                 {
                     slotOffset = ((slotId - 1) * 0x8);
@@ -497,9 +518,9 @@ namespace ACNHPoker
         {
             try
             {
-                (itemGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%'", itemSearchBox.Text);
-                (recipeGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%'", itemSearchBox.Text);
-                (flowerGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name LIKE '%{0}%'", itemSearchBox.Text);
+                (itemGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format(languageSetting + " LIKE '%{0}%'", itemSearchBox.Text);
+                (recipeGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format(languageSetting + " LIKE '%{0}%'", itemSearchBox.Text);
+                (flowerGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format(languageSetting + " LIKE '%{0}%'", itemSearchBox.Text);
             }
             catch
             {
@@ -510,20 +531,58 @@ namespace ACNHPoker
         private void itemGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < this.itemGridView.Rows.Count)
-
             {
-                if (e.ColumnIndex == 3)
+                if (e.ColumnIndex == 13)
                 {
-                    string path = @"img\" + itemGridView.Rows[e.RowIndex].Cells[1].Value.ToString() + @"\" + itemGridView.Rows[e.RowIndex].Cells[0].Value.ToString() + ".png";
+                    //itemGridView.Rows[e.RowIndex].Height = 128;
+                    //itemGridView.Columns[13].Width = 128;
+                    string path;
+                    string imageName = itemGridView.Rows[e.RowIndex].Cells["iName"].Value.ToString();
+
+                    if (OverrideDict.ContainsKey(imageName))
+                    {
+                        path = imagePath + OverrideDict[imageName] + ".png";
+                        if (File.Exists(path))
+                        {
+                            Image img = Image.FromFile(path);
+                            //e.CellStyle.BackColor = Color.Green;
+                            e.Value = img;
+
+                            return;
+                        }
+                    }
+
+                    path = imagePath + imageName + ".png";
                     if (File.Exists(path))
                     {
                         Image img = Image.FromFile(path);
                         e.Value = img;
                     }
-
+                    else
+                    {
+                        path = imagePath + imageName + "_Remake_0_0.png";
+                        if (File.Exists(path))
+                        {
+                            Image img = Image.FromFile(path);
+                            e.CellStyle.BackColor = Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(77)))), ((int)(((byte)(162)))));
+                            e.Value = img;
+                        }
+                        else
+                        {
+                            path = imagePath + removeNumber(imageName) + ".png";
+                            if (File.Exists(path))
+                            {
+                                Image img = Image.FromFile(path);
+                                e.Value = img;
+                            }
+                            else
+                            {
+                                e.CellStyle.BackColor = Color.Red;
+                            }
+                        }
+                    }
                 }
             }
-
         }
 
         private void itemSearchBox_Click(object sender, EventArgs e)
@@ -548,7 +607,7 @@ namespace ACNHPoker
                 if (e.RowIndex > -1)
                 {
                     lastRow = itemGridView.Rows[e.RowIndex];
-                    itemGridView.Rows[e.RowIndex].Height = 160;
+                    itemGridView.Rows[e.RowIndex].Height = 128;
                     if (hexModeBtn.Tag.ToString() == "Normal")
                     {
                         if (customAmountTxt.Text == "" || customAmountTxt.Text == "0")
@@ -561,13 +620,16 @@ namespace ACNHPoker
                         hexMode_Click(sender, e);
                         customAmountTxt.Text = "1";
                     }
-                    customIdTextbox.Text = itemGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
 
-                    //Debug.Print(itemGridView.Rows[e.RowIndex].Cells[2].Value.ToString());
-                    selectedItem.setup(itemGridView.Rows[e.RowIndex].Cells[0].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[e.RowIndex].Cells[2].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[e.RowIndex].Cells[2].Value.ToString(), itemSource), true, "");
+                    string id = itemGridView.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                    string name = itemGridView.Rows[e.RowIndex].Cells[languageSetting].Value.ToString();
+
+                    customIdTextbox.Text = id;
+
+                    selectedItem.setup(name, Convert.ToUInt16("0x" + id, 16), 0x0, GetImagePathFromID(id, itemSource), true, "");
                     if (selection != null)
                     {
-                        selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4));
+                        selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting);
                     }
                     updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
                 }
@@ -582,7 +644,7 @@ namespace ACNHPoker
                 if (e.RowIndex > -1)
                 {
                     lastRow = itemGridView.Rows[e.RowIndex];
-                    itemGridView.Rows[e.RowIndex].Height = 160;
+                    itemGridView.Rows[e.RowIndex].Height = 128;
 
                     string name = selectedItem.displayItemName();
                     string id = selectedItem.displayItemID();
@@ -599,17 +661,17 @@ namespace ACNHPoker
 
                     if (customIdTextbox.Text == "114A")
                     {
-                        customAmountTxt.Text = Utilities.precedingZeros("20" + itemGridView.Rows[e.RowIndex].Cells[2].Value.ToString(), 8);
+                        customAmountTxt.Text = Utilities.precedingZeros("20" + itemGridView.Rows[e.RowIndex].Cells["id"].Value.ToString(), 8);
                     }
                     else
                     {
-                        customAmountTxt.Text = Utilities.precedingZeros(itemGridView.Rows[e.RowIndex].Cells[2].Value.ToString(), 8);
+                        customAmountTxt.Text = Utilities.precedingZeros(itemGridView.Rows[e.RowIndex].Cells["id"].Value.ToString(), 8);
                     }
 
                     if (customIdTextbox.Text != "")
                     {
                         //Debug.Print(itemGridView.Rows[e.RowIndex].Cells[2].Value.ToString());
-                        selectedItem.setup(name, Convert.ToUInt16(id, 16), Convert.ToUInt32("0x" + customAmountTxt.Text, 16), path, true, GetNameFromID(itemGridView.Rows[e.RowIndex].Cells[2].Value.ToString(), itemSource));
+                        selectedItem.setup(name, Convert.ToUInt16(id, 16), Convert.ToUInt32("0x" + customAmountTxt.Text, 16), path, true, GetNameFromID(itemGridView.Rows[e.RowIndex].Cells["id"].Value.ToString(), itemSource));
                         //Debug.Print(itemGridView.Rows[e.RowIndex].Cells[2].Value.ToString());
 
                         updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
@@ -1304,7 +1366,7 @@ namespace ACNHPoker
 
                     if (selection != null)
                     {
-                        selection.receiveID(customIdTextbox.Text);
+                        selection.receiveID(customIdTextbox.Text, languageSetting);
                     }
                 }
                 updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
@@ -1400,14 +1462,43 @@ namespace ACNHPoker
         {
             if (e.RowIndex >= 0 && e.RowIndex < this.recipeGridView.Rows.Count)
             {
-                if (e.ColumnIndex == 3)
+                if (e.ColumnIndex == 13)
                 {
-                    string path = @"img\" + recipeGridView.Rows[e.RowIndex].Cells[1].Value.ToString() + @"\" + recipeGridView.Rows[e.RowIndex].Cells[0].Value.ToString() + ".png";
-                    //Debug.Print(path+"\r\n");
+                    string imageName = recipeGridView.Rows[e.RowIndex].Cells["iName"].Value.ToString();
+                    string path;
+
+                    if (OverrideDict.ContainsKey(imageName))
+                    {
+                        path = imagePath + OverrideDict[imageName] + ".png";
+                        if (File.Exists(path))
+                        {
+                            Image img = Image.FromFile(path);
+                            //e.CellStyle.BackColor = Color.Green;
+                            e.Value = img;
+
+                            return;
+                        }
+                    }
+
+                    path = imagePath + imageName + ".png";
                     if (File.Exists(path))
                     {
                         Image img = Image.FromFile(path);
                         e.Value = img;
+                    }
+                    else
+                    {
+                        path = imagePath + imageName + "_Remake_0_0.png";
+                        if (File.Exists(path))
+                        {
+                            Image img = Image.FromFile(path);
+                            e.CellStyle.BackColor = Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(77)))), ((int)(((byte)(162)))));
+                            e.Value = img;
+                        }
+                        else
+                        {
+                            e.CellStyle.BackColor = Color.Red;
+                        }
                     }
                 }
             }
@@ -1423,10 +1514,10 @@ namespace ACNHPoker
             if (e.RowIndex > -1)
             {
                 recipelastRow = recipeGridView.Rows[e.RowIndex];
-                recipeGridView.Rows[e.RowIndex].Height = 160;
-                recipeNum.Text = recipeGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
+                recipeGridView.Rows[e.RowIndex].Height = 128;
+                recipeNum.Text = recipeGridView.Rows[e.RowIndex].Cells["id"].Value.ToString();
 
-                selectedItem.setup(recipeGridView.Rows[e.RowIndex].Cells[0].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[e.RowIndex].Cells[2].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[e.RowIndex].Cells[2].Value.ToString(), recipeSource), true);
+                selectedItem.setup(recipeGridView.Rows[e.RowIndex].Cells[languageSetting].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[e.RowIndex].Cells["id"].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[e.RowIndex].Cells["id"].Value.ToString(), recipeSource), true);
                 updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
             }
         }
@@ -1435,14 +1526,25 @@ namespace ACNHPoker
         {
             if (e.RowIndex >= 0 && e.RowIndex < this.flowerGridView.Rows.Count)
             {
-                if (e.ColumnIndex == 3)
+                if (e.ColumnIndex == 13)
                 {
-                    string path = @"img\" + flowerGridView.Rows[e.RowIndex].Cells[1].Value.ToString() + @"\" + flowerGridView.Rows[e.RowIndex].Cells[0].Value.ToString() + ".png";
-                    //Debug.Print(path+"\r\n");
-                    if (File.Exists(path))
+                    string imageName = flowerGridView.Rows[e.RowIndex].Cells["iName"].Value.ToString();
+
+                    if (OverrideDict.ContainsKey(imageName))
                     {
-                        Image img = Image.FromFile(path);
-                        e.Value = img;
+                         string path = imagePath + OverrideDict[imageName] + ".png";
+                        if (File.Exists(path))
+                        {
+                            Image img = Image.FromFile(path);
+                            //e.CellStyle.BackColor = Color.Green;
+                            e.Value = img;
+
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        e.CellStyle.BackColor = Color.Red;
                     }
                 }
             }
@@ -1457,11 +1559,11 @@ namespace ACNHPoker
             if (e.RowIndex > -1)
             {
                 flowerlastRow = flowerGridView.Rows[e.RowIndex];
-                flowerGridView.Rows[e.RowIndex].Height = 160;
-                flowerID.Text = flowerGridView.Rows[e.RowIndex].Cells[2].Value.ToString();
-                flowerValue.Text = flowerGridView.Rows[e.RowIndex].Cells[4].Value.ToString();
+                flowerGridView.Rows[e.RowIndex].Height = 128;
+                flowerID.Text = flowerGridView.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                flowerValue.Text = flowerGridView.Rows[e.RowIndex].Cells["value"].Value.ToString();
 
-                selectedItem.setup(flowerGridView.Rows[e.RowIndex].Cells[0].Value.ToString(), Convert.ToUInt16("0x" + flowerGridView.Rows[e.RowIndex].Cells[2].Value.ToString(), 16), Convert.ToUInt32("0x" + flowerGridView.Rows[e.RowIndex].Cells[4].Value.ToString(), 16), GetImagePathFromID(flowerGridView.Rows[e.RowIndex].Cells[2].Value.ToString(), itemSource), true);
+                selectedItem.setup(flowerGridView.Rows[e.RowIndex].Cells[languageSetting].Value.ToString(), Convert.ToUInt16("0x" + flowerGridView.Rows[e.RowIndex].Cells["id"].Value.ToString(), 16), Convert.ToUInt32("0x" + flowerGridView.Rows[e.RowIndex].Cells["value"].Value.ToString(), 16), GetImagePathFromID(flowerGridView.Rows[e.RowIndex].Cells["id"].Value.ToString(), itemSource), true);
                 updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
             }
         }
@@ -1566,12 +1668,12 @@ namespace ACNHPoker
                             hexMode_Click(sender, e);
                             customAmountTxt.Text = "1";
                         }
-                        customIdTextbox.Text = itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[2].Value.ToString();
+                        customIdTextbox.Text = itemGridView.Rows[itemGridView.CurrentRow.Index].Cells["id"].Value.ToString();
 
-                        selectedItem.setup(itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[0].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[2].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[2].Value.ToString(), itemSource), true);
+                        selectedItem.setup(itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[languageSetting].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[itemGridView.CurrentRow.Index].Cells["id"].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[itemGridView.CurrentRow.Index].Cells["id"].Value.ToString(), itemSource), true);
                         if (selection != null)
                         {
-                            selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4));
+                            selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting);
                         }
                         updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
                     }
@@ -1596,16 +1698,16 @@ namespace ACNHPoker
                             hexMode_Click(sender, e);
                             customAmountTxt.Text = "1";
                         }
-                        customIdTextbox.Text = itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells[2].Value.ToString();
+                        customIdTextbox.Text = itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells["id"].Value.ToString();
 
-                        selectedItem.setup(itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells[0].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells[2].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells[2].Value.ToString(), itemSource), true);
+                        selectedItem.setup(itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells[languageSetting].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells["id"].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells["id"].Value.ToString(), itemSource), true);
                         if (selection != null)
                         {
-                            selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4));
+                            selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting);
                         }
                         updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
 
-                        itemGridView.CurrentCell = itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells[0];
+                        itemGridView.CurrentCell = itemGridView.Rows[itemGridView.CurrentRow.Index + 1].Cells[languageSetting];
 
                         //Debug.Print(itemGridView.CurrentRow.Index.ToString());
                     }
@@ -1622,9 +1724,9 @@ namespace ACNHPoker
                         recipelastRow = recipeGridView.Rows[recipeGridView.CurrentRow.Index];
                         recipeGridView.Rows[recipeGridView.CurrentRow.Index].Height = 160;
 
-                        recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[2].Value.ToString();
+                        recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells["id"].Value.ToString();
 
-                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[0].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[2].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[2].Value.ToString(), recipeSource), true);
+                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[languageSetting].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells["id"].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells["id"].Value.ToString(), recipeSource), true);
                         updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
                     }
                     else if (recipeGridView.CurrentRow.Index + 1 < recipeGridView.Rows.Count)
@@ -1642,7 +1744,7 @@ namespace ACNHPoker
                         selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[0].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[2].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[2].Value.ToString(), recipeSource), true);
                         updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
 
-                        recipeGridView.CurrentCell = recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[0];
+                        recipeGridView.CurrentCell = recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[languageSetting];
                     }
                 }
                 else if (currentPanel == flowerModePanel)
@@ -1676,12 +1778,12 @@ namespace ACNHPoker
                             hexMode_Click(sender, e);
                             customAmountTxt.Text = "1";
                         }
-                        customIdTextbox.Text = itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[2].Value.ToString();
+                        customIdTextbox.Text = itemGridView.Rows[itemGridView.CurrentRow.Index].Cells["id"].Value.ToString();
 
-                        selectedItem.setup(itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[0].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[2].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[2].Value.ToString(), itemSource), true);
+                        selectedItem.setup(itemGridView.Rows[itemGridView.CurrentRow.Index].Cells[languageSetting].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[itemGridView.CurrentRow.Index].Cells["id"].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[itemGridView.CurrentRow.Index].Cells["id"].Value.ToString(), itemSource), true);
                         if (selection != null)
                         {
-                            selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4));
+                            selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting);
                         }
                         updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
                     }
@@ -1707,16 +1809,16 @@ namespace ACNHPoker
                             hexMode_Click(sender, e);
                             customAmountTxt.Text = "1";
                         }
-                        customIdTextbox.Text = itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells[2].Value.ToString();
+                        customIdTextbox.Text = itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells["id"].Value.ToString();
 
-                        selectedItem.setup(itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells[0].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells[2].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells[2].Value.ToString(), itemSource), true);
+                        selectedItem.setup(itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells[languageSetting].Value.ToString(), Convert.ToUInt16("0x" + itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells["id"].Value.ToString(), 16), 0x0, GetImagePathFromID(itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells["id"].Value.ToString(), itemSource), true);
                         if (selection != null)
                         {
-                            selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4));
+                            selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting);
                         }
                         updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
 
-                        itemGridView.CurrentCell = itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells[0];
+                        itemGridView.CurrentCell = itemGridView.Rows[itemGridView.CurrentRow.Index - 1].Cells[languageSetting];
                     }
                 }
                 else if (currentPanel == recipeModePanel)
@@ -1731,9 +1833,9 @@ namespace ACNHPoker
                         recipelastRow = recipeGridView.Rows[recipeGridView.CurrentRow.Index];
                         recipeGridView.Rows[recipeGridView.CurrentRow.Index].Height = 160;
 
-                        recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[2].Value.ToString();
+                        recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells["id"].Value.ToString();
 
-                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[0].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[2].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[2].Value.ToString(), recipeSource), true);
+                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells[languageSetting].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells["id"].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index].Cells["id"].Value.ToString(), recipeSource), true);
                         updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
                     }
                     else if (recipeGridView.CurrentRow.Index > 0)
@@ -1746,12 +1848,12 @@ namespace ACNHPoker
                         recipelastRow = recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1];
                         recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Height = 160;
 
-                        recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells[2].Value.ToString();
+                        recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells["id"].Value.ToString();
 
-                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells[0].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells[2].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells[2].Value.ToString(), recipeSource), true);
+                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells[languageSetting].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells["id"].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells["id"].Value.ToString(), recipeSource), true);
                         updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
 
-                        recipeGridView.CurrentCell = recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells[0];
+                        recipeGridView.CurrentCell = recipeGridView.Rows[recipeGridView.CurrentRow.Index - 1].Cells[languageSetting];
                     }
                 }
                 else if (currentPanel == flowerModePanel)
@@ -1777,7 +1879,7 @@ namespace ACNHPoker
             selectedItem.setup(selectedButton);
             if (selection != null)
             {
-                selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4));
+                selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting);
             }
             updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
             customAmountTxt.Text = Utilities.precedingZeros(selectedItem.fillItemData(), 8);
@@ -1814,14 +1916,14 @@ namespace ACNHPoker
             {
                 DataGridViewRow row = itemGridView.Rows
                 .Cast<DataGridViewRow>()
-                .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID.ToLower()))
+                .Where(r => r.Cells["id"].Value.ToString().Equals(itemID.ToLower()))
                 .FirstOrDefault();
 
                 if (row == null)
                 {
                     row = itemGridView.Rows
                     .Cast<DataGridViewRow>()
-                    .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID))
+                    .Where(r => r.Cells["id"].Value.ToString().Equals(itemID))
                     .FirstOrDefault();
 
                     if (row == null)
@@ -1830,20 +1932,20 @@ namespace ACNHPoker
                     }
                 }
                 rowIndex = row.Index;
-                msgLabel.Text = "Spawn " + itemGridView.Rows[rowIndex].Cells[0].Value.ToString();
+                msgLabel.Text = "Spawn " + itemGridView.Rows[rowIndex].Cells[languageSetting].Value.ToString();
             }
             else if (currentPanel == recipeModePanel)
             {
                 DataGridViewRow row = recipeGridView.Rows
                 .Cast<DataGridViewRow>()
-                .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID.ToLower()))
+                .Where(r => r.Cells["id"].Value.ToString().Equals(itemID.ToLower()))
                 .FirstOrDefault();
 
                 if (row == null)
                 {
                     row = recipeGridView.Rows
                     .Cast<DataGridViewRow>()
-                    .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID))
+                    .Where(r => r.Cells["id"].Value.ToString().Equals(itemID))
                     .FirstOrDefault();
 
                     if (row == null)
@@ -1852,20 +1954,20 @@ namespace ACNHPoker
                     }
                 }
                 rowIndex = row.Index;
-                msgLabel.Text = "Spawn " + recipeGridView.Rows[rowIndex].Cells[0].Value.ToString() + " recipe";
+                msgLabel.Text = "Spawn " + recipeGridView.Rows[rowIndex].Cells[languageSetting].Value.ToString() + " recipe";
             }
             else if (currentPanel == flowerModePanel)
             {
                 DataGridViewRow row = flowerGridView.Rows
                 .Cast<DataGridViewRow>()
-                .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID.ToLower()))
+                .Where(r => r.Cells["id"].Value.ToString().Equals(itemID.ToLower()))
                 .FirstOrDefault();
 
                 if (row == null)
                 {
                     row = flowerGridView.Rows
                     .Cast<DataGridViewRow>()
-                    .Where(r => r.Cells["ID"].Value.ToString().Equals(itemID))
+                    .Where(r => r.Cells["id"].Value.ToString().Equals(itemID))
                     .FirstOrDefault();
 
                     if (row == null)
@@ -1874,7 +1976,7 @@ namespace ACNHPoker
                     }
                 }
                 rowIndex = row.Index;
-                msgLabel.Text = "Spawn " + flowerGridView.Rows[rowIndex].Cells[0].Value.ToString() + " (Sparkling)";
+                msgLabel.Text = "Spawn " + flowerGridView.Rows[rowIndex].Cells[languageSetting].Value.ToString() + " (Sparkling)";
             }
             /*
             var time = new System.Windows.Forms.Timer();
@@ -2141,7 +2243,7 @@ namespace ACNHPoker
             selection = new variation();
             selection.Show();
             selection.Location = new System.Drawing.Point(this.Location.X + 7, this.Location.Y + 550);
-            selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4));
+            selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting);
             selection.mainform = this;
             variationModeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
         }
@@ -2218,7 +2320,7 @@ namespace ACNHPoker
 
                 if (selection != null)
                 {
-                    selection.receiveID(customIdTextbox.Text);
+                    selection.receiveID(customIdTextbox.Text, languageSetting);
                 }
             }
             updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
@@ -2293,7 +2395,7 @@ namespace ACNHPoker
 
                 if (selection != null)
                 {
-                    selection.receiveID(customIdTextbox.Text);
+                    selection.receiveID(customIdTextbox.Text, languageSetting);
                 }
             }
             updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
@@ -2611,6 +2713,9 @@ namespace ACNHPoker
                 return;
             }
             */
+            if (wrapSetting.SelectedIndex < 0)
+                wrapSetting.SelectedIndex = 0;
+
             int index = wrapSetting.SelectedIndex;
             Thread wrapAllThread = new Thread(delegate () { wrapAll(index); });
             wrapAllThread.Start();
@@ -2915,6 +3020,12 @@ namespace ACNHPoker
             System.Media.SystemSounds.Asterisk.Play();
 
             hideWait();
+        }
+
+        private string removeNumber(string filename)
+        {
+            char[] MyChar = { '0', '1', '2', '3', '4' };
+            return filename.Trim(MyChar);
         }
     }
 }

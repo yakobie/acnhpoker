@@ -24,7 +24,8 @@ namespace ACNHPoker
             critterLargePanel.Visible = false;
             villagerLargePanel.Visible = true;
             closeVariationMenu();
-            int player = playerSelectorVillager.SelectedIndex;
+
+            int player = 0;
 
             if (V == null && !firstload)
             {
@@ -176,8 +177,7 @@ namespace ACNHPoker
                     this.villagerLargePanel.Controls.Remove(villagerButton[i]);
             }
 
-            playerSelectorVillager.SelectedIndex = 0;
-            int player = playerSelectorVillager.SelectedIndex;
+            int player = 0;
 
             Thread LoadAllVillagerThread = new Thread(delegate () { loadAllVillager(player); });
             LoadAllVillagerThread.Start();
@@ -199,11 +199,11 @@ namespace ACNHPoker
             return temp;
         }
 
-        private void RefreshVillagerUI(bool clear)
+        public void RefreshVillagerUI(bool clear)
         {
             for (int j = 0; j < 10; j++)
             {
-                int friendship = V[j].Friendship[playerSelectorVillager.SelectedIndex];
+                int friendship = V[j].Friendship[0];
                 if (villagerButton[j] != selectedVillagerButton)
                     villagerButton[j].BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(friendship)))), ((int)(((byte)(friendship / 2)))), ((int)(((byte)(friendship)))));
 
@@ -263,14 +263,14 @@ namespace ACNHPoker
                     NameValue.Text = V[i].GetRealName();
                     InternalNameValue.Text = V[i].GetInternalName();
                     PersonalityValue.Text = V[i].GetPersonality();
-                    FriendShipValue.Text = V[i].Friendship[playerSelectorVillager.SelectedIndex].ToString();
+                    FriendShipValue.Text = V[i].Friendship[0].ToString();
                     HouseIndexValue.Text = V[i].HouseIndex.ToString();
                     MoveInFlag.Text = "0x" + V[i].MoveInFlag.ToString("X");
                     MoveOutValue.Text = "0x" + V[i].AbandonedHouseFlag.ToString("X");
                     ForceMoveOutValue.Text = "0x" + V[i].ForceMoveOutFlag.ToString("X");
                     CatchphraseValue.Text = Encoding.Unicode.GetString(V[i].catchphrase, 0, 44);
                     FullAddress.Text = Utilities.ByteToHexString(V[i].GetHeader());
-                    PlayerName.Text = V[i].GetPlayerName(playerSelectorVillager.SelectedIndex);
+                    //PlayerName.Text = V[i].GetPlayerName(playerSelectorVillager.SelectedIndex);
                 }
             }
 
@@ -428,7 +428,7 @@ namespace ACNHPoker
                 return;
             int i = Int16.Parse(IndexValue.Text);
 
-            int player = playerSelectorVillager.SelectedIndex;
+            int player = 0;
 
             Utilities.SetFriendship(s, bot, i, player);
 
@@ -437,9 +437,25 @@ namespace ACNHPoker
         }
         private void SetFriendshipBtn_Click(object sender, EventArgs e)
         {
+            
             if (IndexValue.Text == "")
                 return;
             int i = Int16.Parse(IndexValue.Text);
+
+            Image img;
+            if (V[i].GetRealName() == "ERROR")
+            {
+                img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetRealName()));
+            }
+            else
+            {
+                img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetInternalName()));
+            }
+
+            friendship = new Friendship(this, i, s, bot, img, V[i].GetRealName());
+            friendship.Show();
+            friendship.Location = new System.Drawing.Point(this.Location.X + 30, this.Location.Y + 30);
+            /*
             int value = Int16.Parse(FriendShipValue.Text);
 
             if (value < 25)
@@ -447,12 +463,23 @@ namespace ACNHPoker
             else if (value > 255)
                 value = 255;
 
-            int player = playerSelectorVillager.SelectedIndex;
+            int player = 0;
 
             Utilities.SetFriendship(s, bot, i, player, value.ToString("X"));
 
             V[i].Friendship[player] = (byte)value;
             RefreshVillagerUI(false);
+            */
+        }
+
+        public string PassPlayerName(int i, int p)
+        {
+            return V[i].GetPlayerName(p);
+        }
+
+        public void SetFriendship(int i, int p, int value)
+        {
+            V[i].Friendship[p] = (byte)value;
         }
 
         private void DumpAllHouseBtn_Click(object sender, EventArgs e)
@@ -1102,34 +1129,7 @@ namespace ACNHPoker
             return newVillager;
         }
 
-        private void playerSelectorVillager_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!playerSelectorVillagerInit)
-            {
-                playerSelectorVillagerInit = true;
-                return;
-            }
-
-            int player = playerSelectorVillager.SelectedIndex;
-
-            if (player > 0)
-            {
-                if (checkFriendshipInit(player))
-                {
-                    RefreshVillagerUI(false);
-                }
-                else
-                {
-                    Thread LoadFriendshipThread = new Thread(delegate () { loadFriendship(player); });
-                    LoadFriendshipThread.Start();
-                }
-            }
-            else
-            {
-                RefreshVillagerUI(false);
-            }
-        }
-
+        /*
         private void loadFriendship(int player)
         {
             showVillagerWait(10, "Acquiring Friendship data...");
@@ -1155,6 +1155,13 @@ namespace ACNHPoker
             blocker = false;
 
             hideVillagerWait();
+        }
+        */
+
+        public void loadFriendship(byte[] b, int i, int player)
+        {
+            V[i].TempData[player] = b;
+            V[i].Friendship[player] = b[70];
         }
 
         private bool checkFriendshipInit(int player)

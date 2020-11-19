@@ -50,7 +50,7 @@ namespace ACNHPoker
                     extractHere();
                 };
 
-                webClient.DownloadFileAsync(new Uri("https://github.com/MyShiLingStar/ACNHPoker/releases/download/ImgPack/img.zip"), "temp.zip");
+                webClient.DownloadFileAsync(new Uri("https://github.com/MyShiLingStar/ACNHPoker/releases/download/ImgPack2/img.zip"), "temp.zip");
             }
 
         }

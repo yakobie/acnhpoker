@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -19,128 +20,136 @@ namespace ACNHPoker
 
 
 
-        public static readonly UInt32 MasterRecyclingBase = masterAddress - 0xB5BE38; //
-        public static readonly UInt32 MasterRecycling21Base = MasterRecyclingBase + 0xA0; //
+        public static  UInt32 MasterRecyclingBase = masterAddress - 0xB5BE38; //
+        public static  UInt32 MasterRecycling21Base = MasterRecyclingBase + 0xA0; //
 
-        public static readonly UInt32 TurnipPurchasePriceAddr = masterAddress - 0x125A568; //
-        public static readonly UInt32 TurnipSellPriceAddr = TurnipPurchasePriceAddr + 0xC; //
+        public static  UInt32 TurnipPurchasePriceAddr = masterAddress - 0x125A568; //
+        public static  UInt32 TurnipSellPriceAddr = TurnipPurchasePriceAddr + 0xC; //
 
-        public static readonly UInt32 VillagerAddress = masterAddress - 0x16778E8; //
-        public static readonly UInt32 VillagerSize = 0x13230; //
-        public static readonly UInt32 VillagerOldSize = 0x12AB0; //
-        public static readonly UInt32 VillagerMemorySize = 0x5F0; // TODO
+        public static  UInt32 VillagerAddress = masterAddress - 0x16778E8; //
+        public static  UInt32 VillagerSize = 0x13230; //
+        public static  UInt32 VillagerOldSize = 0x12AB0; //
+        public static  UInt32 VillagerMemorySize = 0x5F0; // TODO
 
-        public static readonly UInt32 VillagerMemoryTinySize = 0x47; //
+        public static  UInt32 VillagerMemoryTinySize = 0x47; //
 
-        public static readonly UInt32 VillagerPlayerOffset = 0x5F0; //
+        public static  UInt32 VillagerPlayerOffset = 0x5F0; //
 
-        public static readonly UInt32 VillagerMoveoutOffset = 0x1267A; //0x11EFA;
-        public static readonly UInt32 VillagerForceMoveoutOffset = 0x126Ac;//0x11F2C;
-        public static readonly UInt32 VillagerFriendshipOffset = 0x46;
-        public static readonly UInt32 VillagerCatchphraseOffset = 0x10794;//0x10014;
+        public static  UInt32 VillagerMoveoutOffset = 0x1267A; //0x11EFA;
+        public static  UInt32 VillagerForceMoveoutOffset = 0x126Ac;//0x11F2C;
+        public static  UInt32 VillagerFriendshipOffset = 0x46;
+        public static  UInt32 VillagerCatchphraseOffset = 0x10794;//0x10014;
 
-        public static readonly UInt32 VillagerHouseAddress = 0xAA9C7580; 
-        public static readonly UInt32 VillagerHouseSize = 0x1D4; //
-        public static readonly UInt32 VillagerHouseBufferDiff = 0xB20770; //
-        public static readonly UInt32 VillagerHouseOwnerOffset = 0x1C4; //
+        public static  UInt32 VillagerHouseAddress = 0xAA9C7580; 
+        public static  UInt32 VillagerHouseSize = 0x1D4; //
+        public static  UInt32 VillagerHouseBufferDiff = 0xB20770; //
+        public static  UInt32 VillagerHouseOwnerOffset = 0x1C4; //
 
-        public static readonly UInt32 MysIslandVillagerAddress = 0x3E619AFC; //
-        public static readonly UInt32 MysIslandVillagerSpecies = MysIslandVillagerAddress + 0x110;
-
-
-
-        public static readonly UInt32 TownNameddress = 0x29D63FD8; //masterAddress - 0x15DE1A0; //? // TODO
-
-        public static readonly UInt32 weatherSeed = masterAddress - 0xA01F9CFC; //
+        public static  UInt32 MysIslandVillagerAddress = 0x3E619AFC; //
+        public static  UInt32 MysIslandVillagerSpecies = MysIslandVillagerAddress + 0x110;
 
 
 
-        public static readonly UInt32 player1SlotBase = masterAddress; //
-        public static readonly UInt32 player1Slot21Base = player1SlotBase - 0xB8; //
-        public static readonly UInt32 player1HouseBase = player1SlotBase + 0xC4; //
-        public static readonly UInt32 player1House21Base = player1HouseBase + 0xA0; //
+        public static  UInt32 TownNameddress = 0x29D63FD8; //masterAddress - 0x15DE1A0; //? // TODO
 
-        public static readonly UInt32 playerOffset = 0x76390; //
-        public static readonly UInt32 playerReactionAddress = player1SlotBase + 0xAFB4; //
+        public static  UInt32 weatherSeed = masterAddress - 0xA01F9CFC; //
 
-        public static readonly UInt32 player2SlotBase = player1SlotBase + playerOffset; //
-        public static readonly UInt32 player2Slot21Base = player2SlotBase - 0xB8;
-        public static readonly UInt32 player2HouseBase = player2SlotBase + 0xC4; //
-        public static readonly UInt32 player2House21Base = player2HouseBase + 0xA0; //
 
-        public static readonly UInt32 player3SlotBase = player2SlotBase + playerOffset; //
-        public static readonly UInt32 player3Slot21Base = player3SlotBase - 0xB8;
-        public static readonly UInt32 player3HouseBase = player3SlotBase + 0xC4; //
-        public static readonly UInt32 player3House21Base = player3HouseBase + 0xA0; //
 
-        public static readonly UInt32 player4SlotBase = player3SlotBase + playerOffset; //
-        public static readonly UInt32 player4Slot21Base = player4SlotBase - 0xB8;
-        public static readonly UInt32 player4HouseBase = player4SlotBase + 0xC4; //
-        public static readonly UInt32 player4House21Base = player4HouseBase + 0xA0; //
+        public static  UInt32 player1SlotBase = masterAddress; //
+        public static  UInt32 playerOffset = 0x76390; //
+        public static  UInt32 Slot21Offset = 0xB8; //
+        public static  UInt32 HomeOffset = 0xC4; //
+        public static  UInt32 ReactionOffset = 0xAFB4; //
 
-        public static readonly UInt32 player5SlotBase = player4SlotBase + playerOffset; //
-        public static readonly UInt32 player5Slot21Base = player5SlotBase - 0xB8;
-        public static readonly UInt32 player5HouseBase = player5SlotBase + 0xC4; //
-        public static readonly UInt32 player5House21Base = player5HouseBase + 0xA0; //
+        public static  UInt32 player1Slot21Base = player1SlotBase - Slot21Offset; //
+        public static  UInt32 player1HouseBase = player1SlotBase + HomeOffset; //
+        public static  UInt32 player1House21Base = player1HouseBase + 0xA0; //
 
-        public static readonly UInt32 player6SlotBase = player5SlotBase + playerOffset; //
-        public static readonly UInt32 player6Slot21Base = player6SlotBase - 0xB8;
-        public static readonly UInt32 player6HouseBase = player6SlotBase + 0xC4; //
-        public static readonly UInt32 player6House21Base = player6HouseBase + 0xA0; //
+        public static  UInt32 playerReactionAddress = player1SlotBase + ReactionOffset; //
 
-        public static readonly UInt32 player7SlotBase = player6SlotBase + playerOffset; //
-        public static readonly UInt32 player7Slot21Base = player7SlotBase - 0xB8;
-        public static readonly UInt32 player7HouseBase = player7SlotBase + 0xC4; //
-        public static readonly UInt32 player7House21Base = player7HouseBase + 0xA0; //
+        public static  UInt32 player2SlotBase = player1SlotBase + playerOffset; //
+        public static  UInt32 player2Slot21Base = player2SlotBase - Slot21Offset;
+        public static  UInt32 player2HouseBase = player2SlotBase + HomeOffset; //
+        public static  UInt32 player2House21Base = player2HouseBase + 0xA0; //
 
-        public static readonly UInt32 player8SlotBase = player7SlotBase + playerOffset; //
-        public static readonly UInt32 player8Slot21Base = player8SlotBase - 0xB8;
-        public static readonly UInt32 player8HouseBase = player8SlotBase + 0xC4; //
-        public static readonly UInt32 player8House21Base = player8HouseBase + 0xA0; //
+        public static  UInt32 player3SlotBase = player2SlotBase + playerOffset; //
+        public static  UInt32 player3Slot21Base = player3SlotBase - Slot21Offset;
+        public static  UInt32 player3HouseBase = player3SlotBase + HomeOffset; //
+        public static  UInt32 player3House21Base = player3HouseBase + 0xA0; //
+
+        public static  UInt32 player4SlotBase = player3SlotBase + playerOffset; //
+        public static  UInt32 player4Slot21Base = player4SlotBase - Slot21Offset;
+        public static  UInt32 player4HouseBase = player4SlotBase + HomeOffset; //
+        public static  UInt32 player4House21Base = player4HouseBase + 0xA0; //
+
+        public static  UInt32 player5SlotBase = player4SlotBase + playerOffset; //
+        public static  UInt32 player5Slot21Base = player5SlotBase - Slot21Offset;
+        public static  UInt32 player5HouseBase = player5SlotBase + HomeOffset; //
+        public static  UInt32 player5House21Base = player5HouseBase + 0xA0; //
+
+        public static  UInt32 player6SlotBase = player5SlotBase + playerOffset; //
+        public static  UInt32 player6Slot21Base = player6SlotBase - Slot21Offset;
+        public static  UInt32 player6HouseBase = player6SlotBase + HomeOffset; //
+        public static  UInt32 player6House21Base = player6HouseBase + 0xA0; //
+
+        public static  UInt32 player7SlotBase = player6SlotBase + playerOffset; //
+        public static  UInt32 player7Slot21Base = player7SlotBase - Slot21Offset;
+        public static  UInt32 player7HouseBase = player7SlotBase + HomeOffset; //
+        public static  UInt32 player7House21Base = player7HouseBase + 0xA0; //
+
+        public static  UInt32 player8SlotBase = player7SlotBase + playerOffset; //
+        public static  UInt32 player8Slot21Base = player8SlotBase - Slot21Offset;
+        public static  UInt32 player8HouseBase = player8SlotBase + HomeOffset; //
+        public static  UInt32 player8House21Base = player8HouseBase + 0xA0; //
 
         // ---- Critter
-        public const UInt32 InsectAppearPointer = 0x4668F858; //
-        public const Int32 InsectDataSize = 2 * (1 + 6 * 12 + 5);
-        public const Int32 InsectNumRecords = 166;
+        public static UInt32 InsectAppearPointer = 0x4668F858; //
+        public static Int32 InsectDataSize = 2 * (1 + 6 * 12 + 5);
+        public static Int32 InsectNumRecords = 166;
 
-        public const Int32 FishDataSize = 2 * (1 + 3 * 12 + 3);
+        public static Int32 FishDataSize = 2 * (1 + 3 * 12 + 3);
 
-        public const UInt32 FishRiverAppearPointer = InsectAppearPointer + 0x3F778;
-        public const Int32 FishRiverNumRecords = 100;
+        public static UInt32 FishRiverAppearPointer = InsectAppearPointer + 0x3F778;
+        public static Int32 FishRiverNumRecords = 100;
 
-        public const UInt32 FishSeaAppearPointer = InsectAppearPointer + 0x55618;
-        public const Int32 FishSeaNumRecords = 76;
+        public static UInt32 FishSeaAppearPointer = InsectAppearPointer + 0x55618;
+        public static Int32 FishSeaNumRecords = 76;
 
-        public const UInt32 CreatureSeaAppearPointer = InsectAppearPointer - 0x3DCE4;
-        public const Int32 SeaCreatureDataSize = 84;
-        public const Int32 SeaCreatureNumRecords = 41 * 2;
+        public static UInt32 CreatureSeaAppearPointer = InsectAppearPointer - 0x3DCE4;
+        public static Int32 SeaCreatureDataSize = 84;
+        public static Int32 SeaCreatureNumRecords = 41 * 2;
         // ----
 
         // ---- Main
-        public static readonly UInt32 staminaAddress = 0xB4A1EBE0;
+        public static UInt32 staminaAddress = 0xB4A1EBE0;
 
-        public static readonly UInt32 freezeTimeAddress = 0x0025AB50; //
+        public static UInt32 freezeTimeAddress = 0x0025AB50; //
         public static readonly string freezeTimeValue = "D503201F";
         public static readonly string unfreezeTimeValue = "F9203260";
 
-        public static readonly UInt32 readTimeAddress = 0x0B9A29C0; //
+        public static UInt32 readTimeAddress = 0x0B9A29C0; //
 
-        public static readonly UInt32 wSpeedAddress = 0x0105BABC; //0x0105B8DC; //
+        public static UInt32 wSpeedAddress = 0x0105BABC; //0x0105B8DC; //
         public static readonly string wSpeedX1 = "BD51D661";
         public static readonly string wSpeedX2 = "1E201001";
         public static readonly string wSpeedX3 = "1E211001";
         public static readonly string wSpeedX4 = "1E221001";
 
-        public static readonly UInt32 CollisionAddress = 0x00FD5380; //0x00FD51D0; //
+        public static UInt32 CollisionAddress = 0x00FD5380; //0x00FD51D0; //
         public static readonly string CollisionDisable = "12800014";
         public static readonly string CollisionEnable = "B955E014";
 
-        public static readonly UInt32 aSpeedAddress = 0x0360F610; //0x0360F610; //
+        public static UInt32 aSpeedAddress = 0x0360F610; //0x0360F610; //
         public static readonly string aSpeedX1 = "3F800000";
         public static readonly string aSpeedX2 = "40000000";
         public static readonly string aSpeedX5 = "40A00000";
         public static readonly string aSpeedX50 = "42480000";
         public static readonly string aSpeedX01 = "3DCCCCCD";
+
+        private const string imagePath = @"img\";
+        private const string villagerPath = @"villager\";
+        private const string MissingImage = @"QuestionMark.png";
 
         public static Form1 formControl;
 
@@ -1638,6 +1647,36 @@ namespace ACNHPoker
             }
         }
 
+        public static byte[] GetPlayerDataVillager(Socket socket, USBBot bot, int num, int player, int size)
+        {
+            if (bot == null)
+            {
+                Debug.Print("[Sys] Poke : Villager " + player + " " + (VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset)).ToString("X") + " " + num + " " + size);
+
+                byte[] b = ReadByteArray(socket, VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset), size);
+
+                if (b == null)
+                {
+                    MessageBox.Show("Wait something is wrong here!? \n\n Villager");
+                }
+
+                return b;
+            }
+            else
+            {
+                Debug.Print("[Usb] Poke : Villager " + player + " " + (VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset)).ToString("X") + " " + num + " " + size);
+
+                byte[] b = ReadLargeBytes(bot, (uint)(VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset)), size);
+
+                if (b == null)
+                {
+                    MessageBox.Show("Wait something is wrong here!? \n\n Villager");
+                }
+
+                return b;
+            }
+        }
+
         public static void SetMysVillager(Socket socket, USBBot bot, byte[] buffer, byte[] species, ref int counter)
         {
             if (bot == null)
@@ -1705,11 +1744,17 @@ namespace ACNHPoker
 
         public static string GetVillagerImage(string name)
         {
-            string path = @"img\Villager\" + name + ".png";
+            string path = imagePath + villagerPath + name + ".png";
             if (File.Exists(path))
-                return path; //file found
+                return path;
             else
-                return @"img\Villager\QuestionMark.png"; //file not found
+            {
+                path = imagePath + villagerPath + MissingImage;
+                if (File.Exists(path))
+                    return path;
+                else
+                    return "";
+            }
         }
 
         public static string TrimFromZero(string input) => TrimFromFirst(input, '\0');
@@ -1742,6 +1787,85 @@ namespace ACNHPoker
             Buffer.BlockCopy(src, offset, data, 0, data.Length);
             return data;
         }
+
+        public static void overrideAddresses(Dictionary<string, UInt32> config)
+        {
+            masterAddress = config["PlayerSlot"];
+
+            ItemSlotBase = masterAddress;
+            ItemSlot21Base = masterAddress - 0xB8;
+
+            player1SlotBase = config["PlayerSlot"];
+            playerOffset = config["PlayerOffset"];
+            Slot21Offset = config["Slot21Offset"];
+            HomeOffset = config["HomeOffset"];
+            ReactionOffset = config["ReactionOffset"];
+            VillagerAddress = config["Villager"];
+            VillagerSize = config["VillagerOffset"];
+            VillagerHouseAddress = config["VillagerHouse"];
+            VillagerHouseSize = config["VillagerHouseOffset"];
+            VillagerHouseBufferDiff = config["VillagerHouseBuffer"];
+            MasterRecyclingBase = config["RecyclingBin"];
+            TurnipPurchasePriceAddr = config["Turnip"];
+            staminaAddress = config["Stamina"];
+            wSpeedAddress = config["WalkSpeed"];
+            aSpeedAddress = config["AnimationSpeed"];
+            CollisionAddress = config["Collision"];
+            freezeTimeAddress = config["FreezeTime"];
+            readTimeAddress = config["ReadTime"];
+            InsectAppearPointer = config["Critter"];
+            TownNameddress = config["IslandName"];
+            weatherSeed = config["WeatherSeed"];
+
+
+            MasterRecycling21Base = MasterRecyclingBase + 0xA0;
+            TurnipSellPriceAddr = TurnipPurchasePriceAddr + 0xC;
+
+            player1Slot21Base = player1SlotBase - Slot21Offset;
+            player1HouseBase = player1SlotBase + HomeOffset;
+            player1House21Base = player1HouseBase + 0xA0;
+
+            playerReactionAddress = player1SlotBase + ReactionOffset;
+
+            player2SlotBase = player1SlotBase + playerOffset;
+            player2Slot21Base = player2SlotBase - Slot21Offset;
+            player2HouseBase = player2SlotBase + HomeOffset;
+            player2House21Base = player2HouseBase + 0xA0;
+
+            player3SlotBase = player2SlotBase + playerOffset;
+            player3Slot21Base = player3SlotBase - Slot21Offset;
+            player3HouseBase = player3SlotBase + HomeOffset;
+            player3House21Base = player3HouseBase + 0xA0;
+
+            player4SlotBase = player3SlotBase + playerOffset;
+            player4Slot21Base = player4SlotBase - Slot21Offset;
+            player4HouseBase = player4SlotBase + HomeOffset;
+            player4House21Base = player4HouseBase + 0xA0;
+
+            player5SlotBase = player4SlotBase + playerOffset;
+            player5Slot21Base = player5SlotBase - Slot21Offset;
+            player5HouseBase = player5SlotBase + HomeOffset;
+            player5House21Base = player5HouseBase + 0xA0;
+
+            player6SlotBase = player5SlotBase + playerOffset;
+            player6Slot21Base = player6SlotBase - Slot21Offset;
+            player6HouseBase = player6SlotBase + HomeOffset;
+            player6House21Base = player6HouseBase + 0xA0;
+
+            player7SlotBase = player6SlotBase + playerOffset;
+            player7Slot21Base = player7SlotBase - Slot21Offset;
+            player7HouseBase = player7SlotBase + HomeOffset;
+            player7House21Base = player7HouseBase + 0xA0;
+
+            player8SlotBase = player7SlotBase + playerOffset;
+            player8Slot21Base = player8SlotBase - Slot21Offset;
+            player8HouseBase = player8SlotBase + HomeOffset;
+            player8House21Base = player8HouseBase + 0xA0;
+
+            FishRiverAppearPointer = InsectAppearPointer + 0x3F778;
+            FishSeaAppearPointer = InsectAppearPointer + 0x55618;
+            CreatureSeaAppearPointer = InsectAppearPointer - 0x3DCE4;
+    }
 
         public enum VillagerPersonality : byte
         {

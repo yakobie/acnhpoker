@@ -9,8 +9,11 @@ namespace ACNHPoker
 {
     public partial class variation : Form
     {
-        readonly private string variationPath = @"variation.csv";
-        readonly private string imgPath = @"img\variation\";
+        private const string csvFolder = @"csv\";
+        private const string variationFile = @"variations.csv";
+        private const string variationPath = csvFolder + variationFile;
+        private const string imagePath = @"img\";
+
         private DataTable itemSource;
         private DataGridViewRow lastRow;
         private inventorySlot[,] selection;
@@ -29,17 +32,17 @@ namespace ACNHPoker
             var dt = new DataTable();
 
             File.ReadLines(filePath).Take(1)
-                .SelectMany(x => x.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                .SelectMany(x => x.Split(new[] { " ; " }, StringSplitOptions.RemoveEmptyEntries))
                 .ToList()
                 .ForEach(x => dt.Columns.Add(x.Trim()));
 
             File.ReadLines(filePath).Skip(1)
-                .Select(x => x.Split(','))
+                .Select(x => x.Split(new[] { " ; " }, StringSplitOptions.RemoveEmptyEntries))
                 .ToList()
                 .ForEach(line => dt.Rows.Add(line));
 
-            if (dt.Columns.Contains("ID"))
-                dt.PrimaryKey = new DataColumn[1] { dt.Columns["ID"] };
+            if (dt.Columns.Contains("id"))
+                dt.PrimaryKey = new DataColumn[1] { dt.Columns["id"] };
 
             return dt;
         }
@@ -76,13 +79,13 @@ namespace ACNHPoker
             else
             {
                 //row found set the index and find the file
-                string path = imgPath + row[1] + @"\" + row[3] + ".png";
+                string path = imagePath + row["iName"] + ".png";
                 if (File.Exists(path))
                 {
                     return path;
                 }
 
-                path = imgPath + row[1] + @"\" + row[3] + "_0_0" + ".png";
+                path = imagePath + row["iName"] + "_Remake_0_0" + ".png";
                 if (File.Exists(path))
                 {
                     return path;
@@ -98,6 +101,7 @@ namespace ACNHPoker
             {
                 itemSource = loadItemCSV(variationPath);
 
+                /*
                 furnitureGridView.DataSource = loadItemCSV(variationPath);
                 //furnitureGridView.Columns["ID"].Visible = false;
                 //furnitureGridView.Columns["iName"].Visible = false;
@@ -131,12 +135,13 @@ namespace ACNHPoker
                     c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     c.HeaderCell.Style.Font = new Font("Arial", 9, FontStyle.Bold);
                 }
-
+                */
             }
         }
 
         private void furnitureGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            /*
             if (e.RowIndex >= 0 && e.RowIndex < this.furnitureGridView.Rows.Count)
             {
                 if (e.ColumnIndex == 3)
@@ -159,6 +164,7 @@ namespace ACNHPoker
 
                 }
             }
+            */
         }
 
         private void furnitureGridView_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -203,12 +209,12 @@ namespace ACNHPoker
                 {
                     //Debug.Print(findMaxVariation(category, iName).ToString());
                     //Debug.Print(findMaxSubVariation(category, iName).ToString());
-                    showVariation(name, id, findMaxVariation(category, iName), findMaxSubVariation(category, iName), category, iName);
+                    //showVariation(name, id, findMaxVariation(category, iName), findMaxSubVariation(category, iName), category, iName);
                 }
             }
         }
 
-        private void showVariation(string name, UInt16 id, int main, int sub, string category, string iName)
+        private void showVariation(string name, UInt16 id, int main, int sub, string iName)
         {
             selection = new inventorySlot[main + 1, sub + 1];
 
@@ -216,7 +222,7 @@ namespace ACNHPoker
             {
                 for (int k = 0; k <= sub; k++)
                 {
-                    string path = imgPath + category + @"\" + iName + "_" + j.ToString() + "_" + k.ToString() + ".png";
+                    string path = imagePath + iName + "_Remake_" + j.ToString() + "_" + k.ToString() + ".png";
 
                     selection[j, k] = new inventorySlot();
                     selection[j, k].BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -296,11 +302,11 @@ namespace ACNHPoker
             this.selectedItem.UseVisualStyleBackColor = false;
          */
 
-        private int findMaxVariation(string category, string name)
+        private int findMaxVariation(string name)
         {
             for (int i = 9; i >= 0; i--)
             {
-                string path = imgPath + category + @"\" + name + "_" + i.ToString() + "_0" + ".png";
+                string path = imagePath + name + "_Remake_" + i.ToString() + "_0" + ".png";
                 if (File.Exists(path))
                 {
                     return i;
@@ -308,11 +314,11 @@ namespace ACNHPoker
             }
             return -1;
         }
-        private int findMaxSubVariation(string category, string name)
+        private int findMaxSubVariation(string name)
         {
             for (int i = 9; i >= 0; i--)
             {
-                string path = imgPath + category + @"\" + name + "_0_" + i.ToString() + ".png";
+                string path = imagePath + name + "_Remake_0_" + i.ToString() + ".png";
                 if (File.Exists(path))
                 {
                     return i;
@@ -321,7 +327,7 @@ namespace ACNHPoker
             return -1;
         }
 
-        public void receiveID(string id)
+        public void receiveID(string id, string language)
         {
             removeVariation();
             this.itemIDLabel.Text = id;
@@ -329,19 +335,19 @@ namespace ACNHPoker
             if (row != null)
             {
                 this.infoLabel.Text = "";
-                string name = row[0].ToString();
-                string idString = row[2].ToString();
-                UInt16 itemID = Convert.ToUInt16("0x" + row[2].ToString(), 16);
+                string name = row[language].ToString();
+                string idString = row["id"].ToString();
+                UInt16 itemID = Convert.ToUInt16("0x" + row["id"].ToString(), 16);
                 //UInt16 data = 0x0;
-                string category = row[1].ToString();
-                string iName = row[3].ToString();
+                //string category = row[1].ToString();
+                string iName = row["iName"].ToString();
                 string path = GetImagePathFromID(idString, itemSource);
 
                 //updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
                 if (hasVar(path))
                 {
                     //Debug.Print(row[0].ToString() + " " + row[1].ToString() + " " + row[2].ToString() + " " + row[3].ToString() + " ");
-                    showVariation(name, itemID, findMaxVariation(category, iName), findMaxSubVariation(category, iName), category, iName);
+                    showVariation(name, itemID, findMaxVariation(iName), findMaxSubVariation(iName), iName);
                 }
                 else
                 {
