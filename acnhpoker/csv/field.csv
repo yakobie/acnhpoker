@@ -154,14 +154,14 @@ EC8F ; PltWeedWin12A ; Winter Weed 12A ; 00000000
 EC90 ; PltWeedWin12B ; Winter Weed 12B ; 00000000
 EC8E ; PltWeedWin12C ; Winter Weed 12C ; 00000000
 EC8D ; PltWeedWin13 ; Winter Weed 13 ; 00000000
-EC9A ; PltTreeCedarDecoA ; Cedar (Deco) A ; 00000000
-EC97 ; PltTreeCedarDecoB ; Cedar (Deco) B ; 00000000
-EC9F ; PltTreeMoney0 ; Money Tree (Sapling) ; 00000000
-ECA0 ; PltTreeMoney1 ; Money Tree (Grow 1) ; 00000000
-EC9E ; PltTreeMoney2 ; Money Tree (Grow 2) ; 00000000
-EC9D ; PltTreeMoney3 ; Money Tree (Grow 3) ; 00000000
-EC9C ; PltTreeMoney4 ; Money Tree (Full-grown) ; 00000000
-ED16 ; PltTreeEasterEgg ; Tree (Easter Egg) ; 00000000
+EC9A ; PltTreeCedarDecoA ; Cedar (Deco) A ; 00200000
+EC97 ; PltTreeCedarDecoB ; Cedar (Deco) B ; 00200000
+EC9F ; PltTreeMoney0 ; Money Tree (Sapling) ; 002008A4
+ECA0 ; PltTreeMoney1 ; Money Tree (Grow 1) ; 002008A4
+EC9E ; PltTreeMoney2 ; Money Tree (Grow 2) ; 002008A4
+EC9D ; PltTreeMoney3 ; Money Tree (Grow 3) ; 002008A4
+EC9C ; PltTreeMoney4 ; Money Tree (Full-grown) ; 002008A4
+ED16 ; PltTreeEasterEgg ; Tree (Easter Egg) ; 00200000
 EC62 ; PltFlwCosmos0Red ; red-cosmos (Sprout) ; 0083E003
 EA6F ; PltFlwCosmos1Red ; red-cosmos (Stem) ; 0083E003
 EA70 ; PltFlwCosmos2Red ; red-cosmos (Bud) ; 0083E003
