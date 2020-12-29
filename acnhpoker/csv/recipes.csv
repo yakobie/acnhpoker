@@ -206,7 +206,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 0190 ; FtrFruitswater ; infused-water dispenser ; フルーツウォーターサーバー ; 水果桶裝飲水機 ; 水果桶装饮水机 ; 프루츠 워터 디스펜서 ; distributeur d'eau fruitée ; Obst-Wasserspender ; jarro de agua afrutada ; distributore acqua fruttata ; watertap met fruit ; дозатор фруктовой воды
 0191 ; FtrIllumiPresent ; illuminated present ; プレゼントのイルミネーション ; 禮物燈飾 ; 礼物灯饰 ; 선물 일루미네이션 ; cadeau illuminé ; Leuchtgeschenk ; regalo de luces ; regalo illuminato ; verlicht cadeautje ; подарок с подсветкой
 00C1 ; FtrMokugyo ; wooden fish ; もくぎょ ; 木魚 ; 木鱼 ; 목탁 ; mokugyo ; Holzblocktrommel ; pez de madera de percusión ; mokugyo ; mokugyo ; деревянная рыба
-0194 ; FtrBookshelf ; wooden bookshelf ; もくせいのほんだな ; 木製書架 ; 木制书柜 ; 목제 책장 ; bibliothèque en bois ; Holzbücherregal ; librería grande de madera ; libreria di legno ; houten boekenplank ; книжная полка из дерева
+0194 ; FtrBookshelf ; wooden bookshelf ; もくせいのほんだな ; 木製書架 ; 木制书柜 ; 목제 책장 ; bibliothèque en bois ; Holzbücherregal ; librería grande de madera ; libreria di legno ; houten boekenkast ; книжная полка из дерева
 00BB ; FtrFruitsChairPeach ; peach chair ; モモのチェア ; 桃子椅 ; 桃子椅 ; 복숭아 체어 ; fauteuil pêche ; Pfirsichstuhl ; sillón melocotón ; sedia pesca ; perzikstoel ; кресло-персик
 00BC ; FtrFruitsBox ; peach surprise box ; モモのビックリばこ ; 桃子驚嚇箱 ; 桃子惊吓箱 ; 복숭아 깜짝 상자 ; boîte à malice pêche ; Überraschungspfirsich ; caja sorpresa melocotón ; scatola a sorpresa pesca ; verrassingsperzik ; шкатулка-персик
 0195 ; FtrPlanterPalm ; coconut wall planter ; ヤシのウォールプランター ; 椰子壁掛盆栽 ; 椰子壁挂盆栽 ; 야자 벽걸이 화분 ; pot mural noix de coco ; Kokosnuss-Wandkübel ; macetero de coco colgante ; vaso pendente di cocco ; kokosnoot-plantenhanger ; настенное кашпо-кокос
@@ -344,6 +344,15 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 02DC ; FtrHwnSweets ; spooky candy set ; ハロウィンなおかしプレート ; 萬聖節甜點盤 ; 万圣节甜点盘 ; 할로윈 사탕 플레이트 ; lot de bonbons Halloween ; Kürbis-Süßigkeiten-Set ; bandeja chuches calabaza ; set di dolcetti brividi ; pompoensnoepset ; жуткий набор сластей
 02DE ; FtrHwnDecorationWall ; spooky garland ; ハロウィンなガーランド ; 萬聖節掛旗 ; 万圣节挂饰 ; 할로윈 가랜드 ; guirlande Halloween ; Kürbis-Girlande ; guirnalda calabaza ; festone brividi ; pompoenslinger ; жуткая гирлянда
 02DF ; FtrHwnTablesetting ; spooky table setting ; ハロウィンテーブルセッティング ; 萬聖節桌上布置 ; 万圣节桌上布置 ; 할로윈 테이블 세팅 ; déco de table Halloween ; Kürbis-Tischgedeck ; servicio de mesa calabaza ; set da tavola brividi ; pompoenservies ; жуткая сервировка
+02EE ; FtrCrsPresents ; gift pile ; プレゼントのやま ; 禮物堆 ; 礼物堆 ; 선물 더미 ; pile de cadeaux ; Geschenkeberg ; montón de regalos ; mucchio di regali ; stapel cadeautjes ; груда подарков
+02E4 ; FtrHarvestStand ; Turkey Day garden stand ; サンクスギビングベーススタンド ; 感恩節盆栽架 ; 感恩节盆栽架 ; 하베스트 가든 스탠드 ; socle fête du partage ; Schlemmfest-Sockel ; pedestal Día del Pavo ; piedistallo primizie ; smakenfestijnsokkel ; стойка «День изобилия»
+02E5 ; FtrHarvestFireplace ; Turkey Day hearth ; サンクスギビングなだんろ ; 感恩節壁爐 ; 感恩节壁炉 ; 하베스트 난로 ; âtre fête du partage ; Schlemmfest-Kamin ; chimenea Día del Pavo ; caminetto primizie ; smakenfestijnhaard ; камин «День изобилия»
+02E6 ; FtrHarvestDecoration ; Turkey Day decorations ; サンクスギビングデコレーション ; 感恩節裝飾 ; 感恩节装饰 ; 하베스트 데코레이션 ; déco fête du partage ; Schlemmfest-Dekoration ; decoración Día del Pavo ; decorazione primizie ; smakenfestijn-decoratieset ; декор ко Дню изобилия
+02E7 ; FtrHarvestChairS ; Turkey Day chair ; サンクスギビングなチェア ; 感恩節椅 ; 感恩节椅 ; 하베스트 체어 ; chaise fête du partage ; Schlemmfest-Stuhl ; silla Día del Pavo ; sedia primizie ; smakenfestijnstoel ; стул «День изобилия»
+02E9 ; FtrHarvestTableL ; Turkey Day table ; サンクスギビングなテーブル ; 感恩節桌 ; 感恩节桌 ; 하베스트 테이블 ; table fête du partage ; Schlemmfest-Tisch ; mesa comedor Día del Pavo ; tavolo primizie ; smakenfestijntafel ; стол «День изобилия»
+02EB ; FtrHarvestEnamelpod ; Turkey Day casserole ; サンクスギビングなキャセロール ; 感恩節砂鍋燉菜 ; 感恩节砂锅炖菜 ; 하베스트 캐서롤 ; plat à gratin jour du partage ; Schlemmfest-Bräter ; cazuela Día del Pavo ; casseruola primizie ; smakenfestijnpan ; утятница «День изобилия»
+02EC ; FtrHarvestWheat ; Turkey Day wheat decor ; サンクスギビングなむぎかざり ; 感恩節麥子裝飾 ; 感恩节麦子装饰 ; 하베스트 밀 장식 ; décor de blé du partage ; Schlemmfest-Getreidedeko ; adorno trigo Día del Pavo ; ornamento primizie ; smakenfestijn-tarwebundel ; пшеница ко Дню изобилия
+02ED ; FtrHarvestTablesetting ; Turkey Day table setting ; サンクスギビングテーブルウェア ; 感恩節桌上布置 ; 感恩节桌上布置 ; 하베스트 테이블 세팅 ; service fête du partage ; Schlemmfest-Tischgedeck ; servicio mesa Día del Pavo ; set da tavola primizie ; smakenfestijnservies ; посуда ко Дню изобилия
 01C8 ; UmbrellaLeaf0 ; leaf umbrella ; はっぱのかさ ; 葉子雨傘 ; 叶子雨伞 ; 연꽃잎 우산 ; feuillapluie ; Blättchenschirm ; parasol hoja ; ombrello foglia ; bladparaplu ; зонт-лист
 0271 ; UmbrellaOrange0 ; orange umbrella ; オレンジのかさ ; 橘子雨傘 ; 橘子雨伞 ; 오렌지 우산 ; parapluie orange ; Orangenschirm ; paraguas naranja ; ombrello arancia ; sinaasappelparaplu ; апельсиновый зонт
 021D ; UmbrellaAutumn0 ; maple-leaf umbrella ; もみじのかさ ; 楓葉雨傘 ; 枫叶雨伞 ; 단풍잎 우산 ; parapluie feuille d'érable ; Ahornschirm ; parasol hoja de arce ; ombrello foglia d'acero ; esdoornbladparaplu ; кленовый лист-зонт
@@ -438,6 +447,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 01E4 ; RoomTexWallMushForest00 ; forest wall ; キノコのもりのかべ ; 蘑菇森林牆 ; 蘑菇森林墙 ; 버섯숲 벽지 ; mur forêt ; Waldtapete ; pared bosque ; muro bosco ; boswand ; стена с дремучим лесом
 01E0 ; RoomSpWallSakura00 ; cherry-blossom-trees wall ; さくらなみきのかべ ; 櫻花樹牆 ; 樱花树墙 ; 벚나무길 벽 ; mur fleurs de cerisier ; Kirschblütenwand ; pared cerezos en flor ; muro fiori di ciliegio ; kersenbloesemwand ; стена с сакурой
 02D9 ; RoomSpWallMermaid00 ; mermaid wall ; マーメイドなかべがみ ; 人魚壁紙 ; 人鱼壁纸 ; 머메이드 벽지 ; mur sirène ; Nixentapete ; pared sirena ; muro sirena ; meerminnenwand ; стена русалки
+02F0 ; RoomSpWallSnowy00 ; falling-snow wall ; ゆきのふるかべ ; 下雪牆 ; 下雪墙 ; 눈 내리는 벽 ; mur chute de neige ; Schneefall-Tapete ; pared noche nevada ; muro nevicata ; sneeuwvalwand ; стена со снегопадом
 01DA ; RoomTexFloorBasement00 ; basement flooring ; ちかしつのゆか ; 地下室地板 ; 地下室地板 ; 지하실 바닥 ; sol de cave ; Kellerboden ; suelo sótano ; pavimento cantina ; keldervloer ; пол из булыжников
 01E9 ; RoomTexFloorSteel00 ; steel flooring ; てっぱんのゆか ; 鐵板地板 ; 铁板地板 ; 철판 바닥 ; sol en acier ; Eisenbelag ; suelo acero ; pavimento acciaio ; stalen vloer ; стальной пол
 01E5 ; RoomTexFloorBamboo00 ; bamboo flooring ; バンブーなゆか ; 竹子地板 ; 竹子地板 ; 대나무 바닥 ; sol en bambou ; Bambusboden ; suelo bambú ; pavimento bambù ; bamboevloer ; бамбуковый пол
@@ -469,9 +479,11 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 0221 ; RugOtherPeachM00 ; peach rug ; モモのラグ ; 桃子地毯 ; 桃子地毯 ; 복숭아 러그 ; tapis pêche ; Pfirsich-Teppich ; alfombra melocotón ; tappeto pesca ; perziktapijt ; ковер-персик
 0222 ; RugOtherPearM00 ; pear rug ; ナシのラグ ; 梨子地毯 ; 梨子地毯 ; 배 러그 ; tapis poire ; Birnen-Teppich ; alfombra pera ; tappeto pera ; peertapijt ; ковер-груша
 029C ; RugOtherShellM00 ; shell rug ; かいがらのラグ ; 貝殼地毯 ; 贝壳地毯 ; 조개껍데기 러그 ; tapis coquillage ; Muschelteppich ; alfombra concha ; tappeto conchiglia ; schelptapijt ; ковер-ракушка
+02EA ; RugSquareChristmasL00 ; festive rug ; クリスマスなラグ ; 聖誕節地毯 ; 圣诞节地毯 ; 크리스마스 러그 ; tapis de fêtes ; Festtagsteppich ; alfombra festiva ; tappeto festivo ; feesttapijt ; ковер «Новый год»
 02C5 ; RugOtherEasterM00 ; Bunny Day rug ; イースターなラグ ; 復活節地毯 ; 复活节地毯 ; 이스터 러그 ; tapis fête des œufs ; Häschentag-Teppich ; alfombra Caza del Huevo ; tappeto caccia all'uovo ; eiertapijt ; ковер «День зайцев»
 029F ; RugRectBambooM00 ; light bamboo rug ; ライトなバンブーラグ ; 淺色竹地毯 ; 浅色竹子地垫 ; 밝은 대나무 러그 ; tapis bambou clair ; Hell-Bambusmatte ; alfombra bambú clara ; tappeto di bambù chiaro ; lichte bamboemat ; светлый бамбук. коврик
 02A0 ; RugRectBambooM01 ; dark bamboo rug ; ダークなバンブーラグ ; 深色竹地毯 ; 深色竹子地垫 ; 어두운 대나무 러그 ; tapis bambou sombre ; Dunkel-Bambusmatte ; alfombra bambú oscura ; tappeto di bambù scuro ; donkere bamboemat ; темный бамбук. коврик
+02F5 ; RugOtherShellSnailM00 ; summer-shell rug ; なつのかいがらのラグ ; 夏天貝殼地毯 ; 夏天贝壳地毯 ; 여름 조개껍데기 러그 ; tapis coquillage estival ; Sommer-Muschelteppich ; alfombra concha veraniega ; tappeto conchiglia estivo ; zomerschelptapijt ; летний ковер-ракушка
 02D8 ; RugOtherMermaidM00 ; mermaid rug ; マーメイドなラグ ; 人魚地毯 ; 人鱼地毯 ; 머메이드 러그 ; tapis sirène ; Nixenteppich ; alfombra sirena ; tappeto sirena ; meerminnentapijt ; ковер русалки
 00E3 ; FtrDoorOrnamentWreathCosmos ; cosmos wreath ; コスモスのリース ; 波斯菊花圈 ; 波斯菊花环 ; 코스모스 리스 ; couronne cosmos ; Cosmeentürkranz ; corona cosmos ; ghirlanda cosmee ; cosmeakrans ; венок с космеями
 00DE ; FtrDoorOrnamentWreathIce ; snowflake wreath ; ゆきのけっしょうのリース ; 雪花花圈 ; 雪花花环 ; 눈의 결정 리스 ; décoration flocon ; Schneeflockentürschmuck ; placa copo de nieve ; ghirlanda fiocco di neve ; sneeuwvlokkenkrans ; венок-снежинка
@@ -519,6 +531,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 00DA ; ToolOcarina ; ocarina ; オカリナ ; 陶笛 ; 陶笛 ; 오카리나 ; ocarina ; Okarina ; ocarina ; ocarina ; ocarina ; окарина
 018E ; ToolPanpipe ; pan flute ; パンフルート ; 排笛 ; 排笛 ; 팬파이프 ; flûte de pan ; Panflöte ; sicu ; flauto di Pan ; panfluit ; многоствольная флейта
 01CA ; BridgeLogReserveKit ; bridge construction kit ; はしのこうじキット ; 橋樑施工工具組 ; 桥梁施工工具组 ; 다리 공사 키트 ; kit pont ; Brücken-Baukit ; kit de puente ; kit creazione ponte ; brugbouwpakket ; набор строителя моста
+02EF ; WPaperOrnament ; festive wrapping paper ; クリスマスなラッピングペーパー ; 聖誕包裝紙 ; 圣诞包装纸 ; 크리스마스 포장지 ; papier cadeau festif ; Festtagsgeschenkpapier ; papel de regalo festivo ; carta da regalo festiva ; speelgoeddagcadeaupapier ; новогодняя обертка
 0063 ; ItemFenceWallRenga ; brick fence ; レンガのカベ ; 磚塊柵欄 ; 砖块栅栏 ; 벽돌 울타리 ; muret en briques ; Ziegelsteinmauer ; cerca de ladrillo ; muretto di mattoni ; bakstenen muurtje ; кирпичный забор
 0064 ; ItemFenceVerticalWood ; vertical-board fence ; たていたのさく ; 直條木板柵欄 ; 直条木板栅栏 ; 세로 널빤지 울타리 ; clôture lattes verticales ; Bretterzaun ; valla de tablones ; recinzione di assi verticali ; lichte schutting ; штакетник
 0065 ; ItemFenceBamboo ; bamboo lattice fence ; たけがき ; 竹柵欄 ; 竹栅栏 ; 대나무 울타리 ; clôture bambou à treillis ; Bambuszaun ; valla celosía de bambú ; recinzione di bambù ; bamboeschutting ; забор из бамбука

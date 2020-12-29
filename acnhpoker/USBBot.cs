@@ -1,15 +1,15 @@
 ﻿using LibUsbDotNet;
+using LibUsbDotNet.Main;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using LibUsbDotNet.Main;
 using System.Windows.Forms;
-using System.Diagnostics;
 
 namespace ACNHPoker
 {
-    
+
     public class USBBot
     {
 

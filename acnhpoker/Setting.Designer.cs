@@ -100,7 +100,7 @@
             this.PlayerSlot.Name = "PlayerSlot";
             this.PlayerSlot.Size = new System.Drawing.Size(180, 31);
             this.PlayerSlot.TabIndex = 38;
-            this.PlayerSlot.Text = "ABC25840";
+            this.PlayerSlot.Text = "AD3C7FD8";
             this.PlayerSlot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerSlot.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.PlayerSlot.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -164,7 +164,7 @@
             this.PlayerOffset.Name = "PlayerOffset";
             this.PlayerOffset.Size = new System.Drawing.Size(180, 31);
             this.PlayerOffset.TabIndex = 42;
-            this.PlayerOffset.Text = "76390";
+            this.PlayerOffset.Text = "133B78";
             this.PlayerOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerOffset.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.PlayerOffset.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -180,7 +180,7 @@
             this.Villager.Name = "Villager";
             this.Villager.Size = new System.Drawing.Size(180, 31);
             this.Villager.TabIndex = 43;
-            this.Villager.Text = "AA5ADF58";
+            this.Villager.Text = "AB9EDA90";
             this.Villager.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Villager.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.Villager.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -279,7 +279,7 @@
             this.VillagerHouse.Name = "VillagerHouse";
             this.VillagerHouse.Size = new System.Drawing.Size(180, 31);
             this.VillagerHouse.TabIndex = 51;
-            this.VillagerHouse.Text = "AA9C7580";
+            this.VillagerHouse.Text = "ABE070B8";
             this.VillagerHouse.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.VillagerHouse.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.VillagerHouse.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -344,7 +344,7 @@
             this.VillagerHouseBuffer.Name = "VillagerHouseBuffer";
             this.VillagerHouseBuffer.Size = new System.Drawing.Size(180, 31);
             this.VillagerHouseBuffer.TabIndex = 56;
-            this.VillagerHouseBuffer.Text = "B20770";
+            this.VillagerHouseBuffer.Text = "B25900";
             this.VillagerHouseBuffer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.VillagerHouseBuffer.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.VillagerHouseBuffer.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -371,7 +371,7 @@
             this.Stamina.Name = "Stamina";
             this.Stamina.Size = new System.Drawing.Size(180, 31);
             this.Stamina.TabIndex = 58;
-            this.Stamina.Text = "B4A1EBE0";
+            this.Stamina.Text = "B5E6E530";
             this.Stamina.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Stamina.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.Stamina.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -409,7 +409,7 @@
             this.WalkSpeed.Name = "WalkSpeed";
             this.WalkSpeed.Size = new System.Drawing.Size(180, 31);
             this.WalkSpeed.TabIndex = 61;
-            this.WalkSpeed.Text = "0105BABC";
+            this.WalkSpeed.Text = "010C6270";
             this.WalkSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.WalkSpeed.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.WalkSpeed.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -425,7 +425,7 @@
             this.AnimationSpeed.Name = "AnimationSpeed";
             this.AnimationSpeed.Size = new System.Drawing.Size(180, 31);
             this.AnimationSpeed.TabIndex = 62;
-            this.AnimationSpeed.Text = "0360F610";
+            this.AnimationSpeed.Text = "036C5188";
             this.AnimationSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.AnimationSpeed.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.AnimationSpeed.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -452,7 +452,7 @@
             this.Collision.Name = "Collision";
             this.Collision.Size = new System.Drawing.Size(180, 31);
             this.Collision.TabIndex = 64;
-            this.Collision.Text = "00FD5380";
+            this.Collision.Text = "0103CB70";
             this.Collision.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Collision.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.Collision.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -479,7 +479,7 @@
             this.FreezeTime.Name = "FreezeTime";
             this.FreezeTime.Size = new System.Drawing.Size(180, 31);
             this.FreezeTime.TabIndex = 66;
-            this.FreezeTime.Text = "0025AB50";
+            this.FreezeTime.Text = "00265C00";
             this.FreezeTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.FreezeTime.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.FreezeTime.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -506,7 +506,7 @@
             this.ReadTime.Name = "ReadTime";
             this.ReadTime.Size = new System.Drawing.Size(180, 31);
             this.ReadTime.TabIndex = 68;
-            this.ReadTime.Text = "0B9A29C0";
+            this.ReadTime.Text = "0BA17CE8";
             this.ReadTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ReadTime.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.ReadTime.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -533,7 +533,7 @@
             this.Critter.Name = "Critter";
             this.Critter.Size = new System.Drawing.Size(180, 31);
             this.Critter.TabIndex = 70;
-            this.Critter.Text = "4668F858";
+            this.Critter.Text = "47ACE1B8";
             this.Critter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Critter.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.Critter.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -571,7 +571,7 @@
             this.RecyclingBin.Name = "RecyclingBin";
             this.RecyclingBin.Size = new System.Drawing.Size(180, 31);
             this.RecyclingBin.TabIndex = 73;
-            this.RecyclingBin.Text = "AB0C9A08";
+            this.RecyclingBin.Text = "AC50E110";
             this.RecyclingBin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.RecyclingBin.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.RecyclingBin.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -587,7 +587,7 @@
             this.Turnip.Name = "Turnip";
             this.Turnip.Size = new System.Drawing.Size(180, 31);
             this.Turnip.TabIndex = 74;
-            this.Turnip.Text = "AA9CB2D8";
+            this.Turnip.Text = "ABE0AEE0";
             this.Turnip.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Turnip.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.Turnip.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -614,7 +614,7 @@
             this.IslandName.Name = "IslandName";
             this.IslandName.Size = new System.Drawing.Size(180, 31);
             this.IslandName.TabIndex = 76;
-            this.IslandName.Text = "29D63FD8";
+            this.IslandName.Text = "AD413288";
             this.IslandName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.IslandName.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.IslandName.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -641,7 +641,7 @@
             this.WeatherSeed.Name = "WeatherSeed";
             this.WeatherSeed.Size = new System.Drawing.Size(180, 31);
             this.WeatherSeed.TabIndex = 78;
-            this.WeatherSeed.Text = "BA2BB44";
+            this.WeatherSeed.Text = "BABB67C";
             this.WeatherSeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.WeatherSeed.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.WeatherSeed.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -747,7 +747,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.ClientSize = new System.Drawing.Size(984, 516);
+            this.ClientSize = new System.Drawing.Size(970, 513);
             this.Controls.Add(this.addresses);
             this.Controls.Add(this.enableOverrideBtn);
             this.Controls.Add(this.disableValidationBtn);

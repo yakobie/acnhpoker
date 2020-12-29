@@ -1,5 +1,4 @@
-﻿using ACNHPoker;
-using System;
+﻿using System;
 using System.Text;
 
 namespace ACNHPoker

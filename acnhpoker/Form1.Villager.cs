@@ -10,6 +10,8 @@ using Timer = System.Windows.Forms.Timer;
 
 namespace ACNHPoker
 {
+
+
     public partial class Form1 : Form
     {
         private void villagerBtn_Click(object sender, EventArgs e)
@@ -37,131 +39,135 @@ namespace ACNHPoker
 
         private void loadAllVillager(int player)
         {
-            if (bot == null)
-                showVillagerWait(25000, "Acquiring villager data...");
-            else
-                showVillagerWait(15000, "Acquiring villager data...");
-
-            if ((s == null || s.Connected == false) & bot == null)
-                return;
-
-            blocker = true;
-            selectedVillagerButton = null;
-
-            HouseList = new int[10];
-
-            for (int i = 0; i < 10; i++)
+            lock(villagerLock)
             {
-                byte b = Utilities.GetHouseOwner(s, bot, i, ref counter);
-                HouseList[i] = Convert.ToInt32(b);
-            }
-            Debug.Print(string.Join(" ", HouseList));
-
-
-            V = new Villager[10];
-            villagerButton = new Button[10];
-
-            for (int i = 0; i < 10; i++)
-            {
-                byte[] b = Utilities.GetVillager(s, bot, i, (int)(Utilities.VillagerMemoryTinySize), ref counter);
-                V[i] = new Villager(b, i)
-                {
-                    HouseIndex = Utilities.FindHouseIndex(i, HouseList)
-                };
-
-                byte f = Utilities.GetVillagerHouseFlag(s, bot, V[i].HouseIndex, 0x8, ref counter);
-                V[i].MoveInFlag = Convert.ToInt32(f);
-
-                byte[] move = Utilities.GetMoveout(s, bot, i, (int)0x33, ref counter);
-                V[i].AbandonedHouseFlag = Convert.ToInt32(move[0]);
-                V[i].ForceMoveOutFlag = Convert.ToInt32(move[move.Length - 1]);
-
-                byte[] catchphrase = Utilities.GetCatchphrase(s, bot, i, ref counter);
-                V[i].catchphrase = catchphrase;
-
-                villagerButton[i] = new Button();
-                villagerButton[i].TextAlign = System.Drawing.ContentAlignment.TopCenter;
-                villagerButton[i].ForeColor = System.Drawing.Color.White;
-                villagerButton[i].Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-                int friendship = V[i].Friendship[player];
-                villagerButton[i].BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(friendship)))), ((int)(((byte)(friendship / 2)))), ((int)(((byte)(friendship)))));
-                villagerButton[i].FlatAppearance.BorderSize = 0;
-                villagerButton[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-                if (i < 5)
-                    villagerButton[i].Location = new System.Drawing.Point((i * 128) + (i * 10) + 50, 54);
+                if (bot == null)
+                    showVillagerWait(25000, "Acquiring villager data...");
                 else
-                    villagerButton[i].Location = new System.Drawing.Point(((i - 5) * 128) + ((i - 5) * 10) + 50, 192);
-                villagerButton[i].Name = "villagerBtn" + i.ToString();
-                villagerButton[i].Tag = i;
-                villagerButton[i].Size = new System.Drawing.Size(128, 128);
-                villagerButton[i].UseVisualStyleBackColor = false;
-                Image img;
-                if (V[i].GetRealName() == "ERROR")
-                {
-                    img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetRealName()));
-                }
-                else
-                {
-                    img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetInternalName()));
-                }
+                    showVillagerWait(15000, "Acquiring villager data...");
 
-                villagerButton[i].Text = V[i].GetRealName() + " : " + V[i].GetInternalName();
+                if ((s == null || s.Connected == false) & bot == null)
+                    return;
 
-                if (V[i].MoveInFlag == 0xC || V[i].MoveInFlag == 0xB)
-                {
-                    if (V[i].IsReal())
-                    {
-                        if (V[i].IsInvited())
-                            villagerButton[i].Text += "\n(Tom Nook Invited)";
-                        else
-                            villagerButton[i].Text += "\n(Moving In)";
-                    }
-                    else
-                        villagerButton[i].Text += "\n(Just Move Out)";
-                }
-                else if (V[i].AbandonedHouseFlag == 0x1 && V[i].ForceMoveOutFlag == 0x0)
-                    villagerButton[i].Text += "\n(Floor Sweeping)";
-                else if (V[i].AbandonedHouseFlag == 0x2 && V[i].ForceMoveOutFlag == 0x1)
-                    villagerButton[i].Text += "\n(Moving Out 1)";
-                else if (V[i].AbandonedHouseFlag == 0x2 && V[i].ForceMoveOutFlag == 0x0)
-                    villagerButton[i].Text += "\n(Moving Out 2)";
+                blocker = true;
+                selectedVillagerButton = null;
 
-                villagerButton[i].Image = (Image)(new Bitmap(img, new Size(110, 110)));
-                villagerButton[i].ImageAlign = ContentAlignment.BottomCenter;
-                villagerButton[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VillagerButton_MouseDown);
-            }
+                HouseList = new int[10];
 
-
-            this.Invoke((MethodInvoker)delegate
-            {
                 for (int i = 0; i < 10; i++)
                 {
-                    this.villagerLargePanel.Controls.Add(villagerButton[i]);
-                    villagerButton[i].BringToFront();
-                    //overlay.BringToFront();
+                    byte b = Utilities.GetHouseOwner(s, bot, i, ref counter);
+                    HouseList[i] = Convert.ToInt32(b);
+                }
+                Debug.Print(string.Join(" ", HouseList));
+
+
+                V = new Villager[10];
+                villagerButton = new Button[10];
+
+                for (int i = 0; i < 10; i++)
+                {
+                    byte[] b = Utilities.GetVillager(s, bot, i, (int)(Utilities.VillagerMemoryTinySize), ref counter);
+                    V[i] = new Villager(b, i)
+                    {
+                        HouseIndex = Utilities.FindHouseIndex(i, HouseList)
+                    };
+
+                    byte f = Utilities.GetVillagerHouseFlag(s, bot, V[i].HouseIndex, 0x8, ref counter);
+                    V[i].MoveInFlag = Convert.ToInt32(f);
+
+                    byte[] move = Utilities.GetMoveout(s, bot, i, (int)0x33, ref counter);
+                    V[i].AbandonedHouseFlag = Convert.ToInt32(move[0]);
+                    V[i].ForceMoveOutFlag = Convert.ToInt32(move[move.Length - 1]);
+
+                    byte[] catchphrase = Utilities.GetCatchphrase(s, bot, i, ref counter);
+                    V[i].catchphrase = catchphrase;
+
+                    villagerButton[i] = new Button();
+                    villagerButton[i].TextAlign = System.Drawing.ContentAlignment.TopCenter;
+                    villagerButton[i].ForeColor = System.Drawing.Color.White;
+                    villagerButton[i].Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+                    int friendship = V[i].Friendship[player];
+                    villagerButton[i].BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(friendship)))), ((int)(((byte)(friendship / 2)))), ((int)(((byte)(friendship)))));
+                    villagerButton[i].FlatAppearance.BorderSize = 0;
+                    villagerButton[i].FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                    if (i < 5)
+                        villagerButton[i].Location = new System.Drawing.Point((i * 128) + (i * 10) + 50, 54);
+                    else
+                        villagerButton[i].Location = new System.Drawing.Point(((i - 5) * 128) + ((i - 5) * 10) + 50, 192);
+                    villagerButton[i].Name = "villagerBtn" + i.ToString();
+                    villagerButton[i].Tag = i;
+                    villagerButton[i].Size = new System.Drawing.Size(128, 128);
+                    villagerButton[i].UseVisualStyleBackColor = false;
+                    Image img;
+                    if (V[i].GetRealName() == "ERROR")
+                    {
+                        img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetRealName()));
+                    }
+                    else
+                    {
+                        img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetInternalName()));
+                    }
+
+                    villagerButton[i].Text = V[i].GetRealName() + " : " + V[i].GetInternalName();
+
+                    if (V[i].MoveInFlag == 0xC || V[i].MoveInFlag == 0xB)
+                    {
+                        if (V[i].IsReal())
+                        {
+                            if (V[i].IsInvited())
+                                villagerButton[i].Text += "\n(Tom Nook Invited)";
+                            else
+                                villagerButton[i].Text += "\n(Moving In)";
+                        }
+                        else
+                            villagerButton[i].Text += "\n(Just Move Out)";
+                    }
+                    else if (V[i].AbandonedHouseFlag == 0x1 && V[i].ForceMoveOutFlag == 0x0)
+                        villagerButton[i].Text += "\n(Floor Sweeping)";
+                    else if (V[i].AbandonedHouseFlag == 0x2 && V[i].ForceMoveOutFlag == 0x1)
+                        villagerButton[i].Text += "\n(Moving Out 1)";
+                    else if (V[i].AbandonedHouseFlag == 0x2 && V[i].ForceMoveOutFlag == 0x0)
+                        villagerButton[i].Text += "\n(Moving Out 2)";
+
+                    villagerButton[i].Image = (Image)(new Bitmap(img, new Size(110, 110)));
+                    villagerButton[i].ImageAlign = ContentAlignment.BottomCenter;
+                    villagerButton[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.VillagerButton_MouseDown);
                 }
 
-                IndexValue.Text = "";
-                NameValue.Text = "";
-                InternalNameValue.Text = "";
-                PersonalityValue.Text = "";
-                FriendShipValue.Text = "";
-                HouseIndexValue.Text = "";
-                MoveInFlag.Text = "";
-                MoveOutValue.Text = "";
-                ForceMoveOutValue.Text = "";
-                CatchphraseValue.Text = "";
-                FullAddress.Text = "";
-            });
 
-            header = FindHeader();
+                this.Invoke((MethodInvoker)delegate
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        this.villagerLargePanel.Controls.Add(villagerButton[i]);
+                        villagerButton[i].BringToFront();
+                        //overlay.BringToFront();
+                    }
 
-            System.Media.SystemSounds.Asterisk.Play();
+                    IndexValue.Text = "";
+                    NameValue.Text = "";
+                    InternalNameValue.Text = "";
+                    PersonalityValue.Text = "";
+                    FriendShipValue.Text = "";
+                    HouseIndexValue.Text = "";
+                    MoveInFlag.Text = "";
+                    MoveOutValue.Text = "";
+                    ForceMoveOutValue.Text = "";
+                    CatchphraseValue.Text = "";
+                    FullAddress.Text = "";
+                });
+
+                header = FindHeader();
+
+                System.Media.SystemSounds.Asterisk.Play();
 
 
-            blocker = false;
+                blocker = false;
 
-            hideVillagerWait();
+                hideVillagerWait();
+
+            }
         }
 
         private void RefreshVillagerBtn_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
@@ -150,7 +151,6 @@ namespace ACNHPoker
                 //row found set the index and find the name
                 return (string)row[languageSetting];
             }
-
         }
 
         public string GetImagePathFromID(string itemID, DataTable source, UInt32 data = 0)
@@ -227,6 +227,25 @@ namespace ACNHPoker
                         }
                     }
                 }
+            }
+        }
+
+        public string GetINameFromID(string itemID, DataTable source)
+        {
+            if (source == null)
+            {
+                return "";
+            }
+
+            DataRow row = source.Rows.Find(itemID);
+
+            if (row == null)
+            {
+                return ""; //row not found
+            }
+            else
+            {
+                return row["iName"].ToString();
             }
         }
 
@@ -890,78 +909,78 @@ namespace ACNHPoker
 
         private void UpdateTurnipPrices()
         {
-            UInt32[] turnipPrices = Utilities.GetTurnipPrices(s, bot);
+            UInt64[] turnipPrices = Utilities.GetTurnipPrices(s, bot);
             turnipBuyPrice.Clear();
             turnipBuyPrice.SelectionAlignment = HorizontalAlignment.Center;
             turnipBuyPrice.Text = String.Format("{0}", turnipPrices[12]);
-            int buyPrice = int.Parse(String.Format("{0}", turnipPrices[12]));
+            UInt64 buyPrice = UInt64.Parse(String.Format("{0}", turnipPrices[12]));
 
             turnipSell1AM.Clear();
             turnipSell1AM.Text = String.Format("{0}", turnipPrices[0]);
-            int MondayAM = int.Parse(String.Format("{0}", turnipPrices[0]));
+            UInt64 MondayAM = UInt64.Parse(String.Format("{0}", turnipPrices[0]));
             setTurnipColor(buyPrice, MondayAM, turnipSell1AM);
 
             turnipSell1PM.Clear();
             turnipSell1PM.Text = String.Format("{0}", turnipPrices[1]);
-            int MondayPM = int.Parse(String.Format("{0}", turnipPrices[1]));
+            UInt64 MondayPM = UInt64.Parse(String.Format("{0}", turnipPrices[1]));
             setTurnipColor(buyPrice, MondayPM, turnipSell1PM);
 
             turnipSell2AM.Clear();
             turnipSell2AM.Text = String.Format("{0}", turnipPrices[2]);
-            int TuesdayAM = int.Parse(String.Format("{0}", turnipPrices[2]));
+            UInt64 TuesdayAM = UInt64.Parse(String.Format("{0}", turnipPrices[2]));
             setTurnipColor(buyPrice, TuesdayAM, turnipSell2AM);
 
             turnipSell2PM.Clear();
             turnipSell2PM.Text = String.Format("{0}", turnipPrices[3]);
-            int TuesdayPM = int.Parse(String.Format("{0}", turnipPrices[3]));
+            UInt64 TuesdayPM = UInt64.Parse(String.Format("{0}", turnipPrices[3]));
             setTurnipColor(buyPrice, TuesdayPM, turnipSell2PM);
 
             turnipSell3AM.Clear();
             turnipSell3AM.Text = String.Format("{0}", turnipPrices[4]);
-            int WednesdayAM = int.Parse(String.Format("{0}", turnipPrices[4]));
+            UInt64 WednesdayAM = UInt64.Parse(String.Format("{0}", turnipPrices[4]));
             setTurnipColor(buyPrice, WednesdayAM, turnipSell3AM);
 
             turnipSell3PM.Clear();
             turnipSell3PM.Text = String.Format("{0}", turnipPrices[5]);
-            int WednesdayPM = int.Parse(String.Format("{0}", turnipPrices[5]));
+            UInt64 WednesdayPM = UInt64.Parse(String.Format("{0}", turnipPrices[5]));
             setTurnipColor(buyPrice, WednesdayPM, turnipSell3PM);
 
             turnipSell4AM.Clear();
             turnipSell4AM.Text = String.Format("{0}", turnipPrices[6]);
-            int ThursdayAM = int.Parse(String.Format("{0}", turnipPrices[6]));
+            UInt64 ThursdayAM = UInt64.Parse(String.Format("{0}", turnipPrices[6]));
             setTurnipColor(buyPrice, ThursdayAM, turnipSell4AM);
 
             turnipSell4PM.Clear();
             turnipSell4PM.Text = String.Format("{0}", turnipPrices[7]);
-            int ThursdayPM = int.Parse(String.Format("{0}", turnipPrices[7]));
+            UInt64 ThursdayPM = UInt64.Parse(String.Format("{0}", turnipPrices[7]));
             setTurnipColor(buyPrice, ThursdayPM, turnipSell4PM);
 
             turnipSell5AM.Clear();
             turnipSell5AM.Text = String.Format("{0}", turnipPrices[8]);
-            int FridayAM = int.Parse(String.Format("{0}", turnipPrices[8]));
+            UInt64 FridayAM = UInt64.Parse(String.Format("{0}", turnipPrices[8]));
             setTurnipColor(buyPrice, FridayAM, turnipSell5AM);
 
             turnipSell5PM.Clear();
             turnipSell5PM.Text = String.Format("{0}", turnipPrices[9]);
-            int FridayPM = int.Parse(String.Format("{0}", turnipPrices[9]));
+            UInt64 FridayPM = UInt64.Parse(String.Format("{0}", turnipPrices[9]));
             setTurnipColor(buyPrice, FridayPM, turnipSell5PM);
 
             turnipSell6AM.Clear();
             turnipSell6AM.Text = String.Format("{0}", turnipPrices[10]);
-            int SaturdayAM = int.Parse(String.Format("{0}", turnipPrices[10]));
+            UInt64 SaturdayAM = UInt64.Parse(String.Format("{0}", turnipPrices[10]));
             setTurnipColor(buyPrice, SaturdayAM, turnipSell6AM);
 
             turnipSell6PM.Clear();
             turnipSell6PM.Text = String.Format("{0}", turnipPrices[11]);
-            int SaturdayPM = int.Parse(String.Format("{0}", turnipPrices[11]));
+            UInt64 SaturdayPM = UInt64.Parse(String.Format("{0}", turnipPrices[11]));
             setTurnipColor(buyPrice, SaturdayPM, turnipSell6PM);
 
-            int[] price = { MondayAM, MondayPM, TuesdayAM, TuesdayPM, WednesdayAM, WednesdayPM, ThursdayAM, ThursdayPM, FridayAM, FridayPM, SaturdayAM, SaturdayPM };
-            int highest = findHighest(price);
+            UInt64[] price = { MondayAM, MondayPM, TuesdayAM, TuesdayPM, WednesdayAM, WednesdayPM, ThursdayAM, ThursdayPM, FridayAM, FridayPM, SaturdayAM, SaturdayPM };
+            UInt64 highest = findHighest(price);
             setStar(highest, MondayAM, MondayPM, TuesdayAM, TuesdayPM, WednesdayAM, WednesdayPM, ThursdayAM, ThursdayPM, FridayAM, FridayPM, SaturdayAM, SaturdayPM);
         }
 
-        private void setTurnipColor(int buyPrice, int comparePrice, RichTextBox target)
+        private void setTurnipColor(UInt64 buyPrice, UInt64 comparePrice, RichTextBox target)
         {
             target.SelectionAlignment = HorizontalAlignment.Center;
 
@@ -975,9 +994,9 @@ namespace ACNHPoker
             }
         }
 
-        private int findHighest(int[] price)
+        private UInt64 findHighest(UInt64[] price)
         {
-            int highest = -1;
+            UInt64 highest = 0;
             for (int i = 0; i < price.Length; i++)
             {
                 if (price[i] > highest)
@@ -988,7 +1007,7 @@ namespace ACNHPoker
             return highest;
         }
 
-        private void setStar(int highest, int MondayAM, int MondayPM, int TuesdayAM, int TuesdayPM, int WednesdayAM, int WednesdayPM, int ThursdayAM, int ThursdayPM, int FridayAM, int FridayPM, int SaturdayAM, int SaturdayPM)
+        private void setStar(UInt64 highest, UInt64 MondayAM, UInt64 MondayPM, UInt64 TuesdayAM, UInt64 TuesdayPM, UInt64 WednesdayAM, UInt64 WednesdayPM, UInt64 ThursdayAM, UInt64 ThursdayPM, UInt64 FridayAM, UInt64 FridayPM, UInt64 SaturdayAM, UInt64 SaturdayPM)
         {
             if (MondayAM >= highest) { mondayAMStar.Visible = true; } else { mondayAMStar.Visible = false; };
             if (MondayPM >= highest) { mondayPMStar.Visible = true; } else { mondayPMStar.Visible = false; };
@@ -1053,7 +1072,10 @@ namespace ACNHPoker
             }
             string hexValue = reaction;
             int decValue = Convert.ToInt32(hexValue, 16) - 1;
-            box.SelectedIndex = decValue;
+            if (decValue > 76)
+                box.SelectedIndex = -1;
+            else
+                box.SelectedIndex = decValue;
         }
 
         private void setReactionBtn_Click(object sender, EventArgs e)
@@ -1366,14 +1388,21 @@ namespace ACNHPoker
                 if (bot.Connect())
                 {
 
+                    playerSelectorInventory.SelectedIndex = updateDropdownBox();
+                    /*
                     if (UpdateInventory())
                         return;
-
+                    */
                     UpdateTownID();
                     //InitTimer();
                     setEatBtn();
-                    UpdateTurnipPrices();
-                    loadReaction();
+                    if (!disableValidation)
+                    {
+                        UpdateTurnipPrices();
+                        loadReaction();
+                    }
+                    playerSelectorOther.SelectedIndex = 0;
+
                     readWeatherSeed();
                     this.connectBtn.Visible = false;
                     this.refreshBtn.Visible = true;
@@ -1391,6 +1420,7 @@ namespace ACNHPoker
                     this.pictureBox1.Visible = false;
                     this.pokeMainCheatPanel.Visible = false;
                     this.configBtn.Visible = false;
+                    this.playerSelectorInventory.Visible = true;
                     this.Text += "  |  [Connected via USB]";
 
                     currentGridView = insectGridView;
@@ -1424,7 +1454,7 @@ namespace ACNHPoker
                 this.refreshBtn.Visible = false;
                 this.playerSelectionPanel.Visible = false;
                 this.autoRefreshCheckBox.Visible = false;
-
+                this.playerSelectorInventory.Visible = false;
                 //this.saveBtn.Visible = false;
                 //this.loadBtn.Visible = false;
                 inventoryBtn_Click(sender, e);
@@ -1444,17 +1474,20 @@ namespace ACNHPoker
 
         private void egg_Click(object sender, EventArgs e)
         {
-            if (egg.Tag.ToString() == "Play")
+            if (waveOut == null)
             {
                 string path = AppDomain.CurrentDomain.BaseDirectory;
-                mciSendString("open \"" + path + villagerPath + "Io.nhv2" + "\" type mpegvideo alias MediaFile", null, 0, IntPtr.Zero);
-                mciSendString("play MediaFile repeat", null, 0, IntPtr.Zero);
-                egg.Tag = "Stop";
+                AudioFileReader audioFileReader = new AudioFileReader(path + villagerPath + "Io.nhv2");
+                LoopStream loop = new LoopStream(audioFileReader);
+                waveOut = new WaveOut();
+                waveOut.Init(loop);
+                waveOut.Play();
             }
             else
             {
-                mciSendString("close MediaFile", null, 0, IntPtr.Zero);
-                egg.Tag = "Play";
+                waveOut.Stop();
+                waveOut.Dispose();
+                waveOut = null;
             }
         }
 

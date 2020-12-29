@@ -241,7 +241,7 @@ namespace ACNHPoker
                     selection[j, k].Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
                     //selection[j, k].setHide(true);
                     selection[j, k].setup(name, id, (uint)(j + (0x20 * k)), path, true);
-                    selection[j, k].MouseClick += new System.Windows.Forms.MouseEventHandler(this.variation_MouseClick);
+                    selection[j, k].MouseDown += new System.Windows.Forms.MouseEventHandler(this.variation_MouseClick);
                     this.Controls.Add(selection[j, k]);
 
                     //            this.selectedItem.MouseClick += new System.Windows.Forms.MouseEventHandler(this.selectedItem_MouseClick);
@@ -257,21 +257,44 @@ namespace ACNHPoker
         {
             var button = (inventorySlot)sender;
 
-            foreach (inventorySlot btn in this.Controls.OfType<inventorySlot>())
-            {
-                btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            }
+            MouseEventArgs me = (MouseEventArgs)e;
 
-            button.BackColor = System.Drawing.Color.LightSeaGreen;
-            if (mainform == null)
+            if (me.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                return;
+
+                foreach (inventorySlot btn in this.Controls.OfType<inventorySlot>())
+                {
+                    btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+                }
+
+                button.BackColor = System.Drawing.Color.LightSeaGreen;
+                if (mainform == null)
+                {
+                    return;
+                }
+                else
+                {
+                    mainform.ReceiveVariation((inventorySlot)sender, 0);
+                    mainform.Focus();
+                }
             }
             else
             {
-                mainform.ReceiveVariation((inventorySlot)sender);
-                mainform.Focus();
+                foreach (inventorySlot btn in this.Controls.OfType<inventorySlot>())
+                {
+                    btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+                }
 
+                button.BackColor = System.Drawing.Color.Orange;
+                if (mainform == null)
+                {
+                    return;
+                }
+                else
+                {
+                    mainform.ReceiveVariation((inventorySlot)sender, 1);
+                    mainform.Focus();
+                }
             }
 
         }

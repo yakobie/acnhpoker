@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -15,11 +16,8 @@ namespace ACNHPoker
 {
     public partial class Form1 : Form
     {
-        [DllImport("winmm.dll")]
-        private static extern long mciSendString(string strCommand, StringBuilder strReturn, int iReturnLength, IntPtr hwndCallback);
-
         private static Socket s;
-        readonly private string version = "ACNH Poker R11 for v1.5.1";
+        readonly private string version = "ACNH Poker R12 for v1.6.0";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;
@@ -30,21 +28,28 @@ namespace ACNHPoker
         private bool firstWarning = false;
         private int selectedSlot = 1;
         private Button selectedVillagerButton = null;
-        private bool playerSelectorInventoryInit = false;
+        //private bool playerSelectorInventoryInit = false;
         //private bool playerSelectorVillagerInit = false;
         private bool playerSelectorOtherInit = false;
         private DataGridViewRow lastRow;
         private DataGridViewRow recipelastRow;
         private DataGridViewRow flowerlastRow;
+        private DataGridViewRow favlastRow;
+
         private Panel currentPanel;
         private Timer refreshTimer;
-        private DataTable itemSource;
-        private DataTable recipeSource;
-        private DataTable variationSource;
+        private DataTable itemSource = null;
+        private DataTable recipeSource = null;
+        private DataTable flowerSource = null;
+        private DataTable favSource = null;
+        private DataTable variationSource = null;
+
         //private Boolean offsetFound = false;
         private int maxPage = 1;
         private int currentPage = 1;
         private variation selection = null;
+        public map Map = null;
+        public MapRegenerator R = null;
         private USBBot bot = null;
         private Boolean offline = true;
         private Boolean allowUpdate = true;
@@ -82,6 +87,8 @@ namespace ACNHPoker
         private const string flowerPath = csvFolder + flowerFile;
         private const string variationFile = @"variations.csv";
         private const string variationPath = csvFolder + variationFile;
+        private const string favFile = @"fav.csv";
+        private const string favPath = csvFolder + favFile;
 
         public const string imagePath = @"img\";
         private Dictionary<string, string> OverrideDict;
@@ -90,6 +97,9 @@ namespace ACNHPoker
 
         private bool overrideSetting = false;
         private bool disableValidation = false;
+        private WaveOut waveOut;
+        private static Object itemLock = new Object();
+        private static Object villagerLock = new Object();
 
         public Form1()
         {
@@ -124,7 +134,7 @@ namespace ACNHPoker
             {
                 //load the csv
                 itemSource = loadItemCSV(itemPath);
-                itemGridView.DataSource = loadItemCSV(itemPath);
+                itemGridView.DataSource = itemSource;
 
                 //set the ID row invisible
                 itemGridView.Columns["id"].Visible = false;
@@ -176,6 +186,18 @@ namespace ACNHPoker
                 itemGridView.Columns["rus"].Width = 195;
                 itemGridView.Columns["Image"].Width = 128;
 
+                itemGridView.Columns["eng"].HeaderText = "Name";
+                itemGridView.Columns["jpn"].HeaderText = "Name";
+                itemGridView.Columns["tchi"].HeaderText = "Name";
+                itemGridView.Columns["schi"].HeaderText = "Name";
+                itemGridView.Columns["kor"].HeaderText = "Name";
+                itemGridView.Columns["fre"].HeaderText = "Name";
+                itemGridView.Columns["ger"].HeaderText = "Name";
+                itemGridView.Columns["spa"].HeaderText = "Name";
+                itemGridView.Columns["ita"].HeaderText = "Name";
+                itemGridView.Columns["dut"].HeaderText = "Name";
+                itemGridView.Columns["rus"].HeaderText = "Name";
+
                 /*
                 foreach (DataGridViewColumn c in itemGridView.Columns)
                 {
@@ -187,7 +209,7 @@ namespace ACNHPoker
             else
             {
                 System.Media.SystemSounds.Asterisk.Play();
-                MessageBox.Show("[Warning] Missing items.csv files !");
+                MessageBox.Show("[Warning] Missing items.csv file!");
             }
 
             if (File.Exists(overridePath))
@@ -199,7 +221,7 @@ namespace ACNHPoker
             if (File.Exists(recipePath))
             {
                 recipeSource = loadItemCSV(recipePath);
-                recipeGridView.DataSource = loadItemCSV(recipePath);
+                recipeGridView.DataSource = recipeSource;
 
                 recipeGridView.Columns["id"].Visible = false;
                 recipeGridView.Columns["iName"].Visible = false;
@@ -246,6 +268,18 @@ namespace ACNHPoker
                 recipeGridView.Columns["dut"].Width = 195;
                 recipeGridView.Columns["rus"].Width = 195;
                 recipeGridView.Columns["Image"].Width = 128;
+
+                recipeGridView.Columns["eng"].HeaderText = "Name";
+                recipeGridView.Columns["jpn"].HeaderText = "Name";
+                recipeGridView.Columns["tchi"].HeaderText = "Name";
+                recipeGridView.Columns["schi"].HeaderText = "Name";
+                recipeGridView.Columns["kor"].HeaderText = "Name";
+                recipeGridView.Columns["fre"].HeaderText = "Name";
+                recipeGridView.Columns["ger"].HeaderText = "Name";
+                recipeGridView.Columns["spa"].HeaderText = "Name";
+                recipeGridView.Columns["ita"].HeaderText = "Name";
+                recipeGridView.Columns["dut"].HeaderText = "Name";
+                recipeGridView.Columns["rus"].HeaderText = "Name";
             }
             else
             {
@@ -255,7 +289,9 @@ namespace ACNHPoker
 
             if (File.Exists(flowerPath))
             {
-                flowerGridView.DataSource = loadItemCSV(flowerPath);
+                flowerSource = loadItemCSV(flowerPath);
+                flowerGridView.DataSource = flowerSource;
+
                 flowerGridView.Columns["id"].Visible = false;
                 flowerGridView.Columns["iName"].Visible = false;
                 flowerGridView.Columns["jpn"].Visible = false;
@@ -302,6 +338,18 @@ namespace ACNHPoker
                 flowerGridView.Columns["dut"].Width = 195;
                 flowerGridView.Columns["rus"].Width = 195;
                 flowerGridView.Columns["Image"].Width = 128;
+
+                flowerGridView.Columns["eng"].HeaderText = "Name";
+                flowerGridView.Columns["jpn"].HeaderText = "Name";
+                flowerGridView.Columns["tchi"].HeaderText = "Name";
+                flowerGridView.Columns["schi"].HeaderText = "Name";
+                flowerGridView.Columns["kor"].HeaderText = "Name";
+                flowerGridView.Columns["fre"].HeaderText = "Name";
+                flowerGridView.Columns["ger"].HeaderText = "Name";
+                flowerGridView.Columns["spa"].HeaderText = "Name";
+                flowerGridView.Columns["ita"].HeaderText = "Name";
+                flowerGridView.Columns["dut"].HeaderText = "Name";
+                flowerGridView.Columns["rus"].HeaderText = "Name";
             }
             else
             {
@@ -318,6 +366,44 @@ namespace ACNHPoker
                 variationModeButton.Visible = false;
             }
 
+            if (File.Exists(favPath))
+            {
+                favSource = loadItemCSV(favPath);
+                favGridView.DataSource = favSource;
+
+                favGridView.Columns["id"].Visible = false;
+                favGridView.Columns["iName"].Visible = false;
+                favGridView.Columns["value"].Visible = false;
+
+                favGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                favGridView.DefaultCellStyle.BackColor = Color.FromArgb(255, 47, 49, 54);
+                favGridView.DefaultCellStyle.ForeColor = Color.FromArgb(255, 114, 105, 110);
+                favGridView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 60, 67);
+
+                favGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 57, 60, 67);
+                favGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                favGridView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 60, 67);
+
+                favGridView.EnableHeadersVisualStyles = false;
+
+                DataGridViewImageColumn favimageColumn = new DataGridViewImageColumn
+                {
+                    Name = "Image",
+                    HeaderText = "Image",
+                    ImageLayout = DataGridViewImageCellLayout.Zoom
+                };
+                favGridView.Columns.Insert(4, favimageColumn);
+                favimageColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+
+                favGridView.Columns["Name"].Width = 195;
+                favGridView.Columns["Image"].Width = 128;
+            }
+            else
+            {
+                favModeBtn.Visible = false;
+                favGridView.Visible = false;
+            }
+
 
             if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\" + "img"))
             {
@@ -327,8 +413,6 @@ namespace ACNHPoker
 
             currentPanel = itemModePanel;
             //playerSelectorVillager.SelectedIndex = 0;
-            playerSelectorInventory.SelectedIndex = 0;
-            playerSelectorOther.SelectedIndex = 0;
 
             LanguageSetup(config.AppSettings.Settings["language"].Value);
             this.KeyPreview = true;
@@ -482,7 +566,7 @@ namespace ACNHPoker
             { count3++; }
 
             Debug.Print("Count : " + count1.ToString() + " " + count2.ToString() + " " + count3.ToString());
-            if (count1 > 1 ^ count2 > 1 ^ count3 > 1)
+            if (count1 > 1 || count2 > 1 || count3 > 1)
             { return true; }
             else
             { return false; }
@@ -544,41 +628,50 @@ namespace ACNHPoker
 
         private void hideAllLanguage()
         {
-            itemGridView.Columns["eng"].Visible = false;
-            itemGridView.Columns["jpn"].Visible = false;
-            itemGridView.Columns["tchi"].Visible = false;
-            itemGridView.Columns["schi"].Visible = false;
-            itemGridView.Columns["kor"].Visible = false;
-            itemGridView.Columns["fre"].Visible = false;
-            itemGridView.Columns["ger"].Visible = false;
-            itemGridView.Columns["spa"].Visible = false;
-            itemGridView.Columns["ita"].Visible = false;
-            itemGridView.Columns["dut"].Visible = false;
-            itemGridView.Columns["rus"].Visible = false;
+            if (itemGridView.Columns.Contains("id"))
+            {
+                itemGridView.Columns["eng"].Visible = false;
+                itemGridView.Columns["jpn"].Visible = false;
+                itemGridView.Columns["tchi"].Visible = false;
+                itemGridView.Columns["schi"].Visible = false;
+                itemGridView.Columns["kor"].Visible = false;
+                itemGridView.Columns["fre"].Visible = false;
+                itemGridView.Columns["ger"].Visible = false;
+                itemGridView.Columns["spa"].Visible = false;
+                itemGridView.Columns["ita"].Visible = false;
+                itemGridView.Columns["dut"].Visible = false;
+                itemGridView.Columns["rus"].Visible = false;
+            }
 
-            recipeGridView.Columns["eng"].Visible = false;
-            recipeGridView.Columns["jpn"].Visible = false;
-            recipeGridView.Columns["tchi"].Visible = false;
-            recipeGridView.Columns["schi"].Visible = false;
-            recipeGridView.Columns["kor"].Visible = false;
-            recipeGridView.Columns["fre"].Visible = false;
-            recipeGridView.Columns["ger"].Visible = false;
-            recipeGridView.Columns["spa"].Visible = false;
-            recipeGridView.Columns["ita"].Visible = false;
-            recipeGridView.Columns["dut"].Visible = false;
-            recipeGridView.Columns["rus"].Visible = false;
+            if (recipeGridView.Columns.Contains("id"))
+            {
+                recipeGridView.Columns["eng"].Visible = false;
+                recipeGridView.Columns["jpn"].Visible = false;
+                recipeGridView.Columns["tchi"].Visible = false;
+                recipeGridView.Columns["schi"].Visible = false;
+                recipeGridView.Columns["kor"].Visible = false;
+                recipeGridView.Columns["fre"].Visible = false;
+                recipeGridView.Columns["ger"].Visible = false;
+                recipeGridView.Columns["spa"].Visible = false;
+                recipeGridView.Columns["ita"].Visible = false;
+                recipeGridView.Columns["dut"].Visible = false;
+                recipeGridView.Columns["rus"].Visible = false;
+            }
 
-            flowerGridView.Columns["eng"].Visible = false;
-            flowerGridView.Columns["jpn"].Visible = false;
-            flowerGridView.Columns["tchi"].Visible = false;
-            flowerGridView.Columns["schi"].Visible = false;
-            flowerGridView.Columns["kor"].Visible = false;
-            flowerGridView.Columns["fre"].Visible = false;
-            flowerGridView.Columns["ger"].Visible = false;
-            flowerGridView.Columns["spa"].Visible = false;
-            flowerGridView.Columns["ita"].Visible = false;
-            flowerGridView.Columns["dut"].Visible = false;
-            flowerGridView.Columns["rus"].Visible = false;
+            if (flowerGridView.Columns.Contains("id"))
+            {
+                flowerGridView.Columns["eng"].Visible = false;
+                flowerGridView.Columns["jpn"].Visible = false;
+                flowerGridView.Columns["tchi"].Visible = false;
+                flowerGridView.Columns["schi"].Visible = false;
+                flowerGridView.Columns["kor"].Visible = false;
+                flowerGridView.Columns["fre"].Visible = false;
+                flowerGridView.Columns["ger"].Visible = false;
+                flowerGridView.Columns["spa"].Visible = false;
+                flowerGridView.Columns["ita"].Visible = false;
+                flowerGridView.Columns["dut"].Visible = false;
+                flowerGridView.Columns["rus"].Visible = false;
+            }
         }
 
         private void Language_SelectedIndexChanged(object sender, EventArgs e)
@@ -690,6 +783,70 @@ namespace ACNHPoker
                 default:
                     Language.SelectedIndex = 0;
                     break;
+            }
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int index = favGridView.CurrentCell.RowIndex;
+            if (favGridView.CurrentCell != null)
+            {
+                //Debug.Print(index.ToString());
+
+                File_DeleteLine(favPath, favGridView.Rows[index].Cells["iName"].Value.ToString());
+
+                favGridView.Rows.RemoveAt(index);
+
+                System.Media.SystemSounds.Asterisk.Play();
+            }
+        }
+
+        private void File_DeleteLine(string Path, string key)
+        {
+            StringBuilder sb = new StringBuilder();
+            string line;
+            using (StreamReader sr = new StreamReader(Path))
+            {
+                while (!sr.EndOfStream)
+                {
+                    line = sr.ReadLine();
+                    if (!line.Contains(key))
+                    {
+                        using (StringWriter sw = new StringWriter(sb))
+                        {
+                            sw.WriteLine(line);
+                        }
+                    }
+                    else
+                    {
+                        //MessageBox.Show(line);
+                    }
+                }
+            }
+            using (StreamWriter sw = new StreamWriter(Path))
+            {
+                sw.Write(sb.ToString());
+            }
+        }
+
+        private void mapDropperBtn_Click(object sender, EventArgs e)
+        {
+            itemSearchBox.Clear();
+
+            if (Map == null)
+            {
+                Map = new map(s, bot, itemPath, recipePath, flowerPath, variationPath, favPath, this, imagePath, OverrideDict);
+                Map.Show();
+            }
+        }
+
+        private void regeneratorBtn_Click(object sender, EventArgs e)
+        {
+            if (R == null)
+            {
+                R = new MapRegenerator(s, this);
+                //this.Hide();
+                R.Show();
             }
         }
     }

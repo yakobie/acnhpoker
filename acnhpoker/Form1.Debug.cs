@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -228,6 +229,15 @@ namespace ACNHPoker
                 }
             }
             */
+        }
+
+        private void dumpBtn_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                byte[] Data = Utilities.peekAddress(s, bot, Utilities.player1SlotBase + (i * Utilities.playerOffset), (int)Utilities.playerOffset);
+                File.WriteAllBytes("dump" + i + ".bin", Data);
+            }
         }
     }
 }

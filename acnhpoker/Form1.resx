@@ -143,6 +143,15 @@
   <metadata name="formToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>117, 0</value>
   </metadata>
+  <data name="Msg.ToolTip" xml:space="preserve">
+    <value>Obviously, not everything could be mounted on a display.
+Only suitable for wall-mountable items.
+
+
+To remove a placed display:
+Stand next to it -&gt; Pull out your phone -&gt;
+Island Designer -&gt; Request cleanup</value>
+  </data>
   <data name="setReactionBtn.ToolTip" xml:space="preserve">
     <value>No, seriously, I don't know what to write in here.
 
@@ -187,6 +196,9 @@ Noted that ONLY the name would change but not appearance.
 
 Only works when you are on a mystery island and there is a villager in there.</value>
   </data>
+  <metadata name="GridRightClick.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>614, 0</value>
+  </metadata>
   <metadata name="btnToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>214, 0</value>
   </metadata>

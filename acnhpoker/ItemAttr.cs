@@ -568,6 +568,7 @@ namespace ACNHPoker
             0x1E10, // brown wrapping paper
             0x1E11, // gray wrapping paper
             0x1E12, // black wrapping paper
+            0x35E0, // festive wrapping paper
         };
         private static readonly HashSet<UInt16> hasQuantitySet = new HashSet<UInt16>(
             new UInt16[] {

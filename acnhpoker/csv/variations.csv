@@ -450,7 +450,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 1017 ; FtrMacrametapestry ; macrame tapestry ; マクラメタペストリー ; 花邊結壁毯 ; 花边结壁毯 ; 마크라메 태피스트리 ; tapisserie en macramé ; Makramee-Wandteppich ; tapiz de macramé ; arazzo in macramè ; gemacrameed wandkleed ; гобелен-макраме
 101A ; FtrCartoonistset ; cartoonist's set ; まんがかセット ; 漫畫用具組合 ; 漫画用具组合 ; 만화가 세트 ; set de dessinateur ; Comiczeichner-Set ; tablero de dibujo ; set da fumettista ; striptekenaarsset ; набор карикатуриста
 101C ; FtrMokugyo ; wooden fish ; もくぎょ ; 木魚 ; 木鱼 ; 목탁 ; mokugyo ; Holzblocktrommel ; pez de madera de percusión ; mokugyo ; mokugyo ; деревянная рыба
-101D ; FtrBookshelf ; wooden bookshelf ; もくせいのほんだな ; 木製書架 ; 木制书柜 ; 목제 책장 ; bibliothèque en bois ; Holzbücherregal ; librería grande de madera ; libreria di legno ; houten boekenplank ; книжная полка из дерева
+101D ; FtrBookshelf ; wooden bookshelf ; もくせいのほんだな ; 木製書架 ; 木制书柜 ; 목제 책장 ; bibliothèque en bois ; Holzbücherregal ; librería grande de madera ; libreria di legno ; houten boekenkast ; книжная полка из дерева
 101F ; FtrFruitsChairPeach ; peach chair ; モモのチェア ; 桃子椅 ; 桃子椅 ; 복숭아 체어 ; fauteuil pêche ; Pfirsichstuhl ; sillón melocotón ; sedia pesca ; perzikstoel ; кресло-персик
 1020 ; FtrFruitsBox ; peach surprise box ; モモのビックリばこ ; 桃子驚嚇箱 ; 桃子惊吓箱 ; 복숭아 깜짝 상자 ; boîte à malice pêche ; Überraschungspfirsich ; caja sorpresa melocotón ; scatola a sorpresa pesca ; verrassingsperzik ; шкатулка-персик
 1021 ; FtrPlantMonstera ; monstera ; モンステラ ; 龜背芋 ; 龟背芋 ; 몬스테라 ; monstera ; Fensterblattpflanze ; monstera ; monstera ; gatenplant ; монстера
@@ -646,6 +646,25 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 3297 ; FtrHwnSweets ; spooky candy set ; ハロウィンなおかしプレート ; 萬聖節甜點盤 ; 万圣节甜点盘 ; 할로윈 사탕 플레이트 ; lot de bonbons Halloween ; Kürbis-Süßigkeiten-Set ; bandeja chuches calabaza ; set di dolcetti brividi ; pompoensnoepset ; жуткий набор сластей
 33A6 ; FtrHwnDecorationWall ; spooky garland ; ハロウィンなガーランド ; 萬聖節掛旗 ; 万圣节挂饰 ; 할로윈 가랜드 ; guirlande Halloween ; Kürbis-Girlande ; guirnalda calabaza ; festone brividi ; pompoenslinger ; жуткая гирлянда
 33A7 ; FtrHwnTablesetting ; spooky table setting ; ハロウィンテーブルセッティング ; 萬聖節桌上布置 ; 万圣节桌上布置 ; 할로윈 테이블 세팅 ; déco de table Halloween ; Kürbis-Tischgedeck ; servicio de mesa calabaza ; set da tavola brividi ; pompoenservies ; жуткая сервировка
+33BA ; FtrCrsHelicopter ; RC helicopter ; ラジコンヘリコプター ; 遙控直升機 ; 遥控直升机 ; RC 헬리콥터 ; hélicoptère téléguidé ; Fernsteuer-Hubschrauber ; helicóptero teledirigido ; elicottero telecomandato ; helicopterspeeltje ; радиовертолет
+33BB ; FtrCrsDogtoy ; puppy plushie ; いぬのぬいぐるみ ; 狗狗玩偶 ; 狗狗玩偶 ; 강아지 인형 ; peluche de chiot ; Plüschhündchen ; cachorro de peluche ; cagnolino di peluche ; puppyknuffel ; плюшевый щенок
+33BC ; FtrCrsPresents ; gift pile ; プレゼントのやま ; 禮物堆 ; 礼物堆 ; 선물 더미 ; pile de cadeaux ; Geschenkeberg ; montón de regalos ; mucchio di regali ; stapel cadeautjes ; груда подарков
+33BD ; FtrCrsBushdonoel ; Yule log ; ブッシュ・ド・ノエル ; 聖誕樹幹蛋糕 ; 圣诞树干蛋糕 ; 부쉬 드 노엘 ; bûche de Noël ; Bûche de Noël ; tronco dulce festivo ; rotolo dolce ; boomstamdessert ; рождественское полено
+33BE ; FtrCrsPopupbook ; pop-up book ; しかけえほん ; 立體繪本 ; 立体绘本 ; 입체 그림책 ; livre animé ; Aufklapp-Bilderbuch ; libro animado ; libro 3D ; pop-upboek ; книжка-раскладушка
+33BF ; FtrCrsRobot ; tin robot ; ブリキのロボット ; 白鐵機器人 ; 铁皮机器人 ; 양철 로봇 ; robot en métal ; Blechroboter ; robot de hojalata ; robot di latta ; tinnen robot ; жестяной робот
+33C1 ; FtrCrsTent ; kids' tent ; キッズテント ; 兒童帳篷 ; 儿童帐篷 ; 어린이용 텐트 ; tente pour enfants ; Kinderzelt ; tienda de campaña infantil ; tenda per bambini ; kindertent ; детская палатка
+33C2 ; FtrCrsCircuit ; mini circuit ; ミニサーキット ; 迷你賽車場 ; 迷你赛车场 ; 미니카 서킷 ; circuit miniature ; Autorennbahn ; circuito en miniatura ; pista giocattolo ; kleine racebaan ; мини-трек
+33C3 ; FtrCrsDinosaur ; dinosaur toy ; きょうりゅうのおもちゃ ; 恐龍玩具 ; 恐龙玩具 ; 공룡 장난감 ; dinosaure jouet ; Spielzeug-Dino ; dinosaurio de juguete ; dinosauro giocattolo ; dinosaurusspeeltje ; игрушечный динозавр
+33C4 ; FtrCrsDollhouse ; dollhouse ; ドールハウス ; 娃娃屋 ; 娃娃屋 ; 인형의 집 ; maison de poupée ; Puppenhaus ; casa de muñecas ; casa delle bambole ; poppenhuis ; кукольный домик
+3487 ; FtrHarvestStand ; Turkey Day garden stand ; サンクスギビングベーススタンド ; 感恩節盆栽架 ; 感恩节盆栽架 ; 하베스트 가든 스탠드 ; socle fête du partage ; Schlemmfest-Sockel ; pedestal Día del Pavo ; piedistallo primizie ; smakenfestijnsokkel ; стойка «День изобилия»
+3488 ; FtrHarvestFireplace ; Turkey Day hearth ; サンクスギビングなだんろ ; 感恩節壁爐 ; 感恩节壁炉 ; 하베스트 난로 ; âtre fête du partage ; Schlemmfest-Kamin ; chimenea Día del Pavo ; caminetto primizie ; smakenfestijnhaard ; камин «День изобилия»
+3489 ; FtrHarvestDecoration ; Turkey Day decorations ; サンクスギビングデコレーション ; 感恩節裝飾 ; 感恩节装饰 ; 하베스트 데코레이션 ; déco fête du partage ; Schlemmfest-Dekoration ; decoración Día del Pavo ; decorazione primizie ; smakenfestijn-decoratieset ; декор ко Дню изобилия
+348A ; FtrHarvestChairS ; Turkey Day chair ; サンクスギビングなチェア ; 感恩節椅 ; 感恩节椅 ; 하베스트 체어 ; chaise fête du partage ; Schlemmfest-Stuhl ; silla Día del Pavo ; sedia primizie ; smakenfestijnstoel ; стул «День изобилия»
+348D ; FtrHarvestTableL ; Turkey Day table ; サンクスギビングなテーブル ; 感恩節桌 ; 感恩节桌 ; 하베스트 테이블 ; table fête du partage ; Schlemmfest-Tisch ; mesa comedor Día del Pavo ; tavolo primizie ; smakenfestijntafel ; стол «День изобилия»
+35FA ; FtrHarvestEnamelpod ; Turkey Day casserole ; サンクスギビングなキャセロール ; 感恩節砂鍋燉菜 ; 感恩节砂锅炖菜 ; 하베스트 캐서롤 ; plat à gratin jour du partage ; Schlemmfest-Bräter ; cazuela Día del Pavo ; casseruola primizie ; smakenfestijnpan ; утятница «День изобилия»
+35FB ; FtrHarvestWheat ; Turkey Day wheat decor ; サンクスギビングなむぎかざり ; 感恩節麥子裝飾 ; 感恩节麦子装饰 ; 하베스트 밀 장식 ; décor de blé du partage ; Schlemmfest-Getreidedeko ; adorno trigo Día del Pavo ; ornamento primizie ; smakenfestijn-tarwebundel ; пшеница ко Дню изобилия
+35FC ; FtrHarvestTablesetting ; Turkey Day table setting ; サンクスギビングテーブルウェア ; 感恩節桌上布置 ; 感恩节桌上布置 ; 하베스트 테이블 세팅 ; service fête du partage ; Schlemmfest-Tischgedeck ; servicio mesa Día del Pavo ; set da tavola primizie ; smakenfestijnservies ; посуда ко Дню изобилия
+366A ; FtrCrsSocksWallColor ; set of stockings ; かべかけソックス ; 壁掛式襪子 ; 壁挂式袜子 ; 벽걸이 양말 ; lot de chaussettes déco ; Wunschsocken-Set ; lote de calcetines de pared ; set di calze per regali ; sokkenset ; набор носков
 0833 ; ToolScoop ; shovel ; スコップ ; 鏟子 ; 铲子 ; 삽 ; pelle ; Schaufel ; pala ; pala ; schep ; лопата
 0949 ; ToolAngling ; fishing rod ; つりざお ; 釣竿 ; 钓竿 ; 낚싯대 ; canne à pêche ; Angel ; caña ; canna da pesca ; hengel ; удочка
 094B ; ToolWatering ; watering can ; ジョウロ ; 澆花壺 ; 浇花壶 ; 물뿌리개 ; arrosoir ; Gießkanne ; regadera ; annaffiatoio ; gieter ; лейка
@@ -1069,3 +1088,4 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 1B55 ; BromideNpcNmlElp12 ; Cyd's photo ; パンクスのしゃしん ; 龐克斯的照片 ; 庞克斯的照片 ; 펑크스의 사진 ; photo de Punk ; Foto von Sid ; foto de Ramón ; foto di Sid ; foto van Cyd ; фото Сида
 1C2C ; BromideNpcNmlGoa09 ; Sherb's photo ; レムのしゃしん ; 雷姆的照片 ; 雷姆的照片 ; 래미의 사진 ; photo de Capri ; Foto von Morpheus ; foto de Morfeo ; foto di Capraldo ; foto van Sherb ; фото Шерба
 1C2D ; BromideNpcNmlShp15 ; Dom's photo ; ちゃちゃまるのしゃしん ; 茶茶丸的照片 ; 茶茶丸的照片 ; 차둘의 사진 ; photo de Bouloche ; Foto von Dominik ; foto de Fibrilio ; foto di Ovilio ; foto van Donny ; фото Дома
+3626 ; BromideNpcSpRei ; Jingle's photo ; ジングルのしゃしん ; 鈴鈴鹿的照片 ; 铃铃鹿的照片 ; 루돌의 사진 ; photo de Rodolphe ; Foto von Chris ; foto de Renato ; foto di Jingle ; foto van Jingle ; фото Джингла

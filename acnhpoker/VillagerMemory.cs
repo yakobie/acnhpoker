@@ -1,5 +1,4 @@
-﻿using ACNHPoker;
-using System;
+﻿using System;
 
 namespace ACNHPoker
 {

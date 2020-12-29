@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
-using System.Windows.Forms;
-using System.Xml;
 
 namespace ACNHPoker
 {
@@ -18,13 +17,16 @@ namespace ACNHPoker
         private string flag1 = "00";
         private string flag2 = "00";
 
-        private PictureBox overlay = new PictureBox();
-        private const string overlayFolder = @"img\";
-        private const string overlayFile = @"PaperRecipe.png";
-        private const string overlayPath = overlayFolder + overlayFile;
+        private int mapX = -1;
+        private int mapY = -1;
+
+        private const string RecipeOverlayFolder = @"img\";
+        private const string RecipeOverlayFile = @"PaperRecipe.png";
+        private const string RecipeOverlayPath = RecipeOverlayFolder + RecipeOverlayFile;
+
         private Image recipe;
 
-        private string containItemName = "";
+        private string containItemPath = "";
         public UInt16 itemDurability
         {
             get
@@ -62,8 +64,8 @@ namespace ACNHPoker
 
         public inventorySlot()
         {
-            if (File.Exists(overlayPath))
-                recipe = Image.FromFile(overlayPath);
+            if (File.Exists(RecipeOverlayPath))
+                recipe = Image.FromFile(RecipeOverlayPath);
         }
 
         public string displayItemID()
@@ -97,7 +99,7 @@ namespace ACNHPoker
 
         public Boolean isEmpty()
         {
-            if (itemID == 0x0 ^ itemID == 0xFFFE)
+            if (itemID == 0x0 || itemID == 0xFFFE)
             {
                 return true;
             }
@@ -111,6 +113,32 @@ namespace ACNHPoker
                 if (imagePath == "" & itemID != 0xFFFE)
                 {
                     return (Image)(new Bitmap(ACNHPoker.Properties.Resources.ACLeaf.ToBitmap(), new Size(128, 128)));
+                }
+                else if (itemID == 0x16A2) //recipe
+                {
+                    Image background = Image.FromFile(imagePath);
+                    int imageSize = (int)(background.Width * 0.3);
+                    Image icon = (new Bitmap(recipe, new Size(imageSize, imageSize)));
+
+                    Image img = PlaceImageOverImage(background, icon, background.Width - imageSize - 10, background.Width - imageSize - 10, 1);
+                    return (Image)(new Bitmap(img, new Size(128, 128)));
+                }
+                else if (itemID == 0x315A || itemID == 0x1618) // Wall-Mount
+                {
+                    if (File.Exists(containItemPath))
+                    {
+                        Image background = Image.FromFile(imagePath);
+                        int imageSize = (int)(background.Width * 0.45);
+                        Image icon = (new Bitmap(Image.FromFile(containItemPath), new Size(imageSize, imageSize)));
+
+                        Image img = PlaceImageOverImage(background, icon, background.Width - imageSize - 10, background.Width - imageSize - 10, 1);
+                        return (Image)(new Bitmap(img, new Size(128, 128)));
+                    }
+                    else
+                    {
+                        Image img = Image.FromFile(imagePath);
+                        return (Image)(new Bitmap(img, new Size(128, 128)));
+                    }
                 }
                 else if (imagePath != "")
                 {
@@ -128,10 +156,37 @@ namespace ACNHPoker
                 {
                     return (Image)(new Bitmap(ACNHPoker.Properties.Resources.ACLeaf.ToBitmap(), new Size(64, 64)));
                 }
+                else if (itemID == 0x315A || itemID == 0x1618) // Wall-Mount
+                {
+                    if (File.Exists(containItemPath))
+                    {
+                        Image background = Image.FromFile(imagePath);
+                        int imageSize = (int)(background.Width * 0.6);
+                        Image icon = (new Bitmap(Image.FromFile(containItemPath), new Size(imageSize, imageSize)));
+
+                        Image img = PlaceImageOverImage(background, icon, background.Width - imageSize, background.Width - imageSize, 1);
+                        return (Image)(new Bitmap(img, new Size(64, 64)));
+                    }
+                    else
+                    {
+                        Image img = Image.FromFile(imagePath);
+                        return (Image)(new Bitmap(img, new Size(64, 64)));
+                    }
+                }
+                else if (itemID == 0x16A2) // recipe
+                {
+                    Image background = Image.FromFile(imagePath);
+                    int imageSize = (int)(background.Width * 0.35);
+                    Image icon = (new Bitmap(recipe, new Size(imageSize, imageSize)));
+
+                    Image img = PlaceImageOverImage(background, icon, background.Width - imageSize, background.Width - imageSize, 1);
+                    return (Image)(new Bitmap(img, new Size(64, 64)));
+                }
                 else if (imagePath != "")
                 {
                     Image img = Image.FromFile(imagePath);
                     return (Image)(new Bitmap(img, new Size(64, 64)));
+
                 }
                 else
                 {
@@ -156,13 +211,30 @@ namespace ACNHPoker
         {
             return flag2;
         }
+        public void setmapX(int x)
+        {
+            mapX = x;
+        }
+        public void setmapY(int y)
+        {
+            mapY = y;
+        }
+        public int getmapX()
+        {
+            return mapX;
+        }
+        public int getmapY()
+        {
+            return mapY;
+        }
+
         public void setHide(Boolean flag)
         {
             hide = flag;
         }
-        public string getContainItemName()
+        public string getContainItemPath()
         {
-            return containItemName;
+            return containItemPath;
         }
 
         private static readonly Dictionary<string, string> hexCharacterToBinary = new Dictionary<string, string> {
@@ -216,15 +288,13 @@ namespace ACNHPoker
             itemData = 0x0;
             imagePath = "";
             hide = false;
-            containItemName = "";
+            containItemPath = "";
             this.Image = null;
             this.Text = "";
-            if (this.Controls.Contains(overlay))
-                this.Controls.Remove(overlay);
             //init = false;
         }
 
-        public void setup(string Name, UInt16 ID, UInt32 Data, string Path, string containName = "", string flagA = "00", string flagB = "00")
+        public void setup(string Name, UInt16 ID, UInt32 Data, string Path, string containPath = "", string flagA = "00", string flagB = "00")
         {
             itemName = Name;
             itemID = ID;
@@ -232,12 +302,12 @@ namespace ACNHPoker
             flag2 = flagB;
             itemData = Data;
             imagePath = Path;
-            containItemName = containName;
+            containItemPath = containPath;
             this.refresh(false);
             //init = true;
         }
 
-        public void setup(string Name, UInt16 ID, UInt32 Data, string Path, Boolean large, string containName = "", string flagA = "00", string flagB = "00")
+        public void setup(string Name, UInt16 ID, UInt32 Data, string Path, Boolean large, string containPath = "", string flagA = "00", string flagB = "00")
         {
             itemName = Name;
             itemID = ID;
@@ -245,7 +315,7 @@ namespace ACNHPoker
             flag2 = flagB;
             itemData = Data;
             imagePath = Path;
-            containItemName = containName;
+            containItemPath = containPath;
             this.refresh(large);
             //init = true;
         }
@@ -258,7 +328,7 @@ namespace ACNHPoker
             flag2 = btn.flag2;
             itemData = btn.itemData;
             imagePath = btn.imagePath;
-            containItemName = btn.containItemName;
+            containItemPath = btn.containItemPath;
             this.refresh(true);
             //init = true;
         }
@@ -268,8 +338,6 @@ namespace ACNHPoker
             this.ForeColor = System.Drawing.Color.White;
             this.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.Text = "";
-            if (this.Controls.Contains(overlay))
-                this.Controls.Remove(overlay);
 
             if (itemID != 0xFFFE) //Empty
             {
@@ -291,12 +359,6 @@ namespace ACNHPoker
                     {
                         this.Text = "Wrap";
                         this.ForeColor = System.Drawing.Color.LightSalmon;
-                        int imageSize = (int)(this.Width * 0.35);
-                        overlay.Size = new Size(imageSize, imageSize);
-                        overlay.BackColor = Color.Transparent;
-                        overlay.Location = new Point(this.Width - imageSize, this.Height - imageSize);
-                        overlay.Image = (new Bitmap(recipe, new Size(imageSize, imageSize)));
-                        this.Controls.Add(overlay);
                         return;
                     }
                     else
@@ -355,12 +417,6 @@ namespace ACNHPoker
                 else if (itemID == 0x16A2) // Recipe
                 {
                     this.Text = "";
-                    int imageSize = (int)(this.Width * 0.35);
-                    overlay.Size = new Size(imageSize, imageSize);
-                    overlay.BackColor = Color.Transparent;
-                    overlay.Location = new Point(this.Width - imageSize, this.Height - imageSize);
-                    overlay.Image = (new Bitmap(recipe, new Size(imageSize, imageSize)));
-                    this.Controls.Add(overlay);
                     return;
                 }
                 else if (itemID == 0x1095) // Villager Delivery
@@ -377,6 +433,7 @@ namespace ACNHPoker
                     this.TextAlign = System.Drawing.ContentAlignment.TopRight;
                     return;
                 }
+                /*
                 else if (itemID == 0x114A) // Money Tree
                 {
                     this.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
@@ -390,6 +447,11 @@ namespace ACNHPoker
                     }
                     this.ForeColor = System.Drawing.Color.White;
                     this.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+                }
+                */
+                else if (itemID == 0x315A || itemID == 0x1618) // Wall-Mounted
+                {
+
                 }
                 else if (itemData > 0)
                 {
@@ -405,5 +467,21 @@ namespace ACNHPoker
             }
         }
 
+        private static Image PlaceImageOverImage(Image bottom, Image top, int x, int y, float alpha)
+        {
+            Image output = bottom;
+            using (Graphics graphics = Graphics.FromImage(output))
+            {
+                var cm = new ColorMatrix();
+                cm.Matrix33 = alpha;
+
+                var ia = new ImageAttributes();
+                ia.SetColorMatrix(cm);
+
+                graphics.DrawImage(top, new Rectangle(x, y, top.Width, top.Height), 0, 0, top.Width, top.Height, GraphicsUnit.Pixel, ia);
+            }
+
+            return output;
+        }
     }
 }

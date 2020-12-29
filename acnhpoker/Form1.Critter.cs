@@ -1055,7 +1055,7 @@ namespace ACNHPoker
             if (source == InsectAppearParam)
                 b = new byte[12 * 6 * 2];
             else
-                b = new byte[12 * 3 * 2];
+                b = new byte[78]; //[12 * 3 * 2];
 
 
             if (mode == 0) // min

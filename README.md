@@ -109,6 +109,27 @@ https://youtu.be/-zztRgmtXig
 	* ANCHPoker will now work as a .nhi editor if you do not connect to your switch.
 * R10
 	* Added "Villager Booter" for villager editing.
+* R10.1
+	* Update for Game version number 1.5.0
+	* Due to villager size change, villager now use .nhv2 files. All villager dump will now be .nhv2 files.
+	* Item wrapping no longer works on non-wrappable item.
+* R10.2
+	* Fixed the display bug of "Moving out"
+	* Added support for all 8 players inventories and houses. 
+* R11
+	* Redesign the csv files to support other languages.
+	* Added a configuration page which allow user to enable address override.
+	* Redo the friendship setting of villager booter.
+* R11.1
+	* Update for Game version number 1.6.0
+	* Increase the max turnip price setting to 999,999,999 bells. 
+	* Change to support new spawn rate
+* R11.2
+	* Added "Redd's wall display" and "Shop's wall display" for displaying wall-mount iem.
+* R12
+	* Added "Favorite" tab. Allow user to create their own favourite list.
+	* Added "Map Dropper" for map editing.
+	* Added "Map Regenerator" for treasure map hosting.
     
 ## Contributing
 
