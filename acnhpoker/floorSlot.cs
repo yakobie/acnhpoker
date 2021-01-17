@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -38,6 +39,41 @@ namespace ACNHPoker
         private string containItemPath = "";
 
         public Boolean locked = false;
+
+        public UInt16 itemDurability
+        {
+            get
+            {
+                return (UInt16)((itemData >> 16) & 0xFFFF);
+            }
+            set
+            {
+                itemData = (itemData & 0xFFFF) + ((UInt32)value << 16);
+            }
+        }
+        public UInt16 itemQuantity
+        {
+            get
+            {
+                return (UInt16)(itemData & 0xFFFF);
+            }
+            set
+            {
+                itemData = (itemData & 0xFFFF0000) + value;
+            }
+        }
+
+        public UInt16 flowerQuantity
+        {
+            get
+            {
+                return (UInt16)(itemData & 0xFF);
+            }
+            set
+            {
+                itemData = (itemData & 0xFFFFFF00) + value;
+            }
+        }
 
         public floorSlot()
         {
@@ -82,7 +118,12 @@ namespace ACNHPoker
         {
             this.ForeColor = System.Drawing.Color.White;
             this.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.Text = "";
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.Text = "";
+            });
+
             this.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             this.Image = null;
             this.locked = false;
@@ -93,28 +134,114 @@ namespace ACNHPoker
 
             if (itemID != 0xFFFE && (itemID == P2Id && P2Id == P3Id && P3Id == P4Id)) // Filled Slot
             {
-                if (flag2 != "20")
+
+                if (flag2 != "20" || flag1 != "00")
                 {
-                    this.BackColor = Color.Gray;
                     locked = true;
                 }
-
-                if (flag2 == "04")
-                {
-                    this.BackColor = Color.DarkKhaki;
-                }
-                this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+                //this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
                 this.Image = displayItemImage(large, false);
             }
             else if (itemID == 0xFFFE && part2 == 0xFFFE && part3 == 0xFFFE && part4 == 0xFFFE) // Empty
             {
                 //this.BackColor = Color.LightSalmon;
             }
+            else if (itemID != 0xFFFE && flag1 != "00") // wrapped
+            {
+                this.Image = displayItemImage(large, false);
+            }
             else // seperate
             {
                 locked = true;
-                this.BackColor = Color.Gray;
+
+                if (flag1 != "00")
+                {
+                    locked = true;
+                }
+
                 this.Image = displayItemImage(large, true);
+            }
+        }
+
+        public void setBackColor(bool Layer1 = true)
+        {
+            if (!Layer1)
+            {
+                this.BackColor = Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+            }
+            else
+            {
+                this.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            }
+
+            if (flag1 != "00") //Wrapped
+            {
+                if (itemID == 0x16A1) //Inside Bottle
+                {
+                    this.BackColor = Color.LightSalmon;
+                }
+                else if (itemID == 0x16A2) // Recipe
+                {
+                    this.BackColor = Color.LightSalmon;
+                }
+                else
+                {
+                    this.BackColor = Color.LightSalmon;
+                }
+            }
+            else if (flag2 == "04" || flag2 == "24") //Bury
+            {
+                this.BackColor = Color.DarkKhaki;
+            }
+            else if (ItemAttr.hasDurability(itemID)) //Tools
+            {
+                this.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+                this.Text = "Dur: " + itemDurability.ToString();
+                return;
+            }
+            else if (ItemAttr.isFlower(itemID)) //Flowers
+            {
+                this.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+                this.ForeColor = System.Drawing.Color.Yellow;
+                this.Text = (flowerQuantity + 1).ToString();
+                return;
+            }
+            else if (ItemAttr.hasQuantity(itemID)) // Materials
+            {
+                this.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+                this.Text = (itemQuantity + 1).ToString();
+                return;
+            }
+            else if (ItemAttr.hasGenetics(itemID))
+            {
+                if (itemData.ToString("X").Contains("83E0") || (itemData.ToString("X").Contains("8642"))) // Flower
+                {
+                    this.TextAlign = System.Drawing.ContentAlignment.TopRight;
+                    this.Text = "✶";
+                    return;
+                }
+
+                this.TextAlign = System.Drawing.ContentAlignment.TopRight;
+                string value = itemData.ToString("X");
+                int length = value.Length;
+                string firstByte;
+                string secondByte;
+                if (length < 2)
+                {
+                    firstByte = "0";
+                    secondByte = value;
+                }
+                else
+                {
+                    firstByte = value.Substring(length - 2, 1);
+                    secondByte = value.Substring(length - 1, 1);
+                }
+                this.Text = HexToBinary(secondByte) + "-" + HexToBinary(firstByte);
+                //System.Diagnostics.Debug.Print(secondByte + " " + firstByte + " " + HexToBinary(secondByte) + " " + HexToBinary(firstByte));
+            }
+            else if (locked)
+            {
+                this.BackColor = Color.Gray;
             }
         }
 
@@ -284,6 +411,29 @@ namespace ACNHPoker
             }
             return false;
         }
+        public string HexToBinary(string hex)
+        {
+            return hexCharacterToBinary[hex.ToLower()];
+        }
+
+        private static readonly Dictionary<string, string> hexCharacterToBinary = new Dictionary<string, string> {
+            { "0", "0-0" },
+            { "1", "1-0" },
+            { "2", "X-0" },//
+            { "3", "2-0" },
+            { "4", "0-1" },
+            { "5", "1-1" },
+            { "6", "X-1" },//
+            { "7", "2-1" },
+            { "8", "0-X" },//
+            { "9", "1-X" },//
+            { "a", "X-X" },//
+            { "b", "2-X" },//
+            { "c", "0-2" },
+            { "d", "1-2" },
+            { "e", "X-2" },//
+            { "f", "2-2" }
+        };
 
         private static Image PlaceImageOverImage(Image bottom, Image top, int x, int y, float alpha)
         {

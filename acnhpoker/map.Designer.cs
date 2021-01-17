@@ -31,7 +31,6 @@ namespace ACNHPoker
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(map));
-            this.castAnchorBtn = new System.Windows.Forms.Button();
             this.xCoordinate = new System.Windows.Forms.RichTextBox();
             this.yCoordinate = new System.Windows.Forms.RichTextBox();
             this.leftBtn = new System.Windows.Forms.Button();
@@ -62,8 +61,8 @@ namespace ACNHPoker
             this.BtnPanel = new System.Windows.Forms.Panel();
             this.floor1 = new ACNHPoker.floorSlot();
             this.floorRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.floor2 = new ACNHPoker.floorSlot();
             this.floor3 = new ACNHPoker.floorSlot();
             this.floor8 = new ACNHPoker.floorSlot();
@@ -112,6 +111,9 @@ namespace ACNHPoker
             this.floor41 = new ACNHPoker.floorSlot();
             this.floor39 = new ACNHPoker.floorSlot();
             this.floor40 = new ACNHPoker.floorSlot();
+            this.miniMapBox = new System.Windows.Forms.PictureBox();
+            this.saveMap = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.saveTopngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fillRemainBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
@@ -121,27 +123,31 @@ namespace ACNHPoker
             this.moveLeft7Btn = new System.Windows.Forms.Button();
             this.moveDown7Btn = new System.Windows.Forms.Button();
             this.moveUp7Btn = new System.Windows.Forms.Button();
+            this.formToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.layer1Btn = new System.Windows.Forms.RadioButton();
+            this.layer2Btn = new System.Windows.Forms.RadioButton();
+            this.bulkSpawnBtn = new System.Windows.Forms.Button();
+            this.fetchMapBtn = new System.Windows.Forms.Button();
+            this.LayerPanel = new System.Windows.Forms.Panel();
+            this.functionPanel = new System.Windows.Forms.Panel();
+            this.variationBtn = new System.Windows.Forms.Button();
+            this.PleaseWaitPanel = new System.Windows.Forms.Panel();
+            this.WaitMessagebox = new System.Windows.Forms.RichTextBox();
+            this.MapProgressBar = new System.Windows.Forms.ProgressBar();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.ProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.selectedItem = new ACNHPoker.inventorySlot();
             ((System.ComponentModel.ISupportInitialize)(this.fieldGridView)).BeginInit();
             this.BtnPanel.SuspendLayout();
             this.floorRightClick.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).BeginInit();
+            this.saveMap.SuspendLayout();
+            this.LayerPanel.SuspendLayout();
+            this.functionPanel.SuspendLayout();
+            this.PleaseWaitPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // castAnchorBtn
-            // 
-            this.castAnchorBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.castAnchorBtn.FlatAppearance.BorderSize = 0;
-            this.castAnchorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.castAnchorBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.castAnchorBtn.ForeColor = System.Drawing.Color.White;
-            this.castAnchorBtn.Location = new System.Drawing.Point(41, 47);
-            this.castAnchorBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.castAnchorBtn.Name = "castAnchorBtn";
-            this.castAnchorBtn.Size = new System.Drawing.Size(138, 28);
-            this.castAnchorBtn.TabIndex = 71;
-            this.castAnchorBtn.Text = "Cast Anchor";
-            this.castAnchorBtn.UseVisualStyleBackColor = false;
-            this.castAnchorBtn.Click += new System.EventHandler(this.castAnchorBtn_Click);
             // 
             // xCoordinate
             // 
@@ -149,7 +155,7 @@ namespace ACNHPoker
             this.xCoordinate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.xCoordinate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xCoordinate.ForeColor = System.Drawing.Color.White;
-            this.xCoordinate.Location = new System.Drawing.Point(40, 3);
+            this.xCoordinate.Location = new System.Drawing.Point(47, 3);
             this.xCoordinate.MaxLength = 3;
             this.xCoordinate.Multiline = false;
             this.xCoordinate.Name = "xCoordinate";
@@ -163,7 +169,7 @@ namespace ACNHPoker
             this.yCoordinate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.yCoordinate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yCoordinate.ForeColor = System.Drawing.Color.White;
-            this.yCoordinate.Location = new System.Drawing.Point(116, 3);
+            this.yCoordinate.Location = new System.Drawing.Point(121, 3);
             this.yCoordinate.MaxLength = 3;
             this.yCoordinate.Multiline = false;
             this.yCoordinate.Name = "yCoordinate";
@@ -411,6 +417,7 @@ namespace ACNHPoker
             this.IdTextbox.TabIndex = 149;
             this.IdTextbox.Text = "";
             this.IdTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Hex_KeyPress);
+            this.IdTextbox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Hex_KeyUp);
             // 
             // label1
             // 
@@ -448,6 +455,7 @@ namespace ACNHPoker
             this.HexTextbox.TabIndex = 152;
             this.HexTextbox.Text = "";
             this.HexTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Hex_KeyPress);
+            this.HexTextbox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Hex_KeyUp);
             // 
             // label3
             // 
@@ -464,16 +472,18 @@ namespace ACNHPoker
             // 
             this.FlagTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
             this.FlagTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FlagTextbox.Font = new System.Drawing.Font("Arial", 25F, System.Drawing.FontStyle.Bold);
+            this.FlagTextbox.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold);
             this.FlagTextbox.ForeColor = System.Drawing.Color.White;
             this.FlagTextbox.Location = new System.Drawing.Point(1135, 530);
             this.FlagTextbox.MaxLength = 2;
             this.FlagTextbox.Multiline = false;
             this.FlagTextbox.Name = "FlagTextbox";
             this.FlagTextbox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.FlagTextbox.Size = new System.Drawing.Size(65, 38);
+            this.FlagTextbox.Size = new System.Drawing.Size(65, 29);
             this.FlagTextbox.TabIndex = 154;
             this.FlagTextbox.Text = "20";
+            this.formToolTip.SetToolTip(this.FlagTextbox, "Flag 20 : Dropped item\r\nFlag 00 : Placed furniture / Placed item\r\nFlag 04 : burie" +
+        "d item\r\nFlag 24 : buried furniture");
             this.FlagTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Hex_KeyPress);
             // 
             // favModeBtn
@@ -616,11 +626,14 @@ namespace ACNHPoker
             this.floor1.flag2 = "00";
             this.floor1.FlatAppearance.BorderSize = 0;
             this.floor1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor1.flowerQuantity = ((ushort)(0));
             this.floor1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor1.ForeColor = System.Drawing.Color.White;
             this.floor1.itemData = ((uint)(0u));
+            this.floor1.itemDurability = ((ushort)(0));
             this.floor1.itemID = ((ushort)(65534));
             this.floor1.itemName = "";
+            this.floor1.itemQuantity = ((ushort)(0));
             this.floor1.Location = new System.Drawing.Point(3, 2);
             this.floor1.mapX = -1;
             this.floor1.mapY = -1;
@@ -646,19 +659,11 @@ namespace ACNHPoker
             this.floorRightClick.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.floorRightClick.ImageScalingSize = new System.Drawing.Size(0, 0);
             this.floorRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteToolStripMenuItem,
-            this.copyItemToolStripMenuItem});
+            this.copyItemToolStripMenuItem,
+            this.deleteToolStripMenuItem});
             this.floorRightClick.Name = "floorRightClick";
             this.floorRightClick.ShowImageMargin = false;
             this.floorRightClick.Size = new System.Drawing.Size(125, 48);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.deleteToolStripMenuItem.Text = "Delete Item";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // copyItemToolStripMenuItem
             // 
@@ -668,6 +673,14 @@ namespace ACNHPoker
             this.copyItemToolStripMenuItem.Text = "Copy Item";
             this.copyItemToolStripMenuItem.Click += new System.EventHandler(this.copyItemToolStripMenuItem_Click);
             // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.deleteToolStripMenuItem.Text = "Delete Item";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // floor2
             // 
             this.floor2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -676,11 +689,14 @@ namespace ACNHPoker
             this.floor2.flag2 = "00";
             this.floor2.FlatAppearance.BorderSize = 0;
             this.floor2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor2.flowerQuantity = ((ushort)(0));
             this.floor2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor2.ForeColor = System.Drawing.Color.White;
             this.floor2.itemData = ((uint)(0u));
+            this.floor2.itemDurability = ((ushort)(0));
             this.floor2.itemID = ((ushort)(65534));
             this.floor2.itemName = "";
+            this.floor2.itemQuantity = ((ushort)(0));
             this.floor2.Location = new System.Drawing.Point(3, 78);
             this.floor2.mapX = -1;
             this.floor2.mapY = -1;
@@ -708,11 +724,14 @@ namespace ACNHPoker
             this.floor3.flag2 = "00";
             this.floor3.FlatAppearance.BorderSize = 0;
             this.floor3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor3.flowerQuantity = ((ushort)(0));
             this.floor3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor3.ForeColor = System.Drawing.Color.White;
             this.floor3.itemData = ((uint)(0u));
+            this.floor3.itemDurability = ((ushort)(0));
             this.floor3.itemID = ((ushort)(65534));
             this.floor3.itemName = "";
+            this.floor3.itemQuantity = ((ushort)(0));
             this.floor3.Location = new System.Drawing.Point(3, 154);
             this.floor3.mapX = -1;
             this.floor3.mapY = -1;
@@ -740,11 +759,14 @@ namespace ACNHPoker
             this.floor8.flag2 = "00";
             this.floor8.FlatAppearance.BorderSize = 0;
             this.floor8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor8.flowerQuantity = ((ushort)(0));
             this.floor8.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor8.ForeColor = System.Drawing.Color.White;
             this.floor8.itemData = ((uint)(0u));
+            this.floor8.itemDurability = ((ushort)(0));
             this.floor8.itemID = ((ushort)(65534));
             this.floor8.itemName = "";
+            this.floor8.itemQuantity = ((ushort)(0));
             this.floor8.Location = new System.Drawing.Point(79, 2);
             this.floor8.mapX = -1;
             this.floor8.mapY = -1;
@@ -772,11 +794,14 @@ namespace ACNHPoker
             this.floor9.flag2 = "00";
             this.floor9.FlatAppearance.BorderSize = 0;
             this.floor9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor9.flowerQuantity = ((ushort)(0));
             this.floor9.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor9.ForeColor = System.Drawing.Color.White;
             this.floor9.itemData = ((uint)(0u));
+            this.floor9.itemDurability = ((ushort)(0));
             this.floor9.itemID = ((ushort)(65534));
             this.floor9.itemName = "";
+            this.floor9.itemQuantity = ((ushort)(0));
             this.floor9.Location = new System.Drawing.Point(79, 78);
             this.floor9.mapX = -1;
             this.floor9.mapY = -1;
@@ -804,11 +829,14 @@ namespace ACNHPoker
             this.floor10.flag2 = "00";
             this.floor10.FlatAppearance.BorderSize = 0;
             this.floor10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor10.flowerQuantity = ((ushort)(0));
             this.floor10.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor10.ForeColor = System.Drawing.Color.White;
             this.floor10.itemData = ((uint)(0u));
+            this.floor10.itemDurability = ((ushort)(0));
             this.floor10.itemID = ((ushort)(65534));
             this.floor10.itemName = "";
+            this.floor10.itemQuantity = ((ushort)(0));
             this.floor10.Location = new System.Drawing.Point(79, 154);
             this.floor10.mapX = -1;
             this.floor10.mapY = -1;
@@ -836,11 +864,14 @@ namespace ACNHPoker
             this.floor15.flag2 = "00";
             this.floor15.FlatAppearance.BorderSize = 0;
             this.floor15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor15.flowerQuantity = ((ushort)(0));
             this.floor15.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor15.ForeColor = System.Drawing.Color.White;
             this.floor15.itemData = ((uint)(0u));
+            this.floor15.itemDurability = ((ushort)(0));
             this.floor15.itemID = ((ushort)(65534));
             this.floor15.itemName = "";
+            this.floor15.itemQuantity = ((ushort)(0));
             this.floor15.Location = new System.Drawing.Point(155, 2);
             this.floor15.mapX = -1;
             this.floor15.mapY = -1;
@@ -868,11 +899,14 @@ namespace ACNHPoker
             this.floor16.flag2 = "00";
             this.floor16.FlatAppearance.BorderSize = 0;
             this.floor16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor16.flowerQuantity = ((ushort)(0));
             this.floor16.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor16.ForeColor = System.Drawing.Color.White;
             this.floor16.itemData = ((uint)(0u));
+            this.floor16.itemDurability = ((ushort)(0));
             this.floor16.itemID = ((ushort)(65534));
             this.floor16.itemName = "";
+            this.floor16.itemQuantity = ((ushort)(0));
             this.floor16.Location = new System.Drawing.Point(155, 78);
             this.floor16.mapX = -1;
             this.floor16.mapY = -1;
@@ -900,11 +934,14 @@ namespace ACNHPoker
             this.floor17.flag2 = "00";
             this.floor17.FlatAppearance.BorderSize = 0;
             this.floor17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor17.flowerQuantity = ((ushort)(0));
             this.floor17.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor17.ForeColor = System.Drawing.Color.White;
             this.floor17.itemData = ((uint)(0u));
+            this.floor17.itemDurability = ((ushort)(0));
             this.floor17.itemID = ((ushort)(65534));
             this.floor17.itemName = "";
+            this.floor17.itemQuantity = ((ushort)(0));
             this.floor17.Location = new System.Drawing.Point(155, 154);
             this.floor17.mapX = -1;
             this.floor17.mapY = -1;
@@ -932,11 +969,14 @@ namespace ACNHPoker
             this.floor22.flag2 = "00";
             this.floor22.FlatAppearance.BorderSize = 0;
             this.floor22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor22.flowerQuantity = ((ushort)(0));
             this.floor22.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor22.ForeColor = System.Drawing.Color.White;
             this.floor22.itemData = ((uint)(0u));
+            this.floor22.itemDurability = ((ushort)(0));
             this.floor22.itemID = ((ushort)(65534));
             this.floor22.itemName = "";
+            this.floor22.itemQuantity = ((ushort)(0));
             this.floor22.Location = new System.Drawing.Point(231, 2);
             this.floor22.mapX = -1;
             this.floor22.mapY = -1;
@@ -964,11 +1004,14 @@ namespace ACNHPoker
             this.floor23.flag2 = "00";
             this.floor23.FlatAppearance.BorderSize = 0;
             this.floor23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor23.flowerQuantity = ((ushort)(0));
             this.floor23.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor23.ForeColor = System.Drawing.Color.White;
             this.floor23.itemData = ((uint)(0u));
+            this.floor23.itemDurability = ((ushort)(0));
             this.floor23.itemID = ((ushort)(65534));
             this.floor23.itemName = "";
+            this.floor23.itemQuantity = ((ushort)(0));
             this.floor23.Location = new System.Drawing.Point(231, 78);
             this.floor23.mapX = -1;
             this.floor23.mapY = -1;
@@ -996,11 +1039,14 @@ namespace ACNHPoker
             this.floor24.flag2 = "00";
             this.floor24.FlatAppearance.BorderSize = 0;
             this.floor24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor24.flowerQuantity = ((ushort)(0));
             this.floor24.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor24.ForeColor = System.Drawing.Color.White;
             this.floor24.itemData = ((uint)(0u));
+            this.floor24.itemDurability = ((ushort)(0));
             this.floor24.itemID = ((ushort)(65534));
             this.floor24.itemName = "";
+            this.floor24.itemQuantity = ((ushort)(0));
             this.floor24.Location = new System.Drawing.Point(231, 154);
             this.floor24.mapX = -1;
             this.floor24.mapY = -1;
@@ -1028,11 +1074,14 @@ namespace ACNHPoker
             this.floor29.flag2 = "00";
             this.floor29.FlatAppearance.BorderSize = 0;
             this.floor29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor29.flowerQuantity = ((ushort)(0));
             this.floor29.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor29.ForeColor = System.Drawing.Color.White;
             this.floor29.itemData = ((uint)(0u));
+            this.floor29.itemDurability = ((ushort)(0));
             this.floor29.itemID = ((ushort)(65534));
             this.floor29.itemName = "";
+            this.floor29.itemQuantity = ((ushort)(0));
             this.floor29.Location = new System.Drawing.Point(307, 2);
             this.floor29.mapX = -1;
             this.floor29.mapY = -1;
@@ -1060,11 +1109,14 @@ namespace ACNHPoker
             this.floor30.flag2 = "00";
             this.floor30.FlatAppearance.BorderSize = 0;
             this.floor30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor30.flowerQuantity = ((ushort)(0));
             this.floor30.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor30.ForeColor = System.Drawing.Color.White;
             this.floor30.itemData = ((uint)(0u));
+            this.floor30.itemDurability = ((ushort)(0));
             this.floor30.itemID = ((ushort)(65534));
             this.floor30.itemName = "";
+            this.floor30.itemQuantity = ((ushort)(0));
             this.floor30.Location = new System.Drawing.Point(307, 78);
             this.floor30.mapX = -1;
             this.floor30.mapY = -1;
@@ -1092,11 +1144,14 @@ namespace ACNHPoker
             this.floor31.flag2 = "00";
             this.floor31.FlatAppearance.BorderSize = 0;
             this.floor31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor31.flowerQuantity = ((ushort)(0));
             this.floor31.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor31.ForeColor = System.Drawing.Color.White;
             this.floor31.itemData = ((uint)(0u));
+            this.floor31.itemDurability = ((ushort)(0));
             this.floor31.itemID = ((ushort)(65534));
             this.floor31.itemName = "";
+            this.floor31.itemQuantity = ((ushort)(0));
             this.floor31.Location = new System.Drawing.Point(307, 154);
             this.floor31.mapX = -1;
             this.floor31.mapY = -1;
@@ -1124,11 +1179,14 @@ namespace ACNHPoker
             this.floor36.flag2 = "00";
             this.floor36.FlatAppearance.BorderSize = 0;
             this.floor36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor36.flowerQuantity = ((ushort)(0));
             this.floor36.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor36.ForeColor = System.Drawing.Color.White;
             this.floor36.itemData = ((uint)(0u));
+            this.floor36.itemDurability = ((ushort)(0));
             this.floor36.itemID = ((ushort)(65534));
             this.floor36.itemName = "";
+            this.floor36.itemQuantity = ((ushort)(0));
             this.floor36.Location = new System.Drawing.Point(383, 2);
             this.floor36.mapX = -1;
             this.floor36.mapY = -1;
@@ -1156,11 +1214,14 @@ namespace ACNHPoker
             this.floor37.flag2 = "00";
             this.floor37.FlatAppearance.BorderSize = 0;
             this.floor37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor37.flowerQuantity = ((ushort)(0));
             this.floor37.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor37.ForeColor = System.Drawing.Color.White;
             this.floor37.itemData = ((uint)(0u));
+            this.floor37.itemDurability = ((ushort)(0));
             this.floor37.itemID = ((ushort)(65534));
             this.floor37.itemName = "";
+            this.floor37.itemQuantity = ((ushort)(0));
             this.floor37.Location = new System.Drawing.Point(383, 78);
             this.floor37.mapX = -1;
             this.floor37.mapY = -1;
@@ -1188,11 +1249,14 @@ namespace ACNHPoker
             this.floor38.flag2 = "00";
             this.floor38.FlatAppearance.BorderSize = 0;
             this.floor38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor38.flowerQuantity = ((ushort)(0));
             this.floor38.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor38.ForeColor = System.Drawing.Color.White;
             this.floor38.itemData = ((uint)(0u));
+            this.floor38.itemDurability = ((ushort)(0));
             this.floor38.itemID = ((ushort)(65534));
             this.floor38.itemName = "";
+            this.floor38.itemQuantity = ((ushort)(0));
             this.floor38.Location = new System.Drawing.Point(383, 154);
             this.floor38.mapX = -1;
             this.floor38.mapY = -1;
@@ -1220,11 +1284,14 @@ namespace ACNHPoker
             this.floor4.flag2 = "00";
             this.floor4.FlatAppearance.BorderSize = 0;
             this.floor4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor4.flowerQuantity = ((ushort)(0));
             this.floor4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor4.ForeColor = System.Drawing.Color.White;
             this.floor4.itemData = ((uint)(0u));
+            this.floor4.itemDurability = ((ushort)(0));
             this.floor4.itemID = ((ushort)(65534));
             this.floor4.itemName = "";
+            this.floor4.itemQuantity = ((ushort)(0));
             this.floor4.Location = new System.Drawing.Point(3, 230);
             this.floor4.mapX = -1;
             this.floor4.mapY = -1;
@@ -1252,11 +1319,14 @@ namespace ACNHPoker
             this.floor5.flag2 = "00";
             this.floor5.FlatAppearance.BorderSize = 0;
             this.floor5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor5.flowerQuantity = ((ushort)(0));
             this.floor5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor5.ForeColor = System.Drawing.Color.White;
             this.floor5.itemData = ((uint)(0u));
+            this.floor5.itemDurability = ((ushort)(0));
             this.floor5.itemID = ((ushort)(65534));
             this.floor5.itemName = "";
+            this.floor5.itemQuantity = ((ushort)(0));
             this.floor5.Location = new System.Drawing.Point(3, 306);
             this.floor5.mapX = -1;
             this.floor5.mapY = -1;
@@ -1284,11 +1354,14 @@ namespace ACNHPoker
             this.floor49.flag2 = "00";
             this.floor49.FlatAppearance.BorderSize = 0;
             this.floor49.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor49.flowerQuantity = ((ushort)(0));
             this.floor49.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor49.ForeColor = System.Drawing.Color.White;
             this.floor49.itemData = ((uint)(0u));
+            this.floor49.itemDurability = ((ushort)(0));
             this.floor49.itemID = ((ushort)(65534));
             this.floor49.itemName = "";
+            this.floor49.itemQuantity = ((ushort)(0));
             this.floor49.Location = new System.Drawing.Point(459, 458);
             this.floor49.mapX = -1;
             this.floor49.mapY = -1;
@@ -1316,11 +1389,14 @@ namespace ACNHPoker
             this.floor6.flag2 = "00";
             this.floor6.FlatAppearance.BorderSize = 0;
             this.floor6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor6.flowerQuantity = ((ushort)(0));
             this.floor6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor6.ForeColor = System.Drawing.Color.White;
             this.floor6.itemData = ((uint)(0u));
+            this.floor6.itemDurability = ((ushort)(0));
             this.floor6.itemID = ((ushort)(65534));
             this.floor6.itemName = "";
+            this.floor6.itemQuantity = ((ushort)(0));
             this.floor6.Location = new System.Drawing.Point(3, 382);
             this.floor6.mapX = -1;
             this.floor6.mapY = -1;
@@ -1348,11 +1424,14 @@ namespace ACNHPoker
             this.floor48.flag2 = "00";
             this.floor48.FlatAppearance.BorderSize = 0;
             this.floor48.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor48.flowerQuantity = ((ushort)(0));
             this.floor48.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor48.ForeColor = System.Drawing.Color.White;
             this.floor48.itemData = ((uint)(0u));
+            this.floor48.itemDurability = ((ushort)(0));
             this.floor48.itemID = ((ushort)(65534));
             this.floor48.itemName = "";
+            this.floor48.itemQuantity = ((ushort)(0));
             this.floor48.Location = new System.Drawing.Point(459, 382);
             this.floor48.mapX = -1;
             this.floor48.mapY = -1;
@@ -1380,11 +1459,14 @@ namespace ACNHPoker
             this.floor11.flag2 = "00";
             this.floor11.FlatAppearance.BorderSize = 0;
             this.floor11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor11.flowerQuantity = ((ushort)(0));
             this.floor11.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor11.ForeColor = System.Drawing.Color.White;
             this.floor11.itemData = ((uint)(0u));
+            this.floor11.itemDurability = ((ushort)(0));
             this.floor11.itemID = ((ushort)(65534));
             this.floor11.itemName = "";
+            this.floor11.itemQuantity = ((ushort)(0));
             this.floor11.Location = new System.Drawing.Point(79, 230);
             this.floor11.mapX = -1;
             this.floor11.mapY = -1;
@@ -1412,11 +1494,14 @@ namespace ACNHPoker
             this.floor47.flag2 = "00";
             this.floor47.FlatAppearance.BorderSize = 0;
             this.floor47.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor47.flowerQuantity = ((ushort)(0));
             this.floor47.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor47.ForeColor = System.Drawing.Color.White;
             this.floor47.itemData = ((uint)(0u));
+            this.floor47.itemDurability = ((ushort)(0));
             this.floor47.itemID = ((ushort)(65534));
             this.floor47.itemName = "";
+            this.floor47.itemQuantity = ((ushort)(0));
             this.floor47.Location = new System.Drawing.Point(459, 306);
             this.floor47.mapX = -1;
             this.floor47.mapY = -1;
@@ -1444,11 +1529,14 @@ namespace ACNHPoker
             this.floor12.flag2 = "00";
             this.floor12.FlatAppearance.BorderSize = 0;
             this.floor12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor12.flowerQuantity = ((ushort)(0));
             this.floor12.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor12.ForeColor = System.Drawing.Color.White;
             this.floor12.itemData = ((uint)(0u));
+            this.floor12.itemDurability = ((ushort)(0));
             this.floor12.itemID = ((ushort)(65534));
             this.floor12.itemName = "";
+            this.floor12.itemQuantity = ((ushort)(0));
             this.floor12.Location = new System.Drawing.Point(79, 306);
             this.floor12.mapX = -1;
             this.floor12.mapY = -1;
@@ -1476,11 +1564,14 @@ namespace ACNHPoker
             this.floor46.flag2 = "00";
             this.floor46.FlatAppearance.BorderSize = 0;
             this.floor46.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor46.flowerQuantity = ((ushort)(0));
             this.floor46.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor46.ForeColor = System.Drawing.Color.White;
             this.floor46.itemData = ((uint)(0u));
+            this.floor46.itemDurability = ((ushort)(0));
             this.floor46.itemID = ((ushort)(65534));
             this.floor46.itemName = "";
+            this.floor46.itemQuantity = ((ushort)(0));
             this.floor46.Location = new System.Drawing.Point(459, 230);
             this.floor46.mapX = -1;
             this.floor46.mapY = -1;
@@ -1508,11 +1599,14 @@ namespace ACNHPoker
             this.floor13.flag2 = "00";
             this.floor13.FlatAppearance.BorderSize = 0;
             this.floor13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor13.flowerQuantity = ((ushort)(0));
             this.floor13.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor13.ForeColor = System.Drawing.Color.White;
             this.floor13.itemData = ((uint)(0u));
+            this.floor13.itemDurability = ((ushort)(0));
             this.floor13.itemID = ((ushort)(65534));
             this.floor13.itemName = "";
+            this.floor13.itemQuantity = ((ushort)(0));
             this.floor13.Location = new System.Drawing.Point(79, 382);
             this.floor13.mapX = -1;
             this.floor13.mapY = -1;
@@ -1540,11 +1634,14 @@ namespace ACNHPoker
             this.floor45.flag2 = "00";
             this.floor45.FlatAppearance.BorderSize = 0;
             this.floor45.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor45.flowerQuantity = ((ushort)(0));
             this.floor45.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor45.ForeColor = System.Drawing.Color.White;
             this.floor45.itemData = ((uint)(0u));
+            this.floor45.itemDurability = ((ushort)(0));
             this.floor45.itemID = ((ushort)(65534));
             this.floor45.itemName = "";
+            this.floor45.itemQuantity = ((ushort)(0));
             this.floor45.Location = new System.Drawing.Point(459, 154);
             this.floor45.mapX = -1;
             this.floor45.mapY = -1;
@@ -1572,11 +1669,14 @@ namespace ACNHPoker
             this.floor18.flag2 = "00";
             this.floor18.FlatAppearance.BorderSize = 0;
             this.floor18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor18.flowerQuantity = ((ushort)(0));
             this.floor18.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor18.ForeColor = System.Drawing.Color.White;
             this.floor18.itemData = ((uint)(0u));
+            this.floor18.itemDurability = ((ushort)(0));
             this.floor18.itemID = ((ushort)(65534));
             this.floor18.itemName = "";
+            this.floor18.itemQuantity = ((ushort)(0));
             this.floor18.Location = new System.Drawing.Point(155, 230);
             this.floor18.mapX = -1;
             this.floor18.mapY = -1;
@@ -1604,11 +1704,14 @@ namespace ACNHPoker
             this.floor44.flag2 = "00";
             this.floor44.FlatAppearance.BorderSize = 0;
             this.floor44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor44.flowerQuantity = ((ushort)(0));
             this.floor44.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor44.ForeColor = System.Drawing.Color.White;
             this.floor44.itemData = ((uint)(0u));
+            this.floor44.itemDurability = ((ushort)(0));
             this.floor44.itemID = ((ushort)(65534));
             this.floor44.itemName = "";
+            this.floor44.itemQuantity = ((ushort)(0));
             this.floor44.Location = new System.Drawing.Point(459, 78);
             this.floor44.mapX = -1;
             this.floor44.mapY = -1;
@@ -1636,11 +1739,14 @@ namespace ACNHPoker
             this.floor19.flag2 = "00";
             this.floor19.FlatAppearance.BorderSize = 0;
             this.floor19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor19.flowerQuantity = ((ushort)(0));
             this.floor19.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor19.ForeColor = System.Drawing.Color.White;
             this.floor19.itemData = ((uint)(0u));
+            this.floor19.itemDurability = ((ushort)(0));
             this.floor19.itemID = ((ushort)(65534));
             this.floor19.itemName = "";
+            this.floor19.itemQuantity = ((ushort)(0));
             this.floor19.Location = new System.Drawing.Point(155, 306);
             this.floor19.mapX = -1;
             this.floor19.mapY = -1;
@@ -1668,11 +1774,14 @@ namespace ACNHPoker
             this.floor43.flag2 = "00";
             this.floor43.FlatAppearance.BorderSize = 0;
             this.floor43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor43.flowerQuantity = ((ushort)(0));
             this.floor43.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor43.ForeColor = System.Drawing.Color.White;
             this.floor43.itemData = ((uint)(0u));
+            this.floor43.itemDurability = ((ushort)(0));
             this.floor43.itemID = ((ushort)(65534));
             this.floor43.itemName = "";
+            this.floor43.itemQuantity = ((ushort)(0));
             this.floor43.Location = new System.Drawing.Point(459, 2);
             this.floor43.mapX = -1;
             this.floor43.mapY = -1;
@@ -1700,11 +1809,14 @@ namespace ACNHPoker
             this.floor20.flag2 = "00";
             this.floor20.FlatAppearance.BorderSize = 0;
             this.floor20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor20.flowerQuantity = ((ushort)(0));
             this.floor20.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor20.ForeColor = System.Drawing.Color.White;
             this.floor20.itemData = ((uint)(0u));
+            this.floor20.itemDurability = ((ushort)(0));
             this.floor20.itemID = ((ushort)(65534));
             this.floor20.itemName = "";
+            this.floor20.itemQuantity = ((ushort)(0));
             this.floor20.Location = new System.Drawing.Point(155, 382);
             this.floor20.mapX = -1;
             this.floor20.mapY = -1;
@@ -1732,11 +1844,14 @@ namespace ACNHPoker
             this.floor42.flag2 = "00";
             this.floor42.FlatAppearance.BorderSize = 0;
             this.floor42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor42.flowerQuantity = ((ushort)(0));
             this.floor42.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor42.ForeColor = System.Drawing.Color.White;
             this.floor42.itemData = ((uint)(0u));
+            this.floor42.itemDurability = ((ushort)(0));
             this.floor42.itemID = ((ushort)(65534));
             this.floor42.itemName = "";
+            this.floor42.itemQuantity = ((ushort)(0));
             this.floor42.Location = new System.Drawing.Point(383, 458);
             this.floor42.mapX = -1;
             this.floor42.mapY = -1;
@@ -1764,11 +1879,14 @@ namespace ACNHPoker
             this.floor25.flag2 = "00";
             this.floor25.FlatAppearance.BorderSize = 0;
             this.floor25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor25.flowerQuantity = ((ushort)(0));
             this.floor25.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor25.ForeColor = System.Drawing.Color.White;
             this.floor25.itemData = ((uint)(0u));
+            this.floor25.itemDurability = ((ushort)(0));
             this.floor25.itemID = ((ushort)(65534));
             this.floor25.itemName = "";
+            this.floor25.itemQuantity = ((ushort)(0));
             this.floor25.Location = new System.Drawing.Point(231, 230);
             this.floor25.mapX = -1;
             this.floor25.mapY = -1;
@@ -1796,11 +1914,14 @@ namespace ACNHPoker
             this.floor35.flag2 = "00";
             this.floor35.FlatAppearance.BorderSize = 0;
             this.floor35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor35.flowerQuantity = ((ushort)(0));
             this.floor35.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor35.ForeColor = System.Drawing.Color.White;
             this.floor35.itemData = ((uint)(0u));
+            this.floor35.itemDurability = ((ushort)(0));
             this.floor35.itemID = ((ushort)(65534));
             this.floor35.itemName = "";
+            this.floor35.itemQuantity = ((ushort)(0));
             this.floor35.Location = new System.Drawing.Point(307, 458);
             this.floor35.mapX = -1;
             this.floor35.mapY = -1;
@@ -1828,11 +1949,14 @@ namespace ACNHPoker
             this.floor26.flag2 = "00";
             this.floor26.FlatAppearance.BorderSize = 0;
             this.floor26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor26.flowerQuantity = ((ushort)(0));
             this.floor26.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor26.ForeColor = System.Drawing.Color.White;
             this.floor26.itemData = ((uint)(0u));
+            this.floor26.itemDurability = ((ushort)(0));
             this.floor26.itemID = ((ushort)(65534));
             this.floor26.itemName = "";
+            this.floor26.itemQuantity = ((ushort)(0));
             this.floor26.Location = new System.Drawing.Point(231, 306);
             this.floor26.mapX = -1;
             this.floor26.mapY = -1;
@@ -1860,11 +1984,14 @@ namespace ACNHPoker
             this.floor28.flag2 = "00";
             this.floor28.FlatAppearance.BorderSize = 0;
             this.floor28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor28.flowerQuantity = ((ushort)(0));
             this.floor28.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor28.ForeColor = System.Drawing.Color.White;
             this.floor28.itemData = ((uint)(0u));
+            this.floor28.itemDurability = ((ushort)(0));
             this.floor28.itemID = ((ushort)(65534));
             this.floor28.itemName = "";
+            this.floor28.itemQuantity = ((ushort)(0));
             this.floor28.Location = new System.Drawing.Point(231, 458);
             this.floor28.mapX = -1;
             this.floor28.mapY = -1;
@@ -1892,11 +2019,14 @@ namespace ACNHPoker
             this.floor27.flag2 = "00";
             this.floor27.FlatAppearance.BorderSize = 0;
             this.floor27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor27.flowerQuantity = ((ushort)(0));
             this.floor27.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor27.ForeColor = System.Drawing.Color.White;
             this.floor27.itemData = ((uint)(0u));
+            this.floor27.itemDurability = ((ushort)(0));
             this.floor27.itemID = ((ushort)(65534));
             this.floor27.itemName = "";
+            this.floor27.itemQuantity = ((ushort)(0));
             this.floor27.Location = new System.Drawing.Point(231, 382);
             this.floor27.mapX = -1;
             this.floor27.mapY = -1;
@@ -1924,11 +2054,14 @@ namespace ACNHPoker
             this.floor21.flag2 = "00";
             this.floor21.FlatAppearance.BorderSize = 0;
             this.floor21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor21.flowerQuantity = ((ushort)(0));
             this.floor21.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor21.ForeColor = System.Drawing.Color.White;
             this.floor21.itemData = ((uint)(0u));
+            this.floor21.itemDurability = ((ushort)(0));
             this.floor21.itemID = ((ushort)(65534));
             this.floor21.itemName = "";
+            this.floor21.itemQuantity = ((ushort)(0));
             this.floor21.Location = new System.Drawing.Point(155, 458);
             this.floor21.mapX = -1;
             this.floor21.mapY = -1;
@@ -1956,11 +2089,14 @@ namespace ACNHPoker
             this.floor32.flag2 = "00";
             this.floor32.FlatAppearance.BorderSize = 0;
             this.floor32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor32.flowerQuantity = ((ushort)(0));
             this.floor32.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor32.ForeColor = System.Drawing.Color.White;
             this.floor32.itemData = ((uint)(0u));
+            this.floor32.itemDurability = ((ushort)(0));
             this.floor32.itemID = ((ushort)(65534));
             this.floor32.itemName = "";
+            this.floor32.itemQuantity = ((ushort)(0));
             this.floor32.Location = new System.Drawing.Point(307, 230);
             this.floor32.mapX = -1;
             this.floor32.mapY = -1;
@@ -1988,11 +2124,14 @@ namespace ACNHPoker
             this.floor14.flag2 = "00";
             this.floor14.FlatAppearance.BorderSize = 0;
             this.floor14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor14.flowerQuantity = ((ushort)(0));
             this.floor14.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor14.ForeColor = System.Drawing.Color.White;
             this.floor14.itemData = ((uint)(0u));
+            this.floor14.itemDurability = ((ushort)(0));
             this.floor14.itemID = ((ushort)(65534));
             this.floor14.itemName = "";
+            this.floor14.itemQuantity = ((ushort)(0));
             this.floor14.Location = new System.Drawing.Point(79, 458);
             this.floor14.mapX = -1;
             this.floor14.mapY = -1;
@@ -2020,11 +2159,14 @@ namespace ACNHPoker
             this.floor33.flag2 = "00";
             this.floor33.FlatAppearance.BorderSize = 0;
             this.floor33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor33.flowerQuantity = ((ushort)(0));
             this.floor33.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor33.ForeColor = System.Drawing.Color.White;
             this.floor33.itemData = ((uint)(0u));
+            this.floor33.itemDurability = ((ushort)(0));
             this.floor33.itemID = ((ushort)(65534));
             this.floor33.itemName = "";
+            this.floor33.itemQuantity = ((ushort)(0));
             this.floor33.Location = new System.Drawing.Point(307, 306);
             this.floor33.mapX = -1;
             this.floor33.mapY = -1;
@@ -2052,11 +2194,14 @@ namespace ACNHPoker
             this.floor7.flag2 = "00";
             this.floor7.FlatAppearance.BorderSize = 0;
             this.floor7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor7.flowerQuantity = ((ushort)(0));
             this.floor7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor7.ForeColor = System.Drawing.Color.White;
             this.floor7.itemData = ((uint)(0u));
+            this.floor7.itemDurability = ((ushort)(0));
             this.floor7.itemID = ((ushort)(65534));
             this.floor7.itemName = "";
+            this.floor7.itemQuantity = ((ushort)(0));
             this.floor7.Location = new System.Drawing.Point(3, 458);
             this.floor7.mapX = -1;
             this.floor7.mapY = -1;
@@ -2084,11 +2229,14 @@ namespace ACNHPoker
             this.floor34.flag2 = "00";
             this.floor34.FlatAppearance.BorderSize = 0;
             this.floor34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor34.flowerQuantity = ((ushort)(0));
             this.floor34.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor34.ForeColor = System.Drawing.Color.White;
             this.floor34.itemData = ((uint)(0u));
+            this.floor34.itemDurability = ((ushort)(0));
             this.floor34.itemID = ((ushort)(65534));
             this.floor34.itemName = "";
+            this.floor34.itemQuantity = ((ushort)(0));
             this.floor34.Location = new System.Drawing.Point(307, 382);
             this.floor34.mapX = -1;
             this.floor34.mapY = -1;
@@ -2116,11 +2264,14 @@ namespace ACNHPoker
             this.floor41.flag2 = "00";
             this.floor41.FlatAppearance.BorderSize = 0;
             this.floor41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor41.flowerQuantity = ((ushort)(0));
             this.floor41.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor41.ForeColor = System.Drawing.Color.White;
             this.floor41.itemData = ((uint)(0u));
+            this.floor41.itemDurability = ((ushort)(0));
             this.floor41.itemID = ((ushort)(65534));
             this.floor41.itemName = "";
+            this.floor41.itemQuantity = ((ushort)(0));
             this.floor41.Location = new System.Drawing.Point(383, 382);
             this.floor41.mapX = -1;
             this.floor41.mapY = -1;
@@ -2148,11 +2299,14 @@ namespace ACNHPoker
             this.floor39.flag2 = "00";
             this.floor39.FlatAppearance.BorderSize = 0;
             this.floor39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor39.flowerQuantity = ((ushort)(0));
             this.floor39.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor39.ForeColor = System.Drawing.Color.White;
             this.floor39.itemData = ((uint)(0u));
+            this.floor39.itemDurability = ((ushort)(0));
             this.floor39.itemID = ((ushort)(65534));
             this.floor39.itemName = "";
+            this.floor39.itemQuantity = ((ushort)(0));
             this.floor39.Location = new System.Drawing.Point(383, 230);
             this.floor39.mapX = -1;
             this.floor39.mapY = -1;
@@ -2180,11 +2334,14 @@ namespace ACNHPoker
             this.floor40.flag2 = "00";
             this.floor40.FlatAppearance.BorderSize = 0;
             this.floor40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor40.flowerQuantity = ((ushort)(0));
             this.floor40.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.floor40.ForeColor = System.Drawing.Color.White;
             this.floor40.itemData = ((uint)(0u));
+            this.floor40.itemDurability = ((ushort)(0));
             this.floor40.itemID = ((ushort)(65534));
             this.floor40.itemName = "";
+            this.floor40.itemQuantity = ((ushort)(0));
             this.floor40.Location = new System.Drawing.Point(383, 306);
             this.floor40.mapX = -1;
             this.floor40.mapY = -1;
@@ -2204,6 +2361,41 @@ namespace ACNHPoker
             this.floor40.MouseDown += new System.Windows.Forms.MouseEventHandler(this.floor_MouseDown);
             this.floor40.MouseHover += new System.EventHandler(this.floor_MouseHover);
             // 
+            // miniMapBox
+            // 
+            this.miniMapBox.BackColor = System.Drawing.Color.Transparent;
+            this.miniMapBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.miniMapBox.ContextMenuStrip = this.saveMap;
+            this.miniMapBox.ErrorImage = null;
+            this.miniMapBox.InitialImage = null;
+            this.miniMapBox.Location = new System.Drawing.Point(4, 171);
+            this.miniMapBox.Name = "miniMapBox";
+            this.miniMapBox.Size = new System.Drawing.Size(224, 192);
+            this.miniMapBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.miniMapBox.TabIndex = 189;
+            this.miniMapBox.TabStop = false;
+            this.miniMapBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseDown);
+            this.miniMapBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseMove);
+            // 
+            // saveMap
+            // 
+            this.saveMap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.saveMap.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.saveMap.ImageScalingSize = new System.Drawing.Size(0, 0);
+            this.saveMap.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveTopngToolStripMenuItem});
+            this.saveMap.Name = "floorRightClick";
+            this.saveMap.ShowImageMargin = false;
+            this.saveMap.Size = new System.Drawing.Size(132, 26);
+            // 
+            // saveTopngToolStripMenuItem
+            // 
+            this.saveTopngToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.saveTopngToolStripMenuItem.Name = "saveTopngToolStripMenuItem";
+            this.saveTopngToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.saveTopngToolStripMenuItem.Text = "Save to .png";
+            this.saveTopngToolStripMenuItem.Click += new System.EventHandler(this.saveTopngToolStripMenuItem_Click);
+            // 
             // fillRemainBtn
             // 
             this.fillRemainBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -2211,12 +2403,14 @@ namespace ACNHPoker
             this.fillRemainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fillRemainBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.fillRemainBtn.ForeColor = System.Drawing.Color.White;
-            this.fillRemainBtn.Location = new System.Drawing.Point(41, 551);
+            this.fillRemainBtn.Location = new System.Drawing.Point(18, 106);
             this.fillRemainBtn.Margin = new System.Windows.Forms.Padding(4);
             this.fillRemainBtn.Name = "fillRemainBtn";
             this.fillRemainBtn.Size = new System.Drawing.Size(138, 28);
             this.fillRemainBtn.TabIndex = 177;
             this.fillRemainBtn.Text = "Fill Remain";
+            this.formToolTip.SetToolTip(this.fillRemainBtn, "Fill the remaining empty spot with the selected item.\r\n\r\n[WARNING]\r\nThe current i" +
+        "mplementation is slow... \r\nPlease wait for a while after you use it.");
             this.fillRemainBtn.UseVisualStyleBackColor = false;
             this.fillRemainBtn.Click += new System.EventHandler(this.fillRemainBtn_Click);
             // 
@@ -2227,12 +2421,13 @@ namespace ACNHPoker
             this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.refreshBtn.ForeColor = System.Drawing.Color.White;
-            this.refreshBtn.Location = new System.Drawing.Point(41, 83);
+            this.refreshBtn.Location = new System.Drawing.Point(47, 83);
             this.refreshBtn.Margin = new System.Windows.Forms.Padding(4);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(138, 28);
             this.refreshBtn.TabIndex = 178;
             this.refreshBtn.Text = "Refresh";
+            this.formToolTip.SetToolTip(this.refreshBtn, "Refetch the map data. (Both Layer 1 & 2)");
             this.refreshBtn.UseVisualStyleBackColor = false;
             this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
             // 
@@ -2243,12 +2438,13 @@ namespace ACNHPoker
             this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.saveBtn.ForeColor = System.Drawing.Color.White;
-            this.saveBtn.Location = new System.Drawing.Point(41, 515);
+            this.saveBtn.Location = new System.Drawing.Point(18, 70);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(4);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(62, 28);
             this.saveBtn.TabIndex = 179;
             this.saveBtn.Text = "Save";
+            this.formToolTip.SetToolTip(this.saveBtn, "Save the displaying 7×7 grid to a .nhg file.");
             this.saveBtn.UseVisualStyleBackColor = false;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
@@ -2259,12 +2455,14 @@ namespace ACNHPoker
             this.loadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loadBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.loadBtn.ForeColor = System.Drawing.Color.White;
-            this.loadBtn.Location = new System.Drawing.Point(116, 515);
+            this.loadBtn.Location = new System.Drawing.Point(92, 70);
             this.loadBtn.Margin = new System.Windows.Forms.Padding(4);
             this.loadBtn.Name = "loadBtn";
             this.loadBtn.Size = new System.Drawing.Size(63, 28);
             this.loadBtn.TabIndex = 180;
             this.loadBtn.Text = "Load";
+            this.formToolTip.SetToolTip(this.loadBtn, "Load a .nhg/.nhi file to the displaying 7×7 grid.\r\n[WARNING] For .nhg file, this " +
+        "will overwrite everything currently on the floor.");
             this.loadBtn.UseVisualStyleBackColor = false;
             this.loadBtn.Click += new System.EventHandler(this.loadBtn_Click);
             // 
@@ -2353,6 +2551,179 @@ namespace ACNHPoker
             this.moveUp7Btn.UseVisualStyleBackColor = false;
             this.moveUp7Btn.Click += new System.EventHandler(this.moveUp7Btn_Click);
             // 
+            // formToolTip
+            // 
+            this.formToolTip.AutomaticDelay = 100;
+            this.formToolTip.AutoPopDelay = 10000;
+            this.formToolTip.InitialDelay = 100;
+            this.formToolTip.IsBalloon = true;
+            this.formToolTip.ReshowDelay = 20;
+            this.formToolTip.ShowAlways = true;
+            this.formToolTip.UseAnimation = false;
+            this.formToolTip.UseFading = false;
+            // 
+            // layer1Btn
+            // 
+            this.layer1Btn.AutoSize = true;
+            this.layer1Btn.Checked = true;
+            this.layer1Btn.ForeColor = System.Drawing.Color.White;
+            this.layer1Btn.Location = new System.Drawing.Point(3, 26);
+            this.layer1Btn.Name = "layer1Btn";
+            this.layer1Btn.Size = new System.Drawing.Size(73, 20);
+            this.layer1Btn.TabIndex = 0;
+            this.layer1Btn.TabStop = true;
+            this.layer1Btn.Text = "Layer 1";
+            this.formToolTip.SetToolTip(this.layer1Btn, "Change to the bottom layer. (Usually the floor... or seabed/stream bed)");
+            this.layer1Btn.UseVisualStyleBackColor = true;
+            this.layer1Btn.Click += new System.EventHandler(this.layer1Btn_Click);
+            // 
+            // layer2Btn
+            // 
+            this.layer2Btn.AutoSize = true;
+            this.layer2Btn.ForeColor = System.Drawing.Color.White;
+            this.layer2Btn.Location = new System.Drawing.Point(3, 3);
+            this.layer2Btn.Name = "layer2Btn";
+            this.layer2Btn.Size = new System.Drawing.Size(73, 20);
+            this.layer2Btn.TabIndex = 1;
+            this.layer2Btn.Text = "Layer 2";
+            this.formToolTip.SetToolTip(this.layer2Btn, "Change to the top layer. (On top of furnitures. Like tables)");
+            this.layer2Btn.UseVisualStyleBackColor = true;
+            this.layer2Btn.Click += new System.EventHandler(this.layer2Btn_Click);
+            // 
+            // bulkSpawnBtn
+            // 
+            this.bulkSpawnBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.bulkSpawnBtn.FlatAppearance.BorderSize = 0;
+            this.bulkSpawnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bulkSpawnBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.bulkSpawnBtn.ForeColor = System.Drawing.Color.White;
+            this.bulkSpawnBtn.Location = new System.Drawing.Point(18, 33);
+            this.bulkSpawnBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.bulkSpawnBtn.Name = "bulkSpawnBtn";
+            this.bulkSpawnBtn.Size = new System.Drawing.Size(138, 28);
+            this.bulkSpawnBtn.TabIndex = 181;
+            this.bulkSpawnBtn.Text = "Remove Items...";
+            this.formToolTip.SetToolTip(this.bulkSpawnBtn, "This is the BULK SPAWN button.\r\nYes, you bulk spawn by selecting \"Remove Items..." +
+        "\"");
+            this.bulkSpawnBtn.UseVisualStyleBackColor = false;
+            this.bulkSpawnBtn.Visible = false;
+            this.bulkSpawnBtn.Click += new System.EventHandler(this.bulkSpawnBtn_Click);
+            // 
+            // fetchMapBtn
+            // 
+            this.fetchMapBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.fetchMapBtn.FlatAppearance.BorderSize = 0;
+            this.fetchMapBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fetchMapBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.fetchMapBtn.ForeColor = System.Drawing.Color.White;
+            this.fetchMapBtn.Location = new System.Drawing.Point(47, 48);
+            this.fetchMapBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.fetchMapBtn.Name = "fetchMapBtn";
+            this.fetchMapBtn.Size = new System.Drawing.Size(138, 28);
+            this.fetchMapBtn.TabIndex = 220;
+            this.fetchMapBtn.Text = "Fetch Map";
+            this.formToolTip.SetToolTip(this.fetchMapBtn, "Fetch the map data. (Both Layer 1 & 2)");
+            this.fetchMapBtn.UseVisualStyleBackColor = false;
+            this.fetchMapBtn.Click += new System.EventHandler(this.fetchMapBtn_Click);
+            // 
+            // LayerPanel
+            // 
+            this.LayerPanel.Controls.Add(this.layer2Btn);
+            this.LayerPanel.Controls.Add(this.layer1Btn);
+            this.LayerPanel.Location = new System.Drawing.Point(75, 118);
+            this.LayerPanel.Name = "LayerPanel";
+            this.LayerPanel.Size = new System.Drawing.Size(82, 49);
+            this.LayerPanel.TabIndex = 186;
+            // 
+            // functionPanel
+            // 
+            this.functionPanel.Controls.Add(this.bulkSpawnBtn);
+            this.functionPanel.Controls.Add(this.loadBtn);
+            this.functionPanel.Controls.Add(this.fillRemainBtn);
+            this.functionPanel.Controls.Add(this.saveBtn);
+            this.functionPanel.Enabled = false;
+            this.functionPanel.Location = new System.Drawing.Point(29, 394);
+            this.functionPanel.Name = "functionPanel";
+            this.functionPanel.Size = new System.Drawing.Size(175, 143);
+            this.functionPanel.TabIndex = 187;
+            // 
+            // variationBtn
+            // 
+            this.variationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.variationBtn.FlatAppearance.BorderSize = 0;
+            this.variationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.variationBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.variationBtn.ForeColor = System.Drawing.Color.White;
+            this.variationBtn.Location = new System.Drawing.Point(1127, 561);
+            this.variationBtn.Name = "variationBtn";
+            this.variationBtn.Size = new System.Drawing.Size(73, 23);
+            this.variationBtn.TabIndex = 188;
+            this.variationBtn.Text = "Variation";
+            this.variationBtn.UseVisualStyleBackColor = false;
+            this.variationBtn.Click += new System.EventHandler(this.variationButton_Click);
+            // 
+            // PleaseWaitPanel
+            // 
+            this.PleaseWaitPanel.Controls.Add(this.WaitMessagebox);
+            this.PleaseWaitPanel.Controls.Add(this.MapProgressBar);
+            this.PleaseWaitPanel.Controls.Add(this.pictureBox2);
+            this.PleaseWaitPanel.Controls.Add(this.label29);
+            this.PleaseWaitPanel.Location = new System.Drawing.Point(4, 554);
+            this.PleaseWaitPanel.Name = "PleaseWaitPanel";
+            this.PleaseWaitPanel.Size = new System.Drawing.Size(225, 60);
+            this.PleaseWaitPanel.TabIndex = 219;
+            this.PleaseWaitPanel.Visible = false;
+            // 
+            // WaitMessagebox
+            // 
+            this.WaitMessagebox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.WaitMessagebox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.WaitMessagebox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.WaitMessagebox.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.WaitMessagebox.ForeColor = System.Drawing.Color.White;
+            this.WaitMessagebox.Location = new System.Drawing.Point(1, 32);
+            this.WaitMessagebox.Multiline = false;
+            this.WaitMessagebox.Name = "WaitMessagebox";
+            this.WaitMessagebox.ReadOnly = true;
+            this.WaitMessagebox.Size = new System.Drawing.Size(222, 27);
+            this.WaitMessagebox.TabIndex = 215;
+            this.WaitMessagebox.Text = "";
+            // 
+            // MapProgressBar
+            // 
+            this.MapProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.MapProgressBar.ForeColor = System.Drawing.Color.LawnGreen;
+            this.MapProgressBar.Location = new System.Drawing.Point(4, 28);
+            this.MapProgressBar.Maximum = 260;
+            this.MapProgressBar.Name = "MapProgressBar";
+            this.MapProgressBar.Size = new System.Drawing.Size(217, 10);
+            this.MapProgressBar.TabIndex = 215;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ACNHPoker.Properties.Resources.loading;
+            this.pictureBox2.Location = new System.Drawing.Point(47, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox2.TabIndex = 216;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label29.ForeColor = System.Drawing.Color.White;
+            this.label29.Location = new System.Drawing.Point(73, 7);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(100, 16);
+            this.label29.TabIndex = 215;
+            this.label29.Text = "Please Wait...";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ProgressTimer
+            // 
+            this.ProgressTimer.Tick += new System.EventHandler(this.ProgressTimer_Tick);
+            // 
             // selectedItem
             // 
             this.selectedItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -2379,15 +2750,18 @@ namespace ACNHPoker
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1204, 626);
+            this.Controls.Add(this.fetchMapBtn);
+            this.Controls.Add(this.PleaseWaitPanel);
+            this.Controls.Add(this.miniMapBox);
+            this.Controls.Add(this.variationBtn);
+            this.Controls.Add(this.functionPanel);
+            this.Controls.Add(this.LayerPanel);
             this.Controls.Add(this.moveUp7Btn);
             this.Controls.Add(this.moveDown7Btn);
             this.Controls.Add(this.moveLeft7Btn);
             this.Controls.Add(this.moveRight7Btn);
             this.Controls.Add(this.fieldModeBtn);
-            this.Controls.Add(this.loadBtn);
-            this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.refreshBtn);
-            this.Controls.Add(this.fillRemainBtn);
             this.Controls.Add(this.favModeBtn);
             this.Controls.Add(this.itemModeBtn);
             this.Controls.Add(this.recipeModeBtn);
@@ -2414,7 +2788,6 @@ namespace ACNHPoker
             this.Controls.Add(this.leftBtn);
             this.Controls.Add(this.yCoordinate);
             this.Controls.Add(this.xCoordinate);
-            this.Controls.Add(this.castAnchorBtn);
             this.Controls.Add(this.itemSearchBox);
             this.Controls.Add(this.BtnPanel);
             this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
@@ -2426,17 +2799,25 @@ namespace ACNHPoker
             this.Name = "map";
             this.Text = "Map Dropper";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.map_FormClosed);
+            this.LocationChanged += new System.EventHandler(this.map_LocationChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyboardKeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.fieldGridView)).EndInit();
             this.BtnPanel.ResumeLayout(false);
             this.floorRightClick.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).EndInit();
+            this.saveMap.ResumeLayout(false);
+            this.LayerPanel.ResumeLayout(false);
+            this.LayerPanel.PerformLayout();
+            this.functionPanel.ResumeLayout(false);
+            this.PleaseWaitPanel.ResumeLayout(false);
+            this.PleaseWaitPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button castAnchorBtn;
         private System.Windows.Forms.RichTextBox xCoordinate;
         private System.Windows.Forms.RichTextBox yCoordinate;
         private floorSlot floor1;
@@ -2527,5 +2908,22 @@ namespace ACNHPoker
         private System.Windows.Forms.Button moveLeft7Btn;
         private System.Windows.Forms.Button moveDown7Btn;
         private System.Windows.Forms.Button moveUp7Btn;
+        private System.Windows.Forms.ToolTip formToolTip;
+        private System.Windows.Forms.Panel LayerPanel;
+        private System.Windows.Forms.RadioButton layer2Btn;
+        private System.Windows.Forms.RadioButton layer1Btn;
+        private System.Windows.Forms.Panel functionPanel;
+        private System.Windows.Forms.Button bulkSpawnBtn;
+        private System.Windows.Forms.Button variationBtn;
+        private System.Windows.Forms.PictureBox miniMapBox;
+        private System.Windows.Forms.Panel PleaseWaitPanel;
+        private System.Windows.Forms.RichTextBox WaitMessagebox;
+        private System.Windows.Forms.ProgressBar MapProgressBar;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Timer ProgressTimer;
+        private System.Windows.Forms.Button fetchMapBtn;
+        private System.Windows.Forms.ContextMenuStrip saveMap;
+        private System.Windows.Forms.ToolStripMenuItem saveTopngToolStripMenuItem;
     }
 }

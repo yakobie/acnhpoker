@@ -103,7 +103,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.ClientSize = new System.Drawing.Size(680, 265);
+            this.ClientSize = new System.Drawing.Size(697, 282);
             this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.itemIDLabel);
             this.Controls.Add(this.selectedItem);
@@ -111,7 +111,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(680, 265);
-            this.MinimumSize = new System.Drawing.Size(680, 265);
+            this.MinimumSize = new System.Drawing.Size(680, 115);
             this.Name = "variation";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

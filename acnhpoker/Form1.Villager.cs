@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -159,8 +160,8 @@ namespace ACNHPoker
                 });
 
                 header = FindHeader();
-
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
 
 
                 blocker = false;
@@ -279,8 +280,8 @@ namespace ACNHPoker
                     //PlayerName.Text = V[i].GetPlayerName(playerSelectorVillager.SelectedIndex);
                 }
             }
-
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void VillagerButton_MouseDown(object sender, MouseEventArgs e)
@@ -302,8 +303,15 @@ namespace ACNHPoker
                 FileName = V[i].GetInternalName() + ".nhv2",
             };
 
-            string savepath = Directory.GetCurrentDirectory() + @"\save";
-            //Debug.Print(savepath);
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastSave"].Value;
+
             if (Directory.Exists(savepath))
             {
                 file.InitialDirectory = savepath;
@@ -315,6 +323,14 @@ namespace ACNHPoker
 
             if (file.ShowDialog() != DialogResult.OK)
                 return;
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int j = 0; j < temp.Length - 1; j++)
+                path = path + temp[j] + "\\";
+
+            config.AppSettings.Settings["LastSave"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
 
             Thread dumpThread = new Thread(delegate () { dumpVillager(i, file); });
             dumpThread.Start();
@@ -341,8 +357,8 @@ namespace ACNHPoker
                 Debug.Print(Utilities.ByteToHexString(CheckHeader));
                 MessageBox.Show("Wait something is wrong here!? \n\n Header Mismatch!", "Warning");
             }
-
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             blocker = false;
 
@@ -458,7 +474,7 @@ namespace ACNHPoker
                 img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetInternalName()));
             }
 
-            friendship = new Friendship(this, i, s, bot, img, V[i].GetRealName());
+            friendship = new Friendship(this, i, s, bot, img, V[i].GetRealName(), sound);
             friendship.Show();
             friendship.Location = new System.Drawing.Point(this.Location.X + 30, this.Location.Y + 30);
             /*
@@ -523,8 +539,15 @@ namespace ACNHPoker
                 FileName = V[i].GetInternalName() + ".nhvh",
             };
 
-            string savepath = Directory.GetCurrentDirectory() + @"\save";
-            //Debug.Print(savepath);
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastSave"].Value;
+
             if (Directory.Exists(savepath))
             {
                 file.InitialDirectory = savepath;
@@ -537,6 +560,14 @@ namespace ACNHPoker
             if (file.ShowDialog() != DialogResult.OK)
                 return;
 
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int k = 0; k < temp.Length - 1; k++)
+                path = path + temp[k] + "\\";
+
+            config.AppSettings.Settings["LastSave"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
+
             Thread dumpThread = new Thread(delegate () { dumpHouse(i, j, file); });
             dumpThread.Start();
         }
@@ -547,7 +578,8 @@ namespace ACNHPoker
 
             byte[] house = Utilities.GetHouse(s, bot, j, ref counter);
             File.WriteAllBytes(file.FileName, house);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             hideVillagerWait();
         }
@@ -572,7 +604,8 @@ namespace ACNHPoker
                 MysVillagerBtn.Text = RealName + " : " + StrName;
             }
             MysVillagerBtn.Image = (Image)(new Bitmap(img, new Size(110, 110)));
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void TransformBtn_Click(object sender, EventArgs e)
@@ -591,7 +624,8 @@ namespace ACNHPoker
             MysRealName.Text = lines[0];
             MysVillagerBtn.Text = lines[0] + " : " + lines[lines.Length - 1];
             MysVillagerBtn.Image = (Image)(new Bitmap(img, new Size(110, 110)));
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void SetCatchphraseBtn_Click(object sender, EventArgs e)
@@ -679,8 +713,15 @@ namespace ACNHPoker
                 //FileName = V[i].GetInternalName() + ".nhv",
             };
 
-            string savepath = Directory.GetCurrentDirectory() + @"\save";
-            //Debug.Print(savepath);
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastLoad"].Value;
+
             if (Directory.Exists(savepath))
             {
                 file.InitialDirectory = savepath;
@@ -692,6 +733,14 @@ namespace ACNHPoker
 
             if (file.ShowDialog() != DialogResult.OK)
                 return;
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int j = 0; j < temp.Length - 1; j++)
+                path = path + temp[j] + "\\";
+
+            config.AppSettings.Settings["LastLoad"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
 
             byte[] data = File.ReadAllBytes(file.FileName);
 
@@ -764,8 +813,15 @@ namespace ACNHPoker
                 //FileName = V[i].GetInternalName() + ".nhvh",
             };
 
-            string savepath = Directory.GetCurrentDirectory() + @"\save";
-            //Debug.Print(savepath);
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastLoad"].Value;
+
             if (Directory.Exists(savepath))
             {
                 file.InitialDirectory = savepath;
@@ -777,6 +833,14 @@ namespace ACNHPoker
 
             if (file.ShowDialog() != DialogResult.OK)
                 return;
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int k = 0; k < temp.Length - 1; k++)
+                path = path + temp[k] + "\\";
+
+            config.AppSettings.Settings["LastLoad"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
 
             byte[] data = File.ReadAllBytes(file.FileName);
 

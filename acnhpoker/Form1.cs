@@ -7,7 +7,6 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Net.Sockets;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
@@ -17,7 +16,7 @@ namespace ACNHPoker
     public partial class Form1 : Form
     {
         private static Socket s;
-        readonly private string version = "ACNH Poker R12 for v1.6.0";
+        readonly private string version = "ACNH Poker R12.2. for v1.6.0";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;
@@ -50,6 +49,7 @@ namespace ACNHPoker
         private variation selection = null;
         public map Map = null;
         public MapRegenerator R = null;
+        private miniMap MiniMap = null;
         private USBBot bot = null;
         private Boolean offline = true;
         private Boolean allowUpdate = true;
@@ -97,6 +97,7 @@ namespace ACNHPoker
 
         private bool overrideSetting = false;
         private bool disableValidation = false;
+        public bool sound = true;
         private WaveOut waveOut;
         private static Object itemLock = new Object();
         private static Object villagerLock = new Object();
@@ -126,7 +127,12 @@ namespace ACNHPoker
                 disableValidation = true;
             }
 
-            setting = new Setting(this, overrideSetting, disableValidation);
+            if (config.AppSettings.Settings["Sound"].Value == "false")
+            {
+                sound = false;
+            }
+
+            setting = new Setting(this, overrideSetting, disableValidation, sound);
             if (overrideSetting)
                 setting.overrideAddresses();
 
@@ -208,7 +214,8 @@ namespace ACNHPoker
             }
             else
             {
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
                 MessageBox.Show("[Warning] Missing items.csv file!");
             }
 
@@ -368,7 +375,7 @@ namespace ACNHPoker
 
             if (File.Exists(favPath))
             {
-                favSource = loadItemCSV(favPath);
+                favSource = loadCSVwoKey(favPath);
                 favGridView.DataSource = favSource;
 
                 favGridView.Columns["id"].Visible = false;
@@ -793,15 +800,19 @@ namespace ACNHPoker
             {
                 //Debug.Print(index.ToString());
 
-                File_DeleteLine(favPath, favGridView.Rows[index].Cells["iName"].Value.ToString());
+                string id = favGridView.Rows[index].Cells["id"].Value.ToString();
+                string iName = favGridView.Rows[index].Cells["iName"].Value.ToString();
+                string value = favGridView.Rows[index].Cells["value"].Value.ToString();
+
+                File_DeleteLine(favPath, id, iName, value);
 
                 favGridView.Rows.RemoveAt(index);
-
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
             }
         }
 
-        private void File_DeleteLine(string Path, string key)
+        private void File_DeleteLine(string Path, string key1, string key2, string key3)
         {
             StringBuilder sb = new StringBuilder();
             string line;
@@ -810,7 +821,7 @@ namespace ACNHPoker
                 while (!sr.EndOfStream)
                 {
                     line = sr.ReadLine();
-                    if (!line.Contains(key))
+                    if (!line.Contains(key1) || !line.Contains(key2) || !line.Contains(key3))
                     {
                         using (StringWriter sw = new StringWriter(sb))
                         {
@@ -835,7 +846,7 @@ namespace ACNHPoker
 
             if (Map == null)
             {
-                Map = new map(s, bot, itemPath, recipePath, flowerPath, variationPath, favPath, this, imagePath, OverrideDict);
+                Map = new map(s, bot, itemPath, recipePath, flowerPath, variationPath, favPath, this, imagePath, OverrideDict, sound);
                 Map.Show();
             }
         }
@@ -844,7 +855,7 @@ namespace ACNHPoker
         {
             if (R == null)
             {
-                R = new MapRegenerator(s, this);
+                R = new MapRegenerator(s, this, sound);
                 //this.Hide();
                 R.Show();
             }

@@ -1,5 +1,6 @@
 ﻿using NAudio.Wave;
 using System;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
@@ -34,14 +35,19 @@ namespace ACNHPoker
         private void eatBtn_Click(object sender, EventArgs e)
         {
             Utilities.setStamina(s, bot, "0A");
-            System.Media.SystemSounds.Asterisk.Play();
+
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
+
             setEatBtn();
         }
 
         private void poopBtn_Click(object sender, EventArgs e)
         {
             Utilities.setStamina(s, bot, "00");
-            System.Media.SystemSounds.Asterisk.Play();
+
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void setEatBtn()
@@ -106,7 +112,8 @@ namespace ACNHPoker
                 selectedSlot = firstSlot;
                 updateSlot(firstSlot);
             }
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void updateSlot(int select)
@@ -230,25 +237,6 @@ namespace ACNHPoker
             }
         }
 
-        public string GetINameFromID(string itemID, DataTable source)
-        {
-            if (source == null)
-            {
-                return "";
-            }
-
-            DataRow row = source.Rows.Find(itemID);
-
-            if (row == null)
-            {
-                return ""; //row not found
-            }
-            else
-            {
-                return row["iName"].ToString();
-            }
-        }
-
         private void copyItemBtn_Click(object sender, EventArgs e)
         {
             /*
@@ -287,7 +275,8 @@ namespace ACNHPoker
                         customAmountTxt.Text = Utilities.precedingZeros(selectedItem.fillItemData(), 8);
                         customIdTextbox.Text = Utilities.precedingZeros(selectedItem.fillItemID(), 4);
                     }
-                    System.Media.SystemSounds.Asterisk.Play();
+                    if (sound)
+                        System.Media.SystemSounds.Asterisk.Play();
                 }
             }
         }
@@ -515,8 +504,8 @@ namespace ACNHPoker
                             btnParent.refresh(false);
                         }
                     }
-
-                    System.Media.SystemSounds.Asterisk.Play();
+                    if (sound)
+                        System.Media.SystemSounds.Asterisk.Play();
                 }
             }
         }
@@ -567,7 +556,15 @@ namespace ACNHPoker
                     //FileName = "items.nhi",
                 };
 
-                string savepath = Directory.GetCurrentDirectory() + @"\save";
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+                string savepath;
+
+                if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                    savepath = Directory.GetCurrentDirectory() + @"\save";
+                else
+                    savepath = config.AppSettings.Settings["LastSave"].Value;
+
                 //Debug.Print(savepath);
                 if (Directory.Exists(savepath))
                 {
@@ -580,6 +577,15 @@ namespace ACNHPoker
 
                 if (file.ShowDialog() != DialogResult.OK)
                     return;
+
+                string[] temp = file.FileName.Split('\\');
+                string path = "";
+                for (int i = 0; i < temp.Length - 1; i++)
+                    path = path + temp[i] + "\\";
+
+                config.AppSettings.Settings["LastSave"].Value = path;
+                config.Save(ConfigurationSaveMode.Minimal);
+
 
                 string Bank = "";
 
@@ -625,8 +631,8 @@ namespace ACNHPoker
                     File.WriteAllBytes(file.FileName, save);
                 }
                 //Debug.Print(Bank);
-
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
                 /*
                 Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
                 config.AppSettings.Settings["save01"].Value = Bank1.Substring(0, 320);
@@ -648,30 +654,23 @@ namespace ACNHPoker
 
         private void loadBtn_Click(object sender, EventArgs e)
         {
-            /*DialogResult dialogResult = MessageBox.Show("Are you sure you want to load your inventory?\n[Warning] All of your inventory slots will be overwritten!", "Load inventory", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {*/
             try
             {
-                /*
-                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
-                string Bank1 = config.AppSettings.Settings["save01"].Value;
-                string Bank2 = config.AppSettings.Settings["save21"].Value;
-                byte[] Bank01to20 = Encoding.ASCII.GetBytes(Bank1);
-                byte[] Bank21to40 = Encoding.ASCII.GetBytes(Bank2);
-
-                Thread LoadThread = new Thread(delegate () { loadInventory(Bank01to20, Bank21to40); });
-                LoadThread.Start();
-                */
-
                 OpenFileDialog file = new OpenFileDialog()
                 {
                     Filter = "New Horizons Inventory (*.nhi)|*.nhi|All files (*.*)|*.*",
                     FileName = "items.nhi",
                 };
 
-                string savepath = Directory.GetCurrentDirectory() + @"\save";
-                //Debug.Print(savepath);
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+                string savepath;
+
+                if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                    savepath = Directory.GetCurrentDirectory() + @"\save";
+                else
+                    savepath = config.AppSettings.Settings["LastLoad"].Value;
+
                 if (Directory.Exists(savepath))
                 {
                     file.InitialDirectory = savepath;
@@ -684,17 +683,18 @@ namespace ACNHPoker
                 if (file.ShowDialog() != DialogResult.OK)
                     return;
 
+                string[] temp = file.FileName.Split('\\');
+                string path = "";
+                for (int i = 0; i < temp.Length - 1; i++)
+                    path = path + temp[i] + "\\";
+
+                config.AppSettings.Settings["LastLoad"].Value = path;
+                config.Save(ConfigurationSaveMode.Minimal);
+
                 byte[] data = File.ReadAllBytes(file.FileName);
 
                 btnToolTip.RemoveAll();
-                /*
-                string bank = "";
-                for (int i = 0; i < data.Length; i++)
-                {
-                    bank += Utilities.precedingZeros(((UInt16)data[i]).ToString("X"), 2);
-                }
-                */
-                //Debug.Print(bank);
+
                 Thread LoadThread = new Thread(delegate () { loadInventory(data); });
                 LoadThread.Start();
             }
@@ -706,65 +706,131 @@ namespace ACNHPoker
                 }
                 return;
             }
-
-            //}
         }
 
         private void loadInventory(byte[] data)
         {
             showWait();
 
+            byte[][] item = processNHI(data);
+
+            string Bank = "";
+
+            byte[] b1 = new byte[160];
+            byte[] b2 = new byte[160];
+
             if (!offline)
             {
-                byte[] b1 = new byte[160];
-                byte[] b2 = new byte[160];
+                byte[] Bank01to20 = Utilities.GetInventoryBank(s, bot, 1);
+                byte[] Bank21to40 = Utilities.GetInventoryBank(s, bot, 21);
 
-                for (int i = 0; i < b1.Length; i++)
+                byte[] currentInventory = new byte[320];
+
+                Array.Copy(Bank01to20, 0, currentInventory, 0, 160);
+                Array.Copy(Bank21to40, 0, currentInventory, 160, 160);
+
+                int emptyspace = numOfEmpty(currentInventory);
+
+                if (emptyspace < item.Length)
                 {
-                    b1[i] = data[i];
-                    b2[i] = data[i + 160];
-                }
+                    DialogResult dialogResult = MessageBox.Show("Empty Spaces in your inventory : " + emptyspace + "\n" +
+                                                                "Number of items to Spawn : " + item.Length + "\n" +
+                                                                "\n" +
+                                                                "Press  [Yes]  to clear your inventory and spawn the items " + "\n" +
+                                                                "or  [No]  to cancel the spawn." + "\n" + "\n" +
+                                                                "[Warning] You will lose your items in your inventory!"
+                                                                , "Not enough inventory spaces!", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        for (int i = 0; i < b1.Length; i++)
+                        {
+                            b1[i] = data[i];
+                            b2[i] = data[i + 160];
+                        }
 
-                Utilities.OverwriteAll(s, bot, b1, b2, ref counter);
-                /*
+                        Utilities.OverwriteAll(s, bot, b1, b2, ref counter);
+                    }
+                    else
+                    {
+                        hideWait();
+                        if (sound)
+                            System.Media.SystemSounds.Asterisk.Play();
+                        return;
+                    }
+                }
+                else
+                {
+                    b1 = Bank01to20;
+                    b2 = Bank21to40;
+                    fillInventory(ref b1, ref b2, item);
+
+                    Utilities.OverwriteAll(s, bot, b1, b2, ref counter);
+                }
+            }
+            else
+            {
+                inventorySlot[] SlotPointer = new inventorySlot[40];
                 foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
                 {
-                    if (btn.Tag == null)
-                        continue;
-
-                    if (btn.Tag.ToString() == "")
-                        continue;
-
                     int slotId = int.Parse(btn.Tag.ToString());
-
-                    int slotOffset = 0;
-                    int countOffset = 0;
-
-                    slotOffset = ((slotId - 1) * 16);
-                    countOffset = ((slotId - 1) * 16) + 8;
-
-                    string itemID = "";
-                    string itemData = "";
-
-                    string slotBytes = bank.Substring(slotOffset, 8);
-                    string dataBytes = bank.Substring(countOffset, 8);
-
-
-                    itemID = Utilities.flip(slotBytes);
-                    itemData = Utilities.flip(dataBytes);
-
-                    Utilities.SpawnItem(s, bot, slotId, itemID, itemData);
-
+                    SlotPointer[slotId - 1] = btn;
                 }
-                */
-
-                /*
-                Invoke((MethodInvoker)delegate
+                for (int i = 0; i < SlotPointer.Length; i++)
                 {
-                    UpdateInventory();
-                });
-                */
+                    string first = Utilities.flip(Utilities.precedingZeros(SlotPointer[i].getFlag1() + SlotPointer[i].getFlag2() + Utilities.precedingZeros(SlotPointer[i].fillItemID(), 4), 8));
+                    string second = Utilities.flip(Utilities.precedingZeros(SlotPointer[i].fillItemData(), 8));
+                    Bank = Bank + first + second;
+                }
+
+                byte[] currentInventory = new byte[320];
+
+                for (int i = 0; i < Bank.Length / 2 - 1; i++)
+                {
+                    string tempStr = String.Concat(Bank[(i * 2)].ToString(), Bank[((i * 2) + 1)].ToString());
+                    //Debug.Print(i.ToString() + " " + data);
+                    currentInventory[i] = Convert.ToByte(tempStr, 16);
+                }
+
+                int emptyspace = numOfEmpty(currentInventory);
+
+                if (emptyspace < item.Length)
+                {
+                    DialogResult dialogResult = MessageBox.Show("Empty Spaces in your inventory : " + emptyspace + "\n" +
+                                                                "Number of items to Spawn : " + item.Length + "\n" +
+                                                                "\n" +
+                                                                "Press  [Yes]  to clear your inventory and spawn the new items " + "\n" +
+                                                                "or  [No]  to cancel the spawn." + "\n" + "\n" +
+                                                                "[Warning] You will lose your items in your inventory!"
+                                                                , "Not enough inventory spaces!", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        for (int i = 0; i < b1.Length; i++)
+                        {
+                            b1[i] = data[i];
+                            b2[i] = data[i + 160];
+                        }
+                    }
+                    else
+                    {
+                        hideWait();
+                        if (sound)
+                            System.Media.SystemSounds.Asterisk.Play();
+                        return;
+                    }
+                }
+                else
+                {
+                    Array.Copy(currentInventory, 0, b1, 0, 160);
+                    Array.Copy(currentInventory, 160, b2, 0, 160);
+
+                    fillInventory(ref b1, ref b2, item);
+                }
             }
+
+            byte[] newInventory = new byte[320];
+
+            Array.Copy(b1, 0, newInventory, 0, 160);
+            Array.Copy(b2, 0, newInventory, 160, 160);
 
             Invoke((MethodInvoker)delegate
             {
@@ -789,11 +855,11 @@ namespace ACNHPoker
                     int flag2Offset = 0x2 + ((slotId - 1) * 0x8);
                     int countOffset = 0x4 + ((slotId - 1) * 0x8);
 
-                    Buffer.BlockCopy(data, slotOffset, slotBytes, 0, 2);
-                    Buffer.BlockCopy(data, flag1Offset, flag1Bytes, 0, 1);
-                    Buffer.BlockCopy(data, flag2Offset, flag2Bytes, 0, 1);
-                    Buffer.BlockCopy(data, countOffset, dataBytes, 0, 4);
-                    Buffer.BlockCopy(data, countOffset, recipeBytes, 0, 2);
+                    Buffer.BlockCopy(newInventory, slotOffset, slotBytes, 0, 2);
+                    Buffer.BlockCopy(newInventory, flag1Offset, flag1Bytes, 0, 1);
+                    Buffer.BlockCopy(newInventory, flag2Offset, flag2Bytes, 0, 1);
+                    Buffer.BlockCopy(newInventory, countOffset, dataBytes, 0, 4);
+                    Buffer.BlockCopy(newInventory, countOffset, recipeBytes, 0, 2);
 
                     string itemID = Utilities.flip(Utilities.ByteToHexString(slotBytes));
                     string itemData = Utilities.flip(Utilities.ByteToHexString(dataBytes));
@@ -842,7 +908,83 @@ namespace ACNHPoker
             });
 
             hideWait();
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
+        }
+
+        private byte[][] processNHI(byte[] data)
+        {
+            byte[] tempItem = new byte[8];
+            bool[] isItem = new bool[40];
+            int numOfitem = 0;
+            
+            for (int i = 0; i < 40; i++)
+            {
+                Buffer.BlockCopy(data, 0x8 * i, tempItem, 0, 8);
+                if (!Utilities.ByteToHexString(tempItem).Equals("FEFF000000000000"))
+                {
+                    isItem[i] = true;
+                    numOfitem++;
+                }
+            }
+
+            byte[][] item = new byte[numOfitem][];
+            int itemNum = 0;
+            for (int j = 0; j < 40; j++)
+            {
+                if(isItem[j])
+                {
+                    item[itemNum] = new byte[8];
+                    Buffer.BlockCopy(data, 0x8 * j, item[itemNum], 0, 8);
+                    itemNum++;
+                }
+            }
+
+            return item;
+        }
+
+        private int numOfEmpty(byte[] data)
+        {
+            byte[] tempItem = new byte[8];
+            int num = 0;
+
+            for (int i = 0; i < 40; i++)
+            {
+                Buffer.BlockCopy(data, 0x8 * i, tempItem, 0, 8);
+                if (Utilities.ByteToHexString(tempItem).Equals("FEFF000000000000"))
+                    num++;
+            }
+            return num;
+        }
+
+        private void fillInventory(ref byte[] b1, ref byte[] b2, byte[][] item)
+        {
+            byte[] tempItem = new byte[8];
+            int num = 0;
+
+            for (int i = 0; i < 20; i++)
+            {
+                Buffer.BlockCopy(b1, 0x8 * i, tempItem, 0, 8);
+                if (Utilities.ByteToHexString(tempItem).Equals("FEFF000000000000"))
+                {
+                    Buffer.BlockCopy(item[num], 0, b1, 0x8 * i, 8);
+                    num++;
+                }
+                if (num >= item.Length)
+                    return;
+            }
+
+            for (int j = 0; j < 20; j++)
+            {
+                Buffer.BlockCopy(b2, 0x8 * j, tempItem, 0, 8);
+                if (Utilities.ByteToHexString(tempItem).Equals("FEFF000000000000"))
+                {
+                    Buffer.BlockCopy(item[num], 0, b2, 0x8 * j, 8);
+                    num++;
+                }
+                if (num >= item.Length)
+                    return;
+            }
         }
 
         private int findEmpty()
@@ -1080,7 +1222,8 @@ namespace ACNHPoker
 
         private void setReactionBtn_Click(object sender, EventArgs e)
         {
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to change your reaction wheel?\n[Warning] Your previous reaction wheel will be overwritten!", "Change Reaction Wheel", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
@@ -1089,7 +1232,8 @@ namespace ACNHPoker
                 string reaction1 = (Utilities.precedingZeros((reactionSlot1.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot2.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot3.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot4.SelectedIndex + 1).ToString("X"), 2));
                 string reaction2 = (Utilities.precedingZeros((reactionSlot5.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot6.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot7.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot8.SelectedIndex + 1).ToString("X"), 2));
                 Utilities.setReaction(s, bot, player,  reaction1, reaction2);
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
             }
         }
 
@@ -1101,7 +1245,8 @@ namespace ACNHPoker
             speedX4Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
 
             Utilities.pokeMainAddress(s, bot, Utilities.wSpeedAddress.ToString("X"), Utilities.wSpeedX4);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void speedX3Btn_Click(object sender, EventArgs e)
@@ -1112,7 +1257,8 @@ namespace ACNHPoker
             speedX4Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             Utilities.pokeMainAddress(s, bot, Utilities.wSpeedAddress.ToString("X"), Utilities.wSpeedX3);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void speedX2Btn_Click(object sender, EventArgs e)
@@ -1123,7 +1269,8 @@ namespace ACNHPoker
             speedX4Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             Utilities.pokeMainAddress(s, bot, Utilities.wSpeedAddress.ToString("X"), Utilities.wSpeedX2);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void speedX1Btn_Click(object sender, EventArgs e)
@@ -1134,7 +1281,8 @@ namespace ACNHPoker
             speedX4Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             Utilities.pokeMainAddress(s, bot, Utilities.wSpeedAddress.ToString("X"), Utilities.wSpeedX1);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void disableCollisionBtn_Click(object sender, EventArgs e)
@@ -1143,7 +1291,8 @@ namespace ACNHPoker
             enableCollisionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             Utilities.pokeMainAddress(s, bot, Utilities.CollisionAddress.ToString("X"), Utilities.CollisionDisable);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void enableCollisionBtn_Click(object sender, EventArgs e)
@@ -1152,7 +1301,8 @@ namespace ACNHPoker
             disableCollisionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             Utilities.pokeMainAddress(s, bot, Utilities.CollisionAddress.ToString("X"), Utilities.CollisionEnable);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void freezeTimeBtn_Click(object sender, EventArgs e)
@@ -1164,7 +1314,8 @@ namespace ACNHPoker
             readtime();
             timePanel.Visible = true;
 
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void unfreezeTimeBtn_Click(object sender, EventArgs e)
@@ -1174,7 +1325,8 @@ namespace ACNHPoker
 
             Utilities.pokeMainAddress(s, bot, Utilities.freezeTimeAddress.ToString("X"), Utilities.unfreezeTimeValue);
             timePanel.Visible = false;
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void animationSpdx2_Click(object sender, EventArgs e)
@@ -1186,7 +1338,8 @@ namespace ACNHPoker
             animationSpdx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), Utilities.aSpeedX2);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void animationSpdx0_1_Click(object sender, EventArgs e)
@@ -1198,7 +1351,8 @@ namespace ACNHPoker
             animationSpdx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), Utilities.aSpeedX01);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void animationSpdx50_Click(object sender, EventArgs e)
@@ -1210,7 +1364,8 @@ namespace ACNHPoker
             animationSpdx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), Utilities.aSpeedX50);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void animationSpdx1_Click(object sender, EventArgs e)
@@ -1222,7 +1377,8 @@ namespace ACNHPoker
             animationSpdx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
 
             Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), Utilities.aSpeedX1);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void animationSpdx5_Click(object sender, EventArgs e)
@@ -1234,7 +1390,8 @@ namespace ACNHPoker
             animationSpdx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
 
             Utilities.pokeMainAddress(s, bot, Utilities.aSpeedAddress.ToString("X"), Utilities.aSpeedX5);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void readtime()
@@ -1332,7 +1489,8 @@ namespace ACNHPoker
 
             Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x2).ToString("X"), Utilities.precedingZeros(hexMonth, 2) + Utilities.precedingZeros(hexDay, 2) + Utilities.precedingZeros(hexHour, 2) + Utilities.precedingZeros(hexMin, 2));
 
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void minus1HourBtn_Click(object sender, EventArgs e)
@@ -1354,7 +1512,8 @@ namespace ACNHPoker
                 Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x4).ToString("X"), Utilities.precedingZeros(hexHour, 2));
             }
             readtime();
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void add1HourBtn_Click(object sender, EventArgs e)
@@ -1376,7 +1535,8 @@ namespace ACNHPoker
                 Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x4).ToString("X"), Utilities.precedingZeros(hexHour, 2));
             }
             readtime();
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void USBconnectBtn_Click(object sender, EventArgs e)

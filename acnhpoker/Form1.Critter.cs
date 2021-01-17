@@ -613,7 +613,8 @@ namespace ACNHPoker
                 Maxbtn.Style = selectedbtnStyle;
             }
             grid.InvalidateCell(cell);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void critterSearchBox_TextChanged(object sender, EventArgs e)
@@ -806,7 +807,8 @@ namespace ACNHPoker
 
             if (temp != null)
                 critterSearchBox.Text = temp;
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             Invoke((MethodInvoker)delegate
             {
@@ -902,7 +904,8 @@ namespace ACNHPoker
             }
             if (temp != null)
                 critterSearchBox.Text = temp;
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             Invoke((MethodInvoker)delegate
             {
@@ -1155,7 +1158,8 @@ namespace ACNHPoker
                 });
             }
 
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             Invoke((MethodInvoker)delegate
             {

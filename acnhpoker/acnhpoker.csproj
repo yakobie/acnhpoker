@@ -80,6 +80,38 @@
   <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowedReferenceRelatedFileExtensions>
+	  *.xml;
+	  *.pdb
+	</AllowedReferenceRelatedFileExtensions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowedReferenceRelatedFileExtensions>
+	  *.xml;
+	  *.pdb
+	</AllowedReferenceRelatedFileExtensions>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutocompleteMenu-ScintillaNET, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoCompleteMenu-ScintillaNET.1.6.2\lib\net461\AutocompleteMenu-ScintillaNET.dll</HintPath>
@@ -121,6 +153,11 @@
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.1\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
     </Reference>
@@ -141,6 +178,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoyerMoore.cs" />
+    <Compile Include="bulkSpawn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bulkSpawn.Designer.cs">
+      <DependentUpon>bulkSpawn.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataGridViewProgressColumn.cs" />
     <Compile Include="ExtendedPanel.cs">
       <SubType>Component</SubType>
@@ -167,6 +210,7 @@
     <Compile Include="MapRegenerator.Designer.cs">
       <DependentUpon>MapRegenerator.cs</DependentUpon>
     </Compile>
+    <Compile Include="miniMap.cs" />
     <Compile Include="MyComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -230,6 +274,9 @@
     <Compile Include="VillagerSelector.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="bulkSpawn.resx">
+      <DependentUpon>bulkSpawn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -300,11 +347,13 @@
   <ItemGroup>
     <Content Include="ACLeaf.ico" />
     <Content Include="ACLeaf2.ico" />
-    <None Include="Resources\ACLeaf2.bmp" />
     <None Include="Resources\ACLeaf2.ico" />
     <None Include="bin\Debug\img\Leaf.png" />
+    <None Include="Resources\acre" />
+    <None Include="Resources\f.ico" />
     <Content Include="Resources\gear.png" />
     <None Include="Resources\Leaf.bmp" />
+    <None Include="Resources\k.ico" />
     <Content Include="Resources\loading.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

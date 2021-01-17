@@ -21,10 +21,12 @@ namespace ACNHPoker
         private int lengthY = 0;
 
         public Form1 mainform = null;
+        public map mapform = null;
 
-        public variation()
+        public variation(int height = 265)
         {
             InitializeComponent();
+            this.Size = new Size(this.Width, height);
         }
 
         private DataTable loadItemCSV(string filePath)
@@ -268,14 +270,22 @@ namespace ACNHPoker
                 }
 
                 button.BackColor = System.Drawing.Color.LightSeaGreen;
-                if (mainform == null)
+                if (mainform == null && mapform == null)
                 {
                     return;
                 }
                 else
                 {
-                    mainform.ReceiveVariation((inventorySlot)sender, 0);
-                    mainform.Focus();
+                    if (mapform != null)
+                    {
+                        mapform.ReceiveVariation((inventorySlot)sender, 0);
+                        mapform.Focus();
+                    }
+                    else
+                    {
+                        mainform.ReceiveVariation((inventorySlot)sender, 0);
+                        mainform.Focus();
+                    }
                 }
             }
             else
@@ -286,14 +296,22 @@ namespace ACNHPoker
                 }
 
                 button.BackColor = System.Drawing.Color.Orange;
-                if (mainform == null)
+                if (mainform == null && mapform == null)
                 {
                     return;
                 }
                 else
                 {
-                    mainform.ReceiveVariation((inventorySlot)sender, 1);
-                    mainform.Focus();
+                    if (mapform != null)
+                    {
+                        mapform.ReceiveVariation((inventorySlot)sender, 1);
+                        mapform.Focus();
+                    }
+                    else
+                    {
+                        mainform.ReceiveVariation((inventorySlot)sender, 1);
+                        mainform.Focus();
+                    }
                 }
             }
 

@@ -31,7 +31,10 @@ namespace ACNHPoker
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapRegenerator));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PleaseWaitPanel = new System.Windows.Forms.Panel();
+            this.PauseTimeLabel = new System.Windows.Forms.Label();
             this.WaitMessagebox = new System.Windows.Forms.RichTextBox();
             this.MapProgressBar = new System.Windows.Forms.ProgressBar();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -52,12 +55,32 @@ namespace ACNHPoker
             this.debugBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.visitorNameBox = new System.Windows.Forms.RichTextBox();
+            this.formToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.logBtn = new System.Windows.Forms.Button();
+            this.newLogBtn = new System.Windows.Forms.Button();
+            this.selectLogBtn = new System.Windows.Forms.Button();
+            this.PauseTimer = new System.Windows.Forms.Timer(this.components);
+            this.logGridView = new System.Windows.Forms.DataGridView();
+            this.logName = new System.Windows.Forms.Label();
+            this.logPanel = new System.Windows.Forms.Panel();
+            this.mapPanel = new System.Windows.Forms.Panel();
+            this.miniMapBox = new System.Windows.Forms.PictureBox();
+            this.yCoordinate = new System.Windows.Forms.RichTextBox();
+            this.xCoordinate = new System.Windows.Forms.RichTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.startBtn = new System.Windows.Forms.Button();
             this.PleaseWaitPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logGridView)).BeginInit();
+            this.logPanel.SuspendLayout();
+            this.mapPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).BeginInit();
             this.SuspendLayout();
             // 
             // PleaseWaitPanel
             // 
+            this.PleaseWaitPanel.Controls.Add(this.PauseTimeLabel);
             this.PleaseWaitPanel.Controls.Add(this.WaitMessagebox);
             this.PleaseWaitPanel.Controls.Add(this.MapProgressBar);
             this.PleaseWaitPanel.Controls.Add(this.pictureBox2);
@@ -67,6 +90,19 @@ namespace ACNHPoker
             this.PleaseWaitPanel.Size = new System.Drawing.Size(230, 60);
             this.PleaseWaitPanel.TabIndex = 218;
             this.PleaseWaitPanel.Visible = false;
+            // 
+            // PauseTimeLabel
+            // 
+            this.PauseTimeLabel.AutoSize = true;
+            this.PauseTimeLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.PauseTimeLabel.ForeColor = System.Drawing.Color.White;
+            this.PauseTimeLabel.Location = new System.Drawing.Point(206, 44);
+            this.PauseTimeLabel.Name = "PauseTimeLabel";
+            this.PauseTimeLabel.Size = new System.Drawing.Size(24, 16);
+            this.PauseTimeLabel.TabIndex = 229;
+            this.PauseTimeLabel.Text = "70";
+            this.PauseTimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PauseTimeLabel.Visible = false;
             // 
             // WaitMessagebox
             // 
@@ -127,6 +163,8 @@ namespace ACNHPoker
             this.loadMapBtn.Size = new System.Drawing.Size(208, 25);
             this.loadMapBtn.TabIndex = 217;
             this.loadMapBtn.Text = "Load Map Template";
+            this.formToolTip.SetToolTip(this.loadMapBtn, "Load a .nhf file and overwrite the whole map. (Layer 1 only)\r\n[WARNING] You will " +
+        "lost every item on your map.");
             this.loadMapBtn.UseVisualStyleBackColor = false;
             this.loadMapBtn.Click += new System.EventHandler(this.loadMapBtn_Click);
             // 
@@ -143,6 +181,7 @@ namespace ACNHPoker
             this.saveMapBtn.Size = new System.Drawing.Size(208, 25);
             this.saveMapBtn.TabIndex = 216;
             this.saveMapBtn.Text = "Create Map Template";
+            this.formToolTip.SetToolTip(this.saveMapBtn, "Create a Map template and save it to a .nhf file. (Layer 1 only)");
             this.saveMapBtn.UseVisualStyleBackColor = false;
             this.saveMapBtn.Click += new System.EventHandler(this.saveMapBtn_Click);
             // 
@@ -172,6 +211,8 @@ namespace ACNHPoker
             this.startRegen.TabIndex = 219;
             this.startRegen.Tag = "Start";
             this.startRegen.Text = "Cast Regen";
+            this.formToolTip.SetToolTip(this.startRegen, "Keep refreshing the map with a saved map template (.nhf). (Layer 1 only)\r\n[WARNIN" +
+        "G] This option will delete every item dropped/placed on empty space.\r\n");
             this.startRegen.UseVisualStyleBackColor = false;
             this.startRegen.Click += new System.EventHandler(this.startRegen_Click);
             // 
@@ -182,12 +223,13 @@ namespace ACNHPoker
             this.hideBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hideBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.hideBtn.ForeColor = System.Drawing.Color.White;
-            this.hideBtn.Location = new System.Drawing.Point(121, 248);
+            this.hideBtn.Location = new System.Drawing.Point(156, 248);
             this.hideBtn.Margin = new System.Windows.Forms.Padding(4);
             this.hideBtn.Name = "hideBtn";
-            this.hideBtn.Size = new System.Drawing.Size(100, 25);
+            this.hideBtn.Size = new System.Drawing.Size(65, 25);
             this.hideBtn.TabIndex = 220;
             this.hideBtn.Text = "Hide";
+            this.formToolTip.SetToolTip(this.hideBtn, "Hide this window to tray.");
             this.hideBtn.UseVisualStyleBackColor = false;
             this.hideBtn.Click += new System.EventHandler(this.hideBtn_Click);
             // 
@@ -201,7 +243,7 @@ namespace ACNHPoker
             this.backBtn.Location = new System.Drawing.Point(13, 248);
             this.backBtn.Margin = new System.Windows.Forms.Padding(4);
             this.backBtn.Name = "backBtn";
-            this.backBtn.Size = new System.Drawing.Size(100, 25);
+            this.backBtn.Size = new System.Drawing.Size(65, 25);
             this.backBtn.TabIndex = 221;
             this.backBtn.Text = "Back";
             this.backBtn.UseVisualStyleBackColor = false;
@@ -232,6 +274,8 @@ namespace ACNHPoker
             this.startRegen2.TabIndex = 223;
             this.startRegen2.Tag = "Start";
             this.startRegen2.Text = "Cast Moogle Regenja";
+            this.formToolTip.SetToolTip(this.startRegen2, "Keep refreshing the map with a saved map template (.nhf). (Layer 1 only)\r\n[WARNIN" +
+        "G] This option will ignore empty space to preserve dropped item.\r\n");
             this.startRegen2.UseVisualStyleBackColor = false;
             this.startRegen2.Click += new System.EventHandler(this.startRegen2_Click);
             // 
@@ -331,12 +375,242 @@ namespace ACNHPoker
             this.visitorNameBox.TabIndex = 228;
             this.visitorNameBox.Text = "";
             // 
+            // formToolTip
+            // 
+            this.formToolTip.AutomaticDelay = 100;
+            this.formToolTip.AutoPopDelay = 10000;
+            this.formToolTip.InitialDelay = 100;
+            this.formToolTip.IsBalloon = true;
+            this.formToolTip.ReshowDelay = 20;
+            this.formToolTip.ShowAlways = true;
+            this.formToolTip.UseAnimation = false;
+            this.formToolTip.UseFading = false;
+            // 
+            // logBtn
+            // 
+            this.logBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.logBtn.FlatAppearance.BorderSize = 0;
+            this.logBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.logBtn.ForeColor = System.Drawing.Color.White;
+            this.logBtn.Location = new System.Drawing.Point(84, 248);
+            this.logBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.logBtn.Name = "logBtn";
+            this.logBtn.Size = new System.Drawing.Size(66, 25);
+            this.logBtn.TabIndex = 229;
+            this.logBtn.Text = "Log";
+            this.formToolTip.SetToolTip(this.logBtn, "Show/Hide the visitor log.");
+            this.logBtn.UseVisualStyleBackColor = false;
+            this.logBtn.Click += new System.EventHandler(this.logBtn_Click);
+            // 
+            // newLogBtn
+            // 
+            this.newLogBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.newLogBtn.FlatAppearance.BorderSize = 0;
+            this.newLogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newLogBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.newLogBtn.ForeColor = System.Drawing.Color.White;
+            this.newLogBtn.Location = new System.Drawing.Point(4, 4);
+            this.newLogBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.newLogBtn.Name = "newLogBtn";
+            this.newLogBtn.Size = new System.Drawing.Size(68, 25);
+            this.newLogBtn.TabIndex = 231;
+            this.newLogBtn.Text = "New";
+            this.formToolTip.SetToolTip(this.newLogBtn, "Create a new visitor log file.");
+            this.newLogBtn.UseVisualStyleBackColor = false;
+            this.newLogBtn.Click += new System.EventHandler(this.newLogBtn_Click);
+            // 
+            // selectLogBtn
+            // 
+            this.selectLogBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.selectLogBtn.FlatAppearance.BorderSize = 0;
+            this.selectLogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.selectLogBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.selectLogBtn.ForeColor = System.Drawing.Color.White;
+            this.selectLogBtn.Location = new System.Drawing.Point(80, 4);
+            this.selectLogBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.selectLogBtn.Name = "selectLogBtn";
+            this.selectLogBtn.Size = new System.Drawing.Size(68, 25);
+            this.selectLogBtn.TabIndex = 232;
+            this.selectLogBtn.Text = "Select...";
+            this.formToolTip.SetToolTip(this.selectLogBtn, "Select another visitor log file.");
+            this.selectLogBtn.UseVisualStyleBackColor = false;
+            this.selectLogBtn.Click += new System.EventHandler(this.selectLogBtn_Click);
+            // 
+            // PauseTimer
+            // 
+            this.PauseTimer.Interval = 1000;
+            this.PauseTimer.Tick += new System.EventHandler(this.PauseTimer_Tick);
+            // 
+            // logGridView
+            // 
+            this.logGridView.AllowUserToAddRows = false;
+            this.logGridView.AllowUserToDeleteRows = false;
+            this.logGridView.AllowUserToResizeRows = false;
+            this.logGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            this.logGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.logGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.logGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(105)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.logGridView.DefaultCellStyle = dataGridViewCellStyle20;
+            this.logGridView.EnableHeadersVisualStyles = false;
+            this.logGridView.Location = new System.Drawing.Point(4, 36);
+            this.logGridView.MultiSelect = false;
+            this.logGridView.Name = "logGridView";
+            this.logGridView.ReadOnly = true;
+            this.logGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.logGridView.RowHeadersVisible = false;
+            this.logGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.logGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.logGridView.Size = new System.Drawing.Size(345, 228);
+            this.logGridView.TabIndex = 230;
+            // 
+            // logName
+            // 
+            this.logName.AutoSize = true;
+            this.logName.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.logName.ForeColor = System.Drawing.Color.White;
+            this.logName.Location = new System.Drawing.Point(150, 9);
+            this.logName.Name = "logName";
+            this.logName.Size = new System.Drawing.Size(206, 16);
+            this.logName.TabIndex = 233;
+            this.logName.Text = "FFFFFFFFFFFFFFFFFFFFFF";
+            this.logName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // logPanel
+            // 
+            this.logPanel.Controls.Add(this.newLogBtn);
+            this.logPanel.Controls.Add(this.logName);
+            this.logPanel.Controls.Add(this.logGridView);
+            this.logPanel.Controls.Add(this.selectLogBtn);
+            this.logPanel.Location = new System.Drawing.Point(233, 9);
+            this.logPanel.Name = "logPanel";
+            this.logPanel.Size = new System.Drawing.Size(377, 287);
+            this.logPanel.TabIndex = 234;
+            this.logPanel.Visible = false;
+            // 
+            // mapPanel
+            // 
+            this.mapPanel.Controls.Add(this.startBtn);
+            this.mapPanel.Controls.Add(this.label4);
+            this.mapPanel.Controls.Add(this.label3);
+            this.mapPanel.Controls.Add(this.yCoordinate);
+            this.mapPanel.Controls.Add(this.miniMapBox);
+            this.mapPanel.Controls.Add(this.xCoordinate);
+            this.mapPanel.Location = new System.Drawing.Point(233, 9);
+            this.mapPanel.Name = "mapPanel";
+            this.mapPanel.Size = new System.Drawing.Size(377, 287);
+            this.mapPanel.TabIndex = 235;
+            this.mapPanel.Visible = false;
+            // 
+            // miniMapBox
+            // 
+            this.miniMapBox.BackColor = System.Drawing.Color.Transparent;
+            this.miniMapBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.miniMapBox.ErrorImage = null;
+            this.miniMapBox.InitialImage = null;
+            this.miniMapBox.Location = new System.Drawing.Point(5, 72);
+            this.miniMapBox.Name = "miniMapBox";
+            this.miniMapBox.Size = new System.Drawing.Size(224, 192);
+            this.miniMapBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.miniMapBox.TabIndex = 190;
+            this.miniMapBox.TabStop = false;
+            this.miniMapBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseDown);
+            this.miniMapBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseMove);
+            // 
+            // yCoordinate
+            // 
+            this.yCoordinate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.yCoordinate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.yCoordinate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yCoordinate.ForeColor = System.Drawing.Color.White;
+            this.yCoordinate.Location = new System.Drawing.Point(166, 46);
+            this.yCoordinate.MaxLength = 3;
+            this.yCoordinate.Multiline = false;
+            this.yCoordinate.Name = "yCoordinate";
+            this.yCoordinate.Size = new System.Drawing.Size(63, 20);
+            this.yCoordinate.TabIndex = 237;
+            this.yCoordinate.Text = "";
+            // 
+            // xCoordinate
+            // 
+            this.xCoordinate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.xCoordinate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.xCoordinate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xCoordinate.ForeColor = System.Drawing.Color.White;
+            this.xCoordinate.Location = new System.Drawing.Point(74, 46);
+            this.xCoordinate.MaxLength = 3;
+            this.xCoordinate.Multiline = false;
+            this.xCoordinate.Name = "xCoordinate";
+            this.xCoordinate.Size = new System.Drawing.Size(63, 20);
+            this.xCoordinate.TabIndex = 236;
+            this.xCoordinate.Text = "";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(49, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(25, 16);
+            this.label3.TabIndex = 236;
+            this.label3.Text = "X :";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(140, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 16);
+            this.label4.TabIndex = 238;
+            this.label4.Text = "Y :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // startBtn
+            // 
+            this.startBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.startBtn.FlatAppearance.BorderSize = 0;
+            this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.startBtn.ForeColor = System.Drawing.Color.White;
+            this.startBtn.Location = new System.Drawing.Point(143, 4);
+            this.startBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.startBtn.Name = "startBtn";
+            this.startBtn.Size = new System.Drawing.Size(86, 25);
+            this.startBtn.TabIndex = 236;
+            this.startBtn.Tag = "Start";
+            this.startBtn.Text = "Start";
+            this.formToolTip.SetToolTip(this.startBtn, "Start the regen with only the area selected being ignored.\r\n[WARNING] Item droppe" +
+        "d/placed on the empty space outside the area will be deleted.");
+            this.startBtn.UseVisualStyleBackColor = false;
+            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
+            // 
             // MapRegenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(234, 281);
+            this.Controls.Add(this.mapPanel);
+            this.Controls.Add(this.logPanel);
+            this.Controls.Add(this.logBtn);
             this.Controls.Add(this.visitorNameBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.debugBtn);
@@ -357,7 +631,7 @@ namespace ACNHPoker
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(250, 300);
+            this.MinimumSize = new System.Drawing.Size(250, 320);
             this.Name = "MapRegenerator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Map Regenerator";
@@ -365,6 +639,12 @@ namespace ACNHPoker
             this.PleaseWaitPanel.ResumeLayout(false);
             this.PleaseWaitPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logGridView)).EndInit();
+            this.logPanel.ResumeLayout(false);
+            this.logPanel.PerformLayout();
+            this.mapPanel.ResumeLayout(false);
+            this.mapPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -393,5 +673,21 @@ namespace ACNHPoker
         private System.Windows.Forms.Button debugBtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RichTextBox visitorNameBox;
+        private System.Windows.Forms.ToolTip formToolTip;
+        private System.Windows.Forms.Timer PauseTimer;
+        private System.Windows.Forms.Label PauseTimeLabel;
+        private System.Windows.Forms.Button logBtn;
+        private System.Windows.Forms.DataGridView logGridView;
+        private System.Windows.Forms.Button newLogBtn;
+        private System.Windows.Forms.Button selectLogBtn;
+        private System.Windows.Forms.Label logName;
+        private System.Windows.Forms.Panel logPanel;
+        private System.Windows.Forms.Panel mapPanel;
+        private System.Windows.Forms.PictureBox miniMapBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RichTextBox yCoordinate;
+        private System.Windows.Forms.RichTextBox xCoordinate;
+        private System.Windows.Forms.Button startBtn;
     }
 }

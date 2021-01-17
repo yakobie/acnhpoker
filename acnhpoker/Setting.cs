@@ -11,10 +11,12 @@ namespace ACNHPoker
     public partial class Setting : Form
     {
         Form1 mainForm;
-        public Setting(Form1 main, bool overrideSetting, bool disableValidation)
+        bool sound;
+        public Setting(Form1 main, bool overrideSetting, bool disableValidation, bool Sound)
         {
             InitializeComponent();
             mainForm = main;
+            sound = Sound;
 
             if (overrideSetting)
             {
@@ -25,6 +27,11 @@ namespace ACNHPoker
             if (disableValidation)
             {
                 disableValidationBtn.Text = "Enable Validation";
+            }
+
+            if (!sound)
+            {
+                soundBtn.Text = "Enable Sound";
             }
         }
 
@@ -59,7 +66,8 @@ namespace ACNHPoker
 
             mainForm.toggleOverride();
 
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void disableValidationBtn_Click(object sender, EventArgs e)
@@ -86,7 +94,8 @@ namespace ACNHPoker
 
             mainForm.toggleValidation();
 
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         public void overrideAddresses()
@@ -283,9 +292,34 @@ namespace ACNHPoker
 
             Utilities.overrideAddresses(ConfigValue);
 
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             this.Close();
+        }
+
+        private void soundBtn_Click(object sender, EventArgs e)
+        {
+            Configuration Config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            if (Config.AppSettings.Settings["sound"].Value == "true")
+            {
+                Config.AppSettings.Settings["sound"].Value = "false";
+                Config.Save(ConfigurationSaveMode.Minimal);
+                soundBtn.Text = "Enable Sound";
+                sound = false;
+                mainForm.sound = false;
+            }
+            else
+            {
+                Config.AppSettings.Settings["sound"].Value = "true";
+                Config.Save(ConfigurationSaveMode.Minimal);
+                soundBtn.Text = "Disable Sound";
+                sound = true;
+                mainForm.sound = true;
+            }
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
     }
 }

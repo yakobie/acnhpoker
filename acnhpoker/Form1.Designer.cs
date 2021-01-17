@@ -51,6 +51,46 @@
             this.label1 = new System.Windows.Forms.Label();
             this.AmountLabel = new System.Windows.Forms.Label();
             this.inventoryPanel = new System.Windows.Forms.Panel();
+            this.inventory40 = new ACNHPoker.inventorySlot();
+            this.inventory39 = new ACNHPoker.inventorySlot();
+            this.inventory38 = new ACNHPoker.inventorySlot();
+            this.inventory37 = new ACNHPoker.inventorySlot();
+            this.inventory36 = new ACNHPoker.inventorySlot();
+            this.inventory35 = new ACNHPoker.inventorySlot();
+            this.inventory34 = new ACNHPoker.inventorySlot();
+            this.inventory33 = new ACNHPoker.inventorySlot();
+            this.inventory32 = new ACNHPoker.inventorySlot();
+            this.inventory31 = new ACNHPoker.inventorySlot();
+            this.inventory30 = new ACNHPoker.inventorySlot();
+            this.inventory29 = new ACNHPoker.inventorySlot();
+            this.inventory28 = new ACNHPoker.inventorySlot();
+            this.inventory27 = new ACNHPoker.inventorySlot();
+            this.inventory26 = new ACNHPoker.inventorySlot();
+            this.inventory25 = new ACNHPoker.inventorySlot();
+            this.inventory24 = new ACNHPoker.inventorySlot();
+            this.inventory23 = new ACNHPoker.inventorySlot();
+            this.inventory22 = new ACNHPoker.inventorySlot();
+            this.inventory21 = new ACNHPoker.inventorySlot();
+            this.inventory20 = new ACNHPoker.inventorySlot();
+            this.inventory19 = new ACNHPoker.inventorySlot();
+            this.inventory18 = new ACNHPoker.inventorySlot();
+            this.inventory17 = new ACNHPoker.inventorySlot();
+            this.inventory16 = new ACNHPoker.inventorySlot();
+            this.inventory15 = new ACNHPoker.inventorySlot();
+            this.inventory14 = new ACNHPoker.inventorySlot();
+            this.inventory13 = new ACNHPoker.inventorySlot();
+            this.inventory12 = new ACNHPoker.inventorySlot();
+            this.inventory11 = new ACNHPoker.inventorySlot();
+            this.inventory10 = new ACNHPoker.inventorySlot();
+            this.inventory9 = new ACNHPoker.inventorySlot();
+            this.inventory8 = new ACNHPoker.inventorySlot();
+            this.inventory7 = new ACNHPoker.inventorySlot();
+            this.inventory6 = new ACNHPoker.inventorySlot();
+            this.inventory5 = new ACNHPoker.inventorySlot();
+            this.inventory4 = new ACNHPoker.inventorySlot();
+            this.inventory3 = new ACNHPoker.inventorySlot();
+            this.inventory2 = new ACNHPoker.inventorySlot();
+            this.inventory1 = new ACNHPoker.inventorySlot();
             this.spawnAllBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
@@ -145,6 +185,7 @@
             this.speedX2Btn = new System.Windows.Forms.Button();
             this.speedX3Btn = new System.Windows.Forms.Button();
             this.animationSpdx5 = new System.Windows.Forms.Button();
+            this.selectedItem = new ACNHPoker.inventorySlot();
             this.playerSelectorOther = new System.Windows.Forms.ComboBox();
             this.playerSelectorInventory = new System.Windows.Forms.ComboBox();
             this.saveBtn = new System.Windows.Forms.Button();
@@ -253,16 +294,10 @@
             this.seaFishGridView = new System.Windows.Forms.DataGridView();
             this.riverFishGridView = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.Result5 = new System.Windows.Forms.RichTextBox();
-            this.Result6 = new System.Windows.Forms.RichTextBox();
-            this.Result7 = new System.Windows.Forms.RichTextBox();
-            this.Result8 = new System.Windows.Forms.RichTextBox();
-            this.Result9 = new System.Windows.Forms.RichTextBox();
             this.btnToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dump = new System.Windows.Forms.Button();
-            this.idbox = new System.Windows.Forms.RichTextBox();
-            this.namebox = new System.Windows.Forms.RichTextBox();
             this.villagerLargePanel = new System.Windows.Forms.Panel();
+            this.overlay = new ACNHPoker.ExtendedPanel();
             this.PleaseWaitPanel = new System.Windows.Forms.Panel();
             this.WaitMessagebox = new System.Windows.Forms.RichTextBox();
             this.VillagerProgressBar = new System.Windows.Forms.ProgressBar();
@@ -290,8 +325,10 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.IndexLabel = new System.Windows.Forms.Label();
             this.VillagerControl = new System.Windows.Forms.Panel();
+            this.MysSelector = new ACNHPoker.VillagerSelector();
             this.IslandSearch = new System.Windows.Forms.TextBox();
             this.VillagerSearch = new System.Windows.Forms.TextBox();
+            this.ReplaceSelector = new ACNHPoker.VillagerSelector();
             this.RefreshVillagerBtn = new System.Windows.Forms.Button();
             this.LockBox = new System.Windows.Forms.CheckBox();
             this.MysVillagerBtn = new System.Windows.Forms.Button();
@@ -308,50 +345,12 @@
             this.ProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.egg = new System.Windows.Forms.Button();
             this.VillagerSearchMenu = new AutocompleteMenuNS.AutocompleteMenu();
-            this.inventory40 = new ACNHPoker.inventorySlot();
-            this.inventory39 = new ACNHPoker.inventorySlot();
-            this.inventory38 = new ACNHPoker.inventorySlot();
-            this.inventory37 = new ACNHPoker.inventorySlot();
-            this.inventory36 = new ACNHPoker.inventorySlot();
-            this.inventory35 = new ACNHPoker.inventorySlot();
-            this.inventory34 = new ACNHPoker.inventorySlot();
-            this.inventory33 = new ACNHPoker.inventorySlot();
-            this.inventory32 = new ACNHPoker.inventorySlot();
-            this.inventory31 = new ACNHPoker.inventorySlot();
-            this.inventory30 = new ACNHPoker.inventorySlot();
-            this.inventory29 = new ACNHPoker.inventorySlot();
-            this.inventory28 = new ACNHPoker.inventorySlot();
-            this.inventory27 = new ACNHPoker.inventorySlot();
-            this.inventory26 = new ACNHPoker.inventorySlot();
-            this.inventory25 = new ACNHPoker.inventorySlot();
-            this.inventory24 = new ACNHPoker.inventorySlot();
-            this.inventory23 = new ACNHPoker.inventorySlot();
-            this.inventory22 = new ACNHPoker.inventorySlot();
-            this.inventory21 = new ACNHPoker.inventorySlot();
-            this.inventory20 = new ACNHPoker.inventorySlot();
-            this.inventory19 = new ACNHPoker.inventorySlot();
-            this.inventory18 = new ACNHPoker.inventorySlot();
-            this.inventory17 = new ACNHPoker.inventorySlot();
-            this.inventory16 = new ACNHPoker.inventorySlot();
-            this.inventory15 = new ACNHPoker.inventorySlot();
-            this.inventory14 = new ACNHPoker.inventorySlot();
-            this.inventory13 = new ACNHPoker.inventorySlot();
-            this.inventory12 = new ACNHPoker.inventorySlot();
-            this.inventory11 = new ACNHPoker.inventorySlot();
-            this.inventory10 = new ACNHPoker.inventorySlot();
-            this.inventory9 = new ACNHPoker.inventorySlot();
-            this.inventory8 = new ACNHPoker.inventorySlot();
-            this.inventory7 = new ACNHPoker.inventorySlot();
-            this.inventory6 = new ACNHPoker.inventorySlot();
-            this.inventory5 = new ACNHPoker.inventorySlot();
-            this.inventory4 = new ACNHPoker.inventorySlot();
-            this.inventory3 = new ACNHPoker.inventorySlot();
-            this.inventory2 = new ACNHPoker.inventorySlot();
-            this.inventory1 = new ACNHPoker.inventorySlot();
-            this.selectedItem = new ACNHPoker.inventorySlot();
-            this.overlay = new ACNHPoker.ExtendedPanel();
-            this.MysSelector = new ACNHPoker.VillagerSelector();
-            this.ReplaceSelector = new ACNHPoker.VillagerSelector();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.ReadBtn = new System.Windows.Forms.Button();
+            this.createBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             this.inventoryPanel.SuspendLayout();
@@ -600,6 +599,886 @@
             this.inventoryPanel.Name = "inventoryPanel";
             this.inventoryPanel.Size = new System.Drawing.Size(821, 335);
             this.inventoryPanel.TabIndex = 60;
+            // 
+            // inventory40
+            // 
+            this.inventory40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory40.ContextMenuStrip = this.itemRightClick;
+            this.inventory40.FlatAppearance.BorderSize = 0;
+            this.inventory40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory40.flowerQuantity = ((ushort)(0));
+            this.inventory40.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory40.ForeColor = System.Drawing.Color.White;
+            this.inventory40.itemDurability = ((ushort)(0));
+            this.inventory40.itemQuantity = ((ushort)(0));
+            this.inventory40.Location = new System.Drawing.Point(735, 250);
+            this.inventory40.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory40.Name = "inventory40";
+            this.inventory40.Size = new System.Drawing.Size(75, 75);
+            this.inventory40.TabIndex = 40;
+            this.inventory40.Tag = "40";
+            this.inventory40.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory40.UseVisualStyleBackColor = false;
+            this.inventory40.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory40.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory39
+            // 
+            this.inventory39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory39.ContextMenuStrip = this.itemRightClick;
+            this.inventory39.FlatAppearance.BorderSize = 0;
+            this.inventory39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory39.flowerQuantity = ((ushort)(0));
+            this.inventory39.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory39.ForeColor = System.Drawing.Color.White;
+            this.inventory39.itemDurability = ((ushort)(0));
+            this.inventory39.itemQuantity = ((ushort)(0));
+            this.inventory39.Location = new System.Drawing.Point(654, 250);
+            this.inventory39.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory39.Name = "inventory39";
+            this.inventory39.Size = new System.Drawing.Size(75, 75);
+            this.inventory39.TabIndex = 39;
+            this.inventory39.Tag = "39";
+            this.inventory39.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory39.UseVisualStyleBackColor = false;
+            this.inventory39.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory39.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory38
+            // 
+            this.inventory38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory38.ContextMenuStrip = this.itemRightClick;
+            this.inventory38.FlatAppearance.BorderSize = 0;
+            this.inventory38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory38.flowerQuantity = ((ushort)(0));
+            this.inventory38.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory38.ForeColor = System.Drawing.Color.White;
+            this.inventory38.itemDurability = ((ushort)(0));
+            this.inventory38.itemQuantity = ((ushort)(0));
+            this.inventory38.Location = new System.Drawing.Point(573, 250);
+            this.inventory38.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory38.Name = "inventory38";
+            this.inventory38.Size = new System.Drawing.Size(75, 75);
+            this.inventory38.TabIndex = 38;
+            this.inventory38.Tag = "38";
+            this.inventory38.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory38.UseVisualStyleBackColor = false;
+            this.inventory38.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory38.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory37
+            // 
+            this.inventory37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory37.ContextMenuStrip = this.itemRightClick;
+            this.inventory37.FlatAppearance.BorderSize = 0;
+            this.inventory37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory37.flowerQuantity = ((ushort)(0));
+            this.inventory37.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory37.ForeColor = System.Drawing.Color.White;
+            this.inventory37.itemDurability = ((ushort)(0));
+            this.inventory37.itemQuantity = ((ushort)(0));
+            this.inventory37.Location = new System.Drawing.Point(492, 250);
+            this.inventory37.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory37.Name = "inventory37";
+            this.inventory37.Size = new System.Drawing.Size(75, 75);
+            this.inventory37.TabIndex = 37;
+            this.inventory37.Tag = "37";
+            this.inventory37.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory37.UseVisualStyleBackColor = false;
+            this.inventory37.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory37.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory36
+            // 
+            this.inventory36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory36.ContextMenuStrip = this.itemRightClick;
+            this.inventory36.FlatAppearance.BorderSize = 0;
+            this.inventory36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory36.flowerQuantity = ((ushort)(0));
+            this.inventory36.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory36.ForeColor = System.Drawing.Color.White;
+            this.inventory36.itemDurability = ((ushort)(0));
+            this.inventory36.itemQuantity = ((ushort)(0));
+            this.inventory36.Location = new System.Drawing.Point(411, 250);
+            this.inventory36.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory36.Name = "inventory36";
+            this.inventory36.Size = new System.Drawing.Size(75, 75);
+            this.inventory36.TabIndex = 36;
+            this.inventory36.Tag = "36";
+            this.inventory36.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory36.UseVisualStyleBackColor = false;
+            this.inventory36.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory36.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory35
+            // 
+            this.inventory35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory35.ContextMenuStrip = this.itemRightClick;
+            this.inventory35.FlatAppearance.BorderSize = 0;
+            this.inventory35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory35.flowerQuantity = ((ushort)(0));
+            this.inventory35.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory35.ForeColor = System.Drawing.Color.White;
+            this.inventory35.itemDurability = ((ushort)(0));
+            this.inventory35.itemQuantity = ((ushort)(0));
+            this.inventory35.Location = new System.Drawing.Point(330, 250);
+            this.inventory35.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory35.Name = "inventory35";
+            this.inventory35.Size = new System.Drawing.Size(75, 75);
+            this.inventory35.TabIndex = 35;
+            this.inventory35.Tag = "35";
+            this.inventory35.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory35.UseVisualStyleBackColor = false;
+            this.inventory35.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory35.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory34
+            // 
+            this.inventory34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory34.ContextMenuStrip = this.itemRightClick;
+            this.inventory34.FlatAppearance.BorderSize = 0;
+            this.inventory34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory34.flowerQuantity = ((ushort)(0));
+            this.inventory34.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory34.ForeColor = System.Drawing.Color.White;
+            this.inventory34.itemDurability = ((ushort)(0));
+            this.inventory34.itemQuantity = ((ushort)(0));
+            this.inventory34.Location = new System.Drawing.Point(249, 250);
+            this.inventory34.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory34.Name = "inventory34";
+            this.inventory34.Size = new System.Drawing.Size(75, 75);
+            this.inventory34.TabIndex = 34;
+            this.inventory34.Tag = "34";
+            this.inventory34.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory34.UseVisualStyleBackColor = false;
+            this.inventory34.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory34.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory33
+            // 
+            this.inventory33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory33.ContextMenuStrip = this.itemRightClick;
+            this.inventory33.FlatAppearance.BorderSize = 0;
+            this.inventory33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory33.flowerQuantity = ((ushort)(0));
+            this.inventory33.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory33.ForeColor = System.Drawing.Color.White;
+            this.inventory33.itemDurability = ((ushort)(0));
+            this.inventory33.itemQuantity = ((ushort)(0));
+            this.inventory33.Location = new System.Drawing.Point(168, 250);
+            this.inventory33.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory33.Name = "inventory33";
+            this.inventory33.Size = new System.Drawing.Size(75, 75);
+            this.inventory33.TabIndex = 33;
+            this.inventory33.Tag = "33";
+            this.inventory33.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory33.UseVisualStyleBackColor = false;
+            this.inventory33.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory33.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory32
+            // 
+            this.inventory32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory32.ContextMenuStrip = this.itemRightClick;
+            this.inventory32.FlatAppearance.BorderSize = 0;
+            this.inventory32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory32.flowerQuantity = ((ushort)(0));
+            this.inventory32.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory32.ForeColor = System.Drawing.Color.White;
+            this.inventory32.itemDurability = ((ushort)(0));
+            this.inventory32.itemQuantity = ((ushort)(0));
+            this.inventory32.Location = new System.Drawing.Point(87, 250);
+            this.inventory32.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory32.Name = "inventory32";
+            this.inventory32.Size = new System.Drawing.Size(75, 75);
+            this.inventory32.TabIndex = 32;
+            this.inventory32.Tag = "32";
+            this.inventory32.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory32.UseVisualStyleBackColor = false;
+            this.inventory32.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory32.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory31
+            // 
+            this.inventory31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory31.ContextMenuStrip = this.itemRightClick;
+            this.inventory31.FlatAppearance.BorderSize = 0;
+            this.inventory31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory31.flowerQuantity = ((ushort)(0));
+            this.inventory31.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory31.ForeColor = System.Drawing.Color.White;
+            this.inventory31.itemDurability = ((ushort)(0));
+            this.inventory31.itemQuantity = ((ushort)(0));
+            this.inventory31.Location = new System.Drawing.Point(6, 250);
+            this.inventory31.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory31.Name = "inventory31";
+            this.inventory31.Size = new System.Drawing.Size(75, 75);
+            this.inventory31.TabIndex = 31;
+            this.inventory31.Tag = "31";
+            this.inventory31.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory31.UseVisualStyleBackColor = false;
+            this.inventory31.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory31.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory30
+            // 
+            this.inventory30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory30.ContextMenuStrip = this.itemRightClick;
+            this.inventory30.FlatAppearance.BorderSize = 0;
+            this.inventory30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory30.flowerQuantity = ((ushort)(0));
+            this.inventory30.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory30.ForeColor = System.Drawing.Color.White;
+            this.inventory30.itemDurability = ((ushort)(0));
+            this.inventory30.itemQuantity = ((ushort)(0));
+            this.inventory30.Location = new System.Drawing.Point(735, 169);
+            this.inventory30.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory30.Name = "inventory30";
+            this.inventory30.Size = new System.Drawing.Size(75, 75);
+            this.inventory30.TabIndex = 30;
+            this.inventory30.Tag = "30";
+            this.inventory30.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory30.UseVisualStyleBackColor = false;
+            this.inventory30.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory30.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory29
+            // 
+            this.inventory29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory29.ContextMenuStrip = this.itemRightClick;
+            this.inventory29.FlatAppearance.BorderSize = 0;
+            this.inventory29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory29.flowerQuantity = ((ushort)(0));
+            this.inventory29.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory29.ForeColor = System.Drawing.Color.White;
+            this.inventory29.itemDurability = ((ushort)(0));
+            this.inventory29.itemQuantity = ((ushort)(0));
+            this.inventory29.Location = new System.Drawing.Point(654, 169);
+            this.inventory29.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory29.Name = "inventory29";
+            this.inventory29.Size = new System.Drawing.Size(75, 75);
+            this.inventory29.TabIndex = 29;
+            this.inventory29.Tag = "29";
+            this.inventory29.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory29.UseVisualStyleBackColor = false;
+            this.inventory29.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory29.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory28
+            // 
+            this.inventory28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory28.ContextMenuStrip = this.itemRightClick;
+            this.inventory28.FlatAppearance.BorderSize = 0;
+            this.inventory28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory28.flowerQuantity = ((ushort)(0));
+            this.inventory28.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory28.ForeColor = System.Drawing.Color.White;
+            this.inventory28.itemDurability = ((ushort)(0));
+            this.inventory28.itemQuantity = ((ushort)(0));
+            this.inventory28.Location = new System.Drawing.Point(573, 169);
+            this.inventory28.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory28.Name = "inventory28";
+            this.inventory28.Size = new System.Drawing.Size(75, 75);
+            this.inventory28.TabIndex = 28;
+            this.inventory28.Tag = "28";
+            this.inventory28.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory28.UseVisualStyleBackColor = false;
+            this.inventory28.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory28.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory27
+            // 
+            this.inventory27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory27.ContextMenuStrip = this.itemRightClick;
+            this.inventory27.FlatAppearance.BorderSize = 0;
+            this.inventory27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory27.flowerQuantity = ((ushort)(0));
+            this.inventory27.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory27.ForeColor = System.Drawing.Color.White;
+            this.inventory27.itemDurability = ((ushort)(0));
+            this.inventory27.itemQuantity = ((ushort)(0));
+            this.inventory27.Location = new System.Drawing.Point(492, 169);
+            this.inventory27.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory27.Name = "inventory27";
+            this.inventory27.Size = new System.Drawing.Size(75, 75);
+            this.inventory27.TabIndex = 27;
+            this.inventory27.Tag = "27";
+            this.inventory27.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory27.UseVisualStyleBackColor = false;
+            this.inventory27.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory27.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory26
+            // 
+            this.inventory26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory26.ContextMenuStrip = this.itemRightClick;
+            this.inventory26.FlatAppearance.BorderSize = 0;
+            this.inventory26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory26.flowerQuantity = ((ushort)(0));
+            this.inventory26.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory26.ForeColor = System.Drawing.Color.White;
+            this.inventory26.itemDurability = ((ushort)(0));
+            this.inventory26.itemQuantity = ((ushort)(0));
+            this.inventory26.Location = new System.Drawing.Point(411, 169);
+            this.inventory26.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory26.Name = "inventory26";
+            this.inventory26.Size = new System.Drawing.Size(75, 75);
+            this.inventory26.TabIndex = 26;
+            this.inventory26.Tag = "26";
+            this.inventory26.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory26.UseVisualStyleBackColor = false;
+            this.inventory26.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory26.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory25
+            // 
+            this.inventory25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory25.ContextMenuStrip = this.itemRightClick;
+            this.inventory25.FlatAppearance.BorderSize = 0;
+            this.inventory25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory25.flowerQuantity = ((ushort)(0));
+            this.inventory25.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory25.ForeColor = System.Drawing.Color.White;
+            this.inventory25.itemDurability = ((ushort)(0));
+            this.inventory25.itemQuantity = ((ushort)(0));
+            this.inventory25.Location = new System.Drawing.Point(330, 169);
+            this.inventory25.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory25.Name = "inventory25";
+            this.inventory25.Size = new System.Drawing.Size(75, 75);
+            this.inventory25.TabIndex = 25;
+            this.inventory25.Tag = "25";
+            this.inventory25.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory25.UseVisualStyleBackColor = false;
+            this.inventory25.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory25.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory24
+            // 
+            this.inventory24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory24.ContextMenuStrip = this.itemRightClick;
+            this.inventory24.FlatAppearance.BorderSize = 0;
+            this.inventory24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory24.flowerQuantity = ((ushort)(0));
+            this.inventory24.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory24.ForeColor = System.Drawing.Color.White;
+            this.inventory24.itemDurability = ((ushort)(0));
+            this.inventory24.itemQuantity = ((ushort)(0));
+            this.inventory24.Location = new System.Drawing.Point(249, 169);
+            this.inventory24.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory24.Name = "inventory24";
+            this.inventory24.Size = new System.Drawing.Size(75, 75);
+            this.inventory24.TabIndex = 24;
+            this.inventory24.Tag = "24";
+            this.inventory24.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory24.UseVisualStyleBackColor = false;
+            this.inventory24.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory24.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory23
+            // 
+            this.inventory23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory23.ContextMenuStrip = this.itemRightClick;
+            this.inventory23.FlatAppearance.BorderSize = 0;
+            this.inventory23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory23.flowerQuantity = ((ushort)(0));
+            this.inventory23.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory23.ForeColor = System.Drawing.Color.White;
+            this.inventory23.itemDurability = ((ushort)(0));
+            this.inventory23.itemQuantity = ((ushort)(0));
+            this.inventory23.Location = new System.Drawing.Point(168, 169);
+            this.inventory23.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory23.Name = "inventory23";
+            this.inventory23.Size = new System.Drawing.Size(75, 75);
+            this.inventory23.TabIndex = 23;
+            this.inventory23.Tag = "23";
+            this.inventory23.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory23.UseVisualStyleBackColor = false;
+            this.inventory23.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory23.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory22
+            // 
+            this.inventory22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory22.ContextMenuStrip = this.itemRightClick;
+            this.inventory22.FlatAppearance.BorderSize = 0;
+            this.inventory22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory22.flowerQuantity = ((ushort)(0));
+            this.inventory22.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory22.ForeColor = System.Drawing.Color.White;
+            this.inventory22.itemDurability = ((ushort)(0));
+            this.inventory22.itemQuantity = ((ushort)(0));
+            this.inventory22.Location = new System.Drawing.Point(87, 169);
+            this.inventory22.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory22.Name = "inventory22";
+            this.inventory22.Size = new System.Drawing.Size(75, 75);
+            this.inventory22.TabIndex = 22;
+            this.inventory22.Tag = "22";
+            this.inventory22.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory22.UseVisualStyleBackColor = false;
+            this.inventory22.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory22.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory21
+            // 
+            this.inventory21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory21.ContextMenuStrip = this.itemRightClick;
+            this.inventory21.FlatAppearance.BorderSize = 0;
+            this.inventory21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory21.flowerQuantity = ((ushort)(0));
+            this.inventory21.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory21.ForeColor = System.Drawing.Color.White;
+            this.inventory21.itemDurability = ((ushort)(0));
+            this.inventory21.itemQuantity = ((ushort)(0));
+            this.inventory21.Location = new System.Drawing.Point(6, 169);
+            this.inventory21.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory21.Name = "inventory21";
+            this.inventory21.Size = new System.Drawing.Size(75, 75);
+            this.inventory21.TabIndex = 21;
+            this.inventory21.Tag = "21";
+            this.inventory21.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory21.UseVisualStyleBackColor = false;
+            this.inventory21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory21.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory20
+            // 
+            this.inventory20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory20.ContextMenuStrip = this.itemRightClick;
+            this.inventory20.FlatAppearance.BorderSize = 0;
+            this.inventory20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory20.flowerQuantity = ((ushort)(0));
+            this.inventory20.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory20.ForeColor = System.Drawing.Color.White;
+            this.inventory20.itemDurability = ((ushort)(0));
+            this.inventory20.itemQuantity = ((ushort)(0));
+            this.inventory20.Location = new System.Drawing.Point(735, 88);
+            this.inventory20.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory20.Name = "inventory20";
+            this.inventory20.Size = new System.Drawing.Size(75, 75);
+            this.inventory20.TabIndex = 20;
+            this.inventory20.Tag = "20";
+            this.inventory20.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory20.UseVisualStyleBackColor = false;
+            this.inventory20.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory20.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory19
+            // 
+            this.inventory19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory19.ContextMenuStrip = this.itemRightClick;
+            this.inventory19.FlatAppearance.BorderSize = 0;
+            this.inventory19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory19.flowerQuantity = ((ushort)(0));
+            this.inventory19.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory19.ForeColor = System.Drawing.Color.White;
+            this.inventory19.itemDurability = ((ushort)(0));
+            this.inventory19.itemQuantity = ((ushort)(0));
+            this.inventory19.Location = new System.Drawing.Point(654, 88);
+            this.inventory19.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory19.Name = "inventory19";
+            this.inventory19.Size = new System.Drawing.Size(75, 75);
+            this.inventory19.TabIndex = 19;
+            this.inventory19.Tag = "19";
+            this.inventory19.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory19.UseVisualStyleBackColor = false;
+            this.inventory19.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory19.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory18
+            // 
+            this.inventory18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory18.ContextMenuStrip = this.itemRightClick;
+            this.inventory18.FlatAppearance.BorderSize = 0;
+            this.inventory18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory18.flowerQuantity = ((ushort)(0));
+            this.inventory18.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory18.ForeColor = System.Drawing.Color.White;
+            this.inventory18.itemDurability = ((ushort)(0));
+            this.inventory18.itemQuantity = ((ushort)(0));
+            this.inventory18.Location = new System.Drawing.Point(573, 88);
+            this.inventory18.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory18.Name = "inventory18";
+            this.inventory18.Size = new System.Drawing.Size(75, 75);
+            this.inventory18.TabIndex = 18;
+            this.inventory18.Tag = "18";
+            this.inventory18.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory18.UseVisualStyleBackColor = false;
+            this.inventory18.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory18.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory17
+            // 
+            this.inventory17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory17.ContextMenuStrip = this.itemRightClick;
+            this.inventory17.FlatAppearance.BorderSize = 0;
+            this.inventory17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory17.flowerQuantity = ((ushort)(0));
+            this.inventory17.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory17.ForeColor = System.Drawing.Color.White;
+            this.inventory17.itemDurability = ((ushort)(0));
+            this.inventory17.itemQuantity = ((ushort)(0));
+            this.inventory17.Location = new System.Drawing.Point(492, 88);
+            this.inventory17.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory17.Name = "inventory17";
+            this.inventory17.Size = new System.Drawing.Size(75, 75);
+            this.inventory17.TabIndex = 17;
+            this.inventory17.Tag = "17";
+            this.inventory17.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory17.UseVisualStyleBackColor = false;
+            this.inventory17.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory17.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory16
+            // 
+            this.inventory16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory16.ContextMenuStrip = this.itemRightClick;
+            this.inventory16.FlatAppearance.BorderSize = 0;
+            this.inventory16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory16.flowerQuantity = ((ushort)(0));
+            this.inventory16.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory16.ForeColor = System.Drawing.Color.White;
+            this.inventory16.itemDurability = ((ushort)(0));
+            this.inventory16.itemQuantity = ((ushort)(0));
+            this.inventory16.Location = new System.Drawing.Point(411, 88);
+            this.inventory16.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory16.Name = "inventory16";
+            this.inventory16.Size = new System.Drawing.Size(75, 75);
+            this.inventory16.TabIndex = 16;
+            this.inventory16.Tag = "16";
+            this.inventory16.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory16.UseVisualStyleBackColor = false;
+            this.inventory16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory16.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory15
+            // 
+            this.inventory15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory15.ContextMenuStrip = this.itemRightClick;
+            this.inventory15.FlatAppearance.BorderSize = 0;
+            this.inventory15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory15.flowerQuantity = ((ushort)(0));
+            this.inventory15.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory15.ForeColor = System.Drawing.Color.White;
+            this.inventory15.itemDurability = ((ushort)(0));
+            this.inventory15.itemQuantity = ((ushort)(0));
+            this.inventory15.Location = new System.Drawing.Point(330, 88);
+            this.inventory15.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory15.Name = "inventory15";
+            this.inventory15.Size = new System.Drawing.Size(75, 75);
+            this.inventory15.TabIndex = 15;
+            this.inventory15.Tag = "15";
+            this.inventory15.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory15.UseVisualStyleBackColor = false;
+            this.inventory15.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory15.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory14
+            // 
+            this.inventory14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory14.ContextMenuStrip = this.itemRightClick;
+            this.inventory14.FlatAppearance.BorderSize = 0;
+            this.inventory14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory14.flowerQuantity = ((ushort)(0));
+            this.inventory14.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory14.ForeColor = System.Drawing.Color.White;
+            this.inventory14.itemDurability = ((ushort)(0));
+            this.inventory14.itemQuantity = ((ushort)(0));
+            this.inventory14.Location = new System.Drawing.Point(249, 88);
+            this.inventory14.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory14.Name = "inventory14";
+            this.inventory14.Size = new System.Drawing.Size(75, 75);
+            this.inventory14.TabIndex = 14;
+            this.inventory14.Tag = "14";
+            this.inventory14.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory14.UseVisualStyleBackColor = false;
+            this.inventory14.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory14.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory13
+            // 
+            this.inventory13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory13.ContextMenuStrip = this.itemRightClick;
+            this.inventory13.FlatAppearance.BorderSize = 0;
+            this.inventory13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory13.flowerQuantity = ((ushort)(0));
+            this.inventory13.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory13.ForeColor = System.Drawing.Color.White;
+            this.inventory13.itemDurability = ((ushort)(0));
+            this.inventory13.itemQuantity = ((ushort)(0));
+            this.inventory13.Location = new System.Drawing.Point(168, 88);
+            this.inventory13.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory13.Name = "inventory13";
+            this.inventory13.Size = new System.Drawing.Size(75, 75);
+            this.inventory13.TabIndex = 13;
+            this.inventory13.Tag = "13";
+            this.inventory13.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory13.UseVisualStyleBackColor = false;
+            this.inventory13.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory13.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory12
+            // 
+            this.inventory12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory12.ContextMenuStrip = this.itemRightClick;
+            this.inventory12.FlatAppearance.BorderSize = 0;
+            this.inventory12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory12.flowerQuantity = ((ushort)(0));
+            this.inventory12.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory12.ForeColor = System.Drawing.Color.White;
+            this.inventory12.itemDurability = ((ushort)(0));
+            this.inventory12.itemQuantity = ((ushort)(0));
+            this.inventory12.Location = new System.Drawing.Point(87, 88);
+            this.inventory12.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory12.Name = "inventory12";
+            this.inventory12.Size = new System.Drawing.Size(75, 75);
+            this.inventory12.TabIndex = 12;
+            this.inventory12.Tag = "12";
+            this.inventory12.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory12.UseVisualStyleBackColor = false;
+            this.inventory12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory12.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory11
+            // 
+            this.inventory11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory11.ContextMenuStrip = this.itemRightClick;
+            this.inventory11.FlatAppearance.BorderSize = 0;
+            this.inventory11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory11.flowerQuantity = ((ushort)(0));
+            this.inventory11.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory11.ForeColor = System.Drawing.Color.White;
+            this.inventory11.itemDurability = ((ushort)(0));
+            this.inventory11.itemQuantity = ((ushort)(0));
+            this.inventory11.Location = new System.Drawing.Point(6, 88);
+            this.inventory11.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory11.Name = "inventory11";
+            this.inventory11.Size = new System.Drawing.Size(75, 75);
+            this.inventory11.TabIndex = 11;
+            this.inventory11.Tag = "11";
+            this.inventory11.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory11.UseVisualStyleBackColor = false;
+            this.inventory11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory11.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory10
+            // 
+            this.inventory10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory10.ContextMenuStrip = this.itemRightClick;
+            this.inventory10.FlatAppearance.BorderSize = 0;
+            this.inventory10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory10.flowerQuantity = ((ushort)(0));
+            this.inventory10.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory10.ForeColor = System.Drawing.Color.White;
+            this.inventory10.itemDurability = ((ushort)(0));
+            this.inventory10.itemQuantity = ((ushort)(0));
+            this.inventory10.Location = new System.Drawing.Point(735, 7);
+            this.inventory10.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory10.Name = "inventory10";
+            this.inventory10.Size = new System.Drawing.Size(75, 75);
+            this.inventory10.TabIndex = 10;
+            this.inventory10.Tag = "10";
+            this.inventory10.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory10.UseVisualStyleBackColor = false;
+            this.inventory10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory10.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory9
+            // 
+            this.inventory9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory9.ContextMenuStrip = this.itemRightClick;
+            this.inventory9.FlatAppearance.BorderSize = 0;
+            this.inventory9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory9.flowerQuantity = ((ushort)(0));
+            this.inventory9.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory9.ForeColor = System.Drawing.Color.White;
+            this.inventory9.itemDurability = ((ushort)(0));
+            this.inventory9.itemQuantity = ((ushort)(0));
+            this.inventory9.Location = new System.Drawing.Point(654, 7);
+            this.inventory9.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory9.Name = "inventory9";
+            this.inventory9.Size = new System.Drawing.Size(75, 75);
+            this.inventory9.TabIndex = 9;
+            this.inventory9.Tag = "9";
+            this.inventory9.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory9.UseVisualStyleBackColor = false;
+            this.inventory9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory9.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory8
+            // 
+            this.inventory8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory8.ContextMenuStrip = this.itemRightClick;
+            this.inventory8.FlatAppearance.BorderSize = 0;
+            this.inventory8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory8.flowerQuantity = ((ushort)(0));
+            this.inventory8.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory8.ForeColor = System.Drawing.Color.White;
+            this.inventory8.itemDurability = ((ushort)(0));
+            this.inventory8.itemQuantity = ((ushort)(0));
+            this.inventory8.Location = new System.Drawing.Point(573, 7);
+            this.inventory8.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory8.Name = "inventory8";
+            this.inventory8.Size = new System.Drawing.Size(75, 75);
+            this.inventory8.TabIndex = 8;
+            this.inventory8.Tag = "8";
+            this.inventory8.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory8.UseVisualStyleBackColor = false;
+            this.inventory8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory8.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory7
+            // 
+            this.inventory7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory7.ContextMenuStrip = this.itemRightClick;
+            this.inventory7.FlatAppearance.BorderSize = 0;
+            this.inventory7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory7.flowerQuantity = ((ushort)(0));
+            this.inventory7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory7.ForeColor = System.Drawing.Color.White;
+            this.inventory7.itemDurability = ((ushort)(0));
+            this.inventory7.itemQuantity = ((ushort)(0));
+            this.inventory7.Location = new System.Drawing.Point(492, 7);
+            this.inventory7.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory7.Name = "inventory7";
+            this.inventory7.Size = new System.Drawing.Size(75, 75);
+            this.inventory7.TabIndex = 7;
+            this.inventory7.Tag = "7";
+            this.inventory7.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory7.UseVisualStyleBackColor = false;
+            this.inventory7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory7.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory6
+            // 
+            this.inventory6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory6.ContextMenuStrip = this.itemRightClick;
+            this.inventory6.FlatAppearance.BorderSize = 0;
+            this.inventory6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory6.flowerQuantity = ((ushort)(0));
+            this.inventory6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory6.ForeColor = System.Drawing.Color.White;
+            this.inventory6.itemDurability = ((ushort)(0));
+            this.inventory6.itemQuantity = ((ushort)(0));
+            this.inventory6.Location = new System.Drawing.Point(411, 7);
+            this.inventory6.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory6.Name = "inventory6";
+            this.inventory6.Size = new System.Drawing.Size(75, 75);
+            this.inventory6.TabIndex = 6;
+            this.inventory6.Tag = "6";
+            this.inventory6.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory6.UseVisualStyleBackColor = false;
+            this.inventory6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory6.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory5
+            // 
+            this.inventory5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory5.ContextMenuStrip = this.itemRightClick;
+            this.inventory5.FlatAppearance.BorderSize = 0;
+            this.inventory5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory5.flowerQuantity = ((ushort)(0));
+            this.inventory5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory5.ForeColor = System.Drawing.Color.White;
+            this.inventory5.itemDurability = ((ushort)(0));
+            this.inventory5.itemQuantity = ((ushort)(0));
+            this.inventory5.Location = new System.Drawing.Point(330, 7);
+            this.inventory5.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory5.Name = "inventory5";
+            this.inventory5.Size = new System.Drawing.Size(75, 75);
+            this.inventory5.TabIndex = 5;
+            this.inventory5.Tag = "5";
+            this.inventory5.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory5.UseVisualStyleBackColor = false;
+            this.inventory5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory5.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory4
+            // 
+            this.inventory4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory4.ContextMenuStrip = this.itemRightClick;
+            this.inventory4.FlatAppearance.BorderSize = 0;
+            this.inventory4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory4.flowerQuantity = ((ushort)(0));
+            this.inventory4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory4.ForeColor = System.Drawing.Color.White;
+            this.inventory4.itemDurability = ((ushort)(0));
+            this.inventory4.itemQuantity = ((ushort)(0));
+            this.inventory4.Location = new System.Drawing.Point(249, 7);
+            this.inventory4.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory4.Name = "inventory4";
+            this.inventory4.Size = new System.Drawing.Size(75, 75);
+            this.inventory4.TabIndex = 4;
+            this.inventory4.Tag = "4";
+            this.inventory4.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory4.UseVisualStyleBackColor = false;
+            this.inventory4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory4.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory3
+            // 
+            this.inventory3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory3.ContextMenuStrip = this.itemRightClick;
+            this.inventory3.FlatAppearance.BorderSize = 0;
+            this.inventory3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory3.flowerQuantity = ((ushort)(0));
+            this.inventory3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory3.ForeColor = System.Drawing.Color.White;
+            this.inventory3.itemDurability = ((ushort)(0));
+            this.inventory3.itemQuantity = ((ushort)(0));
+            this.inventory3.Location = new System.Drawing.Point(168, 7);
+            this.inventory3.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory3.Name = "inventory3";
+            this.inventory3.Size = new System.Drawing.Size(75, 75);
+            this.inventory3.TabIndex = 3;
+            this.inventory3.Tag = "3";
+            this.inventory3.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory3.UseVisualStyleBackColor = false;
+            this.inventory3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory3.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory2
+            // 
+            this.inventory2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory2.ContextMenuStrip = this.itemRightClick;
+            this.inventory2.FlatAppearance.BorderSize = 0;
+            this.inventory2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory2.flowerQuantity = ((ushort)(0));
+            this.inventory2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory2.ForeColor = System.Drawing.Color.White;
+            this.inventory2.itemDurability = ((ushort)(0));
+            this.inventory2.itemQuantity = ((ushort)(0));
+            this.inventory2.Location = new System.Drawing.Point(87, 7);
+            this.inventory2.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory2.Name = "inventory2";
+            this.inventory2.Size = new System.Drawing.Size(75, 75);
+            this.inventory2.TabIndex = 2;
+            this.inventory2.Tag = "2";
+            this.inventory2.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory2.UseVisualStyleBackColor = false;
+            this.inventory2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory2.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
+            // 
+            // inventory1
+            // 
+            this.inventory1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.inventory1.ContextMenuStrip = this.itemRightClick;
+            this.inventory1.FlatAppearance.BorderSize = 0;
+            this.inventory1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventory1.flowerQuantity = ((ushort)(0));
+            this.inventory1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.inventory1.ForeColor = System.Drawing.Color.White;
+            this.inventory1.itemDurability = ((ushort)(0));
+            this.inventory1.itemQuantity = ((ushort)(0));
+            this.inventory1.Location = new System.Drawing.Point(6, 7);
+            this.inventory1.Margin = new System.Windows.Forms.Padding(0);
+            this.inventory1.Name = "inventory1";
+            this.inventory1.Size = new System.Drawing.Size(75, 75);
+            this.inventory1.TabIndex = 1;
+            this.inventory1.Tag = "1";
+            this.inventory1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.inventory1.UseVisualStyleBackColor = false;
+            this.inventory1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
+            this.inventory1.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
             // 
             // spawnAllBtn
             // 
@@ -2091,6 +2970,27 @@
         "e blow, Saber!");
             this.animationSpdx5.UseVisualStyleBackColor = false;
             this.animationSpdx5.Click += new System.EventHandler(this.animationSpdx5_Click);
+            // 
+            // selectedItem
+            // 
+            this.selectedItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.selectedItem.FlatAppearance.BorderSize = 0;
+            this.selectedItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.selectedItem.flowerQuantity = ((ushort)(0));
+            this.selectedItem.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.selectedItem.ForeColor = System.Drawing.Color.White;
+            this.selectedItem.itemDurability = ((ushort)(0));
+            this.selectedItem.itemQuantity = ((ushort)(0));
+            this.selectedItem.Location = new System.Drawing.Point(1, 387);
+            this.selectedItem.Margin = new System.Windows.Forms.Padding(0);
+            this.selectedItem.Name = "selectedItem";
+            this.selectedItem.Size = new System.Drawing.Size(110, 110);
+            this.selectedItem.TabIndex = 41;
+            this.selectedItem.Tag = "";
+            this.selectedItem.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.formToolTip.SetToolTip(this.selectedItem, "Click to spawn selected item.");
+            this.selectedItem.UseVisualStyleBackColor = false;
+            this.selectedItem.Click += new System.EventHandler(this.selectedItem_Click);
             // 
             // playerSelectorOther
             // 
@@ -4357,7 +5257,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(984, 862);
+            this.button1.Location = new System.Drawing.Point(1105, 873);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 23);
             this.button1.TabIndex = 154;
@@ -4365,76 +5265,6 @@
             this.button1.Text = "debug";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // Result5
-            // 
-            this.VillagerSearchMenu.SetAutocompleteMenu(this.Result5, null);
-            this.Result5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.Result5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Result5.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Result5.ForeColor = System.Drawing.Color.White;
-            this.Result5.Location = new System.Drawing.Point(427, 737);
-            this.Result5.Multiline = false;
-            this.Result5.Name = "Result5";
-            this.Result5.Size = new System.Drawing.Size(318, 56);
-            this.Result5.TabIndex = 155;
-            this.Result5.Text = "";
-            // 
-            // Result6
-            // 
-            this.VillagerSearchMenu.SetAutocompleteMenu(this.Result6, null);
-            this.Result6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.Result6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Result6.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Result6.ForeColor = System.Drawing.Color.White;
-            this.Result6.Location = new System.Drawing.Point(751, 736);
-            this.Result6.Multiline = false;
-            this.Result6.Name = "Result6";
-            this.Result6.Size = new System.Drawing.Size(318, 56);
-            this.Result6.TabIndex = 156;
-            this.Result6.Text = "";
-            // 
-            // Result7
-            // 
-            this.VillagerSearchMenu.SetAutocompleteMenu(this.Result7, null);
-            this.Result7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.Result7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Result7.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Result7.ForeColor = System.Drawing.Color.White;
-            this.Result7.Location = new System.Drawing.Point(103, 800);
-            this.Result7.Multiline = false;
-            this.Result7.Name = "Result7";
-            this.Result7.Size = new System.Drawing.Size(318, 56);
-            this.Result7.TabIndex = 157;
-            this.Result7.Text = "";
-            // 
-            // Result8
-            // 
-            this.VillagerSearchMenu.SetAutocompleteMenu(this.Result8, null);
-            this.Result8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.Result8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Result8.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Result8.ForeColor = System.Drawing.Color.White;
-            this.Result8.Location = new System.Drawing.Point(429, 800);
-            this.Result8.Multiline = false;
-            this.Result8.Name = "Result8";
-            this.Result8.Size = new System.Drawing.Size(318, 56);
-            this.Result8.TabIndex = 158;
-            this.Result8.Text = "";
-            // 
-            // Result9
-            // 
-            this.VillagerSearchMenu.SetAutocompleteMenu(this.Result9, null);
-            this.Result9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.Result9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Result9.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Result9.ForeColor = System.Drawing.Color.White;
-            this.Result9.Location = new System.Drawing.Point(753, 800);
-            this.Result9.Multiline = false;
-            this.Result9.Name = "Result9";
-            this.Result9.Size = new System.Drawing.Size(318, 56);
-            this.Result9.TabIndex = 159;
-            this.Result9.Text = "";
             // 
             // btnToolTip
             // 
@@ -4461,34 +5291,6 @@
             this.dump.Tag = "";
             this.dump.Text = "dump";
             this.dump.UseVisualStyleBackColor = false;
-            // 
-            // idbox
-            // 
-            this.VillagerSearchMenu.SetAutocompleteMenu(this.idbox, null);
-            this.idbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.idbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.idbox.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idbox.ForeColor = System.Drawing.Color.White;
-            this.idbox.Location = new System.Drawing.Point(507, 862);
-            this.idbox.Multiline = false;
-            this.idbox.Name = "idbox";
-            this.idbox.Size = new System.Drawing.Size(198, 56);
-            this.idbox.TabIndex = 162;
-            this.idbox.Text = "";
-            // 
-            // namebox
-            // 
-            this.VillagerSearchMenu.SetAutocompleteMenu(this.namebox, null);
-            this.namebox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.namebox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.namebox.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.namebox.ForeColor = System.Drawing.Color.White;
-            this.namebox.Location = new System.Drawing.Point(711, 862);
-            this.namebox.Multiline = false;
-            this.namebox.Name = "namebox";
-            this.namebox.Size = new System.Drawing.Size(198, 56);
-            this.namebox.TabIndex = 163;
-            this.namebox.Text = "";
             // 
             // villagerLargePanel
             // 
@@ -4520,6 +5322,16 @@
             this.villagerLargePanel.Name = "villagerLargePanel";
             this.villagerLargePanel.Size = new System.Drawing.Size(1220, 550);
             this.villagerLargePanel.TabIndex = 164;
+            // 
+            // overlay
+            // 
+            this.overlay.BackColor = System.Drawing.Color.Black;
+            this.overlay.Location = new System.Drawing.Point(50, 54);
+            this.overlay.Name = "overlay";
+            this.overlay.Opacity = 1;
+            this.overlay.Size = new System.Drawing.Size(680, 266);
+            this.overlay.TabIndex = 215;
+            this.overlay.Visible = false;
             // 
             // PleaseWaitPanel
             // 
@@ -4885,6 +5697,421 @@
             this.VillagerControl.Size = new System.Drawing.Size(1192, 515);
             this.VillagerControl.TabIndex = 215;
             // 
+            // MysSelector
+            // 
+            this.MysSelector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.MysSelector.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.MysSelector.DropDownHeight = 362;
+            this.MysSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MysSelector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MysSelector.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.MysSelector.ForeColor = System.Drawing.Color.White;
+            this.MysSelector.FormattingEnabled = true;
+            this.MysSelector.IntegralHeight = false;
+            this.MysSelector.ItemHeight = 60;
+            this.MysSelector.Items.AddRange(new object[] {
+            "Admiral : brd06",
+            "Agent S : squ05",
+            "Agnes : pig17",
+            "Al : gor08",
+            "Alfonso : crd00",
+            "Alice : kal01",
+            "Alli : crd01",
+            "Amelia : pbr01",
+            "Anabelle : ant03",
+            "Anchovy : brd02",
+            "Angus : bul00",
+            "Anicotti : mus10",
+            "Ankha : cat19",
+            "Annalisa : ant08",
+            "Annalise : hrs09",
+            "Antonio : ant01",
+            "Apollo : pbr00",
+            "Apple : ham01",
+            "Astrid : kgr05",
+            "Audie : wol12",
+            "Aurora : pgn00",
+            "Ava : chn05",
+            "Avery : pbr05",
+            "Axel : elp06",
+            "Baabara : shp01",
+            "Bam : der01",
+            "Bangle : tig03",
+            "Barold : cbr16",
+            "Bea : dog10",
+            "Beardo : bea13",
+            "Beau : der07",
+            "Becky : chn09",
+            "Bella : mus02",
+            "Benedict : chn01",
+            "Benjamin : dog16",
+            "Bertha : hip03",
+            "Bettina : mus15",
+            "Bianca : tig06",
+            "Biff : hip04",
+            "Big Top : elp02",
+            "Bill : duk00",
+            "Billy : goa02",
+            "Biskit : dog03",
+            "Bitty : hip05",
+            "Blaire : squ01",
+            "Blanche : ost08",
+            "Bluebear : cbr00",
+            "Bob : cat00",
+            "Bonbon : rbt17",
+            "Bones : dog04",
+            "Boomer : pgn10",
+            "Boone : gor02",
+            "Boots : crd02",
+            "Boris : pig09",
+            "Boyd : gor05",
+            "Bree : mus03",
+            "Broccolo : mus12",
+            "Broffina : chn12",
+            "Bruce : der03",
+            "Bubbles : hip02",
+            "Buck : hrs00",
+            "Bud : lon00",
+            "Bunnie : rbt00",
+            "Butch : dog01",
+            "Buzz : pbr03",
+            "Cally : squ11",
+            "Camofrog : flg03",
+            "Canberra : kal08",
+            "Candi : mus08",
+            "Carmen : rbt16",
+            "Caroline : squ06",
+            "Carrie : kgr02",
+            "Cashmere : shp04",
+            "Celia : pbr09",
+            "Cesar : gor00",
+            "Chadder : mus18",
+            "Chai : elp11",
+            "Charlise : bea12",
+            "Chelsea : der10",
+            "Cheri : cbr10",
+            "Cherry : dog17",
+            "Chester : cbr15",
+            "Chevre : goa00",
+            "Chief : wol00",
+            "Chops : pig14",
+            "Chow : bea03",
+            "Chrissy : rbt13",
+            "Claude : rbt11",
+            "Claudia : tig05",
+            "Clay : ham05",
+            "Cleo : hrs07",
+            "Clyde : hrs10",
+            "Coach : bul07",
+            "Cobb : pig08",
+            "Coco : rbt02",
+            "Cole : rbt18",
+            "Colton : hrs11",
+            "Cookie : dog08",
+            "Cousteau : flg10",
+            "Cranston : ost06",
+            "Croque : flg17",
+            "Cube : pgn02",
+            "Curlos : shp08",
+            "Curly : pig00",
+            "Curt : bea02",
+            "Cyd : elp12",
+            "Cyrano : ant00",
+            "Daisy : dog07",
+            "Deena : duk04",
+            "Deirdre : der04",
+            "Del : crd04",
+            "Deli : mnk08",
+            "Derwin : duk08",
+            "Diana : der08",
+            "Diva : flg18",
+            "Dizzy : elp01",
+            "Dobie : wol04",
+            "Doc : rbt10",
+            "Dom : shp15",
+            "Dora : mus00",
+            "Dotty : rbt01",
+            "Drago : crd08",
+            "Drake : duk09",
+            "Drift : flg04",
+            "Ed : hrs06",
+            "Egbert : chn02",
+            "Elise : mnk05",
+            "Ellie : elp07",
+            "Elmer : hrs03",
+            "Eloise : elp03",
+            "Elvis : lon01",
+            "Erik : der09",
+            "Étoile : shp14",
+            "Eugene : kal10",
+            "Eunice : shp02",
+            "Fang : wol06",
+            "Fauna : der00",
+            "Felicity : cat17",
+            "Filbert : squ02",
+            "Flip : mnk06",
+            "Flo : pgn13",
+            "Flora : ost09",
+            "Flurry : ham06",
+            "Francine : rbt12",
+            "Frank : pbr06",
+            "Freckles : duk07",
+            "Freya : wol05",
+            "Friga : pgn04",
+            "Frita : shp11",
+            "Frobert : flg02",
+            "Fuchsia : der06",
+            "Gabi : rbt05",
+            "Gala : pig13",
+            "Gaston : rbt04",
+            "Gayle : crd07",
+            "Genji : rbt08",
+            "Gigi : flg16",
+            "Gladys : ost01",
+            "Gloria : duk15",
+            "Goldie : dog00",
+            "Gonzo : kal04",
+            "Goose : chn00",
+            "Graham : ham02",
+            "Greta : mus16",
+            "Grizzly : bea09",
+            "Groucho : bea06",
+            "Gruff : goa04",
+            "Gwen : pgn05",
+            "Hamlet : ham00",
+            "Hamphrey : ham07",
+            "Hans : gor10",
+            "Harry : hip08",
+            "Hazel : squ18",
+            "Henry : flg19",
+            "Hippeux : hip09",
+            "Hopkins : rbt14",
+            "Hopper : pgn03",
+            "Hornsby : rhn04",
+            "Huck : flg11",
+            "Hugh : pig03",
+            "Iggly : pgn11",
+            "Ike : bea11",
+            "Jacob : brd11",
+            "Jacques : brd16",
+            "Jambette : flg13",
+            "Jay : brd00",
+            "Jeremiah : flg07",
+            "Jitters : brd04",
+            "Joey : duk01",
+            "Judy : cbr19",
+            "Julia : ost05",
+            "Julian : hrs13",
+            "June : cbr13",
+            "Kabuki : cat09",
+            "Katt : cat21",
+            "Keaton : pbr08",
+            "Ken : chn13",
+            "Ketchup : duk13",
+            "Kevin : pig15",
+            "Kid Cat : cat10",
+            "Kidd : goa07",
+            "Kiki : cat04",
+            "Kitt : kgr00",
+            "Kitty : cat14",
+            "Klaus : bea14",
+            "Knox : chn11",
+            "Kody : cbr04",
+            "Kyle : wol10",
+            "Leonardo : tig04",
+            "Leopold : lon04",
+            "Lily : flg00",
+            "Limberg : mus01",
+            "Lionel : lon08",
+            "Lobo : wol01",
+            "Lolly : cat18",
+            "Lopez : der05",
+            "Louie : gor04",
+            "Lucha : brd15",
+            "Lucky : dog02",
+            "Lucy : pig04",
+            "Lyman : kal09",
+            "Mac : dog14",
+            "Maddie : dog09",
+            "Maelle : duk03",
+            "Maggie : pig10",
+            "Mallary : duk06",
+            "Maple : cbr01",
+            "Marcel : dog15",
+            "Marcie : kgr10",
+            "Margie : elp04",
+            "Marina : ocp01",
+            "Marshal : squ17",
+            "Marty : cbr18",
+            "Mathilda : kgr01",
+            "Megan : bea15",
+            "Melba : kal02",
+            "Merengue : rhn07",
+            "Merry : cat16",
+            "Midge : brd08",
+            "Mint : squ09",
+            "Mira : rbt19",
+            "Miranda : duk12",
+            "Mitzi : cat01",
+            "Moe : cat08",
+            "Molly : duk16",
+            "Monique : cat11",
+            "Monty : mnk04",
+            "Moose : mus14",
+            "Mott : lon06",
+            "Muffy : shp12",
+            "Murphy : cbr07",
+            "Nan : goa01",
+            "Nana : mnk01",
+            "Naomi : cow07",
+            "Nate : bea05",
+            "Nibbles : squ04",
+            "Norma : cow06",
+            "O\'Hare : rbt15",
+            "Octavian : ocp00",
+            "Olaf : ant09",
+            "Olive : cbr09",
+            "Olivia : cat03",
+            "Opal : elp00",
+            "Ozzie : kal05",
+            "Pancetti : pig16",
+            "Pango : ant02",
+            "Paolo : elp05",
+            "Papi : hrs12",
+            "Pashmina : goa08",
+            "Pate : duk02",
+            "Patty : cow00",
+            "Paula : bea10",
+            "Peaches : hrs08",
+            "Peanut : squ00",
+            "Pecan : squ03",
+            "Peck : brd17",
+            "Peewee : gor01",
+            "Peggy : pig11",
+            "Pekoe : cbr14",
+            "Penelope : mus17",
+            "Phil : ost07",
+            "Phoebe : ost10",
+            "Pierce : pbr02",
+            "Pietro : shp13",
+            "Pinky : bea01",
+            "Piper : brd05",
+            "Pippy : rbt06",
+            "Plucky : chn10",
+            "Pompom : duk05",
+            "Poncho : cbr02",
+            "Poppy : squ15",
+            "Portia : dog05",
+            "Prince : flg12",
+            "Puck : pgn06",
+            "Puddles : flg06",
+            "Pudge : cbr03",
+            "Punchy : cat06",
+            "Purrl : cat07",
+            "Queenie : ost00",
+            "Quillson : duk17",
+            "Raddle : flg15",
+            "Rasher : pig02",
+            "Raymond : cat23",
+            "Renée : rhn08",
+            "Reneigh : hrs16",
+            "Rex : lon02",
+            "Rhonda : rhn01",
+            "Ribbot : flg01",
+            "Ricky : squ10",
+            "Rilla : gor11",
+            "Rizzo : mus09",
+            "Roald : pgn01",
+            "Robin : brd01",
+            "Rocco : hip00",
+            "Rocket : gor09",
+            "Rod : mus05",
+            "Rodeo : bul01",
+            "Rodney : ham03",
+            "Rolf : tig00",
+            "Rooney : kgr09",
+            "Rory : lon07",
+            "Roscoe : hrs04",
+            "Rosie : cat02",
+            "Rowan : tig01",
+            "Ruby : rbt09",
+            "Rudy : cat20",
+            "Sally : squ07",
+            "Samson : mus04",
+            "Sandy : ost02",
+            "Savannah : hrs02",
+            "Scoot : duk10",
+            "Shari : mnk07",
+            "Sheldon : squ16",
+            "Shep : dog18",
+            "Sherb : goa09",
+            "Simon : mnk02",
+            "Skye : wol09",
+            "Sly : crd06",
+            "Snake : rbt03",
+            "Snooty : ant06",
+            "Soleil : ham04",
+            "Sparro : brd18",
+            "Spike : rhn02",
+            "Spork : pig05",
+            "Sprinkle : pgn14",
+            "Sprocket : ost03",
+            "Static : squ08",
+            "Stella : shp03",
+            "Sterling : pbr07",
+            "Stinky : cat13",
+            "Stitches : cbr05",
+            "Stu : bul03",
+            "Sydney : kal03",
+            "Sylvana : squ14",
+            "Sylvia : kgr06",
+            "T-Bone : bul05",
+            "Tabby : cat12",
+            "Tad : flg09",
+            "Tammi : mnk03",
+            "Tammy : cbr17",
+            "Tangy : cat05",
+            "Tank : rhn00",
+            "Tasha : squ13",
+            "Teddy : bea00",
+            "Tex : pgn12",
+            "Tia : elp10",
+            "Tiffany : rbt07",
+            "Timbra : shp10",
+            "Tipper : cow01",
+            "Toby : rbt20",
+            "Tom : cat15",
+            "Truffles : pig01",
+            "Tucker : elp09",
+            "Tutu : bea07",
+            "Twiggy : brd03",
+            "Tybalt : tig02",
+            "Ursala : bea08",
+            "Velma : goa06",
+            "Vesta : shp00",
+            "Vic : bul08",
+            "Victoria : hrs01",
+            "Violet : gor07",
+            "Vivian : wol08",
+            "Vladimir : cbr06",
+            "Wade : pgn09",
+            "Walker : dog06",
+            "Walt : kgr08",
+            "Wart Jr. : flg05",
+            "Weber : duk11",
+            "Wendy : shp09",
+            "Whitney : wol03",
+            "Willow : shp07",
+            "Winnie : hrs05",
+            "Wolfgang : wol02",
+            "Yuka : kal00",
+            "Zell : der02",
+            "Zucker : ocp02"});
+            this.MysSelector.Location = new System.Drawing.Point(950, 184);
+            this.MysSelector.Name = "MysSelector";
+            this.MysSelector.Size = new System.Drawing.Size(237, 66);
+            this.MysSelector.TabIndex = 222;
+            // 
             // IslandSearch
             // 
             this.VillagerSearchMenu.SetAutocompleteMenu(this.IslandSearch, this.VillagerSearchMenu);
@@ -4918,6 +6145,421 @@
             this.VillagerSearch.Click += new System.EventHandler(this.VillagerSearch_Click);
             this.VillagerSearch.TextChanged += new System.EventHandler(this.VillagerSearch_TextChanged);
             this.VillagerSearch.Leave += new System.EventHandler(this.VillagerSearch_Leave);
+            // 
+            // ReplaceSelector
+            // 
+            this.ReplaceSelector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.ReplaceSelector.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.ReplaceSelector.DropDownHeight = 362;
+            this.ReplaceSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ReplaceSelector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReplaceSelector.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.ReplaceSelector.ForeColor = System.Drawing.Color.White;
+            this.ReplaceSelector.FormattingEnabled = true;
+            this.ReplaceSelector.IntegralHeight = false;
+            this.ReplaceSelector.ItemHeight = 60;
+            this.ReplaceSelector.Items.AddRange(new object[] {
+            "Admiral : brd06",
+            "Agent S : squ05",
+            "Agnes : pig17",
+            "Al : gor08",
+            "Alfonso : crd00",
+            "Alice : kal01",
+            "Alli : crd01",
+            "Amelia : pbr01",
+            "Anabelle : ant03",
+            "Anchovy : brd02",
+            "Angus : bul00",
+            "Anicotti : mus10",
+            "Ankha : cat19",
+            "Annalisa : ant08",
+            "Annalise : hrs09",
+            "Antonio : ant01",
+            "Apollo : pbr00",
+            "Apple : ham01",
+            "Astrid : kgr05",
+            "Audie : wol12",
+            "Aurora : pgn00",
+            "Ava : chn05",
+            "Avery : pbr05",
+            "Axel : elp06",
+            "Baabara : shp01",
+            "Bam : der01",
+            "Bangle : tig03",
+            "Barold : cbr16",
+            "Bea : dog10",
+            "Beardo : bea13",
+            "Beau : der07",
+            "Becky : chn09",
+            "Bella : mus02",
+            "Benedict : chn01",
+            "Benjamin : dog16",
+            "Bertha : hip03",
+            "Bettina : mus15",
+            "Bianca : tig06",
+            "Biff : hip04",
+            "Big Top : elp02",
+            "Bill : duk00",
+            "Billy : goa02",
+            "Biskit : dog03",
+            "Bitty : hip05",
+            "Blaire : squ01",
+            "Blanche : ost08",
+            "Bluebear : cbr00",
+            "Bob : cat00",
+            "Bonbon : rbt17",
+            "Bones : dog04",
+            "Boomer : pgn10",
+            "Boone : gor02",
+            "Boots : crd02",
+            "Boris : pig09",
+            "Boyd : gor05",
+            "Bree : mus03",
+            "Broccolo : mus12",
+            "Broffina : chn12",
+            "Bruce : der03",
+            "Bubbles : hip02",
+            "Buck : hrs00",
+            "Bud : lon00",
+            "Bunnie : rbt00",
+            "Butch : dog01",
+            "Buzz : pbr03",
+            "Cally : squ11",
+            "Camofrog : flg03",
+            "Canberra : kal08",
+            "Candi : mus08",
+            "Carmen : rbt16",
+            "Caroline : squ06",
+            "Carrie : kgr02",
+            "Cashmere : shp04",
+            "Celia : pbr09",
+            "Cesar : gor00",
+            "Chadder : mus18",
+            "Chai : elp11",
+            "Charlise : bea12",
+            "Chelsea : der10",
+            "Cheri : cbr10",
+            "Cherry : dog17",
+            "Chester : cbr15",
+            "Chevre : goa00",
+            "Chief : wol00",
+            "Chops : pig14",
+            "Chow : bea03",
+            "Chrissy : rbt13",
+            "Claude : rbt11",
+            "Claudia : tig05",
+            "Clay : ham05",
+            "Cleo : hrs07",
+            "Clyde : hrs10",
+            "Coach : bul07",
+            "Cobb : pig08",
+            "Coco : rbt02",
+            "Cole : rbt18",
+            "Colton : hrs11",
+            "Cookie : dog08",
+            "Cousteau : flg10",
+            "Cranston : ost06",
+            "Croque : flg17",
+            "Cube : pgn02",
+            "Curlos : shp08",
+            "Curly : pig00",
+            "Curt : bea02",
+            "Cyd : elp12",
+            "Cyrano : ant00",
+            "Daisy : dog07",
+            "Deena : duk04",
+            "Deirdre : der04",
+            "Del : crd04",
+            "Deli : mnk08",
+            "Derwin : duk08",
+            "Diana : der08",
+            "Diva : flg18",
+            "Dizzy : elp01",
+            "Dobie : wol04",
+            "Doc : rbt10",
+            "Dom : shp15",
+            "Dora : mus00",
+            "Dotty : rbt01",
+            "Drago : crd08",
+            "Drake : duk09",
+            "Drift : flg04",
+            "Ed : hrs06",
+            "Egbert : chn02",
+            "Elise : mnk05",
+            "Ellie : elp07",
+            "Elmer : hrs03",
+            "Eloise : elp03",
+            "Elvis : lon01",
+            "Erik : der09",
+            "Étoile : shp14",
+            "Eugene : kal10",
+            "Eunice : shp02",
+            "Fang : wol06",
+            "Fauna : der00",
+            "Felicity : cat17",
+            "Filbert : squ02",
+            "Flip : mnk06",
+            "Flo : pgn13",
+            "Flora : ost09",
+            "Flurry : ham06",
+            "Francine : rbt12",
+            "Frank : pbr06",
+            "Freckles : duk07",
+            "Freya : wol05",
+            "Friga : pgn04",
+            "Frita : shp11",
+            "Frobert : flg02",
+            "Fuchsia : der06",
+            "Gabi : rbt05",
+            "Gala : pig13",
+            "Gaston : rbt04",
+            "Gayle : crd07",
+            "Genji : rbt08",
+            "Gigi : flg16",
+            "Gladys : ost01",
+            "Gloria : duk15",
+            "Goldie : dog00",
+            "Gonzo : kal04",
+            "Goose : chn00",
+            "Graham : ham02",
+            "Greta : mus16",
+            "Grizzly : bea09",
+            "Groucho : bea06",
+            "Gruff : goa04",
+            "Gwen : pgn05",
+            "Hamlet : ham00",
+            "Hamphrey : ham07",
+            "Hans : gor10",
+            "Harry : hip08",
+            "Hazel : squ18",
+            "Henry : flg19",
+            "Hippeux : hip09",
+            "Hopkins : rbt14",
+            "Hopper : pgn03",
+            "Hornsby : rhn04",
+            "Huck : flg11",
+            "Hugh : pig03",
+            "Iggly : pgn11",
+            "Ike : bea11",
+            "Jacob : brd11",
+            "Jacques : brd16",
+            "Jambette : flg13",
+            "Jay : brd00",
+            "Jeremiah : flg07",
+            "Jitters : brd04",
+            "Joey : duk01",
+            "Judy : cbr19",
+            "Julia : ost05",
+            "Julian : hrs13",
+            "June : cbr13",
+            "Kabuki : cat09",
+            "Katt : cat21",
+            "Keaton : pbr08",
+            "Ken : chn13",
+            "Ketchup : duk13",
+            "Kevin : pig15",
+            "Kid Cat : cat10",
+            "Kidd : goa07",
+            "Kiki : cat04",
+            "Kitt : kgr00",
+            "Kitty : cat14",
+            "Klaus : bea14",
+            "Knox : chn11",
+            "Kody : cbr04",
+            "Kyle : wol10",
+            "Leonardo : tig04",
+            "Leopold : lon04",
+            "Lily : flg00",
+            "Limberg : mus01",
+            "Lionel : lon08",
+            "Lobo : wol01",
+            "Lolly : cat18",
+            "Lopez : der05",
+            "Louie : gor04",
+            "Lucha : brd15",
+            "Lucky : dog02",
+            "Lucy : pig04",
+            "Lyman : kal09",
+            "Mac : dog14",
+            "Maddie : dog09",
+            "Maelle : duk03",
+            "Maggie : pig10",
+            "Mallary : duk06",
+            "Maple : cbr01",
+            "Marcel : dog15",
+            "Marcie : kgr10",
+            "Margie : elp04",
+            "Marina : ocp01",
+            "Marshal : squ17",
+            "Marty : cbr18",
+            "Mathilda : kgr01",
+            "Megan : bea15",
+            "Melba : kal02",
+            "Merengue : rhn07",
+            "Merry : cat16",
+            "Midge : brd08",
+            "Mint : squ09",
+            "Mira : rbt19",
+            "Miranda : duk12",
+            "Mitzi : cat01",
+            "Moe : cat08",
+            "Molly : duk16",
+            "Monique : cat11",
+            "Monty : mnk04",
+            "Moose : mus14",
+            "Mott : lon06",
+            "Muffy : shp12",
+            "Murphy : cbr07",
+            "Nan : goa01",
+            "Nana : mnk01",
+            "Naomi : cow07",
+            "Nate : bea05",
+            "Nibbles : squ04",
+            "Norma : cow06",
+            "O\'Hare : rbt15",
+            "Octavian : ocp00",
+            "Olaf : ant09",
+            "Olive : cbr09",
+            "Olivia : cat03",
+            "Opal : elp00",
+            "Ozzie : kal05",
+            "Pancetti : pig16",
+            "Pango : ant02",
+            "Paolo : elp05",
+            "Papi : hrs12",
+            "Pashmina : goa08",
+            "Pate : duk02",
+            "Patty : cow00",
+            "Paula : bea10",
+            "Peaches : hrs08",
+            "Peanut : squ00",
+            "Pecan : squ03",
+            "Peck : brd17",
+            "Peewee : gor01",
+            "Peggy : pig11",
+            "Pekoe : cbr14",
+            "Penelope : mus17",
+            "Phil : ost07",
+            "Phoebe : ost10",
+            "Pierce : pbr02",
+            "Pietro : shp13",
+            "Pinky : bea01",
+            "Piper : brd05",
+            "Pippy : rbt06",
+            "Plucky : chn10",
+            "Pompom : duk05",
+            "Poncho : cbr02",
+            "Poppy : squ15",
+            "Portia : dog05",
+            "Prince : flg12",
+            "Puck : pgn06",
+            "Puddles : flg06",
+            "Pudge : cbr03",
+            "Punchy : cat06",
+            "Purrl : cat07",
+            "Queenie : ost00",
+            "Quillson : duk17",
+            "Raddle : flg15",
+            "Rasher : pig02",
+            "Raymond : cat23",
+            "Renée : rhn08",
+            "Reneigh : hrs16",
+            "Rex : lon02",
+            "Rhonda : rhn01",
+            "Ribbot : flg01",
+            "Ricky : squ10",
+            "Rilla : gor11",
+            "Rizzo : mus09",
+            "Roald : pgn01",
+            "Robin : brd01",
+            "Rocco : hip00",
+            "Rocket : gor09",
+            "Rod : mus05",
+            "Rodeo : bul01",
+            "Rodney : ham03",
+            "Rolf : tig00",
+            "Rooney : kgr09",
+            "Rory : lon07",
+            "Roscoe : hrs04",
+            "Rosie : cat02",
+            "Rowan : tig01",
+            "Ruby : rbt09",
+            "Rudy : cat20",
+            "Sally : squ07",
+            "Samson : mus04",
+            "Sandy : ost02",
+            "Savannah : hrs02",
+            "Scoot : duk10",
+            "Shari : mnk07",
+            "Sheldon : squ16",
+            "Shep : dog18",
+            "Sherb : goa09",
+            "Simon : mnk02",
+            "Skye : wol09",
+            "Sly : crd06",
+            "Snake : rbt03",
+            "Snooty : ant06",
+            "Soleil : ham04",
+            "Sparro : brd18",
+            "Spike : rhn02",
+            "Spork : pig05",
+            "Sprinkle : pgn14",
+            "Sprocket : ost03",
+            "Static : squ08",
+            "Stella : shp03",
+            "Sterling : pbr07",
+            "Stinky : cat13",
+            "Stitches : cbr05",
+            "Stu : bul03",
+            "Sydney : kal03",
+            "Sylvana : squ14",
+            "Sylvia : kgr06",
+            "T-Bone : bul05",
+            "Tabby : cat12",
+            "Tad : flg09",
+            "Tammi : mnk03",
+            "Tammy : cbr17",
+            "Tangy : cat05",
+            "Tank : rhn00",
+            "Tasha : squ13",
+            "Teddy : bea00",
+            "Tex : pgn12",
+            "Tia : elp10",
+            "Tiffany : rbt07",
+            "Timbra : shp10",
+            "Tipper : cow01",
+            "Toby : rbt20",
+            "Tom : cat15",
+            "Truffles : pig01",
+            "Tucker : elp09",
+            "Tutu : bea07",
+            "Twiggy : brd03",
+            "Tybalt : tig02",
+            "Ursala : bea08",
+            "Velma : goa06",
+            "Vesta : shp00",
+            "Vic : bul08",
+            "Victoria : hrs01",
+            "Violet : gor07",
+            "Vivian : wol08",
+            "Vladimir : cbr06",
+            "Wade : pgn09",
+            "Walker : dog06",
+            "Walt : kgr08",
+            "Wart Jr. : flg05",
+            "Weber : duk11",
+            "Wendy : shp09",
+            "Whitney : wol03",
+            "Willow : shp07",
+            "Winnie : hrs05",
+            "Wolfgang : wol02",
+            "Yuka : kal00",
+            "Zell : der02",
+            "Zucker : ocp02"});
+            this.ReplaceSelector.Location = new System.Drawing.Point(49, 435);
+            this.ReplaceSelector.Name = "ReplaceSelector";
+            this.ReplaceSelector.Size = new System.Drawing.Size(200, 66);
+            this.ReplaceSelector.TabIndex = 217;
             // 
             // RefreshVillagerBtn
             // 
@@ -5549,1746 +7191,101 @@
             this.VillagerSearchMenu.TargetControlWrapper = null;
             this.VillagerSearchMenu.ToolTipDuration = 500;
             // 
-            // inventory40
-            // 
-            this.inventory40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory40.ContextMenuStrip = this.itemRightClick;
-            this.inventory40.FlatAppearance.BorderSize = 0;
-            this.inventory40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory40.flowerQuantity = ((ushort)(0));
-            this.inventory40.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory40.ForeColor = System.Drawing.Color.White;
-            this.inventory40.itemDurability = ((ushort)(0));
-            this.inventory40.itemQuantity = ((ushort)(0));
-            this.inventory40.Location = new System.Drawing.Point(735, 250);
-            this.inventory40.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory40.Name = "inventory40";
-            this.inventory40.Size = new System.Drawing.Size(75, 75);
-            this.inventory40.TabIndex = 40;
-            this.inventory40.Tag = "40";
-            this.inventory40.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory40.UseVisualStyleBackColor = false;
-            this.inventory40.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory40.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory39
-            // 
-            this.inventory39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory39.ContextMenuStrip = this.itemRightClick;
-            this.inventory39.FlatAppearance.BorderSize = 0;
-            this.inventory39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory39.flowerQuantity = ((ushort)(0));
-            this.inventory39.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory39.ForeColor = System.Drawing.Color.White;
-            this.inventory39.itemDurability = ((ushort)(0));
-            this.inventory39.itemQuantity = ((ushort)(0));
-            this.inventory39.Location = new System.Drawing.Point(654, 250);
-            this.inventory39.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory39.Name = "inventory39";
-            this.inventory39.Size = new System.Drawing.Size(75, 75);
-            this.inventory39.TabIndex = 39;
-            this.inventory39.Tag = "39";
-            this.inventory39.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory39.UseVisualStyleBackColor = false;
-            this.inventory39.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory39.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory38
-            // 
-            this.inventory38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory38.ContextMenuStrip = this.itemRightClick;
-            this.inventory38.FlatAppearance.BorderSize = 0;
-            this.inventory38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory38.flowerQuantity = ((ushort)(0));
-            this.inventory38.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory38.ForeColor = System.Drawing.Color.White;
-            this.inventory38.itemDurability = ((ushort)(0));
-            this.inventory38.itemQuantity = ((ushort)(0));
-            this.inventory38.Location = new System.Drawing.Point(573, 250);
-            this.inventory38.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory38.Name = "inventory38";
-            this.inventory38.Size = new System.Drawing.Size(75, 75);
-            this.inventory38.TabIndex = 38;
-            this.inventory38.Tag = "38";
-            this.inventory38.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory38.UseVisualStyleBackColor = false;
-            this.inventory38.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory38.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory37
-            // 
-            this.inventory37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory37.ContextMenuStrip = this.itemRightClick;
-            this.inventory37.FlatAppearance.BorderSize = 0;
-            this.inventory37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory37.flowerQuantity = ((ushort)(0));
-            this.inventory37.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory37.ForeColor = System.Drawing.Color.White;
-            this.inventory37.itemDurability = ((ushort)(0));
-            this.inventory37.itemQuantity = ((ushort)(0));
-            this.inventory37.Location = new System.Drawing.Point(492, 250);
-            this.inventory37.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory37.Name = "inventory37";
-            this.inventory37.Size = new System.Drawing.Size(75, 75);
-            this.inventory37.TabIndex = 37;
-            this.inventory37.Tag = "37";
-            this.inventory37.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory37.UseVisualStyleBackColor = false;
-            this.inventory37.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory37.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory36
-            // 
-            this.inventory36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory36.ContextMenuStrip = this.itemRightClick;
-            this.inventory36.FlatAppearance.BorderSize = 0;
-            this.inventory36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory36.flowerQuantity = ((ushort)(0));
-            this.inventory36.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory36.ForeColor = System.Drawing.Color.White;
-            this.inventory36.itemDurability = ((ushort)(0));
-            this.inventory36.itemQuantity = ((ushort)(0));
-            this.inventory36.Location = new System.Drawing.Point(411, 250);
-            this.inventory36.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory36.Name = "inventory36";
-            this.inventory36.Size = new System.Drawing.Size(75, 75);
-            this.inventory36.TabIndex = 36;
-            this.inventory36.Tag = "36";
-            this.inventory36.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory36.UseVisualStyleBackColor = false;
-            this.inventory36.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory36.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory35
-            // 
-            this.inventory35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory35.ContextMenuStrip = this.itemRightClick;
-            this.inventory35.FlatAppearance.BorderSize = 0;
-            this.inventory35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory35.flowerQuantity = ((ushort)(0));
-            this.inventory35.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory35.ForeColor = System.Drawing.Color.White;
-            this.inventory35.itemDurability = ((ushort)(0));
-            this.inventory35.itemQuantity = ((ushort)(0));
-            this.inventory35.Location = new System.Drawing.Point(330, 250);
-            this.inventory35.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory35.Name = "inventory35";
-            this.inventory35.Size = new System.Drawing.Size(75, 75);
-            this.inventory35.TabIndex = 35;
-            this.inventory35.Tag = "35";
-            this.inventory35.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory35.UseVisualStyleBackColor = false;
-            this.inventory35.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory35.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory34
-            // 
-            this.inventory34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory34.ContextMenuStrip = this.itemRightClick;
-            this.inventory34.FlatAppearance.BorderSize = 0;
-            this.inventory34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory34.flowerQuantity = ((ushort)(0));
-            this.inventory34.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory34.ForeColor = System.Drawing.Color.White;
-            this.inventory34.itemDurability = ((ushort)(0));
-            this.inventory34.itemQuantity = ((ushort)(0));
-            this.inventory34.Location = new System.Drawing.Point(249, 250);
-            this.inventory34.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory34.Name = "inventory34";
-            this.inventory34.Size = new System.Drawing.Size(75, 75);
-            this.inventory34.TabIndex = 34;
-            this.inventory34.Tag = "34";
-            this.inventory34.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory34.UseVisualStyleBackColor = false;
-            this.inventory34.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory34.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory33
-            // 
-            this.inventory33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory33.ContextMenuStrip = this.itemRightClick;
-            this.inventory33.FlatAppearance.BorderSize = 0;
-            this.inventory33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory33.flowerQuantity = ((ushort)(0));
-            this.inventory33.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory33.ForeColor = System.Drawing.Color.White;
-            this.inventory33.itemDurability = ((ushort)(0));
-            this.inventory33.itemQuantity = ((ushort)(0));
-            this.inventory33.Location = new System.Drawing.Point(168, 250);
-            this.inventory33.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory33.Name = "inventory33";
-            this.inventory33.Size = new System.Drawing.Size(75, 75);
-            this.inventory33.TabIndex = 33;
-            this.inventory33.Tag = "33";
-            this.inventory33.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory33.UseVisualStyleBackColor = false;
-            this.inventory33.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory33.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory32
-            // 
-            this.inventory32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory32.ContextMenuStrip = this.itemRightClick;
-            this.inventory32.FlatAppearance.BorderSize = 0;
-            this.inventory32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory32.flowerQuantity = ((ushort)(0));
-            this.inventory32.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory32.ForeColor = System.Drawing.Color.White;
-            this.inventory32.itemDurability = ((ushort)(0));
-            this.inventory32.itemQuantity = ((ushort)(0));
-            this.inventory32.Location = new System.Drawing.Point(87, 250);
-            this.inventory32.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory32.Name = "inventory32";
-            this.inventory32.Size = new System.Drawing.Size(75, 75);
-            this.inventory32.TabIndex = 32;
-            this.inventory32.Tag = "32";
-            this.inventory32.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory32.UseVisualStyleBackColor = false;
-            this.inventory32.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory32.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory31
-            // 
-            this.inventory31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory31.ContextMenuStrip = this.itemRightClick;
-            this.inventory31.FlatAppearance.BorderSize = 0;
-            this.inventory31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory31.flowerQuantity = ((ushort)(0));
-            this.inventory31.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory31.ForeColor = System.Drawing.Color.White;
-            this.inventory31.itemDurability = ((ushort)(0));
-            this.inventory31.itemQuantity = ((ushort)(0));
-            this.inventory31.Location = new System.Drawing.Point(6, 250);
-            this.inventory31.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory31.Name = "inventory31";
-            this.inventory31.Size = new System.Drawing.Size(75, 75);
-            this.inventory31.TabIndex = 31;
-            this.inventory31.Tag = "31";
-            this.inventory31.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory31.UseVisualStyleBackColor = false;
-            this.inventory31.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory31.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory30
-            // 
-            this.inventory30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory30.ContextMenuStrip = this.itemRightClick;
-            this.inventory30.FlatAppearance.BorderSize = 0;
-            this.inventory30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory30.flowerQuantity = ((ushort)(0));
-            this.inventory30.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory30.ForeColor = System.Drawing.Color.White;
-            this.inventory30.itemDurability = ((ushort)(0));
-            this.inventory30.itemQuantity = ((ushort)(0));
-            this.inventory30.Location = new System.Drawing.Point(735, 169);
-            this.inventory30.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory30.Name = "inventory30";
-            this.inventory30.Size = new System.Drawing.Size(75, 75);
-            this.inventory30.TabIndex = 30;
-            this.inventory30.Tag = "30";
-            this.inventory30.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory30.UseVisualStyleBackColor = false;
-            this.inventory30.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory30.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory29
-            // 
-            this.inventory29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory29.ContextMenuStrip = this.itemRightClick;
-            this.inventory29.FlatAppearance.BorderSize = 0;
-            this.inventory29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory29.flowerQuantity = ((ushort)(0));
-            this.inventory29.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory29.ForeColor = System.Drawing.Color.White;
-            this.inventory29.itemDurability = ((ushort)(0));
-            this.inventory29.itemQuantity = ((ushort)(0));
-            this.inventory29.Location = new System.Drawing.Point(654, 169);
-            this.inventory29.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory29.Name = "inventory29";
-            this.inventory29.Size = new System.Drawing.Size(75, 75);
-            this.inventory29.TabIndex = 29;
-            this.inventory29.Tag = "29";
-            this.inventory29.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory29.UseVisualStyleBackColor = false;
-            this.inventory29.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory29.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory28
-            // 
-            this.inventory28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory28.ContextMenuStrip = this.itemRightClick;
-            this.inventory28.FlatAppearance.BorderSize = 0;
-            this.inventory28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory28.flowerQuantity = ((ushort)(0));
-            this.inventory28.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory28.ForeColor = System.Drawing.Color.White;
-            this.inventory28.itemDurability = ((ushort)(0));
-            this.inventory28.itemQuantity = ((ushort)(0));
-            this.inventory28.Location = new System.Drawing.Point(573, 169);
-            this.inventory28.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory28.Name = "inventory28";
-            this.inventory28.Size = new System.Drawing.Size(75, 75);
-            this.inventory28.TabIndex = 28;
-            this.inventory28.Tag = "28";
-            this.inventory28.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory28.UseVisualStyleBackColor = false;
-            this.inventory28.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory28.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory27
-            // 
-            this.inventory27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory27.ContextMenuStrip = this.itemRightClick;
-            this.inventory27.FlatAppearance.BorderSize = 0;
-            this.inventory27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory27.flowerQuantity = ((ushort)(0));
-            this.inventory27.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory27.ForeColor = System.Drawing.Color.White;
-            this.inventory27.itemDurability = ((ushort)(0));
-            this.inventory27.itemQuantity = ((ushort)(0));
-            this.inventory27.Location = new System.Drawing.Point(492, 169);
-            this.inventory27.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory27.Name = "inventory27";
-            this.inventory27.Size = new System.Drawing.Size(75, 75);
-            this.inventory27.TabIndex = 27;
-            this.inventory27.Tag = "27";
-            this.inventory27.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory27.UseVisualStyleBackColor = false;
-            this.inventory27.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory27.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory26
-            // 
-            this.inventory26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory26.ContextMenuStrip = this.itemRightClick;
-            this.inventory26.FlatAppearance.BorderSize = 0;
-            this.inventory26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory26.flowerQuantity = ((ushort)(0));
-            this.inventory26.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory26.ForeColor = System.Drawing.Color.White;
-            this.inventory26.itemDurability = ((ushort)(0));
-            this.inventory26.itemQuantity = ((ushort)(0));
-            this.inventory26.Location = new System.Drawing.Point(411, 169);
-            this.inventory26.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory26.Name = "inventory26";
-            this.inventory26.Size = new System.Drawing.Size(75, 75);
-            this.inventory26.TabIndex = 26;
-            this.inventory26.Tag = "26";
-            this.inventory26.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory26.UseVisualStyleBackColor = false;
-            this.inventory26.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory26.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory25
-            // 
-            this.inventory25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory25.ContextMenuStrip = this.itemRightClick;
-            this.inventory25.FlatAppearance.BorderSize = 0;
-            this.inventory25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory25.flowerQuantity = ((ushort)(0));
-            this.inventory25.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory25.ForeColor = System.Drawing.Color.White;
-            this.inventory25.itemDurability = ((ushort)(0));
-            this.inventory25.itemQuantity = ((ushort)(0));
-            this.inventory25.Location = new System.Drawing.Point(330, 169);
-            this.inventory25.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory25.Name = "inventory25";
-            this.inventory25.Size = new System.Drawing.Size(75, 75);
-            this.inventory25.TabIndex = 25;
-            this.inventory25.Tag = "25";
-            this.inventory25.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory25.UseVisualStyleBackColor = false;
-            this.inventory25.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory25.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory24
-            // 
-            this.inventory24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory24.ContextMenuStrip = this.itemRightClick;
-            this.inventory24.FlatAppearance.BorderSize = 0;
-            this.inventory24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory24.flowerQuantity = ((ushort)(0));
-            this.inventory24.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory24.ForeColor = System.Drawing.Color.White;
-            this.inventory24.itemDurability = ((ushort)(0));
-            this.inventory24.itemQuantity = ((ushort)(0));
-            this.inventory24.Location = new System.Drawing.Point(249, 169);
-            this.inventory24.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory24.Name = "inventory24";
-            this.inventory24.Size = new System.Drawing.Size(75, 75);
-            this.inventory24.TabIndex = 24;
-            this.inventory24.Tag = "24";
-            this.inventory24.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory24.UseVisualStyleBackColor = false;
-            this.inventory24.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory24.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory23
-            // 
-            this.inventory23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory23.ContextMenuStrip = this.itemRightClick;
-            this.inventory23.FlatAppearance.BorderSize = 0;
-            this.inventory23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory23.flowerQuantity = ((ushort)(0));
-            this.inventory23.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory23.ForeColor = System.Drawing.Color.White;
-            this.inventory23.itemDurability = ((ushort)(0));
-            this.inventory23.itemQuantity = ((ushort)(0));
-            this.inventory23.Location = new System.Drawing.Point(168, 169);
-            this.inventory23.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory23.Name = "inventory23";
-            this.inventory23.Size = new System.Drawing.Size(75, 75);
-            this.inventory23.TabIndex = 23;
-            this.inventory23.Tag = "23";
-            this.inventory23.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory23.UseVisualStyleBackColor = false;
-            this.inventory23.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory23.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory22
-            // 
-            this.inventory22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory22.ContextMenuStrip = this.itemRightClick;
-            this.inventory22.FlatAppearance.BorderSize = 0;
-            this.inventory22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory22.flowerQuantity = ((ushort)(0));
-            this.inventory22.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory22.ForeColor = System.Drawing.Color.White;
-            this.inventory22.itemDurability = ((ushort)(0));
-            this.inventory22.itemQuantity = ((ushort)(0));
-            this.inventory22.Location = new System.Drawing.Point(87, 169);
-            this.inventory22.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory22.Name = "inventory22";
-            this.inventory22.Size = new System.Drawing.Size(75, 75);
-            this.inventory22.TabIndex = 22;
-            this.inventory22.Tag = "22";
-            this.inventory22.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory22.UseVisualStyleBackColor = false;
-            this.inventory22.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory22.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory21
-            // 
-            this.inventory21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory21.ContextMenuStrip = this.itemRightClick;
-            this.inventory21.FlatAppearance.BorderSize = 0;
-            this.inventory21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory21.flowerQuantity = ((ushort)(0));
-            this.inventory21.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory21.ForeColor = System.Drawing.Color.White;
-            this.inventory21.itemDurability = ((ushort)(0));
-            this.inventory21.itemQuantity = ((ushort)(0));
-            this.inventory21.Location = new System.Drawing.Point(6, 169);
-            this.inventory21.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory21.Name = "inventory21";
-            this.inventory21.Size = new System.Drawing.Size(75, 75);
-            this.inventory21.TabIndex = 21;
-            this.inventory21.Tag = "21";
-            this.inventory21.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory21.UseVisualStyleBackColor = false;
-            this.inventory21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory21.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory20
-            // 
-            this.inventory20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory20.ContextMenuStrip = this.itemRightClick;
-            this.inventory20.FlatAppearance.BorderSize = 0;
-            this.inventory20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory20.flowerQuantity = ((ushort)(0));
-            this.inventory20.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory20.ForeColor = System.Drawing.Color.White;
-            this.inventory20.itemDurability = ((ushort)(0));
-            this.inventory20.itemQuantity = ((ushort)(0));
-            this.inventory20.Location = new System.Drawing.Point(735, 88);
-            this.inventory20.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory20.Name = "inventory20";
-            this.inventory20.Size = new System.Drawing.Size(75, 75);
-            this.inventory20.TabIndex = 20;
-            this.inventory20.Tag = "20";
-            this.inventory20.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory20.UseVisualStyleBackColor = false;
-            this.inventory20.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory20.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory19
-            // 
-            this.inventory19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory19.ContextMenuStrip = this.itemRightClick;
-            this.inventory19.FlatAppearance.BorderSize = 0;
-            this.inventory19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory19.flowerQuantity = ((ushort)(0));
-            this.inventory19.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory19.ForeColor = System.Drawing.Color.White;
-            this.inventory19.itemDurability = ((ushort)(0));
-            this.inventory19.itemQuantity = ((ushort)(0));
-            this.inventory19.Location = new System.Drawing.Point(654, 88);
-            this.inventory19.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory19.Name = "inventory19";
-            this.inventory19.Size = new System.Drawing.Size(75, 75);
-            this.inventory19.TabIndex = 19;
-            this.inventory19.Tag = "19";
-            this.inventory19.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory19.UseVisualStyleBackColor = false;
-            this.inventory19.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory19.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory18
-            // 
-            this.inventory18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory18.ContextMenuStrip = this.itemRightClick;
-            this.inventory18.FlatAppearance.BorderSize = 0;
-            this.inventory18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory18.flowerQuantity = ((ushort)(0));
-            this.inventory18.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory18.ForeColor = System.Drawing.Color.White;
-            this.inventory18.itemDurability = ((ushort)(0));
-            this.inventory18.itemQuantity = ((ushort)(0));
-            this.inventory18.Location = new System.Drawing.Point(573, 88);
-            this.inventory18.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory18.Name = "inventory18";
-            this.inventory18.Size = new System.Drawing.Size(75, 75);
-            this.inventory18.TabIndex = 18;
-            this.inventory18.Tag = "18";
-            this.inventory18.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory18.UseVisualStyleBackColor = false;
-            this.inventory18.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory18.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory17
-            // 
-            this.inventory17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory17.ContextMenuStrip = this.itemRightClick;
-            this.inventory17.FlatAppearance.BorderSize = 0;
-            this.inventory17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory17.flowerQuantity = ((ushort)(0));
-            this.inventory17.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory17.ForeColor = System.Drawing.Color.White;
-            this.inventory17.itemDurability = ((ushort)(0));
-            this.inventory17.itemQuantity = ((ushort)(0));
-            this.inventory17.Location = new System.Drawing.Point(492, 88);
-            this.inventory17.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory17.Name = "inventory17";
-            this.inventory17.Size = new System.Drawing.Size(75, 75);
-            this.inventory17.TabIndex = 17;
-            this.inventory17.Tag = "17";
-            this.inventory17.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory17.UseVisualStyleBackColor = false;
-            this.inventory17.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory17.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory16
-            // 
-            this.inventory16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory16.ContextMenuStrip = this.itemRightClick;
-            this.inventory16.FlatAppearance.BorderSize = 0;
-            this.inventory16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory16.flowerQuantity = ((ushort)(0));
-            this.inventory16.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory16.ForeColor = System.Drawing.Color.White;
-            this.inventory16.itemDurability = ((ushort)(0));
-            this.inventory16.itemQuantity = ((ushort)(0));
-            this.inventory16.Location = new System.Drawing.Point(411, 88);
-            this.inventory16.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory16.Name = "inventory16";
-            this.inventory16.Size = new System.Drawing.Size(75, 75);
-            this.inventory16.TabIndex = 16;
-            this.inventory16.Tag = "16";
-            this.inventory16.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory16.UseVisualStyleBackColor = false;
-            this.inventory16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory16.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory15
-            // 
-            this.inventory15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory15.ContextMenuStrip = this.itemRightClick;
-            this.inventory15.FlatAppearance.BorderSize = 0;
-            this.inventory15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory15.flowerQuantity = ((ushort)(0));
-            this.inventory15.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory15.ForeColor = System.Drawing.Color.White;
-            this.inventory15.itemDurability = ((ushort)(0));
-            this.inventory15.itemQuantity = ((ushort)(0));
-            this.inventory15.Location = new System.Drawing.Point(330, 88);
-            this.inventory15.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory15.Name = "inventory15";
-            this.inventory15.Size = new System.Drawing.Size(75, 75);
-            this.inventory15.TabIndex = 15;
-            this.inventory15.Tag = "15";
-            this.inventory15.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory15.UseVisualStyleBackColor = false;
-            this.inventory15.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory15.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory14
-            // 
-            this.inventory14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory14.ContextMenuStrip = this.itemRightClick;
-            this.inventory14.FlatAppearance.BorderSize = 0;
-            this.inventory14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory14.flowerQuantity = ((ushort)(0));
-            this.inventory14.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory14.ForeColor = System.Drawing.Color.White;
-            this.inventory14.itemDurability = ((ushort)(0));
-            this.inventory14.itemQuantity = ((ushort)(0));
-            this.inventory14.Location = new System.Drawing.Point(249, 88);
-            this.inventory14.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory14.Name = "inventory14";
-            this.inventory14.Size = new System.Drawing.Size(75, 75);
-            this.inventory14.TabIndex = 14;
-            this.inventory14.Tag = "14";
-            this.inventory14.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory14.UseVisualStyleBackColor = false;
-            this.inventory14.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory14.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory13
-            // 
-            this.inventory13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory13.ContextMenuStrip = this.itemRightClick;
-            this.inventory13.FlatAppearance.BorderSize = 0;
-            this.inventory13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory13.flowerQuantity = ((ushort)(0));
-            this.inventory13.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory13.ForeColor = System.Drawing.Color.White;
-            this.inventory13.itemDurability = ((ushort)(0));
-            this.inventory13.itemQuantity = ((ushort)(0));
-            this.inventory13.Location = new System.Drawing.Point(168, 88);
-            this.inventory13.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory13.Name = "inventory13";
-            this.inventory13.Size = new System.Drawing.Size(75, 75);
-            this.inventory13.TabIndex = 13;
-            this.inventory13.Tag = "13";
-            this.inventory13.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory13.UseVisualStyleBackColor = false;
-            this.inventory13.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory13.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory12
-            // 
-            this.inventory12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory12.ContextMenuStrip = this.itemRightClick;
-            this.inventory12.FlatAppearance.BorderSize = 0;
-            this.inventory12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory12.flowerQuantity = ((ushort)(0));
-            this.inventory12.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory12.ForeColor = System.Drawing.Color.White;
-            this.inventory12.itemDurability = ((ushort)(0));
-            this.inventory12.itemQuantity = ((ushort)(0));
-            this.inventory12.Location = new System.Drawing.Point(87, 88);
-            this.inventory12.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory12.Name = "inventory12";
-            this.inventory12.Size = new System.Drawing.Size(75, 75);
-            this.inventory12.TabIndex = 12;
-            this.inventory12.Tag = "12";
-            this.inventory12.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory12.UseVisualStyleBackColor = false;
-            this.inventory12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory12.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory11
-            // 
-            this.inventory11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory11.ContextMenuStrip = this.itemRightClick;
-            this.inventory11.FlatAppearance.BorderSize = 0;
-            this.inventory11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory11.flowerQuantity = ((ushort)(0));
-            this.inventory11.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory11.ForeColor = System.Drawing.Color.White;
-            this.inventory11.itemDurability = ((ushort)(0));
-            this.inventory11.itemQuantity = ((ushort)(0));
-            this.inventory11.Location = new System.Drawing.Point(6, 88);
-            this.inventory11.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory11.Name = "inventory11";
-            this.inventory11.Size = new System.Drawing.Size(75, 75);
-            this.inventory11.TabIndex = 11;
-            this.inventory11.Tag = "11";
-            this.inventory11.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory11.UseVisualStyleBackColor = false;
-            this.inventory11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory11.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory10
-            // 
-            this.inventory10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory10.ContextMenuStrip = this.itemRightClick;
-            this.inventory10.FlatAppearance.BorderSize = 0;
-            this.inventory10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory10.flowerQuantity = ((ushort)(0));
-            this.inventory10.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory10.ForeColor = System.Drawing.Color.White;
-            this.inventory10.itemDurability = ((ushort)(0));
-            this.inventory10.itemQuantity = ((ushort)(0));
-            this.inventory10.Location = new System.Drawing.Point(735, 7);
-            this.inventory10.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory10.Name = "inventory10";
-            this.inventory10.Size = new System.Drawing.Size(75, 75);
-            this.inventory10.TabIndex = 10;
-            this.inventory10.Tag = "10";
-            this.inventory10.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory10.UseVisualStyleBackColor = false;
-            this.inventory10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory10.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory9
-            // 
-            this.inventory9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory9.ContextMenuStrip = this.itemRightClick;
-            this.inventory9.FlatAppearance.BorderSize = 0;
-            this.inventory9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory9.flowerQuantity = ((ushort)(0));
-            this.inventory9.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory9.ForeColor = System.Drawing.Color.White;
-            this.inventory9.itemDurability = ((ushort)(0));
-            this.inventory9.itemQuantity = ((ushort)(0));
-            this.inventory9.Location = new System.Drawing.Point(654, 7);
-            this.inventory9.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory9.Name = "inventory9";
-            this.inventory9.Size = new System.Drawing.Size(75, 75);
-            this.inventory9.TabIndex = 9;
-            this.inventory9.Tag = "9";
-            this.inventory9.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory9.UseVisualStyleBackColor = false;
-            this.inventory9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory9.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory8
-            // 
-            this.inventory8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory8.ContextMenuStrip = this.itemRightClick;
-            this.inventory8.FlatAppearance.BorderSize = 0;
-            this.inventory8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory8.flowerQuantity = ((ushort)(0));
-            this.inventory8.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory8.ForeColor = System.Drawing.Color.White;
-            this.inventory8.itemDurability = ((ushort)(0));
-            this.inventory8.itemQuantity = ((ushort)(0));
-            this.inventory8.Location = new System.Drawing.Point(573, 7);
-            this.inventory8.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory8.Name = "inventory8";
-            this.inventory8.Size = new System.Drawing.Size(75, 75);
-            this.inventory8.TabIndex = 8;
-            this.inventory8.Tag = "8";
-            this.inventory8.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory8.UseVisualStyleBackColor = false;
-            this.inventory8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory8.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory7
-            // 
-            this.inventory7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory7.ContextMenuStrip = this.itemRightClick;
-            this.inventory7.FlatAppearance.BorderSize = 0;
-            this.inventory7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory7.flowerQuantity = ((ushort)(0));
-            this.inventory7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory7.ForeColor = System.Drawing.Color.White;
-            this.inventory7.itemDurability = ((ushort)(0));
-            this.inventory7.itemQuantity = ((ushort)(0));
-            this.inventory7.Location = new System.Drawing.Point(492, 7);
-            this.inventory7.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory7.Name = "inventory7";
-            this.inventory7.Size = new System.Drawing.Size(75, 75);
-            this.inventory7.TabIndex = 7;
-            this.inventory7.Tag = "7";
-            this.inventory7.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory7.UseVisualStyleBackColor = false;
-            this.inventory7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory7.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory6
-            // 
-            this.inventory6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory6.ContextMenuStrip = this.itemRightClick;
-            this.inventory6.FlatAppearance.BorderSize = 0;
-            this.inventory6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory6.flowerQuantity = ((ushort)(0));
-            this.inventory6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory6.ForeColor = System.Drawing.Color.White;
-            this.inventory6.itemDurability = ((ushort)(0));
-            this.inventory6.itemQuantity = ((ushort)(0));
-            this.inventory6.Location = new System.Drawing.Point(411, 7);
-            this.inventory6.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory6.Name = "inventory6";
-            this.inventory6.Size = new System.Drawing.Size(75, 75);
-            this.inventory6.TabIndex = 6;
-            this.inventory6.Tag = "6";
-            this.inventory6.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory6.UseVisualStyleBackColor = false;
-            this.inventory6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory6.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory5
-            // 
-            this.inventory5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory5.ContextMenuStrip = this.itemRightClick;
-            this.inventory5.FlatAppearance.BorderSize = 0;
-            this.inventory5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory5.flowerQuantity = ((ushort)(0));
-            this.inventory5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory5.ForeColor = System.Drawing.Color.White;
-            this.inventory5.itemDurability = ((ushort)(0));
-            this.inventory5.itemQuantity = ((ushort)(0));
-            this.inventory5.Location = new System.Drawing.Point(330, 7);
-            this.inventory5.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory5.Name = "inventory5";
-            this.inventory5.Size = new System.Drawing.Size(75, 75);
-            this.inventory5.TabIndex = 5;
-            this.inventory5.Tag = "5";
-            this.inventory5.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory5.UseVisualStyleBackColor = false;
-            this.inventory5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory5.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory4
-            // 
-            this.inventory4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory4.ContextMenuStrip = this.itemRightClick;
-            this.inventory4.FlatAppearance.BorderSize = 0;
-            this.inventory4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory4.flowerQuantity = ((ushort)(0));
-            this.inventory4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory4.ForeColor = System.Drawing.Color.White;
-            this.inventory4.itemDurability = ((ushort)(0));
-            this.inventory4.itemQuantity = ((ushort)(0));
-            this.inventory4.Location = new System.Drawing.Point(249, 7);
-            this.inventory4.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory4.Name = "inventory4";
-            this.inventory4.Size = new System.Drawing.Size(75, 75);
-            this.inventory4.TabIndex = 4;
-            this.inventory4.Tag = "4";
-            this.inventory4.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory4.UseVisualStyleBackColor = false;
-            this.inventory4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory4.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory3
-            // 
-            this.inventory3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory3.ContextMenuStrip = this.itemRightClick;
-            this.inventory3.FlatAppearance.BorderSize = 0;
-            this.inventory3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory3.flowerQuantity = ((ushort)(0));
-            this.inventory3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory3.ForeColor = System.Drawing.Color.White;
-            this.inventory3.itemDurability = ((ushort)(0));
-            this.inventory3.itemQuantity = ((ushort)(0));
-            this.inventory3.Location = new System.Drawing.Point(168, 7);
-            this.inventory3.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory3.Name = "inventory3";
-            this.inventory3.Size = new System.Drawing.Size(75, 75);
-            this.inventory3.TabIndex = 3;
-            this.inventory3.Tag = "3";
-            this.inventory3.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory3.UseVisualStyleBackColor = false;
-            this.inventory3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory3.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory2
-            // 
-            this.inventory2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory2.ContextMenuStrip = this.itemRightClick;
-            this.inventory2.FlatAppearance.BorderSize = 0;
-            this.inventory2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory2.flowerQuantity = ((ushort)(0));
-            this.inventory2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory2.ForeColor = System.Drawing.Color.White;
-            this.inventory2.itemDurability = ((ushort)(0));
-            this.inventory2.itemQuantity = ((ushort)(0));
-            this.inventory2.Location = new System.Drawing.Point(87, 7);
-            this.inventory2.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory2.Name = "inventory2";
-            this.inventory2.Size = new System.Drawing.Size(75, 75);
-            this.inventory2.TabIndex = 2;
-            this.inventory2.Tag = "2";
-            this.inventory2.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory2.UseVisualStyleBackColor = false;
-            this.inventory2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory2.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // inventory1
-            // 
-            this.inventory1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.inventory1.ContextMenuStrip = this.itemRightClick;
-            this.inventory1.FlatAppearance.BorderSize = 0;
-            this.inventory1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventory1.flowerQuantity = ((ushort)(0));
-            this.inventory1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.inventory1.ForeColor = System.Drawing.Color.White;
-            this.inventory1.itemDurability = ((ushort)(0));
-            this.inventory1.itemQuantity = ((ushort)(0));
-            this.inventory1.Location = new System.Drawing.Point(6, 7);
-            this.inventory1.Margin = new System.Windows.Forms.Padding(0);
-            this.inventory1.Name = "inventory1";
-            this.inventory1.Size = new System.Drawing.Size(75, 75);
-            this.inventory1.TabIndex = 1;
-            this.inventory1.Tag = "1";
-            this.inventory1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.inventory1.UseVisualStyleBackColor = false;
-            this.inventory1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inventory_MouseDown);
-            this.inventory1.MouseEnter += new System.EventHandler(this.inventory_MouseHover);
-            // 
-            // selectedItem
-            // 
-            this.selectedItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.selectedItem.FlatAppearance.BorderSize = 0;
-            this.selectedItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.selectedItem.flowerQuantity = ((ushort)(0));
-            this.selectedItem.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.selectedItem.ForeColor = System.Drawing.Color.White;
-            this.selectedItem.itemDurability = ((ushort)(0));
-            this.selectedItem.itemQuantity = ((ushort)(0));
-            this.selectedItem.Location = new System.Drawing.Point(1, 387);
-            this.selectedItem.Margin = new System.Windows.Forms.Padding(0);
-            this.selectedItem.Name = "selectedItem";
-            this.selectedItem.Size = new System.Drawing.Size(110, 110);
-            this.selectedItem.TabIndex = 41;
-            this.selectedItem.Tag = "";
-            this.selectedItem.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.formToolTip.SetToolTip(this.selectedItem, "Click to spawn selected item.");
-            this.selectedItem.UseVisualStyleBackColor = false;
-            this.selectedItem.Click += new System.EventHandler(this.selectedItem_Click);
-            // 
-            // overlay
-            // 
-            this.overlay.BackColor = System.Drawing.Color.Black;
-            this.overlay.Location = new System.Drawing.Point(50, 54);
-            this.overlay.Name = "overlay";
-            this.overlay.Opacity = 1;
-            this.overlay.Size = new System.Drawing.Size(680, 266);
-            this.overlay.TabIndex = 215;
-            this.overlay.Visible = false;
-            // 
-            // MysSelector
-            // 
-            this.MysSelector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.MysSelector.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.MysSelector.DropDownHeight = 362;
-            this.MysSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.MysSelector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MysSelector.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.MysSelector.ForeColor = System.Drawing.Color.White;
-            this.MysSelector.FormattingEnabled = true;
-            this.MysSelector.IntegralHeight = false;
-            this.MysSelector.ItemHeight = 60;
-            this.MysSelector.Items.AddRange(new object[] {
-            "Admiral : brd06",
-            "Agent S : squ05",
-            "Agnes : pig17",
-            "Al : gor08",
-            "Alfonso : crd00",
-            "Alice : kal01",
-            "Alli : crd01",
-            "Amelia : pbr01",
-            "Anabelle : ant03",
-            "Anchovy : brd02",
-            "Angus : bul00",
-            "Anicotti : mus10",
-            "Ankha : cat19",
-            "Annalisa : ant08",
-            "Annalise : hrs09",
-            "Antonio : ant01",
-            "Apollo : pbr00",
-            "Apple : ham01",
-            "Astrid : kgr05",
-            "Audie : wol12",
-            "Aurora : pgn00",
-            "Ava : chn05",
-            "Avery : pbr05",
-            "Axel : elp06",
-            "Baabara : shp01",
-            "Bam : der01",
-            "Bangle : tig03",
-            "Barold : cbr16",
-            "Bea : dog10",
-            "Beardo : bea13",
-            "Beau : der07",
-            "Becky : chn09",
-            "Bella : mus02",
-            "Benedict : chn01",
-            "Benjamin : dog16",
-            "Bertha : hip03",
-            "Bettina : mus15",
-            "Bianca : tig06",
-            "Biff : hip04",
-            "Big Top : elp02",
-            "Bill : duk00",
-            "Billy : goa02",
-            "Biskit : dog03",
-            "Bitty : hip05",
-            "Blaire : squ01",
-            "Blanche : ost08",
-            "Bluebear : cbr00",
-            "Bob : cat00",
-            "Bonbon : rbt17",
-            "Bones : dog04",
-            "Boomer : pgn10",
-            "Boone : gor02",
-            "Boots : crd02",
-            "Boris : pig09",
-            "Boyd : gor05",
-            "Bree : mus03",
-            "Broccolo : mus12",
-            "Broffina : chn12",
-            "Bruce : der03",
-            "Bubbles : hip02",
-            "Buck : hrs00",
-            "Bud : lon00",
-            "Bunnie : rbt00",
-            "Butch : dog01",
-            "Buzz : pbr03",
-            "Cally : squ11",
-            "Camofrog : flg03",
-            "Canberra : kal08",
-            "Candi : mus08",
-            "Carmen : rbt16",
-            "Caroline : squ06",
-            "Carrie : kgr02",
-            "Cashmere : shp04",
-            "Celia : pbr09",
-            "Cesar : gor00",
-            "Chadder : mus18",
-            "Chai : elp11",
-            "Charlise : bea12",
-            "Chelsea : der10",
-            "Cheri : cbr10",
-            "Cherry : dog17",
-            "Chester : cbr15",
-            "Chevre : goa00",
-            "Chief : wol00",
-            "Chops : pig14",
-            "Chow : bea03",
-            "Chrissy : rbt13",
-            "Claude : rbt11",
-            "Claudia : tig05",
-            "Clay : ham05",
-            "Cleo : hrs07",
-            "Clyde : hrs10",
-            "Coach : bul07",
-            "Cobb : pig08",
-            "Coco : rbt02",
-            "Cole : rbt18",
-            "Colton : hrs11",
-            "Cookie : dog08",
-            "Cousteau : flg10",
-            "Cranston : ost06",
-            "Croque : flg17",
-            "Cube : pgn02",
-            "Curlos : shp08",
-            "Curly : pig00",
-            "Curt : bea02",
-            "Cyd : elp12",
-            "Cyrano : ant00",
-            "Daisy : dog07",
-            "Deena : duk04",
-            "Deirdre : der04",
-            "Del : crd04",
-            "Deli : mnk08",
-            "Derwin : duk08",
-            "Diana : der08",
-            "Diva : flg18",
-            "Dizzy : elp01",
-            "Dobie : wol04",
-            "Doc : rbt10",
-            "Dom : shp15",
-            "Dora : mus00",
-            "Dotty : rbt01",
-            "Drago : crd08",
-            "Drake : duk09",
-            "Drift : flg04",
-            "Ed : hrs06",
-            "Egbert : chn02",
-            "Elise : mnk05",
-            "Ellie : elp07",
-            "Elmer : hrs03",
-            "Eloise : elp03",
-            "Elvis : lon01",
-            "Erik : der09",
-            "Étoile : shp14",
-            "Eugene : kal10",
-            "Eunice : shp02",
-            "Fang : wol06",
-            "Fauna : der00",
-            "Felicity : cat17",
-            "Filbert : squ02",
-            "Flip : mnk06",
-            "Flo : pgn13",
-            "Flora : ost09",
-            "Flurry : ham06",
-            "Francine : rbt12",
-            "Frank : pbr06",
-            "Freckles : duk07",
-            "Freya : wol05",
-            "Friga : pgn04",
-            "Frita : shp11",
-            "Frobert : flg02",
-            "Fuchsia : der06",
-            "Gabi : rbt05",
-            "Gala : pig13",
-            "Gaston : rbt04",
-            "Gayle : crd07",
-            "Genji : rbt08",
-            "Gigi : flg16",
-            "Gladys : ost01",
-            "Gloria : duk15",
-            "Goldie : dog00",
-            "Gonzo : kal04",
-            "Goose : chn00",
-            "Graham : ham02",
-            "Greta : mus16",
-            "Grizzly : bea09",
-            "Groucho : bea06",
-            "Gruff : goa04",
-            "Gwen : pgn05",
-            "Hamlet : ham00",
-            "Hamphrey : ham07",
-            "Hans : gor10",
-            "Harry : hip08",
-            "Hazel : squ18",
-            "Henry : flg19",
-            "Hippeux : hip09",
-            "Hopkins : rbt14",
-            "Hopper : pgn03",
-            "Hornsby : rhn04",
-            "Huck : flg11",
-            "Hugh : pig03",
-            "Iggly : pgn11",
-            "Ike : bea11",
-            "Jacob : brd11",
-            "Jacques : brd16",
-            "Jambette : flg13",
-            "Jay : brd00",
-            "Jeremiah : flg07",
-            "Jitters : brd04",
-            "Joey : duk01",
-            "Judy : cbr19",
-            "Julia : ost05",
-            "Julian : hrs13",
-            "June : cbr13",
-            "Kabuki : cat09",
-            "Katt : cat21",
-            "Keaton : pbr08",
-            "Ken : chn13",
-            "Ketchup : duk13",
-            "Kevin : pig15",
-            "Kid Cat : cat10",
-            "Kidd : goa07",
-            "Kiki : cat04",
-            "Kitt : kgr00",
-            "Kitty : cat14",
-            "Klaus : bea14",
-            "Knox : chn11",
-            "Kody : cbr04",
-            "Kyle : wol10",
-            "Leonardo : tig04",
-            "Leopold : lon04",
-            "Lily : flg00",
-            "Limberg : mus01",
-            "Lionel : lon08",
-            "Lobo : wol01",
-            "Lolly : cat18",
-            "Lopez : der05",
-            "Louie : gor04",
-            "Lucha : brd15",
-            "Lucky : dog02",
-            "Lucy : pig04",
-            "Lyman : kal09",
-            "Mac : dog14",
-            "Maddie : dog09",
-            "Maelle : duk03",
-            "Maggie : pig10",
-            "Mallary : duk06",
-            "Maple : cbr01",
-            "Marcel : dog15",
-            "Marcie : kgr10",
-            "Margie : elp04",
-            "Marina : ocp01",
-            "Marshal : squ17",
-            "Marty : cbr18",
-            "Mathilda : kgr01",
-            "Megan : bea15",
-            "Melba : kal02",
-            "Merengue : rhn07",
-            "Merry : cat16",
-            "Midge : brd08",
-            "Mint : squ09",
-            "Mira : rbt19",
-            "Miranda : duk12",
-            "Mitzi : cat01",
-            "Moe : cat08",
-            "Molly : duk16",
-            "Monique : cat11",
-            "Monty : mnk04",
-            "Moose : mus14",
-            "Mott : lon06",
-            "Muffy : shp12",
-            "Murphy : cbr07",
-            "Nan : goa01",
-            "Nana : mnk01",
-            "Naomi : cow07",
-            "Nate : bea05",
-            "Nibbles : squ04",
-            "Norma : cow06",
-            "O\'Hare : rbt15",
-            "Octavian : ocp00",
-            "Olaf : ant09",
-            "Olive : cbr09",
-            "Olivia : cat03",
-            "Opal : elp00",
-            "Ozzie : kal05",
-            "Pancetti : pig16",
-            "Pango : ant02",
-            "Paolo : elp05",
-            "Papi : hrs12",
-            "Pashmina : goa08",
-            "Pate : duk02",
-            "Patty : cow00",
-            "Paula : bea10",
-            "Peaches : hrs08",
-            "Peanut : squ00",
-            "Pecan : squ03",
-            "Peck : brd17",
-            "Peewee : gor01",
-            "Peggy : pig11",
-            "Pekoe : cbr14",
-            "Penelope : mus17",
-            "Phil : ost07",
-            "Phoebe : ost10",
-            "Pierce : pbr02",
-            "Pietro : shp13",
-            "Pinky : bea01",
-            "Piper : brd05",
-            "Pippy : rbt06",
-            "Plucky : chn10",
-            "Pompom : duk05",
-            "Poncho : cbr02",
-            "Poppy : squ15",
-            "Portia : dog05",
-            "Prince : flg12",
-            "Puck : pgn06",
-            "Puddles : flg06",
-            "Pudge : cbr03",
-            "Punchy : cat06",
-            "Purrl : cat07",
-            "Queenie : ost00",
-            "Quillson : duk17",
-            "Raddle : flg15",
-            "Rasher : pig02",
-            "Raymond : cat23",
-            "Renée : rhn08",
-            "Reneigh : hrs16",
-            "Rex : lon02",
-            "Rhonda : rhn01",
-            "Ribbot : flg01",
-            "Ricky : squ10",
-            "Rilla : gor11",
-            "Rizzo : mus09",
-            "Roald : pgn01",
-            "Robin : brd01",
-            "Rocco : hip00",
-            "Rocket : gor09",
-            "Rod : mus05",
-            "Rodeo : bul01",
-            "Rodney : ham03",
-            "Rolf : tig00",
-            "Rooney : kgr09",
-            "Rory : lon07",
-            "Roscoe : hrs04",
-            "Rosie : cat02",
-            "Rowan : tig01",
-            "Ruby : rbt09",
-            "Rudy : cat20",
-            "Sally : squ07",
-            "Samson : mus04",
-            "Sandy : ost02",
-            "Savannah : hrs02",
-            "Scoot : duk10",
-            "Shari : mnk07",
-            "Sheldon : squ16",
-            "Shep : dog18",
-            "Sherb : goa09",
-            "Simon : mnk02",
-            "Skye : wol09",
-            "Sly : crd06",
-            "Snake : rbt03",
-            "Snooty : ant06",
-            "Soleil : ham04",
-            "Sparro : brd18",
-            "Spike : rhn02",
-            "Spork : pig05",
-            "Sprinkle : pgn14",
-            "Sprocket : ost03",
-            "Static : squ08",
-            "Stella : shp03",
-            "Sterling : pbr07",
-            "Stinky : cat13",
-            "Stitches : cbr05",
-            "Stu : bul03",
-            "Sydney : kal03",
-            "Sylvana : squ14",
-            "Sylvia : kgr06",
-            "T-Bone : bul05",
-            "Tabby : cat12",
-            "Tad : flg09",
-            "Tammi : mnk03",
-            "Tammy : cbr17",
-            "Tangy : cat05",
-            "Tank : rhn00",
-            "Tasha : squ13",
-            "Teddy : bea00",
-            "Tex : pgn12",
-            "Tia : elp10",
-            "Tiffany : rbt07",
-            "Timbra : shp10",
-            "Tipper : cow01",
-            "Toby : rbt20",
-            "Tom : cat15",
-            "Truffles : pig01",
-            "Tucker : elp09",
-            "Tutu : bea07",
-            "Twiggy : brd03",
-            "Tybalt : tig02",
-            "Ursala : bea08",
-            "Velma : goa06",
-            "Vesta : shp00",
-            "Vic : bul08",
-            "Victoria : hrs01",
-            "Violet : gor07",
-            "Vivian : wol08",
-            "Vladimir : cbr06",
-            "Wade : pgn09",
-            "Walker : dog06",
-            "Walt : kgr08",
-            "Wart Jr. : flg05",
-            "Weber : duk11",
-            "Wendy : shp09",
-            "Whitney : wol03",
-            "Willow : shp07",
-            "Winnie : hrs05",
-            "Wolfgang : wol02",
-            "Yuka : kal00",
-            "Zell : der02",
-            "Zucker : ocp02"});
-            this.MysSelector.Location = new System.Drawing.Point(950, 184);
-            this.MysSelector.Name = "MysSelector";
-            this.MysSelector.Size = new System.Drawing.Size(237, 66);
-            this.MysSelector.TabIndex = 222;
-            // 
-            // ReplaceSelector
-            // 
-            this.ReplaceSelector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.ReplaceSelector.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.ReplaceSelector.DropDownHeight = 362;
-            this.ReplaceSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ReplaceSelector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ReplaceSelector.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.ReplaceSelector.ForeColor = System.Drawing.Color.White;
-            this.ReplaceSelector.FormattingEnabled = true;
-            this.ReplaceSelector.IntegralHeight = false;
-            this.ReplaceSelector.ItemHeight = 60;
-            this.ReplaceSelector.Items.AddRange(new object[] {
-            "Admiral : brd06",
-            "Agent S : squ05",
-            "Agnes : pig17",
-            "Al : gor08",
-            "Alfonso : crd00",
-            "Alice : kal01",
-            "Alli : crd01",
-            "Amelia : pbr01",
-            "Anabelle : ant03",
-            "Anchovy : brd02",
-            "Angus : bul00",
-            "Anicotti : mus10",
-            "Ankha : cat19",
-            "Annalisa : ant08",
-            "Annalise : hrs09",
-            "Antonio : ant01",
-            "Apollo : pbr00",
-            "Apple : ham01",
-            "Astrid : kgr05",
-            "Audie : wol12",
-            "Aurora : pgn00",
-            "Ava : chn05",
-            "Avery : pbr05",
-            "Axel : elp06",
-            "Baabara : shp01",
-            "Bam : der01",
-            "Bangle : tig03",
-            "Barold : cbr16",
-            "Bea : dog10",
-            "Beardo : bea13",
-            "Beau : der07",
-            "Becky : chn09",
-            "Bella : mus02",
-            "Benedict : chn01",
-            "Benjamin : dog16",
-            "Bertha : hip03",
-            "Bettina : mus15",
-            "Bianca : tig06",
-            "Biff : hip04",
-            "Big Top : elp02",
-            "Bill : duk00",
-            "Billy : goa02",
-            "Biskit : dog03",
-            "Bitty : hip05",
-            "Blaire : squ01",
-            "Blanche : ost08",
-            "Bluebear : cbr00",
-            "Bob : cat00",
-            "Bonbon : rbt17",
-            "Bones : dog04",
-            "Boomer : pgn10",
-            "Boone : gor02",
-            "Boots : crd02",
-            "Boris : pig09",
-            "Boyd : gor05",
-            "Bree : mus03",
-            "Broccolo : mus12",
-            "Broffina : chn12",
-            "Bruce : der03",
-            "Bubbles : hip02",
-            "Buck : hrs00",
-            "Bud : lon00",
-            "Bunnie : rbt00",
-            "Butch : dog01",
-            "Buzz : pbr03",
-            "Cally : squ11",
-            "Camofrog : flg03",
-            "Canberra : kal08",
-            "Candi : mus08",
-            "Carmen : rbt16",
-            "Caroline : squ06",
-            "Carrie : kgr02",
-            "Cashmere : shp04",
-            "Celia : pbr09",
-            "Cesar : gor00",
-            "Chadder : mus18",
-            "Chai : elp11",
-            "Charlise : bea12",
-            "Chelsea : der10",
-            "Cheri : cbr10",
-            "Cherry : dog17",
-            "Chester : cbr15",
-            "Chevre : goa00",
-            "Chief : wol00",
-            "Chops : pig14",
-            "Chow : bea03",
-            "Chrissy : rbt13",
-            "Claude : rbt11",
-            "Claudia : tig05",
-            "Clay : ham05",
-            "Cleo : hrs07",
-            "Clyde : hrs10",
-            "Coach : bul07",
-            "Cobb : pig08",
-            "Coco : rbt02",
-            "Cole : rbt18",
-            "Colton : hrs11",
-            "Cookie : dog08",
-            "Cousteau : flg10",
-            "Cranston : ost06",
-            "Croque : flg17",
-            "Cube : pgn02",
-            "Curlos : shp08",
-            "Curly : pig00",
-            "Curt : bea02",
-            "Cyd : elp12",
-            "Cyrano : ant00",
-            "Daisy : dog07",
-            "Deena : duk04",
-            "Deirdre : der04",
-            "Del : crd04",
-            "Deli : mnk08",
-            "Derwin : duk08",
-            "Diana : der08",
-            "Diva : flg18",
-            "Dizzy : elp01",
-            "Dobie : wol04",
-            "Doc : rbt10",
-            "Dom : shp15",
-            "Dora : mus00",
-            "Dotty : rbt01",
-            "Drago : crd08",
-            "Drake : duk09",
-            "Drift : flg04",
-            "Ed : hrs06",
-            "Egbert : chn02",
-            "Elise : mnk05",
-            "Ellie : elp07",
-            "Elmer : hrs03",
-            "Eloise : elp03",
-            "Elvis : lon01",
-            "Erik : der09",
-            "Étoile : shp14",
-            "Eugene : kal10",
-            "Eunice : shp02",
-            "Fang : wol06",
-            "Fauna : der00",
-            "Felicity : cat17",
-            "Filbert : squ02",
-            "Flip : mnk06",
-            "Flo : pgn13",
-            "Flora : ost09",
-            "Flurry : ham06",
-            "Francine : rbt12",
-            "Frank : pbr06",
-            "Freckles : duk07",
-            "Freya : wol05",
-            "Friga : pgn04",
-            "Frita : shp11",
-            "Frobert : flg02",
-            "Fuchsia : der06",
-            "Gabi : rbt05",
-            "Gala : pig13",
-            "Gaston : rbt04",
-            "Gayle : crd07",
-            "Genji : rbt08",
-            "Gigi : flg16",
-            "Gladys : ost01",
-            "Gloria : duk15",
-            "Goldie : dog00",
-            "Gonzo : kal04",
-            "Goose : chn00",
-            "Graham : ham02",
-            "Greta : mus16",
-            "Grizzly : bea09",
-            "Groucho : bea06",
-            "Gruff : goa04",
-            "Gwen : pgn05",
-            "Hamlet : ham00",
-            "Hamphrey : ham07",
-            "Hans : gor10",
-            "Harry : hip08",
-            "Hazel : squ18",
-            "Henry : flg19",
-            "Hippeux : hip09",
-            "Hopkins : rbt14",
-            "Hopper : pgn03",
-            "Hornsby : rhn04",
-            "Huck : flg11",
-            "Hugh : pig03",
-            "Iggly : pgn11",
-            "Ike : bea11",
-            "Jacob : brd11",
-            "Jacques : brd16",
-            "Jambette : flg13",
-            "Jay : brd00",
-            "Jeremiah : flg07",
-            "Jitters : brd04",
-            "Joey : duk01",
-            "Judy : cbr19",
-            "Julia : ost05",
-            "Julian : hrs13",
-            "June : cbr13",
-            "Kabuki : cat09",
-            "Katt : cat21",
-            "Keaton : pbr08",
-            "Ken : chn13",
-            "Ketchup : duk13",
-            "Kevin : pig15",
-            "Kid Cat : cat10",
-            "Kidd : goa07",
-            "Kiki : cat04",
-            "Kitt : kgr00",
-            "Kitty : cat14",
-            "Klaus : bea14",
-            "Knox : chn11",
-            "Kody : cbr04",
-            "Kyle : wol10",
-            "Leonardo : tig04",
-            "Leopold : lon04",
-            "Lily : flg00",
-            "Limberg : mus01",
-            "Lionel : lon08",
-            "Lobo : wol01",
-            "Lolly : cat18",
-            "Lopez : der05",
-            "Louie : gor04",
-            "Lucha : brd15",
-            "Lucky : dog02",
-            "Lucy : pig04",
-            "Lyman : kal09",
-            "Mac : dog14",
-            "Maddie : dog09",
-            "Maelle : duk03",
-            "Maggie : pig10",
-            "Mallary : duk06",
-            "Maple : cbr01",
-            "Marcel : dog15",
-            "Marcie : kgr10",
-            "Margie : elp04",
-            "Marina : ocp01",
-            "Marshal : squ17",
-            "Marty : cbr18",
-            "Mathilda : kgr01",
-            "Megan : bea15",
-            "Melba : kal02",
-            "Merengue : rhn07",
-            "Merry : cat16",
-            "Midge : brd08",
-            "Mint : squ09",
-            "Mira : rbt19",
-            "Miranda : duk12",
-            "Mitzi : cat01",
-            "Moe : cat08",
-            "Molly : duk16",
-            "Monique : cat11",
-            "Monty : mnk04",
-            "Moose : mus14",
-            "Mott : lon06",
-            "Muffy : shp12",
-            "Murphy : cbr07",
-            "Nan : goa01",
-            "Nana : mnk01",
-            "Naomi : cow07",
-            "Nate : bea05",
-            "Nibbles : squ04",
-            "Norma : cow06",
-            "O\'Hare : rbt15",
-            "Octavian : ocp00",
-            "Olaf : ant09",
-            "Olive : cbr09",
-            "Olivia : cat03",
-            "Opal : elp00",
-            "Ozzie : kal05",
-            "Pancetti : pig16",
-            "Pango : ant02",
-            "Paolo : elp05",
-            "Papi : hrs12",
-            "Pashmina : goa08",
-            "Pate : duk02",
-            "Patty : cow00",
-            "Paula : bea10",
-            "Peaches : hrs08",
-            "Peanut : squ00",
-            "Pecan : squ03",
-            "Peck : brd17",
-            "Peewee : gor01",
-            "Peggy : pig11",
-            "Pekoe : cbr14",
-            "Penelope : mus17",
-            "Phil : ost07",
-            "Phoebe : ost10",
-            "Pierce : pbr02",
-            "Pietro : shp13",
-            "Pinky : bea01",
-            "Piper : brd05",
-            "Pippy : rbt06",
-            "Plucky : chn10",
-            "Pompom : duk05",
-            "Poncho : cbr02",
-            "Poppy : squ15",
-            "Portia : dog05",
-            "Prince : flg12",
-            "Puck : pgn06",
-            "Puddles : flg06",
-            "Pudge : cbr03",
-            "Punchy : cat06",
-            "Purrl : cat07",
-            "Queenie : ost00",
-            "Quillson : duk17",
-            "Raddle : flg15",
-            "Rasher : pig02",
-            "Raymond : cat23",
-            "Renée : rhn08",
-            "Reneigh : hrs16",
-            "Rex : lon02",
-            "Rhonda : rhn01",
-            "Ribbot : flg01",
-            "Ricky : squ10",
-            "Rilla : gor11",
-            "Rizzo : mus09",
-            "Roald : pgn01",
-            "Robin : brd01",
-            "Rocco : hip00",
-            "Rocket : gor09",
-            "Rod : mus05",
-            "Rodeo : bul01",
-            "Rodney : ham03",
-            "Rolf : tig00",
-            "Rooney : kgr09",
-            "Rory : lon07",
-            "Roscoe : hrs04",
-            "Rosie : cat02",
-            "Rowan : tig01",
-            "Ruby : rbt09",
-            "Rudy : cat20",
-            "Sally : squ07",
-            "Samson : mus04",
-            "Sandy : ost02",
-            "Savannah : hrs02",
-            "Scoot : duk10",
-            "Shari : mnk07",
-            "Sheldon : squ16",
-            "Shep : dog18",
-            "Sherb : goa09",
-            "Simon : mnk02",
-            "Skye : wol09",
-            "Sly : crd06",
-            "Snake : rbt03",
-            "Snooty : ant06",
-            "Soleil : ham04",
-            "Sparro : brd18",
-            "Spike : rhn02",
-            "Spork : pig05",
-            "Sprinkle : pgn14",
-            "Sprocket : ost03",
-            "Static : squ08",
-            "Stella : shp03",
-            "Sterling : pbr07",
-            "Stinky : cat13",
-            "Stitches : cbr05",
-            "Stu : bul03",
-            "Sydney : kal03",
-            "Sylvana : squ14",
-            "Sylvia : kgr06",
-            "T-Bone : bul05",
-            "Tabby : cat12",
-            "Tad : flg09",
-            "Tammi : mnk03",
-            "Tammy : cbr17",
-            "Tangy : cat05",
-            "Tank : rhn00",
-            "Tasha : squ13",
-            "Teddy : bea00",
-            "Tex : pgn12",
-            "Tia : elp10",
-            "Tiffany : rbt07",
-            "Timbra : shp10",
-            "Tipper : cow01",
-            "Toby : rbt20",
-            "Tom : cat15",
-            "Truffles : pig01",
-            "Tucker : elp09",
-            "Tutu : bea07",
-            "Twiggy : brd03",
-            "Tybalt : tig02",
-            "Ursala : bea08",
-            "Velma : goa06",
-            "Vesta : shp00",
-            "Vic : bul08",
-            "Victoria : hrs01",
-            "Violet : gor07",
-            "Vivian : wol08",
-            "Vladimir : cbr06",
-            "Wade : pgn09",
-            "Walker : dog06",
-            "Walt : kgr08",
-            "Wart Jr. : flg05",
-            "Weber : duk11",
-            "Wendy : shp09",
-            "Whitney : wol03",
-            "Willow : shp07",
-            "Winnie : hrs05",
-            "Wolfgang : wol02",
-            "Yuka : kal00",
-            "Zell : der02",
-            "Zucker : ocp02"});
-            this.ReplaceSelector.Location = new System.Drawing.Point(49, 435);
-            this.ReplaceSelector.Name = "ReplaceSelector";
-            this.ReplaceSelector.Size = new System.Drawing.Size(200, 66);
-            this.ReplaceSelector.TabIndex = 217;
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(376, 780);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(85, 23);
+            this.button2.TabIndex = 218;
+            this.button2.Tag = "";
+            this.button2.Text = "dump t";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(376, 819);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(85, 23);
+            this.button3.TabIndex = 219;
+            this.button3.Tag = "";
+            this.button3.Text = "dump a";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(474, 819);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(85, 23);
+            this.button4.TabIndex = 220;
+            this.button4.Tag = "";
+            this.button4.Text = "write a";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(479, 780);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(85, 23);
+            this.button5.TabIndex = 221;
+            this.button5.Tag = "";
+            this.button5.Text = "try";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // ReadBtn
+            // 
+            this.ReadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.ReadBtn.FlatAppearance.BorderSize = 0;
+            this.ReadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReadBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ReadBtn.ForeColor = System.Drawing.Color.White;
+            this.ReadBtn.Location = new System.Drawing.Point(152, 791);
+            this.ReadBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.ReadBtn.Name = "ReadBtn";
+            this.ReadBtn.Size = new System.Drawing.Size(138, 28);
+            this.ReadBtn.TabIndex = 228;
+            this.ReadBtn.Text = "Read";
+            this.ReadBtn.UseVisualStyleBackColor = false;
+            this.ReadBtn.Click += new System.EventHandler(this.ReadBtn_Click);
+            // 
+            // createBtn
+            // 
+            this.createBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.createBtn.FlatAppearance.BorderSize = 0;
+            this.createBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.createBtn.ForeColor = System.Drawing.Color.White;
+            this.createBtn.Location = new System.Drawing.Point(152, 827);
+            this.createBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.createBtn.Name = "createBtn";
+            this.createBtn.Size = new System.Drawing.Size(138, 28);
+            this.createBtn.TabIndex = 227;
+            this.createBtn.Text = "Create";
+            this.createBtn.UseVisualStyleBackColor = false;
+            this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
             // 
             // Form1
             // 
@@ -7296,19 +7293,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1204, 516);
+            this.Controls.Add(this.ReadBtn);
+            this.Controls.Add(this.createBtn);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.PlayerName);
             this.Controls.Add(this.PlayerNameLabel);
             this.Controls.Add(this.addressDebug);
             this.Controls.Add(this.egg);
             this.Controls.Add(this.villagerBtn);
-            this.Controls.Add(this.namebox);
-            this.Controls.Add(this.idbox);
             this.Controls.Add(this.dump);
-            this.Controls.Add(this.Result9);
-            this.Controls.Add(this.Result8);
-            this.Controls.Add(this.Result7);
-            this.Controls.Add(this.Result6);
-            this.Controls.Add(this.Result5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.otherBtn);
             this.Controls.Add(this.PeekMainBtn);
@@ -7612,11 +7608,6 @@
         private System.Windows.Forms.Label pleaseWaitLabel;
         private System.Windows.Forms.PictureBox pacman;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox Result5;
-        private System.Windows.Forms.RichTextBox Result6;
-        private System.Windows.Forms.RichTextBox Result7;
-        private System.Windows.Forms.RichTextBox Result8;
-        private System.Windows.Forms.RichTextBox Result9;
         private System.Windows.Forms.ToolTip btnToolTip;
         private System.Windows.Forms.PictureBox pacman2;
         private System.Windows.Forms.Button fillRemainBtn;
@@ -7628,8 +7619,6 @@
         private System.Windows.Forms.ToolStripMenuItem wrapAllItemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unwrapAllItemToolStripMenuItem;
         private System.Windows.Forms.Button dump;
-        private System.Windows.Forms.RichTextBox idbox;
-        private System.Windows.Forms.RichTextBox namebox;
         private System.Windows.Forms.Button debugVillager;
         private System.Windows.Forms.Panel villagerLargePanel;
         private System.Windows.Forms.Label PersonalityLabel;
@@ -7711,6 +7700,12 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.Button mapDropperBtn;
         private System.Windows.Forms.Button regeneratorBtn;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button ReadBtn;
+        private System.Windows.Forms.Button createBtn;
     }
 }
 

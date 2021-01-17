@@ -130,6 +130,21 @@ https://youtu.be/-zztRgmtXig
 	* Added "Favorite" tab. Allow user to create their own favourite list.
 	* Added "Map Dropper" for map editing.
 	* Added "Map Regenerator" for treasure map hosting.
+	* Added hotke
+* R12.1
+	* Added hotkey for map dropper. [Shift + Left Click] = Drop item & [Alt + Left Click] = Delete item
+	* Fixed the bug of the regenerator that dropped item might incorrectly restocked.
+	* Added a count down for the regenerator pause.
+	* Added a basic Layer 2 support to the map dropper.
+	* Redo the .nhi loading to ignore empty space.
+	* Added .nhi support to the map dropper.
+	* Added option to disable all sound.
+* R12.2
+	* Added last save and last load location. Saving/Loading should open your last active directory.
+	* Fixed the favorite mtab to allow item witrh same ID.
+	* Added logging to the regenerator.
+	* Added extra option in the regenerator to limit the "ignore empty tiles" area.
+	* Redo the "Map Dropper" with mini map control.
     
 ## Contributing
 

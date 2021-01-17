@@ -97,6 +97,15 @@ namespace ACNHPoker
             return imagePath;
         }
 
+        public string getiName()
+        {
+
+            string[] firstSplit = imagePath.Split('.');
+            string[] SecondSplit = firstSplit[0].Split('\\');
+
+            return SecondSplit[SecondSplit.Length - 1];
+        }
+
         public Boolean isEmpty()
         {
             if (itemID == 0x0 || itemID == 0xFFFE)

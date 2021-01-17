@@ -12,13 +12,15 @@ namespace ACNHPoker
         Socket S;
         USBBot Bot;
         int Index;
-        public Friendship(Form1 main, int i, Socket s, USBBot bot, Image img, string name)
+        bool sound;
+        public Friendship(Form1 main, int i, Socket s, USBBot bot, Image img, string name, bool Sound)
         {
             InitializeComponent();
             mainForm = main;
             S = s;
             Bot = bot;
             Index = i;
+            sound = Sound;
             VillagerImage.Image = img;
             this.Text = name;
 
@@ -241,8 +243,8 @@ namespace ACNHPoker
                     mainForm.SetFriendship(Index, p, SetValue[p]);
                 }
             }
-
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             this.Close();
 

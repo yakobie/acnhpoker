@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
@@ -8,6 +9,22 @@ namespace ACNHPoker
 {
     public partial class Form1 : Form
     {
+        public const int MapTileCount16x16 = 16 * 16 * 7 * 6;
+        public const int TerrainTileSize = 0xE;
+
+        public const int AllTerrainSize = MapTileCount16x16 * TerrainTileSize;
+
+        private const int BuildingSize = 0x14;
+        private const int AllBuildingSize = 46 * BuildingSize;
+
+        public const int AcreWidth = 7 + (2 * 1); // 1 on each side cannot be traversed
+        private const int AcreHeight = 6 + (2 * 1); // 1 on each side cannot be traversed
+        private const int AcreMax = AcreWidth * AcreHeight;
+        private const int AllAcreSize = AcreMax * 2;
+        private const int AcrePlusAdditionalParams = AllAcreSize + 2 + 4 + 8 + sizeof(uint); // MainFieldParamUniqueID + EventPlazaLeftUpX + EventPlazaLeftUpZ
+
+        byte[] save = null;
+
         private void PokeBtn_Click(object sender, EventArgs e)
         {
             Utilities.pokeAddress(s, bot, "0x" + debugAddress.Text, debugAmount.Text);
@@ -103,29 +120,135 @@ namespace ACNHPoker
             */
 
             //Thread.Sleep(1000);
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
             //hideWait();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Result1.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.masterAddress).ToString("X");
+            OpenFileDialog file = new OpenFileDialog()
+            {
+                Filter = "New Horizons Fasil (*.nhf)|*.nhf|All files (*.*)|*.*",
+            };
 
-            Result2.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.TownNameddress).ToString("X");
+            string savepath = Directory.GetCurrentDirectory() + @"\save";
 
-            Result3.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.playerReactionAddress).ToString("X");
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
 
-            Result4.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.weatherSeed).ToString("X");
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
 
-            Result5.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.MasterRecyclingBase).ToString("X");
+            byte[] b = File.ReadAllBytes(file.FileName);
 
-            Result6.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.player1HouseBase).ToString("X");
+            
+            if (MiniMap == null)
+                MiniMap = new miniMap(b, null, 3);
+            
+            //miniMapBox.Visible = true;
+            //miniMapBox.Image = MiniMap.drawItemMap();
+        }
 
-            Result7.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.InsectAppearPointer).ToString("X");
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            SaveFileDialog file = new SaveFileDialog()
+            {
+                Filter = "New Horizons t (*.nht)|*.nht",
+            };
 
-            Result8.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.FishRiverAppearPointer).ToString("X");
+            string savepath = Directory.GetCurrentDirectory() + @"\save";
 
-            Result9.Text = (Convert.ToUInt64(debugAmount.Text, 16) + Utilities.FishSeaAppearPointer).ToString("X");
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            byte[] save = Utilities.ReadByteArray8(s, Utilities.TerrainOffset, AllTerrainSize);
+
+            File.WriteAllBytes(file.FileName, save);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog file = new SaveFileDialog()
+            {
+                Filter = "New Horizons a (*.nha)|*.nha",
+            };
+
+            string savepath = Directory.GetCurrentDirectory() + @"\save";
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            byte[] save = Utilities.ReadByteArray8(s, Utilities.AcreOffset, AcrePlusAdditionalParams);
+
+            File.WriteAllBytes(file.FileName, save);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog file = new OpenFileDialog()
+            {
+                Filter = "New Horizons a (*.nha)|*.nha",
+            };
+
+            string savepath = Directory.GetCurrentDirectory() + @"\save";
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            byte[] data = File.ReadAllBytes(file.FileName);
+
+            Utilities.SendByteArray8(s, Utilities.AcreOffset, data, AcrePlusAdditionalParams);
+        }
+
+        public static void GetAcreTileColor(byte acre, int x, int y)
+        {
+            var baseOfs = acre * 32 * 32 * 4;
+
+            // 64x64
+            var shift = (4 * ((y * 64) + x));
+            var ofs = baseOfs + shift;
+            //var tile = AcreTiles[ofs];
+            //return CollisionUtil.Dict[tile].ToArgb();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            byte a = 0x87;
+            GetAcreTileColor(a, 0, 0);
         }
 
         private void ChaseBtn_Click(object sender, EventArgs e)
@@ -237,6 +360,101 @@ namespace ACNHPoker
             {
                 byte[] Data = Utilities.peekAddress(s, bot, Utilities.player1SlotBase + (i * Utilities.playerOffset), (int)Utilities.playerOffset);
                 File.WriteAllBytes("dump" + i + ".bin", Data);
+            }
+        }
+
+        private void ReadBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog file = new OpenFileDialog()
+            {
+                Filter = "New Horizons Inventory(*.nhi) | *.nhi|All files (*.*)|*.*",
+            };
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastLoad"].Value;
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int i = 0; i < temp.Length - 1; i++)
+                path = path + temp[i] + "\\";
+
+            config.AppSettings.Settings["LastLoad"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            if (save == null)
+                save = File.ReadAllBytes(file.FileName);
+            else
+            {
+                byte[] read = File.ReadAllBytes(file.FileName);
+                save = Utilities.add(save, read);
+            }
+        }
+
+        private void createBtn_Click(object sender, EventArgs e)
+        {
+            if (save == null)
+                return;
+            else
+            {
+                SaveFileDialog file = new SaveFileDialog()
+                {
+                    Filter = "New Horizons Bulk Spawn (*.nhbs)|*.nhbs",
+                };
+
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+                string savepath;
+
+                if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                    savepath = Directory.GetCurrentDirectory() + @"\save";
+                else
+                    savepath = config.AppSettings.Settings["LastSave"].Value;
+
+                if (Directory.Exists(savepath))
+                {
+                    file.InitialDirectory = savepath;
+                }
+                else
+                {
+                    file.InitialDirectory = @"C:\";
+                }
+
+                if (file.ShowDialog() != DialogResult.OK)
+                    return;
+
+                string[] temp = file.FileName.Split('\\');
+                string path = "";
+                for (int i = 0; i < temp.Length - 1; i++)
+                    path = path + temp[i] + "\\";
+
+                config.AppSettings.Settings["LastSave"].Value = path;
+                config.Save(ConfigurationSaveMode.Minimal);
+
+
+                string dataStr = Utilities.ByteToHexString(save).Replace("FEFF000000000000", string.Empty);
+                byte[] final = Utilities.stringToByte(dataStr);
+
+                File.WriteAllBytes(file.FileName, final);
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
             }
         }
     }

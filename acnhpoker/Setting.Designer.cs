@@ -75,6 +75,7 @@
             this.enableOverrideBtn = new System.Windows.Forms.Button();
             this.addresses = new System.Windows.Forms.Panel();
             this.SaveBtn = new System.Windows.Forms.Button();
+            this.soundBtn = new System.Windows.Forms.Button();
             this.addresses.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -742,12 +743,28 @@
             this.SaveBtn.UseVisualStyleBackColor = false;
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
+            // soundBtn
+            // 
+            this.soundBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.soundBtn.FlatAppearance.BorderSize = 0;
+            this.soundBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.soundBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.soundBtn.ForeColor = System.Drawing.Color.White;
+            this.soundBtn.Location = new System.Drawing.Point(776, 13);
+            this.soundBtn.Name = "soundBtn";
+            this.soundBtn.Size = new System.Drawing.Size(180, 30);
+            this.soundBtn.TabIndex = 99;
+            this.soundBtn.Text = "Disable Sound";
+            this.soundBtn.UseVisualStyleBackColor = false;
+            this.soundBtn.Click += new System.EventHandler(this.soundBtn_Click);
+            // 
             // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(970, 513);
+            this.Controls.Add(this.soundBtn);
             this.Controls.Add(this.addresses);
             this.Controls.Add(this.enableOverrideBtn);
             this.Controls.Add(this.disableValidationBtn);
@@ -813,5 +830,6 @@
         private System.Windows.Forms.Button enableOverrideBtn;
         private System.Windows.Forms.Panel addresses;
         private System.Windows.Forms.Button SaveBtn;
+        private System.Windows.Forms.Button soundBtn;
     }
 }

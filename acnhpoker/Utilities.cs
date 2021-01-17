@@ -54,9 +54,27 @@ namespace ACNHPoker
         public static UInt32 weatherSeed = 0xBABB67C; // masterAddress - 0xA01F9CFC;
 
         public static UInt32 coordinate = 0x43E32280;
-        public static UInt32 mapHead = 0xABBDF50C;
+
         public static UInt32 mapOffset = 0xB25900;
+        public static UInt32 mapZero = 0xABBFA68C;
+        public static UInt32 mapSize = 0x54000;
+
         public static UInt32 VisitorNameAddress = 0xB694A4A8;
+
+        public static UInt32 ItemOffset = 0xABBFA69C;
+
+        public static UInt32 TerrainOffset = ItemOffset + 0xAAA00;
+
+        public static UInt32 AcreOffset = ItemOffset + 0xCF988;
+
+        private const int AcreWidth = 7 + (2 * 1);
+        private const int AcreHeight = 6 + (2 * 1);
+        private const int AcreMax = AcreWidth * AcreHeight;
+        public const int AllAcreSize = AcreMax * 2;
+        public const int AcreAndPlaza = AllAcreSize + 2 + 2 + 4 + 4;
+
+        public static UInt32 BuildingOffset = ItemOffset + 0xCF600;
+
 
         public static  UInt32 player1SlotBase = masterAddress;
         public static UInt32 playerOffset = 0x133B78; //0x76390;
@@ -872,6 +890,39 @@ namespace ACNHPoker
 
             return false;
         }
+
+        public static bool SendByteArray(Socket socket, long initAddr, byte[] buffer, int size)
+        {
+            try
+            {
+                // Send in small chunks
+                const int maxBytesTosend = 1536;
+                int sent = 0;
+                int bytesToSend = 0;
+                StringBuilder dataTemp = new StringBuilder();
+                string msg;
+                while (sent < size)
+                {
+                    dataTemp.Clear();
+                    bytesToSend = (size - sent > maxBytesTosend) ? maxBytesTosend : size - sent;
+                    for (int i = 0; i < bytesToSend; i++)
+                    {
+                        dataTemp.Append(String.Format("{0:X2}", buffer[sent + i]));
+                    }
+                    msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", initAddr + sent, dataTemp.ToString());
+                    //Debug.Print(msg);
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
+                    sent += bytesToSend;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+            }
+
+            return false;
+        }
+
 
         private static string ReadToIntermediateString(Socket socket, long address, int size)
         {
@@ -1885,10 +1936,10 @@ namespace ACNHPoker
                         SendString(socket, Encoding.UTF8.GetBytes(msg2));
 
                         string msg3 = String.Format("poke {0:X8} {1}\r\n", "0x" + address3, "0x" + buildDropStringLeft("FFFE", "00000000", "00", "00", true));
-                        Debug.Print("Delete Floor 1 : " + msg3);
+                        Debug.Print("Delete Floor 3 : " + msg3);
                         SendString(socket, Encoding.UTF8.GetBytes(msg3));
                         string msg4 = String.Format("poke {0:X8} {1}\r\n", "0x" + address4, "0x" + buildDropStringRight("FFFE", true));
-                        Debug.Print("Delete Floor 2 : " + msg4);
+                        Debug.Print("Delete Floor 4 : " + msg4);
                         SendString(socket, Encoding.UTF8.GetBytes(msg4));
                     }
                     else
@@ -1903,14 +1954,131 @@ namespace ACNHPoker
             }
         }
 
+        public static byte[] getMapLayer(Socket socket, USBBot bot, long address, ref int counter)
+        {
+            lock (botLock)
+            {
+                try
+                {
+                    if (bot == null)
+                    {
+                        Debug.Print("[Sys] Peek : Map Layer " + address.ToString("X"));
+
+                        byte[] b = ReadByteArray8(socket, address, (int)mapSize, ref counter);
+
+                        if (b == null)
+                        {
+                            MessageBox.Show("Wait something is wrong here!? \n\n Map Layer");
+                        }
+                        return b;
+                    }
+                    else
+                    {
+                        Debug.Print("[Usb] Peek : Map Layer " + address.ToString("X"));
+
+                        byte[] b = bot.ReadBytes((uint)address, (int)mapSize);
+
+                        if (b == null)
+                        {
+                            MessageBox.Show("Wait something is wrong here!? \n\n Map Layer");
+                        }
+                        return b;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                    return null;
+                }
+            }
+        }
+
+        public static byte[] getAcre(Socket socket, USBBot bot)
+        {
+            lock (botLock)
+            {
+                try
+                {
+                    if (bot == null)
+                    {
+                        Debug.Print("[Sys] Peek : Acre " + AcreOffset);
+
+                        byte[] b = ReadByteArray(socket, AcreOffset, AcreAndPlaza);
+
+                        if (b == null)
+                        {
+                            MessageBox.Show("Wait something is wrong here!? \n\n Acre");
+                        }
+                        return b;
+                    }
+                    else
+                    {
+                        Debug.Print("[Usb] Peek : Acre " + AcreOffset);
+
+                        byte[] b = bot.ReadBytes(AcreOffset, AcreAndPlaza);
+
+                        if (b == null)
+                        {
+                            MessageBox.Show("Wait something is wrong here!? \n\n Acre");
+                        }
+                        return b;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                    return null;
+                }
+            }
+        }
+
+        public static byte[] getCoordinate(Socket socket, USBBot bot)
+        {
+            lock (botLock)
+            {
+                try
+                {
+                    if (bot == null)
+                    {
+                        Debug.Print("[Sys] Peek : Coordinate " + coordinate.ToString("X"));
+
+                        byte[] b = ReadByteArray(socket, coordinate, 8);
+
+                        if (b == null)
+                        {
+                            MessageBox.Show("Wait something is wrong here!? \n\n Coordinate");
+                        }
+                        return b;
+                    }
+                    else
+                    {
+                        Debug.Print("[Usb] Peek : Coordinate " + coordinate.ToString("X"));
+
+                        byte[] b = bot.ReadBytes(coordinate, 8);
+
+                        if (b == null)
+                        {
+                            MessageBox.Show("Wait something is wrong here!? \n\n Coordinate");
+                        }
+                        return b;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                    return null;
+                }
+            }
+        }
+
         public static void dropColume(Socket socket, USBBot bot, uint address1, uint address2, byte[] buffer1, byte[] buffer2, ref int counter)
         {
             lock (botLock)
             {
                 if (bot == null)
                 {
-                    SendByteArray(socket, address1, buffer1, 112, ref counter);
-                    SendByteArray(socket, address2, buffer2, 112, ref counter);
+                    SendByteArray(socket, address1, buffer1, buffer1.Length, ref counter);
+                    SendByteArray(socket, address2, buffer2, buffer2.Length, ref counter);
                 }
                 else
                 {
@@ -1920,57 +2088,21 @@ namespace ACNHPoker
             }
         }
 
-        private static string buildDropStringLeft(string itemId, string count, string flag1, string flag2, Boolean empty = false)
+        public static string buildDropStringLeft(string itemId, string count, string flag1, string flag2, Boolean empty = false)
         {
             string partID = "FDFF0000";
             if (empty)
                 return flip(itemId) + flag2 + flag1 + flip(count) + flip(itemId) + "0000" + "0000" + "00" + "00";
             else
                 return flip(itemId) + flag2 + flag1 + flip(count) + partID + flip(itemId) + "00" + "01";
-            //Utilities.pokeAddress(s, bot, address.ToString(), Utilities.flip(itemID) + "20" + "00" + "3FE08300" + "FDFF0000" + Utilities.flip(itemID) + "00" + "01");
-            //Utilities.pokeAddress(s, bot, (address + 0x600).ToString(), "FDFF0000" + Utilities.flip(itemID) + "01" + "00" + "FDFF0000" + Utilities.flip(itemID) + "01" + "01");
         }
-        private static string buildDropStringRight(string itemId, Boolean empty = false)
+        public static string buildDropStringRight(string itemId, Boolean empty = false)
         {
             string partID = "FDFF0000";
             if (empty)
                 return flip(itemId) + "0000" + "0000" + "00" + "00" + flip(itemId) + "0000" +"0000" + "00" + "00";
             else
                 return partID + flip(itemId) + "01" + "00" + partID + flip(itemId) + "01" + "01";
-        }
-
-        public static byte[] GetMapColume(Socket socket, USBBot bot, uint address, int size)
-        {
-            lock (botLock)
-            {
-                if (bot == null)
-                {
-                    Debug.Print("[Sys] PeekMap : " + address.ToString("X") + " " + size);
-                    return ReadByteArray(socket, address, size);
-                }
-                else
-                {
-                    Debug.Print("[Usb] PeekMap : " + address.ToString("X") + " " + size);
-                    return ReadLargeBytes(bot, address, size);
-                }
-            }
-        }
-
-        public static void dropMapColume(Socket socket, USBBot bot, uint address1, uint address2, byte[] buffer1, byte[] buffer2, ref int counter)
-        {
-            lock (botLock)
-            {
-                if (bot == null)
-                {
-                    SendByteArray(socket, address1, buffer1, 1536, ref counter);
-                    SendByteArray(socket, address2, buffer2, 1536, ref counter);
-                }
-                else
-                {
-                    bot.WriteBytes(buffer1, address1);
-                    bot.WriteBytes(buffer2, address2);
-                }
-            }
         }
 
         public static byte[] ReadByteArray8(Socket socket, long initAddr, int size, ref int counter)
@@ -2056,6 +2188,31 @@ namespace ACNHPoker
             }
         }
 
+        public static void SendByteArray8(Socket socket, long initAddr, byte[] buffer, int size)
+        {
+            lock (botLock)
+            {
+                const int maxBytesTosend = 8192;
+                int sent = 0;
+                int bytesToSend = 0;
+                StringBuilder dataTemp = new StringBuilder();
+                string msg;
+                while (sent < size)
+                {
+                    dataTemp.Clear();
+                    bytesToSend = (size - sent > maxBytesTosend) ? maxBytesTosend : size - sent;
+                    for (int i = 0; i < bytesToSend; i++)
+                    {
+                        dataTemp.Append(String.Format("{0:X2}", buffer[sent + i]));
+                    }
+                    msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", initAddr + sent, dataTemp.ToString());
+                    //Debug.Print(msg);
+                    SendString(socket, Encoding.UTF8.GetBytes(msg));
+                    sent += bytesToSend;
+                }
+            }
+        }
+
         private static string ReadToIntermediateString8(Socket socket, long address, int size)
         {
             lock (botLock)
@@ -2083,6 +2240,16 @@ namespace ACNHPoker
                 }
 
                 return b;
+            }
+        }
+
+        public static void sendBlankName(Socket socket)
+        {
+            lock (botLock)
+            {
+                byte[] empty = new byte[20];
+                SendByteArray(socket, VisitorNameAddress, empty, 20);
+                Debug.Print("Send Blank Name");
             }
         }
 
@@ -2115,6 +2282,15 @@ namespace ACNHPoker
             byte[] data = new byte[length];
             Buffer.BlockCopy(src, offset, data, 0, data.Length);
             return data;
+        }
+
+        public static byte[] add(byte[] a, byte[] b)
+        {
+            byte[] c = new byte[a.Length + b.Length];
+            Buffer.BlockCopy(a, 0, c, 0, a.Length);
+            Buffer.BlockCopy(b, 0, c, a.Length, b.Length);
+
+            return c;
         }
 
         public static void overrideAddresses(Dictionary<string, UInt32> config)

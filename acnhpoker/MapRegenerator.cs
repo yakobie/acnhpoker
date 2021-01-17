@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -9,7 +9,6 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ACNHPoker
@@ -22,17 +21,42 @@ namespace ACNHPoker
         private Boolean loop = false;
         private Thread RegenThread = null;
         private static Object mapLock = new Object();
-        private int delayTime = 100;
-        private string lastVisitor = "";
+        private int delayTime = 50;
+        private int pauseTime = 70;
+        private bool sound;
 
-        public MapRegenerator(Socket S, Form1 Main)
+        private const string saveFolder = @"save\";
+        private const string logFile = @"VisitorLog.csv";
+        private string logPath = saveFolder + logFile;
+
+        private miniMap MiniMap = null;
+        private int anchorX = -1;
+        private int anchorY = -1;
+        private byte[] tempData;
+        private string tempFilename;
+
+        public MapRegenerator(Socket S, Form1 Main, bool Sound)
         {
             s = S;
             main = Main;
+            sound = Sound;
+
             InitializeComponent();
             FinMsg.SelectionAlignment = HorizontalAlignment.Center;
-            lastVisitor = getVisitorName();
-            visitorNameBox.Text = lastVisitor;
+            logName.Text = logFile;
+            Random random = new Random();
+            int v = random.Next(8192);
+            Debug.Print(v.ToString());
+            if (v == 6969)
+            {
+                this.Icon = ACNHPoker.Properties.Resources.k;
+                this.trayIcon.Icon = this.Icon = ACNHPoker.Properties.Resources.k;
+            }
+            else if (v <= 4096)
+            {
+                this.Icon = ACNHPoker.Properties.Resources.f;
+                this.trayIcon.Icon = this.Icon = ACNHPoker.Properties.Resources.f;
+            }
         }
 
         private void saveMapBtn_Click(object sender, EventArgs e)
@@ -42,11 +66,17 @@ namespace ACNHPoker
                 SaveFileDialog file = new SaveFileDialog()
                 {
                     Filter = "New Horizons Fasil (*.nhf)|*.nhf",
-                    //FileName = "items.nhi",
                 };
 
-                string savepath = Directory.GetCurrentDirectory() + @"\save";
-                //Debug.Print(savepath);
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+                string savepath;
+
+                if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                    savepath = Directory.GetCurrentDirectory() + @"\save";
+                else
+                    savepath = config.AppSettings.Settings["LastSave"].Value;
+
                 if (Directory.Exists(savepath))
                 {
                     file.InitialDirectory = savepath;
@@ -59,7 +89,15 @@ namespace ACNHPoker
                 if (file.ShowDialog() != DialogResult.OK)
                     return;
 
-                UInt32 address = Utilities.mapHead + (0xC00 * (0x24)) + (0x10 * (0x18));
+                string[] temp = file.FileName.Split('\\');
+                string path = "";
+                for (int i = 0; i < temp.Length - 1; i++)
+                    path = path + temp[i] + "\\";
+
+                config.AppSettings.Settings["LastSave"].Value = path;
+                config.Save(ConfigurationSaveMode.Minimal);
+
+                UInt32 address = Utilities.mapZero;
 
                 Thread LoadThread = new Thread(delegate () { saveMapFloor(address, file); });
                 LoadThread.Start();
@@ -83,7 +121,8 @@ namespace ACNHPoker
 
             File.WriteAllBytes(file.FileName, save);
 
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             hideMapWait();
 
@@ -101,11 +140,17 @@ namespace ACNHPoker
                 OpenFileDialog file = new OpenFileDialog()
                 {
                     Filter = "New Horizons Fasil (*.nhf)|*.nhf|All files (*.*)|*.*",
-                    FileName = "Map.nhf",
                 };
 
-                string savepath = Directory.GetCurrentDirectory() + @"\save";
-                //Debug.Print(savepath);
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+                string savepath;
+
+                if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                    savepath = Directory.GetCurrentDirectory() + @"\save";
+                else
+                    savepath = config.AppSettings.Settings["LastLoad"].Value;
+
                 if (Directory.Exists(savepath))
                 {
                     file.InitialDirectory = savepath;
@@ -118,9 +163,17 @@ namespace ACNHPoker
                 if (file.ShowDialog() != DialogResult.OK)
                     return;
 
+                string[] temp = file.FileName.Split('\\');
+                string path = "";
+                for (int i = 0; i < temp.Length - 1; i++)
+                    path = path + temp[i] + "\\";
+
+                config.AppSettings.Settings["LastLoad"].Value = path;
+                config.Save(ConfigurationSaveMode.Minimal);
+
                 byte[] data = File.ReadAllBytes(file.FileName);
 
-                UInt32 address = (UInt32)(Utilities.mapHead + (0xC00 * (0x24)) + (0x10 * (0x18)));
+                UInt32 address = Utilities.mapZero;
 
                 byte[][] b = new byte[42][];
 
@@ -150,9 +203,11 @@ namespace ACNHPoker
             for (int i = 0; i < 42; i++)
             {
                 Utilities.SendByteArray8(s, address + (i * 0x2000), b[i], 0x2000, ref counter);
+                Thread.Sleep(250);
             }
 
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             hideMapWait();
 
@@ -170,14 +225,22 @@ namespace ACNHPoker
 
             if (startRegen.Tag.ToString().Equals("Start"))
             {
+                //updateVisitorName();
+
                 OpenFileDialog file = new OpenFileDialog()
                 {
                     Filter = "New Horizons Fasil (*.nhf)|*.nhf|All files (*.*)|*.*",
-                    FileName = "Map.nhf",
                 };
 
-                string savepath = Directory.GetCurrentDirectory() + @"\save";
-                //Debug.Print(savepath);
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+                string savepath;
+
+                if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                    savepath = Directory.GetCurrentDirectory() + @"\save";
+                else
+                    savepath = config.AppSettings.Settings["LastLoad"].Value;
+
                 if (Directory.Exists(savepath))
                 {
                     file.InitialDirectory = savepath;
@@ -189,6 +252,14 @@ namespace ACNHPoker
 
                 if (file.ShowDialog() != DialogResult.OK)
                     return;
+
+                string[] temp = file.FileName.Split('\\');
+                string path = "";
+                for (int i = 0; i < temp.Length - 1; i++)
+                    path = path + temp[i] + "\\";
+
+                config.AppSettings.Settings["LastLoad"].Value = path;
+                config.Save(ConfigurationSaveMode.Minimal);
 
                 loop = true;
                 startRegen.Tag = "Stop";
@@ -202,7 +273,7 @@ namespace ACNHPoker
 
                 byte[] data = File.ReadAllBytes(file.FileName);
 
-                UInt32 address = (UInt32)(Utilities.mapHead + (0xC00 * (0x24)) + (0x10 * (0x18)));
+                UInt32 address = Utilities.mapZero;
 
                 byte[][] b = new byte[42][];
 
@@ -246,23 +317,36 @@ namespace ACNHPoker
             string newVisitor;
             TimeSpan ts;
 
+            Utilities.sendBlankName(s);
+
             do
             {
                 counter = 0;
+                writeCount = 0;
 
                 newVisitor = getVisitorName();
 
-                if (!lastVisitor.Equals(newVisitor))
+                if (!newVisitor.Equals(string.Empty))
                 {
-                    lastVisitor = newVisitor;
                     this.Invoke((MethodInvoker)delegate
                     {
                         visitorNameBox.Text = newVisitor;
                         WaitMessagebox.Text = "Paused. " + newVisitor + " arriving!";
+                        CreateLog(newVisitor);
+                        PauseTimeLabel.Visible = true;
+                        PauseTimer.Start();
+
                     });
+
                     Thread.Sleep(70000);
+                    Utilities.sendBlankName(s);
+
                     this.Invoke((MethodInvoker)delegate
                     {
+                        PauseTimeLabel.Visible = false;
+                        PauseTimer.Stop();
+                        pauseTime = 70;
+                        PauseTimeLabel.Text = pauseTime.ToString();
                         WaitMessagebox.Text = regenMsg;
                     });
                 }
@@ -296,19 +380,21 @@ namespace ACNHPoker
                     if (!loop)
                         break;
                 }
-                //System.Media.SystemSounds.Asterisk.Play();
+
                 this.Invoke((MethodInvoker)delegate
                 {
                     ts = stopWatch.Elapsed;
                     timeLabel.Text = Utilities.precedingZeros(ts.Hours.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Minutes.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Seconds.ToString(), 2);
                 });
+
             } while (loop);
 
             stopWatch.Stop();
 
             hideMapWait();
 
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private static bool SafeEquals(byte[] strA, byte[] strB)
@@ -363,7 +449,8 @@ namespace ACNHPoker
         {
             if (RegenThread != null)
             {
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
                 RegenThread.Abort();
             }
             main.R = null;
@@ -387,7 +474,8 @@ namespace ACNHPoker
         {
             if (RegenThread != null)
             {
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
                 RegenThread.Abort();
             }
             this.Close();
@@ -403,11 +491,17 @@ namespace ACNHPoker
                 OpenFileDialog file = new OpenFileDialog()
                 {
                     Filter = "New Horizons Fasil (*.nhf)|*.nhf|All files (*.*)|*.*",
-                    FileName = "Map.nhf",
                 };
 
-                string savepath = Directory.GetCurrentDirectory() + @"\save";
-                //Debug.Print(savepath);
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+                string savepath;
+
+                if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                    savepath = Directory.GetCurrentDirectory() + @"\save";
+                else
+                    savepath = config.AppSettings.Settings["LastLoad"].Value;
+
                 if (Directory.Exists(savepath))
                 {
                     file.InitialDirectory = savepath;
@@ -420,36 +514,89 @@ namespace ACNHPoker
                 if (file.ShowDialog() != DialogResult.OK)
                     return;
 
-                loop = true;
-                startRegen2.Tag = "Stop";
-                startRegen2.BackColor = Color.Orange;
-                startRegen2.Text = "Stop Moogle Regenja";
-                saveMapBtn.Enabled = false;
-                loadMapBtn.Enabled = false;
-                backBtn.Enabled = false;
-                startRegen.Enabled = false;
+                string[] temp = file.FileName.Split('\\');
+                string path = "";
+                for (int i = 0; i < temp.Length - 1; i++)
+                    path = path + temp[i] + "\\";
+
+                config.AppSettings.Settings["LastLoad"].Value = path;
+                config.Save(ConfigurationSaveMode.Minimal);
 
                 byte[] data = File.ReadAllBytes(file.FileName);
 
-                UInt32 address = (UInt32)(Utilities.mapHead + (0xC00 * (0x24)) + (0x10 * (0x18)));
+                UInt32 address = Utilities.mapZero;
 
-                byte[][] b = new byte[56][];
-                bool[][] isEmpty = new bool[56][];
-
-
-                for (int i = 0; i < 56; i++)
+                DialogResult dialogResult = MessageBox.Show("Would you like to limit the area of \"ignoring empty tiles\"?" + "\n\n" +
+                                                            "This would allow you to pick a 7 x 7 area which the regenerator would only ignore."
+                                                            , "Choose an area to ignore?", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    b[i] = new byte[0x1800];
-                    Buffer.BlockCopy(data, i * 0x1800, b[i], 0x0, 0x1800);
+                    mapPanel.Visible = true;
+                    logPanel.Visible = false;
 
-                    isEmpty[i] = new bool[0x1800];
-                    buildEmptyTable(b[i], ref isEmpty[i]);
+                    tempData = data;
+                    string[] name = file.FileName.Split('\\');
+                    tempFilename = name[name.Length - 1];
+
+                    this.Width = 485;
+                    if (MiniMap == null)
+                    {
+                        byte[] Acre = Utilities.getAcre(s, null);
+
+                        if (MiniMap == null)
+                            MiniMap = new miniMap(data, Acre);
+
+                        miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawBackground(), MiniMap.drawItemMap());
+                    }
+                    else
+                        return;
+
+                    byte[] Coordinate = Utilities.getCoordinate(s, null);
+                    int x = BitConverter.ToInt32(Coordinate, 0);
+                    int y = BitConverter.ToInt32(Coordinate, 4);
+
+                    anchorX = x - 0x24;
+                    anchorY = y - 0x18;
+
+                    if (anchorX < 3 || anchorY < 3 || anchorX > 108 || anchorY > 92)
+                    {
+                        anchorX = 3;
+                        anchorY = 3;
+                    }
+                    xCoordinate.Text = anchorX.ToString();
+                    yCoordinate.Text = anchorY.ToString();
+                    miniMapBox.Image = MiniMap.drawSelectSquare(anchorX * 2, anchorY * 2);
                 }
+                else
+                {
+                    loop = true;
+                    startRegen2.Tag = "Stop";
+                    startRegen2.BackColor = Color.Orange;
+                    startRegen2.Text = "Stop Moogle Regenja";
+                    saveMapBtn.Enabled = false;
+                    loadMapBtn.Enabled = false;
+                    backBtn.Enabled = false;
+                    startRegen.Enabled = false;
 
-                string[] name = file.FileName.Split('\\');
 
-                RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, name[name.Length - 1]); });
-                RegenThread.Start();
+                    byte[][] b = new byte[56][];
+                    bool[][] isEmpty = new bool[56][];
+
+
+                    for (int i = 0; i < 56; i++)
+                    {
+                        b[i] = new byte[0x1800];
+                        Buffer.BlockCopy(data, i * 0x1800, b[i], 0x0, 0x1800);
+
+                        isEmpty[i] = new bool[0x1800];
+                        buildEmptyTable(b[i], ref isEmpty[i]);
+                    }
+
+                    string[] name = file.FileName.Split('\\');
+
+                    RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, name[name.Length - 1]); });
+                    RegenThread.Start();
+                }
             }
             else
             {
@@ -463,6 +610,41 @@ namespace ACNHPoker
                 backBtn.Enabled = true;
                 startRegen.Enabled = true;
             }
+        }
+
+        private void startBtn_Click(object sender, EventArgs e)
+        {
+            mapPanel.Visible = false;
+            MiniMap = null;
+            this.Width = 250;
+
+            UInt32 address = Utilities.mapZero;
+
+            loop = true;
+            startRegen2.Tag = "Stop";
+            startRegen2.BackColor = Color.Orange;
+            startRegen2.Text = "Stop Moogle Regenja";
+            saveMapBtn.Enabled = false;
+            loadMapBtn.Enabled = false;
+            backBtn.Enabled = false;
+            startRegen.Enabled = false;
+
+
+            byte[][] b = new byte[56][];
+            bool[][] isEmpty = new bool[56][];
+
+
+            for (int i = 0; i < 56; i++)
+            {
+                b[i] = new byte[0x1800];
+                Buffer.BlockCopy(tempData, i * 0x1800, b[i], 0x0, 0x1800);
+
+                isEmpty[i] = new bool[0x1800];
+                buildEmptyTable(b[i], ref isEmpty[i], i * 2, i * 2 + 1);
+            }
+
+            RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, tempFilename); });
+            RegenThread.Start();
         }
 
         private void regenMapFloor2(byte[][] b, UInt32 address, bool[][] isEmpty, string name)
@@ -482,7 +664,7 @@ namespace ACNHPoker
 
             byte[] c = new byte[0x2000];
 
-            int writeCount = 0;
+            int writeCount;
 
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -490,23 +672,36 @@ namespace ACNHPoker
             string newVisitor;
             TimeSpan ts;
 
+            Utilities.sendBlankName(s);
+
             do
             {
                 counter = 0;
+                writeCount = 0;
 
                 newVisitor = getVisitorName();
 
-                if (!lastVisitor.Equals(newVisitor))
+                if (!newVisitor.Equals(string.Empty))
                 {
-                    lastVisitor = newVisitor;
                     this.Invoke((MethodInvoker)delegate
                     {
                         visitorNameBox.Text = newVisitor;
                         WaitMessagebox.Text = "Paused. " + newVisitor + " arriving!";
+                        CreateLog(newVisitor);
+                        PauseTimeLabel.Visible = true;
+                        PauseTimer.Start();
+                        
                     });
+
                     Thread.Sleep(70000);
+                    Utilities.sendBlankName(s);
+
                     this.Invoke((MethodInvoker)delegate
                     {
+                        PauseTimeLabel.Visible = false;
+                        PauseTimer.Stop();
+                        pauseTime = 70;
+                        PauseTimeLabel.Text = pauseTime.ToString();
                         WaitMessagebox.Text = regenMsg;
                     });
                 }
@@ -537,26 +732,27 @@ namespace ACNHPoker
                             Thread.Sleep(10000);
                         }
                     }
-                    //Debug.Print("---------- " + i);
                     if (!loop)
                         break;
                 }
-                //System.Media.SystemSounds.Asterisk.Play();
+
                 this.Invoke((MethodInvoker)delegate
                 {
                     ts = stopWatch.Elapsed;
                     timeLabel.Text = Utilities.precedingZeros(ts.Hours.ToString(),2) + ":" + Utilities.precedingZeros(ts.Minutes.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Seconds.ToString(), 2);
                 });
+
             } while (loop);
 
             stopWatch.Stop();
 
             hideMapWait();
 
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
-        private static void buildEmptyTable(byte[] org, ref bool[] table)
+        private void buildEmptyTable(byte[] org, ref bool[] table)
         {
             byte[] Part1 = new byte[0xC00];
             byte[] Part2 = new byte[0xC00];
@@ -613,8 +809,69 @@ namespace ACNHPoker
                 }
             }
         }
+
+        private void buildEmptyTable(byte[] org, ref bool[] table, int Part1x, int Part2x)
+        {
+            byte[] Part1 = new byte[0xC00];
+            byte[] Part2 = new byte[0xC00];
+
+            Buffer.BlockCopy(org, 0, Part1, 0, 0xC00);
+            Buffer.BlockCopy(org, 0xc00, Part2, 0, 0xC00);
+
+            byte[] blockLeft = new byte[16];
+            byte[] blockRight = new byte[16];
+
+            for (int i = 0; i < 96; i++)
+            {
+                Buffer.BlockCopy(Part1, i * 16, blockLeft, 0, 16);
+                Buffer.BlockCopy(Part1, (i + 96) * 16, blockRight, 0, 16);
+
+                if ((Math.Abs(anchorX - Part1x) <= 3) && (Math.Abs(anchorY - i) <= 3) && (Utilities.ByteToHexString(blockLeft)).Equals("FEFF000000000000FEFF000000000000") && (Utilities.ByteToHexString(blockRight)).Equals("FEFF000000000000FEFF000000000000"))
+                {
+                    for (int j = 0; j < 16; j++)
+                    {
+                        table[i * 16 + j] = true;
+                        table[i * 16 + 96 * 16 + j] = true;
+                    }
+                }
+                else
+                {
+                    for (int j = 0; j < 16; j++)
+                    {
+                        table[i * 16 + j] = false;
+                        table[i * 16 + 96 * 16 + j] = false;
+                    }
+                }
+            }
+
+            for (int i = 0; i < 96; i++)
+            {
+                Buffer.BlockCopy(Part2, i * 16, blockLeft, 0, 16);
+                Buffer.BlockCopy(Part2, (i + 96) * 16, blockRight, 0, 16);
+
+                if ((Math.Abs(anchorX - Part2x) <= 3) && (Math.Abs(anchorY - i) <= 3) && (Utilities.ByteToHexString(blockLeft)).Equals("FEFF000000000000FEFF000000000000") && (Utilities.ByteToHexString(blockRight)).Equals("FEFF000000000000FEFF000000000000"))
+                {
+                    for (int j = 0; j < 16; j++)
+                    {
+                        table[i * 16 + j + 1536 * 2] = true;
+                        table[i * 16 + 96 * 16 + j + 1536 * 2] = true;
+                    }
+                }
+                else
+                {
+                    for (int j = 0; j < 16; j++)
+                    {
+                        table[i * 16 + j + 1536 * 2] = false;
+                        table[i * 16 + 96 * 16 + j + 1536 * 2] = false;
+                    }
+                }
+            }
+        }
+
         private static bool Difference(byte[] org, ref byte[] upd, bool[] isEmpty, byte[] cur)
         {
+            bool output = true;
+            bool output2 = true;
             bool pass = true;
 
             for (int i = 0; i < cur.Length; i++)
@@ -623,7 +880,11 @@ namespace ACNHPoker
                 {
                     if (isEmpty[i])
                     {
-                        //Debug.Print("Empty Space Changed");
+                        if (output)
+                        {
+                            Debug.Print("Empty Space Changed");
+                            output = false;
+                        }
                         upd[i] = cur[i];
                     }
                     else
@@ -633,7 +894,15 @@ namespace ACNHPoker
                 }
                 else
                 {
-
+                    if (upd[i] != cur[i])
+                    {
+                        if (output2)
+                        {
+                            Debug.Print("Back to Normal");
+                            output2 = false;
+                        }
+                        upd[i] = cur[i];
+                    }
                 }
             }
 
@@ -654,6 +923,259 @@ namespace ACNHPoker
             byte[] b = Utilities.getVisitorName(s);
             string tempName = Encoding.Unicode.GetString(b, 0, 20);
             return tempName.Replace("\0", string.Empty);
+        }
+
+        private void PauseTimer_Tick(object sender, EventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                pauseTime--;
+                PauseTimeLabel.Text = pauseTime.ToString();
+            });
+        }
+
+        private void logBtn_Click(object sender, EventArgs e)
+        {
+            if (logGridView.DataSource == null)
+            {
+                if (!File.Exists(logPath))
+                {
+                    string logheader = "Timestamp" + "," + "Name";
+
+                    using (StreamWriter sw = File.CreateText(logPath))
+                    {
+                        sw.WriteLine(logheader);
+                    }
+                }
+                logGridView.DataSource = loadCSV(logPath);
+                logGridView.Columns["Timestamp"].Width = 195;
+                logGridView.Columns["Name"].Width = 128;
+                logGridView.Sort(logGridView.Columns[0], ListSortDirection.Descending);
+                logPanel.Visible = true;
+            }
+            if (this.Width < 610)
+            {
+                this.Width = 610;
+                logPanel.Visible = true;
+            }
+            else
+            {
+                this.Width = 250;
+                logPanel.Visible = false;
+            }
+        }
+
+        private DataTable loadCSV(string filePath)
+        {
+            var dt = new DataTable();
+
+            File.ReadLines(filePath).Take(1)
+                .SelectMany(x => x.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+                .ToList()
+                .ForEach(x => dt.Columns.Add(x.Trim()));
+
+            dt.Columns["Timestamp"].DataType = typeof(DateTime);
+
+            File.ReadLines(filePath).Skip(1)
+                .Select(x => x.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+                .ToList()
+                .ForEach(line => dt.Rows.Add(line));
+
+            return dt;
+        }
+
+        private void CreateLog(string newVisitor)
+        {
+            if (!File.Exists(logPath))
+            {
+                string logheader = "Timestamp" + "," + "Name";
+
+                using (StreamWriter sw = File.CreateText(logPath))
+                {
+                    sw.WriteLine(logheader);
+                }
+            }
+
+            DateTime localDate = DateTime.Now;
+            string newLog = localDate.ToString() + "," + newVisitor;
+
+            using (StreamWriter sw = File.AppendText(logPath))
+            {
+                sw.WriteLine(newLog);
+            }
+
+            if (logGridView.DataSource != null)
+            {
+                logGridView.DataSource = loadCSV(logPath);
+                logGridView.Sort(logGridView.Columns[0], ListSortDirection.Descending);
+            }
+        }
+
+        private void newLogBtn_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog file = new SaveFileDialog()
+            {
+                Filter = "Comma-Separated Values file (*.csv)|*.csv",
+            };
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastSave"].Value;
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int i = 0; i < temp.Length - 1; i++)
+                path = path + temp[i] + "\\";
+
+            config.AppSettings.Settings["LastSave"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            string logheader = "Timestamp" + "," + "Name";
+
+            using (StreamWriter sw = File.CreateText(file.FileName))
+            {
+                sw.WriteLine(logheader);
+            }
+
+            string[] s = file.FileName.Split('\\');
+
+            logName.Text = s[s.Length - 1];
+            logPath = file.FileName;
+
+            if (logGridView.DataSource != null)
+            {
+                logGridView.DataSource = loadCSV(logPath);
+                logGridView.Sort(logGridView.Columns[0], ListSortDirection.Descending);
+            }
+
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
+        }
+
+        private void selectLogBtn_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog file = new OpenFileDialog()
+            {
+                Filter = "Comma-Separated Values file (*.csv)|*.csv",
+            };
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastLoad"].Value;
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int i = 0; i < temp.Length - 1; i++)
+                path = path + temp[i] + "\\";
+
+            config.AppSettings.Settings["LastLoad"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            string[] s = file.FileName.Split('\\');
+
+            logName.Text = s[s.Length - 1];
+            logPath = file.FileName;
+
+            if (logGridView.DataSource != null)
+            {
+                logGridView.DataSource = loadCSV(logPath);
+                logGridView.Sort(logGridView.Columns[0], ListSortDirection.Descending);
+            }
+        }
+
+        private void miniMapBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Debug.Print(e.X.ToString() + " " + e.Y.ToString());
+
+            int x;
+            int y;
+
+            if (e.X / 2 < 3)
+                x = 3;
+            else if (e.X / 2 > 108)
+                x = 108;
+            else
+                x = e.X / 2;
+
+            if (e.Y / 2 < 3)
+                y = 3;
+            else if (e.Y / 2 > 92)
+                y = 92;
+            else
+                y = e.Y / 2;
+
+            anchorX = x;
+            anchorY = y;
+
+            xCoordinate.Text = x.ToString();
+            yCoordinate.Text = y.ToString();
+
+            miniMapBox.Image = MiniMap.drawSelectSquare(anchorX * 2, anchorY * 2);
+        }
+
+        private void miniMapBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                int x;
+                int y;
+
+                if (e.X / 2 < 3)
+                    x = 3;
+                else if (e.X / 2 > 108)
+                    x = 108;
+                else
+                    x = e.X / 2;
+
+                if (e.Y / 2 < 3)
+                    y = 3;
+                else if (e.Y / 2 > 92)
+                    y = 92;
+                else
+                    y = e.Y / 2;
+
+                anchorX = x;
+                anchorY = y;
+
+                xCoordinate.Text = x.ToString();
+                yCoordinate.Text = y.ToString();
+
+                miniMapBox.Image = MiniMap.drawSelectSquare(anchorX * 2, anchorY * 2);
+            }
         }
     }
 }

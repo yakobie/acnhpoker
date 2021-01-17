@@ -229,25 +229,190 @@ namespace ACNHPoker
             0x0F5C, // red-mum plant
             0x0F5E, // green-mum plant
             0x1DE3, // lily-of-the-valley plant
-            0x11B1, // S. Orange-pumpkin Sprout
-            0x11B2, // M. Orange-pumpkin Sprout
-            0x11B3, // Lg. Orange-pumpkin Sprout
-            0x11B4, // Ripe Orange-pumpkin Plant
-            0x11B5, // S. Yellow-pumpkin Sprout
-            0x11B6, // M. Yellow-pumpkin Sprout
-            0x11B7, // Lg. Yellow-pumpkin Sprout
-            0x11B8, // Ripe Yellow-pumpkin Plant
-            0x11B9, // S. Green-pumpkin Sprout
-            0x11BA, // M. Green-pumpkin Sprout
-            0x11BB, // Lg. Green-pumpkin Sprout
-            0x11BC, // Ripe Green-pumpkin Sprout
-            0x11BD, // S. White-pumpkin Sprout
-            0x11BE, // M. White-pumpkin Sprout
-            0x11BF, // Lg. White-pumpkin Sprout
-            0x11C0, // Ripe White-pumpkin Sprout
-            0x0BEC, // Small Pumpkin Sprout
-            0x0BED, // Medium Pumpkin Sprout
-            0x110A, // Large Pumpkin Sprout
+            0xEC62, //red-cosmos (Sprout)
+            0xEA6F, //red-cosmos (Stem)
+            0xEA70, //red-cosmos (Bud)
+            0xEA71, //red-cosmos (Flower)
+            0xEC64, //yellow-cosmos (Sprout)
+            0xEA89, //yellow-cosmos (Stem)
+            0xEA8A, //yellow-cosmos (Bud)
+            0xEA8B, //yellow-cosmos (Flower)
+            0xEC65, //white-cosmos (Sprout)
+            0xEA72, //white-cosmos (Stem)
+            0xEA73, //white-cosmos (Bud)
+            0xEA74, //white-cosmos (Flower)
+            0xEAFC, //orange-cosmos (Stem)
+            0xEAFD, //orange-cosmos (Bud)
+            0xEAF8, //orange-cosmos (Flower)
+            0xEAFE, //pink-cosmos (Stem)
+            0xEAFF, //pink-cosmos (Bud)
+            0xEAFA, //pink-cosmos (Flower)
+            0xEAFB, //black-cosmos (Stem)
+            0xEAF7, //black-cosmos (Bud)
+            0xEAF9, //black-cosmos (Flower)
+            0xEC69, //white-tulip (Sprout)
+            0xEB3D, //white-tulip (Stem)
+            0xEB3E, //white-tulip (Bud)
+            0xEB3F, //white-tulip (Flower)
+            0xEC63, //red-tulip (Sprout)
+            0xEB40, //red-tulip (Stem)
+            0xEB41, //red-tulip (Bud)
+            0xEB42, //red-tulip (Flower)
+            0xEC4A, //yellow-tulip (Sprout)
+            0xEB43, //yellow-tulip (Stem)
+            0xEB44, //yellow-tulip (Bud)
+            0xEB45, //yellow-tulip (Flower)
+            0xEB46, //pink-tulip (Stem)
+            0xEB47, //pink-tulip (Bud)
+            0xEB48, //pink-tulip (Flower)
+            0xEB49, //orange-tulip (Stem)
+            0xEB4A, //orange-tulip (Bud)
+            0xEB4B, //orange-tulip (Flower)
+            0xEB4C, //purple-tulip (Stem)
+            0xEB4D, //purple-tulip (Bud)
+            0xEB4E, //purple-tulip (Flower)
+            0xEB4F, //black-tulip (Stem)
+            0xEB50, //black-tulip (Bud)
+            0xEB51, //black-tulip (Flower)
+            0xEC50, //white-pansy (Sprout)
+            0xEB52, //white-pansy (Stem)
+            0xEB53, //white-pansy (Bud)
+            0xEB54, //white-pansy (Flower)
+            0xEC51, //red-pansy (Sprout)
+            0xEB55, //red-pansy (Stem)
+            0xEB56, //red-pansy (Bud)
+            0xEB57, //red-pansy (Flower)
+            0xEC52, //yellow-pansy (Sprout)
+            0xEB58, //yellow-pansy (Stem)
+            0xEB59, //yellow-pansy (Bud)
+            0xEB5A, //yellow-pansy (Flower)
+            0xEB5B, //orange-pansy (Stem)
+            0xEB5C, //orange-pansy (Bud)
+            0xEB5D, //orange-pansy (Flower)
+            0xEB5E, //purple-pansy (Stem)
+            0xEB5F, //purple-pansy (Bud)
+            0xEB60, //purple-pansy (Flower)
+            0xEB61, //blue-pansy (Stem)
+            0xEB62, //blue-pansy (Bud)
+            0xEB63, //blue-pansy (Flower)
+            0xEC56, //white-rose (Sprout)
+            0xEB64, //white-rose (Stem)
+            0xEB65, //white-rose (Bud)
+            0xEB66, //white-rose (Flower)
+            0xEC57, //red-rose (Sprout)
+            0xEB67, //red-rose (Stem)
+            0xEB68, //red-rose (Bud)
+            0xEB69, //red-rose (Flower)
+            0xEC58, //yellow-rose (Sprout)
+            0xEB6A, //yellow-rose (Stem)
+            0xEB6B, //yellow-rose (Bud)
+            0xEB6C, //yellow-rose (Flower)
+            0xEB6D, //pink-rose (Stem)
+            0xEB6E, //pink-rose (Bud)
+            0xEB6F, //pink-rose (Flower)
+            0xEB70, //orange-rose (Stem)
+            0xEB71, //orange-rose (Bud)
+            0xEB72, //orange-rose (Flower)
+            0xEB73, //purple-rose (Stem)
+            0xEB74, //purple-rose (Bud)
+            0xEB75, //purple-rose (Flower)
+            0xEB76, //black-rose (Stem)
+            0xEB77, //black-rose (Bud)
+            0xEB78, //black-rose (Flower)
+            0xEB79, //blue-rose (Stem)
+            0xEB7A, //blue-rose (Bud)
+            0xEB7B, //blue-rose (Flower)
+            0xEB7C, //gold-rose (Stem)
+            0xEB7D, //gold-rose (Bud)
+            0xEB7E, //gold-rose (Flower)
+            0xEC60, //white-lily (Sprout)
+            0xEB88, //white-lily (Stem)
+            0xEB89, //white-lily (Bud)
+            0xEB8A, //white-lily (Flower)
+            0xEC61, //red-lily (Sprout)
+            0xEB8B, //red-lily (Stem)
+            0xEB8C, //red-lily (Bud)
+            0xEB8D, //red-lily (Flower)
+            0xEC5B, //yellow-lily (Sprout)
+            0xEB8E, //yellow-lily (Stem)
+            0xEB8F, //yellow-lily (Bud)
+            0xEB90, //yellow-lily (Flower)
+            0xEB91, //pink-lily (Stem)
+            0xEB92, //pink-lily (Bud)
+            0xEB93, //pink-lily (Flower)
+            0xEB94, //orange-lily (Stem)
+            0xEB95, //orange-lily (Bud)
+            0xEB96, //orange-lily (Flower)
+            0xEB97, //black-lily (Stem)
+            0xEB98, //black-lily (Bud)
+            0xEB99, //black-lily (Flower)
+            0xEC42, //red-windflower (Sprout)
+            0xEBDF, //red-windflower (Stem)
+            0xEBE0, //red-windflower (Bud)
+            0xEBDB, //red-windflower (Flower)
+            0xEC43, //white-windflower (Sprout)
+            0xEC11, //white-windflower (Stem)
+            0xEC12, //white-windflower (Bud)
+            0xEC13, //white-windflower (Flower)
+            0xEC14, //blue-windflower (Stem)
+            0xEC18, //blue-windflower (Bud)
+            0xEC19, //blue-windflower (Flower)
+            0xEC15, //purple-windflower (Stem)
+            0xEC1A, //purple-windflower (Bud)
+            0xEC1B, //purple-windflower (Flower)
+            0xEC16, //pink-windflower (Stem)
+            0xEC1C, //pink-windflower (Bud)
+            0xEC1D, //pink-windflower (Flower)
+            0xEC47, //orange-windflower (Sprout)
+            0xEC17, //orange-windflower (Stem)
+            0xEC1E, //orange-windflower (Bud)
+            0xEC1F, //orange-windflower (Flower)
+            0xEC48, //red-mum (Sprout)
+            0xEBDD, //red-mum (Stem)
+            0xEBDE, //red-mum (Bud)
+            0xEBDC, //red-mum (Flower)
+            0xEC49, //white-mum (Sprout)
+            0xEC04, //white-mum (Stem)
+            0xEC08, //white-mum (Bud)
+            0xEC09, //white-mum (Flower)
+            0xEC3A, //yellow-mum (Sprout)
+            0xEC05, //yellow-mum (Stem)
+            0xEC0A, //yellow-mum (Bud)
+            0xEC0D, //yellow-mum (Flower)
+            0xEC06, //purple-mum (Stem)
+            0xEC0B, //purple-mum (Bud)
+            0xEC0E, //purple-mum (Flower)
+            0xEC07, //pink-mum (Stem)
+            0xEC0C, //pink-mum (Bud)
+            0xEC0F, //pink-mum (Flower)
+            0xEC32, //green-mum (Stem)
+            0xEC33, //green-mum (Bud)
+            0xEC34, //green-mum (Flower)
+            0xEC3F, //red-hyacinth (Sprout)
+            0xEBE1, //red-hyacinth (Stem)
+            0xEBE2, //red-hyacinth (Bud)
+            0xEBDA, //red-hyacinth (Flower)
+            0xEC3B, //yellow-hyacinth (Sprout)
+            0xEBE9, //yellow-hyacinth (Stem)
+            0xEBE7, //yellow-hyacinth (Bud)
+            0xEBE8, //yellow-hyacinth (Flower)
+            0xEC38, //white-hyacinth (Sprout)
+            0xEBE6, //white-hyacinth (Stem)
+            0xEBE5, //white-hyacinth (Bud)
+            0xEBE4, //white-hyacinth (Flower)
+            0xEBEF, //purple-hyacinth (Stem)
+            0xEBEE, //purple-hyacinth (Bud)
+            0xEBED, //purple-hyacinth (Flower)
+            0xEBF3, //blue-hyacinth (Stem)
+            0xEBF4, //blue-hyacinth (Bud)
+            0xEBEA, //blue-hyacinth (Flower)
+            0xEBF2, //pink-hyacinth (Stem)
+            0xEBF1, //pink-hyacinth (Bud)
+            0xEBEB, //pink-hyacinth (Flower)
+            0xEBF5, //orange-hyacinth (Stem)
+            0xEBF0, //orange-hyacinth (Bud)
+            0xEBEC, //orange-hyacinth (Flower)
+            0xECC1, //lily-of-the-valley (Flower)
         };
         private static readonly HashSet<UInt16> isRoseSet = new HashSet<UInt16>
         {
@@ -334,6 +499,79 @@ namespace ACNHPoker
             0x1157, // large young money tree
             0x141F, // nursery cedar
             0x1420, // nursery hardwood
+            0xEA65,	// Oak (Sapling)
+            0xEA66,	// Oak (Grow 1)
+            0xEA67,	// Oak (Grow 2)
+            0xEA68,	// Oak (Grow 3)
+            0xEA60,	// Oak (Full-grown)
+            0xEC6D,	// Oak Stump (Grow 1)
+            0xEC6C,	// Oak Stump (Grow 2)
+            0xEC6B,	// Oak Stump (Grow 3)
+            0xEA9F,	// Oak Stump (Full-grown)
+            0xECBC,	// Fruit Stump (Grow 1)
+            0xECBD,	// Fruit Stump (Grow 2)
+            0xECBE,	// Fruit Stump (Grow 3)
+            0xECBF,	// Fruit Stump (Grow 4)
+            0xEAB5,	// Cedar (Sapling)
+            0xEAB7,	// Cedar (Grow 1)
+            0xEAB6,	// Cedar (Grow 2)
+            0xEAB8,	// Cedar (Grow 3)
+            0xEA69,	// Cedar (Full-grown)
+            0xEC70,	// Cedar Stump (Grow 1)
+            0xEC6F,	// Cedar Stump (Grow 2)
+            0xEC6E,	// Cedar Stump (Grow 3)
+            0xEAB4,	// Cedar Stump (Full-grown)
+            0xEABF,	// Palm (Sapling)
+            0xEAC1,	// Palm (Grow 1)
+            0xEAC0,	// Palm (Grow 2)
+            0xEAC2,	// Palm (Grow 3)
+            0xEA77,	// Palm (Full-grown)
+            0xEC78,	// Palm Stump (Grow 1)
+            0xEC79,	// Palm Stump (Grow 2)
+            0xEC7A,	// Palm Stump (Grow 3)
+            0xEABE,	// Palm Stump (Full-grown)
+            0xEAC4,	// Bamboo (Sapling)
+            0xEAC6,	// Bamboo (Grow 1)
+            0xEAC5,	// Bamboo (Grow 2)
+            0xEAC7,	// Bamboo (Grow 3)
+            0xEA76,	// Bamboo (Full-grown)
+            0xEAC3,	// Bamboo Stump (Full-grown)
+            0xEC73,	// Bamboo Stump (Grow 1)
+            0xEC72,	// Bamboo Stump (Grow 2)
+            0xEC71,	// Bamboo Stump (Grow 3)
+            0xEBD3,	// Apple Tree (Sapling)
+            0xEBD0,	// Apple Tree (Grow 1)
+            0xEBD1,	// Apple Tree (Grow 2)
+            0xEBD2,	// Apple Tree (Grow 3)
+            0xEA61,	// Apple Tree (Full-grown)
+            0xEBC8,	// Orange Tree (Sapling)
+            0xEBC9,	// Orange Tree (Grow 1)
+            0xEBCA,	// Orange Tree (Grow 2)
+            0xEBCB,	// Orange Tree (Grow 3)
+            0xEA62,	// Orange Tree (Full-grown)
+            0xEBCC,	// Pear Tree (Sapling)
+            0xEBCD,	// Pear Tree (Grow 1)
+            0xEBCE,	// Pear Tree (Grow 2)
+            0xEBCF,	// Pear Tree (Grow 3)
+            0xEAC8,	// Pear Tree (Full-grown)
+            0xEBC4,	// Peach Tree (Sapling)
+            0xEBC5,	// Peach Tree (Grow 1)
+            0xEBC6,	// Peach Tree (Grow 2)
+            0xEBC7,	// Peach Tree (Grow 3)
+            0xEACA,	// Peach Tree (Full-grown)
+            0xEBC2,	// Cherry Tree (Sapling)
+            0xEBC3,	// Cherry Tree (Grow 1)
+            0xEBC1,	// Cherry Tree (Grow 2)
+            0xEBC0,	// Cherry Tree (Grow 3)
+            0xEAC9,	// Cherry Tree (Full-grown)
+            0xEC9A, // Cedar(Deco) A 
+            0xEC97, // Cedar(Deco) B
+            0xEC9F, // Money Tree(Sapling)
+            0xECA0, // Money Tree(Grow 1)
+            0xEC9E, // Money Tree(Grow 2)
+            0xEC9D, // Money Tree(Grow 3)
+            0xEC9C, // Money Tree(Full-grown)
+            0xED16, // Tree(Easter Egg)
         };
         private static readonly HashSet<UInt16> isFruitSet = new HashSet<UInt16>
         {
@@ -447,6 +685,30 @@ namespace ACNHPoker
             0x31D6, // hedge
             0x325E, // wedding fence
             0x33DB, // Spooky Fence,
+                0xECC2, // simple wooden fence
+                0xEB00, // brick fence
+                0xEBBA, // vertical-board fence
+                0xEBBF, // bamboo lattice fence
+                0xECC3, // lattice fence
+                0xEBD5, // corral fence
+                0xEBD6, // country fence
+                0xEBD8, //; rope fence
+                0xEC74, // imperial fence
+                0xEC7C, // straw fence
+                0xEC7D, // iron fence
+                0xEC7E, // spiky fence
+                0xEC9B, // stone fence
+                0xECB2, // barbed-wire fence
+                0xECB6, // zen fence
+                0xECB7, // iron-and-stone fence
+                0xED0C, // Bunny Day fence
+                0xED0B, // wedding fence(Green)
+                0xED0D, // wedding fence
+                0xED0E, // wedding fence(Pink)
+                0xED08, // hedge
+                0xED21, // mermaid fence
+                0xED25, // spooky fence
+                0xECC4, // Harvey's island fence
         };
         private static readonly HashSet<UInt16> isFlowerSet = new HashSet<UInt16>
         {
@@ -616,6 +878,80 @@ namespace ACNHPoker
             .Union(isTreeSet)
             .Union(isDummyContainerSet)
             );
+        private static readonly HashSet<UInt16> isShellSet = new HashSet<UInt16>(
+            new UInt16[] {
+                0x0560,
+                0x0564,
+                0x055E,
+                0x0563,
+                0x055F,
+                0x0565,
+                0x0566,
+                0x175E,
+            }
+        );
+        private static readonly HashSet<UInt16> isWeedSet = new HashSet<UInt16>(
+            new UInt16[] {
+                0xEB28,	// Spring Weed 1A
+                0xEB30,	// Spring Weed 1B
+                0xEB31,	// Spring Weed 1C
+                0xEB32,	// Spring Weed 2A
+                0xEB33,	// Spring Weed 2B
+                0xEB34,	// Spring Weed 2C
+                0xEB35,	// Spring Weed 3
+                0xEA86,	// Summer Weed 1A
+                0xEA87,	// Summer Weed 1B
+                0xEA88,	// Summer Weed 1C
+                0xEB02,	// Summer Weed 2A
+                0xEB04,	// Summer Weed 2B
+                0xEB03,	// Summer Weed 2C
+                0xEB01,	// Summer Weed 3
+                0xEA81,	// Autumn Weed 01A
+                0xEA82,	// Autumn Weed 01B
+                0xEA83,	// Autumn Weed 01C
+                0xEB19,	// Autumn Weed 02A
+                0xEB17,	// Autumn Weed 02B
+                0xEB18,	// Autumn Weed 02C
+                0xEB05,	// Autumn Weed 03
+                0xEC8C,	// Autumn Weed 11A
+                0xEC86,	// Autumn Weed 11B
+                0xEC87,	// Autumn Weed 11C
+                0xEC88,	// Autumn Weed 12A
+                0xEC89,	// Autumn Weed 12B
+                0xEC8A,	// Autumn Weed 12C
+                0xEC8B,	// Autumn Weed 13
+                0xEC83,	// Autumn Weed 21A
+                0xEC84,	// Autumn Weed 21B
+                0xEC85,	// Autumn Weed 21C
+                0xEC81,	// Autumn Weed 22A
+                0xEC82,	// Autumn Weed 22B
+                0xEC80,	// Autumn Weed 22C
+                0xEC7F,	// Autumn Weed 23
+                0xEB36,	// Winter Weed 01A
+                0xEB37,	// Winter Weed 01B
+                0xEB38,	// Winter Weed 01C
+                0xEB39,	// Winter Weed 02A
+                0xEB3A,	// Winter Weed 02B
+                0xEB3B,	// Winter Weed 02C
+                0xEB3C,	// Winter Weed 03
+                0xEC91,	// Winter Weed 11A
+                0xEC92,	// Winter Weed 11B
+                0xEC93,	// Winter Weed 11C
+                0xEC8F,	// Winter Weed 12A
+                0xEC90,	// Winter Weed 12B
+                0xEC8E,	// Winter Weed 12C
+                0xEC8D,	// Winter Weed 13
+            }
+        );
+        private static readonly HashSet<UInt16> isStoneSet = new HashSet<UInt16>(
+            new UInt16[] {
+                0xEB12, // Stone A
+                0xEB13, // Stone B
+                0xEB16, // Stone C
+                0xEB15, // Stone D
+                0xEB14, // Stone E
+            }
+        );
         public static bool hasDurability(UInt16 item)
         {
             return hasDurabilitySet.Contains(item);
@@ -643,6 +979,22 @@ namespace ACNHPoker
         public static bool isFlower(UInt16 item)
         {
             return isFlowerSet.Contains(item);
+        }
+        public static bool isShell(UInt16 item)
+        {
+            return isShellSet.Contains(item);
+        }
+        public static bool isWeed(UInt16 item)
+        {
+            return isWeedSet.Contains(item);
+        }
+        public static bool isStone(UInt16 item)
+        {
+            return isStoneSet.Contains(item);
+        }
+        public static bool isFence(UInt16 item)
+        {
+            return isFenceSet.Contains(item);
         }
     }
 }

@@ -20,25 +20,6 @@ namespace ACNHPoker
     {
         private DataTable loadItemCSV(string filePath)
         {
-            /*
-            var dt = new DataTable();
-
-            File.ReadLines(filePath).Take(1)
-                .SelectMany(x => x.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                .ToList()
-                .ForEach(x => dt.Columns.Add(x.Trim()));
-
-            File.ReadLines(filePath).Skip(1)
-                .Select(x => x.Split(','))
-                .ToList()
-                .ForEach(line => dt.Rows.Add(line));
-
-            if (dt.Columns.Contains("ID"))
-                dt.PrimaryKey = new DataColumn[1] { dt.Columns["ID"] };
-
-            return dt;
-            */
-
             var dt = new DataTable();
 
             File.ReadLines(filePath).Take(1)
@@ -53,6 +34,23 @@ namespace ACNHPoker
 
             if (dt.Columns.Contains("id"))
                 dt.PrimaryKey = new DataColumn[1] { dt.Columns["id"] };
+
+            return dt;
+        }
+
+        private DataTable loadCSVwoKey(string filePath)
+        {
+            var dt = new DataTable();
+
+            File.ReadLines(filePath).Take(1)
+                .SelectMany(x => x.Split(new[] { " ; " }, StringSplitOptions.RemoveEmptyEntries))
+                .ToList()
+                .ForEach(x => dt.Columns.Add(x.Trim()));
+
+            File.ReadLines(filePath).Skip(1)
+                .Select(x => x.Split(new[] { " ; " }, StringSplitOptions.RemoveEmptyEntries))
+                .ToList()
+                .ForEach(line => dt.Rows.Add(line));
 
             return dt;
         }
@@ -530,16 +528,34 @@ namespace ACNHPoker
             try
             {
                 if (itemGridView.DataSource != null)
-                    (itemGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format(languageSetting + " LIKE '%{0}%'", itemSearchBox.Text);
+                    (itemGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format(languageSetting + " LIKE '%{0}%'", EscapeLikeValue(itemSearchBox.Text));
                 if (recipeGridView.DataSource != null)
-                (recipeGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format(languageSetting + " LIKE '%{0}%'", itemSearchBox.Text);
+                    (recipeGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format(languageSetting + " LIKE '%{0}%'", EscapeLikeValue(itemSearchBox.Text));
                 if (flowerGridView.DataSource != null)
-                (flowerGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format(languageSetting + " LIKE '%{0}%'", itemSearchBox.Text);
+                    (flowerGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format(languageSetting + " LIKE '%{0}%'", EscapeLikeValue(itemSearchBox.Text));
+                if (favGridView.DataSource != null)
+                    (favGridView.DataSource as DataTable).DefaultView.RowFilter = string.Format("Name" + " LIKE '%{0}%'", EscapeLikeValue(itemSearchBox.Text));
             }
             catch
             {
                 itemSearchBox.Clear();
             }
+        }
+
+        public static string EscapeLikeValue(string valueWithoutWildcards)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < valueWithoutWildcards.Length; i++)
+            {
+                char c = valueWithoutWildcards[i];
+                if (c == '*' || c == '%' || c == '[' || c == ']')
+                    sb.Append("[").Append(c).Append("]");
+                else if (c == '\'')
+                    sb.Append("''");
+                else
+                    sb.Append(c);
+            }
+            return sb.ToString();
         }
 
         private void itemGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -734,7 +750,8 @@ namespace ACNHPoker
                     var btnParent = (inventorySlot)owner.SourceControl;
                     btnParent.reset();
                     btnToolTip.RemoveAll();
-                    System.Media.SystemSounds.Asterisk.Play();
+                    if (sound)
+                        System.Media.SystemSounds.Asterisk.Play();
                 }
             }
         }
@@ -844,8 +861,8 @@ namespace ACNHPoker
                     });
                 }
             }
-
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
             hideWait();
         }
 
@@ -965,7 +982,8 @@ namespace ACNHPoker
                         }
                     }
                 }
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
                 hideWait();
             }
         }
@@ -973,7 +991,8 @@ namespace ACNHPoker
         private void refreshBtn_Click(object sender, EventArgs e)
         {
             UpdateInventory();
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void variationsBtn_Click(object sender, EventArgs e)
@@ -1006,7 +1025,8 @@ namespace ACNHPoker
             }
 
             UpdateInventory();
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             this.ShowMessage(customIdTextbox.Text);
         }
@@ -1077,7 +1097,8 @@ namespace ACNHPoker
                     btnToolTip.RemoveAll();
                 });
             }
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
             hideWait();
         }
 
@@ -1307,7 +1328,8 @@ namespace ACNHPoker
                     UpdateInventory();
                     break;
             }
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void itemModeBtn_Click(object sender, EventArgs e)
@@ -1834,17 +1856,20 @@ namespace ACNHPoker
                     selectedSlot = nextSlot;
                     updateSlot(nextSlot);
                 }
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
             }
             else if (e.KeyCode.ToString() == "F1")
             {
                 deleteBtn_Click(sender, e);
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
             }
             else if (e.KeyCode.ToString() == "F3")
             {
                 keyboardCopy(sender, e);
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
             }
             else if (e.KeyCode.ToString() == "End")
             {
@@ -2113,7 +2138,8 @@ namespace ACNHPoker
             btnToolTip.RemoveAll();
 
             //UpdateInventory();
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void ShowMessage(string itemID)
@@ -2247,7 +2273,8 @@ namespace ACNHPoker
             }
             else
             {
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
             }
         }
 
@@ -2269,7 +2296,8 @@ namespace ACNHPoker
             }
             else
             {
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
             }
         }
 
@@ -2277,7 +2305,8 @@ namespace ACNHPoker
         {
             if (currentPage == maxPage)
             {
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
                 return;
             }
             if (currentPage + 10 < maxPage)
@@ -2303,7 +2332,8 @@ namespace ACNHPoker
                     Utilities.gotoHousePage((uint)maxPage, playerSelectorInventory.SelectedIndex - 7);
                 }
                 currentPage = maxPage;
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
             }
             setPageLabel();
             UpdateInventory();
@@ -2313,7 +2343,8 @@ namespace ACNHPoker
         {
             if (currentPage == 1)
             {
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
                 return;
             }
             if (currentPage - 10 > 1)
@@ -2339,7 +2370,8 @@ namespace ACNHPoker
                     Utilities.gotoHousePage(1, playerSelectorInventory.SelectedIndex - 7);
                 }
                 currentPage = 1;
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
             }
             setPageLabel();
             UpdateInventory();
@@ -2368,7 +2400,8 @@ namespace ACNHPoker
                 MessageBox.Show("Turnip prices cannot be empty");
                 return;
             }
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to set the turnip prices?\n[Warning] All original prices will be overwritten!", "Set turnip prices", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -2383,7 +2416,8 @@ namespace ACNHPoker
                 Convert.ToUInt32(turnipBuyPrice.Text, 10)};
                 Utilities.ChangeTurnipPrices(s, bot, prices);
                 UpdateTurnipPrices();
-                System.Media.SystemSounds.Asterisk.Play();
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
             }
         }
 
@@ -3232,8 +3266,8 @@ namespace ACNHPoker
                     }
                 }
             }
-
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             hideWait();
         }
@@ -3311,8 +3345,8 @@ namespace ACNHPoker
                     }
                 }
             }
-
-            System.Media.SystemSounds.Asterisk.Play();
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
 
             hideWait();
         }
@@ -3323,32 +3357,6 @@ namespace ACNHPoker
             {
                 if (item.Owner is ContextMenuStrip owner)
                 {
-                    /*
-                    favModeBtn_Click(sender, e);
-                    
-                    if (hexModeBtn.Tag.ToString() == "Normal")
-                    {
-                        hexMode_Click(sender, e);
-                    }
-                    var btn = (inventorySlot)owner.SourceControl;
-                    selectedItem.setup(btn);
-                    if (selection != null)
-                    {
-                        selection.receiveID(Utilities.precedingZeros(selectedItem.fillItemID(), 4), languageSetting);
-                    }
-                    updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
-                    if (selectedItem.fillItemID() == "FFFE")
-                    {
-                        hexMode_Click(sender, e);
-                        customAmountTxt.Text = "";
-                        customIdTextbox.Text = "";
-                    }
-                    else
-                    {
-                        customAmountTxt.Text = Utilities.precedingZeros(selectedItem.fillItemData(), 8);
-                        customIdTextbox.Text = Utilities.precedingZeros(selectedItem.fillItemID(), 4);
-                    }
-                    */
                     var btn = (inventorySlot)owner.SourceControl;
                     if (btn.fillItemID() == "FFFE")
                     {
@@ -3359,12 +3367,10 @@ namespace ACNHPoker
                         DataTable dt = (DataTable)favGridView.DataSource;
                         DataRow dr = dt.NewRow();
                         dr["id"] = Utilities.turn2bytes(btn.fillItemID());
-                        dr["iName"] = GetINameFromID(Utilities.turn2bytes(btn.fillItemID()), itemSource);
+                        dr["iName"] = btn.getiName();
                         dr["Name"] = btn.displayItemName();
                         dr["value"] = Utilities.precedingZeros(btn.fillItemData(), 8);
 
-                        if (!dt.Rows.Contains(Utilities.turn2bytes(btn.fillItemID())))
-                        { 
                             dt.Rows.Add(dr);
                             favGridView.DataSource = dt;
 
@@ -3372,21 +3378,22 @@ namespace ACNHPoker
 
                             if (!File.Exists(favPath))
                             {
-                                return;
+                                string favheader = "id" + " ; " + "iName" + " ; " + "Name" + " ; " + "value" + " ; ";
+
+                                using (StreamWriter sw = File.CreateText(favPath))
+                                {
+                                    sw.WriteLine(favheader);
+                                }
                             }
 
                             using (StreamWriter sw = File.AppendText(favPath))
                             {
                                 sw.WriteLine(line);
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Same favorite item already exist!");
-                        }
-                    }
 
-                    System.Media.SystemSounds.Asterisk.Play();
+                    }
+                    if (sound)
+                        System.Media.SystemSounds.Asterisk.Play();
                 }
             }
         }
