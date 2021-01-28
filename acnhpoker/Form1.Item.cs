@@ -105,20 +105,18 @@ namespace ACNHPoker
                             {
                                 this.pictureBox1.Invoke((MethodInvoker)delegate
                                 {
+                                    Log.logEvent("MainForm", "Connection Failed : " + ipBox.Text);
                                     this.pictureBox1.BackColor = System.Drawing.Color.Red;
                                 });
                                 return;
                             }
 
-                            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
-
-                            this.pictureBox1.Invoke((MethodInvoker)delegate
+                            Invoke((MethodInvoker)delegate
                             {
                                 this.pictureBox1.BackColor = System.Drawing.Color.Green;
-                            });
-                            this.ipBox.Invoke((MethodInvoker)delegate
-                            {
-                                this.ipBox.ReadOnly = true;
+
+                                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
                                 if (File.Exists(settingFile))
                                 {
                                     config.AppSettings.Settings["ipAddress"].Value = this.ipBox.Text;
@@ -132,22 +130,22 @@ namespace ACNHPoker
                                         this.autoRefreshCheckBox.Checked = false;
                                     }
                                 }
-                            });
-                            Invoke((MethodInvoker)delegate
-                            {
+
+                                Log.logEvent("MainForm", "Connection Succeeded : " + ipBox.Text);
+
                                 if (validation())
                                 {
-                                    MessageBox.Show("Sys-botbase validation failed! Poke request is returning same result.\n\n" +
+                                    MessageBox.Show("You have successfully established a connection!\n\n" +
+                                                    "However...\n" +
+                                                    "Sys-botbase validation failed! Poke request is returning same result.\n\n" +
 
                                                     "First, restart your switch.\n" +
                                                     "Then try press and HOLD the \"L\" button while you are booting up the game until you see the title screen.\n" +
-                                                    "Release the \"L\" button and retry the connection.\n" +
+                                                    "Release the \"L\" button once you see the title screen and retry the connection.\n" +
 
                                                     "If the above does not work,\n" +
                                                     "please try to remove or rename the cheats folder located at \n" +
-                                                    "sd:/atmospshere/contents/01006f8002326000/\n\n" +
-
-                                                    "You can also setup a \"override_config.ini\" to switch between cheat file usage and ACNHPoker.\n\n"
+                                                    "sd:/atmospshere/contents/01006f8002326000/\n\n"
 
                                                     , "Sys-botbase validation");
                                     s.Close();
@@ -155,7 +153,7 @@ namespace ACNHPoker
                                 }
 
                                 this.refreshBtn.Visible = true;
-                                this.playerSelectionPanel.Visible = true;
+                                //this.playerSelectionPanel.Visible = true;
                                 this.playerSelectorInventory.Visible = true;
                                 this.autoRefreshCheckBox.Visible = true;
                                 this.saveBtn.Visible = true;
@@ -220,7 +218,7 @@ namespace ACNHPoker
                 }
                 connectBtn.Enabled = true;
                 refreshBtn.Visible = false;
-                playerSelectionPanel.Visible = false;
+                //playerSelectionPanel.Visible = false;
                 playerSelectorInventory.Visible = false;
                 autoRefreshCheckBox.Visible = false;
                 this.USBconnectBtn.Visible = true;
@@ -254,127 +252,148 @@ namespace ACNHPoker
 
         private void refreshTimer_Tick(object sender, EventArgs e)
         {
-            if (s != null && s.Connected == true && autoRefreshCheckBox.Checked && allowUpdate)
-                Invoke((MethodInvoker)delegate { 
-                    UpdateInventory(); 
-                });
+            try
+            {
+                if (s != null && s.Connected == true && autoRefreshCheckBox.Checked && allowUpdate)
+                    Invoke((MethodInvoker)delegate {
+                        UpdateInventory();
+                    });
+            }
+            catch (Exception ex)
+            {
+                Log.logEvent("MainForm", "RefreshTimer: " + ex.Message.ToString());
+                Invoke((MethodInvoker)delegate { this.autoRefreshCheckBox.Checked = false; });
+                refreshTimer.Stop();
+                MessageBox.Show("Lost connection to the switch...\nDid the switch go to sleep?");
+            }
         }
 
         private bool UpdateInventory()
         {
             allowUpdate = false;
 
-            byte[] Bank01to20 = Utilities.GetInventoryBank(s, bot, 1);
-            if (Bank01to20 == null)
+            try
             {
-                return true;
-            }
-            byte[] Bank21to40 = Utilities.GetInventoryBank(s, bot, 21);
-            if (Bank21to40 == null)
-            {
-                return true;
-            }
+                byte[] Bank01to20 = Utilities.GetInventoryBank(s, bot, 1);
+                if (Bank01to20 == null)
+                {
+                    return true;
+                }
+                byte[] Bank21to40 = Utilities.GetInventoryBank(s, bot, 21);
+                if (Bank21to40 == null)
+                {
+                    return true;
+                }
             //string Bank1 = Utilities.ByteToHexString(Bank01to20);
             //string Bank2 = Utilities.ByteToHexString(Bank21to40);
 
             //Debug.Print(Bank1);
             //Debug.Print(Bank2);
 
-            foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
+                foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
+                {
+                    if (btn.Tag == null)
+                        continue;
+
+                    if (btn.Tag.ToString() == "")
+                        continue;
+
+                    int slotId = int.Parse(btn.Tag.ToString());
+
+                    byte[] slotBytes = new byte[2];
+                    byte[] flag1Bytes = new byte[1];
+                    byte[] flag2Bytes = new byte[1];
+                    byte[] dataBytes = new byte[4];
+                    byte[] recipeBytes = new byte[2];
+
+                    int slotOffset;
+                    int countOffset;
+                    int flag1Offset;
+                    int flag2Offset;
+                    if (slotId < 21)
+                    {
+                        slotOffset = ((slotId - 1) * 0x8);
+                        flag1Offset = 0x3 + ((slotId - 1) * 0x8);
+                        flag2Offset = 0x2 + ((slotId - 1) * 0x8);
+                        countOffset = 0x4 + ((slotId - 1) * 0x8);
+                    }
+                    else
+                    {
+                        slotOffset = ((slotId - 21) * 0x8);
+                        flag1Offset = 0x3 + ((slotId - 21) * 0x8);
+                        flag2Offset = 0x2 + ((slotId - 21) * 0x8);
+                        countOffset = 0x4 + ((slotId - 21) * 0x8);
+                    }
+
+                    if (slotId < 21)
+                    {
+                        Buffer.BlockCopy(Bank01to20, slotOffset, slotBytes, 0x0, 0x2);
+                        Buffer.BlockCopy(Bank01to20, flag1Offset, flag1Bytes, 0x0, 0x1);
+                        Buffer.BlockCopy(Bank01to20, flag2Offset, flag2Bytes, 0x0, 0x1);
+                        Buffer.BlockCopy(Bank01to20, countOffset, dataBytes, 0x0, 0x4);
+                        Buffer.BlockCopy(Bank01to20, countOffset, recipeBytes, 0x0, 0x2);
+                    }
+                    else
+                    {
+                        Buffer.BlockCopy(Bank21to40, slotOffset, slotBytes, 0x0, 0x2);
+                        Buffer.BlockCopy(Bank21to40, flag1Offset, flag1Bytes, 0x0, 0x1);
+                        Buffer.BlockCopy(Bank21to40, flag2Offset, flag2Bytes, 0x0, 0x1);
+                        Buffer.BlockCopy(Bank21to40, countOffset, dataBytes, 0x0, 0x4);
+                        Buffer.BlockCopy(Bank21to40, countOffset, recipeBytes, 0x0, 0x2);
+                    }
+
+                    string itemID = Utilities.flip(Utilities.ByteToHexString(slotBytes));
+                    string itemData = Utilities.flip(Utilities.ByteToHexString(dataBytes));
+                    string recipeData = Utilities.flip(Utilities.ByteToHexString(recipeBytes));
+                    string flag1 = Utilities.ByteToHexString(flag1Bytes);
+                    string flag2 = Utilities.ByteToHexString(flag2Bytes);
+
+                    //Debug.Print("Slot : " + slotId.ToString() + " ID : " + itemID + " Data : " + itemData + " recipeData : " + recipeData + " Flag1 : " + flag1 + " Flag2 : " + flag2);
+
+                    if (itemID == "FFFE") //Nothing
+                    {
+                        btn.setup("", 0xFFFE, 0x0, "", "00", "00");
+                        continue;
+                    }
+                    else if (itemID == "16A2") //Recipe
+                    {
+                        btn.setup(GetNameFromID(recipeData, recipeSource), 0x16A2, Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(recipeData, recipeSource), "", flag1, flag2);
+                        continue;
+                    }
+                    else if (itemID == "1095") //Delivery
+                    {
+                        btn.setup(GetNameFromID(recipeData, itemSource), 0x1095, Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(recipeData, itemSource, Convert.ToUInt32("0x" + itemData, 16)), "", flag1, flag2);
+                        continue;
+                    }
+                    else if (itemID == "16A1") //Bottle Message
+                    {
+                        btn.setup(GetNameFromID(recipeData, recipeSource), 0x16A1, Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(recipeData, recipeSource), "", flag1, flag2);
+                        continue;
+                    }
+                    else if (itemID == "0A13") // Fossil
+                    {
+                        btn.setup(GetNameFromID(recipeData, itemSource), 0x0A13, Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(recipeData, itemSource), "", flag1, flag2);
+                        continue;
+                    }
+                    else if (itemID == "315A" || itemID == "1618") // Wall-Mounted
+                    {
+                        btn.setup(GetNameFromID(itemID, itemSource), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, itemSource, Convert.ToUInt32("0x" + itemData, 16)), GetImagePathFromID(recipeData, itemSource), flag1, flag2);
+                        continue;
+                    }
+                    else
+                    {
+                        btn.setup(GetNameFromID(itemID, itemSource), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, itemSource, Convert.ToUInt32("0x" + itemData, 16)), "", flag1, flag2);
+                        continue;
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                if (btn.Tag == null)
-                    continue;
-
-                if (btn.Tag.ToString() == "")
-                    continue;
-
-                int slotId = int.Parse(btn.Tag.ToString());
-
-                byte[] slotBytes = new byte[2];
-                byte[] flag1Bytes = new byte[1];
-                byte[] flag2Bytes = new byte[1];
-                byte[] dataBytes = new byte[4];
-                byte[] recipeBytes = new byte[2];
-
-                int slotOffset;
-                int countOffset;
-                int flag1Offset;
-                int flag2Offset;
-                if (slotId < 21)
-                {
-                    slotOffset = ((slotId - 1) * 0x8);
-                    flag1Offset = 0x3 + ((slotId - 1) * 0x8);
-                    flag2Offset = 0x2 + ((slotId - 1) * 0x8);
-                    countOffset = 0x4 + ((slotId - 1) * 0x8);
-                }
-                else
-                {
-                    slotOffset = ((slotId - 21) * 0x8);
-                    flag1Offset = 0x3 + ((slotId - 21) * 0x8);
-                    flag2Offset = 0x2 + ((slotId - 21) * 0x8);
-                    countOffset = 0x4 + ((slotId - 21) * 0x8);
-                }
-
-                if (slotId < 21)
-                {
-                    Buffer.BlockCopy(Bank01to20, slotOffset, slotBytes, 0x0, 0x2);
-                    Buffer.BlockCopy(Bank01to20, flag1Offset, flag1Bytes, 0x0, 0x1);
-                    Buffer.BlockCopy(Bank01to20, flag2Offset, flag2Bytes, 0x0, 0x1);
-                    Buffer.BlockCopy(Bank01to20, countOffset, dataBytes, 0x0, 0x4);
-                    Buffer.BlockCopy(Bank01to20, countOffset, recipeBytes, 0x0, 0x2);
-                }
-                else
-                {
-                    Buffer.BlockCopy(Bank21to40, slotOffset, slotBytes, 0x0, 0x2);
-                    Buffer.BlockCopy(Bank21to40, flag1Offset, flag1Bytes, 0x0, 0x1);
-                    Buffer.BlockCopy(Bank21to40, flag2Offset, flag2Bytes, 0x0, 0x1);
-                    Buffer.BlockCopy(Bank21to40, countOffset, dataBytes, 0x0, 0x4);
-                    Buffer.BlockCopy(Bank21to40, countOffset, recipeBytes, 0x0, 0x2);
-                }
-
-                string itemID = Utilities.flip(Utilities.ByteToHexString(slotBytes));
-                string itemData = Utilities.flip(Utilities.ByteToHexString(dataBytes));
-                string recipeData = Utilities.flip(Utilities.ByteToHexString(recipeBytes));
-                string flag1 = Utilities.ByteToHexString(flag1Bytes);
-                string flag2 = Utilities.ByteToHexString(flag2Bytes);
-
-                //Debug.Print("Slot : " + slotId.ToString() + " ID : " + itemID + " Data : " + itemData + " recipeData : " + recipeData + " Flag1 : " + flag1 + " Flag2 : " + flag2);
-
-                if (itemID == "FFFE") //Nothing
-                {
-                    btn.setup("", 0xFFFE, 0x0, "", "00", "00");
-                    continue;
-                }
-                else if (itemID == "16A2") //Recipe
-                {
-                    btn.setup(GetNameFromID(recipeData, recipeSource), 0x16A2, Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(recipeData, recipeSource), "", flag1, flag2);
-                    continue;
-                }
-                else if (itemID == "1095") //Delivery
-                {
-                    btn.setup(GetNameFromID(recipeData, itemSource), 0x1095, Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(recipeData, itemSource, Convert.ToUInt32("0x" + itemData, 16)), "", flag1, flag2);
-                    continue;
-                }
-                else if (itemID == "16A1") //Bottle Message
-                {
-                    btn.setup(GetNameFromID(recipeData, recipeSource), 0x16A1, Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(recipeData, recipeSource), "", flag1, flag2);
-                    continue;
-                }
-                else if (itemID == "0A13") // Fossil
-                {
-                    btn.setup(GetNameFromID(recipeData, itemSource), 0x0A13, Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(recipeData, itemSource), "", flag1, flag2);
-                    continue;
-                }
-                else if (itemID == "315A" || itemID == "1618") // Wall-Mounted
-                {
-                    btn.setup(GetNameFromID(itemID, itemSource), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, itemSource, Convert.ToUInt32("0x" + itemData, 16)), GetImagePathFromID(recipeData, itemSource), flag1, flag2);
-                    continue;
-                }
-                else
-                {
-                    btn.setup(GetNameFromID(itemID, itemSource), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemData, 16), GetImagePathFromID(itemID, itemSource, Convert.ToUInt32("0x" + itemData, 16)), "", flag1, flag2);
-                    continue;
-                }
+                Log.logEvent("MainForm", "UpdateInventory: " + ex.Message.ToString());
+                Invoke((MethodInvoker)delegate { this.autoRefreshCheckBox.Checked = false; });
+                refreshTimer.Stop();
+                MessageBox.Show(ex.Message.ToString(), "This seems like a bad idea but it's fine for now.");
+                return true;
             }
             allowUpdate = true;
             return false;
@@ -425,50 +444,58 @@ namespace ACNHPoker
                     hexValue = decValue.ToString("X");
             }
 
-            if (customIdTextbox.Text == "16A2") //recipe
+            try
             {
-                if (hexModeBtn.Tag.ToString() == "Normal")
+                if (customIdTextbox.Text == "16A2") //recipe
                 {
-                    if (!offline)
-                        Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, Utilities.precedingZeros(hexValue, 8));
-                    selectedButton.setup(GetNameFromID(Utilities.turn2bytes(hexValue), recipeSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(Utilities.turn2bytes(hexValue), recipeSource), "", selectedItem.getFlag1(), selectedItem.getFlag2());
+                    if (hexModeBtn.Tag.ToString() == "Normal")
+                    {
+                        if (!offline)
+                            Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, Utilities.precedingZeros(hexValue, 8));
+                        selectedButton.setup(GetNameFromID(Utilities.turn2bytes(hexValue), recipeSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(Utilities.turn2bytes(hexValue), recipeSource), "", selectedItem.getFlag1(), selectedItem.getFlag2());
+                    }
+                    else
+                    {
+                        if (!offline)
+                            Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, customAmountTxt.Text);
+                        selectedButton.setup(GetNameFromID(Utilities.turn2bytes(customAmountTxt.Text), recipeSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + customAmountTxt.Text, 16), GetImagePathFromID(Utilities.turn2bytes(customAmountTxt.Text), recipeSource), "", selectedItem.getFlag1(), selectedItem.getFlag2());
+                    }
+                }
+                else if (customIdTextbox.Text == "315A" || customIdTextbox.Text == "1618") // Wall-Mounted
+                {
+                    if (hexModeBtn.Tag.ToString() == "Normal")
+                    {
+                        if (!offline)
+                            Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, Utilities.precedingZeros(hexValue, 8));
+                        selectedButton.setup(GetNameFromID(customIdTextbox.Text, itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(customIdTextbox.Text, itemSource, Convert.ToUInt32("0x" + hexValue, 16)), GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource), selectedItem.getFlag1(), selectedItem.getFlag2());
+                    }
+                    else
+                    {
+                        if (!offline)
+                            Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, customAmountTxt.Text);
+                        selectedButton.setup(GetNameFromID(customIdTextbox.Text, itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + customAmountTxt.Text, 16), GetImagePathFromID(customIdTextbox.Text, itemSource, Convert.ToUInt32("0x" + customAmountTxt.Text, 16)), GetImagePathFromID((Utilities.turn2bytes(customAmountTxt.Text)), itemSource), selectedItem.getFlag1(), selectedItem.getFlag2());
+                    }
                 }
                 else
                 {
-                    if (!offline)
-                        Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, customAmountTxt.Text);
-                    selectedButton.setup(GetNameFromID(Utilities.turn2bytes(customAmountTxt.Text), recipeSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + customAmountTxt.Text, 16), GetImagePathFromID(Utilities.turn2bytes(customAmountTxt.Text), recipeSource), "", selectedItem.getFlag1(), selectedItem.getFlag2());
+                    if (hexModeBtn.Tag.ToString() == "Normal")
+                    {
+                        if (!offline)
+                            Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, Utilities.precedingZeros(hexValue, 8));
+                        selectedButton.setup(GetNameFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource, Convert.ToUInt32("0x" + hexValue, 16)), "", selectedItem.getFlag1(), selectedItem.getFlag2());
+                    }
+                    else
+                    {
+                        if (!offline)
+                            Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, customAmountTxt.Text);
+                        selectedButton.setup(GetNameFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + customAmountTxt.Text, 16), GetImagePathFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource, Convert.ToUInt32("0x" + customAmountTxt.Text, 16)), "", selectedItem.getFlag1(), selectedItem.getFlag2());
+                    }
                 }
             }
-            else if (customIdTextbox.Text == "315A" || customIdTextbox.Text == "1618") // Wall-Mounted
+            catch (Exception ex)
             {
-                if (hexModeBtn.Tag.ToString() == "Normal")
-                {
-                    if (!offline)
-                        Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, Utilities.precedingZeros(hexValue, 8));
-                    selectedButton.setup(GetNameFromID(customIdTextbox.Text, itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(customIdTextbox.Text, itemSource, Convert.ToUInt32("0x" + hexValue, 16)), GetImagePathFromID((Utilities.turn2bytes(hexValue)), itemSource), selectedItem.getFlag1(), selectedItem.getFlag2());
-                }
-                else
-                {
-                    if (!offline)
-                        Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, customAmountTxt.Text);
-                    selectedButton.setup(GetNameFromID(customIdTextbox.Text, itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + customAmountTxt.Text, 16), GetImagePathFromID(customIdTextbox.Text, itemSource, Convert.ToUInt32("0x" + customAmountTxt.Text, 16)), GetImagePathFromID((Utilities.turn2bytes(customAmountTxt.Text)), itemSource), selectedItem.getFlag1(), selectedItem.getFlag2());
-                }
-            }
-            else
-            {
-                if (hexModeBtn.Tag.ToString() == "Normal")
-                {
-                    if (!offline)
-                        Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, Utilities.precedingZeros(hexValue, 8));
-                    selectedButton.setup(GetNameFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + hexValue, 16), GetImagePathFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource, Convert.ToUInt32("0x" + hexValue, 16)), "", selectedItem.getFlag1(), selectedItem.getFlag2());
-                }
-                else
-                {
-                    if (!offline)
-                        Utilities.SpawnItem(s, bot, selectedSlot, selectedItem.getFlag1() + selectedItem.getFlag2() + customIdTextbox.Text, customAmountTxt.Text);
-                    selectedButton.setup(GetNameFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + customAmountTxt.Text, 16), GetImagePathFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource, Convert.ToUInt32("0x" + customAmountTxt.Text, 16)), "", selectedItem.getFlag1(), selectedItem.getFlag2());
-                }
+                Log.logEvent("MainForm", "SpawnItem: " + ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString(), "FIXME: This doesn't account for children of hierarchy... too bad!");
             }
 
             this.ShowMessage(customIdTextbox.Text);
@@ -744,7 +771,15 @@ namespace ACNHPoker
                     if (!offline)
                     {
                         int slotId = int.Parse(owner.SourceControl.Tag.ToString());
-                        Utilities.DeleteSlot(s, bot, slotId);
+                        try
+                        {
+                            Utilities.DeleteSlot(s, bot, slotId);
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.logEvent("MainForm", "DeleteItemRightClick: " + ex.Message.ToString());
+                            MessageBox.Show(ex.Message.ToString(), "Bizarre vector flip inherited from earlier code, WTF?");
+                        }
                     }
 
                     var btnParent = (inventorySlot)owner.SourceControl;
@@ -824,8 +859,15 @@ namespace ACNHPoker
 
                 //string result = Encoding.ASCII.GetString(Utilities.transform(b));
                 //Debug.Print(result);
-
-                Utilities.OverwriteAll(s, bot, b, b, ref counter);
+                try
+                {
+                    Utilities.OverwriteAll(s, bot, b, b, ref counter);
+                }
+                catch (Exception ex)
+                {
+                    Log.logEvent("MainForm", "SpawnAll: " + ex.Message.ToString());
+                    MessageBox.Show(ex.Message.ToString(), "Multithreading badness. This will cause a crash later!");
+                }
 
                 foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
                 {
@@ -914,50 +956,58 @@ namespace ACNHPoker
 
                 if (!offline)
                 {
-                    byte[] Bank01to20 = Utilities.GetInventoryBank(s, bot, 1);
-                    byte[] Bank21to40 = Utilities.GetInventoryBank(s, bot, 21);
-
-                    foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
+                    try
                     {
-                        int slot = int.Parse(btn.Tag.ToString());
-                        byte[] slotBytes = new byte[2];
+                        byte[] Bank01to20 = Utilities.GetInventoryBank(s, bot, 1);
+                        byte[] Bank21to40 = Utilities.GetInventoryBank(s, bot, 21);
 
-                        int slotOffset;
-                        if (slot < 21)
+                        foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
                         {
-                            slotOffset = ((slot - 1) * 0x8);
-                        }
-                        else
-                        {
-                            slotOffset = ((slot - 21) * 0x8);
-                        }
+                            int slot = int.Parse(btn.Tag.ToString());
+                            byte[] slotBytes = new byte[2];
 
-                        if (slot < 21)
-                        {
-                            Buffer.BlockCopy(Bank01to20, slotOffset, slotBytes, 0x0, 0x2);
-                        }
-                        else
-                        {
-                            Buffer.BlockCopy(Bank21to40, slotOffset, slotBytes, 0x0, 0x2);
-                        }
-
-                        string slotID = Utilities.flip(Utilities.ByteToHexString(slotBytes));
-
-                        if (slotID == "FFFE")
-                        {
-                            Utilities.SpawnItem(s, bot, slot, selectedItem.getFlag1() + selectedItem.getFlag2() + itemID, itemAmount);
-                            Invoke((MethodInvoker)delegate
+                            int slotOffset;
+                            if (slot < 21)
                             {
-                                if (itemID == "16A2") //Recipe
+                                slotOffset = ((slot - 1) * 0x8);
+                            }
+                            else
+                            {
+                                slotOffset = ((slot - 21) * 0x8);
+                            }
+
+                            if (slot < 21)
+                            {
+                                Buffer.BlockCopy(Bank01to20, slotOffset, slotBytes, 0x0, 0x2);
+                            }
+                            else
+                            {
+                                Buffer.BlockCopy(Bank21to40, slotOffset, slotBytes, 0x0, 0x2);
+                            }
+
+                            string slotID = Utilities.flip(Utilities.ByteToHexString(slotBytes));
+
+                            if (slotID == "FFFE")
+                            {
+                                Utilities.SpawnItem(s, bot, slot, selectedItem.getFlag1() + selectedItem.getFlag2() + itemID, itemAmount);
+                                Invoke((MethodInvoker)delegate
                                 {
-                                    btn.setup(GetNameFromID(Utilities.turn2bytes(itemAmount), recipeSource), 0x16A2, Convert.ToUInt32("0x" + itemAmount, 16), GetImagePathFromID(Utilities.turn2bytes(itemAmount), recipeSource), "", selectedItem.getFlag1(), selectedItem.getFlag2());
-                                }
-                                else
-                                {
-                                    btn.setup(GetNameFromID(itemID, itemSource), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemAmount, 16), GetImagePathFromID(itemID, itemSource, Convert.ToUInt32("0x" + itemAmount, 16)), "", selectedItem.getFlag1(), selectedItem.getFlag2());
-                                }
-                            });
+                                    if (itemID == "16A2") //Recipe
+                                    {
+                                        btn.setup(GetNameFromID(Utilities.turn2bytes(itemAmount), recipeSource), 0x16A2, Convert.ToUInt32("0x" + itemAmount, 16), GetImagePathFromID(Utilities.turn2bytes(itemAmount), recipeSource), "", selectedItem.getFlag1(), selectedItem.getFlag2());
+                                    }
+                                    else
+                                    {
+                                        btn.setup(GetNameFromID(itemID, itemSource), Convert.ToUInt16("0x" + itemID, 16), Convert.ToUInt32("0x" + itemAmount, 16), GetImagePathFromID(itemID, itemSource, Convert.ToUInt32("0x" + itemAmount, 16)), "", selectedItem.getFlag1(), selectedItem.getFlag2());
+                                    }
+                                });
+                            }
                         }
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.logEvent("MainForm", "FillRemain: " + ex.Message.ToString());
+                        MessageBox.Show(ex.Message.ToString(), "This code didn't port easily. WTF does it do?");
                     }
 
                     Thread.Sleep(3000);
@@ -995,42 +1045,6 @@ namespace ACNHPoker
                 System.Media.SystemSounds.Asterisk.Play();
         }
 
-        private void variationsBtn_Click(object sender, EventArgs e)
-        {
-            if (customIdTextbox.Text == "")
-            {
-                MessageBox.Show("Please enter an ID before sending item");
-                return;
-            }
-
-            if ((s == null || s.Connected == false) & bot == null)
-            {
-                MessageBox.Show("Please connect to the switch first");
-                return;
-            }
-
-            if (customAmountTxt.Text == "")
-            {
-                MessageBox.Show("Please enter an amount");
-                return;
-            }
-
-            int slot = 21;
-
-            for (int variation = 0; variation <= 9; variation++)
-            {
-                Utilities.SpawnItem(s, bot, slot, customIdTextbox.Text, "0x" + Utilities.precedingZeros(variation.ToString("X"), 2));
-
-                slot++;
-            }
-
-            UpdateInventory();
-            if (sound)
-                System.Media.SystemSounds.Asterisk.Play();
-
-            this.ShowMessage(customIdTextbox.Text);
-        }
-
         private void clearBtn_Click(object sender, EventArgs e)
         {
             /*
@@ -1049,53 +1063,61 @@ namespace ACNHPoker
         {
             showWait();
 
-            if (!offline)
+            try
             {
-                byte[] b = new byte[160];
-
-                //Debug.Print(Utilities.precedingZeros(itemID, 8));
-                //Debug.Print(Utilities.precedingZeros(itemAmount, 8));
-
-                for (int i = 0; i < b.Length; i += 8)
+                if (!offline)
                 {
-                    b[i] = 0xFE;
-                    b[i + 1] = 0xFF;
-                    for (int j = 0; j < 6; j++)
+                    byte[] b = new byte[160];
+
+                    //Debug.Print(Utilities.precedingZeros(itemID, 8));
+                    //Debug.Print(Utilities.precedingZeros(itemAmount, 8));
+
+                    for (int i = 0; i < b.Length; i += 8)
                     {
-                        b[i + 2 + j] = 0x00;
+                        b[i] = 0xFE;
+                        b[i + 1] = 0xFF;
+                        for (int j = 0; j < 6; j++)
+                        {
+                            b[i + 2 + j] = 0x00;
+                        }
                     }
-                }
 
-                Utilities.OverwriteAll(s, bot, b, b, ref counter);
-                //string result = Encoding.ASCII.GetString(Utilities.transform(b));
-                //Debug.Print(result);
+                    Utilities.OverwriteAll(s, bot, b, b, ref counter);
+                    //string result = Encoding.ASCII.GetString(Utilities.transform(b));
+                    //Debug.Print(result);
 
-                foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
-                {
+                    foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
+                    {
+                        Invoke((MethodInvoker)delegate
+                        {
+                            btn.reset();
+                        });
+                    }
                     Invoke((MethodInvoker)delegate
                     {
-                        btn.reset();
+                        btnToolTip.RemoveAll();
+                    });
+                    Thread.Sleep(1000);
+                }
+                else
+                {
+                    foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
+                    {
+                        Invoke((MethodInvoker)delegate
+                        {
+                            btn.reset();
+                        });
+                    }
+                    Invoke((MethodInvoker)delegate
+                    {
+                        btnToolTip.RemoveAll();
                     });
                 }
-                Invoke((MethodInvoker)delegate
-                {
-                    btnToolTip.RemoveAll();
-                });
-                Thread.Sleep(1000);
             }
-            else
+            catch (Exception ex)
             {
-                foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
-                {
-                    Invoke((MethodInvoker)delegate
-                    {
-                        btn.reset();
-                    });
-                }
-                Invoke((MethodInvoker)delegate
-                {
-                    btnToolTip.RemoveAll();
-                });
+                Log.logEvent("MainForm", "ClearInventory: " + ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString(), "This is catastrophically bad, don't do this. Someone needs to fix this.");
             }
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
@@ -2133,7 +2155,16 @@ namespace ACNHPoker
                 return;
             }
 
-            Utilities.DeleteSlot(s, bot, int.Parse(selectedButton.Tag.ToString()));
+
+            try
+            {
+                Utilities.DeleteSlot(s, bot, int.Parse(selectedButton.Tag.ToString()));
+            }
+            catch (Exception ex)
+            {
+                Log.logEvent("MainForm", "DeleteItemKeyBoard: " + ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString(), "Because nobody could *ever* possible attempt to parse bad data.");
+            }
             selectedButton.reset();
             btnToolTip.RemoveAll();
 
@@ -2414,8 +2445,18 @@ namespace ACNHPoker
                 Convert.ToUInt32(turnipSell5AM.Text, 10), Convert.ToUInt32(turnipSell5PM.Text, 10),
                 Convert.ToUInt32(turnipSell6AM.Text, 10), Convert.ToUInt32(turnipSell6PM.Text, 10),
                 Convert.ToUInt32(turnipBuyPrice.Text, 10)};
-                Utilities.ChangeTurnipPrices(s, bot, prices);
-                UpdateTurnipPrices();
+
+                try
+                {
+                    Utilities.ChangeTurnipPrices(s, bot, prices);
+                    UpdateTurnipPrices();
+                }
+                catch (Exception ex)
+                {
+                    Log.logEvent("MainForm", "SetTurnip: " + ex.Message.ToString());
+                    MessageBox.Show(ex.Message.ToString(), "This is a terrible way of doing this!");
+                }
+
                 if (sound)
                     System.Media.SystemSounds.Asterisk.Play();
             }
@@ -3402,11 +3443,20 @@ namespace ACNHPoker
         {
             string[] namelist = new string[8];
             Debug.Print("Peek 8 Name:");
+            byte[] tempHeader = null;
+            Boolean headerFound = false;
+
             for (int i = 0; i < 8; i++)
             {
-                byte[] b = Utilities.peekAddress(s, bot, (Utilities.player1SlotBase + (i * Utilities.playerOffset)) + Utilities.InventoryNameOffset, 24);
-                namelist[i] = Encoding.Unicode.GetString(b, 0, 20);
+                byte[] b = Utilities.peekAddress(s, bot, (Utilities.player1SlotBase + (i * Utilities.playerOffset)) + Utilities.InventoryNameOffset, 0x34);
+                namelist[i] = Encoding.Unicode.GetString(b, 32, 20);
                 namelist[i] = namelist[i].Replace("\0", string.Empty);
+                if (namelist[i].Equals(string.Empty) && !headerFound)
+                {
+                    header = tempHeader;
+                    headerFound = true;
+                }
+                tempHeader = b;
             }
             return namelist;
         }

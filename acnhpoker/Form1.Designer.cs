@@ -94,8 +94,6 @@
             this.spawnAllBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
-            this.Player1Btn = new System.Windows.Forms.RadioButton();
-            this.Player2Btn = new System.Windows.Forms.RadioButton();
             this.itemGridView = new System.Windows.Forms.DataGridView();
             this.itemModePanel = new System.Windows.Forms.Panel();
             this.genePanel = new System.Windows.Forms.Panel();
@@ -139,11 +137,6 @@
             this.ChaseBtn = new System.Windows.Forms.Button();
             this.FullAddress = new System.Windows.Forms.RichTextBox();
             this.autoRefreshCheckBox = new System.Windows.Forms.CheckBox();
-            this.Player3Btn = new System.Windows.Forms.RadioButton();
-            this.Player4Btn = new System.Windows.Forms.RadioButton();
-            this.playerSelectionPanel = new System.Windows.Forms.Panel();
-            this.houseBtn = new System.Windows.Forms.RadioButton();
-            this.recyclingBtn = new System.Windows.Forms.RadioButton();
             this.PokeBtn = new System.Windows.Forms.Button();
             this.debugAmount = new System.Windows.Forms.RichTextBox();
             this.formToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -279,8 +272,6 @@
             this.mondayAMStar = new System.Windows.Forms.Label();
             this.tuesdayAMStar = new System.Windows.Forms.Label();
             this.USBconnectBtn = new System.Windows.Forms.Button();
-            this.PokeMainBtn = new System.Windows.Forms.Button();
-            this.PeekMainBtn = new System.Windows.Forms.Button();
             this.critterLargePanel = new System.Windows.Forms.Panel();
             this.pacman = new System.Windows.Forms.PictureBox();
             this.pleaseWaitLabel = new System.Windows.Forms.Label();
@@ -293,10 +284,9 @@
             this.seaCreatureGridView = new System.Windows.Forms.DataGridView();
             this.seaFishGridView = new System.Windows.Forms.DataGridView();
             this.riverFishGridView = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.dump = new System.Windows.Forms.Button();
             this.villagerLargePanel = new System.Windows.Forms.Panel();
+            this.ignoreHeader = new System.Windows.Forms.CheckBox();
             this.overlay = new ACNHPoker.ExtendedPanel();
             this.PleaseWaitPanel = new System.Windows.Forms.Panel();
             this.WaitMessagebox = new System.Windows.Forms.RichTextBox();
@@ -339,8 +329,6 @@
             this.FriendShipValue = new System.Windows.Forms.RichTextBox();
             this.DumpAllHouseBtn = new System.Windows.Forms.Button();
             this.DumpMoveOutBtn = new System.Windows.Forms.Button();
-            this.PlayerNameLabel = new System.Windows.Forms.Label();
-            this.PlayerName = new System.Windows.Forms.RichTextBox();
             this.villagerBtn = new System.Windows.Forms.Button();
             this.ProgressTimer = new System.Windows.Forms.Timer(this.components);
             this.egg = new System.Windows.Forms.Button();
@@ -348,9 +336,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.ReadBtn = new System.Windows.Forms.Button();
             this.createBtn = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             this.inventoryPanel.SuspendLayout();
@@ -362,7 +351,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.recipeGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flowerGridView)).BeginInit();
             this.flowerModePanel.SuspendLayout();
-            this.playerSelectionPanel.SuspendLayout();
             this.inventoryLargePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pacman2)).BeginInit();
             this.paginationPanel.SuspendLayout();
@@ -1529,36 +1517,6 @@
             this.clearBtn.UseVisualStyleBackColor = false;
             this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
-            // Player1Btn
-            // 
-            this.Player1Btn.AutoSize = true;
-            this.Player1Btn.Checked = true;
-            this.Player1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Player1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.Player1Btn.ForeColor = System.Drawing.Color.White;
-            this.Player1Btn.Location = new System.Drawing.Point(3, 3);
-            this.Player1Btn.Name = "Player1Btn";
-            this.Player1Btn.Size = new System.Drawing.Size(70, 19);
-            this.Player1Btn.TabIndex = 65;
-            this.Player1Btn.TabStop = true;
-            this.Player1Btn.Text = "Player 1";
-            this.Player1Btn.UseVisualStyleBackColor = true;
-            this.Player1Btn.CheckedChanged += new System.EventHandler(this.Player1Btn_CheckedChanged);
-            // 
-            // Player2Btn
-            // 
-            this.Player2Btn.AutoSize = true;
-            this.Player2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Player2Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.Player2Btn.ForeColor = System.Drawing.Color.White;
-            this.Player2Btn.Location = new System.Drawing.Point(80, 3);
-            this.Player2Btn.Name = "Player2Btn";
-            this.Player2Btn.Size = new System.Drawing.Size(70, 19);
-            this.Player2Btn.TabIndex = 66;
-            this.Player2Btn.Text = "Player 2";
-            this.Player2Btn.UseVisualStyleBackColor = true;
-            this.Player2Btn.CheckedChanged += new System.EventHandler(this.Player2Btn_CheckedChanged);
-            // 
             // itemGridView
             // 
             this.itemGridView.AllowUserToAddRows = false;
@@ -2224,76 +2182,6 @@
             this.autoRefreshCheckBox.Visible = false;
             this.autoRefreshCheckBox.CheckedChanged += new System.EventHandler(this.autoRefreshCheckBox_CheckedChanged);
             // 
-            // Player3Btn
-            // 
-            this.Player3Btn.AutoSize = true;
-            this.Player3Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Player3Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.Player3Btn.ForeColor = System.Drawing.Color.White;
-            this.Player3Btn.Location = new System.Drawing.Point(3, 23);
-            this.Player3Btn.Name = "Player3Btn";
-            this.Player3Btn.Size = new System.Drawing.Size(70, 19);
-            this.Player3Btn.TabIndex = 83;
-            this.Player3Btn.Text = "Player 3";
-            this.Player3Btn.UseVisualStyleBackColor = true;
-            this.Player3Btn.CheckedChanged += new System.EventHandler(this.Player3Btn_CheckedChanged);
-            // 
-            // Player4Btn
-            // 
-            this.Player4Btn.AutoSize = true;
-            this.Player4Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Player4Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.Player4Btn.ForeColor = System.Drawing.Color.White;
-            this.Player4Btn.Location = new System.Drawing.Point(80, 23);
-            this.Player4Btn.Name = "Player4Btn";
-            this.Player4Btn.Size = new System.Drawing.Size(70, 19);
-            this.Player4Btn.TabIndex = 84;
-            this.Player4Btn.Text = "Player 4";
-            this.Player4Btn.UseVisualStyleBackColor = true;
-            this.Player4Btn.CheckedChanged += new System.EventHandler(this.Player4Btn_CheckedChanged);
-            // 
-            // playerSelectionPanel
-            // 
-            this.playerSelectionPanel.Controls.Add(this.houseBtn);
-            this.playerSelectionPanel.Controls.Add(this.recyclingBtn);
-            this.playerSelectionPanel.Controls.Add(this.Player1Btn);
-            this.playerSelectionPanel.Controls.Add(this.Player4Btn);
-            this.playerSelectionPanel.Controls.Add(this.Player2Btn);
-            this.playerSelectionPanel.Controls.Add(this.Player3Btn);
-            this.playerSelectionPanel.Location = new System.Drawing.Point(15, 874);
-            this.playerSelectionPanel.Name = "playerSelectionPanel";
-            this.playerSelectionPanel.Size = new System.Drawing.Size(262, 44);
-            this.playerSelectionPanel.TabIndex = 85;
-            this.playerSelectionPanel.Visible = false;
-            // 
-            // houseBtn
-            // 
-            this.houseBtn.AutoSize = true;
-            this.houseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.houseBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.houseBtn.ForeColor = System.Drawing.Color.White;
-            this.houseBtn.Location = new System.Drawing.Point(156, 23);
-            this.houseBtn.Name = "houseBtn";
-            this.houseBtn.Size = new System.Drawing.Size(105, 19);
-            this.houseBtn.TabIndex = 86;
-            this.houseBtn.Text = "Home Storage";
-            this.houseBtn.UseVisualStyleBackColor = true;
-            this.houseBtn.CheckedChanged += new System.EventHandler(this.houseBtn_CheckedChanged);
-            // 
-            // recyclingBtn
-            // 
-            this.recyclingBtn.AutoSize = true;
-            this.recyclingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.recyclingBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.recyclingBtn.ForeColor = System.Drawing.Color.White;
-            this.recyclingBtn.Location = new System.Drawing.Point(156, 3);
-            this.recyclingBtn.Name = "recyclingBtn";
-            this.recyclingBtn.Size = new System.Drawing.Size(100, 19);
-            this.recyclingBtn.TabIndex = 85;
-            this.recyclingBtn.Text = "Recycling Bin";
-            this.recyclingBtn.UseVisualStyleBackColor = true;
-            this.recyclingBtn.CheckedChanged += new System.EventHandler(this.recyclingBtn_CheckedChanged);
-            // 
             // PokeBtn
             // 
             this.PokeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -2498,6 +2386,7 @@
             // speedX4Btn
             // 
             this.speedX4Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.speedX4Btn.Enabled = false;
             this.speedX4Btn.FlatAppearance.BorderSize = 0;
             this.speedX4Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speedX4Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2515,6 +2404,7 @@
             // speedX1Btn
             // 
             this.speedX1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            this.speedX1Btn.Enabled = false;
             this.speedX1Btn.FlatAppearance.BorderSize = 0;
             this.speedX1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speedX1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2531,6 +2421,7 @@
             // disableCollisionBtn
             // 
             this.disableCollisionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.disableCollisionBtn.Enabled = false;
             this.disableCollisionBtn.FlatAppearance.BorderSize = 0;
             this.disableCollisionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.disableCollisionBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2548,6 +2439,7 @@
             // enableCollisionBtn
             // 
             this.enableCollisionBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            this.enableCollisionBtn.Enabled = false;
             this.enableCollisionBtn.FlatAppearance.BorderSize = 0;
             this.enableCollisionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.enableCollisionBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2925,6 +2817,7 @@
             // speedX2Btn
             // 
             this.speedX2Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.speedX2Btn.Enabled = false;
             this.speedX2Btn.FlatAppearance.BorderSize = 0;
             this.speedX2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speedX2Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2941,6 +2834,7 @@
             // speedX3Btn
             // 
             this.speedX3Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.speedX3Btn.Enabled = false;
             this.speedX3Btn.FlatAppearance.BorderSize = 0;
             this.speedX3Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speedX3Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3344,7 +3238,7 @@
             this.addressDebug.Size = new System.Drawing.Size(85, 23);
             this.addressDebug.TabIndex = 165;
             this.addressDebug.Tag = "";
-            this.addressDebug.Text = "debug";
+            this.addressDebug.Text = "addressdebug";
             this.addressDebug.UseVisualStyleBackColor = false;
             this.addressDebug.Click += new System.EventHandler(this.addressDebug_Click);
             // 
@@ -3375,7 +3269,7 @@
             this.debugBtn.Size = new System.Drawing.Size(85, 23);
             this.debugBtn.TabIndex = 138;
             this.debugBtn.Tag = "";
-            this.debugBtn.Text = "debug";
+            this.debugBtn.Text = "Test ID";
             this.debugBtn.UseVisualStyleBackColor = false;
             this.debugBtn.Click += new System.EventHandler(this.debugBtn_Click);
             // 
@@ -3697,6 +3591,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
+            this.label20.Enabled = false;
             this.label20.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.label20.ForeColor = System.Drawing.Color.Gainsboro;
             this.label20.Location = new System.Drawing.Point(3, 4);
@@ -3719,6 +3614,7 @@
             // Label21
             // 
             this.Label21.AutoSize = true;
+            this.Label21.Enabled = false;
             this.Label21.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
             this.Label21.ForeColor = System.Drawing.Color.Gainsboro;
             this.Label21.Location = new System.Drawing.Point(3, 57);
@@ -3829,13 +3725,17 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Gulliver (Unused)",
-            "48: Wasp (Unused)",
-            "49: Forehead (Unused)",
-            "4A: Orville (Unused)",
-            "4B: K.K. Slider Sitting (Unused)",
-            "4C: K.K. nodding while sitting (Unused)",
-            "4D: K.K. thinking while sitting (Unused)"});
+            "47: Confetti",
+            "48: Viva",
+            "49: Let\'s Go",
+            "4A: Feelin\' It",
+            "4B: Gulliver (Unused)",
+            "4C: Wasp (Unused)",
+            "4D: Forehead (Unused)",
+            "4E: Orville (Unused)",
+            "4F: K.K. Slider Sitting (Unused)",
+            "50: K.K. nodding while sitting (Unused)",
+            "51: K.K. thinking while sitting (Unused)"});
             this.reactionSlot2.Location = new System.Drawing.Point(807, 82);
             this.reactionSlot2.Name = "reactionSlot2";
             this.reactionSlot2.Size = new System.Drawing.Size(255, 24);
@@ -3921,13 +3821,17 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Gulliver (Unused)",
-            "48: Wasp (Unused)",
-            "49: Forehead (Unused)",
-            "4A: Orville (Unused)",
-            "4B: K.K. Slider Sitting (Unused)",
-            "4C: K.K. nodding while sitting (Unused)",
-            "4D: K.K. thinking while sitting (Unused)"});
+            "47: Confetti",
+            "48: Viva",
+            "49: Let\'s Go",
+            "4A: Feelin\' It",
+            "4B: Gulliver (Unused)",
+            "4C: Wasp (Unused)",
+            "4D: Forehead (Unused)",
+            "4E: Orville (Unused)",
+            "4F: K.K. Slider Sitting (Unused)",
+            "50: K.K. nodding while sitting (Unused)",
+            "51: K.K. thinking while sitting (Unused)"});
             this.reactionSlot3.Location = new System.Drawing.Point(872, 124);
             this.reactionSlot3.Name = "reactionSlot3";
             this.reactionSlot3.Size = new System.Drawing.Size(255, 24);
@@ -4013,13 +3917,17 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Gulliver (Unused)",
-            "48: Wasp (Unused)",
-            "49: Forehead (Unused)",
-            "4A: Orville (Unused)",
-            "4B: K.K. Slider Sitting (Unused)",
-            "4C: K.K. nodding while sitting (Unused)",
-            "4D: K.K. thinking while sitting (Unused)"});
+            "47: Confetti",
+            "48: Viva",
+            "49: Let\'s Go",
+            "4A: Feelin\' It",
+            "4B: Gulliver (Unused)",
+            "4C: Wasp (Unused)",
+            "4D: Forehead (Unused)",
+            "4E: Orville (Unused)",
+            "4F: K.K. Slider Sitting (Unused)",
+            "50: K.K. nodding while sitting (Unused)",
+            "51: K.K. thinking while sitting (Unused)"});
             this.reactionSlot4.Location = new System.Drawing.Point(807, 166);
             this.reactionSlot4.Name = "reactionSlot4";
             this.reactionSlot4.Size = new System.Drawing.Size(255, 24);
@@ -4105,13 +4013,17 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Gulliver (Unused)",
-            "48: Wasp (Unused)",
-            "49: Forehead (Unused)",
-            "4A: Orville (Unused)",
-            "4B: K.K. Slider Sitting (Unused)",
-            "4C: K.K. nodding while sitting (Unused)",
-            "4D: K.K. thinking while sitting (Unused)"});
+            "47: Confetti",
+            "48: Viva",
+            "49: Let\'s Go",
+            "4A: Feelin\' It",
+            "4B: Gulliver (Unused)",
+            "4C: Wasp (Unused)",
+            "4D: Forehead (Unused)",
+            "4E: Orville (Unused)",
+            "4F: K.K. Slider Sitting (Unused)",
+            "50: K.K. nodding while sitting (Unused)",
+            "51: K.K. thinking while sitting (Unused)"});
             this.reactionSlot1.Location = new System.Drawing.Point(638, 37);
             this.reactionSlot1.Name = "reactionSlot1";
             this.reactionSlot1.Size = new System.Drawing.Size(255, 24);
@@ -4197,13 +4109,17 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Gulliver (Unused)",
-            "48: Wasp (Unused)",
-            "49: Forehead (Unused)",
-            "4A: Orville (Unused)",
-            "4B: K.K. Slider Sitting (Unused)",
-            "4C: K.K. nodding while sitting (Unused)",
-            "4D: K.K. thinking while sitting (Unused)"});
+            "47: Confetti",
+            "48: Viva",
+            "49: Let\'s Go",
+            "4A: Feelin\' It",
+            "4B: Gulliver (Unused)",
+            "4C: Wasp (Unused)",
+            "4D: Forehead (Unused)",
+            "4E: Orville (Unused)",
+            "4F: K.K. Slider Sitting (Unused)",
+            "50: K.K. nodding while sitting (Unused)",
+            "51: K.K. thinking while sitting (Unused)"});
             this.reactionSlot8.Location = new System.Drawing.Point(482, 82);
             this.reactionSlot8.Name = "reactionSlot8";
             this.reactionSlot8.Size = new System.Drawing.Size(255, 24);
@@ -4289,13 +4205,17 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Gulliver (Unused)",
-            "48: Wasp (Unused)",
-            "49: Forehead (Unused)",
-            "4A: Orville (Unused)",
-            "4B: K.K. Slider Sitting (Unused)",
-            "4C: K.K. nodding while sitting (Unused)",
-            "4D: K.K. thinking while sitting (Unused)"});
+            "47: Confetti",
+            "48: Viva",
+            "49: Let\'s Go",
+            "4A: Feelin\' It",
+            "4B: Gulliver (Unused)",
+            "4C: Wasp (Unused)",
+            "4D: Forehead (Unused)",
+            "4E: Orville (Unused)",
+            "4F: K.K. Slider Sitting (Unused)",
+            "50: K.K. nodding while sitting (Unused)",
+            "51: K.K. thinking while sitting (Unused)"});
             this.reactionSlot7.Location = new System.Drawing.Point(425, 125);
             this.reactionSlot7.Name = "reactionSlot7";
             this.reactionSlot7.Size = new System.Drawing.Size(255, 24);
@@ -4381,13 +4301,17 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Gulliver (Unused)",
-            "48: Wasp (Unused)",
-            "49: Forehead (Unused)",
-            "4A: Orville (Unused)",
-            "4B: K.K. Slider Sitting (Unused)",
-            "4C: K.K. nodding while sitting (Unused)",
-            "4D: K.K. thinking while sitting (Unused)"});
+            "47: Confetti",
+            "48: Viva",
+            "49: Let\'s Go",
+            "4A: Feelin\' It",
+            "4B: Gulliver (Unused)",
+            "4C: Wasp (Unused)",
+            "4D: Forehead (Unused)",
+            "4E: Orville (Unused)",
+            "4F: K.K. Slider Sitting (Unused)",
+            "50: K.K. nodding while sitting (Unused)",
+            "51: K.K. thinking while sitting (Unused)"});
             this.reactionSlot6.Location = new System.Drawing.Point(482, 166);
             this.reactionSlot6.Name = "reactionSlot6";
             this.reactionSlot6.Size = new System.Drawing.Size(255, 24);
@@ -4473,13 +4397,17 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Gulliver (Unused)",
-            "48: Wasp (Unused)",
-            "49: Forehead (Unused)",
-            "4A: Orville (Unused)",
-            "4B: K.K. Slider Sitting (Unused)",
-            "4C: K.K. nodding while sitting (Unused)",
-            "4D: K.K. thinking while sitting (Unused)"});
+            "47: Confetti",
+            "48: Viva",
+            "49: Let\'s Go",
+            "4A: Feelin\' It",
+            "4B: Gulliver (Unused)",
+            "4C: Wasp (Unused)",
+            "4D: Forehead (Unused)",
+            "4E: Orville (Unused)",
+            "4F: K.K. Slider Sitting (Unused)",
+            "50: K.K. nodding while sitting (Unused)",
+            "51: K.K. thinking while sitting (Unused)"});
             this.reactionSlot5.Location = new System.Drawing.Point(638, 209);
             this.reactionSlot5.Name = "reactionSlot5";
             this.reactionSlot5.Size = new System.Drawing.Size(255, 24);
@@ -5007,36 +4935,6 @@
             this.USBconnectBtn.UseVisualStyleBackColor = false;
             this.USBconnectBtn.Click += new System.EventHandler(this.USBconnectBtn_Click);
             // 
-            // PokeMainBtn
-            // 
-            this.PokeMainBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.PokeMainBtn.FlatAppearance.BorderSize = 0;
-            this.PokeMainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PokeMainBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PokeMainBtn.ForeColor = System.Drawing.Color.White;
-            this.PokeMainBtn.Location = new System.Drawing.Point(15, 734);
-            this.PokeMainBtn.Name = "PokeMainBtn";
-            this.PokeMainBtn.Size = new System.Drawing.Size(75, 56);
-            this.PokeMainBtn.TabIndex = 139;
-            this.PokeMainBtn.Text = "PokeMain";
-            this.PokeMainBtn.UseVisualStyleBackColor = false;
-            this.PokeMainBtn.Click += new System.EventHandler(this.PokeMainBtn_Click);
-            // 
-            // PeekMainBtn
-            // 
-            this.PeekMainBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.PeekMainBtn.FlatAppearance.BorderSize = 0;
-            this.PeekMainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PeekMainBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PeekMainBtn.ForeColor = System.Drawing.Color.White;
-            this.PeekMainBtn.Location = new System.Drawing.Point(15, 672);
-            this.PeekMainBtn.Name = "PeekMainBtn";
-            this.PeekMainBtn.Size = new System.Drawing.Size(75, 56);
-            this.PeekMainBtn.TabIndex = 140;
-            this.PeekMainBtn.Text = "PeekMain";
-            this.PeekMainBtn.UseVisualStyleBackColor = false;
-            this.PeekMainBtn.Click += new System.EventHandler(this.PeekMainBtn_Click);
-            // 
             // critterLargePanel
             // 
             this.critterLargePanel.Controls.Add(this.pacman);
@@ -5250,22 +5148,6 @@
             this.riverFishGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.GridView_CellFormatting);
             this.riverFishGridView.SelectionChanged += new System.EventHandler(this.GridView_SelectionChanged);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1105, 873);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 23);
-            this.button1.TabIndex = 154;
-            this.button1.Tag = "";
-            this.button1.Text = "debug";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // btnToolTip
             // 
             this.btnToolTip.AutomaticDelay = 100;
@@ -5277,23 +5159,9 @@
             this.btnToolTip.UseAnimation = false;
             this.btnToolTip.UseFading = false;
             // 
-            // dump
-            // 
-            this.dump.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.dump.FlatAppearance.BorderSize = 0;
-            this.dump.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dump.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dump.ForeColor = System.Drawing.Color.White;
-            this.dump.Location = new System.Drawing.Point(1101, 809);
-            this.dump.Name = "dump";
-            this.dump.Size = new System.Drawing.Size(85, 23);
-            this.dump.TabIndex = 160;
-            this.dump.Tag = "";
-            this.dump.Text = "dump";
-            this.dump.UseVisualStyleBackColor = false;
-            // 
             // villagerLargePanel
             // 
+            this.villagerLargePanel.Controls.Add(this.ignoreHeader);
             this.villagerLargePanel.Controls.Add(this.overlay);
             this.villagerLargePanel.Controls.Add(this.PleaseWaitPanel);
             this.villagerLargePanel.Controls.Add(this.MysteryIslandToursLabel);
@@ -5322,6 +5190,15 @@
             this.villagerLargePanel.Name = "villagerLargePanel";
             this.villagerLargePanel.Size = new System.Drawing.Size(1220, 550);
             this.villagerLargePanel.TabIndex = 164;
+            // 
+            // ignoreHeader
+            // 
+            this.ignoreHeader.AutoSize = true;
+            this.ignoreHeader.Location = new System.Drawing.Point(1162, 526);
+            this.ignoreHeader.Name = "ignoreHeader";
+            this.ignoreHeader.Size = new System.Drawing.Size(15, 14);
+            this.ignoreHeader.TabIndex = 216;
+            this.ignoreHeader.UseVisualStyleBackColor = true;
             // 
             // overlay
             // 
@@ -6715,33 +6592,6 @@
             this.DumpMoveOutBtn.UseVisualStyleBackColor = false;
             this.DumpMoveOutBtn.Click += new System.EventHandler(this.DumpMoveOutBtn_Click);
             // 
-            // PlayerNameLabel
-            // 
-            this.PlayerNameLabel.AutoSize = true;
-            this.PlayerNameLabel.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.PlayerNameLabel.ForeColor = System.Drawing.Color.White;
-            this.PlayerNameLabel.Location = new System.Drawing.Point(133, 926);
-            this.PlayerNameLabel.Name = "PlayerNameLabel";
-            this.PlayerNameLabel.Size = new System.Drawing.Size(138, 22);
-            this.PlayerNameLabel.TabIndex = 216;
-            this.PlayerNameLabel.Text = "Player Name :";
-            // 
-            // PlayerName
-            // 
-            this.VillagerSearchMenu.SetAutocompleteMenu(this.PlayerName, null);
-            this.PlayerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.PlayerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.PlayerName.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PlayerName.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Bold);
-            this.PlayerName.ForeColor = System.Drawing.Color.White;
-            this.PlayerName.Location = new System.Drawing.Point(267, 921);
-            this.PlayerName.Multiline = false;
-            this.PlayerName.Name = "PlayerName";
-            this.PlayerName.ReadOnly = true;
-            this.PlayerName.Size = new System.Drawing.Size(121, 30);
-            this.PlayerName.TabIndex = 216;
-            this.PlayerName.Text = "";
-            // 
             // villagerBtn
             // 
             this.villagerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -7198,7 +7048,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(376, 780);
+            this.button2.Location = new System.Drawing.Point(371, 748);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 23);
             this.button2.TabIndex = 218;
@@ -7214,7 +7064,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(376, 819);
+            this.button3.Location = new System.Drawing.Point(371, 787);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(85, 23);
             this.button3.TabIndex = 219;
@@ -7230,7 +7080,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(474, 819);
+            this.button4.Location = new System.Drawing.Point(469, 787);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(85, 23);
             this.button4.TabIndex = 220;
@@ -7239,22 +7089,6 @@
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(479, 780);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(85, 23);
-            this.button5.TabIndex = 221;
-            this.button5.Tag = "";
-            this.button5.Text = "try";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // ReadBtn
             // 
             this.ReadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -7262,7 +7096,7 @@
             this.ReadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReadBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.ReadBtn.ForeColor = System.Drawing.Color.White;
-            this.ReadBtn.Location = new System.Drawing.Point(152, 791);
+            this.ReadBtn.Location = new System.Drawing.Point(209, 748);
             this.ReadBtn.Margin = new System.Windows.Forms.Padding(4);
             this.ReadBtn.Name = "ReadBtn";
             this.ReadBtn.Size = new System.Drawing.Size(138, 28);
@@ -7278,7 +7112,7 @@
             this.createBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.createBtn.ForeColor = System.Drawing.Color.White;
-            this.createBtn.Location = new System.Drawing.Point(152, 827);
+            this.createBtn.Location = new System.Drawing.Point(209, 784);
             this.createBtn.Margin = new System.Windows.Forms.Padding(4);
             this.createBtn.Name = "createBtn";
             this.createBtn.Size = new System.Drawing.Size(138, 28);
@@ -7287,31 +7121,57 @@
             this.createBtn.UseVisualStyleBackColor = false;
             this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
             // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(1081, 586);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(85, 23);
+            this.button6.TabIndex = 229;
+            this.button6.Tag = "";
+            this.button6.Text = "nhi";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(1080, 615);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(85, 23);
+            this.button1.TabIndex = 230;
+            this.button1.Tag = "";
+            this.button1.Text = "nhbs";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1204, 516);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.ReadBtn);
             this.Controls.Add(this.createBtn);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.PlayerName);
-            this.Controls.Add(this.PlayerNameLabel);
             this.Controls.Add(this.addressDebug);
             this.Controls.Add(this.egg);
             this.Controls.Add(this.villagerBtn);
-            this.Controls.Add(this.dump);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.otherBtn);
-            this.Controls.Add(this.PeekMainBtn);
-            this.Controls.Add(this.PokeMainBtn);
             this.Controls.Add(this.debugBtn);
             this.Controls.Add(this.connectBtn);
-            this.Controls.Add(this.playerSelectionPanel);
             this.Controls.Add(this.USBconnectBtn);
             this.Controls.Add(this.critterBtn);
             this.Controls.Add(this.inventoryBtn);
@@ -7333,9 +7193,10 @@
             this.Controls.Add(this.villagerLargePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1220, 1000);
+            this.MaximumSize = new System.Drawing.Size(1500, 1000);
             this.MinimumSize = new System.Drawing.Size(1220, 555);
             this.Name = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.LocationChanged += new System.EventHandler(this.Form1_LocationChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyboardKeyDown);
@@ -7354,8 +7215,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.flowerGridView)).EndInit();
             this.flowerModePanel.ResumeLayout(false);
             this.flowerModePanel.PerformLayout();
-            this.playerSelectionPanel.ResumeLayout(false);
-            this.playerSelectionPanel.PerformLayout();
             this.inventoryLargePanel.ResumeLayout(false);
             this.inventoryLargePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pacman2)).EndInit();
@@ -7384,7 +7243,6 @@
             this.VillagerControl.ResumeLayout(false);
             this.VillagerControl.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -7404,8 +7262,6 @@
         private System.Windows.Forms.Button spawnAllBtn;
         private System.Windows.Forms.Button refreshBtn;
         private System.Windows.Forms.Button clearBtn;
-        private System.Windows.Forms.RadioButton Player1Btn;
-        private System.Windows.Forms.RadioButton Player2Btn;
         private System.Windows.Forms.DataGridView itemGridView;
         private System.Windows.Forms.Panel itemModePanel;
         private System.Windows.Forms.Button recipeModeBtn;
@@ -7437,9 +7293,6 @@
         private System.Windows.Forms.Label selectedItemName;
         private System.Windows.Forms.Label selectedData;
         private System.Windows.Forms.Label selectedID;
-        private System.Windows.Forms.RadioButton Player3Btn;
-        private System.Windows.Forms.RadioButton Player4Btn;
-        private System.Windows.Forms.Panel playerSelectionPanel;
         private System.Windows.Forms.Button PokeBtn;
         private System.Windows.Forms.RichTextBox debugAmount;
         private System.Windows.Forms.ToolTip formToolTip;
@@ -7492,8 +7345,6 @@
         private System.Windows.Forms.Button critterBtn;
         private System.Windows.Forms.Button otherBtn;
         private System.Windows.Forms.Panel otherLargePanel;
-        private System.Windows.Forms.RadioButton houseBtn;
-        private System.Windows.Forms.RadioButton recyclingBtn;
         private System.Windows.Forms.Button backBtn;
         private System.Windows.Forms.Button nextBtn;
         private System.Windows.Forms.RichTextBox turnipBuyPrice;
@@ -7561,8 +7412,6 @@
         private System.Windows.Forms.Label selectedFlag1;
         private System.Windows.Forms.Button USBconnectBtn;
         private System.Windows.Forms.Button debugBtn;
-        private System.Windows.Forms.Button PokeMainBtn;
-        private System.Windows.Forms.Button PeekMainBtn;
         private System.Windows.Forms.Button enableCollisionBtn;
         private System.Windows.Forms.Button disableCollisionBtn;
         private System.Windows.Forms.Label Label21;
@@ -7607,7 +7456,6 @@
         private System.Windows.Forms.DataGridView riverFishGridView;
         private System.Windows.Forms.Label pleaseWaitLabel;
         private System.Windows.Forms.PictureBox pacman;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolTip btnToolTip;
         private System.Windows.Forms.PictureBox pacman2;
         private System.Windows.Forms.Button fillRemainBtn;
@@ -7618,7 +7466,6 @@
         private System.Windows.Forms.ComboBox flowerGeneR;
         private System.Windows.Forms.ToolStripMenuItem wrapAllItemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unwrapAllItemToolStripMenuItem;
-        private System.Windows.Forms.Button dump;
         private System.Windows.Forms.Button debugVillager;
         private System.Windows.Forms.Panel villagerLargePanel;
         private System.Windows.Forms.Label PersonalityLabel;
@@ -7684,8 +7531,6 @@
         private System.Windows.Forms.Button animationSpdx5;
         private System.Windows.Forms.ComboBox playerSelectorInventory;
         private System.Windows.Forms.ComboBox playerSelectorOther;
-        private System.Windows.Forms.RichTextBox PlayerName;
-        private System.Windows.Forms.Label PlayerNameLabel;
         private System.Windows.Forms.Button configBtn;
         private System.Windows.Forms.Button addressDebug;
         private System.Windows.Forms.ComboBox Language;
@@ -7703,9 +7548,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button ReadBtn;
         private System.Windows.Forms.Button createBtn;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.CheckBox ignoreHeader;
+        private System.Windows.Forms.Button button1;
     }
 }
 

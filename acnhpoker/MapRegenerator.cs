@@ -37,25 +37,34 @@ namespace ACNHPoker
 
         public MapRegenerator(Socket S, Form1 Main, bool Sound)
         {
-            s = S;
-            main = Main;
-            sound = Sound;
+            try
+            {
+                s = S;
+                main = Main;
+                sound = Sound;
 
-            InitializeComponent();
-            FinMsg.SelectionAlignment = HorizontalAlignment.Center;
-            logName.Text = logFile;
-            Random random = new Random();
-            int v = random.Next(8192);
-            Debug.Print(v.ToString());
-            if (v == 6969)
-            {
-                this.Icon = ACNHPoker.Properties.Resources.k;
-                this.trayIcon.Icon = this.Icon = ACNHPoker.Properties.Resources.k;
+                InitializeComponent();
+                FinMsg.SelectionAlignment = HorizontalAlignment.Center;
+                logName.Text = logFile;
+                Random random = new Random();
+                int v = random.Next(8192);
+                Debug.Print(v.ToString());
+                if (v == 6969)
+                {
+                    this.Icon = ACNHPoker.Properties.Resources.k;
+                    this.trayIcon.Icon = this.Icon = ACNHPoker.Properties.Resources.k;
+                    Log.logEvent("Regen", "A Shiny Has Appeared!");
+                }
+                else if (v <= 4096)
+                {
+                    this.Icon = ACNHPoker.Properties.Resources.f;
+                    this.trayIcon.Icon = this.Icon = ACNHPoker.Properties.Resources.f;
+                }
+                Log.logEvent("Regen", "RegenForm Started Successfully");
             }
-            else if (v <= 4096)
+            catch (Exception ex)
             {
-                this.Icon = ACNHPoker.Properties.Resources.f;
-                this.trayIcon.Icon = this.Icon = ACNHPoker.Properties.Resources.f;
+                Log.logEvent("Regen", "Form Construct: " + ex.Message.ToString());
             }
         }
 
@@ -103,12 +112,9 @@ namespace ACNHPoker
                 LoadThread.Start();
 
             }
-            catch
+            catch (Exception ex)
             {
-                if (s != null)
-                {
-                    s.Close();
-                }
+                Log.logEvent("Regen", "Save: " + ex.Message.ToString());
                 return;
             }
         }
@@ -186,12 +192,9 @@ namespace ACNHPoker
                 Thread LoadThread = new Thread(delegate () { loadMapFloor(b, address); });
                 LoadThread.Start();
             }
-            catch
+            catch (Exception ex)
             {
-                if (s != null)
-                {
-                    s.Close();
-                }
+                Log.logEvent("Regen", "Load: " + ex.Message.ToString());
                 return;
             }
         }
@@ -285,11 +288,14 @@ namespace ACNHPoker
 
                 string[] name = file.FileName.Split('\\');
 
+                Log.logEvent("Regen", "Regen1 Started: " + name[name.Length - 1]);
+
                 RegenThread = new Thread(delegate () { regenMapFloor(b, address, name[name.Length - 1]); });
                 RegenThread.Start();
             }
             else
             {
+                Log.logEvent("Regen", "Regen1 Stopped");
                 loop = false;
                 startRegen.Tag = "Start";
                 startRegen.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -321,72 +327,82 @@ namespace ACNHPoker
 
             do
             {
-                counter = 0;
-                writeCount = 0;
-
-                newVisitor = getVisitorName();
-
-                if (!newVisitor.Equals(string.Empty))
+                try
                 {
-                    this.Invoke((MethodInvoker)delegate
+                    counter = 0;
+                    writeCount = 0;
+
+                    newVisitor = getVisitorName();
+
+                    if (!newVisitor.Equals(string.Empty))
                     {
-                        visitorNameBox.Text = newVisitor;
-                        WaitMessagebox.Text = "Paused. " + newVisitor + " arriving!";
-                        CreateLog(newVisitor);
-                        PauseTimeLabel.Visible = true;
-                        PauseTimer.Start();
-
-                    });
-
-                    Thread.Sleep(70000);
-                    Utilities.sendBlankName(s);
-
-                    this.Invoke((MethodInvoker)delegate
-                    {
-                        PauseTimeLabel.Visible = false;
-                        PauseTimer.Stop();
-                        pauseTime = 70;
-                        PauseTimeLabel.Text = pauseTime.ToString();
-                        WaitMessagebox.Text = regenMsg;
-                    });
-                }
-
-                for (int i = 0; i < 42; i++)
-                {
-                    lock (mapLock)
-                    {
-                        c = Utilities.ReadByteArray8(s, address + (i * 0x2000), 0x2000, ref counter);
-
-                        if (c != null)
+                        this.Invoke((MethodInvoker)delegate
                         {
-                            if (SafeEquals(b[i], c))
+                            visitorNameBox.Text = newVisitor;
+                            WaitMessagebox.Text = "Paused. " + newVisitor + " arriving!";
+                            CreateLog(newVisitor);
+                            PauseTimeLabel.Visible = true;
+                            PauseTimer.Start();
+
+                        });
+
+                        Thread.Sleep(70000);
+                        Utilities.sendBlankName(s);
+
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            PauseTimeLabel.Visible = false;
+                            PauseTimer.Stop();
+                            pauseTime = 70;
+                            PauseTimeLabel.Text = pauseTime.ToString();
+                            WaitMessagebox.Text = regenMsg;
+                        });
+                    }
+
+                    for (int i = 0; i < 42; i++)
+                    {
+                        lock (mapLock)
+                        {
+                            c = Utilities.ReadByteArray8(s, address + (i * 0x2000), 0x2000, ref counter);
+
+                            if (c != null)
                             {
-                                //Debug.Print("Same " + i);
-                                Thread.Sleep(delayTime);
+                                if (SafeEquals(b[i], c))
+                                {
+                                    //Debug.Print("Same " + i);
+                                    Thread.Sleep(delayTime);
+                                }
+                                else
+                                {
+                                    Debug.Print("Replace " + i);
+                                    Utilities.SendByteArray8(s, address + (i * 0x2000), b[i], 0x2000, ref writeCount);
+                                    Thread.Sleep(500);
+                                }
                             }
                             else
                             {
-                                Debug.Print("Replace " + i);
-                                Utilities.SendByteArray8(s, address + (i * 0x2000), b[i], 0x2000, ref writeCount);
-                                Thread.Sleep(500);
+                                Debug.Print("Null " + i);
+                                Thread.Sleep(10000);
                             }
                         }
-                        else
-                        {
-                            Debug.Print("Null " + i);
-                            Thread.Sleep(10000);
-                        }
+                        if (!loop)
+                            break;
                     }
-                    if (!loop)
-                        break;
+
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        ts = stopWatch.Elapsed;
+                        timeLabel.Text = Utilities.precedingZeros(ts.Hours.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Minutes.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Seconds.ToString(), 2);
+                    });
                 }
-
-                this.Invoke((MethodInvoker)delegate
+                catch (Exception ex)
                 {
-                    ts = stopWatch.Elapsed;
-                    timeLabel.Text = Utilities.precedingZeros(ts.Hours.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Minutes.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Seconds.ToString(), 2);
-                });
-
+                    Log.logEvent("Regen", "Regen1: " + ex.Message.ToString());
+                    DateTime localDate = DateTime.Now;
+                    CreateLog("[Connection Lost]");
+                    MessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!");
+                    break;
+                }
             } while (loop);
 
             stopWatch.Stop();
@@ -447,8 +463,10 @@ namespace ACNHPoker
 
         private void MapRegenerator_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Log.logEvent("Regen", "Form Closed");
             if (RegenThread != null)
             {
+                Log.logEvent("Regen", "Regen Force Closed");
                 if (sound)
                     System.Media.SystemSounds.Asterisk.Play();
                 RegenThread.Abort();
@@ -524,9 +542,12 @@ namespace ACNHPoker
 
                 byte[] data = File.ReadAllBytes(file.FileName);
 
+                string[] name = file.FileName.Split('\\');
+                tempFilename = name[name.Length - 1];
+
                 UInt32 address = Utilities.mapZero;
 
-                DialogResult dialogResult = MessageBox.Show("Would you like to limit the area of \"ignoring empty tiles\"?" + "\n\n" +
+                DialogResult dialogResult = MessageBox.Show("Would you like to limit the \"ignore empty tiles\" area?" + "\n\n" +
                                                             "This would allow you to pick a 7 x 7 area which the regenerator would only ignore."
                                                             , "Choose an area to ignore?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -535,8 +556,6 @@ namespace ACNHPoker
                     logPanel.Visible = false;
 
                     tempData = data;
-                    string[] name = file.FileName.Split('\\');
-                    tempFilename = name[name.Length - 1];
 
                     this.Width = 485;
                     if (MiniMap == null)
@@ -565,7 +584,7 @@ namespace ACNHPoker
                     }
                     xCoordinate.Text = anchorX.ToString();
                     yCoordinate.Text = anchorY.ToString();
-                    miniMapBox.Image = MiniMap.drawSelectSquare(anchorX * 2, anchorY * 2);
+                    miniMapBox.Image = MiniMap.drawSelectSquare(anchorX, anchorY);
                 }
                 else
                 {
@@ -592,14 +611,15 @@ namespace ACNHPoker
                         buildEmptyTable(b[i], ref isEmpty[i]);
                     }
 
-                    string[] name = file.FileName.Split('\\');
+                    Log.logEvent("Regen", "Regen2Normal Started: " + tempFilename);
 
-                    RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, name[name.Length - 1]); });
+                    RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, tempFilename); });
                     RegenThread.Start();
                 }
             }
             else
             {
+                Log.logEvent("Regen", "Regen2 Stopped");
                 WaitMessagebox.Text = "Stopping Regen...";
                 loop = false;
                 startRegen2.Tag = "Start";
@@ -642,6 +662,8 @@ namespace ACNHPoker
                 isEmpty[i] = new bool[0x1800];
                 buildEmptyTable(b[i], ref isEmpty[i], i * 2, i * 2 + 1);
             }
+            Log.logEvent("Regen", "Regen2Limit Started: " + tempFilename);
+            Log.logEvent("Regen", "Regen2Limit Area: " + anchorX + " " + anchorY);
 
             RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, tempFilename); });
             RegenThread.Start();
@@ -676,72 +698,83 @@ namespace ACNHPoker
 
             do
             {
-                counter = 0;
-                writeCount = 0;
-
-                newVisitor = getVisitorName();
-
-                if (!newVisitor.Equals(string.Empty))
+                try
                 {
-                    this.Invoke((MethodInvoker)delegate
+                    counter = 0;
+                    writeCount = 0;
+
+                    newVisitor = getVisitorName();
+
+                    if (!newVisitor.Equals(string.Empty))
                     {
-                        visitorNameBox.Text = newVisitor;
-                        WaitMessagebox.Text = "Paused. " + newVisitor + " arriving!";
-                        CreateLog(newVisitor);
-                        PauseTimeLabel.Visible = true;
-                        PauseTimer.Start();
-                        
-                    });
-
-                    Thread.Sleep(70000);
-                    Utilities.sendBlankName(s);
-
-                    this.Invoke((MethodInvoker)delegate
-                    {
-                        PauseTimeLabel.Visible = false;
-                        PauseTimer.Stop();
-                        pauseTime = 70;
-                        PauseTimeLabel.Text = pauseTime.ToString();
-                        WaitMessagebox.Text = regenMsg;
-                    });
-                }
-
-                for (int i = 0; i < 56; i++)
-                {
-                    lock (mapLock)
-                    {
-                        c = Utilities.ReadByteArray8(s, address + (i * 0x1800), 0x1800, ref counter);
-
-                        if (c != null)
+                        this.Invoke((MethodInvoker)delegate
                         {
-                            if (Difference(b[i], ref u[i], isEmpty[i], c))
+                            visitorNameBox.Text = newVisitor;
+                            WaitMessagebox.Text = "Paused. " + newVisitor + " arriving!";
+                            CreateLog(newVisitor);
+                            PauseTimeLabel.Visible = true;
+                            PauseTimer.Start();
+
+                        });
+
+                        Thread.Sleep(70000);
+                        Utilities.sendBlankName(s);
+
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            PauseTimeLabel.Visible = false;
+                            PauseTimer.Stop();
+                            pauseTime = 70;
+                            PauseTimeLabel.Text = pauseTime.ToString();
+                            WaitMessagebox.Text = regenMsg;
+                        });
+                    }
+
+                    for (int i = 0; i < 56; i++)
+                    {
+                        lock (mapLock)
+                        {
+                            c = Utilities.ReadByteArray8(s, address + (i * 0x1800), 0x1800, ref counter);
+
+                            if (c != null)
                             {
-                                //Debug.Print("Same " + i);
-                                Thread.Sleep(delayTime);
+                                if (Difference(b[i], ref u[i], isEmpty[i], c))
+                                {
+                                    //Debug.Print("Same " + i);
+                                    Thread.Sleep(delayTime);
+                                }
+                                else
+                                {
+                                    Debug.Print("Replace " + i);
+                                    Utilities.SendByteArray8(s, address + (i * 0x1800), u[i], 0x1800, ref writeCount);
+                                    Thread.Sleep(500);
+                                }
                             }
                             else
                             {
-                                Debug.Print("Replace " + i);
-                                Utilities.SendByteArray8(s, address + (i * 0x1800), u[i], 0x1800, ref writeCount);
-                                Thread.Sleep(500);
+                                Debug.Print("Null " + i);
+                                Thread.Sleep(10000);
                             }
                         }
-                        else
-                        {
-                            Debug.Print("Null " + i);
-                            Thread.Sleep(10000);
-                        }
+                        if (!loop)
+                            break;
                     }
-                    if (!loop)
-                        break;
+
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        ts = stopWatch.Elapsed;
+                        timeLabel.Text = Utilities.precedingZeros(ts.Hours.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Minutes.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Seconds.ToString(), 2);
+                    });
+                    Debug.Print("------");
                 }
-
-                this.Invoke((MethodInvoker)delegate
+                catch (Exception ex)
                 {
-                    ts = stopWatch.Elapsed;
-                    timeLabel.Text = Utilities.precedingZeros(ts.Hours.ToString(),2) + ":" + Utilities.precedingZeros(ts.Minutes.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Seconds.ToString(), 2);
-                });
-
+                    Log.logEvent("Regen", "Regen2: " + ex.Message.ToString());
+                    DateTime localDate = DateTime.Now;
+                    CreateLog("[Connection Lost]");
+                    MessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!");
+                    break;
+                }
             } while (loop);
 
             stopWatch.Stop();
@@ -873,7 +906,7 @@ namespace ACNHPoker
             bool output = true;
             bool output2 = true;
             bool pass = true;
-
+            int NotEqualNum = 0;
             for (int i = 0; i < cur.Length; i++)
             {
                 if (cur[i] != org[i])
@@ -891,6 +924,7 @@ namespace ACNHPoker
                     {
                         pass = false;
                     }
+                    NotEqualNum++;
                 }
                 else
                 {
@@ -905,7 +939,10 @@ namespace ACNHPoker
                     }
                 }
             }
-
+            if (NotEqualNum > 0x140)
+            {
+                Log.logEvent("Regen", "[Warning] Shifted? " + NotEqualNum + " bytes different.");
+            }
             return pass;
         }
 
@@ -921,6 +958,10 @@ namespace ACNHPoker
         private string getVisitorName()
         {
             byte[] b = Utilities.getVisitorName(s);
+            if (b == null)
+            {
+                return string.Empty;
+            }
             string tempName = Encoding.Unicode.GetString(b, 0, 20);
             return tempName.Replace("\0", string.Empty);
         }
@@ -1144,7 +1185,7 @@ namespace ACNHPoker
             xCoordinate.Text = x.ToString();
             yCoordinate.Text = y.ToString();
 
-            miniMapBox.Image = MiniMap.drawSelectSquare(anchorX * 2, anchorY * 2);
+            miniMapBox.Image = MiniMap.drawSelectSquare(anchorX, anchorY);
         }
 
         private void miniMapBox_MouseMove(object sender, MouseEventArgs e)
@@ -1174,7 +1215,7 @@ namespace ACNHPoker
                 xCoordinate.Text = x.ToString();
                 yCoordinate.Text = y.ToString();
 
-                miniMapBox.Image = MiniMap.drawSelectSquare(anchorX * 2, anchorY * 2);
+                miniMapBox.Image = MiniMap.drawSelectSquare(anchorX, anchorY);
             }
         }
     }

@@ -72,7 +72,7 @@ https://youtu.be/-zztRgmtXig
 * R7
     * Added support for spawning in recycling bin and first character's Home storage.
     * Added support for wrapping items
-    * Added support for contorlling turnip buying/selling price.
+    * Added support for controlling turnip buying/selling price.
     * Added support for changing first character's Reaction wheel
 * R7.1
     * Update for Game version number 1.2.1
@@ -130,7 +130,6 @@ https://youtu.be/-zztRgmtXig
 	* Added "Favorite" tab. Allow user to create their own favourite list.
 	* Added "Map Dropper" for map editing.
 	* Added "Map Regenerator" for treasure map hosting.
-	* Added hotke
 * R12.1
 	* Added hotkey for map dropper. [Shift + Left Click] = Drop item & [Alt + Left Click] = Delete item
 	* Fixed the bug of the regenerator that dropped item might incorrectly restocked.
@@ -145,6 +144,13 @@ https://youtu.be/-zztRgmtXig
 	* Added logging to the regenerator.
 	* Added extra option in the regenerator to limit the "ignore empty tiles" area.
 	* Redo the "Map Dropper" with mini map control.
+* R12.3
+	* Added "Remove item..." option to bulk spawn item
+	* Added Auto-save detection to try and avoid crashes due to write durning saveing.
+	* Added background color for the "Map Dropper"
+	* Added a bit more code and a log file to try and cath exception.
+* R13
+	* Update for Game version number 1.7.0
     
 ## Contributing
 

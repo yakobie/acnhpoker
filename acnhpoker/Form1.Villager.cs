@@ -79,8 +79,8 @@ namespace ACNHPoker
 
                     byte[] move = Utilities.GetMoveout(s, bot, i, (int)0x33, ref counter);
                     V[i].AbandonedHouseFlag = Convert.ToInt32(move[0]);
+                    V[i].InvitedFlag = Convert.ToInt32(move[0x14]);
                     V[i].ForceMoveOutFlag = Convert.ToInt32(move[move.Length - 1]);
-
                     byte[] catchphrase = Utilities.GetCatchphrase(s, bot, i, ref counter);
                     V[i].catchphrase = catchphrase;
 
@@ -124,6 +124,8 @@ namespace ACNHPoker
                         else
                             villagerButton[i].Text += "\n(Just Move Out)";
                     }
+                    else if (V[i].InvitedFlag == 0x2)
+                        villagerButton[i].Text += "\n(Invited by Visitor)";
                     else if (V[i].AbandonedHouseFlag == 0x1 && V[i].ForceMoveOutFlag == 0x0)
                         villagerButton[i].Text += "\n(Floor Sweeping)";
                     else if (V[i].AbandonedHouseFlag == 0x2 && V[i].ForceMoveOutFlag == 0x1)
@@ -159,7 +161,6 @@ namespace ACNHPoker
                     FullAddress.Text = "";
                 });
 
-                header = FindHeader();
                 if (sound)
                     System.Media.SystemSounds.Asterisk.Play();
 
@@ -190,22 +191,6 @@ namespace ACNHPoker
             LoadAllVillagerThread.Start();
         }
 
-        private byte[] FindHeader()
-        {
-            byte[] temp = new byte[56];
-            for (int i = 0; i < 10; i++)
-            {
-                if (V[i] != null)
-                {
-                    temp = V[i].GetHeader();
-                    if (temp[0] != 0x0 && temp[1] != 0x0 && temp[2] != 0x0)
-                        return temp;
-                }
-            }
-            MessageBox.Show("Wait something is wrong here!? \n\n Usable header not found!\n\nPlease at least have a proper functional villager on your island as a template before you use the replace function.\n\n(It is normal if you evict all 10 villagers at the same time.)", "Warning");
-            return temp;
-        }
-
         public void RefreshVillagerUI(bool clear)
         {
             for (int j = 0; j < 10; j++)
@@ -228,6 +213,8 @@ namespace ACNHPoker
                     else
                         villagerButton[j].Text += "\n(Just Move Out)";
                 }
+                else if (V[j].InvitedFlag == 0x2)
+                    villagerButton[j].Text += "\n(Invited by Visitor)";
                 else if (V[j].AbandonedHouseFlag == 0x1 && V[j].ForceMoveOutFlag == 0x0)
                     villagerButton[j].Text += "\n(Floor Sweeping)";
                 else if (V[j].AbandonedHouseFlag == 0x2 && V[j].ForceMoveOutFlag == 0x1)
@@ -346,15 +333,16 @@ namespace ACNHPoker
             File.WriteAllBytes(file.FileName, VillagerData);
 
             byte[] CheckData = File.ReadAllBytes(file.FileName);
-            byte[] CheckHeader = new byte[56];
+            byte[] CheckHeader = new byte[52];
             if (header[0] != 0x0 && header[1] != 0x0 && header[2] != 0x0)
             {
-                Buffer.BlockCopy(CheckData, 0x4, CheckHeader, 0x0, 56);
+                Buffer.BlockCopy(CheckData, 0x4, CheckHeader, 0x0, 52);
             }
 
             if (!CheckHeader.SequenceEqual(header))
             {
                 Debug.Print(Utilities.ByteToHexString(CheckHeader));
+                Debug.Print(Utilities.ByteToHexString(header));
                 MessageBox.Show("Wait something is wrong here!? \n\n Header Mismatch!", "Warning");
             }
             if (sound)
@@ -768,9 +756,12 @@ namespace ACNHPoker
             blocker = true;
 
             byte[] modifiedVillager = villager;
-            if (header[0] != 0x0 && header[1] != 0x0 && header[2] != 0x0)
+            if (!ignoreHeader.Checked)
             {
-                Buffer.BlockCopy(header, 0x0, modifiedVillager, 0x4, 56);
+                if (header[0] != 0x0 && header[1] != 0x0 && header[2] != 0x0)
+                {
+                    Buffer.BlockCopy(header, 0x0, modifiedVillager, 0x4, 52);
+                }
             }
 
             V[i].LoadData(modifiedVillager);
@@ -982,9 +973,12 @@ namespace ACNHPoker
             blocker = true;
 
             byte[] modifiedVillager = villager;
-            if (header[0] != 0x0 && header[1] != 0x0 && header[2] != 0x0)
+            if (!ignoreHeader.Checked)
             {
-                Buffer.BlockCopy(header, 0x0, modifiedVillager, 0x4, 56);
+                if (header[0] != 0x0 && header[1] != 0x0 && header[2] != 0x0)
+                {
+                    Buffer.BlockCopy(header, 0x0, modifiedVillager, 0x4, 52);
+                }
             }
 
             V[i].LoadData(modifiedVillager);

@@ -685,6 +685,7 @@ namespace ACNHPoker
             0x31D6, // hedge
             0x325E, // wedding fence
             0x33DB, // Spooky Fence,
+            0x37C6, // mermaid fence
                 0xECC2, // simple wooden fence
                 0xEB00, // brick fence
                 0xEBBA, // vertical-board fence
@@ -861,7 +862,11 @@ namespace ACNHPoker
                 0X33AC, // Dream Bell exchange ticket
                 0x338C, // Lolipop
                 0x338D, // Candy
-            }
+                0x0DD5, // FeatherRed ; red feather; あかいはね ; 紅色羽毛 ; 红色羽毛 ; 빨간색 깃털; plume rouge; Rubinfeder ; pluma roja; piuma rossa; rode veer; красное перо; 
+                0x0DD6,// FeatherBlue ; blue feather; あおいはね ; 藍色羽毛 ; 蓝色羽毛 ; 파란색 깃털; plume bleue; Azurfeder ; pluma azul; piuma blu; blauwe veer; синее перо; 
+                0x0DD7,// FeatherGreen ; green feather; みどりのはね ; 綠色羽毛 ; 绿色羽毛 ; 초록색 깃털; plume verte; Smaragdfeder ; pluma verde; piuma verde; groene veer; зеленое перо; 
+                0x0DD9,// FeatherPurple ; purple feather; むらさきのはね ; 紫色羽毛 ; 紫色羽毛 ; 보라색 깃털; plume violette; Lilafeder ; pluma morada; piuma viola; paarse veer; фиолетовое перо; 
+    }
             .Union(isCraftMaterialSet)
             .Union(isFenceSet)
             .Union(isFlowerSet)
@@ -952,6 +957,44 @@ namespace ACNHPoker
                 0xEB14, // Stone E
             }
         );
+        private static readonly HashSet<UInt16> isBushSet = new HashSet<UInt16>(
+        new UInt16[] {
+                0xEACC,//PltBushAzalea0White,//white-azalea(Sapling); 00000000
+                0xEAD0,//PltBushAzalea1White,//white-azalea(Grow 1); 00000000
+                0xEACF,//PltBushAzalea2White,//white-azalea(Bush); 00000000
+                0xEC21,//PltBushAzalea0Pink,//pink-azalea(Sapling); 00000000
+                0xEC20,//PltBushAzalea1Pink,//pink-azalea(Grow 1); 00000000
+                0xEC24,//PltBushAzalea2Pink,//pink-azalea(Bush); 00000000
+                0xEBF9,//PltBushHydrangea,//blue-hydrangea(Sapling); 00000000
+                0xEBFC,//PltBushHydrangea1Blue,//blue-hydrangea(Grow 1); 00000000
+                0xEBFF,//PltBushHydrangea2Blue,//blue-hydrangea(Bush); 00000000
+                0xEBFB,//PltBushHydrangea0Pink,//pink-hydrangea(Sapling); 00000000
+                0xEC00,//PltBushHydrangea1Pink,//pink-hydrangea(Grow 1); 00000000
+                0xEC03,//PltBushHydrangea2Pink,//pink-hydrangea(Bush); 00000000
+                0xEAD2,//PltBushHibiscus0Red,//red-hibiscus(Sapling); 00000000
+                0xEAD5,//PltBushHibiscus1Red,//red-hibiscus(Grow 1); 00000000
+                0xEAD4,//PltBushHibiscus2Red,//red-hibiscus(Bush); 00000000
+                0xEC25,//PltBushHibiscus0Yellow,//yellow-hibiscus(Sapling); 00000000
+                0xEC26,//PltBushHibiscus1Yellow,//yellow-hibiscus(Grow 1); 00000000
+                0xEC29,//PltBushHibiscus2Yellow,//yellow-hibiscus(Bush); 00000000
+                0xEAD7,//PltBushHolly0,//holly(Sapling); 00000000
+                0xEAD9,//PltBushHolly1,//holly(Grow 1); 00000000
+                0xEADA,//PltBushHolly2,//holly(Bush); 00000000
+                0xECF8,//PltBushOsmathus1Yello,//yellow-tea-olive(Sapling); 00000000
+                0xECF6,//PltBushOsmathus2Yello,//yellow-tea-olive(Grow 1); 00000000
+                0xECF4,//PltBushOsmathus3Yello,//yellow-tea-olive(Bush); 00000000
+                0xECFC,//PltBushOsmathus1Orange,//orange-tea-olive(Sapling); 00000000
+                0xECFD,//PltBushOsmathus2Orange,//orange-tea-olive(Grow 1); 00000000
+                0xECF9,//PltBushOsmathus3Orange,//orange-tea-olive(Bush); 00000000
+                0xED02,//PltBushCamellia1Red,//red-camellia(Sapling); 00000000
+                0xED04,//PltBushCamellia2Red,//red-camellia(Grow 1); 00000000
+                0xED06,//PltBushCamellia3Red,//red-camellia(Bush); 00000000
+                0xECFE,//PltBushCamellia1Pink,//pink-camellia(Sapling); 00000000
+                0xECFF,//PltBushCamellia2Pink,//pink-camellia(Grow 1); 00000000
+                0xED01,//PltBushCamellia3Pink,//pink-camellia(Bush); 00000000
+            }
+        );
+
         public static bool hasDurability(UInt16 item)
         {
             return hasDurabilitySet.Contains(item);
@@ -995,6 +1038,10 @@ namespace ACNHPoker
         public static bool isFence(UInt16 item)
         {
             return isFenceSet.Contains(item);
+        }
+        public static bool isBush(UInt16 item)
+        {
+            return isBushSet.Contains(item);
         }
     }
 }

@@ -1053,39 +1053,47 @@ namespace ACNHPoker
                 MessageBox.Show("Missing critter data. Please load data first.");
                 return;
             }
-            int localIndex = index * 2;
-            byte[] b;
-            if (source == InsectAppearParam)
-                b = new byte[12 * 6 * 2];
-            else
-                b = new byte[78]; //[12 * 3 * 2];
+
+            try
+            {
+                int localIndex = index * 2;
+                byte[] b;
+                if (source == InsectAppearParam)
+                    b = new byte[12 * 6 * 2];
+                else
+                    b = new byte[78]; //[12 * 3 * 2];
 
 
-            if (mode == 0) // min
-            {
-                for (int i = 0; i < b.Length; i++)
-                    b[i] = 0;
-            }
-            else if (mode == 1) // default
-            {
-                for (int i = 0; i < b.Length; i++)
-                    b[i] = source[size * localIndex + 2 + i];
-            }
-            else if (mode == 2) // max
-                for (int i = 0; i < b.Length; i += 2)
+                if (mode == 0) // min
                 {
-                    b[i] = 0xFF;
-                    b[i + 1] = 0;
+                    for (int i = 0; i < b.Length; i++)
+                        b[i] = 0;
                 }
-            //Debug.Print(Encoding.UTF8.GetString(Utilities.transform(b)));
-            Utilities.SendSpawnRate(s, bot, b, localIndex, type, ref counter);
-            localIndex++;
-            if (mode == 1)
-            {
-                for (int i = 0; i < b.Length; i++)
-                    b[i] = source[size * localIndex + 2 + i];
+                else if (mode == 1) // default
+                {
+                    for (int i = 0; i < b.Length; i++)
+                        b[i] = source[size * localIndex + 2 + i];
+                }
+                else if (mode == 2) // max
+                    for (int i = 0; i < b.Length; i += 2)
+                    {
+                        b[i] = 0xFF;
+                        b[i + 1] = 0;
+                    }
+                //Debug.Print(Encoding.UTF8.GetString(Utilities.transform(b)));
+                Utilities.SendSpawnRate(s, bot, b, localIndex, type, ref counter);
+                localIndex++;
+                if (mode == 1)
+                {
+                    for (int i = 0; i < b.Length; i++)
+                        b[i] = source[size * localIndex + 2 + i];
+                }
+                Utilities.SendSpawnRate(s, bot, b, localIndex, type, ref counter);
             }
-            Utilities.SendSpawnRate(s, bot, b, localIndex, type, ref counter);
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString(), "NOTE: This isn't particularly efficient. Too bad!");
+            }
         }
 
         private void readDataBtn_Click(object sender, EventArgs e)
@@ -1105,57 +1113,64 @@ namespace ACNHPoker
 
         private void readData()
         {
-            if (currentGridView == insectGridView)
+            try
             {
-                InsectAppearParam = Utilities.GetCritterData(s, bot, 0);
-                File.WriteAllBytes(insectAppearFileName, InsectAppearParam);
-
-                Invoke((MethodInvoker)delegate
+                if (currentGridView == insectGridView)
                 {
-                    insectGridView.DataSource = null;
-                    insectGridView.Rows.Clear();
-                    insectGridView.Columns.Clear();
-                    LoadGridView(InsectAppearParam, insectGridView, ref insectRate, Utilities.InsectDataSize, Utilities.InsectNumRecords);
-                });
+                    InsectAppearParam = Utilities.GetCritterData(s, bot, 0);
+                    File.WriteAllBytes(insectAppearFileName, InsectAppearParam);
+
+                    Invoke((MethodInvoker)delegate
+                    {
+                        insectGridView.DataSource = null;
+                        insectGridView.Rows.Clear();
+                        insectGridView.Columns.Clear();
+                        LoadGridView(InsectAppearParam, insectGridView, ref insectRate, Utilities.InsectDataSize, Utilities.InsectNumRecords);
+                    });
+                }
+                else if (currentGridView == riverFishGridView)
+                {
+                    FishRiverAppearParam = Utilities.GetCritterData(s, bot, 1);
+                    File.WriteAllBytes(fishRiverAppearFileName, FishRiverAppearParam);
+
+                    Invoke((MethodInvoker)delegate
+                    {
+                        riverFishGridView.DataSource = null;
+                        riverFishGridView.Rows.Clear();
+                        riverFishGridView.Columns.Clear();
+                        LoadGridView(FishRiverAppearParam, riverFishGridView, ref riverFishRate, Utilities.FishDataSize, Utilities.FishRiverNumRecords, 1);
+                    });
+                }
+                else if (currentGridView == seaFishGridView)
+                {
+                    FishSeaAppearParam = Utilities.GetCritterData(s, bot, 2);
+                    File.WriteAllBytes(fishSeaAppearFileName, FishSeaAppearParam);
+
+                    Invoke((MethodInvoker)delegate
+                    {
+                        seaFishGridView.DataSource = null;
+                        seaFishGridView.Rows.Clear();
+                        seaFishGridView.Columns.Clear();
+                        LoadGridView(FishSeaAppearParam, seaFishGridView, ref seaFishRate, Utilities.FishDataSize, Utilities.FishSeaNumRecords, 1);
+                    });
+                }
+                else if (currentGridView == seaCreatureGridView)
+                {
+                    CreatureSeaAppearParam = Utilities.GetCritterData(s, bot, 3);
+                    File.WriteAllBytes(CreatureSeaAppearFileName, CreatureSeaAppearParam);
+
+                    Invoke((MethodInvoker)delegate
+                    {
+                        seaCreatureGridView.DataSource = null;
+                        seaCreatureGridView.Rows.Clear();
+                        seaCreatureGridView.Columns.Clear();
+                        LoadGridView(CreatureSeaAppearParam, seaCreatureGridView, ref seaCreatureRate, Utilities.SeaCreatureDataSize, Utilities.SeaCreatureNumRecords, 1);
+                    });
+                }
             }
-            else if (currentGridView == riverFishGridView)
+            catch (Exception e)
             {
-                FishRiverAppearParam = Utilities.GetCritterData(s, bot, 1);
-                File.WriteAllBytes(fishRiverAppearFileName, FishRiverAppearParam);
-
-                Invoke((MethodInvoker)delegate
-                {
-                    riverFishGridView.DataSource = null;
-                    riverFishGridView.Rows.Clear();
-                    riverFishGridView.Columns.Clear();
-                    LoadGridView(FishRiverAppearParam, riverFishGridView, ref riverFishRate, Utilities.FishDataSize, Utilities.FishRiverNumRecords, 1);
-                });
-            }
-            else if (currentGridView == seaFishGridView)
-            {
-                FishSeaAppearParam = Utilities.GetCritterData(s, bot, 2);
-                File.WriteAllBytes(fishSeaAppearFileName, FishSeaAppearParam);
-
-                Invoke((MethodInvoker)delegate
-                {
-                    seaFishGridView.DataSource = null;
-                    seaFishGridView.Rows.Clear();
-                    seaFishGridView.Columns.Clear();
-                    LoadGridView(FishSeaAppearParam, seaFishGridView, ref seaFishRate, Utilities.FishDataSize, Utilities.FishSeaNumRecords, 1);
-                });
-            }
-            else if (currentGridView == seaCreatureGridView)
-            {
-                CreatureSeaAppearParam = Utilities.GetCritterData(s, bot, 3);
-                File.WriteAllBytes(CreatureSeaAppearFileName, CreatureSeaAppearParam);
-
-                Invoke((MethodInvoker)delegate
-                {
-                    seaCreatureGridView.DataSource = null;
-                    seaCreatureGridView.Rows.Clear();
-                    seaCreatureGridView.Columns.Clear();
-                    LoadGridView(CreatureSeaAppearParam, seaCreatureGridView, ref seaCreatureRate, Utilities.SeaCreatureDataSize, Utilities.SeaCreatureNumRecords, 1);
-                });
+                MessageBox.Show(e.Message.ToString(), "This is a stupid fix, but I don't have time to da a cleaner implementation");
             }
 
             if (sound)

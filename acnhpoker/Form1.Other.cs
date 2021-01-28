@@ -1547,6 +1547,7 @@ namespace ACNHPoker
                 bot = new USBBot();
                 if (bot.Connect())
                 {
+                    Log.logEvent("MainForm", "Connection Succeeded : USB");
 
                     playerSelectorInventory.SelectedIndex = updateDropdownBox();
                     /*
@@ -1566,7 +1567,7 @@ namespace ACNHPoker
                     readWeatherSeed();
                     this.connectBtn.Visible = false;
                     this.refreshBtn.Visible = true;
-                    this.playerSelectionPanel.Visible = true;
+                    //this.playerSelectionPanel.Visible = true;
                     //this.autoRefreshCheckBox.Visible = true;
                     this.autoRefreshCheckBox.Checked = false;
                     this.saveBtn.Visible = true;
@@ -1582,6 +1583,7 @@ namespace ACNHPoker
                     this.configBtn.Visible = false;
                     this.playerSelectorInventory.Visible = true;
                     this.Text += "  |  [Connected via USB]";
+                    //this.mapDropperBtn.Visible = true;
 
                     currentGridView = insectGridView;
 
@@ -1597,6 +1599,7 @@ namespace ACNHPoker
                 }
                 else
                 {
+                    Log.logEvent("MainForm", "Connection Failed : USB");
                     bot = null;
                 }
             }
@@ -1612,7 +1615,7 @@ namespace ACNHPoker
                 this.connectBtn.Visible = true;
                 this.connectBtn.Enabled = true;
                 this.refreshBtn.Visible = false;
-                this.playerSelectionPanel.Visible = false;
+                //this.playerSelectionPanel.Visible = false;
                 this.autoRefreshCheckBox.Visible = false;
                 this.playerSelectorInventory.Visible = false;
                 //this.saveBtn.Visible = false;
@@ -1636,6 +1639,7 @@ namespace ACNHPoker
         {
             if (waveOut == null)
             {
+                Log.logEvent("MainForm", "EasterEgg Started");
                 string path = AppDomain.CurrentDomain.BaseDirectory;
                 AudioFileReader audioFileReader = new AudioFileReader(path + villagerPath + "Io.nhv2");
                 LoopStream loop = new LoopStream(audioFileReader);
@@ -1645,6 +1649,7 @@ namespace ACNHPoker
             }
             else
             {
+                Log.logEvent("MainForm", "EasterEgg Stopped");
                 waveOut.Stop();
                 waveOut.Dispose();
                 waveOut = null;

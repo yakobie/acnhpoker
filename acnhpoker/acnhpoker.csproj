@@ -197,6 +197,7 @@
     <Compile Include="Friendship.Designer.cs">
       <DependentUpon>Friendship.cs</DependentUpon>
     </Compile>
+    <Compile Include="Log.cs" />
     <Compile Include="LoopStream.cs" />
     <Compile Include="map.cs">
       <SubType>Form</SubType>
@@ -347,13 +348,16 @@
   <ItemGroup>
     <Content Include="ACLeaf.ico" />
     <Content Include="ACLeaf2.ico" />
+    <None Include="Resources\marker.png" />
     <None Include="Resources\ACLeaf2.ico" />
     <None Include="bin\Debug\img\Leaf.png" />
     <None Include="Resources\acre" />
     <None Include="Resources\f.ico" />
+    <None Include="Resources\arrows-horizontal.png" />
     <Content Include="Resources\gear.png" />
     <None Include="Resources\Leaf.bmp" />
     <None Include="Resources\k.ico" />
+    <None Include="Resources\height.png" />
     <Content Include="Resources\loading.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

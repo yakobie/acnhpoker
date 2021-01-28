@@ -14,6 +14,7 @@ namespace ACNHPoker
         public int MoveInFlag { get; set; }
         public int AbandonedHouseFlag { get; set; }
         public int ForceMoveOutFlag { get; set; }
+        public int InvitedFlag { get; set; }
         public byte[] catchphrase { get; set; }
 
         public byte[] Friendship;
@@ -90,8 +91,8 @@ namespace ACNHPoker
 
         public byte[] GetHeader()
         {
-            byte[] header = new byte[56];
-            Buffer.BlockCopy(Data, 0x4, header, 0x0, 56);
+            byte[] header = new byte[52];
+            Buffer.BlockCopy(Data, 0x4, header, 0x0, 52);
             return header;
         }
 

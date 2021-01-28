@@ -206,7 +206,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 0AB0 ; FtrFanRetro ; retro fan ; レトロなせんぷうき ; 復古風扇 ; 复古风扇 ; 복고풍 선풍기 ; ventilateur rétro ; Retro-Ventilator ; ventilador retro ; ventilatore rétro ; retroventilator ; ретровентилятор
 0AB4 ; FtrWashingmachine ; automatic washer ; せんたくき ; 洗衣機 ; 洗衣机 ; 세탁기 ; lave-linge ; Toplader-Waschmaschine ; lavadora de carga superior ; lavatrice con carica dall'alto ; bovenlader ; стиральный автомат
 0AD2 ; FtrChess ; chessboard ; チェス ; 西洋棋 ; 西洋棋 ; 체스 ; échiquier ; Schachbrett ; tablero de ajedrez ; scacchiera ; schaakbord ; шахматная доска
-0AD3 ; FtrStoveRound ; round space heater ; まるがたストーブ ; 圓形暖爐 ; 圆形暖炉 ; 둥근 스토브 ; chauffage cylindrique ; Heizgerät ; calefactor cilíndrico ; stufetta bianca cilindrica ; ronde straalkachel ; круглый обогреватель
+0AD3 ; FtrStoveRound ; round space heater ; まるがたストーブ ; 圓形暖爐 ; 圆形暖炉 ; 둥근 스토브 ; chauffage cylindrique ; Heizgerät ; calefactor cilíndrico ; stufetta cilindrica ; ronde straalkachel ; круглый обогреватель
 0AD4 ; FtrViolin ; fancy violin ; ヴァイオリン ; 小提琴 ; 小提琴 ; 바이올린 ; violon haut de gamme ; Edelgeige ; violín ; violino di lusso ; viool ; шикарная скрипка
 0AD8 ; FtrWCTankless ; tankless toilet ; タンクレストイレ ; 無水箱馬桶 ; 无水箱马桶 ; 일체형 변기 ; WC mural ; Wand-WC ; inodoro tanque integrado ; toilette senza serbatoio ; vacuümtoilet ; унитаз без бачка
 0BF8 ; FtrCoolerbox ; cooler box ; クーラーボックス ; 保冷箱 ; 保冷箱 ; 아이스박스 ; glacière ; Kühlbox ; nevera portátil rígida ; frigorifero portatile ; koelbox ; мобильный холодильник
@@ -661,10 +661,21 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 3489 ; FtrHarvestDecoration ; Turkey Day decorations ; サンクスギビングデコレーション ; 感恩節裝飾 ; 感恩节装饰 ; 하베스트 데코레이션 ; déco fête du partage ; Schlemmfest-Dekoration ; decoración Día del Pavo ; decorazione primizie ; smakenfestijn-decoratieset ; декор ко Дню изобилия
 348A ; FtrHarvestChairS ; Turkey Day chair ; サンクスギビングなチェア ; 感恩節椅 ; 感恩节椅 ; 하베스트 체어 ; chaise fête du partage ; Schlemmfest-Stuhl ; silla Día del Pavo ; sedia primizie ; smakenfestijnstoel ; стул «День изобилия»
 348D ; FtrHarvestTableL ; Turkey Day table ; サンクスギビングなテーブル ; 感恩節桌 ; 感恩节桌 ; 하베스트 테이블 ; table fête du partage ; Schlemmfest-Tisch ; mesa comedor Día del Pavo ; tavolo primizie ; smakenfestijntafel ; стол «День изобилия»
-35FA ; FtrHarvestEnamelpod ; Turkey Day casserole ; サンクスギビングなキャセロール ; 感恩節砂鍋燉菜 ; 感恩节砂锅炖菜 ; 하베스트 캐서롤 ; plat à gratin jour du partage ; Schlemmfest-Bräter ; cazuela Día del Pavo ; casseruola primizie ; smakenfestijnpan ; утятница «День изобилия»
+34B0 ; FtrChocolateHeart ; chocolate heart ; ハートのチョコレート ; 愛心巧克力 ; 心形巧克力 ; 하트 초콜릿 ; cœur en chocolat ; Schokoladenherz ; caja bombones Enamorados ; ciocco-cuore ; chocoladehart ; сердце из шоколада
+35C7 ; FtrCarnivalDecoration ; Festivale garland ; カーニバルなガーランド ; 狂歡節掛旗 ; 狂欢节挂饰 ; 카니발 가랜드 ; guirlande de carnaval ; Karnevalsgirlande ; guirnalda de Carnaval ; festone Carnevale ; carnavalsslinger ; карнавальная гирлянда
+35CA ; FtrCarnivalParasol ; Festivale parasol ; カーニバルなパラソル ; 狂歡節陽傘 ; 狂欢节阳伞 ; 카니발 파라솔 ; parasol de carnaval ; Karnevalsschirm ; parasol de Carnaval ; parasole Carnevale ; carnavalsparasol ; карнавальный зонт
+35CC ; FtrCarnivalBalloon ; Festivale balloon lamp ; カーニバルなバルーンランプ ; 狂歡節氣球燈 ; 狂欢节气球灯 ; 카니발 풍선 램프 ; lampe ballon carnaval ; Karnevalsballonlampe ; lámpara globo de Carnaval ; globo luminoso Carnevale ; carnavalsballonlamp ; карнавальная лампа-шар
+35CD ; FtrCarnivalStall ; Festivale stall ; カーニバルなやたい ; 狂歡節路邊攤 ; 狂欢节小吃摊 ; 카니발 가판대 ; stand de carnaval ; Karnevalsstand ; tenderete de Carnaval ; bancarella Carnevale ; carnavalskraampje ; карнавальный лоток
+35CE ; FtrCarnivalSurdo ; Festivale drum ; カーニバルなパーカッション ; 狂歡節打擊樂器 ; 狂欢节打击乐器 ; 카니발 퍼커션 ; tambour de carnaval ; Karnevalstrommel ; tambor de Carnaval ; tamburo Carnevale ; carnavalstrommel ; карнавальный барабан
+35CF ; FtrCarnivalStage ; Festivale stage ; カーニバルなステージ ; 狂歡節舞台 ; 狂欢节舞台 ; 카니발 스테이지 ; scène de carnaval ; Karnevalsbühne ; escenario de Carnaval ; palcoscenico Carnevale ; carnavalspodium ; карнавальная сцена
+35D0 ; FtrCarnivalConfetti ; Festivale confetti machine ; カーニバルなかみふぶきマシン ; 狂歡節撒紙片機 ; 狂欢节撒纸片机 ; 카니발 꽃가루 머신 ; canon à confettis carnaval ; Karnevalskonfettimaschine ; cañón de confeti Carnaval ; lanciacoriandoli Carnevale ; carnavalsconfettimachine ; карнав. конфетти-пушка
+35D1 ; FtrCarnivalLantern ; Festivale lamp ; カーニバルなランプ ; 狂歡節燈 ; 狂欢节灯 ; 카니발 램프 ; lampe carnaval ; Karnevalslampe ; lamparita de Carnaval ; lampada Carnevale ; carnavalslamp ; карнавальная лампа
+35D2 ; FtrCarnivalFlag ; Festivale flag ; カーニバルなフラッグ ; 狂歡節旗子 ; 狂欢节旗子 ; 카니발 플래그 ; drapeau de carnaval ; Karnevalsfahne ; estandarte de Carnaval ; stendardo Carnevale ; carnavalsvaandel ; карнавальный флаг
+35FA ; FtrHarvestEnamelpod ; Turkey Day casserole ; サンクスギビングなキャセロール ; 感恩節砂鍋燉菜 ; 感恩节砂锅炖菜 ; 하베스트 캐서롤 ; plat à gratin fête du partage ; Schlemmfest-Bräter ; cazuela Día del Pavo ; casseruola primizie ; smakenfestijnpan ; утятница «День изобилия»
 35FB ; FtrHarvestWheat ; Turkey Day wheat decor ; サンクスギビングなむぎかざり ; 感恩節麥子裝飾 ; 感恩节麦子装饰 ; 하베스트 밀 장식 ; décor de blé du partage ; Schlemmfest-Getreidedeko ; adorno trigo Día del Pavo ; ornamento primizie ; smakenfestijn-tarwebundel ; пшеница ко Дню изобилия
 35FC ; FtrHarvestTablesetting ; Turkey Day table setting ; サンクスギビングテーブルウェア ; 感恩節桌上布置 ; 感恩节桌上布置 ; 하베스트 테이블 세팅 ; service fête du partage ; Schlemmfest-Tischgedeck ; servicio mesa Día del Pavo ; set da tavola primizie ; smakenfestijnservies ; посуда ко Дню изобилия
 366A ; FtrCrsSocksWallColor ; set of stockings ; かべかけソックス ; 壁掛式襪子 ; 壁挂式袜子 ; 벽걸이 양말 ; lot de chaussettes déco ; Wunschsocken-Set ; lote de calcetines de pared ; set di calze per regali ; sokkenset ; набор носков
+36CD ; FtrRosebouquetHeart ; heart-shaped bouquet ; ハートのバラブーケ ; 愛心玫瑰花束 ; 心形玫瑰花束 ; 하트 장미 꽃다발 ; bouquet en forme de cœur ; Herz-Bouquet ; ramo de flores Enamorados ; bouquet a cuore ; hartvormig boeket ; букет в форме сердца
 0833 ; ToolScoop ; shovel ; スコップ ; 鏟子 ; 铲子 ; 삽 ; pelle ; Schaufel ; pala ; pala ; schep ; лопата
 0949 ; ToolAngling ; fishing rod ; つりざお ; 釣竿 ; 钓竿 ; 낚싯대 ; canne à pêche ; Angel ; caña ; canna da pesca ; hengel ; удочка
 094B ; ToolWatering ; watering can ; ジョウロ ; 澆花壺 ; 浇花壶 ; 물뿌리개 ; arrosoir ; Gießkanne ; regadera ; annaffiatoio ; gieter ; лейка

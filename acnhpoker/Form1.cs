@@ -16,7 +16,7 @@ namespace ACNHPoker
     public partial class Form1 : Form
     {
         private static Socket s;
-        readonly private string version = "ACNH Poker R12.2. for v1.6.0";
+        readonly private string version = "ACNH Poker R13 for v1.7.0";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;
@@ -109,7 +109,6 @@ namespace ACNHPoker
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Utilities.formControl = this;
             this.Text = version;
 
             this.ipBox.Text = ConfigurationManager.AppSettings["ipAddress"];
@@ -529,59 +528,61 @@ namespace ACNHPoker
         {
             if (disableValidation)
                 return false;
+            try
+            {
+                byte[] Bank1 = Utilities.peekAddress(s, bot, Utilities.TownNameddress, 150); //TownNameddress
+                byte[] Bank2 = Utilities.peekAddress(s, bot, Utilities.TurnipPurchasePriceAddr, 150); //TurnipPurchasePriceAddr
+                byte[] Bank3 = Utilities.peekAddress(s, bot, Utilities.MasterRecyclingBase, 150); //MasterRecyclingBase
+                byte[] Bank4 = Utilities.peekAddress(s, bot, Utilities.playerReactionAddress, 150); //reactionAddress
+                byte[] Bank5 = Utilities.peekAddress(s, bot, Utilities.staminaAddress, 150); //staminaAddress
 
-            byte[] Bank1 = Utilities.peekAddress(s, bot, Utilities.TownNameddress, 150); //TownNameddress
-            byte[] Bank2 = Utilities.peekAddress(s, bot, Utilities.TurnipPurchasePriceAddr, 150); //TurnipPurchasePriceAddr
-            byte[] Bank3 = Utilities.peekAddress(s, bot, Utilities.MasterRecyclingBase, 150); //MasterRecyclingBase
-            byte[] Bank4 = Utilities.peekAddress(s, bot, Utilities.playerReactionAddress, 150); //reactionAddress
-            byte[] Bank5 = Utilities.peekAddress(s, bot, Utilities.staminaAddress, 150); //staminaAddress
+                string result1 = Utilities.ByteToHexString(Bank1);
+                string result2 = Utilities.ByteToHexString(Bank2);
+                string result3 = Utilities.ByteToHexString(Bank3);
+                string result4 = Utilities.ByteToHexString(Bank4);
+                string result5 = Utilities.ByteToHexString(Bank5);
 
-            string result1 = Utilities.ByteToHexString(Bank1);
-            string result2 = Utilities.ByteToHexString(Bank2);
-            string result3 = Utilities.ByteToHexString(Bank3);
-            string result4 = Utilities.ByteToHexString(Bank4);
-            string result5 = Utilities.ByteToHexString(Bank5);
+                Debug.Print(result1);
+                Debug.Print(result2);
+                Debug.Print(result3);
+                Debug.Print(result4);
+                Debug.Print(result5);
 
-            Debug.Print(result1);
-            Debug.Print(result2);
-            Debug.Print(result3);
-            Debug.Print(result4);
-            Debug.Print(result5);
+                int count1 = 0;
+                if (result1 == result2)
+                { count1++; }
+                if (result1 == result3)
+                { count1++; }
+                if (result1 == result4)
+                { count1++; }
+                if (result1 == result5)
+                { count1++; }
 
-            int count1 = 0;
-            if (result1 == result2)
-            { count1++; }
-            if (result1 == result3)
-            { count1++; }
-            if (result1 == result4)
-            { count1++; }
-            if (result1 == result5)
-            { count1++; }
+                int count2 = 0;
+                if (result2 == result3)
+                { count2++; }
+                if (result2 == result4)
+                { count2++; }
+                if (result2 == result5)
+                { count2++; }
 
-            int count2 = 0;
-            if (result2 == result3)
-            { count2++; }
-            if (result2 == result4)
-            { count2++; }
-            if (result2 == result5)
-            { count2++; }
+                int count3 = 0;
+                if (result3 == result4)
+                { count3++; }
+                if (result3 == result5)
+                { count3++; }
 
-            int count3 = 0;
-            if (result3 == result4)
-            { count3++; }
-            if (result3 == result5)
-            { count3++; }
-
-            Debug.Print("Count : " + count1.ToString() + " " + count2.ToString() + " " + count3.ToString());
-            if (count1 > 1 || count2 > 1 || count3 > 1)
-            { return true; }
-            else
-            { return false; }
-        }
-
-        public void ClearRefresh()
-        {
-            Invoke((MethodInvoker)delegate { this.autoRefreshCheckBox.Checked = false; });
+                Debug.Print("Count : " + count1.ToString() + " " + count2.ToString() + " " + count3.ToString());
+                if (count1 > 1 || count2 > 1 || count3 > 1)
+                { return true; }
+                else
+                { return false; }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString(), "Todo this is dumb");
+                return false;
+            }
         }
 
         private Dictionary<string, string> CreateOverride(string path)
@@ -859,6 +860,16 @@ namespace ACNHPoker
                 //this.Hide();
                 R.Show();
             }
+        }
+
+        private void dump_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Log.logEvent("MainForm", "Form Closed");
         }
     }
 }

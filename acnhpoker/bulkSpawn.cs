@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Net.Sockets;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace ACNHPoker
@@ -25,22 +27,33 @@ namespace ACNHPoker
         private byte[][] item = null;
         private int rowNum;
         private byte[][] SpawnArea = null;
+        private bool spawnlock = false;
         public bulkSpawn(Socket S, USBBot Bot, byte[] layer1, byte[] layer2, byte[] acre, int x, int y, map Map, bool Sound)
         {
-            s = S;
-            bot = Bot;
-            Layer1 = layer1;
-            Layer2 = layer2;
-            Acre = acre;
-            anchorX = x;
-            anchorY = y;
-            main = Map;
-            sound = Sound;
-            MiniMap = new miniMap(Layer1, acre, 4);
-            InitializeComponent();
-            xCoordinate.Text = x.ToString();
-            yCoordinate.Text = y.ToString();
-            miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawBackground(), MiniMap.drawItemMap());
+            try
+            {
+                s = S;
+                bot = Bot;
+                Layer1 = layer1;
+                Layer2 = layer2;
+                Acre = acre;
+                anchorX = x;
+                anchorY = y;
+                main = Map;
+                sound = Sound;
+                MiniMap = new miniMap(Layer1, acre, 4);
+                InitializeComponent();
+                xCoordinate.Text = x.ToString();
+                yCoordinate.Text = y.ToString();
+                miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawBackground(), MiniMap.drawItemMap());
+                miniMapBox.Image = MiniMap.drawMarker(anchorX, anchorY);
+                warningMessage.SelectionAlignment = HorizontalAlignment.Center;
+                Log.logEvent("BulkSpawn", "BulkSpawnForm Started Successfully");
+            } 
+            catch (Exception ex)
+            {
+                Log.logEvent("BulkSpawn", "Form Construct: " + ex.Message.ToString());
+            }
         }
 
         private void ReadBtn_Click(object sender, EventArgs e)
@@ -140,9 +153,11 @@ namespace ACNHPoker
 
         private void selectBtn_Click(object sender, EventArgs e)
         {
+            spawnBtn.Visible = false;
+
             OpenFileDialog file = new OpenFileDialog()
             {
-                Filter = "New Horizons Bulk Spawn (*.nhbs)|*.nhbs",
+                Filter = "New Horizons Bulk Spawn (*.nhbs)|*.nhbs|New Horizons Inventory(*.nhi) | *.nhi",
             };
 
             Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
@@ -178,6 +193,7 @@ namespace ACNHPoker
 
             item = processNHBS(data);
             numOfItemBox.Text = item.Length.ToString();
+            settingPanel.Visible = true;
         }
 
         private byte[][] processNHBS(byte[] data)
@@ -214,13 +230,17 @@ namespace ACNHPoker
         private void previewBtn_Click(object sender, EventArgs e)
         {
             miniMapBox.Image = null;
-            if (downNumber.Text.Equals(string.Empty) || item == null)
+            if (heightNumber.Text.Equals(string.Empty) || item == null)
                 return;
             else
             {
-                rowNum = int.Parse(downNumber.Text);
-
+                rowNum = int.Parse(heightNumber.Text);
+                if (rowNum <= 0)
+                    return;
+                widthLabel.Visible = true;
+                widthNumber.Visible = true;
                 SpawnArea = buildSpawnArea(rowNum);
+                widthNumber.Text = (SpawnArea.Length / 2).ToString();
 
                 bool right;
                 if (leftBtn.Checked)
@@ -229,6 +249,27 @@ namespace ACNHPoker
                     right = true;
 
                 miniMapBox.Image = MiniMap.drawPreview(rowNum, SpawnArea.Length/2, anchorX, anchorY, right);
+
+                if (anchorY + rowNum > 96)
+                {
+                    warningMessage.Visible = true;
+                    spawnBtn.Visible = false;
+                }
+                else if (right && anchorX + SpawnArea.Length / 2 > 112)
+                {
+                    warningMessage.Visible = true;
+                    spawnBtn.Visible = false;
+                }
+                else if (!right && anchorX - SpawnArea.Length / 2 < -1)
+                {
+                    warningMessage.Visible = true;
+                    spawnBtn.Visible = false;
+                }
+                else
+                {
+                    warningMessage.Visible = false;
+                    spawnBtn.Visible = true;
+                }
             }
         }
 
@@ -238,8 +279,12 @@ namespace ACNHPoker
             byte[] emptyLeft = Utilities.stringToByte("FEFF000000000000FEFF000000000000");
             byte[] emptyRight = Utilities.stringToByte("FEFF000000000000FEFF000000000000");
 
+            int numberOfColumn;
+            if (item.Length % t == 0) 
+                numberOfColumn = (item.Length / t);
+            else
+                numberOfColumn = (item.Length / t + 1);
 
-            int numberOfColumn = (item.Length / t + 1);
             int sizeOfRow = 16;
 
             byte[][] b = new byte[numberOfColumn * 2][];
@@ -297,27 +342,211 @@ namespace ACNHPoker
 
         private void bulkSpawn_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Log.logEvent("BulkSpawn", "Form Closed");
             main.bulk = null;
         }
 
         private void spawnBtn_Click(object sender, EventArgs e)
         {
-            if (leftBtn.Checked)
-            {
+            settingPanel.Visible = false;
+            spawnlock = true;
 
+            if (rightBtn.Checked)
+            {
+                Thread SpawnThread = new Thread(delegate () { bulkSpawnConfirm(true); });
+                SpawnThread.Start();
             }
             else
             {
-                for (int i = 0; i < SpawnArea.Length / 2; i++)
-                {
-                    UInt32 address = (UInt32)(Utilities.mapZero + (0xC00 * (anchorX + i)) + (0x10 * (anchorY)));
+                Thread SpawnThread = new Thread(delegate () { bulkSpawnConfirm(false); });
+                SpawnThread.Start();
+            }
+        }
+        private void bulkSpawnConfirm(bool right)
+        {
+            showMapWait(SpawnArea.Length, "Spawning items...");
 
-                    Utilities.dropColume(s, bot, address, address + 0x600, SpawnArea[i * 2], SpawnArea[i * 2 + 1], ref counter);
-                    Utilities.dropColume(s, bot, address + Utilities.mapOffset, address + 0x600 + Utilities.mapOffset, SpawnArea[i * 2], SpawnArea[i * 2 + 1], ref counter);
+            try
+            {
+                int time = SpawnArea.Length / 4;
+                if (time > 20)
+                    time = 20;
+
+                Debug.Print("Length :" + SpawnArea.Length + " Time : " + time);
+
+
+                while (isAboutToSave(time))
+                {
+                    Thread.Sleep(5000);
                 }
 
-                main.updataData(anchorX, anchorY, SpawnArea, false);
+
+                if (right)
+                {
+                    for (int i = 0; i < SpawnArea.Length / 2; i++)
+                    {
+                        UInt32 address = (UInt32)(Utilities.mapZero + (0xC00 * (anchorX + i)) + (0x10 * (anchorY)));
+
+                        Utilities.dropColumn(s, bot, address, address + 0x600, SpawnArea[i * 2], SpawnArea[i * 2 + 1], ref counter);
+                    }
+
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        main.updataData(anchorX, anchorY, SpawnArea, false);
+                    });
+                }
+                else
+                {
+                    for (int i = 0; i < SpawnArea.Length / 2; i++)
+                    {
+                        UInt32 address = (UInt32)(Utilities.mapZero + (0xC00 * (anchorX - i)) + (0x10 * (anchorY)));
+
+                        Utilities.dropColumn(s, bot, address, address + 0x600, SpawnArea[i * 2], SpawnArea[i * 2 + 1], ref counter);
+                    }
+
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        main.updataData(anchorX, anchorY, SpawnArea, false, false);
+                    });
+                }
             }
+            catch (Exception ex)
+            {
+                Log.logEvent("BulkSpawn", "ConfirmSpawn: " + ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString(), "When I wrote this, only God and I understood what I was doing.");
+            }
+
+            main.moveAnchor(anchorX, anchorY);
+
+            Thread.Sleep(5000);
+
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
+
+            hideMapWait();
+
+            spawnlock = false;
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                main.moveAnchor(anchorX, anchorY);
+                this.Close();
+            });
+        }
+
+        private void showMapWait(int size, string msg = "")
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                WaitMessagebox.SelectionAlignment = HorizontalAlignment.Center;
+                WaitMessagebox.Text = msg;
+                counter = 0;
+                MapProgressBar.Maximum = size + 5;
+                MapProgressBar.Value = counter;
+                PleaseWaitPanel.Visible = true;
+                ProgressTimer.Start();
+            });
+        }
+
+        private void hideMapWait()
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                PleaseWaitPanel.Visible = false;
+                ProgressTimer.Stop();
+            });
+        }
+
+        private void ProgressTimer_Tick(object sender, EventArgs e)
+        {
+            Invoke((MethodInvoker)delegate
+            {
+                if (counter <= MapProgressBar.Maximum)
+                    MapProgressBar.Value = counter;
+                else
+                    MapProgressBar.Value = MapProgressBar.Maximum;
+            });
+        }
+
+        private void miniMapBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (spawnlock)
+                return;
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                int x;
+                int y;
+
+                if (e.X / 4 < 0)
+                    x = 0;
+                else if (e.X / 4 > 111)
+                    x = 111;
+                else
+                    x = e.X / 4;
+
+                if (e.Y / 4 < 0)
+                    y = 0;
+                else if (e.Y / 4 > 95)
+                    y = 95;
+                else
+                    y = e.Y / 4;
+
+                anchorX = x;
+                anchorY = y;
+
+                xCoordinate.Text = x.ToString();
+                yCoordinate.Text = y.ToString();
+
+                miniMapBox.Image = MiniMap.drawMarker(anchorX, anchorY);
+                warningMessage.Visible = false;
+                spawnBtn.Visible = false;
+            }
+        }
+
+        private bool isAboutToSave(int second)
+        {
+            try
+            {
+                byte[] b = Utilities.getSaving(s, bot);
+
+                if (b == null)
+                    return true;
+                if (b[0] != 0)
+                    return true;
+                else
+                {
+                    byte[] currentFrame = new byte[4];
+                    byte[] lastFrame = new byte[4];
+                    Buffer.BlockCopy(b, 12, currentFrame, 0, 4);
+                    Buffer.BlockCopy(b, 16, lastFrame, 0, 4);
+
+                    int currentFrameStr = Convert.ToInt32("0x" + Utilities.flip(Utilities.ByteToHexString(currentFrame)), 16);
+                    int lastFrameStr = Convert.ToInt32("0x" + Utilities.flip(Utilities.ByteToHexString(lastFrame)), 16);
+
+                    if (((0x1518 - (currentFrameStr - lastFrameStr))) < 30 * second)
+                        return true;
+                    else
+                    {
+                        Debug.Print(((0x1518 - (currentFrameStr - lastFrameStr))).ToString());
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.logEvent("BulkSpawn", "sAboutToSave: " + ex.Message.ToString());
+                MessageBox.Show(ex.Message.ToString(), "This is utterly fucking retarded.");
+                return false;
+            }
+        }
+
+        private void heightNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+                char c = e.KeyChar;
+                if (!(c >= '0' && c <= '9'))
+                {
+                    e.Handled = true;
+                }
         }
     }
 }

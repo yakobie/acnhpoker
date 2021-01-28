@@ -56,16 +56,6 @@ namespace ACNHPoker
             FullAddress.Text = FullResult;
         }
 
-        private void PeekMainBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PokeMainBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         UInt32 loopID = 0x00002200;
         UInt32 loopData = 0x00000000;
 
@@ -456,6 +446,109 @@ namespace ACNHPoker
                 if (sound)
                     System.Media.SystemSounds.Asterisk.Play();
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string bank = "";
+            for (int i = 0; i < itemGridView.Rows.Count; i++)
+            {
+                string id = itemGridView.Rows[i].Cells["id"].Value.ToString();
+                bank = bank + Utilities.flip(id) + "000000000000";
+            }
+
+            byte[] save = Utilities.stringToByte(bank);
+
+
+            SaveFileDialog file = new SaveFileDialog()
+            {
+                Filter = "New Horizons Bulk Spawn (*.nhbs)|*.nhbs",
+            };
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastSave"].Value;
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int i = 0; i < temp.Length - 1; i++)
+                path = path + temp[i] + "\\";
+
+            config.AppSettings.Settings["LastSave"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            File.WriteAllBytes(file.FileName, save);
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string bank = "";
+            for (int i = 0; i < recipeGridView.Rows.Count; i++)
+            {
+                string recipeid = recipeGridView.Rows[i].Cells["id"].Value.ToString();
+
+                bank = bank + Utilities.flip("16A2") + "0000" + Utilities.flip(recipeid) + "0000";
+            }
+
+            byte[] save = Utilities.stringToByte(bank);
+
+
+            SaveFileDialog file = new SaveFileDialog()
+            {
+                Filter = "New Horizons Bulk Spawn (*.nhbs)|*.nhbs",
+            };
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastSave"].Value;
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int i = 0; i < temp.Length - 1; i++)
+                path = path + temp[i] + "\\";
+
+            config.AppSettings.Settings["LastSave"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            File.WriteAllBytes(file.FileName, save);
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
     }
 }

@@ -350,7 +350,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 02E6 ; FtrHarvestDecoration ; Turkey Day decorations ; サンクスギビングデコレーション ; 感恩節裝飾 ; 感恩节装饰 ; 하베스트 데코레이션 ; déco fête du partage ; Schlemmfest-Dekoration ; decoración Día del Pavo ; decorazione primizie ; smakenfestijn-decoratieset ; декор ко Дню изобилия
 02E7 ; FtrHarvestChairS ; Turkey Day chair ; サンクスギビングなチェア ; 感恩節椅 ; 感恩节椅 ; 하베스트 체어 ; chaise fête du partage ; Schlemmfest-Stuhl ; silla Día del Pavo ; sedia primizie ; smakenfestijnstoel ; стул «День изобилия»
 02E9 ; FtrHarvestTableL ; Turkey Day table ; サンクスギビングなテーブル ; 感恩節桌 ; 感恩节桌 ; 하베스트 테이블 ; table fête du partage ; Schlemmfest-Tisch ; mesa comedor Día del Pavo ; tavolo primizie ; smakenfestijntafel ; стол «День изобилия»
-02EB ; FtrHarvestEnamelpod ; Turkey Day casserole ; サンクスギビングなキャセロール ; 感恩節砂鍋燉菜 ; 感恩节砂锅炖菜 ; 하베스트 캐서롤 ; plat à gratin jour du partage ; Schlemmfest-Bräter ; cazuela Día del Pavo ; casseruola primizie ; smakenfestijnpan ; утятница «День изобилия»
+02EB ; FtrHarvestEnamelpod ; Turkey Day casserole ; サンクスギビングなキャセロール ; 感恩節砂鍋燉菜 ; 感恩节砂锅炖菜 ; 하베스트 캐서롤 ; plat à gratin fête du partage ; Schlemmfest-Bräter ; cazuela Día del Pavo ; casseruola primizie ; smakenfestijnpan ; утятница «День изобилия»
 02EC ; FtrHarvestWheat ; Turkey Day wheat decor ; サンクスギビングなむぎかざり ; 感恩節麥子裝飾 ; 感恩节麦子装饰 ; 하베스트 밀 장식 ; décor de blé du partage ; Schlemmfest-Getreidedeko ; adorno trigo Día del Pavo ; ornamento primizie ; smakenfestijn-tarwebundel ; пшеница ко Дню изобилия
 02ED ; FtrHarvestTablesetting ; Turkey Day table setting ; サンクスギビングテーブルウェア ; 感恩節桌上布置 ; 感恩节桌上布置 ; 하베스트 테이블 세팅 ; service fête du partage ; Schlemmfest-Tischgedeck ; servicio mesa Día del Pavo ; set da tavola primizie ; smakenfestijnservies ; посуда ко Дню изобилия
 01C8 ; UmbrellaLeaf0 ; leaf umbrella ; はっぱのかさ ; 葉子雨傘 ; 叶子雨伞 ; 연꽃잎 우산 ; feuillapluie ; Blättchenschirm ; parasol hoja ; ombrello foglia ; bladparaplu ; зонт-лист
@@ -532,6 +532,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 018E ; ToolPanpipe ; pan flute ; パンフルート ; 排笛 ; 排笛 ; 팬파이프 ; flûte de pan ; Panflöte ; sicu ; flauto di Pan ; panfluit ; многоствольная флейта
 01CA ; BridgeLogReserveKit ; bridge construction kit ; はしのこうじキット ; 橋樑施工工具組 ; 桥梁施工工具组 ; 다리 공사 키트 ; kit pont ; Brücken-Baukit ; kit de puente ; kit creazione ponte ; brugbouwpakket ; набор строителя моста
 02EF ; WPaperOrnament ; festive wrapping paper ; クリスマスなラッピングペーパー ; 聖誕包裝紙 ; 圣诞包装纸 ; 크리스마스 포장지 ; papier cadeau festif ; Festtagsgeschenkpapier ; papel de regalo festivo ; carta da regalo festiva ; speelgoeddagcadeaupapier ; новогодняя обертка
+02F3 ; FeatherRainbow ; rainbow feather ; にじいろのはね ; 彩虹羽毛 ; 彩虹羽毛 ; 무지개 깃털 ; plume irisée ; Regenbogenfeder ; pluma arcoíris ; piuma arcobaleno ; regenboogveer ; радужное перо
 0063 ; ItemFenceWallRenga ; brick fence ; レンガのカベ ; 磚塊柵欄 ; 砖块栅栏 ; 벽돌 울타리 ; muret en briques ; Ziegelsteinmauer ; cerca de ladrillo ; muretto di mattoni ; bakstenen muurtje ; кирпичный забор
 0064 ; ItemFenceVerticalWood ; vertical-board fence ; たていたのさく ; 直條木板柵欄 ; 直条木板栅栏 ; 세로 널빤지 울타리 ; clôture lattes verticales ; Bretterzaun ; valla de tablones ; recinzione di assi verticali ; lichte schutting ; штакетник
 0065 ; ItemFenceBamboo ; bamboo lattice fence ; たけがき ; 竹柵欄 ; 竹栅栏 ; 대나무 울타리 ; clôture bambou à treillis ; Bambuszaun ; valla celosía de bambú ; recinzione di bambù ; bamboeschutting ; забор из бамбука
@@ -552,6 +553,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 02C9 ; ItemFenceIkegaki ; hedge ; いけがき ; 樹叢 ; 树篱 ; 낮은 나무 울타리 ; clôture végétale ; Hecke ; seto ; siepe ; heg ; живая изгородь
 02CA ; ItemFenceJuneBride ; wedding fence ; ウェディングなさく ; 婚禮柵欄 ; 婚礼栅栏 ; 웨딩 울타리 ; clôture de mariage ; Hochzeitsabsperrung ; valla de boda ; recinzione nuziale ; trouwhek ; свадебный забор
 02E1 ; ItemFenceHalloween ; spooky fence ; ハロウィンなさく ; 萬聖節柵欄 ; 万圣节栅栏 ; 할로윈 울타리 ; clôture Halloween ; Kürbiszaun ; valla calabaza ; recinzione brividi ; pompoenhek ; жуткий забор
+0308 ; ItemFenceMermaid ; mermaid fence ; マーメイドなさく ; 人魚柵欄 ; 人鱼栅栏 ; 머메이드 울타리 ; clôture sirène ; Nixenzaun ; valla sirena ; recinzione sirena ; meerminnenhek ; забор русалки
 0105 ; AccessoryMouthLeafGreen ; leaf ; はっぱ ; 葉子 ; 叶子 ; 나뭇잎 ; feuille ; Blatt ; hoja ; foglia ; blaadje ; листик
 0278 ; BagShoulderAcorn0 ; acorn pochette ; どんぐりポシェット ; 橡栗側背包 ; 橡栗斜挎包 ; 도토리 미니백 ; pochette gland ; Eichel-Pochette ; bolsito bellota ; pochette ghianda ; eikeltasje ; сумочка-желудь
 0285 ; BagBackpackBasket0 ; basket pack ; しょいこ ; 後背架 ; 背篓 ; 바구니 가방 ; claie à panier ; Tragekorb ; mochila cesta ; cesta ; mandrugzak ; заплечная корзина

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Windows;
 
 namespace ACNHPoker
 {
@@ -23,7 +25,7 @@ namespace ACNHPoker
 
 
         private byte[] AcreData = ACNHPoker.Properties.Resources.acre;
-
+        private static Color[][] floorBackgroundColor;
 
         public const int MapTileCount16x16 = 16 * 16 * 7 * 6;
         public const int TerrainTileSize = 0xE;
@@ -54,34 +56,47 @@ namespace ACNHPoker
 
         public Bitmap drawBackground()
         {
-            byte[] AllAcre = new byte[AcreMax];
-            byte plazeX;
-            byte plazeY;
-
-            for (int i = 0; i < AcreMax; i++)
+            try
             {
-                AllAcre[i] = AcreMapByte[i * 2];
+                byte[] AllAcre = new byte[AcreMax];
+                byte plazeX;
+                byte plazeY;
+
+                for (int i = 0; i < AcreMax; i++)
+                {
+                    AllAcre[i] = AcreMapByte[i * 2];
+                }
+
+                plazeX = AcreMapByte[AcreMax * 2 + 4];
+                plazeY = AcreMapByte[AcreMax * 2 + 8];
+
+                byte[] AcreWOOutside = new byte[7 * 6];
+
+                for (int i = 1; i <= 6; i++)
+                {
+                    Buffer.BlockCopy(AllAcre, i * 9 + 1, AcreWOOutside, (i - 1) * 7, 7);
+                }
+
+                buildBackgroundColor(AcreWOOutside);
+
+                Bitmap[] AcreImage = new Bitmap[7 * 6];
+
+                for (int i = 0; i < AcreImage.Length; i++)
+                {
+                    AcreImage[i] = DrawAcre(GetAcreData(AcreWOOutside[i]));
+                    //AcreImage[i].Save(i + ".bmp");
+                }
+
+                return toFullMap(AcreImage);
             }
-
-            plazeX = AcreMapByte[AcreMax * 2 + 4];
-            plazeY = AcreMapByte[AcreMax * 2 + 8];
-
-            byte[] AcreWOOutside = new byte[7 * 6];
-
-            for (int i = 1; i <= 6; i++)
+            catch (Exception e)
             {
-                Buffer.BlockCopy(AllAcre, i * 9 + 1, AcreWOOutside, (i - 1) * 7, 7);
+                MessageBox.Show(e.Message);
+                Bitmap myBitmap = new Bitmap(16 * 7 * mapSize, 16 * 6 * mapSize);
+                Graphics g = Graphics.FromImage(myBitmap);
+                g.Clear(Color.White);
+                return myBitmap;
             }
-
-            Bitmap[] AcreImage = new Bitmap[7 * 6];
-
-            for (int i = 0; i < AcreImage.Length; i++)
-            {
-                AcreImage[i] = DrawAcre(GetAcreData(AcreWOOutside[i]));
-                //AcreImage[i].Save(i + ".bmp");
-            }
-
-            return toFullMap(AcreImage);
         }
 
         private byte[] GetAcreData(byte Acre)
@@ -197,7 +212,7 @@ namespace ACNHPoker
                 g.DrawRectangle(p, new Rectangle(0, 0, square.Width, square.Height));
             }
 
-               
+
             Bitmap myBitmap;
             myBitmap = new Bitmap(16 * 7 * mapSize, 16 * 6 * mapSize);
 
@@ -211,7 +226,29 @@ namespace ACNHPoker
                 var ia = new ImageAttributes();
                 ia.SetColorMatrix(cm);
 
-                graphics.DrawImage(square, new Rectangle(x - square.Width / 2, y - square.Height / 2, square.Width, square.Height), 0, 0, square.Width, square.Height, GraphicsUnit.Pixel, ia);
+                graphics.DrawImage(square, new Rectangle(x * mapSize - square.Width / 2 + mapSize / 2, y * mapSize - square.Height / 2 + mapSize / 2, square.Width, square.Height), 0, 0, square.Width, square.Height, GraphicsUnit.Pixel, ia);
+            }
+            return myBitmap;
+        }
+
+        public Bitmap drawMarker(int x, int y)
+        {
+            Bitmap marker = new Bitmap(ACNHPoker.Properties.Resources.marker);
+
+            Bitmap myBitmap;
+            myBitmap = new Bitmap(16 * 7 * mapSize, 16 * 6 * mapSize);
+
+            using (Graphics graphics = Graphics.FromImage(myBitmap))
+            {
+                graphics.Clear(Color.Transparent);
+
+                var cm = new ColorMatrix();
+                cm.Matrix33 = 1;
+
+                var ia = new ImageAttributes();
+                ia.SetColorMatrix(cm);
+
+                graphics.DrawImage(marker, new Rectangle(x * mapSize - marker.Width / 2 + mapSize / 2, y * mapSize - marker.Height + mapSize / 2, marker.Width, marker.Height), 0, 0, marker.Width, marker.Height, GraphicsUnit.Pixel, ia);
             }
             return myBitmap;
         }
@@ -275,7 +312,7 @@ namespace ACNHPoker
                     {
                         if (previewtilesType[i][j] == 1)
                             PutPixel(gr, i * mapSize, j * mapSize, Color.FromArgb(200, Color.Red));
-                        else if(previewtilesType[i][j] == 2)
+                        else if (previewtilesType[i][j] == 2)
                             PutPixel(gr, i * mapSize, j * mapSize, Color.LightSkyBlue);
 
                     }
@@ -301,11 +338,11 @@ namespace ACNHPoker
                     byte[] tempPart4 = new byte[0x8];
                     byte[] IDByte = new byte[0x2];
 
-                    Buffer.BlockCopy(ItemMapData[i], j * 0x10               , tempPart1, 0x0, 0x8);
-                    Buffer.BlockCopy(ItemMapData[i], j * 0x10 + 0x8         , tempPart2, 0x0, 0x8);
-                    Buffer.BlockCopy(ItemMapData[i], j * 0x10 + 0x600       , tempPart3, 0x0, 0x8);
-                    Buffer.BlockCopy(ItemMapData[i], j * 0x10 + 0x600 + 0x8 , tempPart4, 0x0, 0x8);
-                    Buffer.BlockCopy(ItemMapData[i], j * 0x10               , IDByte, 0x0, 0x2);
+                    Buffer.BlockCopy(ItemMapData[i], j * 0x10, tempPart1, 0x0, 0x8);
+                    Buffer.BlockCopy(ItemMapData[i], j * 0x10 + 0x8, tempPart2, 0x0, 0x8);
+                    Buffer.BlockCopy(ItemMapData[i], j * 0x10 + 0x600, tempPart3, 0x0, 0x8);
+                    Buffer.BlockCopy(ItemMapData[i], j * 0x10 + 0x600 + 0x8, tempPart4, 0x0, 0x8);
+                    Buffer.BlockCopy(ItemMapData[i], j * 0x10, IDByte, 0x0, 0x2);
 
                     string strPart1 = Utilities.ByteToHexString(tempPart1);
                     string strPart2 = Utilities.ByteToHexString(tempPart2);
@@ -317,7 +354,7 @@ namespace ACNHPoker
                     {
                         tilesType[i][j] = 0; // Empty
                     }
-                    else if(ItemAttr.isTree(itemID))
+                    else if (ItemAttr.isTree(itemID))
                     {
                         tilesType[i][j] = 1; // Tree
                     }
@@ -359,63 +396,117 @@ namespace ACNHPoker
 
         public Bitmap drawItemMap()
         {
-            Bitmap myBitmap;
-
-            myBitmap = new Bitmap(numOfColumn * mapSize, numOfRow * mapSize);
-
-            using (Graphics gr = Graphics.FromImage(myBitmap))
+            try
             {
-                gr.SmoothingMode = SmoothingMode.None;
+                Bitmap myBitmap;
 
-                for (int i = 0; i < numOfColumn; i++)
+                myBitmap = new Bitmap(numOfColumn * mapSize, numOfRow * mapSize);
+
+                using (Graphics gr = Graphics.FromImage(myBitmap))
                 {
-                    for (int j = 0; j < numOfRow; j++)
+                    gr.SmoothingMode = SmoothingMode.None;
+
+                    for (int i = 0; i < numOfColumn; i++)
                     {
-                        if (tilesType[i][j] == 0)
+                        for (int j = 0; j < numOfRow; j++)
                         {
-                            //PutPixel(gr, i * mapSize, j* mapSize, Color.White);
+                            if (tilesType[i][j] == 0)
+                            {
+                                //PutPixel(gr, i * mapSize, j* mapSize, Color.White);
+                            }
+                            else if (tilesType[i][j] == 1)
+                            {
+                                PutPixel(gr, i * mapSize, j * mapSize, Color.GreenYellow);
+                            }
+                            else if (tilesType[i][j] == 2)
+                            {
+                                PutPixel(gr, i * mapSize, j * mapSize, Color.Pink);
+                            }
+                            else if (tilesType[i][j] == 3)
+                            {
+                                PutPixel(gr, i * mapSize, j * mapSize, Color.Blue);
+                            }
+                            else if (tilesType[i][j] == 4)
+                            {
+                                PutPixel(gr, i * mapSize, j * mapSize, Color.MediumSeaGreen);
+                            }
+                            else if (tilesType[i][j] == 5)
+                            {
+                                PutPixel(gr, i * mapSize, j * mapSize, Color.Purple);
+                            }
+                            else if (tilesType[i][j] == 6)
+                            {
+                                PutPixel(gr, i * mapSize, j * mapSize, Color.Black);
+                            }
+                            else if (tilesType[i][j] == 9)
+                            {
+                                PutPixel(gr, i * mapSize, j * mapSize, Color.Yellow);
+                            }
+                            else if (tilesType[i][j] == 10)
+                            {
+                                PutPixel(gr, i * mapSize, j * mapSize, Color.Orange);
+                            }
+                            else
+                            {
+                                PutPixel(gr, i * mapSize, j * mapSize, Color.Gray);
+                            }
                         }
-                        else if (tilesType[i][j] == 1)
+                    }
+                }
+
+                return myBitmap;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                Bitmap myBitmap = new Bitmap(16 * 7 * mapSize, 16 * 6 * mapSize);
+                Graphics g = Graphics.FromImage(myBitmap);
+                g.Clear(Color.Transparent);
+                return myBitmap;
+            }
+        }
+
+        private void buildBackgroundColor(byte[] AcreWOOutside)
+        {
+            floorBackgroundColor = new Color[numOfRow][];
+
+            for (int i = 0; i < numOfRow; i++)
+            {
+                floorBackgroundColor[i] = new Color[numOfColumn];
+                for (int j = 0; j < numOfColumn; j++)
+                {
+                    floorBackgroundColor[i][j] = Color.Tomato;
+                }
+            }
+
+            for (int i = 0; i < 6; i++) // y
+            {
+                for (int j = 0; j < 7; j++) // x
+                {
+                    byte[] Acre = GetAcreData(AcreWOOutside[i * 7 + j]);
+
+                    for (int m = 0; m < 16; m++) // y
+                    {
+                        for (int n = 0; n < 16; n++) // x
                         {
-                            PutPixel(gr, i * mapSize, j * mapSize, Color.GreenYellow);
-                        }
-                        else if (tilesType[i][j] == 2)
-                        {
-                            PutPixel(gr, i * mapSize, j * mapSize, Color.Pink);
-                        }
-                        else if (tilesType[i][j] == 3)
-                        {
-                            PutPixel(gr, i * mapSize, j * mapSize, Color.Blue);
-                        }
-                        else if (tilesType[i][j] == 4)
-                        {
-                            PutPixel(gr, i * mapSize, j * mapSize, Color.MediumSeaGreen);
-                        }
-                        else if (tilesType[i][j] == 5)
-                        {
-                            PutPixel(gr, i * mapSize, j * mapSize, Color.Purple);
-                        }
-                        else if (tilesType[i][j] == 6)
-                        {
-                            PutPixel(gr, i * mapSize, j * mapSize, Color.Black);
-                        }
-                        else if (tilesType[i][j] == 9)
-                        {
-                            PutPixel(gr, i * mapSize, j * mapSize, Color.Yellow);
-                        }
-                        else if (tilesType[i][j] == 10)
-                        {
-                            PutPixel(gr, i * mapSize, j * mapSize, Color.Orange);
-                        }
-                        else
-                        {
-                            PutPixel(gr, i * mapSize, j * mapSize, Color.Gray);
+                            if (floorBackgroundColor[i * 16 + m][j * 16 + n] != Color.Tomato)
+                                Debug.Print(i + " " + j + " " + m + " " + n);
+                            floorBackgroundColor[i * 16 + m][j * 16 + n] = Pixel[Acre[m * 16 + n]];
                         }
                     }
                 }
             }
+        }
 
-            return myBitmap;
+        public static Color GetBackgroundColor(int x, int y, bool Layer1 = true)
+        {
+            if (Layer1)
+                return floorBackgroundColor[y][x];
+            else
+            {
+                Color newColor = Color.FromArgb(150 , floorBackgroundColor[y][x]);
+                return newColor;
+            }
         }
 
         private void PutPixel(Graphics g, int x, int y, Color c)

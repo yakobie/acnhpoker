@@ -192,5 +192,14 @@ namespace ACNHPoker
                 Thread.Sleep((data.Length / 256) + 100);
             }
         }
+
+        private static T[] SubArray<T>(T[] data, int index, int length)
+        {
+            if (index + length > data.Length)
+                length = data.Length - index;
+            T[] result = new T[length];
+            Array.Copy(data, index, result, 0, length);
+            return result;
+        }
     }
 }

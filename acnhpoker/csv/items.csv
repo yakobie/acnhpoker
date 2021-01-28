@@ -281,7 +281,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 0AB4 ; FtrWashingmachine ; automatic washer ; せんたくき ; 洗衣機 ; 洗衣机 ; 세탁기 ; lave-linge ; Toplader-Waschmaschine ; lavadora de carga superior ; lavatrice con carica dall'alto ; bovenlader ; стиральный автомат ; 
 0AC2 ; FtrWell ; simple well ; シンプルないど ; 簡約水井 ; 简约水井 ; 심플한 우물 ; puits simple ; Grundwasserbrunnen ; pozo de piedra ; pozzo di pietra ; eenvoudige put ; простой колодец ; 
 0AD2 ; FtrChess ; chessboard ; チェス ; 西洋棋 ; 西洋棋 ; 체스 ; échiquier ; Schachbrett ; tablero de ajedrez ; scacchiera ; schaakbord ; шахматная доска ; 
-0AD3 ; FtrStoveRound ; round space heater ; まるがたストーブ ; 圓形暖爐 ; 圆形暖炉 ; 둥근 스토브 ; chauffage cylindrique ; Heizgerät ; calefactor cilíndrico ; stufetta bianca cilindrica ; ronde straalkachel ; круглый обогреватель ; 
+0AD3 ; FtrStoveRound ; round space heater ; まるがたストーブ ; 圓形暖爐 ; 圆形暖炉 ; 둥근 스토브 ; chauffage cylindrique ; Heizgerät ; calefactor cilíndrico ; stufetta cilindrica ; ronde straalkachel ; круглый обогреватель ; 
 0AD4 ; FtrViolin ; fancy violin ; ヴァイオリン ; 小提琴 ; 小提琴 ; 바이올린 ; violon haut de gamme ; Edelgeige ; violín ; violino di lusso ; viool ; шикарная скрипка ; 
 0AD7 ; FtrWCJapan ; squat toilet ; わしきトイレ ; 蹲式馬桶 ; 蹲式马桶 ; 화변기 ; WC japonais ; Asien-Toilette ; inodoro tradicional japonés ; toilette alla turca ; hurktoilet ; напольный унитаз ; 
 0AD8 ; FtrWCTankless ; tankless toilet ; タンクレストイレ ; 無水箱馬桶 ; 无水箱马桶 ; 일체형 변기 ; WC mural ; Wand-WC ; inodoro tanque integrado ; toilette senza serbatoio ; vacuümtoilet ; унитаз без бачка ; 
@@ -896,84 +896,97 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 3493 ; FtrYunnori ; Yut Nori ; ユンノリ ; 擲柶遊戲 ; 掷柶游戏 ; 윷놀이 ; yut nori ; Yut-Nori-Spiel ; juego del iut ; Yut nori ; Yut-Nori-spel ; ют-нори ; 
 3496 ; Ftr12Grapes ; twelve-grape dish ; 12つぶのぶどう ; 12粒葡萄 ; 12粒葡萄 ; 포도알 12개 ; plat de raisins ; 12-Trauben-Schälchen ; plato con doce uvas ; piatto con dodici acini d'uva ; bordje met twaalf druiven ; 12 виноградин удачи ; 
 3497 ; FtrBerliner ; berliner ; ベルリーナー ; 柏林果醬麵包 ; 柏林果酱面包 ; 베를리너 ; beignet ; Berliner-Teller ; plato de berlinesas ; piatto di krapfen ; Berlijnse bollen ; берлинский пончик ; 
+34B0 ; FtrChocolateHeart ; chocolate heart ; ハートのチョコレート ; 愛心巧克力 ; 心形巧克力 ; 하트 초콜릿 ; cœur en chocolat ; Schokoladenherz ; caja bombones Enamorados ; ciocco-cuore ; chocoladehart ; сердце из шоколада ; 
 34B2 ; FtrEtoOx ; zodiac ox figurine ; うしのおきもの ; 牛擺飾 ; 牛摆饰 ; 소띠 장식품 ; figurine année du buffle ; Büffel-Sternzeichen ; figura zodiacal de buey ; statuetta del segno del bue ; os-dierenriembeeldje ; фигурка «Телец» ; 
 34E7 ; Ftr2021Arch ; 2021 celebratory arch ; 2021ねんのアーチ ; 2021年拱門 ; 2021年拱门 ; 2021년 아치 ; arche nouvel an 2021 ; 2021-Festtagsbogen ; arco de bienvenida al 2021 ; arco buon anno 2021 ; 2021-feestboog ; новогодняя арка 2021 ; 
+35C7 ; FtrCarnivalDecoration ; Festivale garland ; カーニバルなガーランド ; 狂歡節掛旗 ; 狂欢节挂饰 ; 카니발 가랜드 ; guirlande de carnaval ; Karnevalsgirlande ; guirnalda de Carnaval ; festone Carnevale ; carnavalsslinger ; карнавальная гирлянда ; 
+35CA ; FtrCarnivalParasol ; Festivale parasol ; カーニバルなパラソル ; 狂歡節陽傘 ; 狂欢节阳伞 ; 카니발 파라솔 ; parasol de carnaval ; Karnevalsschirm ; parasol de Carnaval ; parasole Carnevale ; carnavalsparasol ; карнавальный зонт ; 
+35CB ; FtrCarnivalFloat ; Festivale float ; カーニバルなフロート ; 狂歡節花車 ; 狂欢节花车 ; 카니발 플로트 ; char de carnaval ; Karnevalswagen ; carroza de Carnaval ; carro Carnevale ; carnavalspraalwagen ; карнавальная повозка ; 
+35CC ; FtrCarnivalBalloon ; Festivale balloon lamp ; カーニバルなバルーンランプ ; 狂歡節氣球燈 ; 狂欢节气球灯 ; 카니발 풍선 램프 ; lampe ballon carnaval ; Karnevalsballonlampe ; lámpara globo de Carnaval ; globo luminoso Carnevale ; carnavalsballonlamp ; карнавальная лампа-шар ; 
+35CD ; FtrCarnivalStall ; Festivale stall ; カーニバルなやたい ; 狂歡節路邊攤 ; 狂欢节小吃摊 ; 카니발 가판대 ; stand de carnaval ; Karnevalsstand ; tenderete de Carnaval ; bancarella Carnevale ; carnavalskraampje ; карнавальный лоток ; 
+35CE ; FtrCarnivalSurdo ; Festivale drum ; カーニバルなパーカッション ; 狂歡節打擊樂器 ; 狂欢节打击乐器 ; 카니발 퍼커션 ; tambour de carnaval ; Karnevalstrommel ; tambor de Carnaval ; tamburo Carnevale ; carnavalstrommel ; карнавальный барабан ; 
+35CF ; FtrCarnivalStage ; Festivale stage ; カーニバルなステージ ; 狂歡節舞台 ; 狂欢节舞台 ; 카니발 스테이지 ; scène de carnaval ; Karnevalsbühne ; escenario de Carnaval ; palcoscenico Carnevale ; carnavalspodium ; карнавальная сцена ; 
+35D0 ; FtrCarnivalConfetti ; Festivale confetti machine ; カーニバルなかみふぶきマシン ; 狂歡節撒紙片機 ; 狂欢节撒纸片机 ; 카니발 꽃가루 머신 ; canon à confettis carnaval ; Karnevalskonfettimaschine ; cañón de confeti Carnaval ; lanciacoriandoli Carnevale ; carnavalsconfettimachine ; карнав. конфетти-пушка ; 
+35D1 ; FtrCarnivalLantern ; Festivale lamp ; カーニバルなランプ ; 狂歡節燈 ; 狂欢节灯 ; 카니발 램프 ; lampe carnaval ; Karnevalslampe ; lamparita de Carnaval ; lampada Carnevale ; carnavalslamp ; карнавальная лампа ; 
+35D2 ; FtrCarnivalFlag ; Festivale flag ; カーニバルなフラッグ ; 狂歡節旗子 ; 狂欢节旗子 ; 카니발 플래그 ; drapeau de carnaval ; Karnevalsfahne ; estandarte de Carnaval ; stendardo Carnevale ; carnavalsvaandel ; карнавальный флаг ; 
 35E5 ; FtrSobaNewyears ; New Year's noodles ; としこしそば ; 跨年蕎麥麵 ; 跨年荞麦面 ; 새해맞이 국수 ; soupe du nouvel an ; Neujahrsnudeln ; sopa de Año Nuevo ; zuppa di Capodanno ; nieuwjaarsnoodles ; новогодняя лапша ; 
 35E7 ; FtrOliviersalad ; Olivier salad ; オリビエサラダ ; 奧利維耶沙拉 ; 奥利维耶沙拉 ; 올리비에 샐러드 ; salade Olivier ; Olivier-Salat ; ensalada Olivier ; insalata russa ; huzarensalade ; салат Оливье ; 
-35FA ; FtrHarvestEnamelpod ; Turkey Day casserole ; サンクスギビングなキャセロール ; 感恩節砂鍋燉菜 ; 感恩节砂锅炖菜 ; 하베스트 캐서롤 ; plat à gratin jour du partage ; Schlemmfest-Bräter ; cazuela Día del Pavo ; casseruola primizie ; smakenfestijnpan ; утятница «День изобилия» ; 
+35FA ; FtrHarvestEnamelpod ; Turkey Day casserole ; サンクスギビングなキャセロール ; 感恩節砂鍋燉菜 ; 感恩节砂锅炖菜 ; 하베스트 캐서롤 ; plat à gratin fête du partage ; Schlemmfest-Bräter ; cazuela Día del Pavo ; casseruola primizie ; smakenfestijnpan ; утятница «День изобилия» ; 
 35FB ; FtrHarvestWheat ; Turkey Day wheat decor ; サンクスギビングなむぎかざり ; 感恩節麥子裝飾 ; 感恩节麦子装饰 ; 하베스트 밀 장식 ; décor de blé du partage ; Schlemmfest-Getreidedeko ; adorno trigo Día del Pavo ; ornamento primizie ; smakenfestijn-tarwebundel ; пшеница ко Дню изобилия ; 
 35FC ; FtrHarvestTablesetting ; Turkey Day table setting ; サンクスギビングテーブルウェア ; 感恩節桌上布置 ; 感恩节桌上布置 ; 하베스트 테이블 세팅 ; service fête du partage ; Schlemmfest-Tischgedeck ; servicio mesa Día del Pavo ; set da tavola primizie ; smakenfestijnservies ; посуда ко Дню изобилия ; 
+362B ; FtrConstructFigure ; Resetti model ; グラウンドホッグのもけい ; 土撥鼠模型 ; 土拨鼠模型 ; 그라운드호그 모형 ; figurine de Resetti ; Resetti-Figur ; mini Rese T. Ado ; modellino di Resetti ; model-Resetti ; модель Ресетти ; 
 366A ; FtrCrsSocksWallColor ; set of stockings ; かべかけソックス ; 壁掛式襪子 ; 壁挂式袜子 ; 벽걸이 양말 ; lot de chaussettes déco ; Wunschsocken-Set ; lote de calcetines de pared ; set di calze per regali ; sokkenset ; набор носков ; 
+36CD ; FtrRosebouquetHeart ; heart-shaped bouquet ; ハートのバラブーケ ; 愛心玫瑰花束 ; 心形玫瑰花束 ; 하트 장미 꽃다발 ; bouquet en forme de cœur ; Herz-Bouquet ; ramo de flores Enamorados ; bouquet a cuore ; hartvormig boeket ; букет в форме сердца ; 
 0002 ; FtrArtHunterSnow ; scenic painting ; みごとなめいが ; 優美的名畫 ; 优美的名画 ; 뛰어난 명화 ; toile hivernale ; Wintergemälde ; cuadro invernal ; quadro invernale ; winters schilderij ; живописная картина ; 
-0005 ; FtrArtMikaeriFake ; [F]graceful painting ; しなやかなめいが ; 端莊的名畫 ; 端庄的名画 ; 절제된 명화 ; toile gracieuse ; Anmutsgemälde ; retrato oriental ; quadro armonioso ; sierlijk schilderij ; изящная картина ; 
+0005 ; FtrArtMikaeriFake ; graceful painting ; しなやかなめいが ; 端莊的名畫 ; 端庄的名画 ; 절제된 명화 ; toile gracieuse ; Anmutsgemälde ; retrato oriental ; quadro armonioso ; sierlijk schilderij ; изящная картина ; 
 0006 ; FtrArtMikaeri ; graceful painting ; しなやかなめいが ; 端莊的名畫 ; 端庄的名画 ; 절제된 명화 ; toile gracieuse ; Anmutsgemälde ; retrato oriental ; quadro armonioso ; sierlijk schilderij ; изящная картина ; 
-0009 ; FtrArtMilkmaidFake ; [F]quaint painting ; おちついためいが ; 平靜的名畫 ; 平静的名画 ; 침착한 명화 ; toile charmante ; Altertumsgemälde ; retrato holandés ; quadro buffo ; traditioneel schilderij ; старинная картина ; 
+0009 ; FtrArtMilkmaidFake ; quaint painting ; おちついためいが ; 平靜的名畫 ; 平静的名画 ; 침착한 명화 ; toile charmante ; Altertumsgemälde ; retrato holandés ; quadro buffo ; traditioneel schilderij ; старинная картина ; 
 000A ; FtrArtMilkmaid ; quaint painting ; おちついためいが ; 平靜的名畫 ; 平静的名画 ; 침착한 명화 ; toile charmante ; Altertumsgemälde ; retrato holandés ; quadro buffo ; traditioneel schilderij ; старинная картина ; 
-000D ; FtrArtBlueBoyFake ; [F]basic painting ; いさましいめいが ; 勇敢的名畫 ; 勇敢的名画 ; 용감한 명화 ; toile classique ; Einfachgemälde ; retrato heroico ; quadro semplice ; klassiek schilderij ; обычная картина ; 
+000D ; FtrArtBlueBoyFake ; basic painting ; いさましいめいが ; 勇敢的名畫 ; 勇敢的名画 ; 용감한 명화 ; toile classique ; Einfachgemälde ; retrato heroico ; quadro semplice ; klassiek schilderij ; обычная картина ; 
 000E ; FtrArtBlueBoy ; basic painting ; いさましいめいが ; 勇敢的名畫 ; 勇敢的名画 ; 용감한 명화 ; toile classique ; Einfachgemälde ; retrato heroico ; quadro semplice ; klassiek schilderij ; обычная картина ; 
-0011 ; FtrArtMonaLisaFake ; [F]famous painting ; ゆうめいなめいが ; 有名的名畫 ; 有名的名画 ; 유명한 명화 ; toile célèbre ; Berühmtgemälde ; retrato italiano ; quadro famoso ; beroemd schilderij ; знаменитая картина ; 
+0011 ; FtrArtMonaLisaFake ; famous painting ; ゆうめいなめいが ; 有名的名畫 ; 有名的名画 ; 유명한 명화 ; toile célèbre ; Berühmtgemälde ; retrato italiano ; quadro famoso ; beroemd schilderij ; знаменитая картина ; 
 0012 ; FtrArtMonaLisa ; famous painting ; ゆうめいなめいが ; 有名的名畫 ; 有名的名画 ; 유명한 명화 ; toile célèbre ; Berühmtgemälde ; retrato italiano ; quadro famoso ; beroemd schilderij ; знаменитая картина ; 
 0014 ; FtrArtAppleOrange ; perfect painting ; すばらしいめいが ; 厲害的名畫 ; 厉害的名画 ; 훌륭한 명화 ; toile parfaite ; Perfektgemälde ; bodegón ; quadro perfetto ; kleurrijk schilderij ; совершенная картина ; 
-0017 ; FtrArtPortraitCeciliaFake ; [F]serene painting ; たおやかなめいが ; 婀娜的名畫 ; 婀娜的名画 ; 아늑한 명화 ; toile royale ; Edelgemälde ; retrato regio ; quadro simbolico ; sereen schilderij ; безмятежная картина ; 
+0017 ; FtrArtPortraitCeciliaFake ; serene painting ; たおやかなめいが ; 婀娜的名畫 ; 婀娜的名画 ; 아늑한 명화 ; toile royale ; Edelgemälde ; retrato regio ; quadro simbolico ; sereen schilderij ; безмятежная картина ; 
 0018 ; FtrArtPortraitCecilia ; serene painting ; たおやかなめいが ; 婀娜的名畫 ; 婀娜的名画 ; 아늑한 명화 ; toile royale ; Edelgemälde ; retrato regio ; quadro simbolico ; sereen schilderij ; безмятежная картина ; 
-001B ; FtrArtPearlEarringFake ; [F]wistful painting ; すてきなめいが ; 漂亮的名畫 ; 漂亮的名画 ; 근사한 명화 ; toile nacrée ; Perlengemälde ; retrato perla ; quadro realista ; melancholisch schilderij ; мечтательная картина ; 
+001B ; FtrArtPearlEarringFake ; wistful painting ; すてきなめいが ; 漂亮的名畫 ; 漂亮的名画 ; 근사한 명화 ; toile nacrée ; Perlengemälde ; retrato perla ; quadro realista ; melancholisch schilderij ; мечтательная картина ; 
 001C ; FtrArtPearlEarring ; wistful painting ; すてきなめいが ; 漂亮的名畫 ; 漂亮的名画 ; 근사한 명화 ; toile nacrée ; Perlengemälde ; retrato perla ; quadro realista ; melancholisch schilderij ; мечтательная картина ; 
-001F ; FtrArtBirthVenusFake ; [F]moving painting ; きれいなめいが ; 動人的名畫 ; 动人的名画 ; 예쁜 명화 ; toile émouvante ; Schöngemälde ; cuadro alegórico ; quadro colorato ; symbolisch schilderij ; трогательная картина ; 
+001F ; FtrArtBirthVenusFake ; moving painting ; きれいなめいが ; 動人的名畫 ; 动人的名画 ; 예쁜 명화 ; toile émouvante ; Schöngemälde ; cuadro alegórico ; quadro colorato ; symbolisch schilderij ; трогательная картина ; 
 0020 ; FtrArtBirthVenus ; moving painting ; きれいなめいが ; 動人的名畫 ; 动人的名画 ; 예쁜 명화 ; toile émouvante ; Schöngemälde ; cuadro alegórico ; quadro colorato ; symbolisch schilderij ; трогательная картина ; 
 0022 ; FtrArtClothedMaja ; warm painting ; いいかんじのめいが ; 舒適的名畫 ; 舒适的名画 ; 느낌이 좋은 명화 ; toile radieuse ; Warmgemälde ; cuadro clásico ; quadro classico ; verleidelijk schilderij ; романтичная картина ; 
 0026 ; FtrArtKanagawaOki ; dynamic painting ; いきなめいが ; 磅礡的名畫 ; 磅礴的名画 ; 멋들어진 명화 ; toile déferlante ; Wellengemälde ; cuadro ola ; quadro marino ; woelig schilderij ; волнительная картина ; 
-0029 ; FtrArtSummerFake ; [F]jolly painting ; おもしろいめいが ; 有趣的名畫 ; 有趣的名画 ; 재미있는 명화 ; toile potagère ; Gemüsegemälde ; cuadro orgánico ; quadro organico ; fleurig schilderij ; веселая картина ; 
+0029 ; FtrArtSummerFake ; jolly painting ; おもしろいめいが ; 有趣的名畫 ; 有趣的名画 ; 재미있는 명화 ; toile potagère ; Gemüsegemälde ; cuadro orgánico ; quadro organico ; fleurig schilderij ; веселая картина ; 
 002A ; FtrArtSummer ; jolly painting ; おもしろいめいが ; 有趣的名畫 ; 有趣的名画 ; 재미있는 명화 ; toile potagère ; Gemüsegemälde ; cuadro orgánico ; quadro organico ; fleurig schilderij ; веселая картина ; 
 002C ; FtrArtGleaners ; common painting ; よくみるめいが ; 常見的名畫 ; 常见的名画 ; 평범한 명화 ; toile commune ; Bekanntgemälde ; cuadro segadoras ; quadro povero ; landelijk schilderij ; сельская картина ; 
 002E ; FtrArtBarFB ; proper painting ; にぎやかなめいが ; 熱鬧的名畫 ; 热闹的名画 ; 활기 넘치는 명화 ; toile austère ; Strenggemälde ; cuadro dama ; quadro austero ; formeel schilderij ; строгая картина ; 
 0030 ; FtrArtFifePlayer ; nice painting ; いいめいが ; 很好的名畫 ; 很好的名画 ; 좋은 명화 ; toile magnifique ; Hübschgemälde ; retrato músico ; quadro antico ; muzikaal schilderij ; приятная картина ; 
 0032 ; FtrArtSunflower ; flowery painting ; たぐいまれなるめいが ; 珍貴的名畫 ; 珍贵的名画 ; 진귀한 명화 ; toile florale ; Blumengemälde ; cuadro flores ; quadro fiorito ; zonnig schilderij ; цветочная картина ; 
 0034 ; FtrArtSlower ; moody painting ; ちからづよいめいが ; 強健的名畫 ; 强健的名画 ; 힘찬 명화 ; toile puissante ; Kraftgemälde ; retrato joven ; quadro possente ; noest schilderij ; энергичная картина ; 
-0037 ; FtrArtNightWatchFake ; [F]amazing painting ; すごいめいが ; 驚人的名畫 ; 惊人的名画 ; 대단한 명화 ; toile incroyable ; Enormgemälde ; cuadro holandés ; quadro stupendo ; subliem schilderij ; потрясающая картина ; 
+0037 ; FtrArtNightWatchFake ; amazing painting ; すごいめいが ; 驚人的名畫 ; 惊人的名画 ; 대단한 명화 ; toile incroyable ; Enormgemälde ; cuadro holandés ; quadro stupendo ; subliem schilderij ; потрясающая картина ; 
 0038 ; FtrArtNightWatch ; amazing painting ; すごいめいが ; 驚人的名畫 ; 惊人的名画 ; 대단한 명화 ; toile incroyable ; Enormgemälde ; cuadro holandés ; quadro stupendo ; subliem schilderij ; потрясающая картина ; 
-0041 ; FtrArtOotaniOnijiFake ; [F]scary painting ; いなせなめいが ; 俊俏的名畫 ; 俊俏的名画 ; 씩씩한 명화 ; toile effrayante ; Furchtgemälde ; cuadro japonés ; quadro spaventoso ; griezelig schilderij ; страшная картина ; 
+0041 ; FtrArtOotaniOnijiFake ; scary painting ; いなせなめいが ; 俊俏的名畫 ; 俊俏的名画 ; 씩씩한 명화 ; toile effrayante ; Furchtgemälde ; cuadro japonés ; quadro spaventoso ; griezelig schilderij ; страшная картина ; 
 0042 ; FtrArtOotaniOniji ; scary painting ; いなせなめいが ; 俊俏的名畫 ; 俊俏的名画 ; 씩씩한 명화 ; toile effrayante ; Furchtgemälde ; cuadro japonés ; quadro spaventoso ; griezelig schilderij ; страшная картина ; 
 0044 ; FtrArtLibertyLeading ; worthy painting ; かちのあるめいが ; 名貴的名畫 ; 名贵的名画 ; 가치 있는 명화 ; toile précieuse ; Wahrgemälde ; cuadro romántico ; quadro prezioso ; zegevierend schilderij ; достойная картина ; 
-0047 ; FtrArtLasMeninasFake ; [F]solemn painting ; おごそかなめいが ; 肅穆的名畫 ; 肃穆的名画 ; 엄숙한 명화 ; toile solennelle ; Feierlichgemälde ; cuadro español ; quadro solenne ; plechtig schilderij ; торжественная картина ; 
+0047 ; FtrArtLasMeninasFake ; solemn painting ; おごそかなめいが ; 肅穆的名畫 ; 肃穆的名画 ; 엄숙한 명화 ; toile solennelle ; Feierlichgemälde ; cuadro español ; quadro solenne ; plechtig schilderij ; торжественная картина ; 
 0048 ; FtrArtLasMeninas ; solemn painting ; おごそかなめいが ; 肅穆的名畫 ; 肃穆的名画 ; 엄숙한 명화 ; toile solennelle ; Feierlichgemälde ; cuadro español ; quadro solenne ; plechtig schilderij ; торжественная картина ; 
-004B ; FtrArtFuujinFake ; [F]wild painting right half ; あらぶるめいがのみぎ ; 粗野的名畫右半邊 ; 粗野的名画右半边 ; 혼란스러운 명화의 오른쪽 ; partie d. de toile sauvage ; Ungestümgemälde (rechts) ; cuadro naturaleza (dcha.) ; quadro intenso (metà dx) ; onstuimig schilderij (r) ; прав. часть дикой картины ; 
+004B ; FtrArtFuujinFake ; wild painting right half ; あらぶるめいがのみぎ ; 粗野的名畫右半邊 ; 粗野的名画右半边 ; 혼란스러운 명화의 오른쪽 ; partie d. de toile sauvage ; Ungestümgemälde (rechts) ; cuadro naturaleza (dcha.) ; quadro intenso (metà dx) ; onstuimig schilderij (r) ; прав. часть дикой картины ; 
 004C ; FtrArtFuujin ; wild painting right half ; あらぶるめいがのみぎ ; 粗野的名畫右半邊 ; 粗野的名画右半边 ; 혼란스러운 명화의 오른쪽 ; partie d. de toile sauvage ; Ungestümgemälde (rechts) ; cuadro naturaleza (dcha.) ; quadro intenso (metà dx) ; onstuimig schilderij (r) ; прав. часть дикой картины ; 
 004E ; FtrArtSundayOn ; calm painting ; おだやかなめいが ; 和煦的名畫 ; 和煦的名画 ; 평온한 명화 ; toile apaisante ; Ruhegemälde ; paisaje francés ; quadro riposante ; vredig schilderij ; спокойная картина ; 
 0533 ; FtrSculptureCapitolini ; motherly statue ; ぼせいあふれるちょうこく ; 充滿母愛的雕塑 ; 充满母爱的雕塑 ; 모성이 느껴지는 조각 ; statue maternelle ; Wölfinnenstatue ; figura materna ; statua leggendaria ; moederlijk beeld ; материнская статуя ; 
-0534 ; FtrSculptureCapitoliniFake ; [F]motherly statue ; ぼせいあふれるちょうこく ; 充滿母愛的雕塑 ; 充满母爱的雕塑 ; 모성이 느껴지는 조각 ; statue maternelle ; Wölfinnenstatue ; figura materna ; statua leggendaria ; moederlijk beeld ; материнская статуя ; 
+0534 ; FtrSculptureCapitoliniFake ; motherly statue ; ぼせいあふれるちょうこく ; 充滿母愛的雕塑 ; 充满母爱的雕塑 ; 모성이 느껴지는 조각 ; statue maternelle ; Wölfinnenstatue ; figura materna ; statua leggendaria ; moederlijk beeld ; материнская статуя ; 
 0535 ; FtrSculptureDavid ; gallant statue ; りりしいちょうこく ; 英挺的雕塑 ; 英挺的雕塑 ; 늠름한 조각 ; statue majestueuse ; Galantstatue ; estatua majestuosa ; statua maestosa ; verheven standbeeld ; доблестная статуя ; 
-0536 ; FtrSculptureDavidFake ; [F]gallant statue ; りりしいちょうこく ; 英挺的雕塑 ; 英挺的雕塑 ; 늠름한 조각 ; statue majestueuse ; Galantstatue ; estatua majestuosa ; statua maestosa ; verheven standbeeld ; доблестная статуя ; 
+0536 ; FtrSculptureDavidFake ; gallant statue ; りりしいちょうこく ; 英挺的雕塑 ; 英挺的雕塑 ; 늠름한 조각 ; statue majestueuse ; Galantstatue ; estatua majestuosa ; statua maestosa ; verheven standbeeld ; доблестная статуя ; 
 0537 ; FtrSculptureDiskobolos ; robust statue ; たくましいちょうこく ; 強壯的雕塑 ; 强壮的雕塑 ; 듬직한 조각 ; statue athlétique ; Athletenstatue ; estatua atlética ; statua atletica ; atletisch standbeeld ; атлетическая статуя ; 
-0538 ; FtrSculptureDiskobolosFake ; [F]robust statue ; たくましいちょうこく ; 強壯的雕塑 ; 强壮的雕塑 ; 듬직한 조각 ; statue athlétique ; Athletenstatue ; estatua atlética ; statua atletica ; atletisch standbeeld ; атлетическая статуя ; 
+0538 ; FtrSculptureDiskobolosFake ; robust statue ; たくましいちょうこく ; 強壯的雕塑 ; 强壮的雕塑 ; 듬직한 조각 ; statue athlétique ; Athletenstatue ; estatua atlética ; statua atletica ; atletisch standbeeld ; атлетическая статуя ; 
 0539 ; FtrSculptureDoguu ; ancient statue ; いにしえのちょうこく ; 遠古的雕塑 ; 远古的雕塑 ; 태고의 조각 ; statuette antique ; Uraltstatue ; estatua primitiva ; statua antica ; prehistorisch beeldje ; древняя статуя ; 
-053A ; FtrSculptureDoguuFake ; [F]ancient statue ; いにしえのちょうこく ; 遠古的雕塑 ; 远古的雕塑 ; 태고의 조각 ; statuette antique ; Uraltstatue ; estatua primitiva ; statua antica ; prehistorisch beeldje ; древняя статуя ; 
+053A ; FtrSculptureDoguuFake ; ancient statue ; いにしえのちょうこく ; 遠古的雕塑 ; 远古的雕塑 ; 태고의 조각 ; statuette antique ; Uraltstatue ; estatua primitiva ; statua antica ; prehistorisch beeldje ; древняя статуя ; 
 053B ; FtrSculptureKamehameha ; great statue ; いだいなちょうこく ; 偉大的雕塑 ; 伟大的雕塑 ; 위대한 조각 ; statue imposante ; Würdestatue ; estatua triunfante ; statua trionfante ; majestueus standbeeld ; великая статуя ; 
 053D ; FtrSculptureMilo ; beautiful statue ; うつくしいちょうこく ; 美麗的雕塑 ; 美丽的雕塑 ; 아름다운 조각 ; statue féminine ; Eleganzstatue ; estatua femenina ; statua aggraziata ; gracieus standbeeld ; прекрасная статуя ; 
-053E ; FtrSculptureMiloFake ; [F]beautiful statue ; うつくしいちょうこく ; 美麗的雕塑 ; 美丽的雕塑 ; 아름다운 조각 ; statue féminine ; Eleganzstatue ; estatua femenina ; statua aggraziata ; gracieus standbeeld ; прекрасная статуя ; 
+053E ; FtrSculptureMiloFake ; beautiful statue ; うつくしいちょうこく ; 美麗的雕塑 ; 美丽的雕塑 ; 아름다운 조각 ; statue féminine ; Eleganzstatue ; estatua femenina ; statua aggraziata ; gracieus standbeeld ; прекрасная статуя ; 
 053F ; FtrSculptureNefertiti ; mystic statue ; しんぴてきなちょうこく ; 神祕的雕塑 ; 神秘的雕塑 ; 신비로운 조각 ; sculpture mystérieuse ; Geheimnisbüste ; busto antiguo ; statua enigmatica ; enigmatisch beeld ; загадочная статуя ; 
-0540 ; FtrSculptureNefertitiFake ; [F]mystic statue ; しんぴてきなちょうこく ; 神祕的雕塑 ; 神秘的雕塑 ; 신비로운 조각 ; sculpture mystérieuse ; Geheimnisbüste ; busto antiguo ; statua enigmatica ; enigmatisch beeld ; загадочная статуя ; 
+0540 ; FtrSculptureNefertitiFake ; mystic statue ; しんぴてきなちょうこく ; 神祕的雕塑 ; 神秘的雕塑 ; 신비로운 조각 ; sculpture mystérieuse ; Geheimnisbüste ; busto antiguo ; statua enigmatica ; enigmatisch beeld ; загадочная статуя ; 
 0541 ; FtrSculptureSamothrace ; valiant statue ; こうごうしいちょうこく ; 神聖的雕塑 ; 神圣的雕塑 ; 거룩한 조각 ; statue héroïque ; Erhabenstatue ; estatua alada ; statua eroica ; heroïsch standbeeld ; героическая статуя ; 
-0542 ; FtrSculptureSamothraceFake ; [F]valiant statue ; こうごうしいちょうこく ; 神聖的雕塑 ; 神圣的雕塑 ; 거룩한 조각 ; statue héroïque ; Erhabenstatue ; estatua alada ; statua eroica ; heroïsch standbeeld ; героическая статуя ; 
+0542 ; FtrSculptureSamothraceFake ; valiant statue ; こうごうしいちょうこく ; 神聖的雕塑 ; 神圣的雕塑 ; 거룩한 조각 ; statue héroïque ; Erhabenstatue ; estatua alada ; statua eroica ; heroïsch standbeeld ; героическая статуя ; 
 30F5 ; FtrSculptureOlmecaHead ; rock-head statue ; いしあたまなちょうこく ; 石頭顱雕塑 ; 石头颅雕塑 ; 돌 머리의 조각 ; sculpture déterminée ; Dickkopfskulptur ; cabeza colosal ; testa di roccia ; koppig standbeeld ; твердолобая статуя ; 
-30F6 ; FtrSculptureOlmecaHeadFake ; [F]rock-head statue ; いしあたまなちょうこく ; 石頭顱雕塑 ; 石头颅雕塑 ; 돌 머리의 조각 ; sculpture déterminée ; Dickkopfskulptur ; cabeza colosal ; testa di roccia ; koppig standbeeld ; твердолобая статуя ; 
+30F6 ; FtrSculptureOlmecaHeadFake ; rock-head statue ; いしあたまなちょうこく ; 石頭顱雕塑 ; 石头颅雕塑 ; 돌 머리의 조각 ; sculpture déterminée ; Dickkopfskulptur ; cabeza colosal ; testa di roccia ; koppig standbeeld ; твердолобая статуя ; 
 30F7 ; FtrSculptureRosettaStone ; informative statue ; てがかりのちょうこく ; 線索的雕塑 ; 线索的雕塑 ; 단서가 되는 조각 ; tablette édifiante ; Hinweisskulptur ; piedra políglota ; pietra informativa ; taalkundig standbeeld ; образовательная статуя ; 
-30F8 ; FtrSculptureRosettaStoneFake ; [F]informative statue ; てがかりのちょうこく ; 線索的雕塑 ; 线索的雕塑 ; 단서가 되는 조각 ; tablette édifiante ; Hinweisskulptur ; piedra políglota ; pietra informativa ; taalkundig standbeeld ; образовательная статуя ; 
+30F8 ; FtrSculptureRosettaStoneFake ; informative statue ; てがかりのちょうこく ; 線索的雕塑 ; 线索的雕塑 ; 단서가 되는 조각 ; tablette édifiante ; Hinweisskulptur ; piedra políglota ; pietra informativa ; taalkundig standbeeld ; образовательная статуя ; 
 30F9 ; FtrSculptureHoumuwuDing ; tremendous statue ; とてつもないちょうこく ; 出乎意料的雕塑 ; 出乎意料的雕塑 ; 어마어마한 조각 ; sculpture singulière ; Prachtskulptur ; urna imponente ; scultura imponente ; bijzonder standbeeld ; массивная статуя ; 
-30FA ; FtrSculptureHoumuwuDingFake ; [F]tremendous statue ; とてつもないちょうこく ; 出乎意料的雕塑 ; 出乎意料的雕塑 ; 어마어마한 조각 ; sculpture singulière ; Prachtskulptur ; urna imponente ; scultura imponente ; bijzonder standbeeld ; массивная статуя ; 
+30FA ; FtrSculptureHoumuwuDingFake ; tremendous statue ; とてつもないちょうこく ; 出乎意料的雕塑 ; 出乎意料的雕塑 ; 어마어마한 조각 ; sculpture singulière ; Prachtskulptur ; urna imponente ; scultura imponente ; bijzonder standbeeld ; массивная статуя ; 
 30FB ; FtrSculptureHeibayo ; warrior statue ; もののふのちょうこく ; 武士的雕刻 ; 武士的雕刻 ; 무사의 조각 ; statue guerrière ; Kriegerstatue ; escultura guerrera ; statua guerriera ; krijgszuchtig standbeeld ; воинственная статуя ; 
-30FC ; FtrSculptureHeibayoFake ; [F]warrior statue ; もののふのちょうこく ; 武士的雕刻 ; 武士的雕刻 ; 무사의 조각 ; statue guerrière ; Kriegerstatue ; escultura guerrera ; statua guerriera ; krijgszuchtig standbeeld ; воинственная статуя ; 
+30FC ; FtrSculptureHeibayoFake ; warrior statue ; もののふのちょうこく ; 武士的雕刻 ; 武士的雕刻 ; 무사의 조각 ; statue guerrière ; Kriegerstatue ; escultura guerrera ; statua guerriera ; krijgszuchtig standbeeld ; воинственная статуя ; 
 30FD ; FtrSculptureThinker ; familiar statue ; なじみのあるちょうこく ; 似曾相識的雕塑 ; 似曾相识的雕塑 ; 익숙한 조각 ; statue pensive ; Vertrautstatue ; estatua pensativa ; statua pensierosa ; peinzend standbeeld ; знакомая статуя ; 
 311A ; FtrArtRaijin ; wild painting left half ; あらぶるめいがのひだり ; 粗野的名畫左半邊 ; 粗野的名画左半边 ; 혼란스러운 명화의 왼쪽 ; partie g. de toile sauvage ; Ungestümgemälde (links) ; cuadro naturaleza (izda.) ; quadro intenso (metà sx) ; onstuimig schilderij (l) ; лев. часть дикой картины ; 
-311B ; FtrArtRaijinFake ; [F]wild painting left half ; あらぶるめいがのひだり ; 粗野的名畫左半邊 ; 粗野的名画左半边 ; 혼란스러운 명화의 왼쪽 ; partie g. de toile sauvage ; Ungestümgemälde (links) ; cuadro naturaleza (izda.) ; quadro intenso (metà sx) ; onstuimig schilderij (l) ; лев. часть дикой картины ; 
+311B ; FtrArtRaijinFake ; wild painting left half ; あらぶるめいがのひだり ; 粗野的名畫左半邊 ; 粗野的名画左半边 ; 혼란스러운 명화의 왼쪽 ; partie g. de toile sauvage ; Ungestümgemälde (links) ; cuadro naturaleza (izda.) ; quadro intenso (metà sx) ; onstuimig schilderij (l) ; лев. часть дикой картины ; 
 314A ; FtrArtStarryNight ; twinkling painting ; またたくめいが ; 閃爍的名畫 ; 闪烁的名画 ; 반짝이는 명화 ; toile scintillante ; Funkelgemälde ; paisaje estrellado ; quadro sfavillante ; nachtelijk schilderij ; звездная картина ; 
 314B ; FtrArtVitruvianMan ; academic painting ; アカデミックなめいが ; 學術性的名畫 ; 学术性的名画 ; 아카데믹한 명화 ; toile académique ; Wissenschaftsgemälde ; cuadro anatómico ; quadro accademico ; academisch schilderij ; академическая картина ; 
-314C ; FtrArtVitruvianManFake ; [F]academic painting ; アカデミックなめいが ; 學術性的名畫 ; 学术性的名画 ; 아카데믹한 명화 ; toile académique ; Wissenschaftsgemälde ; cuadro anatómico ; quadro accademico ; academisch schilderij ; академическая картина ; 
+314C ; FtrArtVitruvianManFake ; academic painting ; アカデミックなめいが ; 學術性的名畫 ; 学术性的名画 ; 아카데믹한 명화 ; toile académique ; Wissenschaftsgemälde ; cuadro anatómico ; quadro accademico ; academisch schilderij ; академическая картина ; 
 314D ; FtrArtOphelia ; sinking painting ; しずみゆくめいが ; 沉沒的名畫 ; 沉没的名画 ; 가라앉는 명화 ; toile tragique ; Versinkgemälde ; cuadro literario ; quadro acquatico ; tragisch schilderij ; речная картина ; 
 314E ; FtrArtAjisaisoukeizu ; detailed painting ; ちみつなめいが ; 細緻的名畫 ; 细致的名画 ; 섬세한 명화 ; toile détaillée ; Detailgemälde ; cuadro detallado ; quadro dettagliato ; gedetailleerd schilderij ; детальная картина ; 
-314F ; FtrArtAjisaisoukeizuFake ; [F]detailed painting ; ちみつなめいが ; 細緻的名畫 ; 细致的名画 ; 섬세한 명화 ; toile détaillée ; Detailgemälde ; cuadro detallado ; quadro dettagliato ; gedetailleerd schilderij ; детальная картина ; 
+314F ; FtrArtAjisaisoukeizuFake ; detailed painting ; ちみつなめいが ; 細緻的名畫 ; 细致的名画 ; 섬세한 명화 ; toile détaillée ; Detailgemälde ; cuadro detallado ; quadro dettagliato ; gedetailleerd schilderij ; детальная картина ; 
 3150 ; FtrArtFightingTemeraire ; glowing painting ; ひかりのめいが ; 光線的名畫 ; 光线的名画 ; 빛의 명화 ; toile crépusculaire ; Lichtgemälde ; cuadro vespertino ; quadro abbagliante ; weemoedig schilderij ; сияющая картина ; 
 3151 ; FtrArtIsleOfDead ; mysterious painting ; なぞめいためいが ; 神秘的名畫 ; 神秘的名画 ; 미스터리한 명화 ; toile ténébreuse ; Rätselgemälde ; cuadro tenebroso ; quadro misterioso ; mysterieus schilderij ; загадочная картина ; 
-3155 ; FtrArtHunterSnowFake ; [F]scenic painting ; みごとなめいが ; 優美的名畫 ; 优美的名画 ; 뛰어난 명화 ; toile hivernale ; Wintergemälde ; cuadro invernal ; quadro invernale ; winters schilderij ; живописная картина ; 
+3155 ; FtrArtHunterSnowFake ; scenic painting ; みごとなめいが ; 優美的名畫 ; 优美的名画 ; 뛰어난 명화 ; toile hivernale ; Wintergemälde ; cuadro invernal ; quadro invernale ; winters schilderij ; живописная картина ; 
 16E5 ; UmbrellaPolkadotRed ; Toad parasol ; あかいみずたまのかさ ; 紅色圓點雨傘 ; 红色点点雨伞 ; 빨간 물방울 우산 ; parapluie à pois rouge ; Punkteschirm ; parasol de lunares ; parasole rosso ; rode parasol met stippen ; зонт тоада ; 
 1AB8 ; UmbrellaLeaf0 ; leaf umbrella ; はっぱのかさ ; 葉子雨傘 ; 叶子雨伞 ; 연꽃잎 우산 ; feuillapluie ; Blättchenschirm ; parasol hoja ; ombrello foglia ; bladparaplu ; зонт-лист ; 
 1AF8 ; UmbrellaSunflower0 ; sunny parasol ; ひまわりのかさ ; 向日葵雨傘 ; 向日葵雨伞 ; 해바라기 우산 ; parapluie tournesols ; Sommerschirm ; paraguas girasoles ; parasole gioioso ; zonnige parasol ; зонт с подсолнухами ; 
@@ -2526,6 +2539,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 33E7 ; RugRoundMoonM00 ; moon rug ; つきのラグ ; 月之地毯 ; 月之地毯 ; 보름달 러그 ; tapis lune ; Mondteppich ; alfombra luna ; tappeto luna ; maantapijt ; лунный пол ; 
 34D5 ; RugSquareHarvestL00 ; Turkey Day rug ; サンクスギビングなラグ ; 感恩節地毯 ; 感恩节地毯 ; 하베스트 러그 ; tapis fête du partage ; Schlemmfest-Teppich ; alfombra Día del Pavo ; tappeto primizie ; smakenfestijntapijt ; ковер «День изобилия» ; 
 351C ; RugOtherSunflowerM00 ; sunflower rug ; ひまわりのラグ ; 向日葵地毯 ; 向日葵地毯 ; 해바라기 러그 ; tapis tournesol ; Sonnenblumenteppich ; alfombra girasol ; tappeto girasole ; zonnebloemtapijt ; подсолнуховый ковер ; 
+3650 ; RugOtherFootballM00 ; football rug ; アメフトのラグ ; 美式足球地毯 ; 美式足球地毯 ; 미식축구 러그 ; tapis football américain ; Football-Teppich ; alfombra final deportiva ; tappeto football ; Americanfootballtapijt ; футбольный ковер ; 
 10C5 ; FtrDoorOrnamentWreathCosmos ; cosmos wreath ; コスモスのリース ; 波斯菊花圈 ; 波斯菊花环 ; 코스모스 리스 ; couronne cosmos ; Cosmeentürkranz ; corona cosmos ; ghirlanda cosmee ; cosmeakrans ; венок с космеями ; 
 1117 ; FtrDoorOrnamentWreathIce ; snowflake wreath ; ゆきのけっしょうのリース ; 雪花花圈 ; 雪花花环 ; 눈의 결정 리스 ; décoration flocon ; Schneeflockentürschmuck ; placa copo de nieve ; ghirlanda fiocco di neve ; sneeuwvlokkenkrans ; венок-снежинка ; 
 1118 ; FtrDoorOrnamentWreathShell ; shell wreath ; かいがらのリース ; 貝殼花圈 ; 贝壳花环 ; 조개껍데기 리스 ; couronne coquillages ; Muscheltürkranz ; corona conchas ; ghirlanda tema conchiglia ; schelpenkrans ; венок с ракушками ; 
@@ -2571,6 +2585,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 30E5 ; FtrDoorOrnamentWreathEaster ; Bunny Day wreath ; イースターなリース ; 復活節花圈 ; 复活节花环 ; 이스터 리스 ; couronne fête des œufs ; Häschentag-Türkranz ; corona Caza del Huevo ; ghirlanda caccia all'uovo ; eierkrans ; венок на День зайцев ; 
 342D ; FtrDoorOrnamentXmasWreath ; festive wreath ; クリスマスリース ; 聖誕節花圈 ; 圣诞节花环 ; 크리스마스 리스 ; couronne de sapin ; Festtagskranz ; corona festiva ; ghirlanda festiva ; feestkrans ; новогодний венок ; 
 34BD ; FtrDoorOrnamentWreathShimenawa ; New Year's shimekazari ; しめかざり ; 注連繩裝飾 ; 注连绳装饰 ; 일본 금줄 장식 ; shimekazari de nouvel an ; Neujahrs-Shimekazari ; shimekazari de Año Nuevo ; shimekazari di Capodanno ; nieuwjaars-shimekazari ; новогодний симэкадзари ; 
+36D0 ; FtrDoorOrnamentShunsetsu ; Lunar New Year decoration ; しゅんせつのドアかざり ; 春節門飾 ; 春节门饰 ; 춘절 복 장식 ; déco de nouvel an lunaire ; Mondneujahr-Dekoration ; adorno Año Nuevo Lunar ; decoraz. Capodanno lunare ; maannieuwjaarversiering ; узор (лунный Новый год) ; 
 0A0B ; FtrPostStandard ; ordinary mailbox ; ふつうのポスト ; 普通郵筒 ; 普通信箱 ; 일반 우편함 ; boîte aux lettres ordinaire ; Standard-Briefkasten ; buzón clásico ; cassetta posta normale ; ronde brievenbus ; простой ящик ; 
 14DE ; FtrPostSquare ; square mailbox ; しかくいポスト ; 四角型郵筒 ; 方形信箱 ; 사각 우편함 ; b.a.l. rectangulaire ; Eckigbriefkasten ; buzón cuadrado ; cassetta posta cubica ; brievenbus ; ящик-куб ; 
 14DF ; FtrPostWood ; wooden mailbox ; きのポスト ; 木郵筒 ; 木信箱 ; 나무 우편함 ; boîte aux lettres en bois ; Holzbriefkasten ; buzón de madera ; cassetta posta di legno ; houten brievenbus ; ящик из дерева ; 
@@ -2766,6 +2781,17 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 360B ; ToolJuiceFuzzyapple ; sparkling cider ; スパークリングサイダー ; 氣泡飲料 ; 气泡饮料 ; 스파클링 사이다 ; boisson pétillante festive ; Apfelschorle ; zumo de manzana ; cocktail alla frutta ; glas appelsap met prik ; игристый напиток ; 
 360C ; ToolBigbagPresent ; magic bag ; プレゼントぶくろ ; 禮物袋 ; 礼物袋 ; 선물 보따리 ; sac à cadeaux ; Geschenkesack ; saco de regalos ; sacco dei regali ; pakjeszak ; волшебный мешок ; 
 362D ; QuestChristmasPresentbox ; someone's gift ; だれかのプレゼント ; 某人的禮物 ; 某人的礼物 ; 누군가의 선물 ; cadeau de quelqu'un ; Geschenk (unbekannt) ; regalo de alguien ; regalo da qualcuno ; cadeau van iemand ; чей-то подарок ; 
+3659 ; ToolMegaphone0 ; football cheer megaphone ; おうえんメガホン・アメフト ; 加油大聲公‧美式足球 ; 助威扩音器·美式足球 ; 미식축구 응원 메가폰 ; mégaphone de supporter ; Fan-Megafon „Football“ ; megáfono fútbol americano ; megafono fan football ; Americanfootballmegafoon ; футбольный рупор ; 
+365A ; ToolSoy0 ; bean-tossing kit ; まめまきセット ; 撒豆組合 ; 撒豆组合 ; 콩 뿌리기 세트 ; kit de lancer de haricots ; Setsubun-Set ; caja habichuelas para lanzar ; set con fagioli da lanciare ; bonengooipakket ; бобы для разбрасывания ; 
+3682 ; OtoshidamaCh ; lucky red envelope ; しゅんせつのおとしだま ; 春節紅包 ; 春节红包 ; 춘절 세뱃돈 ; hóngbāo porte chance ; Glücksumschlag ; sobre rojo de la suerte ; busta della fortuna rossa ; rode geluksenvelop ; красный конверт удачи ; 
+3683 ; OtoshidamaKr ; bokjumeoni lucky pouch ; ソルラルのおとしだま ; 韓國新年紅包 ; 韩国新年红包 ; 설날 세뱃돈 ; bokjumeoni porte chance ; Bokjumeoni-Säckchen ; bolsita de la suerte ; sacchettino bokjumeoni ; gelukszakje ; мешочек удачи ; 
+3686 ; ToolMaracasCarnival ; maracas ; マラカス ; 沙錘 ; 沙锤 ; 마라카스 ; paire de maracas ; Maracas ; par de maracas ; paio di maracas ; sambaballen ; маракасы ; 
+36BD ; ToolMegaphone1 ; fiery cheer megaphone ; おうえんメガホン・ファイアー ; 加油大聲公‧火焰 ; 助威扩音器·火焰 ; 파이어 응원 메가폰 ; még. de supporter flammes ; Fan-Megafon „Feuer“ ; megáfono ánimo encendido ; megafono fan con fiamme ; vurige megafoon ; огненный рупор ; 
+36BE ; ToolMegaphone2 ; starry cheer megaphone ; おうえんメガホン・スター ; 加油大聲公‧星星 ; 助威扩音器·星星 ; 스타 응원 메가폰 ; még. de supporter étoiles ; Fan-Megafon „Sterne“ ; megáfono de las estrellas ; megafono fan con stelle ; sterrenmegafoon ; звездный рупор ; 
+36BF ; ToolMegaphone3 ; glittery cheer megaphone ; おうえんメガホン・グリッター ; 加油大聲公‧閃亮 ; 助威扩音器·闪亮 ; 글리터 응원 메가폰 ; még. de supporter pailleté ; Fan-Megafon „Glitzer“ ; megáfono deslumbrante ; megafono fan luccicante ; glittermegafoon ; блестящий рупор ; 
+36CE ; HowtoBookReactionCarnival ; Viva Festivale Reaction Set ; ビバ！カーニバルリアクション ; 歡樂！狂歡節表情 ; 欢乐！狂欢节反应 ; 비바! 카니발 리액션 ; lot de mimiques de carnaval ; Viva-Karneval-Emotionen ; Set de emociones Carnaval ; Set di emozioni Carnevale ; Dé emoties voor carnaval ; Реакции к Карнавалу ; 
+36DA ; DummyOtoshidamaCh ; lucky money ; しゅんせつのおとしだま ; 春節紅包 ; 春节红包 ; 춘절 세뱃돈 ; argent porte chance ; Glücksgeschenk ; aguinaldo Año Nuevo Lunar ; denaro della fortuna ; geluksgeld ; дини на удачу ; 
+36DB ; DummyOtoshidamaKr ; sebaetdon ; ソルラルのおとしだま ; 韓國新年紅包 ; 韩国新年红包 ; 설날 세뱃돈 ; sebaetdon ; Sebaetdon ; aguinaldo de Seollal ; sebaetdon ; nieuwjaarsgeld ; подарок «сэбэтон» ; 
 0946 ; LostQuestBag ; lost item ; おとしもの ; 遺失物品 ; 遗失物 ; 분실물 ; objet perdu ; Fundsache ; objeto perdido ; oggetto smarrito ; verloren voorwerp ; потерянный предмет ; 
 0947 ; LostQuestBook ; lost item ; おとしもの ; 遺失物品 ; 遗失物 ; 분실물 ; objet perdu ; Fundsache ; objeto perdido ; oggetto smarrito ; verloren voorwerp ; потерянный предмет ; 
 094D ; JohnnyQuest1 ; communicator part ; つうしんそうちのパーツ ; 通訊裝置零件 ; 通信装置零件 ; 통신 장치 부품 ; circuit d'émetteur ; Fernsprecher-Teil ; pieza del comunicador ; pezzo del comunicatore ; marifoon-onderdeel ; деталь коммуникатора ; 
@@ -2775,6 +2801,11 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 0ADB ; BirthdayCupcake ; birthday cupcake ; バースデーカップケーキ ; 生日紙杯蛋糕 ; 生日纸杯蛋糕 ; 생일 컵케이크 ; cupcake d'anniversaire ; Geburtstags-Cupcake ; pastelito de cumpleaños ; cupcake di compleanno ; verjaardagscupcake ; именинный кекс ; 
 0C04 ; SequenceOnly002 ; じぶんのスマホ ; じぶんのスマホ ; じぶんのスマホ ; じぶんのスマホ ; じぶんのスマホ ; じぶんのスマホ ; じぶんのスマホ ; じぶんのスマホ ; じぶんのスマホ ; じぶんのスマホ ; じぶんのスマホ ; 
 0C05 ; SequenceOnly003 ; メモ ; メモ ; メモ ; メモ ; メモ ; メモ ; メモ ; メモ ; メモ ; メモ ; メモ ; 
+0DD5 ; FeatherRed ; red feather ; あかいはね ; 紅色羽毛 ; 红色羽毛 ; 빨간색 깃털 ; plume rouge ; Rubinfeder ; pluma roja ; piuma rossa ; rode veer ; красное перо ; 
+0DD6 ; FeatherBlue ; blue feather ; あおいはね ; 藍色羽毛 ; 蓝色羽毛 ; 파란색 깃털 ; plume bleue ; Azurfeder ; pluma azul ; piuma blu ; blauwe veer ; синее перо ; 
+0DD7 ; FeatherGreen ; green feather ; みどりのはね ; 綠色羽毛 ; 绿色羽毛 ; 초록색 깃털 ; plume verte ; Smaragdfeder ; pluma verde ; piuma verde ; groene veer ; зеленое перо ; 
+0DD9 ; FeatherPurple ; purple feather ; むらさきのはね ; 紫色羽毛 ; 紫色羽毛 ; 보라색 깃털 ; plume violette ; Lilafeder ; pluma morada ; piuma viola ; paarse veer ; фиолетовое перо ; 
+0DDC ; FeatherRainbow ; rainbow feather ; にじいろのはね ; 彩虹羽毛 ; 彩虹羽毛 ; 무지개 깃털 ; plume irisée ; Regenbogenfeder ; pluma arcoíris ; piuma arcobaleno ; regenboogveer ; радужное перо ; 
 1222 ; LostQuestBagDust ; What was this again? ; なんだっけ？ ; 這是什麼來著？ ; 这是什么来着？ ; 뭐였더라? ; C'est quoi, déjà ? ; Was war das...? ; ¿Esto qué era? ; Aspetta, cos'era questo? ; Wat was dit ook alweer? ; Что это такое? ; 
 1223 ; LostQuestBookDust ; What was this again? ; なんだっけ？ ; 這是什麼來著？ ; 这是什么来着？ ; 뭐였더라? ; C'est quoi, déjà ? ; Was war das...? ; ¿Esto qué era? ; Aspetta, cos'era questo? ; Wat was dit ook alweer? ; Что это такое? ; 
 125E ; YutaroWisp ; Wisp spirit piece ; ゆうたろうのたましい ; 幽幽的靈魂 ; 幽幽的魂魄 ; 깨빈의 영혼 ; fragment d'esprit de Follet ; Buhu-Seelenfragment ; voluta de Buh ; pezzo spirituale di Spirideo ; flard van Wisps geest ; частица духа Уиспа ; 
@@ -2923,6 +2954,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 31D6 ; ItemFenceIkegaki ; hedge ; いけがき ; 樹叢 ; 树篱 ; 낮은 나무 울타리 ; clôture végétale ; Hecke ; seto ; siepe ; heg ; живая изгородь ; 
 325E ; ItemFenceJuneBride ; wedding fence ; ウェディングなさく ; 婚禮柵欄 ; 婚礼栅栏 ; 웨딩 울타리 ; clôture de mariage ; Hochzeitsabsperrung ; valla de boda ; recinzione nuziale ; trouwhek ; свадебный забор ; 
 33DB ; ItemFenceHalloween ; spooky fence ; ハロウィンなさく ; 萬聖節柵欄 ; 万圣节栅栏 ; 할로윈 울타리 ; clôture Halloween ; Kürbiszaun ; valla calabaza ; recinzione brividi ; pompoenhek ; жуткий забор ; 
+37C6 ; ItemFenceMermaid ; mermaid fence ; マーメイドなさく ; 人魚柵欄 ; 人鱼栅栏 ; 머메이드 울타리 ; clôture sirène ; Nixenzaun ; valla sirena ; recinzione sirena ; meerminnenhek ; забор русалки ; 
 191A ; BromideNpcNmlAnt00 ; Cyrano's photo ; さくらじまのしゃしん ; 陽明的照片 ; 阳明的照片 ; 사지마의 사진 ; photo de Cyrano ; Foto von Theo ; foto de Cirano ; foto di Cirano ; foto van Cyrano ; фото Сирано ; 
 191B ; BromideNpcNmlBea02 ; Curt's photo ; ガンテツのしゃしん ; 鐵熊的照片 ; 铁熊的照片 ; 뚝심의 사진 ; photo de Curt ; Foto von Kurt ; foto de Gorbaché ; foto di Curt ; foto van Curt ; фото Керта ; 
 191C ; BromideNpcNmlDer02 ; Zell's photo ; ネルソンのしゃしん ; 森森的照片 ; 森森的照片 ; 넬슨의 사진 ; photo de Régis ; Foto von Walter ; foto de Corvilo ; foto di Antilio ; foto van Zell ; фото Зелла ; 
@@ -4009,12 +4041,12 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2AFD ; AccessoryGlassBlind4 ; ladder shades ; ブラインドサングラス ; 百葉窗墨鏡 ; 百叶窗墨镜 ; 블라인드 선글라스 ; monture stores ; Lamellenbrille ; gafa de rejilla ; montatura a tapparella ; lamellenbril ; очки-решетки ; Yellow
 2AFE ; AccessoryGlassBlind5 ; ladder shades ; ブラインドサングラス ; 百葉窗墨鏡 ; 百叶窗墨镜 ; 블라인드 선글라스 ; monture stores ; Lamellenbrille ; gafa de rejilla ; montatura a tapparella ; lamellenbril ; очки-решетки ; Gold
 124A ; AccessoryMouthLeafGreen ; leaf ; はっぱ ; 葉子 ; 叶子 ; 나뭇잎 ; feuille ; Blatt ; hoja ; foglia ; blaadje ; листик ; Green
-123B ; AccessoryGlassVenetian0 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz de carnaval ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Purple
-2B99 ; AccessoryGlassVenetian1 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz de carnaval ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Black
-2B9A ; AccessoryGlassVenetian2 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz de carnaval ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Blue
-2B9B ; AccessoryGlassVenetian3 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz de carnaval ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Red
-2B9C ; AccessoryGlassVenetian4 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz de carnaval ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Green
-2B9D ; AccessoryGlassVenetian5 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz de carnaval ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Gold
+123B ; AccessoryGlassVenetian0 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz baile de máscaras ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Purple
+2B99 ; AccessoryGlassVenetian1 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz baile de máscaras ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Black
+2B9A ; AccessoryGlassVenetian2 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz baile de máscaras ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Blue
+2B9B ; AccessoryGlassVenetian3 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz baile de máscaras ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Red
+2B9C ; AccessoryGlassVenetian4 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz baile de máscaras ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Green
+2B9D ; AccessoryGlassVenetian5 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz baile de máscaras ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Gold
 116E ; AccessoryGlassMonocle0 ; monocle ; モノクル ; 單片眼鏡 ; 单片眼镜 ; 모노클 ; monocle ; Monokel ; monóculo ; monocolo ; monocle ; монокль ; Black
 2AF8 ; AccessoryGlassMonocle1 ; monocle ; モノクル ; 單片眼鏡 ; 单片眼镜 ; 모노클 ; monocle ; Monokel ; monóculo ; monocolo ; monocle ; монокль ; Gold
 2AF9 ; AccessoryGlassMonocle2 ; monocle ; モノクル ; 單片眼鏡 ; 单片眼镜 ; 모노클 ; monocle ; Monokel ; monóculo ; monocolo ; monocle ; монокль ; Silver
@@ -5101,6 +5133,10 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2B27 ; CapHatFelt3 ; fedora ; なかおれハット ; 紳士帽 ; 绅士帽 ; 페도라 ; chapeau de ville ; Filzhut ; fedora ; cappello di feltro ; gleufhoed ; фетровая шляпа ; Gray
 2B28 ; CapHatFelt4 ; fedora ; なかおれハット ; 紳士帽 ; 绅士帽 ; 페도라 ; chapeau de ville ; Filzhut ; fedora ; cappello di feltro ; gleufhoed ; фетровая шляпа ; White
 2B29 ; CapHatFelt5 ; fedora ; なかおれハット ; 紳士帽 ; 绅士帽 ; 페도라 ; chapeau de ville ; Filzhut ; fedora ; cappello di feltro ; gleufhoed ; фетровая шляпа ; Red
+0A34 ; CapOrnamentTSamba0 ; Festivale accessory ; カーニバルなかみかざり ; 狂歡節髮飾 ; 狂欢节发饰 ; 카니발 머리 장식 ; coiffe de carnaval ; Karnevalsschmuck ; tocado de Carnaval ; copricapo Carnevale ; carnavalshoofdtooi ; карнавальный аксессуар ; Blue
+2604 ; CapOrnamentTSamba1 ; Festivale accessory ; カーニバルなかみかざり ; 狂歡節髮飾 ; 狂欢节发饰 ; 카니발 머리 장식 ; coiffe de carnaval ; Karnevalsschmuck ; tocado de Carnaval ; copricapo Carnevale ; carnavalshoofdtooi ; карнавальный аксессуар ; Red
+2605 ; CapOrnamentTSamba2 ; Festivale accessory ; カーニバルなかみかざり ; 狂歡節髮飾 ; 狂欢节发饰 ; 카니발 머리 장식 ; coiffe de carnaval ; Karnevalsschmuck ; tocado de Carnaval ; copricapo Carnevale ; carnavalshoofdtooi ; карнавальный аксессуар ; Purple
+2606 ; CapOrnamentTSamba3 ; Festivale accessory ; カーニバルなかみかざり ; 狂歡節髮飾 ; 狂欢节发饰 ; 카니발 머리 장식 ; coiffe de carnaval ; Karnevalsschmuck ; tocado de Carnaval ; copricapo Carnevale ; carnavalshoofdtooi ; карнавальный аксессуар ; Green
 2A5A ; CapOrnamentLGaudy1 ; flashy hairpin ; はでなかみかざり ; 鮮艷髮飾 ; 华丽头饰 ; 화려한 머리핀 ; épingle luxueuse ; Blumenspange ; horquilla flor ; fermaglio floreale ; opvallende haarspeld ; броская заколка ; Blue
 2A5B ; CapOrnamentLGaudy2 ; flashy hairpin ; はでなかみかざり ; 鮮艷髮飾 ; 华丽头饰 ; 화려한 머리핀 ; épingle luxueuse ; Blumenspange ; horquilla flor ; fermaglio floreale ; opvallende haarspeld ; броская заколка ; Black
 2A5C ; CapOrnamentLGaudy3 ; flashy hairpin ; はでなかみかざり ; 鮮艷髮飾 ; 华丽头饰 ; 화려한 머리핀 ; épingle luxueuse ; Blumenspange ; horquilla flor ; fermaglio floreale ; opvallende haarspeld ; броская заколка ; Purple
@@ -5591,6 +5627,9 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 27FB ; CapCostumeGogglehelmet6 ; helmet with goggles ; ゴーグルつきヘルメット ; 護目鏡安全帽 ; 带护目镜头盔 ; 고글 헬멧 ; casque avec lunettes ; Skibrillenhelm ; casco motocicleta clásico ; casco con occhiali ; helm met beschermbril ; шлем с очками ; Black
 27FC ; CapCostumeGogglehelmet7 ; helmet with goggles ; ゴーグルつきヘルメット ; 護目鏡安全帽 ; 带护目镜头盔 ; 고글 헬멧 ; casque avec lunettes ; Skibrillenhelm ; casco motocicleta clásico ; casco con occhiali ; helm met beschermbril ; шлем с очками ; Yellow
 1799 ; AccessoryGlassmouthHockeyWhite ; hockey mask ; ホッケーのマスク ; 曲棍球面罩 ; 曲棍球面罩 ; 하키 마스크 ; masque de hockey ; Hockeymaske ; máscara de hockey ; maschera da hockey ; ijshockeymasker ; хоккейная маска ; White
+2E6E ; CapMaskOgre1 ; horned-ogre mask ; オニのおめん ; 鬼面具 ; 鬼面具 ; 도깨비 가면 ; masque d'ogre cornu ; Ogermaske ; careta de ogro ; maschera da orco ; gehoornd boemanmasker ; маска великана-людоеда ; Red
+2E6F ; CapMaskOgre2 ; horned-ogre mask ; オニのおめん ; 鬼面具 ; 鬼面具 ; 도깨비 가면 ; masque d'ogre cornu ; Ogermaske ; careta de ogro ; maschera da orco ; gehoornd boemanmasker ; маска великана-людоеда ; Green
+14E1 ; CapMaskOgre0 ; horned-ogre mask ; オニのおめん ; 鬼面具 ; 鬼面具 ; 도깨비 가면 ; masque d'ogre cornu ; Ogermaske ; careta de ogro ; maschera da orco ; gehoornd boemanmasker ; маска великана-людоеда ; Blue
 14F9 ; CapBangsSausage ; hot-dog hood ; ホットドッグマスク ; 熱狗頭套 ; 热狗头套 ; 핫도그 마스크 ; capuche saucisse ; Hotdog-Kapuze ; capucha salchicha ; berretto hot dog ; hotdogmuts ; шапка «Хот-дог» ; Red
 1558 ; CapCostumeDevil0 ; imp hood ; デビルなかぶりもの ; 惡魔頭套 ; 恶魔头套 ; 악마 모자 ; capuche de diablotin ; Kobold-Mütze ; gorro de diablo ; copricapo con corna ; duveltjesmuts ; шапка чертика ; Black
 2DBB ; CapCostumeDevil1 ; imp hood ; デビルなかぶりもの ; 惡魔頭套 ; 恶魔头套 ; 악마 모자 ; capuche de diablotin ; Kobold-Mütze ; gorro de diablo ; copricapo con corna ; duveltjesmuts ; шапка чертика ; Red
@@ -5598,8 +5637,8 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 17A4 ; CapHelmetKandula0 ; kaffiyeh ; アラビアのぼうし ; 阿拉伯帽子 ; 阿拉伯帽子 ; 아라비아 모자 ; keffieh ; Kufija ; pañuelo árabe ; kefiah ; keffiyeh ; куфия ; White
 2613 ; CapHelmetKandula1 ; kaffiyeh ; アラビアのぼうし ; 阿拉伯帽子 ; 阿拉伯帽子 ; 아라비아 모자 ; keffieh ; Kufija ; pañuelo árabe ; kefiah ; keffiyeh ; куфия ; Red
 2614 ; CapHelmetKandula2 ; kaffiyeh ; アラビアのぼうし ; 阿拉伯帽子 ; 阿拉伯帽子 ; 아라비아 모자 ; keffieh ; Kufija ; pañuelo árabe ; kefiah ; keffiyeh ; куфия ; Black
-14D3 ; CapCostumeKappa0 ; kappa cap ; カッパのおさら ; 河童頭頂 ; 河童头套 ; 거북이 모자 ; cagoule kappa ; Käpten-Mütze ; gorro de kappa ; cappello da tartaruga ; kappa-muts ; шапка каппы ; Green
-2DB0 ; CapCostumeKappa1 ; kappa cap ; カッパのおさら ; 河童頭頂 ; 河童头套 ; 거북이 모자 ; cagoule kappa ; Käpten-Mütze ; gorro de kappa ; cappello da tartaruga ; kappa-muts ; шапка каппы ; Pink
+14D3 ; CapCostumeKappa0 ; kappa cap ; カッパのおさら ; 河童頭頂 ; 河童头套 ; 거북이 모자 ; cagoule kappa ; Käpten-Mütze ; gorro de kappa ; cappello da kappa ; kappa-muts ; шапка каппы ; Green
+2DB0 ; CapCostumeKappa1 ; kappa cap ; カッパのおさら ; 河童頭頂 ; 河童头套 ; 거북이 모자 ; cagoule kappa ; Käpten-Mütze ; gorro de kappa ; cappello da kappa ; kappa-muts ; шапка каппы ; Pink
 15E7 ; CapFullfaceKingtut0 ; King Tut mask ; ツタンカーメン ; 圖坦卡門面具 ; 图坦卡门面具 ; 투탕카멘 ; masque de pharaon ; Pharaomaske ; máscara egipcia ; maschera Re Tut ; faraomasker ; маска фараона Тута ; Gold
 14D6 ; CapFullfaceKnightIron ; knight's helmet ; アイアンアーマーヘルメット ; 鐵甲面罩 ; 铁甲头盔 ; 아이언 아머 헬멧 ; casque de chevalier ; Ritterhelm ; yelmo ; elmo medievale ; ridderhelm ; рыцарский шлем ; Gray
 2AC3 ; CapBangsEarknit4 ; knit cap with earflaps ; みみあてつきニット ; 耳罩針織帽 ; 耳罩针织帽 ; 귀마개 니트 모자 ; bonnet cache-oreilles tricot ; Ohrenwärmer-Strickmütze ; gorro de punto con orejeras ; cappello con paraorecchi ; gebreide flapmuts ; вязаная шапка с ушами ; Ruby red
@@ -5629,6 +5668,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2E63 ; CapCostumeNinja6 ; ninja hood ; にんじゃずきん ; 忍者頭巾 ; 忍者头巾 ; 닌자 두건 ; cagoule de ninja ; Ninjakapuze ; caperuza de ninja ; cappuccio ninja ; ninjamasker ; капюшон ниндзя ; Yellow
 2E64 ; CapCostumeNinja7 ; ninja hood ; にんじゃずきん ; 忍者頭巾 ; 忍者头巾 ; 닌자 두건 ; cagoule de ninja ; Ninjakapuze ; caperuza de ninja ; cappuccio ninja ; ninjamasker ; капюшон ниндзя ; Orange
 1794 ; CapMaskNomenWhite ; Noh mask ; のうめん ; 能面具 ; 能面具 ; 일본 전통 가면 ; masque de nô ; No-Maske ; máscara de teatro Noh ; maschera da teatro nō ; no-masker ; маска театра «но» ; White
+3656 ; CapMaskOkame0 ; okame mask ; おかめのおめん ; 阿龜面具 ; 阿龟面具 ; 복을 부르는 가면 ; masque okame ; Okame-Maske ; máscara de Okame ; maschera da Okame ; okame-masker ; маска окамэ ; White
 1513 ; CapMaskPaint0 ; paintball mask ; ペイントボールマスク ; 漆彈面罩 ; 漆弹面罩 ; 페인트 볼 마스크 ; masque de paintball ; Paintball-Maske ; casco de paintball ; maschera da paintball ; paintballmasker ; маска для пейнтбола ; Black
 27F3 ; CapMaskPaint1 ; paintball mask ; ペイントボールマスク ; 漆彈面罩 ; 漆弹面罩 ; 페인트 볼 마스크 ; masque de paintball ; Paintball-Maske ; casco de paintball ; maschera da paintball ; paintballmasker ; маска для пейнтбола ; White
 27F4 ; CapMaskPaint2 ; paintball mask ; ペイントボールマスク ; 漆彈面罩 ; 漆弹面罩 ; 페인트 볼 마스크 ; masque de paintball ; Paintball-Maske ; casco de paintball ; maschera da paintball ; paintballmasker ; маска для пейнтбола ; Olive
@@ -5651,7 +5691,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2801 ; CapFullfaceRacing5 ; racing helmet ; フルフェイスメット ; 全罩式安全帽 ; 全罩式头盔 ; 풀페이스 헬멧 ; casque de course ; Rennfahrerhelm ; casco de carreras ; casco da pilota ; coureurshelm ; шлем гонщика ; Green
 2802 ; CapFullfaceRacing6 ; racing helmet ; フルフェイスメット ; 全罩式安全帽 ; 全罩式头盔 ; 풀페이스 헬멧 ; casque de course ; Rennfahrerhelm ; casco de carreras ; casco da pilota ; coureurshelm ; шлем гонщика ; Purple
 2803 ; CapFullfaceRacing7 ; racing helmet ; フルフェイスメット ; 全罩式安全帽 ; 全罩式头盔 ; 풀페이스 헬멧 ; casque de course ; Rennfahrerhelm ; casco de carreras ; casco da pilota ; coureurshelm ; шлем гонщика ; Light blue
-1546 ; CapBangsReindeerBrown ; reindeer hat ; トナカイのぼうし ; 馴鹿帽子 ; 驯鹿帽子 ; 루돌프 모자 ; coiffe de renne ; Rentiermütze ; gorro de reno ; cappello da renna ; rendiermuts ; шапка оленя ; Brown
+1546 ; CapBangsReindeerBrown ; reindeer hat ; トナカイのぼうし ; 馴鹿帽子 ; 驯鹿帽子 ; 순록 모자 ; coiffe de renne ; Rentiermütze ; gorro de reno ; cappello da renna ; rendiermuts ; шапка оленя ; Brown
 2E68 ; CapCostumeSamurai4 ; samurai helmet ; かぶと ; 頭盔 ; 头盔 ; 일본 무사 투구 ; casque de samouraï ; Samuraihelm ; casco de samurái ; elmo da samurai ; samoeraihelm ; шлем самурая ; Golden yellow
 2E65 ; CapCostumeSamurai1 ; samurai helmet ; かぶと ; 頭盔 ; 头盔 ; 일본 무사 투구 ; casque de samouraï ; Samuraihelm ; casco de samurái ; elmo da samurai ; samoeraihelm ; шлем самурая ; Black
 2E66 ; CapCostumeSamurai2 ; samurai helmet ; かぶと ; 頭盔 ; 头盔 ; 일본 무사 투구 ; casque de samouraï ; Samuraihelm ; casco de samurái ; elmo da samurai ; samoeraihelm ; шлем самурая ; Blue
@@ -5977,6 +6017,14 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 202F ; TopsTexOnepieceDressLClassic2 ; fashionable royal dress ; アントワネットなドレス ; 貴族風洋裝 ; 安托瓦内特洋装 ; 앙투아네트 드레스 ; robe de reine ; Königinnenkleid ; vestido de la realeza ; vestito regale ; koninklijke jurk ; модное платье королевы ; Yellow
 2030 ; TopsTexOnepieceDressLClassic3 ; fashionable royal dress ; アントワネットなドレス ; 貴族風洋裝 ; 安托瓦内特洋装 ; 앙투아네트 드레스 ; robe de reine ; Königinnenkleid ; vestido de la realeza ; vestito regale ; koninklijke jurk ; модное платье королевы ; Pink
 2031 ; TopsTexOnepieceDressLClassic4 ; fashionable royal dress ; アントワネットなドレス ; 貴族風洋裝 ; 安托瓦内特洋装 ; 앙투아네트 드레스 ; robe de reine ; Königinnenkleid ; vestido de la realeza ; vestito regale ; koninklijke jurk ; модное платье королевы ; Purple
+36C0 ; TopsTexOnepieceSalopetteLCarnival0 ; Festivale costume ; カーニバルなコスチューム ; 狂歡節服裝 ; 狂欢节服装 ; 카니발 의상 ; costume de carnaval ; Karnevalstracht ; traje de Carnaval ; costume Carnevale ; carnavalskostuum ; карнавальный костюм ; Blue
+37A0 ; TopsTexOnepieceSalopetteLCarnival1 ; Festivale costume ; カーニバルなコスチューム ; 狂歡節服裝 ; 狂欢节服装 ; 카니발 의상 ; costume de carnaval ; Karnevalstracht ; traje de Carnaval ; costume Carnevale ; carnavalskostuum ; карнавальный костюм ; Red
+37A1 ; TopsTexOnepieceSalopetteLCarnival2 ; Festivale costume ; カーニバルなコスチューム ; 狂歡節服裝 ; 狂欢节服装 ; 카니발 의상 ; costume de carnaval ; Karnevalstracht ; traje de Carnaval ; costume Carnevale ; carnavalskostuum ; карнавальный костюм ; Purple
+37A2 ; TopsTexOnepieceSalopetteLCarnival3 ; Festivale costume ; カーニバルなコスチューム ; 狂歡節服裝 ; 狂欢节服装 ; 카니발 의상 ; costume de carnaval ; Karnevalstracht ; traje de Carnaval ; costume Carnevale ; carnavalskostuum ; карнавальный костюм ; Green
+2A9F ; TopsTexOnepieceBoxNSamba0 ; Festivale tank dress ; カーニバルなワンピース ; 狂歡節連身裙 ; 狂欢节连身裙 ; 카니발 원피스 ; robe d'été carnaval ; Karnevalskleid ; vestido de Carnaval ; scamiciato Carnevale ; carnavalsjurk ; карнавальное платье ; Blue
+2EF7 ; TopsTexOnepieceBoxNSamba1 ; Festivale tank dress ; カーニバルなワンピース ; 狂歡節連身裙 ; 狂欢节连身裙 ; 카니발 원피스 ; robe d'été carnaval ; Karnevalskleid ; vestido de Carnaval ; scamiciato Carnevale ; carnavalsjurk ; карнавальное платье ; Red
+2EF8 ; TopsTexOnepieceBoxNSamba2 ; Festivale tank dress ; カーニバルなワンピース ; 狂歡節連身裙 ; 狂欢节连身裙 ; 카니발 원피스 ; robe d'été carnaval ; Karnevalskleid ; vestido de Carnaval ; scamiciato Carnevale ; carnavalsjurk ; карнавальное платье ; Purple
+2EF9 ; TopsTexOnepieceBoxNSamba3 ; Festivale tank dress ; カーニバルなワンピース ; 狂歡節連身裙 ; 狂欢节连身裙 ; 카니발 원피스 ; robe d'été carnaval ; Karnevalskleid ; vestido de Carnaval ; scamiciato Carnevale ; carnavalsjurk ; карнавальное платье ; Green
 0C3F ; TopsTexOnepieceBalloonNXmasRed ; festive dress ; クリスマスなドレス ; 聖誕洋裝 ; 圣诞洋装 ; 크리스마스 드레스 ; robe de mère Noël ; Festtagskleid ; vestido festivo ; vestito festivo ; kerstvrouwjurk ; праздничное платье ; Red
 2510 ; TopsTexOnepieceAlineNXmastreeNormal1 ; festive-tree dress ; もみのきワンピース ; 聖誕樹連身裙 ; 圣诞树连身裙 ; 크리스마스트리 원피스 ; robe d'été sapin ; Baumschmuck-Kleid ; vestido abeto ; scamiciato addobbato ; feestboomjurk ; платье «Елка» ; Green & blue
 2511 ; TopsTexOnepieceAlineNXmastreeNormal2 ; festive-tree dress ; もみのきワンピース ; 聖誕樹連身裙 ; 圣诞树连身裙 ; 크리스마스트리 원피스 ; robe d'été sapin ; Baumschmuck-Kleid ; vestido abeto ; scamiciato addobbato ; feestboomjurk ; платье «Елка» ; Green & red
@@ -6142,8 +6190,8 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2ED1 ; TopsTexOnepieceBlongLCandula1 ; kandoora ; カンデューラ ; 阿拉伯傳統服裝 ; 阿拉伯大袍 ; 칸두라 ; gandoura ; Kandura ; kandura ; dishdasha ; kaftan ; дишдаша ; Brown
 2ED2 ; TopsTexOnepieceBlongLCandula2 ; kandoora ; カンデューラ ; 阿拉伯傳統服裝 ; 阿拉伯大袍 ; 칸두라 ; gandoura ; Kandura ; kandura ; dishdasha ; kaftan ; дишдаша ; Gray
 262A ; TopsTexOnepieceBlongLCandula0 ; kandoora ; カンデューラ ; 阿拉伯傳統服裝 ; 阿拉伯大袍 ; 칸두라 ; gandoura ; Kandura ; kandura ; dishdasha ; kaftan ; дишдаша ; White
-25A2 ; TopsTexOnepieceOverallLKappa1 ; kappa costume ; カッパスーツ ; 河童裝 ; 河童装 ; 거북이 의상 ; costume de kappa ; Käpten-Kostüm ; disfraz de kappa ; costume da tartaruga ; kappa-pak ; костюм каппы ; Pink
-0D60 ; TopsTexOnepieceOverallLKappa0 ; kappa costume ; カッパスーツ ; 河童裝 ; 河童装 ; 거북이 의상 ; costume de kappa ; Käpten-Kostüm ; disfraz de kappa ; costume da tartaruga ; kappa-pak ; костюм каппы ; Green
+25A2 ; TopsTexOnepieceOverallLKappa1 ; kappa costume ; カッパスーツ ; 河童裝 ; 河童装 ; 거북이 의상 ; costume de kappa ; Käpten-Kostüm ; disfraz de kappa ; costume da kappa ; kappa-pak ; костюм каппы ; Pink
+0D60 ; TopsTexOnepieceOverallLKappa0 ; kappa costume ; カッパスーツ ; 河童裝 ; 河童装 ; 거북이 의상 ; costume de kappa ; Käpten-Kostüm ; disfraz de kappa ; costume da kappa ; kappa-pak ; костюм каппы ; Green
 0CD9 ; TopsTexOnepieceAlineNKiwi ; kiwi dress ; キウイのふく ; 奇異果服 ; 奇异果服 ; 키위 옷 ; robe kiwi ; Kiwikleid ; vestido kiwi ; vestito kiwi ; kiwi-jurk ; платье «Киви» ; Green
 2DCE ; TopsTexOnepieceAlineNKate1 ; Labelle dress ; ケイトのワンピース ; 凱絲連身裙 ; 凯丝的套装 ; 케이트의 원피스 ; robe Maria ; Samthea-Kleid ; vestido Trini ; vestito Bice ; Labelle-jurk ; платье «Лэйблеск» ; Midnight
 2DCF ; TopsTexOnepieceAlineNKate2 ; Labelle dress ; ケイトのワンピース ; 凱絲連身裙 ; 凯丝的套装 ; 케이트의 원피스 ; robe Maria ; Samthea-Kleid ; vestido Trini ; vestito Bice ; Labelle-jurk ; платье «Лэйблеск» ; Passion
@@ -6294,6 +6342,9 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 10F0 ; TopsTexOnepieceBoxLOffice0 ; office uniform ; オフィスなふく ; 公司制服 ; 职业装 ; 회사원 옷 ; uniforme administratif ; Büro-Outfit ; uniforme de oficinista ; uniforme seriosa ; kantooruniform ; служебная форма ; Blue
 2346 ; TopsTexOnepieceBoxLOffice1 ; office uniform ; オフィスなふく ; 公司制服 ; 职业装 ; 회사원 옷 ; uniforme administratif ; Büro-Outfit ; uniforme de oficinista ; uniforme seriosa ; kantooruniform ; служебная форма ; Pink
 2347 ; TopsTexOnepieceBoxLOffice2 ; office uniform ; オフィスなふく ; 公司制服 ; 职业装 ; 회사원 옷 ; uniforme administratif ; Büro-Outfit ; uniforme de oficinista ; uniforme seriosa ; kantooruniform ; служебная форма ; Gray
+21C9 ; TopsTexOnepieceOverallLOgre1 ; ogre costume ; オニのふく ; 鬼怪服 ; 鬼怪服 ; 도깨비 옷 ; costume d'ogre ; Ogerkostüm ; disfraz de ogro ; costume da orco ; boemanpak ; костюм людоеда ; Red
+140D ; TopsTexOnepieceOverallLOgre0 ; ogre costume ; オニのふく ; 鬼怪服 ; 鬼怪服 ; 도깨비 옷 ; costume d'ogre ; Ogerkostüm ; disfraz de ogro ; costume da orco ; boemanpak ; костюм людоеда ; Blue
+21CA ; TopsTexOnepieceOverallLOgre2 ; ogre costume ; オニのふく ; 鬼怪服 ; 鬼怪服 ; 도깨비 옷 ; costume d'ogre ; Ogerkostüm ; disfraz de ogro ; costume da orco ; boemanpak ; костюм людоеда ; Green
 2324 ; TopsTexOnepieceKimonoLShitamachi1 ; old commoner's kimono ; まちむすめのきもの ; 鄰家女孩和服 ; 邻家女孩和服 ; 체크무늬 기모노 ; kimono ordinaire ancien ; Schlichtkimono ; kimono sencillo antiguo ; kimono umile ; ouderwetse gewone kimono ; обычное кимоно ; Blue
 2325 ; TopsTexOnepieceKimonoLShitamachi2 ; old commoner's kimono ; まちむすめのきもの ; 鄰家女孩和服 ; 邻家女孩和服 ; 체크무늬 기모노 ; kimono ordinaire ancien ; Schlichtkimono ; kimono sencillo antiguo ; kimono umile ; ouderwetse gewone kimono ; обычное кимоно ; Green
 2326 ; TopsTexOnepieceKimonoLShitamachi3 ; old commoner's kimono ; まちむすめのきもの ; 鄰家女孩和服 ; 邻家女孩和服 ; 체크무늬 기모노 ; kimono ordinaire ancien ; Schlichtkimono ; kimono sencillo antiguo ; kimono umile ; ouderwetse gewone kimono ; обычное кимоно ; Red
@@ -6402,7 +6453,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 3450 ; TopsTexOnepieceSalopetteLHalloween5 ; raggedy outfit ; ボロボロなふく ; 破舊服 ; 破烂服 ; 찢어진 옷 ; tenue haillons ; Landstreicher-Outfit ; traje andrajoso ; costume cencioso ; haveloze outfit ; изношенный наряд ; Black
 344C ; TopsTexOnepieceSalopetteLHalloween1 ; raggedy outfit ; ボロボロなふく ; 破舊服 ; 破烂服 ; 찢어진 옷 ; tenue haillons ; Landstreicher-Outfit ; traje andrajoso ; costume cencioso ; haveloze outfit ; изношенный наряд ; Purple
 344D ; TopsTexOnepieceSalopetteLHalloween2 ; raggedy outfit ; ボロボロなふく ; 破舊服 ; 破烂服 ; 찢어진 옷 ; tenue haillons ; Landstreicher-Outfit ; traje andrajoso ; costume cencioso ; haveloze outfit ; изношенный наряд ; White
-119F ; TopsTexOnepieceOverallLReindeerBrown ; reindeer costume ; トナカイなふく ; 馴鹿服 ; 驯鹿装 ; 루돌프 의상 ; costume de renne ; Rentierkostüm ; disfraz de reno ; costume da renna ; rendierpak ; костюм оленя ; Brown
+119F ; TopsTexOnepieceOverallLReindeerBrown ; reindeer costume ; トナカイなふく ; 馴鹿服 ; 驯鹿装 ; 순록 의상 ; costume de renne ; Rentierkostüm ; disfraz de reno ; costume da renna ; rendierpak ; костюм оленя ; Brown
 1FEA ; TopsTexOnepieceAlongLRenaissance2 ; Renaissance dress ; ルネッサンスなドレス ; 文藝復興洋裝 ; 文艺复兴洋装 ; 르네상스 드레스 ; robe renaissance ; Renaissance-Kleid ; vestido Renacimiento ; vestito rinascimentale ; renaissancejurk ; платье эпохи Ренессанса ; Blue
 1FEB ; TopsTexOnepieceAlongLRenaissance3 ; Renaissance dress ; ルネッサンスなドレス ; 文藝復興洋裝 ; 文艺复兴洋装 ; 르네상스 드레스 ; robe renaissance ; Renaissance-Kleid ; vestido Renacimiento ; vestito rinascimentale ; renaissancejurk ; платье эпохи Ренессанса ; Navy blue
 1FEC ; TopsTexOnepieceAlongLRenaissance4 ; Renaissance dress ; ルネッサンスなドレス ; 文藝復興洋裝 ; 文艺复兴洋装 ; 르네상스 드레스 ; robe renaissance ; Renaissance-Kleid ; vestido Renacimiento ; vestito rinascimentale ; renaissancejurk ; платье эпохи Ренессанса ; Pink
@@ -8264,9 +8315,9 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2066 ; TopsTexTopCoatLRain7 ; raincoat ; レインコート ; 雨衣 ; 雨衣 ; 우비 ; imperméable ; Regenmantel ; impermeable ; impermeabile ; regenjas ; дождевик ; Black
 2060 ; TopsTexTopCoatLRain1 ; raincoat ; レインコート ; 雨衣 ; 雨衣 ; 우비 ; imperméable ; Regenmantel ; impermeable ; impermeabile ; regenjas ; дождевик ; Green
 2061 ; TopsTexTopCoatLRain2 ; raincoat ; レインコート ; 雨衣 ; 雨衣 ; 우비 ; imperméable ; Regenmantel ; impermeable ; impermeabile ; regenjas ; дождевик ; Blue
-11D6 ; TopsTexTopOuterLReindeer0 ; reindeer sweater ; トナカイセーター ; 馴鹿毛衣 ; 驯鹿毛衣 ; 루돌프 스웨터 ; pull tricoté rennes ; Rentierpulli ; cárdigan renos ; maglione con renne ; rendiertrui ; кофта с оленями ; Green
-1E3C ; TopsTexTopOuterLReindeer1 ; reindeer sweater ; トナカイセーター ; 馴鹿毛衣 ; 驯鹿毛衣 ; 루돌프 스웨터 ; pull tricoté rennes ; Rentierpulli ; cárdigan renos ; maglione con renne ; rendiertrui ; кофта с оленями ; Brown
-1E3D ; TopsTexTopOuterLReindeer2 ; reindeer sweater ; トナカイセーター ; 馴鹿毛衣 ; 驯鹿毛衣 ; 루돌프 스웨터 ; pull tricoté rennes ; Rentierpulli ; cárdigan renos ; maglione con renne ; rendiertrui ; кофта с оленями ; Red
+11D6 ; TopsTexTopOuterLReindeer0 ; reindeer sweater ; トナカイセーター ; 馴鹿毛衣 ; 驯鹿毛衣 ; 순록 스웨터 ; pull tricoté rennes ; Rentierpulli ; cárdigan renos ; maglione con renne ; rendiertrui ; кофта с оленями ; Green
+1E3C ; TopsTexTopOuterLReindeer1 ; reindeer sweater ; トナカイセーター ; 馴鹿毛衣 ; 驯鹿毛衣 ; 순록 스웨터 ; pull tricoté rennes ; Rentierpulli ; cárdigan renos ; maglione con renne ; rendiertrui ; кофта с оленями ; Brown
+1E3D ; TopsTexTopOuterLReindeer2 ; reindeer sweater ; トナカイセーター ; 馴鹿毛衣 ; 驯鹿毛衣 ; 순록 스웨터 ; pull tricoté rennes ; Rentierpulli ; cárdigan renos ; maglione con renne ; rendiertrui ; кофта с оленями ; Red
 249C ; TopsTexTopTshirtsNEkiden1 ; relay tank ; えきでんなふく ; 接力賽衣服 ; 接力赛服 ; 마라토너 옷 ; débardeur marathon ; Staffellauf-Top ; top maratón ; canotta da maratona ; marathonshirt ; эстафетный топ ; Light blue
 249D ; TopsTexTopTshirtsNEkiden2 ; relay tank ; えきでんなふく ; 接力賽衣服 ; 接力赛服 ; 마라토너 옷 ; débardeur marathon ; Staffellauf-Top ; top maratón ; canotta da maratona ; marathonshirt ; эстафетный топ ; Purple
 249E ; TopsTexTopTshirtsNEkiden3 ; relay tank ; えきでんなふく ; 接力賽衣服 ; 接力赛服 ; 마라토너 옷 ; débardeur marathon ; Staffellauf-Top ; top maratón ; canotta da maratona ; marathonshirt ; эстафетный топ ; Black
@@ -8615,5 +8666,3 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2135 ; TopsTexTopYshirtsLPrince4 ; young-royal shirt ; おうじさまシャツ ; 王子襯衫 ; 王子衬衫 ; 왕자님 셔츠 ; chemise princière ; Prinzenhemd ; camisa de aristócrata ; camicia principesca ; koninklijk overhemd ; королевская рубашка ; Cream
 1066 ; TopsTexTopYshirtsLPrince0 ; young-royal shirt ; おうじさまシャツ ; 王子襯衫 ; 王子衬衫 ; 왕자님 셔츠 ; chemise princière ; Prinzenhemd ; camisa de aristócrata ; camicia principesca ; koninklijk overhemd ; королевская рубашка ; White
 200C ; TopsTexTopTshirtsLJagged0 ; zigzag shirt ; ギザギザのＴシャツ ; 鋸齒紋T恤 ; 锯齿纹T恤 ; 뾰족뾰족 티셔츠 ; pull zigzag ; Zickzackpulli ; jersey zigzag ; maglietta zigzag ; kartelshirt ; лонгслив с зигзагом ; Red, green & gold
-315A ; ReddWallDisplay ; Redd's wall display ; いなりのかべかけちんれつだい ; Redd's wall display ; Redd's wall display ; Redd's wall display ; Redd's wall display ; Redd's wall display ; Redd's wall display ; Redd's wall display ; Redd's wall display ; Redd's wall display ; 
-1618 ; ShopWallDisplay ; Shop's wall display ; しょうてんのかべかけちんれつだい ; Shop's wall display ; Shop's wall display ; Shop's wall display ; Shop's wall display ; Shop's wall display ; Shop's wall display ; Shop's wall display ; Shop's wall display ; Shop's wall display ; 

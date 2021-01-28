@@ -165,13 +165,15 @@ namespace ACNHPoker
 
         public void setBackColor(bool Layer1 = true)
         {
-            if (!Layer1)
+            if (Layer1)
             {
-                this.BackColor = Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+                //this.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+                this.BackColor = miniMap.GetBackgroundColor(mapX, mapY);
             }
             else
             {
-                this.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+                //this.BackColor = Color.FromArgb(((int)(((byte)(153)))), ((int)(((byte)(204)))), ((int)(((byte)(255)))));
+                this.BackColor = miniMap.GetBackgroundColor(mapX, mapY, false);
             }
 
             if (flag1 != "00") //Wrapped
@@ -241,7 +243,7 @@ namespace ACNHPoker
             }
             else if (locked)
             {
-                this.BackColor = Color.Gray;
+                //this.BackColor = Color.Gray;
             }
         }
 
