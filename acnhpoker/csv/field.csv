@@ -66,26 +66,37 @@ EBC0 ; PltTreeCherry3 ; Cherry Tree (Grow 3) ; 00000000
 EAC9 ; PltTreeCherry ; Cherry Tree (Full-grown) ; 00000000
 EACC ; PltBushAzalea0White ; white-azalea (Sapling) ; 00000000
 EAD0 ; PltBushAzalea1White ; white-azalea (Grow 1) ; 00000000
+EACF ; PltBushAzalea2White ; white-azalea (Bush) ; 00000000
 EC21 ; PltBushAzalea0Pink ; pink-azalea (Sapling) ; 00000000
 EC20 ; PltBushAzalea1Pink ; pink-azalea (Grow 1) ; 00000000
+EC24 ; PltBushAzalea2Pink ; pink-azalea (Bush) ; 00000000
 EBF9 ; PltBushHydrangea ; blue-hydrangea (Sapling) ; 00000000
 EBFC ; PltBushHydrangea1Blue ; blue-hydrangea (Grow 1) ; 00000000
+EBFF ; PltBushHydrangea2Blue ; blue-hydrangea (Bush) ; 00000000
 EBFB ; PltBushHydrangea0Pink ; pink-hydrangea (Sapling) ; 00000000
 EC00 ; PltBushHydrangea1Pink ; pink-hydrangea (Grow 1) ; 00000000
+EC03 ; PltBushHydrangea2Pink ; pink-hydrangea (Bush) ; 00000000
 EAD2 ; PltBushHibiscus0Red ; red-hibiscus (Sapling) ; 00000000
 EAD5 ; PltBushHibiscus1Red ; red-hibiscus (Grow 1) ; 00000000
+EAD4 ; PltBushHibiscus2Red ; red-hibiscus (Bush) ; 00000000
 EC25 ; PltBushHibiscus0Yellow ; yellow-hibiscus (Sapling) ; 00000000
 EC26 ; PltBushHibiscus1Yellow ; yellow-hibiscus (Grow 1) ; 00000000
+EC29 ; PltBushHibiscus2Yellow ; yellow-hibiscus (Bush) ; 00000000
 EAD7 ; PltBushHolly0 ; holly (Sapling) ; 00000000
 EAD9 ; PltBushHolly1 ; holly (Grow 1) ; 00000000
+EADA ; PltBushHolly2 ; holly (Bush) ; 00000000
 ECF8 ; PltBushOsmathus1Yello ; yellow-tea-olive (Sapling) ; 00000000
 ECF6 ; PltBushOsmathus2Yello ; yellow-tea-olive (Grow 1) ; 00000000
+ECF4 ; PltBushOsmathus3Yello ; yellow-tea-olive (Bush) ; 00000000
 ECFC ; PltBushOsmathus1Orange ; orange-tea-olive (Sapling) ; 00000000
 ECFD ; PltBushOsmathus2Orange ; orange-tea-olive (Grow 1) ; 00000000
+ECF9 ; PltBushOsmathus3Orange ; orange-tea-olive (Bush) ; 00000000
 ED02 ; PltBushCamellia1Red ; red-camellia (Sapling) ; 00000000
 ED04 ; PltBushCamellia2Red ; red-camellia (Grow 1) ; 00000000
+ED06 ; PltBushCamellia3Red ; red-camellia (Bush) ; 00000000
 ECFE ; PltBushCamellia1Pink ; pink-camellia (Sapling) ; 00000000
 ECFF ; PltBushCamellia2Pink ; pink-camellia (Grow 1) ; 00000000
+ED01 ; PltBushCamellia3Pink ; pink-camellia (Bush) ; 00000000
 ECAF ; PltVgtSquash0Orange ; orange pumpkin (Sapling) ; 00000000
 ECB0 ; PltVgtSquash1Orange ; orange pumpkin (Grow 1) ; 00000000
 ECB1 ; PltVgtSquash2Orange ; orange pumpkin (Grow 2) ; 00000000
@@ -364,9 +375,7 @@ ECB2 ; FenceBarbedWire ; barbed-wire fence ; 00000000
 ECB6 ; FenceJapanese ; zen fence ; 00000000
 ECB7 ; FenceIronAndStone ; iron-and-stone fence ; 00000000
 ED0C ; FenceEasterEgg ; Bunny Day fence ; 00000000
-ED0B ; FenceJuneBride3 ; wedding fence (Green) ; 00000000
 ED0D ; FenceJuneBride ; wedding fence ; 00000000
-ED0E ; FenceJuneBride1 ; wedding fence (Pink) ; 00000000
 ED08 ; FenceIkegaki ; hedge ; 00000000
 ED21 ; FenceMermaid ; mermaid fence ; 00000000
 ED25 ; FenceHalloween ; spooky fence ; 00000000

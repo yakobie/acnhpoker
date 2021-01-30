@@ -47,6 +47,7 @@ namespace ACNHPoker
 
         private DataTable currentDataTable;
         private bool sound;
+        private bool ignore = false;
 
         byte[] Layer1 = null;
         byte[] Layer2 = null;
@@ -225,7 +226,8 @@ namespace ACNHPoker
                         yCoordinate.Text = anchorX.ToString();
                         enableBtn();
                         fetchMapBtn.Visible = false;
-                        NextSaveTimer.Start();
+                        //if (Utilities.getDodo(s, bot) == string.Empty)
+                            NextSaveTimer.Start();
                     });
                 }
                 else
@@ -237,7 +239,7 @@ namespace ACNHPoker
             {
                 Log.logEvent("Map", "FetchMap: " + ex.Message.ToString());
                 NextSaveTimer.Stop();
-                MessageBox.Show(ex.Message.ToString(), "!!! THIS SHIT DOESN'T WORK!! WHY? HAS I EVER?");
+                myMessageBox.Show(ex.Message.ToString(), "!!! THIS SHIT DOESN'T WORK!! WHY? HAS I EVER?");
             }
         }
 
@@ -1371,7 +1373,6 @@ namespace ACNHPoker
         {
             showMapWait(2, "Spawning Item...");
             
-            /*
             while(isAboutToSave(3))
             {
                 this.Invoke((MethodInvoker)delegate
@@ -1380,7 +1381,6 @@ namespace ACNHPoker
                 });
                 Thread.Sleep(2000);
             }
-            */
 
             Utilities.dropItem(s, bot, address1, address2, address3, address4, itemID, itemData, "00", flag2);
 
@@ -1521,7 +1521,6 @@ namespace ACNHPoker
         {
             showMapWait(2, "Deleting Item...");
 
-            /*
             while (isAboutToSave(3))
             {
                 this.Invoke((MethodInvoker)delegate
@@ -1530,7 +1529,6 @@ namespace ACNHPoker
                 });
                 Thread.Sleep(2000);
             }
-            */
 
             Utilities.deleteFloorItem(s, bot, address1, address2, address3, address4);
 
@@ -1648,7 +1646,7 @@ namespace ACNHPoker
             {
                 Log.logEvent("Map", "RefreshMap: " + ex.Message.ToString());
                 NextSaveTimer.Stop();
-                MessageBox.Show(ex.Message.ToString(), "For the brave souls who get this far: You are the chosen ones.");
+                myMessageBox.Show(ex.Message.ToString(), "For the brave souls who get this far: You are the chosen ones.");
             }
 
             hideMapWait();
@@ -1772,7 +1770,7 @@ namespace ACNHPoker
             {
                 Log.logEvent("Map", "FillRemain: " + ex.Message.ToString());
                 NextSaveTimer.Stop();
-                MessageBox.Show(ex.Message.ToString(), " The valiant knights of programming who toil away, without rest,");
+                myMessageBox.Show(ex.Message.ToString(), " The valiant knights of programming who toil away, without rest,");
             }
 
             hideMapWait();
@@ -1953,13 +1951,13 @@ namespace ACNHPoker
 
                     if (emptyspace < item.Length)
                     {
-                        DialogResult dialogResult = MessageBox.Show("Empty tiles around anchor : " + emptyspace + "\n" +
+                        DialogResult dialogResult = myMessageBox.Show("Empty tiles around anchor : " + emptyspace + "\n" +
                                                                     "Number of items to Spawn : " + item.Length + "\n" +
                                                                     "\n" +
                                                                     "Press  [Yes]  to clear the floor and spawn the items " + "\n" +
                                                                     "or  [No]  to cancel the spawn." + "\n" + "\n" +
                                                                     "[Warning] You will lose your items on the ground!"
-                                                                    , "Not enough empty tiles!", MessageBoxButtons.YesNo);
+                                                                    , "Not enough empty tiles!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (dialogResult == DialogResult.Yes)
                         {
                             fillFloor(ref b, item);
@@ -2054,7 +2052,7 @@ namespace ACNHPoker
             {
                 Log.logEvent("Map", "LoadFloor: " + ex.Message.ToString());
                 NextSaveTimer.Stop();
-                MessageBox.Show(ex.Message.ToString(), "I say this: never gonna give you up, never gonna let you down,");
+                myMessageBox.Show(ex.Message.ToString(), "I say this: never gonna give you up, never gonna let you down.");
             }
 
             hideMapWait();
@@ -2900,36 +2898,52 @@ namespace ACNHPoker
 
         private void reAnchorBtn_MouseClick(object sender, MouseEventArgs e)
         {
-            byte[] Coordinate = Utilities.getCoordinate(s, bot);
-            int x = BitConverter.ToInt32(Coordinate, 0);
-            int y = BitConverter.ToInt32(Coordinate, 4);
-
-            anchorX = x - 0x24;
-            anchorY = y - 0x18;
-
-            if (anchorX < 3 || anchorY < 3 || anchorX > 108 || anchorY > 92)
+            try
             {
+                byte[] Coordinate = Utilities.getCoordinate(s, bot);
+                int x = BitConverter.ToInt32(Coordinate, 0);
+                int y = BitConverter.ToInt32(Coordinate, 4);
+
+                anchorX = x - 0x24;
+                anchorY = y - 0x18;
+
+                if (anchorX < 3 || anchorY < 3 || anchorX > 108 || anchorY > 92)
+                {
+                    anchorX = 56;
+                    anchorY = 48;
+                }
+
+                displayAnchor(getMapColumns(anchorX, anchorY));
+
+                xCoordinate.Text = x.ToString();
+                yCoordinate.Text = y.ToString();
+            }
+            catch (Exception ex)
+            {
+                Log.logEvent("Map", "getCoordinate: " + ex.Message.ToString());
+                myMessageBox.Show(ex.Message.ToString(), "Weed Effect !");
+
                 anchorX = 56;
                 anchorY = 48;
+
+                displayAnchor(getMapColumns(anchorX, anchorY));
+
+                xCoordinate.Text = anchorX.ToString();
+                yCoordinate.Text = anchorY.ToString();
             }
-
-            displayAnchor(getMapColumns(anchorX, anchorY));
-
-            xCoordinate.Text = x.ToString();
-            yCoordinate.Text = y.ToString();
         }
 
         private void bulkSpawnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (bulk == null)
-                bulk = new bulkSpawn(s, bot, Layer1, Layer2, Acre, anchorX, anchorY, this, sound);
+                bulk = new bulkSpawn(s, bot, Layer1, Layer2, Acre, anchorX, anchorY, this, ignore, sound);;
             bulk.StartPosition = FormStartPosition.CenterParent;
             bulk.ShowDialog();
         }
 
         private void weedsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove all weeds on your island?", "Oh No! Not the Weeds!", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to remove all weeds on your island?", "Oh No! Not the Weeds!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.No)
                 return;
 
@@ -2970,7 +2984,7 @@ namespace ACNHPoker
 
         private void flowersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove all flowers on your island?", "Photoshop Flowey", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to remove all flowers on your island?", "Photoshop Flowey", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.No)
                 return;
 
@@ -3011,7 +3025,7 @@ namespace ACNHPoker
 
         private void treesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove all trees on your island?", "Team Trees is stupid!", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to remove all trees on your island?", "Team Trees is stupid!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.No)
                 return;
 
@@ -3052,7 +3066,7 @@ namespace ACNHPoker
 
         private void bushesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove all bushes on your island?", "Have you ever seen an elephant hiding in the bushes?", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to remove all bushes on your island?", "Have you ever seen an elephant hiding in the bushes?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.No)
                 return;
 
@@ -3093,7 +3107,7 @@ namespace ACNHPoker
 
         private void fencesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove all fences on your island?", "I said to my mate Noah: \"You should change your surname to Fence...\"", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to remove all fences on your island?", "I said to my mate Noah: \"You should change your surname to Fence...\"", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.No)
                 return;
 
@@ -3134,7 +3148,7 @@ namespace ACNHPoker
 
         private void shellsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove all shells on your island?", "You would think that a snail without a shell would move a bit faster...", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to remove all shells on your island?", "You would think that a snail without a shell would move a bit faster...", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.No)
                 return;
 
@@ -3175,7 +3189,7 @@ namespace ACNHPoker
 
         private void diysToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove all DIYs on your island?", "DiWHY - Reddit", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to remove all DIYs on your island?", "DiWHY - Reddit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.No)
                 return;
 
@@ -3216,7 +3230,7 @@ namespace ACNHPoker
 
         private void rocksToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove all ore/bell rocks on your island?", "Girls are like rocks, the flat ones get skipped...", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to remove all ore/bell rocks on your island?", "Girls are like rocks, the flat ones get skipped...", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.No)
                 return;
 
@@ -3257,7 +3271,7 @@ namespace ACNHPoker
 
         private void everythingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove all dropped/placed item on your island?", "Is everything a joke to you ?", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to remove all dropped/placed item on your island?", "Is everything a joke to you ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.No)
                 return;
 
@@ -3339,7 +3353,7 @@ namespace ACNHPoker
             {
                 Log.logEvent("Map", "Renew: " + ex.Message.ToString());
                 NextSaveTimer.Stop();
-                MessageBox.Show(ex.Message.ToString(), "Fixing our most awful code. To you, true saviors, kings of men,");
+                myMessageBox.Show(ex.Message.ToString(), "Fixing our most awful code. To you, true saviors, kings of men.");
             }
 
             hideMapWait();
@@ -3375,6 +3389,8 @@ namespace ACNHPoker
 
         private bool isAboutToSave(int second)
         {
+            if (ignore)
+                return false;
             if (saveTime > 20)
                 return false;
 
@@ -3426,18 +3442,44 @@ namespace ACNHPoker
             {
                 Log.logEvent("Map", "NextAutoSave: " + ex.Message.ToString());
                 NextSaveTimer.Stop();
-                MessageBox.Show(ex.Message.ToString() + "\nThe connection to the switch ended.\n\nDid the switch enter sleep mode?", "Ugandan Knuckles: \"Oh No!\"");
+                myMessageBox.Show(ex.Message.ToString() + "\nThe connection to the switch ended.\n\nDid the switch enter sleep mode?", "Ugandan Knuckles: \"Oh No!\"", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return 69;
             }
         }
 
         private void NextSaveTimer_Tick(object sender, EventArgs e)
         {
-            if (saveTime <= 0)
+            if (saveTime <= -30)
+            {
+                NextSaveTimer.Stop();
+                DialogResult result = myMessageBox.Show( "It seems autosave have been paused.\n" +
+                                                "You might have a visitor on your island, or your inventory stay open.\n" +
+                                                "Or you are at the title screen waiting to \"Press A\".\n\n" +
+                                                "Would you like the Map Dropper to ignore the autosave protection at the moment?\n\n" +
+                                                "Note spawning item during autosave might crash the game."
+                                                , "Waiting for autosave to complete...", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    ignore = true;
+                    nextAutoSaveSecond.Text = string.Empty;
+                    Log.logEvent("Map", "Autosave Ignored");
+                }
+                else
+                {
+                    saveTime = nextAutosave();
+                    NextSaveTimer.Start();
+                }
+            }
+            else if (saveTime <= 0)
+            {
                 saveTime = nextAutosave();
+                nextAutoSaveSecond.Text = saveTime.ToString();
+            }
             else
+            {
                 saveTime--;
-            nextAutoSaveSecond.Text = saveTime.ToString();
+                nextAutoSaveSecond.Text = saveTime.ToString();
+            }
         }
 
     }

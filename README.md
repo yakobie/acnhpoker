@@ -151,6 +151,12 @@ https://youtu.be/-zztRgmtXig
 	* Added a bit more code and a log file to try and cath exception.
 * R13
 	* Update for Game version number 1.7.0
+* R13.1
+	* All three moveout buttons can now cancel any invited villager
+	* A "dodo.txt" file containing your current dodo code will now be generated in the /save folder if you start the regenerator with the gate already open.
+	* Redo most of the popup message boxes
+	* Added the option to type in the spawn coordinate in the bulk spawn menu
+	* Fixed the "Timeout" error while the regenerator is running in the background.
     
 ## Contributing
 

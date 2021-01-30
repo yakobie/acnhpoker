@@ -16,7 +16,7 @@ namespace ACNHPoker
     public partial class Form1 : Form
     {
         private static Socket s;
-        readonly private string version = "ACNH Poker R13 for v1.7.0";
+        readonly private string version = "ACNH Poker R13.1 for v1.7.0";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;
@@ -215,7 +215,7 @@ namespace ACNHPoker
             {
                 if (sound)
                     System.Media.SystemSounds.Asterisk.Play();
-                MessageBox.Show("[Warning] Missing items.csv file!");
+                myMessageBox.Show("[Warning] Missing items.csv file!", "Missing file!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             if (File.Exists(overridePath))
@@ -372,8 +372,16 @@ namespace ACNHPoker
                 variationModeButton.Visible = false;
             }
 
-            if (File.Exists(favPath))
+            if (!File.Exists(favPath))
             {
+                string favheader = "id" + " ; " + "iName" + " ; " + "Name" + " ; " + "value" + " ; ";
+
+                using (StreamWriter sw = File.CreateText(favPath))
+                {
+                    sw.WriteLine(favheader);
+                }
+            }
+
                 favSource = loadCSVwoKey(favPath);
                 favGridView.DataSource = favSource;
 
@@ -403,12 +411,6 @@ namespace ACNHPoker
 
                 favGridView.Columns["Name"].Width = 195;
                 favGridView.Columns["Image"].Width = 128;
-            }
-            else
-            {
-                favModeBtn.Visible = false;
-                favGridView.Visible = false;
-            }
 
 
             if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\" + "img"))
@@ -418,7 +420,6 @@ namespace ACNHPoker
             }
 
             currentPanel = itemModePanel;
-            //playerSelectorVillager.SelectedIndex = 0;
 
             LanguageSetup(config.AppSettings.Settings["language"].Value);
             this.KeyPreview = true;
@@ -580,7 +581,7 @@ namespace ACNHPoker
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message.ToString(), "Todo this is dumb");
+                myMessageBox.Show(e.Message.ToString(), "Todo : this is dumb");
                 return false;
             }
         }
@@ -871,5 +872,6 @@ namespace ACNHPoker
         {
             Log.logEvent("MainForm", "Form Closed");
         }
+
     }
 }

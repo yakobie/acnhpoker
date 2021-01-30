@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace ACNHPoker
@@ -36,6 +35,7 @@ namespace ACNHPoker
 
         public static  UInt32 VillagerMoveoutOffset = 0x1267A;
         public static  UInt32 VillagerForceMoveoutOffset = 0x126AC;
+        public static  UInt32 VillagerAbandonHouseOffset = 0x1268E;
         public static  UInt32 VillagerFriendshipOffset = 0x46;
         public static  UInt32 VillagerCatchphraseOffset = 0x10794;
 
@@ -62,6 +62,9 @@ namespace ACNHPoker
         public static UInt32 mapSize = 0x54000;
 
         public static UInt32 VisitorNameAddress = 0xB66F4EE0; // 0xB694A4A8;
+
+        public static UInt32 dodoAddress = 0xA97E15C;
+
 
         public static UInt32 TerrainOffset = mapZero + 0xAAA10;
 
@@ -152,15 +155,15 @@ namespace ACNHPoker
 
         public static UInt32 readTimeAddress = 0xBA18CE8; //0x0BA17CE8;
 
-        public static UInt32 wSpeedAddress = 0x010C6270;
-        public static readonly string wSpeedX1 = "BD51DE61";
+        public static UInt32 wSpeedAddress = 0x010E6D10; //0x010C6270;
+        public static readonly string wSpeedX1 = "BD525661"; //"BD51DE61";
         public static readonly string wSpeedX2 = "1E201001";
         public static readonly string wSpeedX3 = "1E211001";
         public static readonly string wSpeedX4 = "1E221001";
 
-        public static UInt32 CollisionAddress = 0x0103CB70;
+        public static UInt32 CollisionAddress = 0x01059480; //0x0103CB70;
         public static readonly string CollisionDisable = "12800014";
-        public static readonly string CollisionEnable = "B955E014";
+        public static readonly string CollisionEnable = "B9567014"; //"B955E014";
 
         public static UInt32 aSpeedAddress = 0x037380C8; //0x036C5188; 
         public static readonly string aSpeedX1 = "3F800000";
@@ -999,7 +1002,7 @@ namespace ACNHPoker
             } while (sent < size);
         }
 
-        public static int ReceiveString(Socket socket, byte[] buffer, int offset = 0, int size = 0, int timeout = 5000)
+        public static int ReceiveString(Socket socket, byte[] buffer, int offset = 0, int size = 0, int timeout = 20000)
         {
             int startTickCount = Environment.TickCount;
             int received = 0;  // how many bytes is already received
@@ -1019,7 +1022,7 @@ namespace ACNHPoker
                         ex.SocketErrorCode == SocketError.NoBufferSpaceAvailable)
                     {
                         // socket buffer is probably empty, wait and try again
-                        Thread.Sleep(30);
+                        //Thread.Sleep(30);
                     }
                     else
                         throw ex;  // any serious error occurr
@@ -1650,6 +1653,10 @@ namespace ACNHPoker
                         msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerForceMoveoutOffset).ToString("X"), ForceMoveoutFlag);
                         Debug.Print("Poke ForceMoveout: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
+
+                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerAbandonHouseOffset).ToString("X"), "0");
+                        Debug.Print("Poke AbandonHouse: " + msg);
+                        SendString(socket, Encoding.UTF8.GetBytes(msg));
                     }
                     else
                     {
@@ -1991,8 +1998,6 @@ namespace ACNHPoker
         {
             lock (botLock)
             {
-                try
-                {
                     if (bot == null)
                     {
                         Debug.Print("[Sys] Peek : Coordinate " + coordinate.ToString("X"));
@@ -2017,16 +2022,10 @@ namespace ACNHPoker
                         }
                         return b;
                     }
-                }
-                catch
-                {
-                    MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
-                    return null;
-                }
             }
         }
 
-        public static byte[] getSaving(Socket socket, USBBot bot)
+        public static byte[] getSaving(Socket socket, USBBot bot = null)
         {
             lock (botLock)
             {
@@ -2224,6 +2223,41 @@ namespace ACNHPoker
                 }
 
                 return b;
+            }
+        }
+
+        public static string getDodo(Socket socket, USBBot bot = null)
+        {
+            lock (botLock)
+            {
+                byte[] b;
+
+                if (bot == null)
+                {
+                    Debug.Print("[Sys] Peek : Dodo " + dodoAddress.ToString("X"));
+
+                    b = ReadByteArray(socket, dodoAddress, 5);
+
+                    if (b == null)
+                    {
+                        MessageBox.Show("Wait something is wrong here!? \n\n Dodo");
+                        return "";
+                    }
+                }
+                else
+                {
+                    Debug.Print("[Usb] Peek : Dodo " + dodoAddress.ToString("X"));
+
+                    b = bot.ReadBytes(dodoAddress, 5);
+
+                    if (b == null)
+                    {
+                        MessageBox.Show("Wait something is wrong here!? \n\n Dodo");
+                        return "";
+                    }
+                }
+
+                return Encoding.ASCII.GetString(b);
             }
         }
 

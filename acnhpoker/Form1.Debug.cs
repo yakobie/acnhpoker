@@ -142,8 +142,8 @@ namespace ACNHPoker
             if (MiniMap == null)
                 MiniMap = new miniMap(b, null, 3);
             
-            //miniMapBox.Visible = true;
-            //miniMapBox.Image = MiniMap.drawItemMap();
+            miniMapBox.Visible = true;
+            miniMapBox.Image = MiniMap.drawItemMap();
         }
 
         private void button2_Click_1(object sender, EventArgs e)

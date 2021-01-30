@@ -31,8 +31,8 @@ namespace ACNHPoker
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapRegenerator));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PleaseWaitPanel = new System.Windows.Forms.Panel();
             this.PauseTimeLabel = new System.Windows.Forms.Label();
             this.WaitMessagebox = new System.Windows.Forms.RichTextBox();
@@ -59,17 +59,19 @@ namespace ACNHPoker
             this.logBtn = new System.Windows.Forms.Button();
             this.newLogBtn = new System.Windows.Forms.Button();
             this.selectLogBtn = new System.Windows.Forms.Button();
+            this.startBtn = new System.Windows.Forms.Button();
             this.PauseTimer = new System.Windows.Forms.Timer(this.components);
             this.logGridView = new System.Windows.Forms.DataGridView();
             this.logName = new System.Windows.Forms.Label();
             this.logPanel = new System.Windows.Forms.Panel();
             this.mapPanel = new System.Windows.Forms.Panel();
-            this.miniMapBox = new System.Windows.Forms.PictureBox();
-            this.yCoordinate = new System.Windows.Forms.RichTextBox();
-            this.xCoordinate = new System.Windows.Forms.RichTextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.startBtn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.yCoordinate = new System.Windows.Forms.RichTextBox();
+            this.miniMapBox = new System.Windows.Forms.PictureBox();
+            this.xCoordinate = new System.Windows.Forms.RichTextBox();
+            this.readDodoBtn = new System.Windows.Forms.Button();
+            this.clearBtn = new System.Windows.Forms.Button();
             this.PleaseWaitPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGridView)).BeginInit();
@@ -437,6 +439,25 @@ namespace ACNHPoker
             this.selectLogBtn.UseVisualStyleBackColor = false;
             this.selectLogBtn.Click += new System.EventHandler(this.selectLogBtn_Click);
             // 
+            // startBtn
+            // 
+            this.startBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.startBtn.FlatAppearance.BorderSize = 0;
+            this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.startBtn.ForeColor = System.Drawing.Color.White;
+            this.startBtn.Location = new System.Drawing.Point(143, 4);
+            this.startBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.startBtn.Name = "startBtn";
+            this.startBtn.Size = new System.Drawing.Size(86, 25);
+            this.startBtn.TabIndex = 236;
+            this.startBtn.Tag = "Start";
+            this.startBtn.Text = "Start";
+            this.formToolTip.SetToolTip(this.startBtn, "Start the regen with only the area selected being ignored.\r\n[WARNING] Item droppe" +
+        "d/placed on the empty space outside the area will be deleted.");
+            this.startBtn.UseVisualStyleBackColor = false;
+            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
+            // 
             // PauseTimer
             // 
             this.PauseTimer.Interval = 1000;
@@ -449,23 +470,23 @@ namespace ACNHPoker
             this.logGridView.AllowUserToResizeRows = false;
             this.logGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.logGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.logGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.logGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.logGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(105)))), ((int)(((byte)(110)))));
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.logGridView.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(105)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.logGridView.DefaultCellStyle = dataGridViewCellStyle4;
             this.logGridView.EnableHeadersVisualStyles = false;
             this.logGridView.Location = new System.Drawing.Point(4, 36);
             this.logGridView.MultiSelect = false;
@@ -516,20 +537,29 @@ namespace ACNHPoker
             this.mapPanel.TabIndex = 235;
             this.mapPanel.Visible = false;
             // 
-            // miniMapBox
+            // label4
             // 
-            this.miniMapBox.BackColor = System.Drawing.Color.Transparent;
-            this.miniMapBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.miniMapBox.ErrorImage = null;
-            this.miniMapBox.InitialImage = null;
-            this.miniMapBox.Location = new System.Drawing.Point(5, 72);
-            this.miniMapBox.Name = "miniMapBox";
-            this.miniMapBox.Size = new System.Drawing.Size(224, 192);
-            this.miniMapBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.miniMapBox.TabIndex = 190;
-            this.miniMapBox.TabStop = false;
-            this.miniMapBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseDown);
-            this.miniMapBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseMove);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(140, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 16);
+            this.label4.TabIndex = 238;
+            this.label4.Text = "Y :";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(49, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(25, 16);
+            this.label3.TabIndex = 236;
+            this.label3.Text = "X :";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // yCoordinate
             // 
@@ -545,6 +575,21 @@ namespace ACNHPoker
             this.yCoordinate.TabIndex = 237;
             this.yCoordinate.Text = "";
             // 
+            // miniMapBox
+            // 
+            this.miniMapBox.BackColor = System.Drawing.Color.Transparent;
+            this.miniMapBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.miniMapBox.ErrorImage = null;
+            this.miniMapBox.InitialImage = null;
+            this.miniMapBox.Location = new System.Drawing.Point(5, 72);
+            this.miniMapBox.Name = "miniMapBox";
+            this.miniMapBox.Size = new System.Drawing.Size(224, 192);
+            this.miniMapBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.miniMapBox.TabIndex = 190;
+            this.miniMapBox.TabStop = false;
+            this.miniMapBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseDown);
+            this.miniMapBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseMove);
+            // 
             // xCoordinate
             // 
             this.xCoordinate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
@@ -559,48 +604,37 @@ namespace ACNHPoker
             this.xCoordinate.TabIndex = 236;
             this.xCoordinate.Text = "";
             // 
-            // label3
+            // readDodoBtn
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(49, 48);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 16);
-            this.label3.TabIndex = 236;
-            this.label3.Text = "X :";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.readDodoBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.readDodoBtn.FlatAppearance.BorderSize = 0;
+            this.readDodoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.readDodoBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.readDodoBtn.ForeColor = System.Drawing.Color.White;
+            this.readDodoBtn.Location = new System.Drawing.Point(13, 281);
+            this.readDodoBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.readDodoBtn.Name = "readDodoBtn";
+            this.readDodoBtn.Size = new System.Drawing.Size(65, 25);
+            this.readDodoBtn.TabIndex = 236;
+            this.readDodoBtn.Text = "Dodo";
+            this.readDodoBtn.UseVisualStyleBackColor = false;
+            this.readDodoBtn.Click += new System.EventHandler(this.readDodoBtn_Click);
             // 
-            // label4
+            // clearBtn
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(140, 48);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 16);
-            this.label4.TabIndex = 238;
-            this.label4.Text = "Y :";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // startBtn
-            // 
-            this.startBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.startBtn.FlatAppearance.BorderSize = 0;
-            this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.startBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.startBtn.ForeColor = System.Drawing.Color.White;
-            this.startBtn.Location = new System.Drawing.Point(143, 4);
-            this.startBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.startBtn.Name = "startBtn";
-            this.startBtn.Size = new System.Drawing.Size(86, 25);
-            this.startBtn.TabIndex = 236;
-            this.startBtn.Tag = "Start";
-            this.startBtn.Text = "Start";
-            this.formToolTip.SetToolTip(this.startBtn, "Start the regen with only the area selected being ignored.\r\n[WARNING] Item droppe" +
-        "d/placed on the empty space outside the area will be deleted.");
-            this.startBtn.UseVisualStyleBackColor = false;
-            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
+            this.clearBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.clearBtn.FlatAppearance.BorderSize = 0;
+            this.clearBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.clearBtn.ForeColor = System.Drawing.Color.White;
+            this.clearBtn.Location = new System.Drawing.Point(86, 281);
+            this.clearBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(65, 25);
+            this.clearBtn.TabIndex = 237;
+            this.clearBtn.Text = "Clear";
+            this.clearBtn.UseVisualStyleBackColor = false;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
             // MapRegenerator
             // 
@@ -608,9 +642,13 @@ namespace ACNHPoker
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(234, 281);
+            this.Controls.Add(this.backBtn);
+            this.Controls.Add(this.logBtn);
+            this.Controls.Add(this.hideBtn);
+            this.Controls.Add(this.clearBtn);
+            this.Controls.Add(this.readDodoBtn);
             this.Controls.Add(this.mapPanel);
             this.Controls.Add(this.logPanel);
-            this.Controls.Add(this.logBtn);
             this.Controls.Add(this.visitorNameBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.debugBtn);
@@ -619,8 +657,6 @@ namespace ACNHPoker
             this.Controls.Add(this.ms);
             this.Controls.Add(this.delay);
             this.Controls.Add(this.startRegen2);
-            this.Controls.Add(this.backBtn);
-            this.Controls.Add(this.hideBtn);
             this.Controls.Add(this.startRegen);
             this.Controls.Add(this.PleaseWaitPanel);
             this.Controls.Add(this.loadMapBtn);
@@ -689,5 +725,7 @@ namespace ACNHPoker
         private System.Windows.Forms.RichTextBox yCoordinate;
         private System.Windows.Forms.RichTextBox xCoordinate;
         private System.Windows.Forms.Button startBtn;
+        private System.Windows.Forms.Button readDodoBtn;
+        private System.Windows.Forms.Button clearBtn;
     }
 }

@@ -55,7 +55,9 @@ namespace ACNHPoker
 
                 if (SwDevice == null)
                 {
-                    MessageBox.Show("Device Not Found.\nPlease try to install the standalone executable of LibUsbDotNet v2.2.8.\nAnd then create a device filter for your Nintendo Switch.");
+                    myMessageBox.Show("Please try to install the standalone executable of LibUsbDotNet v2.2.8.\n" +
+                        "https://sourceforge.net/projects/libusbdotnet/files/LibUsbDotNet/LibUsbDotNet%20v2.2.8/ \n\n" +
+                        "And then create a device filter for your Nintendo Switch.", "Device Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
                 

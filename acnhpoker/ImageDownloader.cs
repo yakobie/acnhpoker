@@ -13,11 +13,6 @@ namespace ACNHPoker
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -50,13 +45,8 @@ namespace ACNHPoker
                     extractHere();
                 };
 
-                webClient.DownloadFileAsync(new Uri("https://github.com/MyShiLingStar/ACNHPoker/releases/download/ImgPack2/img.zip"), "temp.zip");
+                webClient.DownloadFileAsync(new Uri("https://github.com/MyShiLingStar/ACNHPoker/releases/download/ImgPack3/img.zip"), "temp.zip");
             }
-
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
 
         }
 

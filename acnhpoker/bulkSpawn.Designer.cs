@@ -89,32 +89,34 @@ namespace ACNHPoker
             this.yCoordinate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
             this.yCoordinate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.yCoordinate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yCoordinate.ForeColor = System.Drawing.Color.Gray;
+            this.yCoordinate.ForeColor = System.Drawing.Color.White;
             this.yCoordinate.Location = new System.Drawing.Point(596, 12);
             this.yCoordinate.Margin = new System.Windows.Forms.Padding(4);
             this.yCoordinate.MaxLength = 3;
             this.yCoordinate.Multiline = false;
             this.yCoordinate.Name = "yCoordinate";
-            this.yCoordinate.ReadOnly = true;
             this.yCoordinate.Size = new System.Drawing.Size(61, 18);
             this.yCoordinate.TabIndex = 75;
             this.yCoordinate.Text = "0";
+            this.yCoordinate.TextChanged += new System.EventHandler(this.CoordinateChanged);
+            this.yCoordinate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateKeyPress);
             // 
             // xCoordinate
             // 
             this.xCoordinate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
             this.xCoordinate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.xCoordinate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xCoordinate.ForeColor = System.Drawing.Color.Gray;
+            this.xCoordinate.ForeColor = System.Drawing.Color.White;
             this.xCoordinate.Location = new System.Drawing.Point(495, 12);
             this.xCoordinate.Margin = new System.Windows.Forms.Padding(4);
             this.xCoordinate.MaxLength = 3;
             this.xCoordinate.Multiline = false;
             this.xCoordinate.Name = "xCoordinate";
-            this.xCoordinate.ReadOnly = true;
             this.xCoordinate.Size = new System.Drawing.Size(61, 18);
             this.xCoordinate.TabIndex = 74;
             this.xCoordinate.Text = "0";
+            this.xCoordinate.TextChanged += new System.EventHandler(this.CoordinateChanged);
+            this.xCoordinate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CoordinateKeyPress);
             // 
             // leftBtn
             // 

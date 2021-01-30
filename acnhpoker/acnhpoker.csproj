@@ -215,6 +215,7 @@
     <Compile Include="MyComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="myMessageBox.cs" />
     <Compile Include="MyProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>

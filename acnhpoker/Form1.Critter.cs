@@ -743,6 +743,8 @@ namespace ACNHPoker
 
         private void disableAll(DataGridView grid, ref int[] rate, int mode = 0)
         {
+            if (rate == null)
+                return;
             string temp = null;
             if (critterSearchBox.Text != "Search")
             {
@@ -841,6 +843,8 @@ namespace ACNHPoker
 
         private void resetAll(DataGridView grid, ref int[] rate, int mode = 0)
         {
+            if (rate == null)
+                return;
             string temp = null;
             if (critterSearchBox.Text != "Search")
             {
@@ -1050,7 +1054,7 @@ namespace ACNHPoker
 
             if (source == null)
             {
-                MessageBox.Show("Missing critter data. Please load data first.");
+                myMessageBox.Show("Please load the critter data first.", "Missing critter data!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -1092,7 +1096,7 @@ namespace ACNHPoker
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message.ToString(), "NOTE: This isn't particularly efficient. Too bad!");
+                myMessageBox.Show(e.Message.ToString(), "NOTE: This isn't particularly efficient. Too bad!");
             }
         }
 
@@ -1170,7 +1174,7 @@ namespace ACNHPoker
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message.ToString(), "This is a stupid fix, but I don't have time to da a cleaner implementation");
+                myMessageBox.Show(e.Message.ToString(), "This is a stupid fix, but I don't have time to da a cleaner implementation");
             }
 
             if (sound)

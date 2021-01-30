@@ -41,7 +41,7 @@ namespace ACNHPoker
 
             if (Config.AppSettings.Settings["override"].Value == "true")
             {
-                DialogResult dialogResult = MessageBox.Show("The application will restart and reset all addresses!\n\nAre you sure you want to disable address override?", "Disable Override", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = myMessageBox.Show("The application will restart and reset all addresses!\n\nAre you sure you want to disable address override?", "Disable Override", MessageBoxButtons.YesNo , MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Config.AppSettings.Settings["override"].Value = "false";
@@ -53,7 +53,7 @@ namespace ACNHPoker
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Please make sure you have acquired the correct addresses for your game version!\n\nAre you sure you want to enable address override?", "Enable Override", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = myMessageBox.Show("Please make sure you have acquired the correct addresses for your game version!\n\nAre you sure you want to enable address override?", "Enable Override", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Config.AppSettings.Settings["override"].Value = "true";
@@ -83,7 +83,7 @@ namespace ACNHPoker
             }
             else
             {
-                DialogResult dialogResult = MessageBox.Show("Validation is meant to prevent save file corruption!\nPlease only do so if you know what you are doing.\n\nAre you sure you want to disable validation?", "Disable Validation", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = myMessageBox.Show("Validation is meant to prevent save file corruption!\nPlease only do so if you know what you are doing.\n\nAre you sure you want to disable validation?", "Disable Validation", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     Config.AppSettings.Settings["disableValidation"].Value = "true";

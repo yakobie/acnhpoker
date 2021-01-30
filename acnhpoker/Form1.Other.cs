@@ -375,6 +375,12 @@ namespace ACNHPoker
                             case 17:
                                 flag = "43";
                                 break;
+                            case 18:
+                                flag = "73";
+                                break;
+                            case 19:
+                                flag = "77";
+                                break;
                         }
                     }
                     else
@@ -451,6 +457,12 @@ namespace ACNHPoker
 
                             case 17:
                                 flag = "03";
+                                break;
+                            case 18:
+                                flag = "33";
+                                break;
+                            case 19:
+                                flag = "37";
                                 break;
                         }
                     }
@@ -733,13 +745,13 @@ namespace ACNHPoker
 
                 if (emptyspace < item.Length)
                 {
-                    DialogResult dialogResult = MessageBox.Show("Empty Spaces in your inventory : " + emptyspace + "\n" +
+                    DialogResult dialogResult = myMessageBox.Show("Empty Spaces in your inventory : " + emptyspace + "\n" +
                                                                 "Number of items to Spawn : " + item.Length + "\n" +
                                                                 "\n" +
                                                                 "Press  [Yes]  to clear your inventory and spawn the items " + "\n" +
                                                                 "or  [No]  to cancel the spawn." + "\n" + "\n" +
                                                                 "[Warning] You will lose your items in your inventory!"
-                                                                , "Not enough inventory spaces!", MessageBoxButtons.YesNo);
+                                                                , "Not enough inventory spaces!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
                         for (int i = 0; i < b1.Length; i++)
@@ -795,13 +807,13 @@ namespace ACNHPoker
 
                 if (emptyspace < item.Length)
                 {
-                    DialogResult dialogResult = MessageBox.Show("Empty Spaces in your inventory : " + emptyspace + "\n" +
+                    DialogResult dialogResult = myMessageBox.Show("Empty Spaces in your inventory : " + emptyspace + "\n" +
                                                                 "Number of items to Spawn : " + item.Length + "\n" +
                                                                 "\n" +
                                                                 "Press  [Yes]  to clear your inventory and spawn the new items " + "\n" +
                                                                 "or  [No]  to cancel the spawn." + "\n" + "\n" +
                                                                 "[Warning] You will lose your items in your inventory!"
-                                                                , "Not enough inventory spaces!", MessageBoxButtons.YesNo);
+                                                                , "Not enough inventory spaces!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
                         for (int i = 0; i < b1.Length; i++)
@@ -1224,7 +1236,7 @@ namespace ACNHPoker
         {
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to change your reaction wheel?\n[Warning] Your previous reaction wheel will be overwritten!", "Change Reaction Wheel", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to change your reaction wheel?\n[Warning] Your previous reaction wheel will be overwritten!", "Change Reaction Wheel", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (dialogResult == DialogResult.Yes)
             {
                 int player = playerSelectorOther.SelectedIndex;

@@ -135,19 +135,26 @@ namespace ACNHPoker
 
                                 if (validation())
                                 {
-                                    MessageBox.Show("You have successfully established a connection!\n\n" +
+                                    myMessageBox.Show("You have successfully established a connection!\n" +
+                                                    "Your Sys-botbase installation and IP address are correct.\n" +
                                                     "However...\n" +
-                                                    "Sys-botbase validation failed! Poke request is returning same result.\n\n" +
+                                                    "Sys-botbase validation failed! Poke request is returning same result.\n\n\n" +
 
-                                                    "First, restart your switch.\n" +
-                                                    "Then try press and HOLD the \"L\" button while you are booting up the game until you see the title screen.\n" +
-                                                    "Release the \"L\" button once you see the title screen and retry the connection.\n" +
+                                                    "First, \n" +
+                                                    "check that you have the correct matching version.\n" +
+                                                    "You are using \"" + version + "\" right now.\n" +
+                                                    "You can find the latest version at : \n   https://github.com/MyShiLingStar/ACNHPoker/releases \n\n" +
+                                                    "Second, \n" +
+                                                    "try holding the power button and restart your switch.\n" +
+                                                    "Then press and HOLD the \"L\" button while you are selecting the game to boot up.\n" +
+                                                    "Keep holding the \"L\" button and release it once you can see the title screen.\n" +
+                                                    "Retry the connection.\n\n" +
+                                                    "Third, \n" +
+                                                    "If you use a cheat file before and have the following folder : \n" +
+                                                    "sd: / atmospshere / contents / 01006F8002326000 /\n" +
+                                                    "please try to remove or rename it.\n"
 
-                                                    "If the above does not work,\n" +
-                                                    "please try to remove or rename the cheats folder located at \n" +
-                                                    "sd:/atmospshere/contents/01006f8002326000/\n\n"
-
-                                                    , "Sys-botbase validation");
+                                                    , "Sys-botbase validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     s.Close();
                                     return;
                                 }
@@ -201,10 +208,10 @@ namespace ACNHPoker
                             {
                                 this.pictureBox1.BackColor = System.Drawing.Color.Red;
                             });
-                            MessageBox.Show("Unable to connect to the Sys-botbase server.\n" +
+                            myMessageBox.Show("Unable to connect to the Sys-botbase server.\n" +
                                             "Please double check your IP address and Sys-botbase installation.\n\n" +
                                             "You might also need to disable your firewall or antivirus temporary to allow outgoing connection."
-                                            );
+                                            , "Unable to establish connection!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }).Start();
                 }
@@ -264,7 +271,7 @@ namespace ACNHPoker
                 Log.logEvent("MainForm", "RefreshTimer: " + ex.Message.ToString());
                 Invoke((MethodInvoker)delegate { this.autoRefreshCheckBox.Checked = false; });
                 refreshTimer.Stop();
-                MessageBox.Show("Lost connection to the switch...\nDid the switch go to sleep?");
+                myMessageBox.Show("Lost connection to the switch...\nDid the switch go to sleep?", "Disconnected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -392,7 +399,7 @@ namespace ACNHPoker
                 Log.logEvent("MainForm", "UpdateInventory: " + ex.Message.ToString());
                 Invoke((MethodInvoker)delegate { this.autoRefreshCheckBox.Checked = false; });
                 refreshTimer.Stop();
-                MessageBox.Show(ex.Message.ToString(), "This seems like a bad idea but it's fine for now.");
+                myMessageBox.Show(ex.Message.ToString(), "This seems like a bad idea but it's fine for now.");
                 return true;
             }
             allowUpdate = true;
@@ -495,7 +502,7 @@ namespace ACNHPoker
             catch (Exception ex)
             {
                 Log.logEvent("MainForm", "SpawnItem: " + ex.Message.ToString());
-                MessageBox.Show(ex.Message.ToString(), "FIXME: This doesn't account for children of hierarchy... too bad!");
+                myMessageBox.Show(ex.Message.ToString(), "FIXME: This doesn't account for children of hierarchy... too bad!");
             }
 
             this.ShowMessage(customIdTextbox.Text);
@@ -778,7 +785,7 @@ namespace ACNHPoker
                         catch (Exception ex)
                         {
                             Log.logEvent("MainForm", "DeleteItemRightClick: " + ex.Message.ToString());
-                            MessageBox.Show(ex.Message.ToString(), "Bizarre vector flip inherited from earlier code, WTF?");
+                            myMessageBox.Show(ex.Message.ToString(), "Bizarre vector flip inherited from earlier code, WTF?");
                         }
                     }
 
@@ -866,7 +873,7 @@ namespace ACNHPoker
                 catch (Exception ex)
                 {
                     Log.logEvent("MainForm", "SpawnAll: " + ex.Message.ToString());
-                    MessageBox.Show(ex.Message.ToString(), "Multithreading badness. This will cause a crash later!");
+                    myMessageBox.Show(ex.Message.ToString(), "Multithreading badness. This will cause a crash later!");
                 }
 
                 foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
@@ -1007,7 +1014,7 @@ namespace ACNHPoker
                     catch (Exception ex)
                     {
                         Log.logEvent("MainForm", "FillRemain: " + ex.Message.ToString());
-                        MessageBox.Show(ex.Message.ToString(), "This code didn't port easily. WTF does it do?");
+                        myMessageBox.Show(ex.Message.ToString(), "This code didn't port easily. WTF does it do?");
                     }
 
                     Thread.Sleep(3000);
@@ -1117,7 +1124,7 @@ namespace ACNHPoker
             catch (Exception ex)
             {
                 Log.logEvent("MainForm", "ClearInventory: " + ex.Message.ToString());
-                MessageBox.Show(ex.Message.ToString(), "This is catastrophically bad, don't do this. Someone needs to fix this.");
+                myMessageBox.Show(ex.Message.ToString(), "This is catastrophically bad, don't do this. Someone needs to fix this.");
             }
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
@@ -2163,7 +2170,7 @@ namespace ACNHPoker
             catch (Exception ex)
             {
                 Log.logEvent("MainForm", "DeleteItemKeyBoard: " + ex.Message.ToString());
-                MessageBox.Show(ex.Message.ToString(), "Because nobody could *ever* possible attempt to parse bad data.");
+                myMessageBox.Show(ex.Message.ToString(), "Because nobody could *ever* possible attempt to parse bad data.");
             }
             selectedButton.reset();
             btnToolTip.RemoveAll();
@@ -2434,7 +2441,7 @@ namespace ACNHPoker
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
 
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to set the turnip prices?\n[Warning] All original prices will be overwritten!", "Set turnip prices", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to set the turnip prices?\n[Warning] All original prices will be overwritten!", "Set turnip prices", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (dialogResult == DialogResult.Yes)
             {
                 UInt32[] prices = new UInt32[13] {
@@ -2454,7 +2461,7 @@ namespace ACNHPoker
                 catch (Exception ex)
                 {
                     Log.logEvent("MainForm", "SetTurnip: " + ex.Message.ToString());
-                    MessageBox.Show(ex.Message.ToString(), "This is a terrible way of doing this!");
+                    myMessageBox.Show(ex.Message.ToString(), "This is a terrible way of doing this!");
                 }
 
                 if (sound)
@@ -3171,6 +3178,14 @@ namespace ACNHPoker
                     case 17:
                         flag = "43";
                         break;
+
+                    case 18:
+                        flag = "73";
+                        break;
+
+                    case 19:
+                        flag = "77";
+                        break;
                 }
             }
             else
@@ -3247,6 +3262,14 @@ namespace ACNHPoker
 
                     case 17:
                         flag = "03";
+                        break;
+
+                    case 18:
+                        flag = "33";
+                        break;
+
+                    case 19:
+                        flag = "37";
                         break;
                 }
             }

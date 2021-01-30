@@ -27,7 +27,9 @@ namespace ACNHPoker
 
         private const string saveFolder = @"save\";
         private const string logFile = @"VisitorLog.csv";
+        private const string dodoFile = @"dodo.txt";
         private string logPath = saveFolder + logFile;
+        private string dodoPath = saveFolder + dodoFile;
 
         private miniMap MiniMap = null;
         private int anchorX = -1;
@@ -201,13 +203,15 @@ namespace ACNHPoker
 
         private void loadMapFloor(byte[][] b, UInt32 address)
         {
-            showMapWait(42, "Loading...");
+            showMapWait(42 * 2, "Loading...");
 
             for (int i = 0; i < 42; i++)
             {
                 Utilities.SendByteArray8(s, address + (i * 0x2000), b[i], 0x2000, ref counter);
-                Thread.Sleep(250);
+                Utilities.SendByteArray8(s, address + (i * 0x2000) + Utilities.mapOffset, b[i], 0x2000, ref counter);
             }
+
+            Thread.Sleep(3000);
 
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
@@ -289,6 +293,9 @@ namespace ACNHPoker
                 string[] name = file.FileName.Split('\\');
 
                 Log.logEvent("Regen", "Regen1 Started: " + name[name.Length - 1]);
+
+                string dodo = setupDodo();
+                Log.logEvent("Regen", "Regen1 Dodo: " + dodo);
 
                 RegenThread = new Thread(delegate () { regenMapFloor(b, address, name[name.Length - 1]); });
                 RegenThread.Start();
@@ -400,7 +407,7 @@ namespace ACNHPoker
                     Log.logEvent("Regen", "Regen1: " + ex.Message.ToString());
                     DateTime localDate = DateTime.Now;
                     CreateLog("[Connection Lost]");
-                    MessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!");
+                    myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
                 }
             } while (loop);
@@ -547,9 +554,9 @@ namespace ACNHPoker
 
                 UInt32 address = Utilities.mapZero;
 
-                DialogResult dialogResult = MessageBox.Show("Would you like to limit the \"ignore empty tiles\" area?" + "\n\n" +
+                DialogResult dialogResult = myMessageBox.Show("Would you like to limit the \"ignore empty tiles\" area?" + "\n\n" +
                                                             "This would allow you to pick a 7 x 7 area which the regenerator would only ignore."
-                                                            , "Choose an area to ignore?", MessageBoxButtons.YesNo);
+                                                            , "Choose an area ?", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     mapPanel.Visible = true;
@@ -569,22 +576,29 @@ namespace ACNHPoker
                     }
                     else
                         return;
-
-                    byte[] Coordinate = Utilities.getCoordinate(s, null);
-                    int x = BitConverter.ToInt32(Coordinate, 0);
-                    int y = BitConverter.ToInt32(Coordinate, 4);
-
-                    anchorX = x - 0x24;
-                    anchorY = y - 0x18;
-
-                    if (anchorX < 3 || anchorY < 3 || anchorX > 108 || anchorY > 92)
+                    try
                     {
-                        anchorX = 3;
-                        anchorY = 3;
+                        byte[] Coordinate = Utilities.getCoordinate(s, null);
+                        int x = BitConverter.ToInt32(Coordinate, 0);
+                        int y = BitConverter.ToInt32(Coordinate, 4);
+
+                        anchorX = x - 0x24;
+                        anchorY = y - 0x18;
+
+                        if (anchorX < 3 || anchorY < 3 || anchorX > 108 || anchorY > 92)
+                        {
+                            anchorX = 3;
+                            anchorY = 3;
+                        }
+                        xCoordinate.Text = anchorX.ToString();
+                        yCoordinate.Text = anchorY.ToString();
+                        miniMapBox.Image = MiniMap.drawSelectSquare(anchorX, anchorY);
                     }
-                    xCoordinate.Text = anchorX.ToString();
-                    yCoordinate.Text = anchorY.ToString();
-                    miniMapBox.Image = MiniMap.drawSelectSquare(anchorX, anchorY);
+                    catch (Exception ex)
+                    {
+                        Log.logEvent("Regen", "getCoordinate: " + ex.Message.ToString());
+                        myMessageBox.Show("Something does feel right at all. You should restart the program...\n\n" + ex.Message.ToString(), "!!! THIS SHIT DOESN'T WORK!! WHY? HAS I EVER?", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
@@ -612,6 +626,9 @@ namespace ACNHPoker
                     }
 
                     Log.logEvent("Regen", "Regen2Normal Started: " + tempFilename);
+
+                    string dodo = setupDodo();
+                    Log.logEvent("Regen", "Regen2 Dodo: " + dodo);
 
                     RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, tempFilename); });
                     RegenThread.Start();
@@ -664,6 +681,9 @@ namespace ACNHPoker
             }
             Log.logEvent("Regen", "Regen2Limit Started: " + tempFilename);
             Log.logEvent("Regen", "Regen2Limit Area: " + anchorX + " " + anchorY);
+
+            string dodo = setupDodo();
+            Log.logEvent("Regen", "Regen2 Dodo: " + dodo);
 
             RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, tempFilename); });
             RegenThread.Start();
@@ -772,7 +792,7 @@ namespace ACNHPoker
                     Log.logEvent("Regen", "Regen2: " + ex.Message.ToString());
                     DateTime localDate = DateTime.Now;
                     CreateLog("[Connection Lost]");
-                    MessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!");
+                    myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     break;
                 }
             } while (loop);
@@ -915,7 +935,7 @@ namespace ACNHPoker
                     {
                         if (output)
                         {
-                            Debug.Print("Empty Space Changed");
+                            //Debug.Print("Empty Space Changed");
                             output = false;
                         }
                         upd[i] = cur[i];
@@ -932,7 +952,7 @@ namespace ACNHPoker
                     {
                         if (output2)
                         {
-                            Debug.Print("Back to Normal");
+                            //Debug.Print("Back to Normal");
                             output2 = false;
                         }
                         upd[i] = cur[i];
@@ -941,6 +961,7 @@ namespace ACNHPoker
             }
             if (NotEqualNum > 0x140)
             {
+                Debug.Print("Large byte different");
                 Log.logEvent("Regen", "[Warning] Shifted? " + NotEqualNum + " bytes different.");
             }
             return pass;
@@ -1216,6 +1237,40 @@ namespace ACNHPoker
                 yCoordinate.Text = y.ToString();
 
                 miniMapBox.Image = MiniMap.drawSelectSquare(anchorX, anchorY);
+            }
+        }
+
+        private void readDodoBtn_Click(object sender, EventArgs e)
+        {
+            setupDodo();
+        }
+
+        private string setupDodo()
+        {
+            try
+            {
+                string dodo = Utilities.getDodo(s).Replace("\0","");
+
+                using (StreamWriter sw = File.CreateText(dodoPath))
+                {
+                    sw.WriteLine(dodo);
+                }
+
+                return dodo;
+            }
+            catch (Exception ex)
+            {
+                Log.logEvent("Regen", "Dodo: " + ex.Message.ToString());
+                return "";
+            }
+        }
+
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            string msg = "[Closed]";
+            using (StreamWriter sw = File.CreateText(dodoPath))
+            {
+                sw.WriteLine(msg);
             }
         }
     }

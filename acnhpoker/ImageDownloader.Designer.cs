@@ -40,7 +40,6 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(267, 23);
             this.progressBar1.TabIndex = 0;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // button1
             // 
@@ -74,7 +73,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "It appears that you do not have the  \r\nimages downloaded for the item list. \r\nWou" +
     "ld you like to automatically \r\ndownload them now?";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // ImageDownloader
             // 

@@ -381,9 +381,9 @@ namespace ACNHPoker
 
             if (checkMultipleMoveOut() && !firstWarning)
             {
-                DialogResult dialogResult = MessageBox.Show("It seems you alreadly have someone moving out." +
+                DialogResult dialogResult = myMessageBox.Show("It seems you alreadly have someone moving out." +
     "                                                   \nAre you sure you want to force another moveout?" +
-    "                                                   \nNote that multiple moveout on the same day is not recommended.", "Multiple moveout detected!", MessageBoxButtons.YesNo);
+    "                                                   \nNote that multiple moveout on the same day is not recommended.", "Multiple moveout detected!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.No)
                     return;
                 if (dialogResult == DialogResult.Yes)
@@ -394,6 +394,7 @@ namespace ACNHPoker
 
             V[i].AbandonedHouseFlag = 2;
             V[i].ForceMoveOutFlag = 1;
+            V[i].InvitedFlag = 0;
             RefreshVillagerUI(false);
         }
         private void StayMoveBtn_Click(object sender, EventArgs e)
@@ -404,9 +405,9 @@ namespace ACNHPoker
 
             if (checkMultipleMoveOut() && !firstWarning)
             {
-                DialogResult dialogResult = MessageBox.Show("It seems you alreadly have someone moving out." +
+                DialogResult dialogResult = myMessageBox.Show("It seems you alreadly have someone moving out." +
     "                                                   \nAre you sure you want to force another moveout?" +
-    "                                                   \nNote that multiple moveout on the same day is not recommended.", "Multiple moveout detected!", MessageBoxButtons.YesNo);
+    "                                                   \nNote that multiple moveout on the same day is not recommended.", "Multiple moveout detected!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.No)
                     return;
                 if (dialogResult == DialogResult.Yes)
@@ -417,6 +418,7 @@ namespace ACNHPoker
 
             V[i].AbandonedHouseFlag = 2;
             V[i].ForceMoveOutFlag = 0;
+            V[i].InvitedFlag = 0;
             RefreshVillagerUI(false);
         }
 
@@ -429,6 +431,7 @@ namespace ACNHPoker
 
             V[i].AbandonedHouseFlag = 0;
             V[i].ForceMoveOutFlag = 0;
+            V[i].InvitedFlag = 0;
             RefreshVillagerUI(false);
         }
 
@@ -906,9 +909,9 @@ namespace ACNHPoker
 
             if (checkDuplicate(IName))
             {
-                DialogResult dialogResult = MessageBox.Show(RealName + " is currently living on your island!" +
+                DialogResult dialogResult = myMessageBox.Show(RealName + " is currently living on your island!" +
                     "                                                   \nAre you sure you want to continue the replacement?" +
-                    "                                                   \nNote that the game will attempt to remove any duplicated villager!", "Villager already exists!", MessageBoxButtons.YesNo);
+                    "                                                   \nNote that the game will attempt to remove any duplicated villager!", "Villager already exists!", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                 if (dialogResult == DialogResult.No)
                 {
                     return;

@@ -17,6 +17,7 @@ namespace ACNHPoker
         private int counter = 0;
         private int anchorX = -1;
         private int anchorY = -1;
+        private bool ignore = false;
         private bool sound;
         private byte[] Layer1 = null;
         private byte[] Layer2 = null;
@@ -28,7 +29,7 @@ namespace ACNHPoker
         private int rowNum;
         private byte[][] SpawnArea = null;
         private bool spawnlock = false;
-        public bulkSpawn(Socket S, USBBot Bot, byte[] layer1, byte[] layer2, byte[] acre, int x, int y, map Map, bool Sound)
+        public bulkSpawn(Socket S, USBBot Bot, byte[] layer1, byte[] layer2, byte[] acre, int x, int y, map Map, bool Ignore, bool Sound)
         {
             try
             {
@@ -40,6 +41,7 @@ namespace ACNHPoker
                 anchorX = x;
                 anchorY = y;
                 main = Map;
+                ignore = Ignore;
                 sound = Sound;
                 MiniMap = new miniMap(Layer1, acre, 4);
                 InitializeComponent();
@@ -49,7 +51,7 @@ namespace ACNHPoker
                 miniMapBox.Image = MiniMap.drawMarker(anchorX, anchorY);
                 warningMessage.SelectionAlignment = HorizontalAlignment.Center;
                 Log.logEvent("BulkSpawn", "BulkSpawnForm Started Successfully");
-            } 
+            }
             catch (Exception ex)
             {
                 Log.logEvent("BulkSpawn", "Form Construct: " + ex.Message.ToString());
@@ -142,7 +144,7 @@ namespace ACNHPoker
                 config.Save(ConfigurationSaveMode.Minimal);
 
 
-                string dataStr = Utilities.ByteToHexString(save).Replace("FEFF000000000000",string.Empty);
+                string dataStr = Utilities.ByteToHexString(save).Replace("FEFF000000000000", string.Empty);
                 byte[] final = Utilities.stringToByte(dataStr);
 
                 File.WriteAllBytes(file.FileName, final);
@@ -199,7 +201,7 @@ namespace ACNHPoker
         private byte[][] processNHBS(byte[] data)
         {
             byte[] tempItem = new byte[8];
-            bool[] isItem = new bool[data.Length/8];
+            bool[] isItem = new bool[data.Length / 8];
             int numOfitem = 0;
 
             for (int i = 0; i < data.Length / 8; i++)
@@ -230,6 +232,7 @@ namespace ACNHPoker
         private void previewBtn_Click(object sender, EventArgs e)
         {
             miniMapBox.Image = null;
+
             if (heightNumber.Text.Equals(string.Empty) || item == null)
                 return;
             else
@@ -248,7 +251,10 @@ namespace ACNHPoker
                 else
                     right = true;
 
-                miniMapBox.Image = MiniMap.drawPreview(rowNum, SpawnArea.Length/2, anchorX, anchorY, right);
+                xCoordinate.Text = anchorX.ToString();
+                yCoordinate.Text = anchorY.ToString();
+
+                miniMapBox.Image = MiniMap.drawPreview(rowNum, SpawnArea.Length / 2, anchorX, anchorY, right);
 
                 if (anchorY + rowNum > 96)
                 {
@@ -280,7 +286,7 @@ namespace ACNHPoker
             byte[] emptyRight = Utilities.stringToByte("FEFF000000000000FEFF000000000000");
 
             int numberOfColumn;
-            if (item.Length % t == 0) 
+            if (item.Length % t == 0)
                 numberOfColumn = (item.Length / t);
             else
                 numberOfColumn = (item.Length / t + 1);
@@ -413,7 +419,7 @@ namespace ACNHPoker
             catch (Exception ex)
             {
                 Log.logEvent("BulkSpawn", "ConfirmSpawn: " + ex.Message.ToString());
-                MessageBox.Show(ex.Message.ToString(), "When I wrote this, only God and I understood what I was doing.");
+                myMessageBox.Show(ex.Message.ToString(), "When I wrote this, only God and I understood what I was doing.");
             }
 
             main.moveAnchor(anchorX, anchorY);
@@ -505,6 +511,9 @@ namespace ACNHPoker
 
         private bool isAboutToSave(int second)
         {
+            if (ignore)
+                return false;
+
             try
             {
                 byte[] b = Utilities.getSaving(s, bot);
@@ -535,18 +544,58 @@ namespace ACNHPoker
             catch (Exception ex)
             {
                 Log.logEvent("BulkSpawn", "sAboutToSave: " + ex.Message.ToString());
-                MessageBox.Show(ex.Message.ToString(), "This is utterly fucking retarded.");
+                myMessageBox.Show(ex.Message.ToString(), "This is utterly fucking retarded.");
                 return false;
             }
         }
 
         private void heightNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-                char c = e.KeyChar;
-                if (!(c >= '0' && c <= '9'))
-                {
-                    e.Handled = true;
-                }
+            char c = e.KeyChar;
+            if (!(c >= '0' && c <= '9'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void CoordinateChanged(object sender, EventArgs e)
+        {
+            if (spawnlock)
+                return;
+            if (xCoordinate.Text.Equals(string.Empty) || yCoordinate.Text.Equals(string.Empty))
+                return;
+
+            int x = int.Parse(xCoordinate.Text);
+            int y = int.Parse(yCoordinate.Text);
+
+            if (x < 0)
+                x = 0;
+            else if (x > 111)
+                x = 111;
+
+            if (y < 0)
+                y = 0;
+            else if (y > 95)
+                y = 95;
+
+            anchorX = x;
+            anchorY = y;
+
+            //xCoordinate.Text = x.ToString();
+            //yCoordinate.Text = y.ToString();
+
+            miniMapBox.Image = MiniMap.drawMarker(anchorX, anchorY);
+            warningMessage.Visible = false;
+            spawnBtn.Visible = false;
+        }
+
+        private void CoordinateKeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+            if (!(c >= '0' && c <= '9'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
