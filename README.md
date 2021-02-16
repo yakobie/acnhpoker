@@ -157,6 +157,18 @@ https://youtu.be/-zztRgmtXig
 	* Redo most of the popup message boxes
 	* Added the option to type in the spawn coordinate in the bulk spawn menu
 	* Fixed the "Timeout" error while the regenerator is running in the background.
+* R13.2
+	* Added "Clear Grid" button to map dropper to remove items within the 7x7 grid.
+	* Added "Right Click" -> "Replace Item" to map dropper to replace items within the 7x7 grid.
+	* Added "Ctrl + Left Click" to map dropper to select area corners. You can use "Ctrl + Left Click" on the big spawn button to fill the selected area.
+	* Added "Right Click" -> "Copy Area" to map dropper to copy the selected area. You can then use "Ctrl + Left Click" to move the area around.
+	* Added "Right Click" -> "Paste Area" to map dropper to paste the copied area.
+	* Added up & down arrows to Flag and Hex Value in map dropper.
+	* Added "Keep Village State" to Regenerator. It will reset the moveout state after they have been invited.
+	* Fixed the program crash due to incomplete images download.
+	* The "dodo.txt" file will now be constantly update if you have Regenerator running.
+	* Added "Dodo Helper" to Regenerator to restore island crash/disconnect.
+      * Thanks to Rydog, Red, Coolguy for the teleportation code. And thanks to berichan's ACNHOrders implementation.
     
 ## Contributing
 

@@ -58,6 +58,11 @@ namespace ACNHPoker
                 for (int i = 0; i < 10; i++)
                 {
                     byte b = Utilities.GetHouseOwner(s, bot, i, ref counter);
+                    if (b == 0xDD)
+                    {
+                        hideVillagerWait();
+                        return;
+                    }
                     HouseList[i] = Convert.ToInt32(b);
                 }
                 Debug.Print(string.Join(" ", HouseList));
@@ -103,11 +108,19 @@ namespace ACNHPoker
                     Image img;
                     if (V[i].GetRealName() == "ERROR")
                     {
-                        img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetRealName()));
+                        string path = Utilities.GetVillagerImage(V[i].GetRealName());
+                        if (!path.Equals(string.Empty))
+                            img = Image.FromFile(path);
+                        else
+                            img = new Bitmap(Properties.Resources.Leaf, new Size(110, 110));
                     }
                     else
                     {
-                        img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetInternalName()));
+                        string path = Utilities.GetVillagerImage(V[i].GetInternalName());
+                        if (!path.Equals(string.Empty))
+                            img = Image.FromFile(path);
+                        else
+                            img = new Bitmap(Properties.Resources.Leaf, new Size(110, 110));
                     }
 
                     villagerButton[i].Text = V[i].GetRealName() + " : " + V[i].GetInternalName();
@@ -225,11 +238,19 @@ namespace ACNHPoker
                 Image img;
                 if (V[j].GetRealName() == "ERROR")
                 {
-                    img = Image.FromFile(Utilities.GetVillagerImage(V[j].GetRealName()));
+                    string path = Utilities.GetVillagerImage(V[j].GetRealName());
+                    if (!path.Equals(string.Empty))
+                        img = Image.FromFile(path);
+                    else
+                        img = new Bitmap(Properties.Resources.Leaf, new Size(110, 110));
                 }
                 else
                 {
-                    img = Image.FromFile(Utilities.GetVillagerImage(V[j].GetInternalName()));
+                    string path = Utilities.GetVillagerImage(V[j].GetInternalName());
+                    if (!path.Equals(string.Empty))
+                        img = Image.FromFile(path);
+                    else
+                        img = new Bitmap(Properties.Resources.Leaf, new Size(110, 110));
                 }
                 villagerButton[j].Image = (Image)(new Bitmap(img, new Size(110, 110)));
 
@@ -267,8 +288,10 @@ namespace ACNHPoker
                     //PlayerName.Text = V[i].GetPlayerName(playerSelectorVillager.SelectedIndex);
                 }
             }
+            /*
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
+            */
         }
 
         private void VillagerButton_MouseDown(object sender, MouseEventArgs e)

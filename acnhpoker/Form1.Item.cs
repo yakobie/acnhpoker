@@ -79,9 +79,7 @@ namespace ACNHPoker
 
                 s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-
                 IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ipBox.Text), 6000);
-
 
                 if (s.Connected == false)
                 {
@@ -159,6 +157,8 @@ namespace ACNHPoker
                                     return;
                                 }
 
+
+
                                 this.refreshBtn.Visible = true;
                                 //this.playerSelectionPanel.Visible = true;
                                 this.playerSelectorInventory.Visible = true;
@@ -178,10 +178,12 @@ namespace ACNHPoker
                                 this.regeneratorBtn.Visible = true;
                                 offline = false;
 
-                                playerSelectorInventory.SelectedIndex = updateDropdownBox();
+                                int CurrentPlayerIndex = updateDropdownBox();
 
-                                //UpdateInventory();
-                                UpdateTownID();
+                                playerSelectorInventory.SelectedIndex = CurrentPlayerIndex;
+                                playerSelectorOther.SelectedIndex = CurrentPlayerIndex;
+                                this.Text = this.Text + UpdateTownID();
+
                                 InitTimer();
                                 setEatBtn();
                                 if (!disableValidation)
@@ -189,7 +191,6 @@ namespace ACNHPoker
                                     UpdateTurnipPrices();
                                     loadReaction();
                                 }
-                                playerSelectorOther.SelectedIndex = 0;
                                 readWeatherSeed();
 
                                 currentGridView = insectGridView;
@@ -198,6 +199,9 @@ namespace ACNHPoker
                                 LoadGridView(FishRiverAppearParam, riverFishGridView, ref riverFishRate, Utilities.FishDataSize, Utilities.FishRiverNumRecords, 1);
                                 LoadGridView(FishSeaAppearParam, seaFishGridView, ref seaFishRate, Utilities.FishDataSize, Utilities.FishSeaNumRecords, 1);
                                 LoadGridView(CreatureSeaAppearParam, seaCreatureGridView, ref seaCreatureRate, Utilities.SeaCreatureDataSize, Utilities.SeaCreatureNumRecords, 1);
+
+                                teleporter = new teleport(s);
+                                Controller = new controller(s);
                             });
 
                         }
@@ -1856,7 +1860,12 @@ namespace ACNHPoker
         public void KeyboardKeyDown(object sender, KeyEventArgs e)
         {
             //Debug.Print(e.KeyCode.ToString());
-            if (e.KeyCode.ToString() == "F2" || e.KeyCode.ToString() == "Insert")
+            if (e.KeyCode.ToString() == "F12" && teleporter != null)
+            {
+                dodoSetup = new dodo();
+                dodoSetup.Show();
+            }
+            else if (e.KeyCode.ToString() == "F2" || e.KeyCode.ToString() == "Insert")
             {
                 if (selectedButton == null & (s != null || bot != null))
                 {
@@ -2121,6 +2130,22 @@ namespace ACNHPoker
                 else if (currentPanel == flowerModePanel)
                 {
 
+                }
+            }
+            else if (Control.ModifierKeys == Keys.Control)
+            {
+                string code = e.KeyCode.ToString();
+                string pattern = @"(D)([0-9])";
+                Regex regex = new Regex(pattern);
+                Match match = regex.Match(code);
+                if (match.Success)
+                {
+                    Debug.Print("Start Teleport");
+                    int num = int.Parse(code.Replace("D", ""));
+                    if (num - 1 < 0)
+                        teleport.TeleportTo(9);
+                    else
+                        teleport.TeleportTo(num - 1);
                 }
             }
         }
@@ -3093,185 +3118,24 @@ namespace ACNHPoker
             if (wrapSetting.SelectedIndex < 0)
                 wrapSetting.SelectedIndex = 0;
 
-            int index = wrapSetting.SelectedIndex;
-            Thread wrapAllThread = new Thread(delegate () { wrapAll(index); });
+            string[] flagBuffer = wrapSetting.SelectedItem.ToString().Split(' ');
+            byte flagByte = Utilities.stringToByte(flagBuffer[flagBuffer.Length - 1])[0];
+            Thread wrapAllThread = new Thread(delegate () { wrapAll(flagByte); });
             wrapAllThread.Start();
         }
 
-        private void wrapAll(int index)
+        private void wrapAll(byte flagByte)
         {
             showWait();
 
             string flag = "00";
             if (RetainNameCheckBox.Checked)
             {
-                switch (index)
-                {
-                    case 0:
-                        flag = "41";
-                        break;
-
-                    case 1:
-                        flag = "45";
-                        break;
-
-                    case 2:
-                        flag = "49";
-                        break;
-
-                    case 3:
-                        flag = "4D";
-                        break;
-
-                    case 4:
-                        flag = "51";
-                        break;
-
-                    case 5:
-                        flag = "55";
-                        break;
-
-                    case 6:
-                        flag = "59";
-                        break;
-
-                    case 7:
-                        flag = "5D";
-                        break;
-
-                    case 8:
-                        flag = "61";
-                        break;
-
-                    case 9:
-                        flag = "65";
-                        break;
-
-                    case 10:
-                        flag = "69";
-                        break;
-
-                    case 11:
-                        flag = "6D";
-                        break;
-
-                    case 12:
-                        flag = "71";
-                        break;
-
-                    case 13:
-                        flag = "75";
-                        break;
-
-                    case 14:
-                        flag = "79";
-                        break;
-
-                    case 15:
-                        flag = "7D";
-                        break;
-
-                    case 16:
-                        flag = "42";
-                        break;
-
-                    case 17:
-                        flag = "43";
-                        break;
-
-                    case 18:
-                        flag = "73";
-                        break;
-
-                    case 19:
-                        flag = "77";
-                        break;
-                }
+                flag = Utilities.precedingZeros((flagByte + 0x40).ToString("X"), 2);
             }
             else
             {
-                switch (index)
-                {
-                    case 0:
-                        flag = "01";
-                        break;
-
-                    case 1:
-                        flag = "05";
-                        break;
-
-                    case 2:
-                        flag = "09";
-                        break;
-
-                    case 3:
-                        flag = "0D";
-                        break;
-
-                    case 4:
-                        flag = "11";
-                        break;
-
-                    case 5:
-                        flag = "15";
-                        break;
-
-                    case 6:
-                        flag = "19";
-                        break;
-
-                    case 7:
-                        flag = "1D";
-                        break;
-
-                    case 8:
-                        flag = "21";
-                        break;
-
-                    case 9:
-                        flag = "25";
-                        break;
-
-                    case 10:
-                        flag = "29";
-                        break;
-
-                    case 11:
-                        flag = "2D";
-                        break;
-
-                    case 12:
-                        flag = "31";
-                        break;
-
-                    case 13:
-                        flag = "35";
-                        break;
-
-                    case 14:
-                        flag = "39";
-                        break;
-
-                    case 15:
-                        flag = "3D";
-                        break;
-
-                    case 16:
-                        flag = "02";
-                        break;
-
-                    case 17:
-                        flag = "03";
-                        break;
-
-                    case 18:
-                        flag = "33";
-                        break;
-
-                    case 19:
-                        flag = "37";
-                        break;
-                }
+                flag = Utilities.precedingZeros((flagByte).ToString("X"), 2);
             }
 
             if (!offline)

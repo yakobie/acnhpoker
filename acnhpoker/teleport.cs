@@ -1,0 +1,272 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net.Sockets;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace ACNHPoker
+{
+    public partial class teleport : Form
+    {
+        private static Socket s;
+        private static string saveFolder = @"save\";
+        private static string teleportFile = @"teleport.bin";
+        private static string teleportPath = saveFolder + teleportFile;
+        private static string anchorPath = @"Anchors.bin";
+
+        private static byte[] teleportByte;
+        private static byte[] anchorByte;
+
+        private static string offset = "[[[[main+396F5A0]+18]+178]+D0]+DA";
+
+        private static int coordinateSize = 20;
+        private static int turningSize = 4;
+        private static int teleportSize = coordinateSize + turningSize;
+        public enum OverworldState
+        {
+            Null,
+            OverworldOrInAirport,
+            Loading,
+            UserArriveLeavingOrTitleScreen,
+            Unknown
+        }
+
+        public teleport(Socket S)
+        {
+            if (!File.Exists(teleportPath))
+            {
+                byte[] teleportByte = new byte[teleportSize*10];
+                File.WriteAllBytes(teleportPath, teleportByte);
+            }
+            if (!File.Exists(anchorPath))
+            {
+                byte[] anchorByte = new byte[teleportSize*5];
+                File.WriteAllBytes(anchorPath, anchorByte);
+            }
+
+            s = S;
+
+            teleportByte = File.ReadAllBytes(teleportPath);
+            anchorByte = File.ReadAllBytes(anchorPath);
+
+            InitializeComponent();
+        }
+
+        public static ulong GetCoordinateAddress()
+        {
+            // Regex pattern to get operators and offsets from pointer expression.	
+            string pattern = @"(\+|\-)([A-Fa-f0-9]+)";
+            Regex regex = new Regex(pattern);
+            Match match = regex.Match(offset);
+
+            // Get first offset from pointer expression and read address at that offset from main start.	
+            var ofs = Convert.ToUInt64(match.Groups[2].Value, 16);
+            var address = BitConverter.ToUInt64(Utilities.peekMainAddress(s, ofs.ToString("X"), 0x8), 0);
+            match = match.NextMatch();
+
+            // Matches the rest of the operators and offsets in the pointer expression.	
+            while (match.Success)
+            {
+                // Get operator and offset from match.	
+                string opp = match.Groups[1].Value;
+                ofs = Convert.ToUInt64(match.Groups[2].Value, 16);
+
+                // Add or subtract the offset from the current stored address based on operator in front of offset.	
+                switch (opp)
+                {
+                    case "+":
+                        address += ofs;
+                        break;
+                    case "-":
+                        address -= ofs;
+                        break;
+                }
+
+                // Attempt another match and if successful read bytes at address and store the new address.	
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    byte[] bytes = Utilities.peekAbsoluteAddress(s, address.ToString("X"), 0x8);
+                    address = BitConverter.ToUInt64(bytes, 0);
+                }
+            }
+
+            return address;
+        }
+
+        public static Boolean TeleportTo(int num)
+        {
+            byte[] coordinate = new byte[coordinateSize];
+            byte[] turning = new byte[turningSize];
+
+            Buffer.BlockCopy(teleportByte, teleportSize * num, coordinate, 0, coordinateSize);
+            Buffer.BlockCopy(teleportByte, teleportSize * num + coordinateSize, turning, 0, turningSize);
+
+            if (!isValidCoordinate(coordinate))
+            {
+                myMessageBox.Show("Invalid Coordinates!", "3C3C1D119440927", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            ulong address = GetCoordinateAddress();
+
+            int trials = 0;
+
+            do
+            {
+                if (trials > 5)
+                {
+                    //myMessageBox.Show("Unable to reach exact coordinates!\n" +
+                    //                  "Did you use an indoor teleport outside or vice versa?", "Destination Unreachable", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return false;
+                }
+                Utilities.pokeAbsoluteAddress(s, (address - 0x2).ToString("X"), Utilities.ByteToHexString(coordinate));
+                Utilities.pokeAbsoluteAddress(s, (address + 0x3A).ToString("X"), Utilities.ByteToHexString(turning));
+                Thread.Sleep(500);
+                trials++;
+            }
+            while(confirmSuccessTeleport(num, teleportByte));
+
+            return true;
+            //Debug.Print("Done");
+        }
+
+        public static Boolean TeleportToAnchor(int num)
+        {
+            byte[] coordinate = new byte[coordinateSize];
+            byte[] turning = new byte[turningSize];
+
+            Buffer.BlockCopy(anchorByte, teleportSize * num, coordinate, 0, coordinateSize);
+            Buffer.BlockCopy(anchorByte, teleportSize * num + coordinateSize, turning, 0, turningSize);
+
+            ulong address = GetCoordinateAddress();
+
+            int trials = 0;
+
+            do
+            {
+                if (trials > 10)
+                {
+                    return false;
+                }
+                Utilities.pokeAbsoluteAddress(s, (address - 0x2).ToString("X"), Utilities.ByteToHexString(coordinate));
+                Utilities.pokeAbsoluteAddress(s, (address + 0x3A).ToString("X"), Utilities.ByteToHexString(turning));
+                Thread.Sleep(500);
+                trials++;
+            }
+            while(confirmSuccessTeleport(num, anchorByte));
+
+            return true;
+            //Debug.Print("Done");
+        }
+
+        private static bool confirmSuccessTeleport(int num, byte[] ByteUsing)
+        {
+            byte[] coordinate = new byte[coordinateSize];
+            byte[] turning = new byte[turningSize];
+
+            Buffer.BlockCopy(ByteUsing, teleportSize * num, coordinate, 0, coordinateSize);
+            Buffer.BlockCopy(ByteUsing, teleportSize * num + coordinateSize, turning, 0, turningSize);
+
+            ulong address = GetCoordinateAddress();
+
+            byte[] CurCoordinate = Utilities.peekAbsoluteAddress(s, (address - 0x2).ToString("X"), coordinateSize);
+            byte[] CurTurning = Utilities.peekAbsoluteAddress(s, (address + 0x3A).ToString("X"), turningSize);
+
+            //Debug.Print(Utilities.ByteToHexString(Utilities.add(CurCoordinate, CurTurning)));
+
+            if (Utilities.add(CurCoordinate, CurTurning).SequenceEqual(Utilities.add(coordinate, turning)))
+                return false;
+            else
+                return true;
+        }
+
+        private static bool isValidCoordinate(byte[] coordinate)
+        {
+            for (int i = 0; i < coordinate.Length; i++)
+            {
+                if (coordinate[i] != 0x0)
+                    return true;
+            }
+            return false;
+        }
+
+        public static bool allAnchorValid()
+        {
+            byte[] temp = new byte[teleportSize];
+
+            for (int i = 0; i < 5; i++)
+            {
+                Buffer.BlockCopy(anchorByte, teleportSize * i, temp, 0, teleportSize);
+                if (!isValidCoordinate(temp))
+                    return false;
+            }
+            return true;
+        }
+
+        public static void SetTeleport(int num)
+        {
+            ulong address = GetCoordinateAddress();
+
+            byte[] CurCoordinate = Utilities.peekAbsoluteAddress(s, (address - 0x2).ToString("X"), coordinateSize);
+            byte[] CurTurning = Utilities.peekAbsoluteAddress(s, (address + 0x3A).ToString("X"), turningSize);
+
+            Buffer.BlockCopy(CurCoordinate, 0, teleportByte, teleportSize * num, coordinateSize);
+            Buffer.BlockCopy(CurTurning, 0, teleportByte, teleportSize * num + coordinateSize, turningSize);
+
+            File.WriteAllBytes(teleportPath, teleportByte);
+        }
+
+        public static void SetAnchor(int num)
+        {
+            ulong address = GetCoordinateAddress();
+
+            byte[] CurCoordinate = Utilities.peekAbsoluteAddress(s, (address - 0x2).ToString("X"), coordinateSize);
+            byte[] CurTurning = Utilities.peekAbsoluteAddress(s, (address + 0x3A).ToString("X"), turningSize);
+
+            Buffer.BlockCopy(CurCoordinate, 0, anchorByte, teleportSize * num, coordinateSize);
+            Buffer.BlockCopy(CurTurning, 0, anchorByte, teleportSize * num + coordinateSize, turningSize);
+
+            File.WriteAllBytes(anchorPath, anchorByte);
+        }
+        public static byte checkOnlineStatus()
+        {
+            byte[] b = Utilities.ReadByteArray(s, Utilities.OnlineSessionAddress, 0x1);
+            return b[0];
+        }
+
+        public static OverworldState GetOverworldState()
+        {
+            ulong address = GetCoordinateAddress();
+            uint value = BitConverter.ToUInt32(Utilities.peekAbsoluteAddress(s, (address + 0x1E).ToString("X"), 0x4),0);
+
+            return DecodeOverworldState(value);
+        }
+
+        public static OverworldState DecodeOverworldState(uint value)
+        {
+            Debug.Print("Value : 0x" + value.ToString("X"));
+
+            if ($"{value:X8}".EndsWith("C906"))
+                return OverworldState.Loading;
+            else if ($"{value:X8}".EndsWith("A812D"))
+                return OverworldState.Loading;
+            switch (value)
+            {
+                case 0x00000000: return OverworldState.Null;
+                case 0xC0066666: return OverworldState.OverworldOrInAirport;
+                case 0xBE200000: return OverworldState.UserArriveLeavingOrTitleScreen;
+                default: return OverworldState.Unknown;
+            };
+        }
+    }
+}

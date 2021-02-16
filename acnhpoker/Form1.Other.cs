@@ -7,20 +7,17 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ACNHPoker
 {
     public partial class Form1 : Form
     {
-        private void UpdateTownID()
+        private string UpdateTownID()
         {
             byte[] townID = Utilities.GetTownID(s, bot);
-            /*TownName.Text = String.Format("{1:X2} {2:X2} {3:X2} {4:X2} | {0}",
-                Encoding.Unicode.GetString(townID, 4, 0x18),
-                townID[3], townID[2], townID[1], townID[0]);*/
-            //TownName.Text = Encoding.Unicode.GetString(townID, 4, 0x18);
-            this.Text = this.Text + "  |  Island Name : " + Encoding.Unicode.GetString(townID, 4, 0x18);
+            return "  |  Island Name : " + Encoding.Unicode.GetString(townID, 4, 0x18);
         }
 
         private void readWeatherSeed()
@@ -283,16 +280,11 @@ namespace ACNHPoker
 
         private void wrapItemBtn_Click(object sender, EventArgs e)
         {
-            /*
-            if ((s == null || s.Connected == false) & bot == null)
-            {
-                MessageBox.Show("Please connect to the switch first");
-                return;
-            }
-            */
-
             if (wrapSetting.SelectedIndex < 0)
                 wrapSetting.SelectedIndex = 0;
+
+            string[] flagBuffer = wrapSetting.SelectedItem.ToString().Split(' ');
+            byte flagByte = Utilities.stringToByte(flagBuffer[flagBuffer.Length - 1])[0];
 
             ToolStripItem item = (sender as ToolStripItem);
             if (item != null)
@@ -302,169 +294,11 @@ namespace ACNHPoker
                     string flag = "00";
                     if (RetainNameCheckBox.Checked)
                     {
-                        switch (wrapSetting.SelectedIndex)
-                        {
-                            case 0:
-                                flag = "41";
-                                break;
-
-                            case 1:
-                                flag = "45";
-                                break;
-
-                            case 2:
-                                flag = "49";
-                                break;
-
-                            case 3:
-                                flag = "4D";
-                                break;
-
-                            case 4:
-                                flag = "51";
-                                break;
-
-                            case 5:
-                                flag = "55";
-                                break;
-
-                            case 6:
-                                flag = "59";
-                                break;
-
-                            case 7:
-                                flag = "5D";
-                                break;
-
-                            case 8:
-                                flag = "61";
-                                break;
-
-                            case 9:
-                                flag = "65";
-                                break;
-
-                            case 10:
-                                flag = "69";
-                                break;
-
-                            case 11:
-                                flag = "6D";
-                                break;
-
-                            case 12:
-                                flag = "71";
-                                break;
-
-                            case 13:
-                                flag = "75";
-                                break;
-
-                            case 14:
-                                flag = "79";
-                                break;
-
-                            case 15:
-                                flag = "7D";
-                                break;
-
-                            case 16:
-                                flag = "42";
-                                break;
-
-                            case 17:
-                                flag = "43";
-                                break;
-                            case 18:
-                                flag = "73";
-                                break;
-                            case 19:
-                                flag = "77";
-                                break;
-                        }
+                        flag = Utilities.precedingZeros((flagByte + 0x40).ToString("X"), 2);
                     }
                     else
                     {
-                        switch (wrapSetting.SelectedIndex)
-                        {
-                            case 0:
-                                flag = "01";
-                                break;
-
-                            case 1:
-                                flag = "05";
-                                break;
-
-                            case 2:
-                                flag = "09";
-                                break;
-
-                            case 3:
-                                flag = "0D";
-                                break;
-
-                            case 4:
-                                flag = "11";
-                                break;
-
-                            case 5:
-                                flag = "15";
-                                break;
-
-                            case 6:
-                                flag = "19";
-                                break;
-
-                            case 7:
-                                flag = "1D";
-                                break;
-
-                            case 8:
-                                flag = "21";
-                                break;
-
-                            case 9:
-                                flag = "25";
-                                break;
-
-                            case 10:
-                                flag = "29";
-                                break;
-
-                            case 11:
-                                flag = "2D";
-                                break;
-
-                            case 12:
-                                flag = "31";
-                                break;
-
-                            case 13:
-                                flag = "35";
-                                break;
-
-                            case 14:
-                                flag = "39";
-                                break;
-
-                            case 15:
-                                flag = "3D";
-                                break;
-
-                            case 16:
-                                flag = "02";
-                                break;
-
-                            case 17:
-                                flag = "03";
-                                break;
-                            case 18:
-                                flag = "33";
-                                break;
-                            case 19:
-                                flag = "37";
-                                break;
-                        }
+                        flag = Utilities.precedingZeros((flagByte).ToString("X"), 2);
                     }
 
                     if (!offline)
@@ -1561,12 +1395,12 @@ namespace ACNHPoker
                 {
                     Log.logEvent("MainForm", "Connection Succeeded : USB");
 
-                    playerSelectorInventory.SelectedIndex = updateDropdownBox();
+                    //playerSelectorInventory.SelectedIndex = updateDropdownBox();
                     /*
                     if (UpdateInventory())
                         return;
                     */
-                    UpdateTownID();
+                    //UpdateTownID();
                     //InitTimer();
                     setEatBtn();
                     if (!disableValidation)

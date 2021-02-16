@@ -50,9 +50,7 @@ namespace ACNHPoker
             this.IdTextbox = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.HexTextbox = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.FlagTextbox = new System.Windows.Forms.RichTextBox();
             this.favModeBtn = new System.Windows.Forms.Button();
             this.itemModeBtn = new System.Windows.Forms.Button();
             this.recipeModeBtn = new System.Windows.Forms.Button();
@@ -62,6 +60,7 @@ namespace ACNHPoker
             this.floorRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.replaceItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miniMapBox = new System.Windows.Forms.PictureBox();
             this.saveMap = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.saveTopngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,6 +79,8 @@ namespace ACNHPoker
             this.bulkSpawnBtn = new System.Windows.Forms.Button();
             this.fetchMapBtn = new System.Windows.Forms.Button();
             this.reAnchorBtn = new System.Windows.Forms.Button();
+            this.saveDebug = new System.Windows.Forms.Button();
+            this.clearGridBtn = new System.Windows.Forms.Button();
             this.LayerPanel = new System.Windows.Forms.Panel();
             this.functionPanel = new System.Windows.Forms.Panel();
             this.variationBtn = new System.Windows.Forms.Button();
@@ -103,10 +104,15 @@ namespace ACNHPoker
             this.everythingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.bulkSpawnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveDebug = new System.Windows.Forms.Button();
             this.nextAutoSaveSecond = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.NextSaveTimer = new System.Windows.Forms.Timer(this.components);
+            this.Corner1YBox = new System.Windows.Forms.RichTextBox();
+            this.Corner1XBox = new System.Windows.Forms.RichTextBox();
+            this.Corner2YBox = new System.Windows.Forms.RichTextBox();
+            this.Corner2XBox = new System.Windows.Forms.RichTextBox();
+            this.ClearCopiedAreaBtn = new System.Windows.Forms.Button();
+            this.HexTextbox = new HexUpDown();
             this.selectedItem = new ACNHPoker.inventorySlot();
             this.floor1 = new ACNHPoker.floorSlot();
             this.floor2 = new ACNHPoker.floorSlot();
@@ -157,6 +163,7 @@ namespace ACNHPoker
             this.floor41 = new ACNHPoker.floorSlot();
             this.floor39 = new ACNHPoker.floorSlot();
             this.floor40 = new ACNHPoker.floorSlot();
+            this.FlagTextbox = new HexUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.fieldGridView)).BeginInit();
             this.BtnPanel.SuspendLayout();
             this.floorRightClick.SuspendLayout();
@@ -167,6 +174,8 @@ namespace ACNHPoker
             this.PleaseWaitPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.removeItemClick.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HexTextbox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FlagTextbox)).BeginInit();
             this.SuspendLayout();
             // 
             // xCoordinate
@@ -175,7 +184,7 @@ namespace ACNHPoker
             this.xCoordinate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.xCoordinate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xCoordinate.ForeColor = System.Drawing.Color.White;
-            this.xCoordinate.Location = new System.Drawing.Point(69, 365);
+            this.xCoordinate.Location = new System.Drawing.Point(69, 357);
             this.xCoordinate.MaxLength = 3;
             this.xCoordinate.Multiline = false;
             this.xCoordinate.Name = "xCoordinate";
@@ -190,7 +199,7 @@ namespace ACNHPoker
             this.yCoordinate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.yCoordinate.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yCoordinate.ForeColor = System.Drawing.Color.White;
-            this.yCoordinate.Location = new System.Drawing.Point(145, 365);
+            this.yCoordinate.Location = new System.Drawing.Point(145, 357);
             this.yCoordinate.MaxLength = 3;
             this.yCoordinate.Multiline = false;
             this.yCoordinate.Name = "yCoordinate";
@@ -463,22 +472,6 @@ namespace ACNHPoker
             this.label2.TabIndex = 151;
             this.label2.Text = "Hex Value";
             // 
-            // HexTextbox
-            // 
-            this.HexTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.HexTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.HexTextbox.Font = new System.Drawing.Font("Arial", 25F, System.Drawing.FontStyle.Bold);
-            this.HexTextbox.ForeColor = System.Drawing.Color.White;
-            this.HexTextbox.Location = new System.Drawing.Point(971, 586);
-            this.HexTextbox.MaxLength = 8;
-            this.HexTextbox.Multiline = false;
-            this.HexTextbox.Name = "HexTextbox";
-            this.HexTextbox.Size = new System.Drawing.Size(229, 38);
-            this.HexTextbox.TabIndex = 152;
-            this.HexTextbox.Text = "";
-            this.HexTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Hex_KeyPress);
-            this.HexTextbox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Hex_KeyUp);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -489,24 +482,6 @@ namespace ACNHPoker
             this.label3.Size = new System.Drawing.Size(38, 16);
             this.label3.TabIndex = 153;
             this.label3.Text = "Flag";
-            // 
-            // FlagTextbox
-            // 
-            this.FlagTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.FlagTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FlagTextbox.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold);
-            this.FlagTextbox.ForeColor = System.Drawing.Color.White;
-            this.FlagTextbox.Location = new System.Drawing.Point(1135, 530);
-            this.FlagTextbox.MaxLength = 2;
-            this.FlagTextbox.Multiline = false;
-            this.FlagTextbox.Name = "FlagTextbox";
-            this.FlagTextbox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.FlagTextbox.Size = new System.Drawing.Size(65, 29);
-            this.FlagTextbox.TabIndex = 154;
-            this.FlagTextbox.Text = "20";
-            this.formToolTip.SetToolTip(this.FlagTextbox, "Flag 20 : Dropped item\r\nFlag 00 : Placed furniture / Placed item\r\nFlag 04 : burie" +
-        "d item\r\nFlag 24 : buried furniture");
-            this.FlagTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Hex_KeyPress);
             // 
             // favModeBtn
             // 
@@ -647,16 +622,18 @@ namespace ACNHPoker
             this.floorRightClick.ImageScalingSize = new System.Drawing.Size(0, 0);
             this.floorRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyItemToolStripMenuItem,
-            this.deleteToolStripMenuItem});
+            this.deleteToolStripMenuItem,
+            this.replaceItemToolStripMenuItem});
             this.floorRightClick.Name = "floorRightClick";
             this.floorRightClick.ShowImageMargin = false;
-            this.floorRightClick.Size = new System.Drawing.Size(125, 48);
+            this.floorRightClick.Size = new System.Drawing.Size(136, 70);
+            this.floorRightClick.Opening += new System.ComponentModel.CancelEventHandler(this.floorRightClick_Opening);
             // 
             // copyItemToolStripMenuItem
             // 
             this.copyItemToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.copyItemToolStripMenuItem.Name = "copyItemToolStripMenuItem";
-            this.copyItemToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.copyItemToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.copyItemToolStripMenuItem.Text = "Copy Item";
             this.copyItemToolStripMenuItem.Click += new System.EventHandler(this.copyItemToolStripMenuItem_Click);
             // 
@@ -664,9 +641,17 @@ namespace ACNHPoker
             // 
             this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.deleteToolStripMenuItem.Text = "Delete Item";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // replaceItemToolStripMenuItem
+            // 
+            this.replaceItemToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.replaceItemToolStripMenuItem.Name = "replaceItemToolStripMenuItem";
+            this.replaceItemToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.replaceItemToolStripMenuItem.Text = "Replace Item";
+            this.replaceItemToolStripMenuItem.Click += new System.EventHandler(this.replaceItemToolStripMenuItem_Click);
             // 
             // miniMapBox
             // 
@@ -675,7 +660,7 @@ namespace ACNHPoker
             this.miniMapBox.ContextMenuStrip = this.saveMap;
             this.miniMapBox.ErrorImage = null;
             this.miniMapBox.InitialImage = null;
-            this.miniMapBox.Location = new System.Drawing.Point(4, 171);
+            this.miniMapBox.Location = new System.Drawing.Point(4, 163);
             this.miniMapBox.Name = "miniMapBox";
             this.miniMapBox.Size = new System.Drawing.Size(224, 192);
             this.miniMapBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -710,7 +695,7 @@ namespace ACNHPoker
             this.fillRemainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fillRemainBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.fillRemainBtn.ForeColor = System.Drawing.Color.White;
-            this.fillRemainBtn.Location = new System.Drawing.Point(18, 475);
+            this.fillRemainBtn.Location = new System.Drawing.Point(17, 465);
             this.fillRemainBtn.Margin = new System.Windows.Forms.Padding(4);
             this.fillRemainBtn.Name = "fillRemainBtn";
             this.fillRemainBtn.Size = new System.Drawing.Size(138, 28);
@@ -728,7 +713,7 @@ namespace ACNHPoker
             this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.refreshBtn.ForeColor = System.Drawing.Color.White;
-            this.refreshBtn.Location = new System.Drawing.Point(18, 56);
+            this.refreshBtn.Location = new System.Drawing.Point(18, 43);
             this.refreshBtn.Margin = new System.Windows.Forms.Padding(4);
             this.refreshBtn.Name = "refreshBtn";
             this.refreshBtn.Size = new System.Drawing.Size(138, 28);
@@ -745,7 +730,7 @@ namespace ACNHPoker
             this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.saveBtn.ForeColor = System.Drawing.Color.White;
-            this.saveBtn.Location = new System.Drawing.Point(18, 439);
+            this.saveBtn.Location = new System.Drawing.Point(18, 393);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(4);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(62, 28);
@@ -762,7 +747,7 @@ namespace ACNHPoker
             this.loadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loadBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.loadBtn.ForeColor = System.Drawing.Color.White;
-            this.loadBtn.Location = new System.Drawing.Point(92, 439);
+            this.loadBtn.Location = new System.Drawing.Point(92, 393);
             this.loadBtn.Margin = new System.Windows.Forms.Padding(4);
             this.loadBtn.Name = "loadBtn";
             this.loadBtn.Size = new System.Drawing.Size(63, 28);
@@ -872,6 +857,7 @@ namespace ACNHPoker
             // layer1Btn
             // 
             this.layer1Btn.AutoSize = true;
+            this.layer1Btn.BackColor = System.Drawing.Color.Transparent;
             this.layer1Btn.Checked = true;
             this.layer1Btn.ForeColor = System.Drawing.Color.White;
             this.layer1Btn.Location = new System.Drawing.Point(3, 26);
@@ -881,12 +867,13 @@ namespace ACNHPoker
             this.layer1Btn.TabStop = true;
             this.layer1Btn.Text = "Layer 1";
             this.formToolTip.SetToolTip(this.layer1Btn, "Change to the bottom layer. (Usually the floor... or seabed/stream bed)");
-            this.layer1Btn.UseVisualStyleBackColor = true;
+            this.layer1Btn.UseVisualStyleBackColor = false;
             this.layer1Btn.Click += new System.EventHandler(this.layer1Btn_Click);
             // 
             // layer2Btn
             // 
             this.layer2Btn.AutoSize = true;
+            this.layer2Btn.BackColor = System.Drawing.Color.Transparent;
             this.layer2Btn.ForeColor = System.Drawing.Color.White;
             this.layer2Btn.Location = new System.Drawing.Point(3, 3);
             this.layer2Btn.Name = "layer2Btn";
@@ -894,7 +881,7 @@ namespace ACNHPoker
             this.layer2Btn.TabIndex = 1;
             this.layer2Btn.Text = "Layer 2";
             this.formToolTip.SetToolTip(this.layer2Btn, "Change to the top layer. (On top of furnitures. Like tables)");
-            this.layer2Btn.UseVisualStyleBackColor = true;
+            this.layer2Btn.UseVisualStyleBackColor = false;
             this.layer2Btn.Click += new System.EventHandler(this.layer2Btn_Click);
             // 
             // bulkSpawnBtn
@@ -904,7 +891,7 @@ namespace ACNHPoker
             this.bulkSpawnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bulkSpawnBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.bulkSpawnBtn.ForeColor = System.Drawing.Color.White;
-            this.bulkSpawnBtn.Location = new System.Drawing.Point(18, 402);
+            this.bulkSpawnBtn.Location = new System.Drawing.Point(18, 356);
             this.bulkSpawnBtn.Margin = new System.Windows.Forms.Padding(4);
             this.bulkSpawnBtn.Name = "bulkSpawnBtn";
             this.bulkSpawnBtn.Size = new System.Drawing.Size(138, 28);
@@ -922,7 +909,7 @@ namespace ACNHPoker
             this.fetchMapBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fetchMapBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.fetchMapBtn.ForeColor = System.Drawing.Color.White;
-            this.fetchMapBtn.Location = new System.Drawing.Point(47, 48);
+            this.fetchMapBtn.Location = new System.Drawing.Point(47, 35);
             this.fetchMapBtn.Margin = new System.Windows.Forms.Padding(4);
             this.fetchMapBtn.Name = "fetchMapBtn";
             this.fetchMapBtn.Size = new System.Drawing.Size(138, 28);
@@ -939,7 +926,7 @@ namespace ACNHPoker
             this.reAnchorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reAnchorBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.reAnchorBtn.ForeColor = System.Drawing.Color.White;
-            this.reAnchorBtn.Location = new System.Drawing.Point(18, 20);
+            this.reAnchorBtn.Location = new System.Drawing.Point(18, 7);
             this.reAnchorBtn.Margin = new System.Windows.Forms.Padding(4);
             this.reAnchorBtn.Name = "reAnchorBtn";
             this.reAnchorBtn.Size = new System.Drawing.Size(138, 28);
@@ -949,17 +936,54 @@ namespace ACNHPoker
             this.reAnchorBtn.UseVisualStyleBackColor = false;
             this.reAnchorBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.reAnchorBtn_MouseClick);
             // 
+            // saveDebug
+            // 
+            this.saveDebug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.saveDebug.FlatAppearance.BorderSize = 0;
+            this.saveDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveDebug.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.saveDebug.ForeColor = System.Drawing.Color.White;
+            this.saveDebug.Location = new System.Drawing.Point(657, 719);
+            this.saveDebug.Margin = new System.Windows.Forms.Padding(4);
+            this.saveDebug.Name = "saveDebug";
+            this.saveDebug.Size = new System.Drawing.Size(138, 28);
+            this.saveDebug.TabIndex = 182;
+            this.saveDebug.Text = "saveDebug";
+            this.formToolTip.SetToolTip(this.saveDebug, "Fill the remaining empty spot with the selected item.\r\n\r\n[WARNING]\r\nThe current i" +
+        "mplementation is slow... \r\nPlease wait for a while after you use it.");
+            this.saveDebug.UseVisualStyleBackColor = false;
+            this.saveDebug.Click += new System.EventHandler(this.saveDebug_Click);
+            // 
+            // clearGridBtn
+            // 
+            this.clearGridBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.clearGridBtn.FlatAppearance.BorderSize = 0;
+            this.clearGridBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearGridBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.clearGridBtn.ForeColor = System.Drawing.Color.White;
+            this.clearGridBtn.Location = new System.Drawing.Point(17, 429);
+            this.clearGridBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.clearGridBtn.Name = "clearGridBtn";
+            this.clearGridBtn.Size = new System.Drawing.Size(138, 28);
+            this.clearGridBtn.TabIndex = 224;
+            this.clearGridBtn.Text = "Clear Grid";
+            this.formToolTip.SetToolTip(this.clearGridBtn, "Remove all items in the displaying 7×7 grid.\r\n\r\n[WARNING]\r\nYou will lose your ite" +
+        "m obviously... \r\nWhat do you expect? An easter egg to popup?");
+            this.clearGridBtn.UseVisualStyleBackColor = false;
+            this.clearGridBtn.Click += new System.EventHandler(this.clearGridBtn_Click);
+            // 
             // LayerPanel
             // 
             this.LayerPanel.Controls.Add(this.layer2Btn);
             this.LayerPanel.Controls.Add(this.layer1Btn);
-            this.LayerPanel.Location = new System.Drawing.Point(46, 91);
+            this.LayerPanel.Location = new System.Drawing.Point(46, 78);
             this.LayerPanel.Name = "LayerPanel";
             this.LayerPanel.Size = new System.Drawing.Size(82, 49);
             this.LayerPanel.TabIndex = 186;
             // 
             // functionPanel
             // 
+            this.functionPanel.Controls.Add(this.clearGridBtn);
             this.functionPanel.Controls.Add(this.bulkSpawnBtn);
             this.functionPanel.Controls.Add(this.loadBtn);
             this.functionPanel.Controls.Add(this.fillRemainBtn);
@@ -970,7 +994,7 @@ namespace ACNHPoker
             this.functionPanel.Enabled = false;
             this.functionPanel.Location = new System.Drawing.Point(29, 28);
             this.functionPanel.Name = "functionPanel";
-            this.functionPanel.Size = new System.Drawing.Size(175, 509);
+            this.functionPanel.Size = new System.Drawing.Size(175, 532);
             this.functionPanel.TabIndex = 187;
             // 
             // variationBtn
@@ -978,11 +1002,11 @@ namespace ACNHPoker
             this.variationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             this.variationBtn.FlatAppearance.BorderSize = 0;
             this.variationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.variationBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.variationBtn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.variationBtn.ForeColor = System.Drawing.Color.White;
-            this.variationBtn.Location = new System.Drawing.Point(1127, 561);
+            this.variationBtn.Location = new System.Drawing.Point(1127, 566);
             this.variationBtn.Name = "variationBtn";
-            this.variationBtn.Size = new System.Drawing.Size(73, 23);
+            this.variationBtn.Size = new System.Drawing.Size(73, 21);
             this.variationBtn.TabIndex = 188;
             this.variationBtn.Text = "Variation";
             this.variationBtn.UseVisualStyleBackColor = false;
@@ -994,7 +1018,7 @@ namespace ACNHPoker
             this.PleaseWaitPanel.Controls.Add(this.MapProgressBar);
             this.PleaseWaitPanel.Controls.Add(this.pictureBox2);
             this.PleaseWaitPanel.Controls.Add(this.label29);
-            this.PleaseWaitPanel.Location = new System.Drawing.Point(4, 554);
+            this.PleaseWaitPanel.Location = new System.Drawing.Point(4, 564);
             this.PleaseWaitPanel.Name = "PleaseWaitPanel";
             this.PleaseWaitPanel.Size = new System.Drawing.Size(225, 60);
             this.PleaseWaitPanel.TabIndex = 219;
@@ -1056,7 +1080,7 @@ namespace ACNHPoker
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(44, 366);
+            this.label4.Location = new System.Drawing.Point(44, 358);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(25, 16);
             this.label4.TabIndex = 221;
@@ -1067,7 +1091,7 @@ namespace ACNHPoker
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(119, 366);
+            this.label5.Location = new System.Drawing.Point(119, 358);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 16);
             this.label5.TabIndex = 222;
@@ -1179,24 +1203,6 @@ namespace ACNHPoker
             this.bulkSpawnToolStripMenuItem.Text = "Bulk Spawn";
             this.bulkSpawnToolStripMenuItem.Click += new System.EventHandler(this.bulkSpawnToolStripMenuItem_Click);
             // 
-            // saveDebug
-            // 
-            this.saveDebug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.saveDebug.FlatAppearance.BorderSize = 0;
-            this.saveDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveDebug.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.saveDebug.ForeColor = System.Drawing.Color.White;
-            this.saveDebug.Location = new System.Drawing.Point(657, 719);
-            this.saveDebug.Margin = new System.Windows.Forms.Padding(4);
-            this.saveDebug.Name = "saveDebug";
-            this.saveDebug.Size = new System.Drawing.Size(138, 28);
-            this.saveDebug.TabIndex = 182;
-            this.saveDebug.Text = "saveDebug";
-            this.formToolTip.SetToolTip(this.saveDebug, "Fill the remaining empty spot with the selected item.\r\n\r\n[WARNING]\r\nThe current i" +
-        "mplementation is slow... \r\nPlease wait for a while after you use it.");
-            this.saveDebug.UseVisualStyleBackColor = false;
-            this.saveDebug.Click += new System.EventHandler(this.saveDebug_Click);
-            // 
             // nextAutoSaveSecond
             // 
             this.nextAutoSaveSecond.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
@@ -1227,6 +1233,104 @@ namespace ACNHPoker
             // 
             this.NextSaveTimer.Interval = 1000;
             this.NextSaveTimer.Tick += new System.EventHandler(this.NextSaveTimer_Tick);
+            // 
+            // Corner1YBox
+            // 
+            this.Corner1YBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Corner1YBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Corner1YBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Corner1YBox.ForeColor = System.Drawing.Color.White;
+            this.Corner1YBox.Location = new System.Drawing.Point(318, 587);
+            this.Corner1YBox.MaxLength = 3;
+            this.Corner1YBox.Multiline = false;
+            this.Corner1YBox.Name = "Corner1YBox";
+            this.Corner1YBox.ReadOnly = true;
+            this.Corner1YBox.Size = new System.Drawing.Size(40, 18);
+            this.Corner1YBox.TabIndex = 227;
+            this.Corner1YBox.Text = "0";
+            // 
+            // Corner1XBox
+            // 
+            this.Corner1XBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Corner1XBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Corner1XBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Corner1XBox.ForeColor = System.Drawing.Color.White;
+            this.Corner1XBox.Location = new System.Drawing.Point(277, 587);
+            this.Corner1XBox.MaxLength = 3;
+            this.Corner1XBox.Multiline = false;
+            this.Corner1XBox.Name = "Corner1XBox";
+            this.Corner1XBox.ReadOnly = true;
+            this.Corner1XBox.Size = new System.Drawing.Size(40, 18);
+            this.Corner1XBox.TabIndex = 226;
+            this.Corner1XBox.Text = "0";
+            // 
+            // Corner2YBox
+            // 
+            this.Corner2YBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Corner2YBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Corner2YBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Corner2YBox.ForeColor = System.Drawing.Color.White;
+            this.Corner2YBox.Location = new System.Drawing.Point(318, 606);
+            this.Corner2YBox.MaxLength = 3;
+            this.Corner2YBox.Multiline = false;
+            this.Corner2YBox.Name = "Corner2YBox";
+            this.Corner2YBox.ReadOnly = true;
+            this.Corner2YBox.Size = new System.Drawing.Size(40, 18);
+            this.Corner2YBox.TabIndex = 229;
+            this.Corner2YBox.Text = "0";
+            // 
+            // Corner2XBox
+            // 
+            this.Corner2XBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Corner2XBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Corner2XBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Corner2XBox.ForeColor = System.Drawing.Color.White;
+            this.Corner2XBox.Location = new System.Drawing.Point(277, 606);
+            this.Corner2XBox.MaxLength = 3;
+            this.Corner2XBox.Multiline = false;
+            this.Corner2XBox.Name = "Corner2XBox";
+            this.Corner2XBox.ReadOnly = true;
+            this.Corner2XBox.Size = new System.Drawing.Size(40, 18);
+            this.Corner2XBox.TabIndex = 228;
+            this.Corner2XBox.Text = "0";
+            // 
+            // ClearCopiedAreaBtn
+            // 
+            this.ClearCopiedAreaBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.ClearCopiedAreaBtn.FlatAppearance.BorderSize = 0;
+            this.ClearCopiedAreaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClearCopiedAreaBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ClearCopiedAreaBtn.ForeColor = System.Drawing.Color.White;
+            this.ClearCopiedAreaBtn.Location = new System.Drawing.Point(359, 591);
+            this.ClearCopiedAreaBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.ClearCopiedAreaBtn.Name = "ClearCopiedAreaBtn";
+            this.ClearCopiedAreaBtn.Size = new System.Drawing.Size(137, 28);
+            this.ClearCopiedAreaBtn.TabIndex = 232;
+            this.ClearCopiedAreaBtn.Text = "Clear Copied Area";
+            this.formToolTip.SetToolTip(this.ClearCopiedAreaBtn, "Clear the stored area in the clipboard.");
+            this.ClearCopiedAreaBtn.UseVisualStyleBackColor = false;
+            this.ClearCopiedAreaBtn.Visible = false;
+            this.ClearCopiedAreaBtn.Click += new System.EventHandler(this.ClearCopiedAreaBtn_Click);
+            // 
+            // HexTextbox
+            // 
+            this.HexTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.HexTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.HexTextbox.Font = new System.Drawing.Font("Arial", 22F, System.Drawing.FontStyle.Bold);
+            this.HexTextbox.ForeColor = System.Drawing.Color.White;
+            this.HexTextbox.Hexadecimal = true;
+            this.HexTextbox.HexLength = 8;
+            this.HexTextbox.Location = new System.Drawing.Point(971, 586);
+            this.HexTextbox.Maximum = new decimal(new int[] {
+            -1,
+            0,
+            0,
+            0});
+            this.HexTextbox.Name = "HexTextbox";
+            this.HexTextbox.Size = new System.Drawing.Size(229, 37);
+            this.HexTextbox.TabIndex = 230;
+            this.HexTextbox.ValueChanged += new System.EventHandler(this.Hex_ValueChanged);
+            this.HexTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Hex_KeyPress);
             // 
             // selectedItem
             // 
@@ -2963,12 +3067,43 @@ namespace ACNHPoker
             this.floor40.MouseDown += new System.Windows.Forms.MouseEventHandler(this.floor_MouseDown);
             this.floor40.MouseHover += new System.EventHandler(this.floor_MouseHover);
             // 
+            // FlagTextbox
+            // 
+            this.FlagTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.FlagTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.FlagTextbox.Font = new System.Drawing.Font("Arial", 22F, System.Drawing.FontStyle.Bold);
+            this.FlagTextbox.ForeColor = System.Drawing.Color.White;
+            this.FlagTextbox.Hexadecimal = true;
+            this.FlagTextbox.HexLength = 2;
+            this.FlagTextbox.Location = new System.Drawing.Point(1135, 530);
+            this.FlagTextbox.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.FlagTextbox.Name = "FlagTextbox";
+            this.FlagTextbox.Size = new System.Drawing.Size(65, 37);
+            this.FlagTextbox.TabIndex = 231;
+            this.formToolTip.SetToolTip(this.FlagTextbox, resources.GetString("FlagTextbox.ToolTip"));
+            this.FlagTextbox.Value = new decimal(new int[] {
+            32,
+            0,
+            0,
+            0});
+            this.FlagTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Hex_KeyPress);
+            // 
             // map
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.ClientSize = new System.Drawing.Size(1204, 626);
+            this.ClientSize = new System.Drawing.Size(1204, 631);
+            this.Controls.Add(this.ClearCopiedAreaBtn);
+            this.Controls.Add(this.variationBtn);
+            this.Controls.Add(this.HexTextbox);
+            this.Controls.Add(this.Corner2YBox);
+            this.Controls.Add(this.Corner2XBox);
+            this.Controls.Add(this.Corner1YBox);
+            this.Controls.Add(this.Corner1XBox);
             this.Controls.Add(this.nextAutoSaveSecond);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.saveDebug);
@@ -2977,7 +3112,6 @@ namespace ACNHPoker
             this.Controls.Add(this.fetchMapBtn);
             this.Controls.Add(this.PleaseWaitPanel);
             this.Controls.Add(this.miniMapBox);
-            this.Controls.Add(this.variationBtn);
             this.Controls.Add(this.moveUp7Btn);
             this.Controls.Add(this.moveDown7Btn);
             this.Controls.Add(this.moveLeft7Btn);
@@ -2987,9 +3121,7 @@ namespace ACNHPoker
             this.Controls.Add(this.itemModeBtn);
             this.Controls.Add(this.recipeModeBtn);
             this.Controls.Add(this.flowerModeBtn);
-            this.Controls.Add(this.FlagTextbox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.HexTextbox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.IdTextbox);
@@ -3012,12 +3144,13 @@ namespace ACNHPoker
             this.Controls.Add(this.itemSearchBox);
             this.Controls.Add(this.BtnPanel);
             this.Controls.Add(this.functionPanel);
+            this.Controls.Add(this.FlagTextbox);
             this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1220, 1000);
-            this.MinimumSize = new System.Drawing.Size(1220, 665);
+            this.MinimumSize = new System.Drawing.Size(1220, 670);
             this.Name = "map";
             this.Text = "Map Dropper";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.map_FormClosed);
@@ -3035,6 +3168,8 @@ namespace ACNHPoker
             this.PleaseWaitPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.removeItemClick.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.HexTextbox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FlagTextbox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3110,9 +3245,7 @@ namespace ACNHPoker
         private System.Windows.Forms.RichTextBox IdTextbox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox HexTextbox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox FlagTextbox;
         private System.Windows.Forms.Button favModeBtn;
         private System.Windows.Forms.Button itemModeBtn;
         private System.Windows.Forms.Button recipeModeBtn;
@@ -3167,5 +3300,14 @@ namespace ACNHPoker
         private System.Windows.Forms.RichTextBox nextAutoSaveSecond;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Timer NextSaveTimer;
+        private System.Windows.Forms.RichTextBox Corner1YBox;
+        private System.Windows.Forms.RichTextBox Corner1XBox;
+        private System.Windows.Forms.RichTextBox Corner2YBox;
+        private System.Windows.Forms.RichTextBox Corner2XBox;
+        private System.Windows.Forms.Button clearGridBtn;
+        private System.Windows.Forms.ToolStripMenuItem replaceItemToolStripMenuItem;
+        private HexUpDown HexTextbox;
+        private HexUpDown FlagTextbox;
+        private System.Windows.Forms.Button ClearCopiedAreaBtn;
     }
 }

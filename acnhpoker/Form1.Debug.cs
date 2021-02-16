@@ -550,5 +550,351 @@ namespace ACNHPoker
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
         }
+
+        private void freezeBtn_Click(object sender, EventArgs e)
+        {
+                OpenFileDialog file = new OpenFileDialog()
+                {
+                    Filter = "New Horizons Inventory (*.nhi)|*.nhi|All files (*.*)|*.*",
+                    FileName = "items.nhi",
+                };
+
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+                string savepath;
+
+                if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                    savepath = Directory.GetCurrentDirectory() + @"\save";
+                else
+                    savepath = config.AppSettings.Settings["LastLoad"].Value;
+
+                if (Directory.Exists(savepath))
+                {
+                    file.InitialDirectory = savepath;
+                }
+                else
+                {
+                    file.InitialDirectory = @"C:\";
+                }
+
+                if (file.ShowDialog() != DialogResult.OK)
+                    return;
+
+                string[] temp = file.FileName.Split('\\');
+                string path = "";
+                for (int i = 0; i < temp.Length - 1; i++)
+                    path = path + temp[i] + "\\";
+
+                config.AppSettings.Settings["LastLoad"].Value = path;
+                config.Save(ConfigurationSaveMode.Minimal);
+
+                byte[] data = File.ReadAllBytes(file.FileName);
+
+                btnToolTip.RemoveAll();
+
+
+            byte[] b1 = new byte[160];
+            byte[] b2 = new byte[160];
+
+            Buffer.BlockCopy(data, 0, b1, 0, 160);
+            Buffer.BlockCopy(data, 160, b2, 0, 160);
+
+            Utilities.SendString(s, Utilities.Freeze(Utilities.GetItemSlotUIntAddress(1), b1));
+            Utilities.SendString(s, Utilities.Freeze(Utilities.GetItemSlotUIntAddress(21), b2));
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Utilities.SendString(s, Utilities.UnFreeze(Utilities.GetItemSlotUIntAddress(1)));
+            Utilities.SendString(s, Utilities.UnFreeze(Utilities.GetItemSlotUIntAddress(21)));
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Debug.Print(Utilities.GetFreezeCount(s).ToString());
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Utilities.SendString(s, Utilities.FreezeClear());
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Debug.Print(Utilities.getVersion(s));
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog file = new OpenFileDialog()
+            {
+                Filter = "New Horizons Fasil (*.nhf)|*.nhf|All files (*.*)|*.*",
+            };
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastLoad"].Value;
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int i = 0; i < temp.Length - 1; i++)
+                path = path + temp[i] + "\\";
+
+            config.AppSettings.Settings["LastLoad"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            byte[] data = File.ReadAllBytes(file.FileName);
+
+            UInt32 address = Utilities.mapZero;
+
+            byte[][] b = new byte[42][];
+
+            for (int i = 0; i < 42; i++)
+            {
+                b[i] = new byte[0x2000];
+                Buffer.BlockCopy(data, i * 0x2000, b[i], 0x0, 0x2000);
+                Utilities.SendString(s, Utilities.Freeze((uint)(address + (i * 0x2000)), b[i]));
+                Thread.Sleep(250);
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            controller.emoteUP();
+            //controller.stickUp();
+            //Thread.Sleep(5000);
+            //controller.resetLeftStick();
+            //controller.stickDown();
+            //Thread.Sleep(3000);
+            //controller.resetLeftStick();
+            //controller.detachController();
+            //HardRestore();
+            /*
+            for (int i = 0; i < 30; i++)
+            {
+                NormalRestore();
+                CloseGate();
+                HardRestore();
+                Debug.Print("Run " + i);
+            }
+            */
+        }
+
+        private void button14_MouseDown(object sender, MouseEventArgs e)
+        {
+            controller.LstickUp();
+        }
+
+        private void button16_MouseDown(object sender, MouseEventArgs e)
+        {
+            controller.LstickRight();
+        }
+
+        private void button15_MouseDown(object sender, MouseEventArgs e)
+        {
+            controller.LstickLeft();
+        }
+
+        private void button17_MouseDown(object sender, MouseEventArgs e)
+        {
+            controller.LstickDown();
+        }
+
+        private void button17_MouseUp(object sender, MouseEventArgs e)
+        {
+            controller.resetLeftStick();
+        }
+
+        private void button12_Click_1(object sender, EventArgs e)
+        {
+            Thread Gate = new Thread(delegate () { DodoMonitor(); });
+            Gate.Start();
+        }
+
+        private void DodoMonitor()
+        {
+            int run = 0;
+            while(true)
+            {
+                if(teleport.checkOnlineStatus() == 1)
+                {
+                    Debug.Print("Connection Normal " + run);
+                    Thread.Sleep(10000);
+                    if (run % 10 == 0)
+                    {
+                        //Random random = new Random();
+                        //int v = random.Next(5,10);
+                        //    teleport.TeleportTo(v);
+                        if (teleport.GetOverworldState() == teleport.OverworldState.OverworldOrInAirport)
+                            controller.emoteUP();
+                    }
+                }
+                else
+                {
+                    Debug.Print("Disconnected");
+                    Thread.Sleep(5000);
+
+                    int retry = 0;
+                    do
+                    {
+                        if (retry >= 0)
+                        {
+                            Debug.Print("Start Hard Restore");
+                            HardRestore();
+                            break;
+                        }
+                        Debug.Print("Waiting for Overworld");
+                        controller.clickA();
+                        Thread.Sleep(2000);
+                        retry++;
+                    }
+                    while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
+
+                    Debug.Print("Start Normal Restore");
+                    NormalRestore();
+                }
+                run++;
+            }
+        }
+
+        private void NormalRestore()
+        {
+            controller.clickDown(); // Hide Weapon
+            Thread.Sleep(1000);
+
+            teleport.TeleportToAnchor(2);
+
+            Debug.Print("Teleport to Airport");
+
+            do
+            {
+                //Debug.Print(teleport.GetOverworldState().ToString());
+                Debug.Print("Try Enter Airport");
+                controller.EnterAirport();
+                Thread.Sleep(2000);
+            }
+            while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
+
+            Debug.Print("Inside Airport");
+            Thread.Sleep(2000);
+
+            teleport.TeleportToAnchor(3);
+
+            Debug.Print("Get Dodo");
+            controller.talkAndGetDodoCode();
+            Debug.Print("Finish getting Dodo");
+
+            teleport.TeleportToAnchor(4);
+
+            do
+            {
+                //Debug.Print(teleport.GetOverworldState().ToString());
+                Debug.Print("Try Exit Airport");
+                controller.ExitAirport();
+                Thread.Sleep(2000);
+            }
+            while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
+
+            Debug.Print("Back to Overworld");
+            Thread.Sleep(2000);
+
+            teleport.TeleportToAnchor(1);
+
+            controller.emoteUP();
+
+            //controller.detachController();
+        }
+
+        private void HardRestore()
+        {
+            //controller.clickCAPTURE();
+            Thread.Sleep(2000);
+            controller.clickHOME();
+            Thread.Sleep(5000);
+
+            controller.clickX();
+            Thread.Sleep(1000);
+            controller.clickA(); //Close Game
+            Thread.Sleep(10000);
+
+            controller.clickA(); //Select Game
+            Thread.Sleep(2000);
+            controller.clickA(); //Select first user
+            Thread.Sleep(10000);
+
+            int retry = 0;
+            do
+            {
+                //Debug.Print(teleport.GetOverworldState().ToString());
+                //Debug.Print("Waiting for Overworld");
+                controller.clickA();
+                Thread.Sleep(2000);
+                retry++;
+            }
+            while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
+
+            Debug.Print("Exiting House");
+            Thread.Sleep(5000);
+        }
+
+        private void CloseGate()
+        {
+            controller.clickDown(); // Hide Weapon
+            Thread.Sleep(1000);
+
+            teleport.TeleportToAnchor(2);
+
+            Debug.Print("Teleport to Airport");
+
+            do
+            {
+                //Debug.Print(teleport.GetOverworldState().ToString());
+                Debug.Print("Try Enter Airport");
+                controller.EnterAirport();
+                Thread.Sleep(2000);
+            }
+            while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
+
+            Debug.Print("Inside Airport");
+            Thread.Sleep(2000);
+
+            teleport.TeleportToAnchor(3);
+
+            Debug.Print("Close Gate");
+            controller.talkAndCloseGate();
+            Debug.Print("Finish Close Gate");
+
+            teleport.TeleportToAnchor(4);
+
+            do
+            {
+                //Debug.Print(teleport.GetOverworldState().ToString());
+                Debug.Print("Try Exit Airport");
+                controller.ExitAirport();
+                Thread.Sleep(2000);
+            }
+            while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
+
+            Debug.Print("Back to Overworld");
+            Thread.Sleep(2000);
+
+        }
     }
 }

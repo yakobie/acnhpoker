@@ -66,6 +66,8 @@ namespace ACNHPoker
         {
             if (File.Exists(RecipeOverlayPath))
                 recipe = Image.FromFile(RecipeOverlayPath);
+            else
+                recipe = null;
         }
 
         public string displayItemID()
@@ -127,10 +129,16 @@ namespace ACNHPoker
                 {
                     Image background = Image.FromFile(imagePath);
                     int imageSize = (int)(background.Width * 0.3);
-                    Image icon = (new Bitmap(recipe, new Size(imageSize, imageSize)));
 
-                    Image img = PlaceImageOverImage(background, icon, background.Width - imageSize - 10, background.Width - imageSize - 10, 1);
-                    return (Image)(new Bitmap(img, new Size(128, 128)));
+                    if (recipe != null)
+                    {
+                        Image icon = (new Bitmap(recipe, new Size(imageSize, imageSize)));
+
+                        Image img = PlaceImageOverImage(background, icon, background.Width - imageSize - 10, background.Width - imageSize - 10, 1);
+
+                        return (Image)(new Bitmap(img, new Size(128, 128)));
+                    }
+                    else return background;
                 }
                 else if (itemID == 0x315A || itemID == 0x1618) // Wall-Mount
                 {
@@ -186,10 +194,16 @@ namespace ACNHPoker
                 {
                     Image background = Image.FromFile(imagePath);
                     int imageSize = (int)(background.Width * 0.35);
-                    Image icon = (new Bitmap(recipe, new Size(imageSize, imageSize)));
+                    if (recipe != null)
+                    {
+                        Image icon = (new Bitmap(recipe, new Size(imageSize, imageSize)));
 
-                    Image img = PlaceImageOverImage(background, icon, background.Width - imageSize, background.Width - imageSize, 1);
-                    return (Image)(new Bitmap(img, new Size(64, 64)));
+                        Image img = PlaceImageOverImage(background, icon, background.Width - imageSize, background.Width - imageSize, 1);
+
+                        return (Image)(new Bitmap(img, new Size(64, 64)));
+                    }
+                    else return background;
+
                 }
                 else if (imagePath != "")
                 {

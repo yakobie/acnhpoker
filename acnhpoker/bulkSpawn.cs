@@ -375,8 +375,6 @@ namespace ACNHPoker
             try
             {
                 int time = SpawnArea.Length / 4;
-                if (time > 20)
-                    time = 20;
 
                 Debug.Print("Length :" + SpawnArea.Length + " Time : " + time);
 
@@ -398,7 +396,7 @@ namespace ACNHPoker
 
                     this.Invoke((MethodInvoker)delegate
                     {
-                        main.updataData(anchorX, anchorY, SpawnArea, false);
+                        main.updataData(anchorX, anchorY, SpawnArea, false, true);
                     });
                 }
                 else
@@ -421,8 +419,6 @@ namespace ACNHPoker
                 Log.logEvent("BulkSpawn", "ConfirmSpawn: " + ex.Message.ToString());
                 myMessageBox.Show(ex.Message.ToString(), "When I wrote this, only God and I understood what I was doing.");
             }
-
-            main.moveAnchor(anchorX, anchorY);
 
             Thread.Sleep(5000);
 

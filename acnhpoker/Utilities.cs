@@ -5,6 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ACNHPoker
@@ -64,6 +67,7 @@ namespace ACNHPoker
         public static UInt32 VisitorNameAddress = 0xB66F4EE0; // 0xB694A4A8;
 
         public static UInt32 dodoAddress = 0xA97E15C;
+        public static UInt32 OnlineSessionAddress = 0x91FD740;
 
 
         public static UInt32 TerrainOffset = mapZero + 0xAAA10;
@@ -447,6 +451,8 @@ namespace ACNHPoker
 
         public static string precedingZeros(string value, int length)
         {
+            if (value.Length >= length)
+                return value;
             string n0 = String.Concat(Enumerable.Repeat("0", length - value.Length));
             string result = String.Concat(n0, value);
             return result;
@@ -768,6 +774,66 @@ namespace ACNHPoker
             }
         }
 
+        public static byte[] peekMainAddress(Socket socket, string address, int size)
+        {
+            lock (botLock)
+            {
+                byte[] result = new byte[size];
+
+                string msg = String.Format("peekMain 0x{0:X8} 0x{1}\r\n", address, size);
+                //Debug.Print("PeekMain : " + msg);
+                SendString(socket, Encoding.UTF8.GetBytes(msg));
+
+                byte[] b = new byte[size * 2 + 64];
+                int first_rec = ReceiveString(socket, b);
+                string buffer = Encoding.ASCII.GetString(b, 0, size * 2);
+
+                if (buffer == null)
+                {
+                    return null;
+                }
+                for (int i = 0; i < size; i++)
+                {
+                    result[i] = Convert.ToByte(buffer.Substring(i * 2, 2), 16);
+                }
+
+                return result;
+            }
+        }
+
+        public static byte[] peekAbsoluteAddress(Socket socket, string address, int size)
+        {
+            lock (botLock)
+            {
+                byte[] result = new byte[size];
+
+                string msg = String.Format("peekAbsolute 0x{0:X8} {1}\r\n", address, size);
+                SendString(socket, Encoding.UTF8.GetBytes(msg));
+                byte[] b = new byte[size * 2 + 64];
+                int first_rec = ReceiveString(socket, b);
+                string buffer = Encoding.ASCII.GetString(b, 0, size * 2);
+
+                if (buffer == null)
+                {
+                    return null;
+                }
+                for (int i = 0; i < size; i++)
+                {
+                    result[i] = Convert.ToByte(buffer.Substring(i * 2, 2), 16);
+                }
+
+                return result;
+            }
+        }
+
+        public static void pokeAbsoluteAddress(Socket socket, string address, string value)
+        {
+            lock (botLock)
+            {
+                string msg = String.Format("pokeAbsolute 0x{0:X8} 0x{1}\r\n", address, value);
+                SendString(socket, Encoding.UTF8.GetBytes(msg));
+            }
+        }
 
         public static void setStamina(Socket socket, USBBot bot, string value)
         {
@@ -856,7 +922,6 @@ namespace ACNHPoker
                         dataTemp.Append(String.Format("{0:X2}", buffer[sent + i]));
                     }
                     msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", initAddr + sent, dataTemp.ToString());
-                    //Debug.Print(msg);
                     SendString(socket, Encoding.UTF8.GetBytes(msg));
                     sent += bytesToSend;
                     counter++;
@@ -1002,7 +1067,7 @@ namespace ACNHPoker
             } while (sent < size);
         }
 
-        public static int ReceiveString(Socket socket, byte[] buffer, int offset = 0, int size = 0, int timeout = 20000)
+        public static int ReceiveString(Socket socket, byte[] buffer, int offset = 0, int size = 0, int timeout = 30000)
         {
             int startTickCount = Environment.TickCount;
             int received = 0;  // how many bytes is already received
@@ -1398,7 +1463,7 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    Debug.Print("[Sys] Peek : Moveout " + (VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset).ToString("X") + " " + size);
+                    //Debug.Print("[Sys] Peek : Moveout " + (VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset).ToString("X") + " " + size);
 
                     byte[] b = ReadByteArray(socket, VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset, size, ref counter);
 
@@ -1424,6 +1489,22 @@ namespace ACNHPoker
                 }
             }
         }
+
+        public static void SetMoveout(Socket socket, USBBot bot, int num, byte[] flagData, ref int counter)
+        {
+            lock (botLock)
+            {
+                if (bot == null)
+                {
+                    SendByteArray(socket, VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset, flagData, flagData.Length, ref counter);
+                }
+                else
+                {
+                    WriteLargeBytes(bot, VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset, flagData, flagData.Length, ref counter);
+                }
+            }
+        }
+
         public static byte[] GetHouse(Socket socket, USBBot bot, int num, ref int counter, uint diff = 0)
         {
             lock (botLock)
@@ -1485,6 +1566,7 @@ namespace ACNHPoker
                     if (b == null)
                     {
                         MessageBox.Show("Wait something is wrong here!? \n\n HouseOwner");
+                        return 0xDD;
                     }
 
                     return b[0];
@@ -1498,6 +1580,7 @@ namespace ACNHPoker
                     if (b == null)
                     {
                         MessageBox.Show("Wait something is wrong here!? \n\n HouseOwner");
+                        return 0xFF;
                     }
 
                     return b[0];
@@ -1848,7 +1931,7 @@ namespace ACNHPoker
             }
         }
 
-        public static void dropItem(Socket socket, USBBot bot, string address1, string address2, string address3, string address4, string itemId, string count, string flag1, string flag2)
+        public static void dropItem(Socket socket, USBBot bot, long address, string itemId, string count, string flag1, string flag2)
         {
             lock (botLock)
             {
@@ -1856,23 +1939,17 @@ namespace ACNHPoker
                 {
                     if (bot == null)
                     {
-                        string msg = String.Format("poke {0:X8} {1}\r\n", "0x" + address1, "0x" + buildDropStringLeft(itemId, count, flag1, flag2));
-                        Debug.Print("Drop1 : " + msg);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg));
-                        string msg2 = String.Format("poke {0:X8} {1}\r\n", "0x" + address2, "0x" + buildDropStringRight(itemId));
-                        Debug.Print("Drop2 : " + msg2);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg2));
+                        SendByteArray(socket, address, stringToByte(buildDropStringLeft(itemId, count, flag1, flag2)), 16);
+                        SendByteArray(socket, address + mapOffset, stringToByte(buildDropStringLeft(itemId, count, flag1, flag2)), 16);
 
-                        string msg3 = String.Format("poke {0:X8} {1}\r\n", "0x" + address3, "0x" + buildDropStringLeft(itemId, count, flag1, flag2));
-                        Debug.Print("Drop3 : " + msg3);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg3));
-                        string msg4 = String.Format("poke {0:X8} {1}\r\n", "0x" + address4, "0x" + buildDropStringRight(itemId));
-                        Debug.Print("Drop4 : " + msg4);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg4));
+                        SendByteArray(socket, address + 0x600, stringToByte(buildDropStringRight(itemId)), 16);
+                        SendByteArray(socket, address + 0x600 + mapOffset, stringToByte(buildDropStringRight(itemId)), 16);
+
+                        Debug.Print("Drop: " + address + " " + itemId + " " + count + " " + flag1 + " " + flag2);
                     }
                     else
                     {
-                        //bot.WriteBytes(stringToByte(value), Convert.ToUInt32(address, 16));
+
                     }
                 }
                 catch
@@ -1882,7 +1959,7 @@ namespace ACNHPoker
             }
         }
 
-        public static void deleteFloorItem(Socket socket, USBBot bot, string address1, string address2, string address3, string address4)
+        public static void deleteFloorItem(Socket socket, USBBot bot, long address)
         {
             lock (botLock)
             {
@@ -1890,23 +1967,17 @@ namespace ACNHPoker
                 {
                     if (bot == null)
                     {
-                        string msg = String.Format("poke {0:X8} {1}\r\n", "0x" + address1, "0x" + buildDropStringLeft("FFFE", "00000000", "00", "00", true));
-                        Debug.Print("Delete Floor 1 : " + msg);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg));
-                        string msg2 = String.Format("poke {0:X8} {1}\r\n", "0x" + address2, "0x" + buildDropStringRight("FFFE", true));
-                        Debug.Print("Delete Floor 2 : " + msg2);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg2));
+                        SendByteArray(socket, address, stringToByte(buildDropStringLeft("FFFE", "00000000", "00", "00", true)), 16);
+                        SendByteArray(socket, address + mapOffset, stringToByte(buildDropStringLeft("FFFE", "00000000", "00", "00", true)), 16);
 
-                        string msg3 = String.Format("poke {0:X8} {1}\r\n", "0x" + address3, "0x" + buildDropStringLeft("FFFE", "00000000", "00", "00", true));
-                        Debug.Print("Delete Floor 3 : " + msg3);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg3));
-                        string msg4 = String.Format("poke {0:X8} {1}\r\n", "0x" + address4, "0x" + buildDropStringRight("FFFE", true));
-                        Debug.Print("Delete Floor 4 : " + msg4);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg4));
+                        SendByteArray(socket, address + 0x600, stringToByte(buildDropStringRight("FFFE", true)), 16);
+                        SendByteArray(socket, address + 0x600 + mapOffset, stringToByte(buildDropStringRight("FFFE", true)), 16);
+
+                        Debug.Print("Delete: " + address);
                     }
                     else
                     {
-                        //bot.WriteBytes(stringToByte(value), Convert.ToUInt32(address, 16));
+
                     }
                 }
                 catch
@@ -2063,16 +2134,34 @@ namespace ACNHPoker
                 if (bot == null)
                 {
                     SendByteArray(socket, address1, buffer1, buffer1.Length, ref counter);
-                    SendByteArray(socket, address2, buffer2, buffer2.Length, ref counter);
                     SendByteArray(socket, address1 + mapOffset, buffer1, buffer1.Length, ref counter);
+                    SendByteArray(socket, address2, buffer2, buffer2.Length, ref counter);
                     SendByteArray(socket, address2 + mapOffset, buffer2, buffer2.Length, ref counter);
                 }
                 else
                 {
                     WriteLargeBytes(bot, address1, buffer1, buffer1.Length, ref counter);
-                    WriteLargeBytes(bot, address2, buffer2, buffer2.Length, ref counter);
                     WriteLargeBytes(bot, address1 + mapOffset, buffer1, buffer1.Length, ref counter);
+                    WriteLargeBytes(bot, address2, buffer2, buffer2.Length, ref counter);
                     WriteLargeBytes(bot, address2 + mapOffset, buffer2, buffer2.Length, ref counter);
+                }
+            }
+        }
+
+        public static async Task dropColumn2(Socket socket, USBBot bot, uint address1, uint address2, byte[] buffer1, byte[] buffer2)
+        {
+            lock (botLock)
+            {
+                if (bot == null)
+                {
+                    SendByteArray(socket, address1, buffer1, buffer1.Length);
+                    SendByteArray(socket, address1 + mapOffset, buffer1, buffer1.Length);
+                    SendByteArray(socket, address2, buffer2, buffer2.Length);
+                    SendByteArray(socket, address2 + mapOffset, buffer2, buffer2.Length);
+                }
+                else
+                {
+
                 }
             }
         }
@@ -2080,7 +2169,7 @@ namespace ACNHPoker
         public static string buildDropStringLeft(string itemId, string count, string flag1, string flag2, Boolean empty = false)
         {
             string partID = "FDFF0000";
-            if (empty)
+            if (empty || itemId == "FFFE")
                 return flip(itemId) + flag2 + flag1 + flip(count) + flip(itemId) + "0000" + "0000" + "00" + "00";
             else
                 return flip(itemId) + flag2 + flag1 + flip(count) + partID + flip(itemId) + "00" + "01";
@@ -2088,7 +2177,7 @@ namespace ACNHPoker
         public static string buildDropStringRight(string itemId, Boolean empty = false)
         {
             string partID = "FDFF0000";
-            if (empty)
+            if (empty || itemId == "FFFE")
                 return flip(itemId) + "0000" + "0000" + "00" + "00" + flip(itemId) + "0000" +"0000" + "00" + "00";
             else
                 return partID + flip(itemId) + "01" + "00" + partID + flip(itemId) + "01" + "01";
@@ -2234,7 +2323,7 @@ namespace ACNHPoker
 
                 if (bot == null)
                 {
-                    Debug.Print("[Sys] Peek : Dodo " + dodoAddress.ToString("X"));
+                    //Debug.Print("[Sys] Peek : Dodo " + dodoAddress.ToString("X"));
 
                     b = ReadByteArray(socket, dodoAddress, 5);
 
@@ -2389,6 +2478,85 @@ namespace ACNHPoker
             FishSeaAppearPointer = InsectAppearPointer + 0x55618;
             CreatureSeaAppearPointer = InsectAppearPointer - 0x3DCE4;
     }
+
+        private static readonly Encoding Encoder = Encoding.UTF8;
+        private static byte[] Encode(string command, bool addrn = true) => Encoder.GetBytes(addrn ? command + "\r\n" : command);
+
+        public static byte[] Version() => Encode("getVersion");
+
+        public static byte[] Freeze(uint offset, byte[] data) => Encode($"freeze 0x{offset:X8} 0x{string.Concat(data.Select(z => $"{z:X2}"))}");
+
+        public static byte[] UnFreeze(uint offset) => Encode($"unFreeze 0x{offset:X8}");
+
+        public static byte[] FreezeCount() => Encode("freezeCount");
+
+        public static byte[] FreezeClear() => Encode("freezeClear");
+
+        public static string getVersion(Socket socket)
+        {
+            lock (botLock)
+            {
+                byte[] b = new byte[20];
+
+                Debug.Print("[Sys] GetVersion");
+
+                SendString(socket, Version());
+                ReceiveString(socket, b);
+
+                return TrimFromZero(Encoding.UTF8.GetString(b).Replace("\n", String.Empty));
+            }
+        }
+
+        public static int GetFreezeCount(Socket socket)
+        {
+            lock (botLock)
+            {
+                byte[] b = new byte[3];
+
+                Debug.Print("[Sys] GetFreezeCount");
+                Thread.Sleep(250);
+                SendString(socket, FreezeCount());
+                ReceiveString(socket, b);
+
+                return ConvertHexByteStringToBytes(b)[0];
+            }
+        }
+
+        public static byte[] ConvertHexByteStringToBytes(byte[] bytes)
+        {
+            var dest = new byte[bytes.Length / 2];
+            for (int i = 0; i < dest.Length; i++)
+            {
+                int ofs = i * 2;
+                var _0 = (char)bytes[ofs + 0];
+                var _1 = (char)bytes[ofs + 1];
+                dest[i] = DecodeTuple(_0, _1);
+            }
+            return dest;
+        }
+
+        private static byte DecodeTuple(char _0, char _1)
+        {
+            byte result;
+            if (IsNum(_0))
+                result = (byte)((_0 - '0') << 4);
+            else if (IsHexUpper(_0))
+                result = (byte)((_0 - 'A' + 10) << 4);
+            else
+                throw new ArgumentOutOfRangeException(nameof(_0));
+
+            if (IsNum(_1))
+                result |= (byte)(_1 - '0');
+            else if (IsHexUpper(_1))
+                result |= (byte)(_1 - 'A' + 10);
+            else
+                throw new ArgumentOutOfRangeException(nameof(_1));
+            return result;
+        }
+
+        private static bool IsNum(char c) => (uint)(c - '0') <= 9;
+        private static bool IsHexUpper(char c) => (uint)(c - 'A') <= 5;
+
 
         public enum VillagerPersonality : byte
         {

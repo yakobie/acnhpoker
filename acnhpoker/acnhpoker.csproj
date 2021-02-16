@@ -112,6 +112,10 @@
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutocompleteMenu-ScintillaNET, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoCompleteMenu-ScintillaNET.1.6.2\lib\net461\AutocompleteMenu-ScintillaNET.dll</HintPath>
@@ -184,7 +188,14 @@
     <Compile Include="bulkSpawn.Designer.cs">
       <DependentUpon>bulkSpawn.cs</DependentUpon>
     </Compile>
+    <Compile Include="controller.cs" />
     <Compile Include="DataGridViewProgressColumn.cs" />
+    <Compile Include="dodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dodo.Designer.cs">
+      <DependentUpon>dodo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExtendedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -219,11 +230,20 @@
     <Compile Include="MyProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Properties\HexUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Setting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="teleport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="teleport.Designer.cs">
+      <DependentUpon>teleport.cs</DependentUpon>
     </Compile>
     <Compile Include="USBBot.cs" />
     <Compile Include="variation.cs">
@@ -278,6 +298,10 @@
     </Compile>
     <EmbeddedResource Include="bulkSpawn.resx">
       <DependentUpon>bulkSpawn.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dodo.resx">
+      <DependentUpon>dodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -294,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="teleport.resx">
+      <DependentUpon>teleport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="variation.resx">
       <DependentUpon>variation.cs</DependentUpon>
@@ -355,10 +382,17 @@
     <None Include="Resources\acre" />
     <None Include="Resources\f.ico" />
     <None Include="Resources\arrows-horizontal.png" />
+    <None Include="Resources\dodo.png" />
+    <None Include="Resources\1.png" />
+    <None Include="Resources\2.png" />
+    <None Include="Resources\3.png" />
+    <None Include="Resources\4.png" />
+    <None Include="Resources\5.png" />
     <Content Include="Resources\gear.png" />
     <None Include="Resources\Leaf.bmp" />
     <None Include="Resources\k.ico" />
     <None Include="Resources\height.png" />
+    <None Include="Resources\Leaf.png" />
     <Content Include="Resources\loading.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -16,13 +16,13 @@ namespace ACNHPoker
     public partial class Form1 : Form
     {
         private static Socket s;
-        readonly private string version = "ACNH Poker R13.1 for v1.7.0";
+        readonly private string version = "ACNH Poker R13.2 for v1.7.0";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;
         private int[] HouseList;
         private bool firstload = false;
-        private byte[] header;
+        private static byte[] header;
         private bool blocker = false;
         private bool firstWarning = false;
         private int selectedSlot = 1;
@@ -57,6 +57,9 @@ namespace ACNHPoker
 
         private Setting setting;
         private Friendship friendship;
+        private teleport teleporter;
+        private controller Controller;
+        public dodo dodoSetup;
         private readonly string settingFile = @"ACNHPoker.exe.config";
         private string languageSetting = "eng";
 
@@ -88,7 +91,7 @@ namespace ACNHPoker
         private const string variationFile = @"variations.csv";
         private const string variationPath = csvFolder + variationFile;
         private const string favFile = @"fav.csv";
-        private const string favPath = csvFolder + favFile;
+        private const string favPath = csvFolder + favFile; 
 
         public const string imagePath = @"img\";
         private Dictionary<string, string> OverrideDict;
@@ -118,7 +121,7 @@ namespace ACNHPoker
             if (config.AppSettings.Settings["override"].Value == "true")
             {
                 overrideSetting = true;
-                egg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+                egg.BackColor = Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
             }
 
             if (config.AppSettings.Settings["disableValidation"].Value == "true")
@@ -202,14 +205,6 @@ namespace ACNHPoker
                 itemGridView.Columns["ita"].HeaderText = "Name";
                 itemGridView.Columns["dut"].HeaderText = "Name";
                 itemGridView.Columns["rus"].HeaderText = "Name";
-
-                /*
-                foreach (DataGridViewColumn c in itemGridView.Columns)
-                {
-                    c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    c.HeaderCell.Style.Font = new Font("Arial", 9, FontStyle.Bold);
-                }
-                */
             }
             else
             {
@@ -222,7 +217,6 @@ namespace ACNHPoker
             {
                 OverrideDict = CreateOverride(overridePath);
             }
-
 
             if (File.Exists(recipePath))
             {
@@ -259,6 +253,7 @@ namespace ACNHPoker
                     HeaderText = "Image",
                     ImageLayout = DataGridViewImageCellLayout.Zoom
                 };
+
                 recipeGridView.Columns.Insert(13, recipeimageColumn);
                 recipeimageColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
 
@@ -329,6 +324,7 @@ namespace ACNHPoker
                     HeaderText = "Image",
                     ImageLayout = DataGridViewImageCellLayout.Zoom
                 };
+
                 flowerGridView.Columns.Insert(13, flowerimageColumn);
                 flowerimageColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
 
@@ -861,11 +857,6 @@ namespace ACNHPoker
                 //this.Hide();
                 R.Show();
             }
-        }
-
-        private void dump_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

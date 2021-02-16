@@ -37,6 +37,8 @@ namespace ACNHPoker
         private byte[] tempData;
         private string tempFilename;
 
+        public dodo dodoSetup = null;
+
         public MapRegenerator(Socket S, Form1 Main, bool Sound)
         {
             try
@@ -276,7 +278,8 @@ namespace ACNHPoker
                 loadMapBtn.Enabled = false;
                 backBtn.Enabled = false;
                 startRegen2.Enabled = false;
-
+                keepVillagerBox.Enabled = false;
+                dodoSetupBtn.Enabled = false;
 
                 byte[] data = File.ReadAllBytes(file.FileName);
 
@@ -311,6 +314,8 @@ namespace ACNHPoker
                 loadMapBtn.Enabled = true;
                 backBtn.Enabled = true;
                 startRegen2.Enabled = true;
+                keepVillagerBox.Enabled = true;
+                dodoSetupBtn.Enabled = true;
             }
         }
 
@@ -320,9 +325,29 @@ namespace ACNHPoker
 
             showMapWait(42, regenMsg);
 
+            byte[][] u = new byte[56][];
+
+            for (int i = 0; i < 56; i++)
+            {
+                u[i] = new byte[0x1800];
+                Buffer.BlockCopy(b[i], 0, u[i], 0x0, 0x1800);
+            }
+
+            byte[][] villageFlag = new byte[10][];
+            Boolean[] haveVillager = new Boolean[10];
+            if (keepVillagerBox.Checked)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    villageFlag[i] = Utilities.GetMoveout(s, null, i, (int)0x33, ref counter);
+                    haveVillager[i] = checkHaveVillager(villageFlag[i]);
+                }
+            }
+
             byte[] c = new byte[0x2000];
 
-            int writeCount = 0;
+            int writeCount;
+            int runCount = 0;
 
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -330,12 +355,27 @@ namespace ACNHPoker
             string newVisitor;
             TimeSpan ts;
 
+            if (dodoSetup != null)
+            {
+                dodoSetup.LockBtn();
+            }
+
             Utilities.sendBlankName(s);
 
             do
             {
                 try
                 {
+                    if (dodoSetup != null && dodoSetup.dodoSetupDone)
+                    {
+                        DodoMonitor();
+                        dodoSetup.DisplayDodo(setupDodo());
+                    }
+                    else
+                    {
+                        setupDodo();
+                    }
+
                     counter = 0;
                     writeCount = 0;
 
@@ -400,7 +440,14 @@ namespace ACNHPoker
                     {
                         ts = stopWatch.Elapsed;
                         timeLabel.Text = Utilities.precedingZeros(ts.Hours.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Minutes.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Seconds.ToString(), 2);
+                        if (keepVillagerBox.Checked)
+                        {
+                            int index = runCount % 10;
+                            CheckAndResetVillager(villageFlag[index], haveVillager[index], index, ref writeCount);
+                        }
+                        runCount++;
                     });
+                    Debug.Print("------ " + runCount);
                 }
                 catch (Exception ex)
                 {
@@ -478,12 +525,20 @@ namespace ACNHPoker
                     System.Media.SystemSounds.Asterisk.Play();
                 RegenThread.Abort();
             }
+            if (dodoSetup != null)
+            {
+                //controller.detachController();
+                dodoSetup.Close();
+                dodoSetup = null;
+            }
             main.R = null;
             main.Show();
         }
 
         private void trayIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            if (dodoSetup != null)
+                dodoSetup.Show();
             Show();
             this.ShowInTaskbar = true;
             this.WindowState = FormWindowState.Normal;
@@ -491,6 +546,8 @@ namespace ACNHPoker
 
         private void hideBtn_Click(object sender, EventArgs e)
         {
+            if (dodoSetup != null)
+                dodoSetup.Hide();
             this.ShowInTaskbar = false;
             Hide();
         }
@@ -502,6 +559,11 @@ namespace ACNHPoker
                 if (sound)
                     System.Media.SystemSounds.Asterisk.Play();
                 RegenThread.Abort();
+                if (dodoSetup != null)
+                {
+                    dodoSetup.Close();
+                    dodoSetup = null;
+                }
             }
             this.Close();
         }
@@ -556,7 +618,7 @@ namespace ACNHPoker
 
                 DialogResult dialogResult = myMessageBox.Show("Would you like to limit the \"ignore empty tiles\" area?" + "\n\n" +
                                                             "This would allow you to pick a 7 x 7 area which the regenerator would only ignore."
-                                                            , "Choose an area ?", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                                                            , "Choose an area ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {
                     mapPanel.Visible = true;
@@ -597,7 +659,7 @@ namespace ACNHPoker
                     catch (Exception ex)
                     {
                         Log.logEvent("Regen", "getCoordinate: " + ex.Message.ToString());
-                        myMessageBox.Show("Something does feel right at all. You should restart the program...\n\n" + ex.Message.ToString(), "!!! THIS SHIT DOESN'T WORK!! WHY? HAS I EVER?", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        myMessageBox.Show("Something doesn't feel right at all. You should restart the program...\n\n" + ex.Message.ToString(), "!!! THIS SHIT DOESN'T WORK!! WHY? HAS I EVER?", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
@@ -610,7 +672,8 @@ namespace ACNHPoker
                     loadMapBtn.Enabled = false;
                     backBtn.Enabled = false;
                     startRegen.Enabled = false;
-
+                    keepVillagerBox.Enabled = false;
+                    dodoSetupBtn.Enabled = false;
 
                     byte[][] b = new byte[56][];
                     bool[][] isEmpty = new bool[56][];
@@ -646,6 +709,8 @@ namespace ACNHPoker
                 loadMapBtn.Enabled = true;
                 backBtn.Enabled = true;
                 startRegen.Enabled = true;
+                keepVillagerBox.Enabled = true;
+                dodoSetupBtn.Enabled = true;
             }
         }
 
@@ -665,6 +730,7 @@ namespace ACNHPoker
             loadMapBtn.Enabled = false;
             backBtn.Enabled = false;
             startRegen.Enabled = false;
+            dodoSetupBtn.Enabled = false;
 
 
             byte[][] b = new byte[56][];
@@ -702,11 +768,21 @@ namespace ACNHPoker
                 Buffer.BlockCopy(b[i], 0, u[i], 0x0, 0x1800);
             }
 
-
+            byte[][] villageFlag = new byte[10][];
+            Boolean[] haveVillager = new Boolean[10];
+            if (keepVillagerBox.Checked)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    villageFlag[i] = Utilities.GetMoveout(s, null, i, (int)0x33, ref counter);
+                    haveVillager[i] = checkHaveVillager(villageFlag[i]);
+                }
+            }
 
             byte[] c = new byte[0x2000];
 
             int writeCount;
+            int runCount = 0;
 
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -714,12 +790,27 @@ namespace ACNHPoker
             string newVisitor;
             TimeSpan ts;
 
+            if (dodoSetup != null)
+            {
+                dodoSetup.LockBtn();
+            }
+
             Utilities.sendBlankName(s);
 
             do
             {
                 try
                 {
+                    if (dodoSetup != null && dodoSetup.dodoSetupDone)
+                    {
+                        DodoMonitor();
+                        dodoSetup.DisplayDodo(setupDodo());
+                    }
+                    else
+                    {
+                        setupDodo();
+                    }
+
                     counter = 0;
                     writeCount = 0;
 
@@ -734,7 +825,6 @@ namespace ACNHPoker
                             CreateLog(newVisitor);
                             PauseTimeLabel.Visible = true;
                             PauseTimer.Start();
-
                         });
 
                         Thread.Sleep(70000);
@@ -784,15 +874,21 @@ namespace ACNHPoker
                     {
                         ts = stopWatch.Elapsed;
                         timeLabel.Text = Utilities.precedingZeros(ts.Hours.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Minutes.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Seconds.ToString(), 2);
+                        if (keepVillagerBox.Checked)
+                        {
+                            int index = runCount % 10;
+                            CheckAndResetVillager(villageFlag[index], haveVillager[index], index, ref writeCount);
+                        }
+                        runCount++;
                     });
-                    Debug.Print("------");
+                    Debug.Print("------ " + runCount);
                 }
                 catch (Exception ex)
                 {
                     Log.logEvent("Regen", "Regen2: " + ex.Message.ToString());
                     DateTime localDate = DateTime.Now;
                     CreateLog("[Connection Lost]");
-                    myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
                 }
             } while (loop);
@@ -821,7 +917,7 @@ namespace ACNHPoker
                 Buffer.BlockCopy(Part1, i * 16, blockLeft, 0, 16);
                 Buffer.BlockCopy(Part1, (i + 96) * 16, blockRight, 0, 16);
 
-                if((Utilities.ByteToHexString(blockLeft)).Equals("FEFF000000000000FEFF000000000000") && (Utilities.ByteToHexString(blockRight)).Equals("FEFF000000000000FEFF000000000000"))
+                if ((Utilities.ByteToHexString(blockLeft)).Equals("FEFF000000000000FEFF000000000000") && (Utilities.ByteToHexString(blockRight)).Equals("FEFF000000000000FEFF000000000000"))
                 {
                     for (int j = 0; j < 16; j++)
                     {
@@ -969,11 +1065,11 @@ namespace ACNHPoker
 
         private void delay_KeyPress(object sender, KeyPressEventArgs e)
         {
-                char c = e.KeyChar;
-                if (!((c >= '0' && c <= '9')))
-                {
-                    e.Handled = true;
-                }
+            char c = e.KeyChar;
+            if (!((c >= '0' && c <= '9')))
+            {
+                e.Handled = true;
+            }
         }
 
         private string getVisitorName()
@@ -1245,11 +1341,57 @@ namespace ACNHPoker
             setupDodo();
         }
 
+        private Boolean checkHaveVillager(byte[] villagerFlag)
+        {
+            if (villagerFlag[16] != 0x0)
+                return true;
+            else
+            {
+                for (int i = 0; i < villagerFlag.Length; i++)
+                {
+                    if (villagerFlag[i] != 0x0)
+                        return true;
+                }
+            }
+            return false;
+        }
+
+        private void CheckAndResetVillager(byte[] villageFlag, Boolean haveVillager, int index, ref int counter)
+        {
+            if (!haveVillager)
+            {
+                return;
+            }
+            else
+            {
+                string ByteString = Utilities.ByteToHexString(Utilities.GetMoveout(s, null, index, (int)0x33, ref counter));
+                if(!ByteString.Equals(Utilities.ByteToHexString(villageFlag)))
+                {
+                    Utilities.SetMoveout(s, null, index, villageFlag, ref counter);
+                    Debug.Print("Reset Villager " + index);
+                    Log.logEvent("Regen", "Villager Reset : " + index);
+                }
+                //else
+                    //Debug.Print("No Reset Needed " + index);
+            }
+        }
+
         private string setupDodo()
         {
             try
             {
                 string dodo = Utilities.getDodo(s).Replace("\0","");
+
+                if (File.Exists(dodoPath))
+                {
+                    foreach (string line in File.ReadLines(dodoPath))
+                    {
+                        if (line == dodo)
+                            return dodo;
+                        else
+                            break;
+                    }
+                }
 
                 using (StreamWriter sw = File.CreateText(dodoPath))
                 {
@@ -1272,6 +1414,166 @@ namespace ACNHPoker
             {
                 sw.WriteLine(msg);
             }
+        }
+
+        private void debugBtn_Click(object sender, EventArgs e)
+        {
+            FinMsg.Text = "";
+            delayTime = int.Parse(delay.Text);
+
+                //updateVisitorName();
+
+                OpenFileDialog file = new OpenFileDialog()
+                {
+                    Filter = "New Horizons Fasil (*.nhf)|*.nhf|All files (*.*)|*.*",
+                };
+
+                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+                string savepath;
+
+                if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                    savepath = Directory.GetCurrentDirectory() + @"\save";
+                else
+                    savepath = config.AppSettings.Settings["LastLoad"].Value;
+
+                if (Directory.Exists(savepath))
+                {
+                    file.InitialDirectory = savepath;
+                }
+                else
+                {
+                    file.InitialDirectory = @"C:\";
+                }
+
+                if (file.ShowDialog() != DialogResult.OK)
+                    return;
+
+                string[] temp = file.FileName.Split('\\');
+                string path = "";
+                for (int i = 0; i < temp.Length - 1; i++)
+                    path = path + temp[i] + "\\";
+
+                config.AppSettings.Settings["LastLoad"].Value = path;
+                config.Save(ConfigurationSaveMode.Minimal);
+
+                byte[] data = File.ReadAllBytes(file.FileName);
+
+                UInt32 address = Utilities.mapZero;
+
+                string[] name = file.FileName.Split('\\');
+
+                Log.logEvent("Regen", "Regen3 Started: " + name[name.Length - 1]);
+
+                string dodo = setupDodo();
+                Log.logEvent("Regen", "Regen3 Dodo: " + dodo);
+
+                byte[][] b = new byte[42][];
+
+                for (int i = 0; i < 42; i++)
+                {
+                    b[i] = new byte[0x2000];
+                    Buffer.BlockCopy(data, i * 0x2000, b[i], 0x0, 0x2000);
+                    Utilities.SendString(s, Utilities.Freeze((uint)(address + (i * 0x2000)), b[i]));
+                    Thread.Sleep(500);
+                }
+                Debug.Print(Utilities.GetFreezeCount(s).ToString());
+        }
+
+        private void clear_Click(object sender, EventArgs e)
+        {
+            Utilities.SendString(s, Utilities.FreezeClear());
+            Thread.Sleep(500);
+            Debug.Print(Utilities.GetFreezeCount(s).ToString());
+        }
+
+        private void dodoHelperBtn_Click(object sender, EventArgs e)
+        {
+            var btn = (Button)sender;
+            if (btn.Tag.ToString().Equals("Enable"))
+            {
+                btn.Text = "Disable Dodo Helper";
+                btn.Tag = "Disable";
+                btn.BackColor = Color.Orange;
+
+                dodoSetup = new dodo();
+                dodoSetup.Show();
+                dodoSetup.Location = new Point(this.Location.X - 590, this.Location.Y);
+                dodoSetup.WriteLog("Dodo Helper Ready! Waiting for Regen.\n\n" +
+                    "1. Disconnect all controller by selecting \"Controllers\" > \"Change Grip/Order\"  \n" +
+                    "2. Leave only the Joy-Con docked on your Switch\n" +
+                    "3. Return to the game and dock your Switch. When it ask for a controller, press the \"A\" button below.\n" +
+                    "4. A \"Yellow/Green\" virtual pro controller should appear.\n" +
+                    "5. Press \"A\" again to finish the setup.\n" +
+                    "6. If the virtual controller does not response, try the \"Detach\" button on the right first then \"A\" button.\n" +
+                    "7. If the virtual controller still does not appear, try restart your Switch."
+                    );
+            }
+            else
+            {
+                btn.Text = "Enable Dodo Helper";
+                btn.Tag = "Enable";
+                btn.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+                dodoSetup.Close();
+                dodoSetup = null;
+            }
+        }
+
+        private void MapRegenerator_Move(object sender, EventArgs e)
+        {
+            if (dodoSetup != null)
+            {
+                dodoSetup.Location = new Point(this.Location.X - 590, this.Location.Y);
+                dodoSetup.BringToFront();
+            }
+        }
+
+        private void DodoMonitor()
+        {
+                if (dodoSetup.CheckOnlineStatus() == 1)
+                {
+                    DateTime localDate = DateTime.Now;
+                    dodoSetup.WriteLog(localDate.ToString() + " : " + teleport.GetOverworldState().ToString());
+                    return;
+                    /*
+                    if (run % 10 == 0)
+                    {
+                        //Random random = new Random();
+                        //int v = random.Next(5,10);
+                        //    teleport.TeleportTo(v);
+                        if (teleport.GetOverworldState() == teleport.OverworldState.OverworldOrInAirport)
+                            controller.emote();
+                    }*/
+                }
+                else
+                {
+                    DateTime localDate = DateTime.Now;
+                    dodoSetup.WriteLog(localDate.ToString() + " : " + "[Warning] Disconnected");
+
+                    Thread.Sleep(5000);
+
+                    int retry = 0;
+                    do
+                    {
+                        if (retry >= 30)
+                        {
+                            localDate = DateTime.Now;
+                            dodoSetup.WriteLog(localDate.ToString() + " : " + "[Warning] Start Hard Restore");
+                            dodoSetup.HardRestore();
+                            break;
+                        }
+                        Debug.Print("Waiting for Overworld");
+                        controller.clickA();
+                        Thread.Sleep(2000);
+                        retry++;
+                    }
+                    while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
+
+                    Thread.Sleep(10000);
+                    localDate = DateTime.Now;
+                    dodoSetup.WriteLog(localDate.ToString() + " : " + "[Warning] Start Normal Restore");
+                    dodoSetup.NormalRestore();
+                }
         }
     }
 }
