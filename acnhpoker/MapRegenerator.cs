@@ -325,14 +325,6 @@ namespace ACNHPoker
 
             showMapWait(42, regenMsg);
 
-            byte[][] u = new byte[56][];
-
-            for (int i = 0; i < 56; i++)
-            {
-                u[i] = new byte[0x1800];
-                Buffer.BlockCopy(b[i], 0, u[i], 0x0, 0x1800);
-            }
-
             byte[][] villageFlag = new byte[10][];
             Boolean[] haveVillager = new Boolean[10];
             if (keepVillagerBox.Checked)
