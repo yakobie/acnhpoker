@@ -1551,9 +1551,15 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 </value>
   </data>
-  <metadata name="formToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>241, 17</value>
-  </metadata>
+  <data name="dodoSetupBtn.ToolTip" xml:space="preserve">
+    <value>Enable the "Dodo Helper" and monitor your online connection.
+If your island is disconnected due to whatever reason, 
+it will try to restore the Dodo code automatically.
+
+Noted that you will need to give the player control to the virtual controller.
+You cannot have other controller connected at the same time.
+Some virtual controller buttons are provided if you need to use it real quick.</value>
+  </data>
   <metadata name="PauseTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>359, 17</value>
   </metadata>

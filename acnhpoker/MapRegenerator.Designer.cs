@@ -31,8 +31,8 @@ namespace ACNHPoker
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapRegenerator));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PleaseWaitPanel = new System.Windows.Forms.Panel();
             this.PauseTimeLabel = new System.Windows.Forms.Label();
             this.WaitMessagebox = new System.Windows.Forms.RichTextBox();
@@ -61,6 +61,7 @@ namespace ACNHPoker
             this.selectLogBtn = new System.Windows.Forms.Button();
             this.startBtn = new System.Windows.Forms.Button();
             this.keepVillagerBox = new System.Windows.Forms.CheckBox();
+            this.dodoSetupBtn = new System.Windows.Forms.Button();
             this.PauseTimer = new System.Windows.Forms.Timer(this.components);
             this.logGridView = new System.Windows.Forms.DataGridView();
             this.logName = new System.Windows.Forms.Label();
@@ -74,7 +75,6 @@ namespace ACNHPoker
             this.readDodoBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
             this.clear = new System.Windows.Forms.Button();
-            this.dodoSetupBtn = new System.Windows.Forms.Button();
             this.PleaseWaitPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGridView)).BeginInit();
@@ -479,6 +479,24 @@ namespace ACNHPoker
         "ase set the villager(s) to moving out state BEFORE you start the regenerator.");
             this.keepVillagerBox.UseVisualStyleBackColor = false;
             // 
+            // dodoSetupBtn
+            // 
+            this.dodoSetupBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.dodoSetupBtn.FlatAppearance.BorderSize = 0;
+            this.dodoSetupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dodoSetupBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dodoSetupBtn.ForeColor = System.Drawing.Color.White;
+            this.dodoSetupBtn.Location = new System.Drawing.Point(13, 158);
+            this.dodoSetupBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.dodoSetupBtn.Name = "dodoSetupBtn";
+            this.dodoSetupBtn.Size = new System.Drawing.Size(208, 25);
+            this.dodoSetupBtn.TabIndex = 240;
+            this.dodoSetupBtn.Tag = "Enable";
+            this.dodoSetupBtn.Text = "Enable Dodo Helper";
+            this.formToolTip.SetToolTip(this.dodoSetupBtn, resources.GetString("dodoSetupBtn.ToolTip"));
+            this.dodoSetupBtn.UseVisualStyleBackColor = false;
+            this.dodoSetupBtn.Click += new System.EventHandler(this.dodoHelperBtn_Click);
+            // 
             // PauseTimer
             // 
             this.PauseTimer.Interval = 1000;
@@ -491,23 +509,23 @@ namespace ACNHPoker
             this.logGridView.AllowUserToResizeRows = false;
             this.logGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.logGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.logGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.logGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.logGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(105)))), ((int)(((byte)(110)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.logGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(105)))), ((int)(((byte)(110)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(60)))), ((int)(((byte)(67)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.logGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.logGridView.EnableHeadersVisualStyles = false;
             this.logGridView.Location = new System.Drawing.Point(4, 36);
             this.logGridView.MultiSelect = false;
@@ -672,25 +690,6 @@ namespace ACNHPoker
             this.clear.Text = "clear";
             this.clear.UseVisualStyleBackColor = false;
             this.clear.Click += new System.EventHandler(this.clear_Click);
-            // 
-            // dodoSetupBtn
-            // 
-            this.dodoSetupBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.dodoSetupBtn.FlatAppearance.BorderSize = 0;
-            this.dodoSetupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dodoSetupBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.dodoSetupBtn.ForeColor = System.Drawing.Color.White;
-            this.dodoSetupBtn.Location = new System.Drawing.Point(13, 158);
-            this.dodoSetupBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.dodoSetupBtn.Name = "dodoSetupBtn";
-            this.dodoSetupBtn.Size = new System.Drawing.Size(208, 25);
-            this.dodoSetupBtn.TabIndex = 240;
-            this.dodoSetupBtn.Tag = "Enable";
-            this.dodoSetupBtn.Text = "Enable Dodo Helper";
-            this.formToolTip.SetToolTip(this.dodoSetupBtn, "Keep refreshing the map with a saved map template (.nhf). (Layer 1 only)\r\n[WARNIN" +
-        "G] This option will ignore empty space to preserve dropped item.\r\n");
-            this.dodoSetupBtn.UseVisualStyleBackColor = false;
-            this.dodoSetupBtn.Click += new System.EventHandler(this.dodoHelperBtn_Click);
             // 
             // MapRegenerator
             // 
