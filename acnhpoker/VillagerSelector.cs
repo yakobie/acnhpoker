@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -23,7 +24,11 @@ namespace ACNHPoker
                 e.DrawFocusRectangle();
 
                 string[] lines = this.Items[e.Index].ToString().Split(new string[] { " " }, StringSplitOptions.None);
-                Image img = Image.FromFile(Utilities.GetVillagerImage(lines[lines.Length - 1]));
+                Image img;
+                if (File.Exists(Utilities.GetVillagerImage(lines[lines.Length - 1])))
+                    img = Image.FromFile(Utilities.GetVillagerImage(lines[lines.Length - 1]));
+                else
+                    img = new Bitmap(Properties.Resources.Leaf, new Size(60, 60));
                 // Draw the colored 16 x 16 square
                 Bitmap resize = new Bitmap(img, new Size(60, 60));
                 e.Graphics.DrawImage((Image)resize, e.Bounds.Left, e.Bounds.Top);

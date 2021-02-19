@@ -125,8 +125,6 @@ namespace ACNHPoker
             {
                 if (trials > 5)
                 {
-                    //myMessageBox.Show("Unable to reach exact coordinates!\n" +
-                    //                  "Did you use an indoor teleport outside or vice versa?", "Destination Unreachable", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return false;
                 }
                 Utilities.pokeAbsoluteAddress(s, (address - 0x2).ToString("X"), Utilities.ByteToHexString(coordinate));
@@ -137,7 +135,6 @@ namespace ACNHPoker
             while(confirmSuccessTeleport(num, teleportByte));
 
             return true;
-            //Debug.Print("Done");
         }
 
         public static Boolean TeleportToAnchor(int num)
@@ -166,7 +163,6 @@ namespace ACNHPoker
             while(confirmSuccessTeleport(num, anchorByte));
 
             return true;
-            //Debug.Print("Done");
         }
 
         private static bool confirmSuccessTeleport(int num, byte[] ByteUsing)

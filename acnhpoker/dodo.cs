@@ -15,10 +15,12 @@ namespace ACNHPoker
     public partial class dodo : Form
     {
         public Boolean dodoSetupDone = false;
-        public dodo()
+        private Boolean idleEmote = false;
+        private int idleNum = 0;
+        public dodo(Form owner)
         {
             InitializeComponent();
-
+            Owner = owner;
             if (teleport.allAnchorValid())
             {
                 Point Done = new Point(-4200, 0);
@@ -329,8 +331,6 @@ namespace ACNHPoker
 
         private void DoneFullTestBtn_Click(object sender, EventArgs e)
         {
-            Boolean noBestFriend;
-
             DoneAnchor0TestBtn.Enabled = false;
             DoneAnchor1TestBtn.Enabled = false;
             DoneAnchor2TestBtn.Enabled = false;
@@ -338,15 +338,11 @@ namespace ACNHPoker
             DoneAnchor4TestBtn.Enabled = false;
             DoneFullTestBtn.Enabled = false;
 
-            if (TestNoBestFriendCheckbox.Checked)
-                noBestFriend = true;
-            else
-                noBestFriend = false;
-            Thread TeleportThread = new Thread(delegate () { TestNormalRestore(noBestFriend); });
+            Thread TeleportThread = new Thread(delegate () { TestNormalRestore(); });
             TeleportThread.Start();
         }
 
-        private void TestNormalRestore(Boolean noBestFriend)
+        private void TestNormalRestore()
         {
             controller.clickDown(); // Hide Weapon
             Thread.Sleep(1000);
@@ -370,10 +366,7 @@ namespace ACNHPoker
             teleport.TeleportToAnchor(3);
 
             Debug.Print("Get Dodo");
-            if (noBestFriend)
-                controller.talkAndGetDodoCode(true);
-            else
-                controller.talkAndGetDodoCode(false);
+            controller.talkAndGetDodoCode();
             Debug.Print("Finish getting Dodo");
 
             teleport.TeleportToAnchor(4);
@@ -392,7 +385,7 @@ namespace ACNHPoker
 
             teleport.TeleportToAnchor(1);
 
-            controller.emoteUP();
+            controller.emote(0);
 
             controller.detachController();
 
@@ -451,11 +444,17 @@ namespace ACNHPoker
             });
         }
 
-        public void WriteLog(string line)
+        public void WriteLog(string line, Boolean time = false)
         {
             dodoLog.Invoke((MethodInvoker)delegate
             {
-                dodoLog.AppendText(line + "\n");
+                if (time)
+                {
+                    DateTime localDate = DateTime.Now;
+                    dodoLog.AppendText(localDate.ToString() + " : " + line + "\n");
+                }
+                else
+                    dodoLog.AppendText(line + "\n");
             });
         }
 
@@ -464,16 +463,87 @@ namespace ACNHPoker
             BackToSetupBtn.Invoke((MethodInvoker)delegate
             {
                 BackToSetupBtn.Enabled = false;
-                NoBestFriendCheckbox.Enabled = false;
             });
+        }
+
+        private void LockControl()
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                controllerPanel.Enabled = false;
+                functionPanel.Enabled = false;
+                AbortBtn.Visible = true;
+            });
+        }
+
+        private void unLockControl()
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                controllerPanel.Enabled = true;
+                functionPanel.Enabled = true;
+                AbortBtn.Visible = false;
+            });
+        }
+
+        public teleport.OverworldState DodoMonitor()
+        {
+            if (CheckOnlineStatus() == 1)
+            {
+                teleport.OverworldState state = teleport.GetOverworldState();
+                WriteLog(state.ToString(), true);
+
+                if (idleEmote && state == teleport.OverworldState.OverworldOrInAirport)
+                {
+                    idleNum++;
+                    if (idleNum >= 5)
+                    {
+                        Random random = new Random();
+                        int v = random.Next(0, 10);
+                        controller.emote(v);
+                        idleNum = 0;
+                    }
+                }
+                return state;
+            }
+            else
+            {
+                WriteLog("[Warning] Disconnected.", true);
+                WriteLog("Please wait a moment for the restore.", true);
+                LockControl();
+                Thread.Sleep(5000);
+
+                int retry = 0;
+                do
+                {
+                    if (retry >= 30)
+                    {
+                        WriteLog("[Warning] Start Hard Restore", true);
+                        HardRestore();
+                        break;
+                    }
+                    WriteLog("Waiting for Overworld", true);
+                    controller.clickA();
+                    Thread.Sleep(2000);
+                    retry++;
+                }
+                while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
+
+                Thread.Sleep(10000);
+                WriteLog("[Warning] Start Normal Restore", true);
+                WriteLog("Please wait for the bot to finish the sequence.", true);
+                NormalRestore();
+                unLockControl();
+                WriteLog("Restore sequence finished.", true);
+                return teleport.OverworldState.OverworldOrInAirport;
+            }
         }
 
         public void NormalRestore()
         {
             do
             {
-                //Debug.Print(teleport.GetOverworldState().ToString());
-                Debug.Print("Confirm Overworld");
+                WriteLog("Confirming Overworld", true);
                 Thread.Sleep(2000);
             }
             while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
@@ -484,28 +554,25 @@ namespace ACNHPoker
 
             teleport.TeleportToAnchor(2);
 
-            Debug.Print("Teleport to Airport");
+            WriteLog("Teleport to Airport", true);
 
             do
             {
                 //Debug.Print(teleport.GetOverworldState().ToString());
-                Debug.Print("Try Enter Airport");
+                WriteLog("Try Entering Airport", true);
                 controller.EnterAirport();
                 Thread.Sleep(2000);
             }
             while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
 
-            Debug.Print("Inside Airport");
+            WriteLog("Inside Airport", true);
             Thread.Sleep(2000);
 
             teleport.TeleportToAnchor(3);
 
-            Debug.Print("Get Dodo");
-            if (NoBestFriendCheckbox.Checked)
-                DisplayDodo(controller.talkAndGetDodoCode(true));
-            else
-                DisplayDodo(controller.talkAndGetDodoCode(false));
-            Debug.Print("Finish getting Dodo");
+            WriteLog("Try Getting Dodo", true);
+            DisplayDodo(controller.talkAndGetDodoCode());
+            WriteLog("Finish Getting Dodo", true);
             CheckOnlineStatus();
 
             teleport.TeleportToAnchor(4);
@@ -513,37 +580,41 @@ namespace ACNHPoker
             do
             {
                 //Debug.Print(teleport.GetOverworldState().ToString());
-                Debug.Print("Try Exit Airport");
+                WriteLog("Try Exiting Airport", true);
                 controller.ExitAirport();
                 Thread.Sleep(2000);
             }
             while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
 
-            Debug.Print("Back to Overworld");
+            WriteLog("Back to Overworld", true);
             Thread.Sleep(2000);
 
             teleport.TeleportToAnchor(1);
 
-            controller.emoteUP();
+            controller.emote(0);
 
             //controller.detachController();
         }
 
         public void HardRestore()
         {
+            WriteLog("Capturing the Crash", true);
             controller.clickCAPTURE();
             Thread.Sleep(2000);
+            WriteLog("Open Home Menu", true);
             controller.clickHOME();
             Thread.Sleep(5000);
 
             controller.clickX();
             Thread.Sleep(1000);
             controller.clickA(); //Close Game
+            WriteLog("Try Closing the Game", true);
             Thread.Sleep(15000);
 
             controller.clickA(); //Select Game
             Thread.Sleep(2000);
             controller.clickA(); //Select first user
+            WriteLog("Game & User Selected", true);
             Thread.Sleep(10000);
 
             int retry = 0;
@@ -557,7 +628,7 @@ namespace ACNHPoker
             }
             while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
 
-            Debug.Print("Exiting House");
+            WriteLog("Exiting House", true);
             Thread.Sleep(5000);
         }
 
@@ -658,22 +729,42 @@ namespace ACNHPoker
 
         private void emoteUPBtn_Click(object sender, EventArgs e)
         {
-            controller.emoteUP();
+            controller.emote(0);
         }
 
         private void emoteRIGHTBtn_Click(object sender, EventArgs e)
         {
-            controller.emoteRIGHT();
+            controller.emote(2);
         }
 
         private void emoteDOWNBtn_Click(object sender, EventArgs e)
         {
-            controller.emoteDOWN();
+            controller.emote(4);
         }
 
         private void emoteLEFTBtn_Click(object sender, EventArgs e)
         {
-            controller.emoteLEFT();
+            controller.emote(6);
+        }
+
+        private void emoteTopRightBtn_Click(object sender, EventArgs e)
+        {
+            controller.emote(1);
+        }
+
+        private void emoteBottomRightBtn_Click(object sender, EventArgs e)
+        {
+            controller.emote(3);
+        }
+
+        private void emoteTopLeftBtn_Click(object sender, EventArgs e)
+        {
+            controller.emote(7);
+        }
+
+        private void emoteBottomLeftBtn_Click(object sender, EventArgs e)
+        {
+            controller.emote(5);
         }
 
         private void LeftStickBtn_Click(object sender, EventArgs e)
@@ -774,6 +865,39 @@ namespace ACNHPoker
         private void DetachBtn_Click(object sender, EventArgs e)
         {
             controller.detachController();
+        }
+
+        private void DoneAnchor0Btn_Click(object sender, EventArgs e)
+        {
+            teleport.TeleportToAnchor(0);
+        }
+
+        private void DoneAnchor1Btn_Click(object sender, EventArgs e)
+        {
+            teleport.TeleportToAnchor(1);
+        }
+
+        private void DoneAnchor2Btn_Click(object sender, EventArgs e)
+        {
+            teleport.TeleportToAnchor(2);
+        }
+
+        private void idleEmoteCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (idleEmoteCheckBox.Checked)
+                idleEmote = true;
+            else
+                idleEmote = false;
+        }
+
+        private void AbortBtn_Click(object sender, EventArgs e)
+        {
+            MapRegenerator owner = (MapRegenerator)this.Owner;
+            owner.abort();
+            WriteLog(">>Restore Sequence Aborted!<<");
+            unLockControl();
+            dodoCode.Text = "";
+            onlineLabel.Text = "";
         }
     }
 }

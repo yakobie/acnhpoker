@@ -1565,12 +1565,13 @@ namespace ACNHPoker
             string itemID = Utilities.precedingZeros(IdTextbox.Text, 4);
             string itemData = Utilities.precedingZeros(HexTextbox.Text, 8);
             string flag2 = Utilities.precedingZeros(FlagTextbox.Text, 2);
+            string flag1 = selectedItem.getFlag1();
 
-            Thread spawnThread = new Thread(delegate () { dropItem(address, itemID, itemData, flag2, selectedButton); });
+            Thread spawnThread = new Thread(delegate () { dropItem(address, itemID, itemData, flag1, flag2, selectedButton); });
             spawnThread.Start();
         }
 
-        private void dropItem(long address, string itemID, string itemData, string flag2, floorSlot btn)
+        private void dropItem(long address, string itemID, string itemData, string flag1, string flag2, floorSlot btn)
         {
             showMapWait(2, "Spawning Item...");
 
@@ -1583,7 +1584,7 @@ namespace ACNHPoker
                 Thread.Sleep(2000);
             }
 
-            Utilities.dropItem(s, bot, address, itemID, itemData, "00", flag2);
+            Utilities.dropItem(s, bot, address, itemID, itemData, flag1, flag2);
 
             this.Invoke((MethodInvoker)delegate
             {
@@ -1679,7 +1680,7 @@ namespace ACNHPoker
 
             string itemID = Utilities.precedingZeros(IdTextbox.Text, 4);
             string itemData = Utilities.precedingZeros(HexTextbox.Text, 8);
-            string flag1 = "00";
+            string flag1 = selectedItem.getFlag1();
             string flag2 = Utilities.precedingZeros(FlagTextbox.Text, 2);
 
             byte[] ItemLeft = Utilities.stringToByte(Utilities.buildDropStringLeft(itemID, itemData, flag1, flag2));
@@ -2727,10 +2728,11 @@ namespace ACNHPoker
             string itemID = Utilities.precedingZeros(IdTextbox.Text, 4);
             string itemData = Utilities.precedingZeros(HexTextbox.Text, 8);
             string flag2 = Utilities.precedingZeros(FlagTextbox.Text, 2);
+            string flag1 = selectedItem.getFlag1();
 
             moveToNextTile();
 
-            Thread spawnThread = new Thread(delegate () { dropItem(address, itemID, itemData, flag2, btn); });
+            Thread spawnThread = new Thread(delegate () { dropItem(address, itemID, itemData, flag1, flag2, btn); });
             spawnThread.Start();
         }
 

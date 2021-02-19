@@ -479,14 +479,20 @@ namespace ACNHPoker
             int i = Int16.Parse(IndexValue.Text);
 
             Image img;
+            string path;
             if (V[i].GetRealName() == "ERROR")
             {
-                img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetRealName()));
+                path = Utilities.GetVillagerImage(V[i].GetRealName());
             }
             else
             {
-                img = Image.FromFile(Utilities.GetVillagerImage(V[i].GetInternalName()));
+                path = Utilities.GetVillagerImage(V[i].GetInternalName());
             }
+
+            if (!path.Equals(string.Empty))
+                img = Image.FromFile(path);
+            else
+                img = new Bitmap(Properties.Resources.Leaf, new Size(128, 128));
 
             friendship = new Friendship(this, i, s, bot, img, V[i].GetRealName(), sound);
             friendship.Show();
@@ -607,12 +613,20 @@ namespace ACNHPoker
             Image img;
             if (RealName == "ERROR")
             {
-                img = Image.FromFile(Utilities.GetVillagerImage(RealName));
+                string path = Utilities.GetVillagerImage(RealName);
+                if (!path.Equals(string.Empty))
+                    img = Image.FromFile(path);
+                else
+                    img = new Bitmap(Properties.Resources.Leaf, new Size(110, 110));
                 MysVillagerBtn.Text = "";
             }
             else
             {
-                img = Image.FromFile(Utilities.GetVillagerImage(StrName));
+                string path = Utilities.GetVillagerImage(StrName);
+                if (!path.Equals(string.Empty))
+                    img = Image.FromFile(path);
+                else
+                    img = new Bitmap(Properties.Resources.Leaf, new Size(110, 110));
                 MysIName.Text = StrName;
                 MysRealName.Text = RealName;
                 MysVillagerBtn.Text = RealName + " : " + StrName;
@@ -633,7 +647,12 @@ namespace ACNHPoker
 
             Utilities.SetMysVillager(s, bot, IName, species, ref counter);
 
-            Image img = Image.FromFile(Utilities.GetVillagerImage(lines[lines.Length - 1]));
+            Image img;
+            string path = Utilities.GetVillagerImage(lines[lines.Length - 1]);
+            if (!path.Equals(String.Empty))
+                img = Image.FromFile(path);
+            else
+                img = new Bitmap(Properties.Resources.Leaf, new Size(110, 110));
             MysIName.Text = lines[lines.Length - 1];
             MysRealName.Text = lines[0];
             MysVillagerBtn.Text = lines[0] + " : " + lines[lines.Length - 1];

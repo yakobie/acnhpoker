@@ -75,6 +75,7 @@ namespace ACNHPoker
             this.readDodoBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
             this.clear = new System.Windows.Forms.Button();
+            this.changeDodoBtn = new System.Windows.Forms.Button();
             this.PleaseWaitPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGridView)).BeginInit();
@@ -90,7 +91,7 @@ namespace ACNHPoker
             this.PleaseWaitPanel.Controls.Add(this.MapProgressBar);
             this.PleaseWaitPanel.Controls.Add(this.pictureBox2);
             this.PleaseWaitPanel.Controls.Add(this.label29);
-            this.PleaseWaitPanel.Location = new System.Drawing.Point(2, 226);
+            this.PleaseWaitPanel.Location = new System.Drawing.Point(2, 256);
             this.PleaseWaitPanel.Name = "PleaseWaitPanel";
             this.PleaseWaitPanel.Size = new System.Drawing.Size(230, 60);
             this.PleaseWaitPanel.TabIndex = 218;
@@ -228,7 +229,7 @@ namespace ACNHPoker
             this.hideBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hideBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.hideBtn.ForeColor = System.Drawing.Color.White;
-            this.hideBtn.Location = new System.Drawing.Point(156, 294);
+            this.hideBtn.Location = new System.Drawing.Point(156, 324);
             this.hideBtn.Margin = new System.Windows.Forms.Padding(4);
             this.hideBtn.Name = "hideBtn";
             this.hideBtn.Size = new System.Drawing.Size(65, 25);
@@ -245,7 +246,7 @@ namespace ACNHPoker
             this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.backBtn.ForeColor = System.Drawing.Color.White;
-            this.backBtn.Location = new System.Drawing.Point(13, 294);
+            this.backBtn.Location = new System.Drawing.Point(13, 324);
             this.backBtn.Margin = new System.Windows.Forms.Padding(4);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(65, 25);
@@ -259,7 +260,7 @@ namespace ACNHPoker
             this.timeLabel.AutoSize = true;
             this.timeLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.timeLabel.ForeColor = System.Drawing.Color.White;
-            this.timeLabel.Location = new System.Drawing.Point(86, 278);
+            this.timeLabel.Location = new System.Drawing.Point(86, 308);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(0, 16);
             this.timeLabel.TabIndex = 222;
@@ -291,7 +292,7 @@ namespace ACNHPoker
             this.FinMsg.Cursor = System.Windows.Forms.Cursors.Default;
             this.FinMsg.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
             this.FinMsg.ForeColor = System.Drawing.Color.White;
-            this.FinMsg.Location = new System.Drawing.Point(6, 251);
+            this.FinMsg.Location = new System.Drawing.Point(6, 281);
             this.FinMsg.Multiline = false;
             this.FinMsg.Name = "FinMsg";
             this.FinMsg.ReadOnly = true;
@@ -306,7 +307,7 @@ namespace ACNHPoker
             this.delay.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.delay.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.delay.ForeColor = System.Drawing.Color.White;
-            this.delay.Location = new System.Drawing.Point(127, 188);
+            this.delay.Location = new System.Drawing.Point(127, 218);
             this.delay.MaxLength = 8;
             this.delay.Multiline = false;
             this.delay.Name = "delay";
@@ -320,7 +321,7 @@ namespace ACNHPoker
             this.ms.AutoSize = true;
             this.ms.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.ms.ForeColor = System.Drawing.Color.White;
-            this.ms.Location = new System.Drawing.Point(198, 189);
+            this.ms.Location = new System.Drawing.Point(198, 219);
             this.ms.Name = "ms";
             this.ms.Size = new System.Drawing.Size(28, 16);
             this.ms.TabIndex = 217;
@@ -332,7 +333,7 @@ namespace ACNHPoker
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(10, 189);
+            this.label1.Location = new System.Drawing.Point(10, 219);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 16);
             this.label1.TabIndex = 225;
@@ -346,7 +347,7 @@ namespace ACNHPoker
             this.debugBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.debugBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.debugBtn.ForeColor = System.Drawing.Color.White;
-            this.debugBtn.Location = new System.Drawing.Point(13, 328);
+            this.debugBtn.Location = new System.Drawing.Point(13, 358);
             this.debugBtn.Margin = new System.Windows.Forms.Padding(4);
             this.debugBtn.Name = "debugBtn";
             this.debugBtn.Size = new System.Drawing.Size(100, 25);
@@ -360,7 +361,7 @@ namespace ACNHPoker
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(30, 211);
+            this.label2.Location = new System.Drawing.Point(30, 241);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 16);
             this.label2.TabIndex = 227;
@@ -373,7 +374,7 @@ namespace ACNHPoker
             this.visitorNameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.visitorNameBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.visitorNameBox.ForeColor = System.Drawing.Color.White;
-            this.visitorNameBox.Location = new System.Drawing.Point(127, 210);
+            this.visitorNameBox.Location = new System.Drawing.Point(127, 240);
             this.visitorNameBox.MaxLength = 8;
             this.visitorNameBox.Multiline = false;
             this.visitorNameBox.Name = "visitorNameBox";
@@ -399,7 +400,7 @@ namespace ACNHPoker
             this.logBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.logBtn.ForeColor = System.Drawing.Color.White;
-            this.logBtn.Location = new System.Drawing.Point(84, 294);
+            this.logBtn.Location = new System.Drawing.Point(84, 324);
             this.logBtn.Margin = new System.Windows.Forms.Padding(4);
             this.logBtn.Name = "logBtn";
             this.logBtn.Size = new System.Drawing.Size(66, 25);
@@ -650,7 +651,7 @@ namespace ACNHPoker
             this.readDodoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.readDodoBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.readDodoBtn.ForeColor = System.Drawing.Color.White;
-            this.readDodoBtn.Location = new System.Drawing.Point(13, 361);
+            this.readDodoBtn.Location = new System.Drawing.Point(13, 391);
             this.readDodoBtn.Margin = new System.Windows.Forms.Padding(4);
             this.readDodoBtn.Name = "readDodoBtn";
             this.readDodoBtn.Size = new System.Drawing.Size(65, 25);
@@ -666,7 +667,7 @@ namespace ACNHPoker
             this.clearBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.clearBtn.ForeColor = System.Drawing.Color.White;
-            this.clearBtn.Location = new System.Drawing.Point(86, 361);
+            this.clearBtn.Location = new System.Drawing.Point(86, 391);
             this.clearBtn.Margin = new System.Windows.Forms.Padding(4);
             this.clearBtn.Name = "clearBtn";
             this.clearBtn.Size = new System.Drawing.Size(65, 25);
@@ -682,7 +683,7 @@ namespace ACNHPoker
             this.clear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clear.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.clear.ForeColor = System.Drawing.Color.White;
-            this.clear.Location = new System.Drawing.Point(121, 328);
+            this.clear.Location = new System.Drawing.Point(121, 358);
             this.clear.Margin = new System.Windows.Forms.Padding(4);
             this.clear.Name = "clear";
             this.clear.Size = new System.Drawing.Size(100, 25);
@@ -691,12 +692,31 @@ namespace ACNHPoker
             this.clear.UseVisualStyleBackColor = false;
             this.clear.Click += new System.EventHandler(this.clear_Click);
             // 
+            // changeDodoBtn
+            // 
+            this.changeDodoBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.changeDodoBtn.FlatAppearance.BorderSize = 0;
+            this.changeDodoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changeDodoBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.changeDodoBtn.ForeColor = System.Drawing.Color.White;
+            this.changeDodoBtn.Location = new System.Drawing.Point(13, 191);
+            this.changeDodoBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.changeDodoBtn.Name = "changeDodoBtn";
+            this.changeDodoBtn.Size = new System.Drawing.Size(208, 25);
+            this.changeDodoBtn.TabIndex = 241;
+            this.changeDodoBtn.Tag = "";
+            this.changeDodoBtn.Text = "Change Dodo Path";
+            this.formToolTip.SetToolTip(this.changeDodoBtn, "Change the path where the dodo code is stored.");
+            this.changeDodoBtn.UseVisualStyleBackColor = false;
+            this.changeDodoBtn.Click += new System.EventHandler(this.changeDodoBtn_Click);
+            // 
             // MapRegenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.ClientSize = new System.Drawing.Size(234, 326);
+            this.ClientSize = new System.Drawing.Size(234, 356);
+            this.Controls.Add(this.changeDodoBtn);
             this.Controls.Add(this.dodoSetupBtn);
             this.Controls.Add(this.clear);
             this.Controls.Add(this.label1);
@@ -725,7 +745,7 @@ namespace ACNHPoker
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(250, 365);
+            this.MinimumSize = new System.Drawing.Size(250, 395);
             this.Name = "MapRegenerator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Map Regenerator";
@@ -789,5 +809,6 @@ namespace ACNHPoker
         private System.Windows.Forms.CheckBox keepVillagerBox;
         private System.Windows.Forms.Button clear;
         private System.Windows.Forms.Button dodoSetupBtn;
+        private System.Windows.Forms.Button changeDodoBtn;
     }
 }

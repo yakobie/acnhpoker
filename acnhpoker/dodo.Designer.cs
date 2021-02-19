@@ -32,12 +32,22 @@ namespace ACNHPoker
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dodo));
             this.FullPanel = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.functionPanel = new System.Windows.Forms.Panel();
+            this.emoteBottomLeftBtn = new System.Windows.Forms.Button();
+            this.emoteTopLeftBtn = new System.Windows.Forms.Button();
+            this.emoteBottomRightBtn = new System.Windows.Forms.Button();
+            this.emoteTopRightBtn = new System.Windows.Forms.Button();
+            this.DoneAnchor2Btn = new System.Windows.Forms.Button();
+            this.DoneAnchor1Btn = new System.Windows.Forms.Button();
+            this.DoneAnchor0Btn = new System.Windows.Forms.Button();
+            this.DetachBtn = new System.Windows.Forms.Button();
+            this.DodoEmoteLabel = new System.Windows.Forms.Label();
             this.emoteRIGHTBtn = new System.Windows.Forms.Button();
             this.emoteDOWNBtn = new System.Windows.Forms.Button();
             this.emoteLEFTBtn = new System.Windows.Forms.Button();
             this.emoteUPBtn = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.idleEmoteCheckBox = new System.Windows.Forms.CheckBox();
+            this.controllerPanel = new System.Windows.Forms.Panel();
             this.HomeBtn = new System.Windows.Forms.Button();
             this.caputureBtn = new System.Windows.Forms.Button();
             this.plusBtn = new System.Windows.Forms.Button();
@@ -64,13 +74,11 @@ namespace ACNHPoker
             this.LstickLEFTBtn = new System.Windows.Forms.Button();
             this.LstickDOWNBtn = new System.Windows.Forms.Button();
             this.LstickUPBtn = new System.Windows.Forms.Button();
-            this.NoBestFriendCheckbox = new System.Windows.Forms.CheckBox();
             this.dodoCode = new System.Windows.Forms.RichTextBox();
             this.DodoCodeLabel = new System.Windows.Forms.Label();
             this.onlineLabel = new System.Windows.Forms.Label();
             this.BackToSetupBtn = new System.Windows.Forms.Button();
             this.dodoLog = new System.Windows.Forms.RichTextBox();
-            this.TestNoBestFriendCheckbox = new System.Windows.Forms.CheckBox();
             this.DoneFullTestBtn = new System.Windows.Forms.Button();
             this.DoneFull = new System.Windows.Forms.Label();
             this.StartNextBtn = new System.Windows.Forms.Button();
@@ -149,11 +157,10 @@ namespace ACNHPoker
             this.Anchor0Label = new System.Windows.Forms.Label();
             this.StartLine1 = new System.Windows.Forms.Label();
             this.HoverToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.DodoEmoteLabel = new System.Windows.Forms.Label();
-            this.DetachBtn = new System.Windows.Forms.Button();
+            this.AbortBtn = new System.Windows.Forms.Button();
             this.FullPanel.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.functionPanel.SuspendLayout();
+            this.controllerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Anchor4Image3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Anchor4Image2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Anchor4Image1)).BeginInit();
@@ -174,15 +181,14 @@ namespace ACNHPoker
             // 
             // FullPanel
             // 
-            this.FullPanel.Controls.Add(this.panel2);
-            this.FullPanel.Controls.Add(this.panel1);
-            this.FullPanel.Controls.Add(this.NoBestFriendCheckbox);
+            this.FullPanel.Controls.Add(this.AbortBtn);
+            this.FullPanel.Controls.Add(this.functionPanel);
+            this.FullPanel.Controls.Add(this.controllerPanel);
             this.FullPanel.Controls.Add(this.dodoCode);
             this.FullPanel.Controls.Add(this.DodoCodeLabel);
             this.FullPanel.Controls.Add(this.onlineLabel);
             this.FullPanel.Controls.Add(this.BackToSetupBtn);
             this.FullPanel.Controls.Add(this.dodoLog);
-            this.FullPanel.Controls.Add(this.TestNoBestFriendCheckbox);
             this.FullPanel.Controls.Add(this.DoneFullTestBtn);
             this.FullPanel.Controls.Add(this.DoneFull);
             this.FullPanel.Controls.Add(this.StartNextBtn);
@@ -260,24 +266,175 @@ namespace ACNHPoker
             this.FullPanel.Controls.Add(this.StartLine2);
             this.FullPanel.Controls.Add(this.Anchor0Label);
             this.FullPanel.Controls.Add(this.StartLine1);
-            this.FullPanel.Location = new System.Drawing.Point(0, 0);
+            this.FullPanel.Location = new System.Drawing.Point(-4200, 0);
             this.FullPanel.Margin = new System.Windows.Forms.Padding(4);
             this.FullPanel.Name = "FullPanel";
             this.FullPanel.Size = new System.Drawing.Size(4800, 300);
             this.FullPanel.TabIndex = 0;
             // 
-            // panel2
+            // functionPanel
             // 
-            this.panel2.Controls.Add(this.DetachBtn);
-            this.panel2.Controls.Add(this.DodoEmoteLabel);
-            this.panel2.Controls.Add(this.emoteRIGHTBtn);
-            this.panel2.Controls.Add(this.emoteDOWNBtn);
-            this.panel2.Controls.Add(this.emoteLEFTBtn);
-            this.panel2.Controls.Add(this.emoteUPBtn);
-            this.panel2.Location = new System.Drawing.Point(4663, 80);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(119, 213);
-            this.panel2.TabIndex = 318;
+            this.functionPanel.Controls.Add(this.emoteBottomLeftBtn);
+            this.functionPanel.Controls.Add(this.emoteTopLeftBtn);
+            this.functionPanel.Controls.Add(this.emoteBottomRightBtn);
+            this.functionPanel.Controls.Add(this.emoteTopRightBtn);
+            this.functionPanel.Controls.Add(this.DoneAnchor2Btn);
+            this.functionPanel.Controls.Add(this.DoneAnchor1Btn);
+            this.functionPanel.Controls.Add(this.DoneAnchor0Btn);
+            this.functionPanel.Controls.Add(this.DetachBtn);
+            this.functionPanel.Controls.Add(this.DodoEmoteLabel);
+            this.functionPanel.Controls.Add(this.emoteRIGHTBtn);
+            this.functionPanel.Controls.Add(this.emoteDOWNBtn);
+            this.functionPanel.Controls.Add(this.emoteLEFTBtn);
+            this.functionPanel.Controls.Add(this.emoteUPBtn);
+            this.functionPanel.Controls.Add(this.idleEmoteCheckBox);
+            this.functionPanel.Location = new System.Drawing.Point(4663, 35);
+            this.functionPanel.Name = "functionPanel";
+            this.functionPanel.Size = new System.Drawing.Size(119, 258);
+            this.functionPanel.TabIndex = 318;
+            // 
+            // emoteBottomLeftBtn
+            // 
+            this.emoteBottomLeftBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.emoteBottomLeftBtn.FlatAppearance.BorderSize = 0;
+            this.emoteBottomLeftBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emoteBottomLeftBtn.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
+            this.emoteBottomLeftBtn.ForeColor = System.Drawing.Color.White;
+            this.emoteBottomLeftBtn.Location = new System.Drawing.Point(45, 232);
+            this.emoteBottomLeftBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.emoteBottomLeftBtn.Name = "emoteBottomLeftBtn";
+            this.emoteBottomLeftBtn.Size = new System.Drawing.Size(20, 20);
+            this.emoteBottomLeftBtn.TabIndex = 332;
+            this.emoteBottomLeftBtn.Text = "🡷";
+            this.emoteBottomLeftBtn.UseVisualStyleBackColor = false;
+            this.emoteBottomLeftBtn.Click += new System.EventHandler(this.emoteBottomLeftBtn_Click);
+            // 
+            // emoteTopLeftBtn
+            // 
+            this.emoteTopLeftBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.emoteTopLeftBtn.FlatAppearance.BorderSize = 0;
+            this.emoteTopLeftBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emoteTopLeftBtn.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
+            this.emoteTopLeftBtn.ForeColor = System.Drawing.Color.White;
+            this.emoteTopLeftBtn.Location = new System.Drawing.Point(45, 190);
+            this.emoteTopLeftBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.emoteTopLeftBtn.Name = "emoteTopLeftBtn";
+            this.emoteTopLeftBtn.Size = new System.Drawing.Size(20, 20);
+            this.emoteTopLeftBtn.TabIndex = 331;
+            this.emoteTopLeftBtn.Text = "🡴";
+            this.emoteTopLeftBtn.UseVisualStyleBackColor = false;
+            this.emoteTopLeftBtn.Click += new System.EventHandler(this.emoteTopLeftBtn_Click);
+            // 
+            // emoteBottomRightBtn
+            // 
+            this.emoteBottomRightBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.emoteBottomRightBtn.FlatAppearance.BorderSize = 0;
+            this.emoteBottomRightBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emoteBottomRightBtn.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
+            this.emoteBottomRightBtn.ForeColor = System.Drawing.Color.White;
+            this.emoteBottomRightBtn.Location = new System.Drawing.Point(87, 232);
+            this.emoteBottomRightBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.emoteBottomRightBtn.Name = "emoteBottomRightBtn";
+            this.emoteBottomRightBtn.Size = new System.Drawing.Size(20, 20);
+            this.emoteBottomRightBtn.TabIndex = 330;
+            this.emoteBottomRightBtn.Text = "🡶";
+            this.emoteBottomRightBtn.UseVisualStyleBackColor = false;
+            this.emoteBottomRightBtn.Click += new System.EventHandler(this.emoteBottomRightBtn_Click);
+            // 
+            // emoteTopRightBtn
+            // 
+            this.emoteTopRightBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.emoteTopRightBtn.FlatAppearance.BorderSize = 0;
+            this.emoteTopRightBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emoteTopRightBtn.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
+            this.emoteTopRightBtn.ForeColor = System.Drawing.Color.White;
+            this.emoteTopRightBtn.Location = new System.Drawing.Point(87, 190);
+            this.emoteTopRightBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.emoteTopRightBtn.Name = "emoteTopRightBtn";
+            this.emoteTopRightBtn.Size = new System.Drawing.Size(20, 20);
+            this.emoteTopRightBtn.TabIndex = 329;
+            this.emoteTopRightBtn.Text = "🡵";
+            this.emoteTopRightBtn.UseVisualStyleBackColor = false;
+            this.emoteTopRightBtn.Click += new System.EventHandler(this.emoteTopRightBtn_Click);
+            // 
+            // DoneAnchor2Btn
+            // 
+            this.DoneAnchor2Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.DoneAnchor2Btn.FlatAppearance.BorderSize = 0;
+            this.DoneAnchor2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DoneAnchor2Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.DoneAnchor2Btn.ForeColor = System.Drawing.Color.White;
+            this.DoneAnchor2Btn.Location = new System.Drawing.Point(3, 54);
+            this.DoneAnchor2Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.DoneAnchor2Btn.Name = "DoneAnchor2Btn";
+            this.DoneAnchor2Btn.Size = new System.Drawing.Size(112, 22);
+            this.DoneAnchor2Btn.TabIndex = 328;
+            this.DoneAnchor2Btn.Text = "Anchor 2";
+            this.DoneAnchor2Btn.UseVisualStyleBackColor = false;
+            this.DoneAnchor2Btn.Visible = false;
+            this.DoneAnchor2Btn.Click += new System.EventHandler(this.DoneAnchor2Btn_Click);
+            // 
+            // DoneAnchor1Btn
+            // 
+            this.DoneAnchor1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.DoneAnchor1Btn.FlatAppearance.BorderSize = 0;
+            this.DoneAnchor1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DoneAnchor1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.DoneAnchor1Btn.ForeColor = System.Drawing.Color.White;
+            this.DoneAnchor1Btn.Location = new System.Drawing.Point(3, 29);
+            this.DoneAnchor1Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.DoneAnchor1Btn.Name = "DoneAnchor1Btn";
+            this.DoneAnchor1Btn.Size = new System.Drawing.Size(112, 22);
+            this.DoneAnchor1Btn.TabIndex = 327;
+            this.DoneAnchor1Btn.Text = "Anchor 1";
+            this.DoneAnchor1Btn.UseVisualStyleBackColor = false;
+            this.DoneAnchor1Btn.Visible = false;
+            this.DoneAnchor1Btn.Click += new System.EventHandler(this.DoneAnchor1Btn_Click);
+            // 
+            // DoneAnchor0Btn
+            // 
+            this.DoneAnchor0Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.DoneAnchor0Btn.FlatAppearance.BorderSize = 0;
+            this.DoneAnchor0Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DoneAnchor0Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.DoneAnchor0Btn.ForeColor = System.Drawing.Color.White;
+            this.DoneAnchor0Btn.Location = new System.Drawing.Point(3, 4);
+            this.DoneAnchor0Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.DoneAnchor0Btn.Name = "DoneAnchor0Btn";
+            this.DoneAnchor0Btn.Size = new System.Drawing.Size(112, 22);
+            this.DoneAnchor0Btn.TabIndex = 326;
+            this.DoneAnchor0Btn.Text = "Anchor 0";
+            this.DoneAnchor0Btn.UseVisualStyleBackColor = false;
+            this.DoneAnchor0Btn.Visible = false;
+            this.DoneAnchor0Btn.Click += new System.EventHandler(this.DoneAnchor0Btn_Click);
+            // 
+            // DetachBtn
+            // 
+            this.DetachBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.DetachBtn.FlatAppearance.BorderSize = 0;
+            this.DetachBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DetachBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.DetachBtn.ForeColor = System.Drawing.Color.White;
+            this.DetachBtn.Location = new System.Drawing.Point(45, 146);
+            this.DetachBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.DetachBtn.Name = "DetachBtn";
+            this.DetachBtn.Size = new System.Drawing.Size(62, 24);
+            this.DetachBtn.TabIndex = 325;
+            this.DetachBtn.Text = "Detach";
+            this.DetachBtn.UseVisualStyleBackColor = false;
+            this.DetachBtn.Click += new System.EventHandler(this.DetachBtn_Click);
+            // 
+            // DodoEmoteLabel
+            // 
+            this.DodoEmoteLabel.AutoSize = true;
+            this.DodoEmoteLabel.BackColor = System.Drawing.Color.Transparent;
+            this.DodoEmoteLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.DodoEmoteLabel.ForeColor = System.Drawing.Color.White;
+            this.DodoEmoteLabel.Location = new System.Drawing.Point(47, 174);
+            this.DodoEmoteLabel.Name = "DodoEmoteLabel";
+            this.DodoEmoteLabel.Size = new System.Drawing.Size(60, 16);
+            this.DodoEmoteLabel.TabIndex = 319;
+            this.DodoEmoteLabel.Text = "Emote :";
             // 
             // emoteRIGHTBtn
             // 
@@ -286,7 +443,7 @@ namespace ACNHPoker
             this.emoteRIGHTBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.emoteRIGHTBtn.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.emoteRIGHTBtn.ForeColor = System.Drawing.Color.White;
-            this.emoteRIGHTBtn.Location = new System.Drawing.Point(87, 166);
+            this.emoteRIGHTBtn.Location = new System.Drawing.Point(87, 211);
             this.emoteRIGHTBtn.Margin = new System.Windows.Forms.Padding(4);
             this.emoteRIGHTBtn.Name = "emoteRIGHTBtn";
             this.emoteRIGHTBtn.Size = new System.Drawing.Size(20, 20);
@@ -302,7 +459,7 @@ namespace ACNHPoker
             this.emoteDOWNBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.emoteDOWNBtn.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.emoteDOWNBtn.ForeColor = System.Drawing.Color.White;
-            this.emoteDOWNBtn.Location = new System.Drawing.Point(66, 187);
+            this.emoteDOWNBtn.Location = new System.Drawing.Point(66, 232);
             this.emoteDOWNBtn.Margin = new System.Windows.Forms.Padding(4);
             this.emoteDOWNBtn.Name = "emoteDOWNBtn";
             this.emoteDOWNBtn.Size = new System.Drawing.Size(20, 20);
@@ -318,7 +475,7 @@ namespace ACNHPoker
             this.emoteLEFTBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.emoteLEFTBtn.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.emoteLEFTBtn.ForeColor = System.Drawing.Color.White;
-            this.emoteLEFTBtn.Location = new System.Drawing.Point(45, 166);
+            this.emoteLEFTBtn.Location = new System.Drawing.Point(45, 211);
             this.emoteLEFTBtn.Margin = new System.Windows.Forms.Padding(4);
             this.emoteLEFTBtn.Name = "emoteLEFTBtn";
             this.emoteLEFTBtn.Size = new System.Drawing.Size(20, 20);
@@ -334,7 +491,7 @@ namespace ACNHPoker
             this.emoteUPBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.emoteUPBtn.Font = new System.Drawing.Font("Arial", 7F, System.Drawing.FontStyle.Bold);
             this.emoteUPBtn.ForeColor = System.Drawing.Color.White;
-            this.emoteUPBtn.Location = new System.Drawing.Point(66, 145);
+            this.emoteUPBtn.Location = new System.Drawing.Point(66, 190);
             this.emoteUPBtn.Margin = new System.Windows.Forms.Padding(4);
             this.emoteUPBtn.Name = "emoteUPBtn";
             this.emoteUPBtn.Size = new System.Drawing.Size(20, 20);
@@ -343,38 +500,51 @@ namespace ACNHPoker
             this.emoteUPBtn.UseVisualStyleBackColor = false;
             this.emoteUPBtn.Click += new System.EventHandler(this.emoteUPBtn_Click);
             // 
-            // panel1
+            // idleEmoteCheckBox
             // 
-            this.panel1.Controls.Add(this.HomeBtn);
-            this.panel1.Controls.Add(this.caputureBtn);
-            this.panel1.Controls.Add(this.plusBtn);
-            this.panel1.Controls.Add(this.minusBtn);
-            this.panel1.Controls.Add(this.RBtn);
-            this.panel1.Controls.Add(this.LBtn);
-            this.panel1.Controls.Add(this.ZLBtn);
-            this.panel1.Controls.Add(this.ZRBtn);
-            this.panel1.Controls.Add(this.DrightBtn);
-            this.panel1.Controls.Add(this.DleftBtn);
-            this.panel1.Controls.Add(this.DdownBtn);
-            this.panel1.Controls.Add(this.DupBtn);
-            this.panel1.Controls.Add(this.RightStickBtn);
-            this.panel1.Controls.Add(this.RstickRIGHTBtn);
-            this.panel1.Controls.Add(this.RstickLEFTBtn);
-            this.panel1.Controls.Add(this.RstickDOWNBtn);
-            this.panel1.Controls.Add(this.RstickUPBtn);
-            this.panel1.Controls.Add(this.LeftStickBtn);
-            this.panel1.Controls.Add(this.ABtn);
-            this.panel1.Controls.Add(this.YBtn);
-            this.panel1.Controls.Add(this.BBtn);
-            this.panel1.Controls.Add(this.XBtn);
-            this.panel1.Controls.Add(this.LstickRIGHTBtn);
-            this.panel1.Controls.Add(this.LstickLEFTBtn);
-            this.panel1.Controls.Add(this.LstickDOWNBtn);
-            this.panel1.Controls.Add(this.LstickUPBtn);
-            this.panel1.Location = new System.Drawing.Point(4212, 221);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(448, 76);
-            this.panel1.TabIndex = 317;
+            this.idleEmoteCheckBox.AutoSize = true;
+            this.idleEmoteCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.idleEmoteCheckBox.ForeColor = System.Drawing.Color.White;
+            this.idleEmoteCheckBox.Location = new System.Drawing.Point(20, 126);
+            this.idleEmoteCheckBox.Name = "idleEmoteCheckBox";
+            this.idleEmoteCheckBox.Size = new System.Drawing.Size(95, 20);
+            this.idleEmoteCheckBox.TabIndex = 333;
+            this.idleEmoteCheckBox.Text = "Idle Emote";
+            this.idleEmoteCheckBox.UseVisualStyleBackColor = false;
+            this.idleEmoteCheckBox.CheckedChanged += new System.EventHandler(this.idleEmoteCheckBox_CheckedChanged);
+            // 
+            // controllerPanel
+            // 
+            this.controllerPanel.Controls.Add(this.HomeBtn);
+            this.controllerPanel.Controls.Add(this.caputureBtn);
+            this.controllerPanel.Controls.Add(this.plusBtn);
+            this.controllerPanel.Controls.Add(this.minusBtn);
+            this.controllerPanel.Controls.Add(this.RBtn);
+            this.controllerPanel.Controls.Add(this.LBtn);
+            this.controllerPanel.Controls.Add(this.ZLBtn);
+            this.controllerPanel.Controls.Add(this.ZRBtn);
+            this.controllerPanel.Controls.Add(this.DrightBtn);
+            this.controllerPanel.Controls.Add(this.DleftBtn);
+            this.controllerPanel.Controls.Add(this.DdownBtn);
+            this.controllerPanel.Controls.Add(this.DupBtn);
+            this.controllerPanel.Controls.Add(this.RightStickBtn);
+            this.controllerPanel.Controls.Add(this.RstickRIGHTBtn);
+            this.controllerPanel.Controls.Add(this.RstickLEFTBtn);
+            this.controllerPanel.Controls.Add(this.RstickDOWNBtn);
+            this.controllerPanel.Controls.Add(this.RstickUPBtn);
+            this.controllerPanel.Controls.Add(this.LeftStickBtn);
+            this.controllerPanel.Controls.Add(this.ABtn);
+            this.controllerPanel.Controls.Add(this.YBtn);
+            this.controllerPanel.Controls.Add(this.BBtn);
+            this.controllerPanel.Controls.Add(this.XBtn);
+            this.controllerPanel.Controls.Add(this.LstickRIGHTBtn);
+            this.controllerPanel.Controls.Add(this.LstickLEFTBtn);
+            this.controllerPanel.Controls.Add(this.LstickDOWNBtn);
+            this.controllerPanel.Controls.Add(this.LstickUPBtn);
+            this.controllerPanel.Location = new System.Drawing.Point(4212, 221);
+            this.controllerPanel.Name = "controllerPanel";
+            this.controllerPanel.Size = new System.Drawing.Size(448, 76);
+            this.controllerPanel.TabIndex = 317;
             // 
             // HomeBtn
             // 
@@ -801,21 +971,6 @@ namespace ACNHPoker
             this.LstickUPBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LstickUPBtn_MouseDown);
             this.LstickUPBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LstickMouseUp);
             // 
-            // NoBestFriendCheckbox
-            // 
-            this.NoBestFriendCheckbox.AutoSize = true;
-            this.NoBestFriendCheckbox.BackColor = System.Drawing.Color.Transparent;
-            this.NoBestFriendCheckbox.Checked = true;
-            this.NoBestFriendCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.NoBestFriendCheckbox.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.NoBestFriendCheckbox.ForeColor = System.Drawing.Color.White;
-            this.NoBestFriendCheckbox.Location = new System.Drawing.Point(4528, 12);
-            this.NoBestFriendCheckbox.Name = "NoBestFriendCheckbox";
-            this.NoBestFriendCheckbox.Size = new System.Drawing.Size(132, 20);
-            this.NoBestFriendCheckbox.TabIndex = 316;
-            this.NoBestFriendCheckbox.Text = "No Best Friend";
-            this.NoBestFriendCheckbox.UseVisualStyleBackColor = false;
-            // 
             // dodoCode
             // 
             this.dodoCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
@@ -860,10 +1015,10 @@ namespace ACNHPoker
             this.BackToSetupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BackToSetupBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.BackToSetupBtn.ForeColor = System.Drawing.Color.White;
-            this.BackToSetupBtn.Location = new System.Drawing.Point(4660, 8);
+            this.BackToSetupBtn.Location = new System.Drawing.Point(4666, 8);
             this.BackToSetupBtn.Margin = new System.Windows.Forms.Padding(4);
             this.BackToSetupBtn.Name = "BackToSetupBtn";
-            this.BackToSetupBtn.Size = new System.Drawing.Size(118, 25);
+            this.BackToSetupBtn.Size = new System.Drawing.Size(112, 25);
             this.BackToSetupBtn.TabIndex = 312;
             this.BackToSetupBtn.Text = "Teleport Setup";
             this.BackToSetupBtn.UseVisualStyleBackColor = false;
@@ -883,21 +1038,6 @@ namespace ACNHPoker
             this.dodoLog.TabIndex = 311;
             this.dodoLog.Text = "";
             this.dodoLog.TextChanged += new System.EventHandler(this.dodoLog_TextChanged);
-            // 
-            // TestNoBestFriendCheckbox
-            // 
-            this.TestNoBestFriendCheckbox.AutoSize = true;
-            this.TestNoBestFriendCheckbox.BackColor = System.Drawing.Color.Transparent;
-            this.TestNoBestFriendCheckbox.Checked = true;
-            this.TestNoBestFriendCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.TestNoBestFriendCheckbox.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.TestNoBestFriendCheckbox.ForeColor = System.Drawing.Color.White;
-            this.TestNoBestFriendCheckbox.Location = new System.Drawing.Point(3760, 253);
-            this.TestNoBestFriendCheckbox.Name = "TestNoBestFriendCheckbox";
-            this.TestNoBestFriendCheckbox.Size = new System.Drawing.Size(132, 20);
-            this.TestNoBestFriendCheckbox.TabIndex = 310;
-            this.TestNoBestFriendCheckbox.Text = "No Best Friend";
-            this.TestNoBestFriendCheckbox.UseVisualStyleBackColor = false;
             // 
             // DoneFullTestBtn
             // 
@@ -1899,33 +2039,25 @@ namespace ACNHPoker
             this.StartLine1.Text = "The following guide will help you setup your \r\nteleport anchors for the Dodo rest" +
     "oring function.\r\n";
             // 
-            // DodoEmoteLabel
+            // AbortBtn
             // 
-            this.DodoEmoteLabel.AutoSize = true;
-            this.DodoEmoteLabel.BackColor = System.Drawing.Color.Transparent;
-            this.DodoEmoteLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.DodoEmoteLabel.ForeColor = System.Drawing.Color.White;
-            this.DodoEmoteLabel.Location = new System.Drawing.Point(47, 129);
-            this.DodoEmoteLabel.Name = "DodoEmoteLabel";
-            this.DodoEmoteLabel.Size = new System.Drawing.Size(60, 16);
-            this.DodoEmoteLabel.TabIndex = 319;
-            this.DodoEmoteLabel.Text = "Emote :";
-            // 
-            // DetachBtn
-            // 
-            this.DetachBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.DetachBtn.FlatAppearance.BorderSize = 0;
-            this.DetachBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DetachBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.DetachBtn.ForeColor = System.Drawing.Color.White;
-            this.DetachBtn.Location = new System.Drawing.Point(45, 101);
-            this.DetachBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.DetachBtn.Name = "DetachBtn";
-            this.DetachBtn.Size = new System.Drawing.Size(62, 24);
-            this.DetachBtn.TabIndex = 325;
-            this.DetachBtn.Text = "Detach";
-            this.DetachBtn.UseVisualStyleBackColor = false;
-            this.DetachBtn.Click += new System.EventHandler(this.DetachBtn_Click);
+            this.AbortBtn.BackColor = System.Drawing.Color.Red;
+            this.AbortBtn.FlatAppearance.BorderSize = 0;
+            this.AbortBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AbortBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.AbortBtn.ForeColor = System.Drawing.Color.White;
+            this.AbortBtn.Location = new System.Drawing.Point(4589, 8);
+            this.AbortBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.AbortBtn.Name = "AbortBtn";
+            this.AbortBtn.Size = new System.Drawing.Size(74, 25);
+            this.AbortBtn.TabIndex = 334;
+            this.AbortBtn.Text = "Abort";
+            this.HoverToolTip.SetToolTip(this.AbortBtn, "Stop the regen and dodo restore sequence.\r\n\r\n[Warning]Only use it if you see some" +
+        "thing goes wrong.\r\nFor example :\r\nVirtual controller not responding.\r\nYour chara" +
+        "cter got teleported to the ocean.");
+            this.AbortBtn.UseVisualStyleBackColor = false;
+            this.AbortBtn.Visible = false;
+            this.AbortBtn.Click += new System.EventHandler(this.AbortBtn_Click);
             // 
             // dodo
             // 
@@ -1948,9 +2080,9 @@ namespace ACNHPoker
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.dodo_FormClosed);
             this.FullPanel.ResumeLayout(false);
             this.FullPanel.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.functionPanel.ResumeLayout(false);
+            this.functionPanel.PerformLayout();
+            this.controllerPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Anchor4Image3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Anchor4Image2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Anchor4Image1)).EndInit();
@@ -2052,14 +2184,12 @@ namespace ACNHPoker
         private System.Windows.Forms.Button DoneFullTestBtn;
         private System.Windows.Forms.Label DoneFull;
         private System.Windows.Forms.ToolTip HoverToolTip;
-        private System.Windows.Forms.CheckBox TestNoBestFriendCheckbox;
         private System.Windows.Forms.Label onlineLabel;
         private System.Windows.Forms.RichTextBox dodoLog;
         private System.Windows.Forms.RichTextBox dodoCode;
         private System.Windows.Forms.Label DodoCodeLabel;
         private System.Windows.Forms.Button BackToSetupBtn;
-        private System.Windows.Forms.CheckBox NoBestFriendCheckbox;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel controllerPanel;
         private System.Windows.Forms.Button ABtn;
         private System.Windows.Forms.Button YBtn;
         private System.Windows.Forms.Button BBtn;
@@ -2068,7 +2198,7 @@ namespace ACNHPoker
         private System.Windows.Forms.Button LstickLEFTBtn;
         private System.Windows.Forms.Button LstickDOWNBtn;
         private System.Windows.Forms.Button LstickUPBtn;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel functionPanel;
         private System.Windows.Forms.Button emoteRIGHTBtn;
         private System.Windows.Forms.Button emoteDOWNBtn;
         private System.Windows.Forms.Button emoteLEFTBtn;
@@ -2093,5 +2223,14 @@ namespace ACNHPoker
         private System.Windows.Forms.Button DupBtn;
         private System.Windows.Forms.Label DodoEmoteLabel;
         private System.Windows.Forms.Button DetachBtn;
+        private System.Windows.Forms.Button DoneAnchor2Btn;
+        private System.Windows.Forms.Button DoneAnchor1Btn;
+        private System.Windows.Forms.Button DoneAnchor0Btn;
+        private System.Windows.Forms.Button emoteBottomLeftBtn;
+        private System.Windows.Forms.Button emoteTopLeftBtn;
+        private System.Windows.Forms.Button emoteBottomRightBtn;
+        private System.Windows.Forms.Button emoteTopRightBtn;
+        private System.Windows.Forms.CheckBox idleEmoteCheckBox;
+        private System.Windows.Forms.Button AbortBtn;
     }
 }

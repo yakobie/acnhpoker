@@ -166,9 +166,21 @@ https://youtu.be/-zztRgmtXig
 	* Added up & down arrows to Flag and Hex Value in map dropper.
 	* Added "Keep Village State" to Regenerator. It will reset the moveout state after they have been invited.
 	* Fixed the program crash due to incomplete images download.
-	* The "dodo.txt" file will now be constantly update if you have Regenerator running.
+	* The "dodo.txt" file will now be constantly updated if you have Regenerator running.
 	* Added "Dodo Helper" to Regenerator to restore island crash/disconnect.
-      * Thanks to Rydog, Red, Coolguy for the teleportation code. And thanks to berichan's ACNHOrders implementation.
+      * Thanks to Rydog, Red, Coolguy for the teleportation code. And thanks to berichan's ACNHOrders implementation
+* R13.3
+	* Added "Shift + Left Click" and "Alt + Left Click" to inventory spawn. However, how they work may or may not be random.
+	* Added the option to change the "dodo.txt" path.
+	* Added the "Abort" button if you want to stop the dodo restore in mid-sequence.
+	* Added more output during the restore sequence.
+      * If it's stuck. Please report with the output included.
+	* Removed the "no best friend" option and change the button sequence to work in both cases.
+	* Added loading check to prevent regen when some dum-dum silently left with "-" button.
+	* Added "idle emote" which will randomly do a emote after some idle time.
+      * Do NOT use if you have discord bot dropping item.
+	* Fixed the program crash due to incomplete villager images download(Again).
+	
     
 ## Contributing
 

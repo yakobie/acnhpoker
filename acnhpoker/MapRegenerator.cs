@@ -27,9 +27,7 @@ namespace ACNHPoker
 
         private const string saveFolder = @"save\";
         private const string logFile = @"VisitorLog.csv";
-        private const string dodoFile = @"dodo.txt";
         private string logPath = saveFolder + logFile;
-        private string dodoPath = saveFolder + dodoFile;
 
         private miniMap MiniMap = null;
         private int anchorX = -1;
@@ -297,7 +295,7 @@ namespace ACNHPoker
 
                 Log.logEvent("Regen", "Regen1 Started: " + name[name.Length - 1]);
 
-                string dodo = setupDodo();
+                string dodo = controller.setupDodo();
                 Log.logEvent("Regen", "Regen1 Dodo: " + dodo);
 
                 RegenThread = new Thread(delegate () { regenMapFloor(b, address, name[name.Length - 1]); });
@@ -353,6 +351,7 @@ namespace ACNHPoker
             }
 
             Utilities.sendBlankName(s);
+            teleport.OverworldState state;
 
             do
             {
@@ -360,12 +359,13 @@ namespace ACNHPoker
                 {
                     if (dodoSetup != null && dodoSetup.dodoSetupDone)
                     {
-                        DodoMonitor();
-                        dodoSetup.DisplayDodo(setupDodo());
+                        state = dodoSetup.DodoMonitor();
+                        dodoSetup.DisplayDodo(controller.setupDodo());
                     }
                     else
                     {
-                        setupDodo();
+                        state = teleport.GetOverworldState();
+                        controller.setupDodo();
                     }
 
                     counter = 0;
@@ -397,35 +397,42 @@ namespace ACNHPoker
                             WaitMessagebox.Text = regenMsg;
                         });
                     }
-
-                    for (int i = 0; i < 42; i++)
+                    if (state == teleport.OverworldState.Loading || state == teleport.OverworldState.UserArriveLeavingOrTitleScreen)
                     {
-                        lock (mapLock)
+                        Debug.Print("Loading Detected");
+                        Thread.Sleep(5000);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < 42; i++)
                         {
-                            c = Utilities.ReadByteArray8(s, address + (i * 0x2000), 0x2000, ref counter);
-
-                            if (c != null)
+                            lock (mapLock)
                             {
-                                if (SafeEquals(b[i], c))
+                                c = Utilities.ReadByteArray8(s, address + (i * 0x2000), 0x2000, ref counter);
+
+                                if (c != null)
                                 {
-                                    //Debug.Print("Same " + i);
-                                    Thread.Sleep(delayTime);
+                                    if (SafeEquals(b[i], c))
+                                    {
+                                        //Debug.Print("Same " + i);
+                                        Thread.Sleep(delayTime);
+                                    }
+                                    else
+                                    {
+                                        Debug.Print("Replace " + i);
+                                        Utilities.SendByteArray8(s, address + (i * 0x2000), b[i], 0x2000, ref writeCount);
+                                        Thread.Sleep(500);
+                                    }
                                 }
                                 else
                                 {
-                                    Debug.Print("Replace " + i);
-                                    Utilities.SendByteArray8(s, address + (i * 0x2000), b[i], 0x2000, ref writeCount);
-                                    Thread.Sleep(500);
+                                    Debug.Print("Null " + i);
+                                    Thread.Sleep(10000);
                                 }
                             }
-                            else
-                            {
-                                Debug.Print("Null " + i);
-                                Thread.Sleep(10000);
-                            }
+                            if (!loop)
+                                break;
                         }
-                        if (!loop)
-                            break;
                     }
 
                     this.Invoke((MethodInvoker)delegate
@@ -441,9 +448,207 @@ namespace ACNHPoker
                     });
                     Debug.Print("------ " + runCount);
                 }
+                catch (ThreadAbortException ex)
+                {
+                    Log.logEvent("Regen", "Regen1: " + ex.Message.ToString());
+                    myMessageBox.Show("Dodo Helper & Regen Aborted!\nPlease remember to exit the airport first if you want to restart!", "Airbag deployment!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        stopWatch.Stop();
+                        hideMapWait();
+                        loop = false;
+                        Log.logEvent("Regen", "Regen1 Stopped");
+                        loop = false;
+                        startRegen.Tag = "Start";
+                        startRegen.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+                        startRegen.Text = "Cast Regen";
+                        saveMapBtn.Enabled = true;
+                        loadMapBtn.Enabled = true;
+                        backBtn.Enabled = true;
+                        startRegen2.Enabled = true;
+                        keepVillagerBox.Enabled = true;
+                        dodoSetupBtn.Enabled = true;
+                    });
+                }
                 catch (Exception ex)
                 {
                     Log.logEvent("Regen", "Regen1: " + ex.Message.ToString());
+                    DateTime localDate = DateTime.Now;
+                    CreateLog("[Connection Lost]");
+                    myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                }
+            } while (loop);
+
+            stopWatch.Stop();
+
+            hideMapWait();
+
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
+        }
+
+        private void regenMapFloor2(byte[][] b, UInt32 address, bool[][] isEmpty, string name)
+        {
+            string regenMsg = "Regenerating... " + name;
+            showMapWait(56, regenMsg);
+
+            byte[][] u = new byte[56][];
+
+            for (int i = 0; i < 56; i++)
+            {
+                u[i] = new byte[0x1800];
+                Buffer.BlockCopy(b[i], 0, u[i], 0x0, 0x1800);
+            }
+
+            byte[][] villageFlag = new byte[10][];
+            Boolean[] haveVillager = new Boolean[10];
+            if (keepVillagerBox.Checked)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    villageFlag[i] = Utilities.GetMoveout(s, null, i, (int)0x33, ref counter);
+                    haveVillager[i] = checkHaveVillager(villageFlag[i]);
+                }
+            }
+
+            byte[] c = new byte[0x2000];
+
+            int writeCount;
+            int runCount = 0;
+
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
+            string newVisitor;
+            TimeSpan ts;
+
+            if (dodoSetup != null)
+            {
+                dodoSetup.LockBtn();
+            }
+
+            Utilities.sendBlankName(s);
+            teleport.OverworldState state;
+            do
+            {
+                try
+                {
+                    if (dodoSetup != null && dodoSetup.dodoSetupDone)
+                    {
+                        state = dodoSetup.DodoMonitor();
+                        dodoSetup.DisplayDodo(controller.setupDodo());
+                    }
+                    else
+                    {
+                        state = teleport.GetOverworldState();
+                        controller.setupDodo();
+                    }
+
+                    counter = 0;
+                    writeCount = 0;
+
+                    newVisitor = getVisitorName();
+
+                    if (!newVisitor.Equals(string.Empty))
+                    {
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            visitorNameBox.Text = newVisitor;
+                            WaitMessagebox.Text = "Paused. " + newVisitor + " arriving!";
+                            CreateLog(newVisitor);
+                            PauseTimeLabel.Visible = true;
+                            PauseTimer.Start();
+                        });
+
+                        Thread.Sleep(70000);
+                        Utilities.sendBlankName(s);
+
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            PauseTimeLabel.Visible = false;
+                            PauseTimer.Stop();
+                            pauseTime = 70;
+                            PauseTimeLabel.Text = pauseTime.ToString();
+                            WaitMessagebox.Text = regenMsg;
+                        });
+                    }
+
+                    if (state == teleport.OverworldState.Loading || state == teleport.OverworldState.UserArriveLeavingOrTitleScreen)
+                    {
+                        Debug.Print("Loading Detected");
+                        Thread.Sleep(5000);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < 56; i++)
+                        {
+                            lock (mapLock)
+                            {
+                                c = Utilities.ReadByteArray8(s, address + (i * 0x1800), 0x1800, ref counter);
+
+                                if (c != null)
+                                {
+                                    if (Difference(b[i], ref u[i], isEmpty[i], c))
+                                    {
+                                        //Debug.Print("Same " + i);
+                                        Thread.Sleep(delayTime);
+                                    }
+                                    else
+                                    {
+                                        Debug.Print("Replace " + i);
+                                        Utilities.SendByteArray8(s, address + (i * 0x1800), u[i], 0x1800, ref writeCount);
+                                        Thread.Sleep(500);
+                                    }
+                                }
+                                else
+                                {
+                                    Debug.Print("Null " + i);
+                                    Thread.Sleep(10000);
+                                }
+                            }
+                            if (!loop)
+                                break;
+                        }
+                    }
+
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        ts = stopWatch.Elapsed;
+                        timeLabel.Text = Utilities.precedingZeros(ts.Hours.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Minutes.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Seconds.ToString(), 2);
+                        if (keepVillagerBox.Checked)
+                        {
+                            int index = runCount % 10;
+                            CheckAndResetVillager(villageFlag[index], haveVillager[index], index, ref writeCount);
+                        }
+                        runCount++;
+                    });
+                    Debug.Print("------ " + runCount);
+                }
+                catch (ThreadAbortException ex)
+                {
+                    Log.logEvent("Regen", "Regen2: " + ex.Message.ToString());
+                    myMessageBox.Show("Dodo Helper & Regen Aborted!\nPlease remember to exit the airport first if you want to restart!", "Slamming on the brakes?", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        stopWatch.Stop();
+                        hideMapWait();
+                        Log.logEvent("Regen", "Regen2 Stopped");
+                        loop = false;
+                        startRegen2.Tag = "Start";
+                        startRegen2.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+                        startRegen2.Text = "Cast Moogle Regenja";
+                        saveMapBtn.Enabled = true;
+                        loadMapBtn.Enabled = true;
+                        backBtn.Enabled = true;
+                        startRegen.Enabled = true;
+                        keepVillagerBox.Enabled = true;
+                        dodoSetupBtn.Enabled = true;
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Log.logEvent("Regen", "Regen2: " + ex.Message.ToString());
                     DateTime localDate = DateTime.Now;
                     CreateLog("[Connection Lost]");
                     myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -682,7 +887,7 @@ namespace ACNHPoker
 
                     Log.logEvent("Regen", "Regen2Normal Started: " + tempFilename);
 
-                    string dodo = setupDodo();
+                    string dodo = controller.setupDodo();
                     Log.logEvent("Regen", "Regen2 Dodo: " + dodo);
 
                     RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, tempFilename); });
@@ -740,157 +945,11 @@ namespace ACNHPoker
             Log.logEvent("Regen", "Regen2Limit Started: " + tempFilename);
             Log.logEvent("Regen", "Regen2Limit Area: " + anchorX + " " + anchorY);
 
-            string dodo = setupDodo();
+            string dodo = controller.setupDodo();
             Log.logEvent("Regen", "Regen2 Dodo: " + dodo);
 
             RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, tempFilename); });
             RegenThread.Start();
-        }
-
-        private void regenMapFloor2(byte[][] b, UInt32 address, bool[][] isEmpty, string name)
-        {
-            string regenMsg = "Regenerating... " + name;
-            showMapWait(56, regenMsg);
-
-            byte[][] u = new byte[56][];
-
-            for (int i = 0; i < 56; i++)
-            {
-                u[i] = new byte[0x1800];
-                Buffer.BlockCopy(b[i], 0, u[i], 0x0, 0x1800);
-            }
-
-            byte[][] villageFlag = new byte[10][];
-            Boolean[] haveVillager = new Boolean[10];
-            if (keepVillagerBox.Checked)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    villageFlag[i] = Utilities.GetMoveout(s, null, i, (int)0x33, ref counter);
-                    haveVillager[i] = checkHaveVillager(villageFlag[i]);
-                }
-            }
-
-            byte[] c = new byte[0x2000];
-
-            int writeCount;
-            int runCount = 0;
-
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
-
-            string newVisitor;
-            TimeSpan ts;
-
-            if (dodoSetup != null)
-            {
-                dodoSetup.LockBtn();
-            }
-
-            Utilities.sendBlankName(s);
-
-            do
-            {
-                try
-                {
-                    if (dodoSetup != null && dodoSetup.dodoSetupDone)
-                    {
-                        DodoMonitor();
-                        dodoSetup.DisplayDodo(setupDodo());
-                    }
-                    else
-                    {
-                        setupDodo();
-                    }
-
-                    counter = 0;
-                    writeCount = 0;
-
-                    newVisitor = getVisitorName();
-
-                    if (!newVisitor.Equals(string.Empty))
-                    {
-                        this.Invoke((MethodInvoker)delegate
-                        {
-                            visitorNameBox.Text = newVisitor;
-                            WaitMessagebox.Text = "Paused. " + newVisitor + " arriving!";
-                            CreateLog(newVisitor);
-                            PauseTimeLabel.Visible = true;
-                            PauseTimer.Start();
-                        });
-
-                        Thread.Sleep(70000);
-                        Utilities.sendBlankName(s);
-
-                        this.Invoke((MethodInvoker)delegate
-                        {
-                            PauseTimeLabel.Visible = false;
-                            PauseTimer.Stop();
-                            pauseTime = 70;
-                            PauseTimeLabel.Text = pauseTime.ToString();
-                            WaitMessagebox.Text = regenMsg;
-                        });
-                    }
-
-                    for (int i = 0; i < 56; i++)
-                    {
-                        lock (mapLock)
-                        {
-                            c = Utilities.ReadByteArray8(s, address + (i * 0x1800), 0x1800, ref counter);
-
-                            if (c != null)
-                            {
-                                if (Difference(b[i], ref u[i], isEmpty[i], c))
-                                {
-                                    //Debug.Print("Same " + i);
-                                    Thread.Sleep(delayTime);
-                                }
-                                else
-                                {
-                                    Debug.Print("Replace " + i);
-                                    Utilities.SendByteArray8(s, address + (i * 0x1800), u[i], 0x1800, ref writeCount);
-                                    Thread.Sleep(500);
-                                }
-                            }
-                            else
-                            {
-                                Debug.Print("Null " + i);
-                                Thread.Sleep(10000);
-                            }
-                        }
-                        if (!loop)
-                            break;
-                    }
-
-                    this.Invoke((MethodInvoker)delegate
-                    {
-                        ts = stopWatch.Elapsed;
-                        timeLabel.Text = Utilities.precedingZeros(ts.Hours.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Minutes.ToString(), 2) + ":" + Utilities.precedingZeros(ts.Seconds.ToString(), 2);
-                        if (keepVillagerBox.Checked)
-                        {
-                            int index = runCount % 10;
-                            CheckAndResetVillager(villageFlag[index], haveVillager[index], index, ref writeCount);
-                        }
-                        runCount++;
-                    });
-                    Debug.Print("------ " + runCount);
-                }
-                catch (Exception ex)
-                {
-                    Log.logEvent("Regen", "Regen2: " + ex.Message.ToString());
-                    DateTime localDate = DateTime.Now;
-                    CreateLog("[Connection Lost]");
-                    myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    break;
-                }
-            } while (loop);
-
-            stopWatch.Stop();
-
-            hideMapWait();
-
-            if (sound)
-                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void buildEmptyTable(byte[] org, ref bool[] table)
@@ -1330,7 +1389,7 @@ namespace ACNHPoker
 
         private void readDodoBtn_Click(object sender, EventArgs e)
         {
-            setupDodo();
+            controller.setupDodo();
         }
 
         private Boolean checkHaveVillager(byte[] villagerFlag)
@@ -1368,44 +1427,9 @@ namespace ACNHPoker
             }
         }
 
-        private string setupDodo()
-        {
-            try
-            {
-                string dodo = Utilities.getDodo(s).Replace("\0","");
-
-                if (File.Exists(dodoPath))
-                {
-                    foreach (string line in File.ReadLines(dodoPath))
-                    {
-                        if (line == dodo)
-                            return dodo;
-                        else
-                            break;
-                    }
-                }
-
-                using (StreamWriter sw = File.CreateText(dodoPath))
-                {
-                    sw.WriteLine(dodo);
-                }
-
-                return dodo;
-            }
-            catch (Exception ex)
-            {
-                Log.logEvent("Regen", "Dodo: " + ex.Message.ToString());
-                return "";
-            }
-        }
-
         private void clearBtn_Click(object sender, EventArgs e)
         {
-            string msg = "[Closed]";
-            using (StreamWriter sw = File.CreateText(dodoPath))
-            {
-                sw.WriteLine(msg);
-            }
+            controller.clearDodo();
         }
 
         private void debugBtn_Click(object sender, EventArgs e)
@@ -1457,7 +1481,7 @@ namespace ACNHPoker
 
                 Log.logEvent("Regen", "Regen3 Started: " + name[name.Length - 1]);
 
-                string dodo = setupDodo();
+                string dodo = controller.setupDodo();
                 Log.logEvent("Regen", "Regen3 Dodo: " + dodo);
 
                 byte[][] b = new byte[42][];
@@ -1488,17 +1512,16 @@ namespace ACNHPoker
                 btn.Tag = "Disable";
                 btn.BackColor = Color.Orange;
 
-                dodoSetup = new dodo();
+                dodoSetup = new dodo(this);
                 dodoSetup.Show();
                 dodoSetup.Location = new Point(this.Location.X - 590, this.Location.Y);
-                dodoSetup.WriteLog("Dodo Helper Ready! Waiting for Regen.\n\n" +
-                    "1. Disconnect all controller by selecting \"Controllers\" > \"Change Grip/Order\"  \n" +
-                    "2. Leave only the Joy-Con docked on your Switch\n" +
-                    "3. Return to the game and dock your Switch. When it ask for a controller, press the \"A\" button below.\n" +
-                    "4. A \"Yellow/Green\" virtual pro controller should appear.\n" +
-                    "5. Press \"A\" again to finish the setup.\n" +
-                    "6. If the virtual controller does not response, try the \"Detach\" button on the right first then \"A\" button.\n" +
-                    "7. If the virtual controller still does not appear, try restart your Switch."
+                dodoSetup.WriteLog("[Dodo Helper Ready! Waiting for Regen.]\n\n" +
+                    "1. Disconnect all controller by selecting \"Controllers\" > \"Change Grip/Order\"\n" +
+                    "2. Leave only the Joy-Con docked on your Switch.\n" +
+                    "3. Return to the game and dock your Switch if needed. If the game ask for a controller, press the \"A\" button below.\n" +
+                    "4. If the virtual controller does not response, try the \"Detach\" button on the right, then the \"A\" button.\n" +
+                    "5. If the virtual controller still does not appear, try restart your Switch.\n\n" +
+                    ">>Please try the buttons below to test the virtual controller.<<"
                     );
             }
             else
@@ -1520,52 +1543,20 @@ namespace ACNHPoker
             }
         }
 
-        private void DodoMonitor()
+        private void changeDodoBtn_Click(object sender, EventArgs e)
         {
-                if (dodoSetup.CheckOnlineStatus() == 1)
-                {
-                    DateTime localDate = DateTime.Now;
-                    dodoSetup.WriteLog(localDate.ToString() + " : " + teleport.GetOverworldState().ToString());
-                    return;
-                    /*
-                    if (run % 10 == 0)
-                    {
-                        //Random random = new Random();
-                        //int v = random.Next(5,10);
-                        //    teleport.TeleportTo(v);
-                        if (teleport.GetOverworldState() == teleport.OverworldState.OverworldOrInAirport)
-                            controller.emote();
-                    }*/
-                }
-                else
-                {
-                    DateTime localDate = DateTime.Now;
-                    dodoSetup.WriteLog(localDate.ToString() + " : " + "[Warning] Disconnected");
+            string newPath = controller.changeDodoPath();
 
-                    Thread.Sleep(5000);
+            if (dodoSetup != null)
+            {
+                dodoSetup.WriteLog(">> Dodo path change to : " + newPath);
+            }
+        }
 
-                    int retry = 0;
-                    do
-                    {
-                        if (retry >= 30)
-                        {
-                            localDate = DateTime.Now;
-                            dodoSetup.WriteLog(localDate.ToString() + " : " + "[Warning] Start Hard Restore");
-                            dodoSetup.HardRestore();
-                            break;
-                        }
-                        Debug.Print("Waiting for Overworld");
-                        controller.clickA();
-                        Thread.Sleep(2000);
-                        retry++;
-                    }
-                    while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
-
-                    Thread.Sleep(10000);
-                    localDate = DateTime.Now;
-                    dodoSetup.WriteLog(localDate.ToString() + " : " + "[Warning] Start Normal Restore");
-                    dodoSetup.NormalRestore();
-                }
+        public void abort()
+        {
+            if (RegenThread.IsAlive)
+                RegenThread.Abort();
         }
     }
 }

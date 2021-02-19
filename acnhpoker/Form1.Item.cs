@@ -1862,7 +1862,7 @@ namespace ACNHPoker
             //Debug.Print(e.KeyCode.ToString());
             if (e.KeyCode.ToString() == "F12" && teleporter != null)
             {
-                dodoSetup = new dodo();
+                dodoSetup = new dodo(this);
                 dodoSetup.Show();
             }
             else if (e.KeyCode.ToString() == "F2" || e.KeyCode.ToString() == "Insert")
@@ -2008,9 +2008,9 @@ namespace ACNHPoker
                         recipelastRow = recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1];
                         recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Height = 160;
 
-                        recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[2].Value.ToString();
+                        recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells["id"].Value.ToString();
 
-                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[0].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[2].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[2].Value.ToString(), recipeSource), true);
+                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[0].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells["id"].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells["id"].Value.ToString(), recipeSource), true);
                         updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
 
                         recipeGridView.CurrentCell = recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[languageSetting];
@@ -2175,27 +2175,23 @@ namespace ACNHPoker
 
         private void deleteBtn_Click(object sender, KeyEventArgs e)
         {
-            if ((s == null || s.Connected == false) & bot == null)
-            {
-                MessageBox.Show("Please connect to the switch first");
-                return;
-            }
-
             if (selectedButton == null)
             {
                 MessageBox.Show("Please select a slot");
                 return;
             }
 
-
-            try
+            if(!offline)
             {
-                Utilities.DeleteSlot(s, bot, int.Parse(selectedButton.Tag.ToString()));
-            }
-            catch (Exception ex)
-            {
-                Log.logEvent("MainForm", "DeleteItemKeyBoard: " + ex.Message.ToString());
-                myMessageBox.Show(ex.Message.ToString(), "Because nobody could *ever* possible attempt to parse bad data.");
+                try
+                {
+                    Utilities.DeleteSlot(s, bot, int.Parse(selectedButton.Tag.ToString()));
+                }
+                catch (Exception ex)
+                {
+                    Log.logEvent("MainForm", "DeleteItemKeyBoard: " + ex.Message.ToString());
+                    myMessageBox.Show(ex.Message.ToString(), "Because nobody could *ever* possible attempt to parse bad data.");
+                }
             }
             selectedButton.reset();
             btnToolTip.RemoveAll();
@@ -2540,6 +2536,29 @@ namespace ACNHPoker
             button.BackColor = System.Drawing.Color.LightSeaGreen;
             selectedButton = button;
             selectedSlot = int.Parse(button.Tag.ToString());
+
+            if (Control.ModifierKeys == Keys.Control)
+            {
+                if (currentPanel == itemModePanel)
+                {
+                    customIdBtn_Click(sender, e);
+                }
+                else if (currentPanel == recipeModePanel)
+                {
+                    spawnRecipeBtn_Click(sender, e);
+                }
+                else if (currentPanel == flowerModePanel)
+                {
+                    spawnFlowerBtn_Click(sender, e);
+                }
+
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
+            }
+            else if (Control.ModifierKeys == Keys.Alt)
+            {
+                deleteBtn_Click(sender, null);
+            }
         }
 
         private void variationModeButton_Click(object sender, EventArgs e)

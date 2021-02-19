@@ -16,7 +16,7 @@ namespace ACNHPoker
     public partial class Form1 : Form
     {
         private static Socket s;
-        readonly private string version = "ACNH Poker R13.2 for v1.7.0";
+        readonly private string version = "ACNH Poker R13.3 for v1.7.0";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;

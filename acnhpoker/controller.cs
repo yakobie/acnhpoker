@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ACNHPoker
 {
@@ -44,7 +46,10 @@ namespace ACNHPoker
         private static byte[] rL() => Encode("release L");
         private static byte[] detach() => Encode("detachController");
 
-        private static byte[] stickTR() => Encode("setStick LEFT 0x7FFF 0x7FFF");
+        private static byte[] LstickTR() => Encode("setStick LEFT 0x7FFF 0x7FFF");
+        private static byte[] LstickTL() => Encode("setStick LEFT -0x8000 0x7FFF");
+        private static byte[] LstickBR() => Encode("setStick LEFT 0x7FFF -0x8000");
+        private static byte[] LstickBL() => Encode("setStick LEFT -0x8000 -0x8000");
         private static byte[] LstickU() => Encode("setStick LEFT 0x0 0x7FFF");
         private static byte[] LstickL() => Encode("setStick LEFT -0x8000 0x0");
         private static byte[] LstickD() => Encode("setStick LEFT 0x0 -0x8000");
@@ -157,9 +162,21 @@ namespace ACNHPoker
             Utilities.SendString(s, rL());
         }
 
-        public static void stickTopRight()
+        public static void LstickTopRight()
         {
-            Utilities.SendString(s, stickTR());
+            Utilities.SendString(s, LstickTR());
+        }
+        public static void LstickTopLeft()
+        {
+            Utilities.SendString(s, LstickTL());
+        }
+        public static void LstickBottomRight()
+        {
+            Utilities.SendString(s, LstickBR());
+        }
+        public static void LstickBottomLeft()
+        {
+            Utilities.SendString(s, LstickBL());
         }
 
         public static void LstickUp()
@@ -211,7 +228,7 @@ namespace ACNHPoker
 
         public static void EnterAirport()
         {
-            stickTopRight();
+            LstickTopRight();
             Thread.Sleep(1500);
             resetLeftStick();
             Thread.Sleep(500);
@@ -225,54 +242,49 @@ namespace ACNHPoker
             Thread.Sleep(500);
         }
 
-        public static void emoteUP()
+        public static void emote(int num)
         {
             clickZR();
             Thread.Sleep(1000);
-            LstickUp();
+            switch (num)
+            {
+                case 0: 
+                    LstickUp();
+                    break;
+                case 1:
+                    LstickTopRight();
+                    break;
+                case 2:
+                    LstickRight();
+                    break;
+                case 3:
+                    LstickBottomRight();
+                    break;
+                case 4:
+                    LstickDown();
+                    break;
+                case 5:
+                    LstickBottomLeft();
+                    break;
+                case 6:
+                    LstickLeft();
+                    break;
+                case 7:
+                    LstickTopLeft();
+                    break;
+            }
             Thread.Sleep(500);
             resetLeftStick();
             Thread.Sleep(500);
             clickA();
             clickB();
         }
-        public static void emoteRIGHT()
-        {
-            clickZR();
-            Thread.Sleep(1000);
-            LstickRight();
-            Thread.Sleep(500);
-            resetLeftStick();
-            Thread.Sleep(500);
-            clickA();
-            clickB();
-        }
-        public static void emoteDOWN()
-        {
-            clickZR();
-            Thread.Sleep(1000);
-            LstickDown();
-            Thread.Sleep(500);
-            resetLeftStick();
-            Thread.Sleep(500);
-            clickA();
-            clickB();
-        }
-        public static void emoteLEFT()
-        {
-            clickZR();
-            Thread.Sleep(1000);
-            LstickLeft();
-            Thread.Sleep(500);
-            resetLeftStick();
-            Thread.Sleep(500);
-            clickA();
-            clickB();
-        }
-        public static string talkAndGetDodoCode(Boolean noBestFriend = true)
+        public static string talkAndGetDodoCode()
         {
             releaseL();
+            Thread.Sleep(500);
             pressL(); // Speed Up
+            Thread.Sleep(500);
 
             clickA(); // Talk
             Thread.Sleep(4000);
@@ -301,6 +313,7 @@ namespace ACNHPoker
             clickA(); // End Line "So who"
             Thread.Sleep(1000);
 
+            /*
             if (noBestFriend)
             {
                 clickDown(); // move to "Invite via Dodo Code"
@@ -334,7 +347,22 @@ namespace ACNHPoker
                 Thread.Sleep(500);
                 clickA(); // Click "The more the merrier"
                 Thread.Sleep(3000);
-            }
+            }*/
+
+            clickUp(); // move to "Actually, I'm good."
+            Thread.Sleep(500);
+            clickUp(); // move to "Invite via Dodo Code"
+            Thread.Sleep(500);
+            clickA(); // Click "Invite via Dodo Code"
+            Thread.Sleep(2000);
+
+            clickA(); // End Line "Dodo Code TM"
+            Thread.Sleep(1000);
+
+            clickUp(); // move to "The more the merrier"
+            Thread.Sleep(500);
+            clickA(); // Click "The more the merrier"
+            Thread.Sleep(3000);
 
             clickA(); // End Line "Just so you know"
             Thread.Sleep(1000);
@@ -376,7 +404,7 @@ namespace ACNHPoker
             releaseL();
         }
 
-        private static string setupDodo()
+        public static string setupDodo()
         {
             try
             {
@@ -405,6 +433,60 @@ namespace ACNHPoker
                 Log.logEvent("Controller", "Dodo: " + ex.Message.ToString());
                 return "";
             }
+        }
+
+        public static void clearDodo()
+        {
+            string msg = "[Closed]";
+            using (StreamWriter sw = File.CreateText(dodoPath))
+            {
+                sw.WriteLine(msg);
+            }
+        }
+
+        public static string changeDodoPath()
+        {
+            OpenFileDialog file = new OpenFileDialog()
+            {
+                Filter = "Normal text file (*.txt)|*.txt",
+            };
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastLoad"].Value;
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return "";
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int i = 0; i < temp.Length - 1; i++)
+                path = path + temp[i] + "\\";
+
+            config.AppSettings.Settings["LastLoad"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            string[] s = file.FileName.Split('\\');
+
+            //logName.Text = s[s.Length - 1];
+
+            dodoPath = file.FileName;
+
+            return file.FileName;
         }
     }
 }
