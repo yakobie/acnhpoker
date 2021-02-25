@@ -200,7 +200,6 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addressDebug = new System.Windows.Forms.Button();
             this.debugVillager = new System.Windows.Forms.Button();
-            this.debugBtn = new System.Windows.Forms.Button();
             this.inventoryBtn = new System.Windows.Forms.Button();
             this.critterBtn = new System.Windows.Forms.Button();
             this.otherBtn = new System.Windows.Forms.Button();
@@ -340,14 +339,13 @@
             this.createBtn = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.miniMapBox = new System.Windows.Forms.PictureBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.freezeBtn = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.debugBtn = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             this.inventoryPanel.SuspendLayout();
@@ -377,7 +375,6 @@
             this.PleaseWaitPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.VillagerControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).BeginInit();
             this.SuspendLayout();
             // 
             // connectBtn
@@ -1964,7 +1961,7 @@
             this.debugAddress.Name = "debugAddress";
             this.debugAddress.Size = new System.Drawing.Size(319, 56);
             this.debugAddress.TabIndex = 66;
-            this.debugAddress.Text = "ABADD888";
+            this.debugAddress.Text = "ACDAD530";
             // 
             // Result1
             // 
@@ -2021,7 +2018,7 @@
             this.Result3.Name = "Result3";
             this.Result3.Size = new System.Drawing.Size(318, 56);
             this.Result3.TabIndex = 74;
-            this.Result3.Text = "AC47D2C4";
+            this.Result3.Text = "";
             // 
             // Result4
             // 
@@ -3260,22 +3257,6 @@
             this.debugVillager.Tag = "";
             this.debugVillager.Text = "debug";
             this.debugVillager.UseVisualStyleBackColor = false;
-            // 
-            // debugBtn
-            // 
-            this.debugBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.debugBtn.FlatAppearance.BorderSize = 0;
-            this.debugBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.debugBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.debugBtn.ForeColor = System.Drawing.Color.White;
-            this.debugBtn.Location = new System.Drawing.Point(1101, 770);
-            this.debugBtn.Name = "debugBtn";
-            this.debugBtn.Size = new System.Drawing.Size(85, 23);
-            this.debugBtn.TabIndex = 138;
-            this.debugBtn.Tag = "";
-            this.debugBtn.Text = "Test ID";
-            this.debugBtn.UseVisualStyleBackColor = false;
-            this.debugBtn.Click += new System.EventHandler(this.debugBtn_Click);
             // 
             // inventoryBtn
             // 
@@ -7155,30 +7136,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // miniMapBox
-            // 
-            this.miniMapBox.Location = new System.Drawing.Point(620, 595);
-            this.miniMapBox.Name = "miniMapBox";
-            this.miniMapBox.Size = new System.Drawing.Size(423, 310);
-            this.miniMapBox.TabIndex = 231;
-            this.miniMapBox.TabStop = false;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(529, 849);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(85, 23);
-            this.button5.TabIndex = 232;
-            this.button5.Tag = "";
-            this.button5.Text = "map";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button1_Click);
-            // 
             // freezeBtn
             // 
             this.freezeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -7188,7 +7145,7 @@
             this.freezeBtn.ForeColor = System.Drawing.Color.White;
             this.freezeBtn.Location = new System.Drawing.Point(12, 751);
             this.freezeBtn.Name = "freezeBtn";
-            this.freezeBtn.Size = new System.Drawing.Size(85, 23);
+            this.freezeBtn.Size = new System.Drawing.Size(108, 23);
             this.freezeBtn.TabIndex = 233;
             this.freezeBtn.Tag = "";
             this.freezeBtn.Text = "Freeze";
@@ -7202,9 +7159,9 @@
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(12, 784);
+            this.button7.Location = new System.Drawing.Point(12, 780);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(85, 23);
+            this.button7.Size = new System.Drawing.Size(108, 23);
             this.button7.TabIndex = 234;
             this.button7.Tag = "";
             this.button7.Text = "unFreeze";
@@ -7234,9 +7191,9 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(12, 842);
+            this.button9.Location = new System.Drawing.Point(12, 809);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(85, 23);
+            this.button9.Size = new System.Drawing.Size(108, 23);
             this.button9.TabIndex = 236;
             this.button9.Tag = "";
             this.button9.Text = "freezeClear";
@@ -7250,30 +7207,46 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(8, 871);
+            this.button10.Location = new System.Drawing.Point(12, 838);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(85, 23);
+            this.button10.Size = new System.Drawing.Size(108, 23);
             this.button10.TabIndex = 237;
             this.button10.Tag = "";
             this.button10.Text = "Version";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // button11
+            // debugBtn
             // 
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(109, 753);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(85, 23);
-            this.button11.TabIndex = 238;
-            this.button11.Tag = "";
-            this.button11.Text = "mapFreeze";
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.debugBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.debugBtn.FlatAppearance.BorderSize = 0;
+            this.debugBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.debugBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.debugBtn.ForeColor = System.Drawing.Color.White;
+            this.debugBtn.Location = new System.Drawing.Point(1101, 770);
+            this.debugBtn.Name = "debugBtn";
+            this.debugBtn.Size = new System.Drawing.Size(85, 23);
+            this.debugBtn.TabIndex = 138;
+            this.debugBtn.Tag = "";
+            this.debugBtn.Text = "Test ID";
+            this.debugBtn.UseVisualStyleBackColor = false;
+            this.debugBtn.Click += new System.EventHandler(this.debugBtn_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(882, 789);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(85, 23);
+            this.button5.TabIndex = 238;
+            this.button5.Tag = "";
+            this.button5.Text = "webhook";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
             // Form1
             // 
@@ -7281,14 +7254,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1204, 516);
-            this.Controls.Add(this.button11);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.freezeBtn);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.miniMapBox);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.ReadBtn);
@@ -7372,7 +7343,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.VillagerControl.ResumeLayout(false);
             this.VillagerControl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -7542,7 +7512,6 @@
         private System.Windows.Forms.Label selectedFlag2;
         private System.Windows.Forms.Label selectedFlag1;
         private System.Windows.Forms.Button USBconnectBtn;
-        private System.Windows.Forms.Button debugBtn;
         private System.Windows.Forms.Button enableCollisionBtn;
         private System.Windows.Forms.Button disableCollisionBtn;
         private System.Windows.Forms.Label Label21;
@@ -7684,14 +7653,13 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.CheckBox ignoreHeader;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox miniMapBox;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button freezeBtn;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button debugBtn;
+        private System.Windows.Forms.Button button5;
     }
 }
 

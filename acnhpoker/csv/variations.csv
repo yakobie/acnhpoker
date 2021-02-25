@@ -674,6 +674,9 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 35FA ; FtrHarvestEnamelpod ; Turkey Day casserole ; サンクスギビングなキャセロール ; 感恩節砂鍋燉菜 ; 感恩节砂锅炖菜 ; 하베스트 캐서롤 ; plat à gratin fête du partage ; Schlemmfest-Bräter ; cazuela Día del Pavo ; casseruola primizie ; smakenfestijnpan ; утятница «День изобилия»
 35FB ; FtrHarvestWheat ; Turkey Day wheat decor ; サンクスギビングなむぎかざり ; 感恩節麥子裝飾 ; 感恩节麦子装饰 ; 하베스트 밀 장식 ; décor de blé du partage ; Schlemmfest-Getreidedeko ; adorno trigo Día del Pavo ; ornamento primizie ; smakenfestijn-tarwebundel ; пшеница ко Дню изобилия
 35FC ; FtrHarvestTablesetting ; Turkey Day table setting ; サンクスギビングテーブルウェア ; 感恩節桌上布置 ; 感恩节桌上布置 ; 하베스트 테이블 세팅 ; service fête du partage ; Schlemmfest-Tischgedeck ; servicio mesa Día del Pavo ; set da tavola primizie ; smakenfestijnservies ; посуда ко Дню изобилия
+3605 ; FtrMarioShield ; Shell ; こうら ; 龜殼 ; 龟壳 ; 등껍질 ; carapace ; Koopa-Panzer ; caparazón ; guscio ; schild ; панцирь
+3607 ; FtrMarioGroundobjectL ; large Mushroom Platform ; キノコちけいL ; 蘑菇地形L ; 蘑菇地形L ; 버섯 지형 L ; plateforme champignon XL ; Pilzplattform (L) ; plataforma champiñón XL ; piattaforma fungo grande ; groot paddenstoelplatform ; больш. гриб-платформа
+3608 ; FtrMarioGroundobjectS ; small Mushroom Platform ; キノコちけいS ; 蘑菇地形S ; 蘑菇地形S ; 버섯 지형 S ; plateforme champignon ; Pilzplattform (S) ; plataforma champiñón ; piattaforma fungo piccola ; klein paddenstoelplatform ; малый гриб-платформа
 366A ; FtrCrsSocksWallColor ; set of stockings ; かべかけソックス ; 壁掛式襪子 ; 壁挂式袜子 ; 벽걸이 양말 ; lot de chaussettes déco ; Wunschsocken-Set ; lote de calcetines de pared ; set di calze per regali ; sokkenset ; набор носков
 36CD ; FtrRosebouquetHeart ; heart-shaped bouquet ; ハートのバラブーケ ; 愛心玫瑰花束 ; 心形玫瑰花束 ; 하트 장미 꽃다발 ; bouquet en forme de cœur ; Herz-Bouquet ; ramo de flores Enamorados ; bouquet a cuore ; hartvormig boeket ; букет в форме сердца
 0833 ; ToolScoop ; shovel ; スコップ ; 鏟子 ; 铲子 ; 삽 ; pelle ; Schaufel ; pala ; pala ; schep ; лопата

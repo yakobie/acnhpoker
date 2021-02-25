@@ -403,6 +403,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 02C7 ; ToolStickEgg ; Bunny Day wand ; イースターなステッキ ; 復活節棒 ; 复活节棒 ; 이스터 지팡이 ; baguette fête des œufs ; Häschentag-Stab ; varita Caza del Huevo ; bacchetta caccia all'uovo ; eierstaf ; палочка на День зайцев
 02CB ; ToolStickJune ; wedding wand ; ウェディングなステッキ ; 婚禮棒 ; 婚礼棒 ; 웨딩 지팡이 ; baguette de mariage ; Hochzeitsstab ; varita ramo de boda ; bacchetta nuziale ; trouwstaf ; свадебная палочка
 02E0 ; ToolStickHalloween ; spooky wand ; ハロウィンなステッキ ; 萬聖節棒 ; 万圣节棒 ; 할로윈 지팡이 ; baguette Halloween ; Kürbisstab ; varita calabaza ; bacchetta brividi ; pompoenstaf ; жуткая палочка
+0306 ; ToolStickShamrock ; shamrock wand ; シャムロックステッキ ; 三葉草棒 ; 三叶草棒 ; 성 패트릭 지팡이 ; baguette trèfle ; Kleeblattstab ; varita trébol ; bacchetta trifoglio ; klaverstaf ; палочка с трилистником
 0145 ; RoomTexWallSteel00 ; steel-frame wall ; てっこつのかべ ; 鋼筋牆 ; 钢架墙 ; 철근 벽 ; mur poutres en fer ; Eisengittertapete ; pared viga de hierro ; muro struttura in ferro ; wand met stalen balken ; каркасная стена
 0138 ; RoomTexWallHerringbone00 ; brown herringbone wall ; ちゃいろいヘリンボーンのかべ ; 茶色人字斜紋牆 ; 茶色人字斜纹墙 ; 갈색 헤링본 벽 ; mur à chevrons beige ; Hell-Fischgrätwand ; pared espiga clara ; muro spina di pesce beige ; lichtbruine visgraatwand ; светлая стена-елочка
 0139 ; RoomTexWallHerringbone01 ; chocolate herringbone wall ; こげちゃのヘリンボーンのかべ ; 深棕色人字斜紋牆 ; 深棕色人字斜纹墙 ; 고동색 헤링본 벽 ; mur à chevrons chocolat ; Dunkel-Fischgrätwand ; pared espiga oscura ; muro spina di pesce cacao ; donkerbruine visgraatwand ; темная стена-елочка

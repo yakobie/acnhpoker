@@ -1504,12 +1504,6 @@ namespace ACNHPoker
 
         private void playerSelectorOther_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!playerSelectorOtherInit)
-            {
-                playerSelectorOtherInit = true;
-                return;
-            }
-
             int player = playerSelectorOther.SelectedIndex;
 
             loadReaction(player);

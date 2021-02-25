@@ -26,7 +26,9 @@ namespace ACNHPoker
         private static byte[] teleportByte;
         private static byte[] anchorByte;
 
-        private static string offset = "[[[[main+396F5A0]+18]+178]+D0]+DA";
+        private static string offset = "[[[[main+398C380]+18]+178]+D0]+DA";//"[[[[main+396F5A0]+18]+178]+D0]+DA";
+        private static readonly long[] PlayerCoordJumps = new long[5] { 0x396F5A0L, 0x18L, 0x178L, 0xD0L, 0xDAL };
+
 
         private static int coordinateSize = 20;
         private static int turningSize = 4;

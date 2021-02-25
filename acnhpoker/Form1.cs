@@ -15,8 +15,9 @@ namespace ACNHPoker
 {
     public partial class Form1 : Form
     {
+        #region variable
         private static Socket s;
-        readonly private string version = "ACNH Poker R13.3 for v1.7.0";
+        private string version = "ACNH Poker R14 for v1.8.0";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;
@@ -27,8 +28,6 @@ namespace ACNHPoker
         private bool firstWarning = false;
         private int selectedSlot = 1;
         private Button selectedVillagerButton = null;
-        //private bool playerSelectorInventoryInit = false;
-        //private bool playerSelectorVillagerInit = false;
         private bool playerSelectorOtherInit = false;
         private DataGridViewRow lastRow;
         private DataGridViewRow recipelastRow;
@@ -105,6 +104,9 @@ namespace ACNHPoker
         private static Object itemLock = new Object();
         private static Object villagerLock = new Object();
 
+        #endregion
+
+        #region Form Load
         public Form1()
         {
             InitializeComponent();
@@ -420,168 +422,6 @@ namespace ACNHPoker
             LanguageSetup(config.AppSettings.Settings["language"].Value);
             this.KeyPreview = true;
         }
-
-        private void autoRefreshCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
-
-            if (this.autoRefreshCheckBox.Checked)
-            {
-                config.AppSettings.Settings["autoRefresh"].Value = "true";
-            }
-            else
-            {
-                config.AppSettings.Settings["autoRefresh"].Value = "false";
-            }
-
-            config.Save(ConfigurationSaveMode.Minimal);
-        }
-
-        private void inventoryBtn_Paint(object sender, PaintEventArgs e)
-        {
-            Font font = new Font("Arial", 10, FontStyle.Bold);
-            Brush brush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
-            e.Graphics.TranslateTransform(21, 7);
-            e.Graphics.RotateTransform(90);
-            e.Graphics.DrawString("Inventory", font, brush, 0, 0);
-        }
-
-        private void critterBtn_Paint(object sender, PaintEventArgs e)
-        {
-            Font font = new Font("Arial", 10, FontStyle.Bold);
-            Brush brush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
-            e.Graphics.TranslateTransform(21, 14);
-            e.Graphics.RotateTransform(90);
-            e.Graphics.DrawString("Critter", font, brush, 0, 0);
-        }
-
-        private void otherBtn_Paint(object sender, PaintEventArgs e)
-        {
-            Font font = new Font("Arial", 10, FontStyle.Bold);
-            Brush brush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
-            e.Graphics.TranslateTransform(21, 14);
-            e.Graphics.RotateTransform(90);
-            e.Graphics.DrawString("Other", font, brush, 0, 0);
-        }
-        private void villagerBtn_Paint(object sender, PaintEventArgs e)
-        {
-            Font font = new Font("Arial", 10, FontStyle.Bold);
-            Brush brush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
-            e.Graphics.TranslateTransform(21, 14);
-            e.Graphics.RotateTransform(90);
-            e.Graphics.DrawString("Villager", font, brush, 0, 0);
-        }
-
-        private void inventoryBtn_Click(object sender, EventArgs e)
-        {
-            this.inventoryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
-            this.critterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.otherBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.villagerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-
-            inventoryLargePanel.Visible = true;
-            otherLargePanel.Visible = false;
-            critterLargePanel.Visible = false;
-            villagerLargePanel.Visible = false;
-        }
-
-        private void critterBtn_Click(object sender, EventArgs e)
-        {
-            this.inventoryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.critterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
-            this.otherBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.villagerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-
-            inventoryLargePanel.Visible = false;
-            otherLargePanel.Visible = false;
-            critterLargePanel.Visible = true;
-            villagerLargePanel.Visible = false;
-            closeVariationMenu();
-        }
-
-        private void otherBtn_Click(object sender, EventArgs e)
-        {
-            this.inventoryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.critterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.otherBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
-            this.villagerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-
-            inventoryLargePanel.Visible = false;
-            otherLargePanel.Visible = true;
-            critterLargePanel.Visible = false;
-            villagerLargePanel.Visible = false;
-            closeVariationMenu();
-        }
-
-        private void Form1_LocationChanged(object sender, EventArgs e)
-        {
-            if (selection != null)
-            {
-                selection.Location = new System.Drawing.Point(this.Location.X + 7, this.Location.Y + 550);
-            }
-        }
-
-        private Boolean validation()
-        {
-            if (disableValidation)
-                return false;
-            try
-            {
-                byte[] Bank1 = Utilities.peekAddress(s, bot, Utilities.TownNameddress, 150); //TownNameddress
-                byte[] Bank2 = Utilities.peekAddress(s, bot, Utilities.TurnipPurchasePriceAddr, 150); //TurnipPurchasePriceAddr
-                byte[] Bank3 = Utilities.peekAddress(s, bot, Utilities.MasterRecyclingBase, 150); //MasterRecyclingBase
-                byte[] Bank4 = Utilities.peekAddress(s, bot, Utilities.playerReactionAddress, 150); //reactionAddress
-                byte[] Bank5 = Utilities.peekAddress(s, bot, Utilities.staminaAddress, 150); //staminaAddress
-
-                string result1 = Utilities.ByteToHexString(Bank1);
-                string result2 = Utilities.ByteToHexString(Bank2);
-                string result3 = Utilities.ByteToHexString(Bank3);
-                string result4 = Utilities.ByteToHexString(Bank4);
-                string result5 = Utilities.ByteToHexString(Bank5);
-
-                Debug.Print(result1);
-                Debug.Print(result2);
-                Debug.Print(result3);
-                Debug.Print(result4);
-                Debug.Print(result5);
-
-                int count1 = 0;
-                if (result1 == result2)
-                { count1++; }
-                if (result1 == result3)
-                { count1++; }
-                if (result1 == result4)
-                { count1++; }
-                if (result1 == result5)
-                { count1++; }
-
-                int count2 = 0;
-                if (result2 == result3)
-                { count2++; }
-                if (result2 == result4)
-                { count2++; }
-                if (result2 == result5)
-                { count2++; }
-
-                int count3 = 0;
-                if (result3 == result4)
-                { count3++; }
-                if (result3 == result5)
-                { count3++; }
-
-                Debug.Print("Count : " + count1.ToString() + " " + count2.ToString() + " " + count3.ToString());
-                if (count1 > 1 || count2 > 1 || count3 > 1)
-                { return true; }
-                else
-                { return false; }
-            }
-            catch (Exception e)
-            {
-                myMessageBox.Show(e.Message.ToString(), "Todo : this is dumb");
-                return false;
-            }
-        }
-
         private Dictionary<string, string> CreateOverride(string path)
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
@@ -602,33 +442,6 @@ namespace ACNHPoker
             }
 
             return dict;
-        }
-
-        private void configBtn_Click(object sender, EventArgs e)
-        {
-            setting.ShowDialog();
-        }
-
-        public void toggleOverride()
-        {
-            if (overrideSetting == true)
-            {
-                overrideSetting = false;
-                egg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            }
-            else
-            {
-                overrideSetting = true;
-                egg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
-            }
-        }
-
-        public void toggleValidation()
-        {
-            if (disableValidation == true)
-                disableValidation = false;
-            else
-                disableValidation = true;
         }
 
         private void hideAllLanguage()
@@ -679,6 +492,135 @@ namespace ACNHPoker
             }
         }
 
+        #endregion
+
+        #region Side Tab
+        private void inventoryBtn_Paint(object sender, PaintEventArgs e)
+        {
+            Font font = new Font("Arial", 10, FontStyle.Bold);
+            Brush brush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
+            e.Graphics.TranslateTransform(21, 7);
+            e.Graphics.RotateTransform(90);
+            e.Graphics.DrawString("Inventory", font, brush, 0, 0);
+        }
+
+        private void critterBtn_Paint(object sender, PaintEventArgs e)
+        {
+            Font font = new Font("Arial", 10, FontStyle.Bold);
+            Brush brush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
+            e.Graphics.TranslateTransform(21, 14);
+            e.Graphics.RotateTransform(90);
+            e.Graphics.DrawString("Critter", font, brush, 0, 0);
+        }
+
+        private void otherBtn_Paint(object sender, PaintEventArgs e)
+        {
+            Font font = new Font("Arial", 10, FontStyle.Bold);
+            Brush brush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
+            e.Graphics.TranslateTransform(21, 14);
+            e.Graphics.RotateTransform(90);
+            e.Graphics.DrawString("Other", font, brush, 0, 0);
+        }
+        private void villagerBtn_Paint(object sender, PaintEventArgs e)
+        {
+            Font font = new Font("Arial", 10, FontStyle.Bold);
+            Brush brush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
+            e.Graphics.TranslateTransform(21, 14);
+            e.Graphics.RotateTransform(90);
+            e.Graphics.DrawString("Villager", font, brush, 0, 0);
+        }
+        #endregion
+
+        #region Mode Button
+        private void inventoryBtn_Click(object sender, EventArgs e)
+        {
+            this.inventoryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            this.critterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.otherBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.villagerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+
+            inventoryLargePanel.Visible = true;
+            otherLargePanel.Visible = false;
+            critterLargePanel.Visible = false;
+            villagerLargePanel.Visible = false;
+        }
+
+        private void critterBtn_Click(object sender, EventArgs e)
+        {
+            this.inventoryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.critterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            this.otherBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.villagerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+
+            inventoryLargePanel.Visible = false;
+            otherLargePanel.Visible = false;
+            critterLargePanel.Visible = true;
+            villagerLargePanel.Visible = false;
+            closeVariationMenu();
+        }
+
+        private void otherBtn_Click(object sender, EventArgs e)
+        {
+            this.inventoryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.critterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.otherBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            this.villagerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+
+            inventoryLargePanel.Visible = false;
+            otherLargePanel.Visible = true;
+            critterLargePanel.Visible = false;
+            villagerLargePanel.Visible = false;
+            closeVariationMenu();
+        }
+        #endregion
+
+        #region Setting
+        private void configBtn_Click(object sender, EventArgs e)
+        {
+            setting.ShowDialog();
+        }
+
+        public void toggleOverride()
+        {
+            if (overrideSetting == true)
+            {
+                overrideSetting = false;
+                egg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            }
+            else
+            {
+                overrideSetting = true;
+                egg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            }
+        }
+
+        public void toggleValidation()
+        {
+            if (disableValidation == true)
+                disableValidation = false;
+            else
+                disableValidation = true;
+        }
+
+        private void autoRefreshCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            if (this.autoRefreshCheckBox.Checked)
+            {
+                config.AppSettings.Settings["autoRefresh"].Value = "true";
+            }
+            else
+            {
+                config.AppSettings.Settings["autoRefresh"].Value = "false";
+            }
+
+            config.Save(ConfigurationSaveMode.Minimal);
+        }
+
+        #endregion
+
+        #region Language
         private void Language_SelectedIndexChanged(object sender, EventArgs e)
         {
             itemSearchBox.Clear();
@@ -791,6 +733,9 @@ namespace ACNHPoker
             }
         }
 
+        #endregion
+
+        #region Fav
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int index = favGridView.CurrentCell.RowIndex;
@@ -837,6 +782,71 @@ namespace ACNHPoker
                 sw.Write(sb.ToString());
             }
         }
+        #endregion
+
+        #region Validation
+        private Boolean validation()
+        {
+            if (disableValidation)
+                return false;
+            try
+            {
+                byte[] Bank1 = Utilities.peekAddress(s, bot, Utilities.TownNameddress, 150); //TownNameddress
+                byte[] Bank2 = Utilities.peekAddress(s, bot, Utilities.TurnipPurchasePriceAddr, 150); //TurnipPurchasePriceAddr
+                byte[] Bank3 = Utilities.peekAddress(s, bot, Utilities.MasterRecyclingBase, 150); //MasterRecyclingBase
+                byte[] Bank4 = Utilities.peekAddress(s, bot, Utilities.playerReactionAddress, 150); //reactionAddress
+                byte[] Bank5 = Utilities.peekAddress(s, bot, Utilities.staminaAddress, 150); //staminaAddress
+
+                string result1 = Utilities.ByteToHexString(Bank1);
+                string result2 = Utilities.ByteToHexString(Bank2);
+                string result3 = Utilities.ByteToHexString(Bank3);
+                string result4 = Utilities.ByteToHexString(Bank4);
+                string result5 = Utilities.ByteToHexString(Bank5);
+
+                Debug.Print(result1);
+                Debug.Print(result2);
+                Debug.Print(result3);
+                Debug.Print(result4);
+                Debug.Print(result5);
+
+                int count1 = 0;
+                if (result1 == result2)
+                { count1++; }
+                if (result1 == result3)
+                { count1++; }
+                if (result1 == result4)
+                { count1++; }
+                if (result1 == result5)
+                { count1++; }
+
+                int count2 = 0;
+                if (result2 == result3)
+                { count2++; }
+                if (result2 == result4)
+                { count2++; }
+                if (result2 == result5)
+                { count2++; }
+
+                int count3 = 0;
+                if (result3 == result4)
+                { count3++; }
+                if (result3 == result5)
+                { count3++; }
+
+                Debug.Print("Count : " + count1.ToString() + " " + count2.ToString() + " " + count3.ToString());
+                if (count1 > 1 || count2 > 1 || count3 > 1)
+                { return true; }
+                else
+                { return false; }
+            }
+            catch (Exception e)
+            {
+                myMessageBox.Show(e.Message.ToString(), "Todo : this is dumb");
+                return false;
+            }
+        }
+
+        #endregion
 
         private void mapDropperBtn_Click(object sender, EventArgs e)
         {
@@ -859,10 +869,20 @@ namespace ACNHPoker
             }
         }
 
+        #region Form Control
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Log.logEvent("MainForm", "Form Closed");
         }
+
+        private void Form1_LocationChanged(object sender, EventArgs e)
+        {
+            if (selection != null)
+            {
+                selection.Location = new System.Drawing.Point(this.Location.X + 7, this.Location.Y + 550);
+            }
+        }
+        #endregion
 
     }
 }

@@ -138,7 +138,8 @@ namespace ACNHPoker
 
                         return (Image)(new Bitmap(img, new Size(128, 128)));
                     }
-                    else return background;
+                    else
+                        return (Image)(new Bitmap(background, new Size(128, 128)));
                 }
                 else if (itemID == 0x315A || itemID == 0x1618) // Wall-Mount
                 {
@@ -202,7 +203,8 @@ namespace ACNHPoker
 
                         return (Image)(new Bitmap(img, new Size(64, 64)));
                     }
-                    else return background;
+                    else
+                        return (Image)(new Bitmap(background, new Size(64, 64)));
 
                 }
                 else if (imagePath != "")

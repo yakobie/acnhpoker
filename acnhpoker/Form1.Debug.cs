@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Configuration;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+
+using Discord;
+using Discord.Webhook;
 
 namespace ACNHPoker
 {
@@ -25,6 +29,7 @@ namespace ACNHPoker
 
         byte[] save = null;
 
+        byte[] bank;
         private void PokeBtn_Click(object sender, EventArgs e)
         {
             Utilities.pokeAddress(s, bot, "0x" + debugAddress.Text, debugAmount.Text);
@@ -142,8 +147,8 @@ namespace ACNHPoker
             if (MiniMap == null)
                 MiniMap = new miniMap(b, null, 3);
             
-            miniMapBox.Visible = true;
-            miniMapBox.Image = MiniMap.drawItemMap();
+            //miniMapBox.Visible = true;
+            //miniMapBox.Image = MiniMap.drawItemMap();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -243,8 +248,8 @@ namespace ACNHPoker
 
         private void ChaseBtn_Click(object sender, EventArgs e)
         {
-            UInt32 startAddress = 0xAB000000;
-            UInt32 endAddress = 0xAD000000;
+            UInt32 startAddress = 0xACDA0000;
+            UInt32 endAddress = 0xAE000000;
 
             UInt32 diff = ((endAddress - startAddress) / 10);
 
@@ -258,9 +263,12 @@ namespace ACNHPoker
 
             //Debug.Print("Searching...");
 
-            Thread SearchThread1 = new Thread(delegate () { SearchAddress(startAddress, startAddress + diff); });
+            string value = FullAddress.Text;
+
+            Thread SearchThread1 = new Thread(delegate () { SearchAddress(startAddress, endAddress, value); });
             SearchThread1.Start();
 
+            /*
             Thread SearchThread2 = new Thread(delegate () { SearchAddress(startAddress + diff * 1, startAddress + diff * 2); });
             SearchThread2.Start();
 
@@ -287,6 +295,7 @@ namespace ACNHPoker
 
             Thread SearchThread10 = new Thread(delegate () { SearchAddress(startAddress + diff * 9, endAddress); });
             SearchThread10.Start();
+            */
         }
 
         private void addressDebug_Click(object sender, EventArgs e)
@@ -314,34 +323,39 @@ namespace ACNHPoker
             Debug.Print(Utilities.weatherSeed.ToString("X"));
         }
 
-        private void SearchAddress(UInt32 startAddress, UInt32 endAddress)
+        private void SearchAddress(UInt32 startAddress, UInt32 endAddress, string value)
         {
-            /*
             Debug.Print("Thread Start " + startAddress.ToString("X") + " " + endAddress.ToString("X"));
 
-            byte[] result = Encoding.UTF8.GetBytes("400A000001000000C409000001000000");
+            byte[] result = Utilities.stringToByte(value);
 
             BoyerMoore boi = new BoyerMoore(result);
 
-            for (UInt32 i = 0x0; startAddress + i <= endAddress; i += 500)
+            //bank = new byte[0];
+
+            for (UInt32 i = 0x0; startAddress + i <= endAddress; i += 8000)
             {
+                /*
                 if (offsetFound)
                 {
                     return;
                 }
+                */
 
-                byte[] b = Utilities.peekAddress(s, bot, "0x" + (startAddress + i).ToString("X"), 160);
-                Debug.Print(Encoding.UTF8.GetString(b));
+                byte[] b = Utilities.peekAddress(s, bot, startAddress + i, 8000);
+                //bank = Utilities.add(bank, b);
+
+                Debug.Print(Utilities.ByteToHexString(b));
                 int NUM = boi.Search(b);
 
                 if (NUM >= 0)
                 {
-                    Debug.Print(">> 0x" + (startAddress + i + NUM / 2).ToString("X") + " << DONE : 0x" + (NUM / 2).ToString("X"));
-                    offsetFound = true;
+                    myMessageBox.Show(">> " + (startAddress + i + NUM / 2).ToString("X") + " << DONE : " + (NUM / 2).ToString("X"));
+                    Debug.Print(">> " + (startAddress + i + NUM / 2).ToString("X") + " << DONE : " + (NUM / 2).ToString("X"));
+                    //offsetFound = true;
                     return;
                 }
             }
-            */
         }
 
         private void dumpBtn_Click(object sender, EventArgs e)
@@ -624,55 +638,9 @@ namespace ACNHPoker
             Debug.Print(Utilities.getVersion(s));
         }
 
-        private void button11_Click(object sender, EventArgs e)
+        private void button5_Click_1(object sender, EventArgs e)
         {
-            OpenFileDialog file = new OpenFileDialog()
-            {
-                Filter = "New Horizons Fasil (*.nhf)|*.nhf|All files (*.*)|*.*",
-            };
-
-            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
-
-            string savepath;
-
-            if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
-                savepath = Directory.GetCurrentDirectory() + @"\save";
-            else
-                savepath = config.AppSettings.Settings["LastLoad"].Value;
-
-            if (Directory.Exists(savepath))
-            {
-                file.InitialDirectory = savepath;
-            }
-            else
-            {
-                file.InitialDirectory = @"C:\";
-            }
-
-            if (file.ShowDialog() != DialogResult.OK)
-                return;
-
-            string[] temp = file.FileName.Split('\\');
-            string path = "";
-            for (int i = 0; i < temp.Length - 1; i++)
-                path = path + temp[i] + "\\";
-
-            config.AppSettings.Settings["LastLoad"].Value = path;
-            config.Save(ConfigurationSaveMode.Minimal);
-
-            byte[] data = File.ReadAllBytes(file.FileName);
-
-            UInt32 address = Utilities.mapZero;
-
-            byte[][] b = new byte[42][];
-
-            for (int i = 0; i < 42; i++)
-            {
-                b[i] = new byte[0x2000];
-                Buffer.BlockCopy(data, i * 0x2000, b[i], 0x0, 0x2000);
-                Utilities.SendString(s, Utilities.Freeze((uint)(address + (i * 0x2000)), b[i]));
-                Thread.Sleep(250);
-            }
+            controller.setupDodo();
         }
     }
 }

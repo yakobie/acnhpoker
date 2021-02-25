@@ -9,7 +9,7 @@ namespace ACNHPoker
 {
     public partial class Form1 : Form
     {
-
+        #region Form Load
         private void LoadGridView(byte[] source, DataGridView grid, ref int[] rate, int size, int num, int mode = 0)
         {
             if (source != null)
@@ -504,6 +504,17 @@ namespace ACNHPoker
             return "";
         }
 
+        static private byte[] LoadBinaryFile(string file)
+        {
+            if (File.Exists(file))
+            {
+                return File.ReadAllBytes(file);
+            }
+            else return null;
+        }
+        #endregion
+
+        #region Cell Click
         private void GridView_SelectionChanged(object sender, EventArgs e)
         {
             currentGridView.ClearSelection();
@@ -617,6 +628,65 @@ namespace ACNHPoker
                 System.Media.SystemSounds.Asterisk.Play();
         }
 
+        private void setSpawnRate(byte[] source, int size, int index, int mode, int type)
+        {
+
+            if ((s == null || s.Connected == false) & bot == null)
+            {
+                MessageBox.Show("Please connect to the switch first");
+                return;
+            }
+
+            if (source == null)
+            {
+                myMessageBox.Show("Please load the critter data first.", "Missing critter data!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            try
+            {
+                int localIndex = index * 2;
+                byte[] b;
+                if (source == InsectAppearParam)
+                    b = new byte[12 * 6 * 2];
+                else
+                    b = new byte[78]; //[12 * 3 * 2];
+
+
+                if (mode == 0) // min
+                {
+                    for (int i = 0; i < b.Length; i++)
+                        b[i] = 0;
+                }
+                else if (mode == 1) // default
+                {
+                    for (int i = 0; i < b.Length; i++)
+                        b[i] = source[size * localIndex + 2 + i];
+                }
+                else if (mode == 2) // max
+                    for (int i = 0; i < b.Length; i += 2)
+                    {
+                        b[i] = 0xFF;
+                        b[i + 1] = 0;
+                    }
+                //Debug.Print(Encoding.UTF8.GetString(Utilities.transform(b)));
+                Utilities.SendSpawnRate(s, bot, b, localIndex, type, ref counter);
+                localIndex++;
+                if (mode == 1)
+                {
+                    for (int i = 0; i < b.Length; i++)
+                        b[i] = source[size * localIndex + 2 + i];
+                }
+                Utilities.SendSpawnRate(s, bot, b, localIndex, type, ref counter);
+            }
+            catch (Exception e)
+            {
+                myMessageBox.Show(e.Message.ToString(), "NOTE: This isn't particularly efficient. Too bad!");
+            }
+        }
+        #endregion
+
+        #region Search box
         private void critterSearchBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -687,7 +757,9 @@ namespace ACNHPoker
             if (critterSearchBox.Text == "Search")
                 critterSearchBox.Clear();
         }
+        #endregion
 
+        #region GridView Add Image
         private void GridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
@@ -717,7 +789,9 @@ namespace ACNHPoker
                 e.Value = image;
             }
         }
+        #endregion
 
+        #region Disable & Reset Button
         private void disableAllBtn_Click(object sender, EventArgs e)
         {
             if ((s == null || s.Connected == false) & bot == null)
@@ -916,7 +990,9 @@ namespace ACNHPoker
                 enableBtn();
             });
         }
+        #endregion
 
+        #region Button Control
         private void disableBtn()
         {
             pleaseWaitLabel.Visible = true;
@@ -950,7 +1026,9 @@ namespace ACNHPoker
             seaFishBtn.Enabled = true;
             seaCreatureBtn.Enabled = true;
         }
+        #endregion
 
+        #region Mode Button
         private void insectBtn_Click(object sender, EventArgs e)
         {
             if (critterSearchBox.Text != "Search")
@@ -1042,64 +1120,9 @@ namespace ACNHPoker
 
             seaCreatureGridView.ClearSelection();
         }
+        #endregion
 
-        private void setSpawnRate(byte[] source, int size, int index, int mode, int type)
-        {
-
-            if ((s == null || s.Connected == false) & bot == null)
-            {
-                MessageBox.Show("Please connect to the switch first");
-                return;
-            }
-
-            if (source == null)
-            {
-                myMessageBox.Show("Please load the critter data first.", "Missing critter data!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            try
-            {
-                int localIndex = index * 2;
-                byte[] b;
-                if (source == InsectAppearParam)
-                    b = new byte[12 * 6 * 2];
-                else
-                    b = new byte[78]; //[12 * 3 * 2];
-
-
-                if (mode == 0) // min
-                {
-                    for (int i = 0; i < b.Length; i++)
-                        b[i] = 0;
-                }
-                else if (mode == 1) // default
-                {
-                    for (int i = 0; i < b.Length; i++)
-                        b[i] = source[size * localIndex + 2 + i];
-                }
-                else if (mode == 2) // max
-                    for (int i = 0; i < b.Length; i += 2)
-                    {
-                        b[i] = 0xFF;
-                        b[i + 1] = 0;
-                    }
-                //Debug.Print(Encoding.UTF8.GetString(Utilities.transform(b)));
-                Utilities.SendSpawnRate(s, bot, b, localIndex, type, ref counter);
-                localIndex++;
-                if (mode == 1)
-                {
-                    for (int i = 0; i < b.Length; i++)
-                        b[i] = source[size * localIndex + 2 + i];
-                }
-                Utilities.SendSpawnRate(s, bot, b, localIndex, type, ref counter);
-            }
-            catch (Exception e)
-            {
-                myMessageBox.Show(e.Message.ToString(), "NOTE: This isn't particularly efficient. Too bad!");
-            }
-        }
-
+        #region Read Data
         private void readDataBtn_Click(object sender, EventArgs e)
         {
             if ((s == null || s.Connected == false) & bot == null)
@@ -1185,5 +1208,6 @@ namespace ACNHPoker
                 enableBtn();
             });
         }
+        #endregion
     }
 }

@@ -28,6 +28,8 @@ namespace ACNHPoker
         private const string saveFolder = @"save\";
         private const string logFile = @"VisitorLog.csv";
         private string logPath = saveFolder + logFile;
+        private const string villagerFile = @"villager.txt";
+        private string villagerPath = saveFolder + villagerFile;
 
         private miniMap MiniMap = null;
         private int anchorX = -1;
@@ -56,11 +58,6 @@ namespace ACNHPoker
                     this.Icon = ACNHPoker.Properties.Resources.k;
                     this.trayIcon.Icon = this.Icon = ACNHPoker.Properties.Resources.k;
                     Log.logEvent("Regen", "A Shiny Has Appeared!");
-                }
-                else if (v <= 4096)
-                {
-                    this.Icon = ACNHPoker.Properties.Resources.f;
-                    this.trayIcon.Icon = this.Icon = ACNHPoker.Properties.Resources.f;
                 }
                 Log.logEvent("Regen", "RegenForm Started Successfully");
             }
@@ -295,8 +292,8 @@ namespace ACNHPoker
 
                 Log.logEvent("Regen", "Regen1 Started: " + name[name.Length - 1]);
 
-                string dodo = controller.setupDodo();
-                Log.logEvent("Regen", "Regen1 Dodo: " + dodo);
+                //string dodo = controller.setupDodo();
+                //Log.logEvent("Regen", "Regen1 Dodo: " + dodo);
 
                 RegenThread = new Thread(delegate () { regenMapFloor(b, address, name[name.Length - 1]); });
                 RegenThread.Start();
@@ -324,14 +321,17 @@ namespace ACNHPoker
             showMapWait(42, regenMsg);
 
             byte[][] villageFlag = new byte[10][];
+            byte[][] villager = new byte[10][];
             Boolean[] haveVillager = new Boolean[10];
             if (keepVillagerBox.Checked)
             {
                 for (int i = 0; i < 10; i++)
                 {
+                    villager[i] = Utilities.GetVillager(s, null, i, 0x3, ref counter);
                     villageFlag[i] = Utilities.GetMoveout(s, null, i, (int)0x33, ref counter);
-                    haveVillager[i] = checkHaveVillager(villageFlag[i]);
+                    haveVillager[i] = checkHaveVillager(villager[i]);
                 }
+                writeVillager(villager, haveVillager);
             }
 
             byte[] c = new byte[0x2000];
@@ -502,14 +502,17 @@ namespace ACNHPoker
             }
 
             byte[][] villageFlag = new byte[10][];
+            byte[][] villager = new byte[10][];
             Boolean[] haveVillager = new Boolean[10];
             if (keepVillagerBox.Checked)
             {
                 for (int i = 0; i < 10; i++)
                 {
+                    villager[i] = Utilities.GetVillager(s, null, i, 0x3, ref counter);
                     villageFlag[i] = Utilities.GetMoveout(s, null, i, (int)0x33, ref counter);
-                    haveVillager[i] = checkHaveVillager(villageFlag[i]);
+                    haveVillager[i] = checkHaveVillager(villager[i]);
                 }
+                writeVillager(villager, haveVillager);
             }
 
             byte[] c = new byte[0x2000];
@@ -887,8 +890,8 @@ namespace ACNHPoker
 
                     Log.logEvent("Regen", "Regen2Normal Started: " + tempFilename);
 
-                    string dodo = controller.setupDodo();
-                    Log.logEvent("Regen", "Regen2 Dodo: " + dodo);
+                    //string dodo = controller.setupDodo();
+                    //Log.logEvent("Regen", "Regen2 Dodo: " + dodo);
 
                     RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, tempFilename); });
                     RegenThread.Start();
@@ -945,8 +948,8 @@ namespace ACNHPoker
             Log.logEvent("Regen", "Regen2Limit Started: " + tempFilename);
             Log.logEvent("Regen", "Regen2Limit Area: " + anchorX + " " + anchorY);
 
-            string dodo = controller.setupDodo();
-            Log.logEvent("Regen", "Regen2 Dodo: " + dodo);
+            //string dodo = controller.setupDodo();
+            //Log.logEvent("Regen", "Regen2 Dodo: " + dodo);
 
             RegenThread = new Thread(delegate () { regenMapFloor2(b, address, isEmpty, tempFilename); });
             RegenThread.Start();
@@ -1392,19 +1395,27 @@ namespace ACNHPoker
             controller.setupDodo();
         }
 
-        private Boolean checkHaveVillager(byte[] villagerFlag)
+        private Boolean checkHaveVillager(byte[] villager)
         {
-            if (villagerFlag[16] != 0x0)
-                return true;
+            if (villager[0] >= 0x23)
+                return false;
             else
+                return true;
+        }
+
+        private void writeVillager(byte[][] villager, Boolean[] haveVillager)
+        {
+            string villagerStr = " | ";
+            for (int i = 0; i < 10; i++)
             {
-                for (int i = 0; i < villagerFlag.Length; i++)
-                {
-                    if (villagerFlag[i] != 0x0)
-                        return true;
-                }
+                if (haveVillager[i])
+                    villagerStr += Utilities.GetVillagerRealName(villager[i][0], villager[i][1]) + " | ";
             }
-            return false;
+
+            using (StreamWriter sw = File.CreateText(villagerPath))
+            {
+                sw.WriteLine(villagerStr);
+            }
         }
 
         private void CheckAndResetVillager(byte[] villageFlag, Boolean haveVillager, int index, ref int counter)
@@ -1481,8 +1492,8 @@ namespace ACNHPoker
 
                 Log.logEvent("Regen", "Regen3 Started: " + name[name.Length - 1]);
 
-                string dodo = controller.setupDodo();
-                Log.logEvent("Regen", "Regen3 Dodo: " + dodo);
+                //string dodo = controller.setupDodo();
+                //Log.logEvent("Regen", "Regen3 Dodo: " + dodo);
 
                 byte[][] b = new byte[42][];
 

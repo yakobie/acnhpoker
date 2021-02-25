@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Discord;
+using Discord.Webhook;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
@@ -65,11 +68,16 @@ namespace ACNHPoker
         private const string saveFolder = @"save\";
         private const string dodoFile = @"dodo.txt";
         private static string dodoPath = saveFolder + dodoFile;
-
+        private const string webhookFile = @"webhook.txt";
+        private static string webhookPath = saveFolder + webhookFile;
+        private static string IslandName = "";
 
         public controller(Socket S)
         {
             s = S;
+
+            byte[] townID = Utilities.GetTownID(s, null);
+            IslandName = Utilities.GetString(townID, 0x04, 10);
         }
 
         public static void clickA()
@@ -408,6 +416,7 @@ namespace ACNHPoker
         {
             try
             {
+                //string dodo = "12345";
                 string dodo = Utilities.getDodo(s).Replace("\0", "");
 
                 if (File.Exists(dodoPath))
@@ -424,6 +433,44 @@ namespace ACNHPoker
                 using (StreamWriter sw = File.CreateText(dodoPath))
                 {
                     sw.WriteLine(dodo);
+                }
+
+                if (File.Exists(webhookPath))
+                {
+                    string url;
+                    string content;
+
+                    using (StreamReader sr = new StreamReader(webhookPath))
+                    {
+                        url = sr.ReadLine();
+                        content = sr.ReadLine();
+                    }
+
+                    DiscordWebhook hook = new DiscordWebhook();
+                    hook.Url = url;
+
+                    DiscordMessage message = new DiscordMessage();
+                    message.Content = content;
+                    //message.TTS = true; //read message to everyone on the channel
+
+                    //embeds
+                    DiscordEmbed embed = new DiscordEmbed();
+                    embed.Title = "New Dodo Code for " + IslandName + " :";
+                    embed.Description = dodo;
+                    embed.Timestamp = DateTime.Now;
+                    embed.Color = Color.Pink; //alpha will be ignored, you can use any RGB color
+                    embed.Thumbnail = new EmbedMedia() { Url = "https://i.ibb.co/J3M4r2V/ea89143aecfea678b93848a367099b20.png" };
+                    embed.Footer = new EmbedFooter() { Text = "Sent From ACNHPoker" };
+
+                    message.Embeds = new[] { embed };
+                    try
+                    {
+                        hook.Send(message);
+                    }
+                    catch
+                    {
+
+                    }
                 }
 
                 return dodo;

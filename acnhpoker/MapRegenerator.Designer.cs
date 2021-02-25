@@ -62,6 +62,7 @@ namespace ACNHPoker
             this.startBtn = new System.Windows.Forms.Button();
             this.keepVillagerBox = new System.Windows.Forms.CheckBox();
             this.dodoSetupBtn = new System.Windows.Forms.Button();
+            this.changeDodoBtn = new System.Windows.Forms.Button();
             this.PauseTimer = new System.Windows.Forms.Timer(this.components);
             this.logGridView = new System.Windows.Forms.DataGridView();
             this.logName = new System.Windows.Forms.Label();
@@ -75,7 +76,6 @@ namespace ACNHPoker
             this.readDodoBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
             this.clear = new System.Windows.Forms.Button();
-            this.changeDodoBtn = new System.Windows.Forms.Button();
             this.PleaseWaitPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logGridView)).BeginInit();
@@ -498,6 +498,24 @@ namespace ACNHPoker
             this.dodoSetupBtn.UseVisualStyleBackColor = false;
             this.dodoSetupBtn.Click += new System.EventHandler(this.dodoHelperBtn_Click);
             // 
+            // changeDodoBtn
+            // 
+            this.changeDodoBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.changeDodoBtn.FlatAppearance.BorderSize = 0;
+            this.changeDodoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.changeDodoBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.changeDodoBtn.ForeColor = System.Drawing.Color.White;
+            this.changeDodoBtn.Location = new System.Drawing.Point(13, 191);
+            this.changeDodoBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.changeDodoBtn.Name = "changeDodoBtn";
+            this.changeDodoBtn.Size = new System.Drawing.Size(208, 25);
+            this.changeDodoBtn.TabIndex = 241;
+            this.changeDodoBtn.Tag = "";
+            this.changeDodoBtn.Text = "Change Dodo Path";
+            this.formToolTip.SetToolTip(this.changeDodoBtn, "Change the path where the dodo code is stored.");
+            this.changeDodoBtn.UseVisualStyleBackColor = false;
+            this.changeDodoBtn.Click += new System.EventHandler(this.changeDodoBtn_Click);
+            // 
             // PauseTimer
             // 
             this.PauseTimer.Interval = 1000;
@@ -691,24 +709,6 @@ namespace ACNHPoker
             this.clear.Text = "clear";
             this.clear.UseVisualStyleBackColor = false;
             this.clear.Click += new System.EventHandler(this.clear_Click);
-            // 
-            // changeDodoBtn
-            // 
-            this.changeDodoBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.changeDodoBtn.FlatAppearance.BorderSize = 0;
-            this.changeDodoBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.changeDodoBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.changeDodoBtn.ForeColor = System.Drawing.Color.White;
-            this.changeDodoBtn.Location = new System.Drawing.Point(13, 191);
-            this.changeDodoBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.changeDodoBtn.Name = "changeDodoBtn";
-            this.changeDodoBtn.Size = new System.Drawing.Size(208, 25);
-            this.changeDodoBtn.TabIndex = 241;
-            this.changeDodoBtn.Tag = "";
-            this.changeDodoBtn.Text = "Change Dodo Path";
-            this.formToolTip.SetToolTip(this.changeDodoBtn, "Change the path where the dodo code is stored.");
-            this.changeDodoBtn.UseVisualStyleBackColor = false;
-            this.changeDodoBtn.Click += new System.EventHandler(this.changeDodoBtn_Click);
             // 
             // MapRegenerator
             // 

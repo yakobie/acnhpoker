@@ -67,6 +67,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 035F ; FtrBilliard ; billiard table ; ビリヤードのだい ; 撞球桌 ; 撞球桌 ; 당구대 ; billard ; Billardtisch ; mesa de billar ; tavolo da biliardo ; biljarttafel ; бильярдный стол ; 
 0360 ; FtrBingo ; bingo wheel ; ビンゴマシン ; 搖獎機 ; 摇奖机 ; 빙고 머신 ; sphère pour tirage ; Zahlenkugel-Maschine ; bombo de bingo ; urna per estrazioni ; bingomolen ; лотерейный барабан ; 
 0361 ; FtrBirdcage ; birdcage ; とりかご ; 鳥籠 ; 鸟笼 ; 새장 ; cage à oiseau ; Vogelkäfig ; jaula de pájaros ; gabbia ; vogelkooi ; птичья клетка ; 
+0363 ; FtrBonbori ; blossom lantern ; ぼんぼり ; 紙燈籠 ; 纸灯笼 ; 꽃그림 육면등 ; lampe fleurie ; Blütenlampe ; lámpara bonbori ; lanterna floreale ; bloesemlamp ; лампа с цветами ; 
 0366 ; FtrBookstand ; book stands ; ブックスタンド ; 書擋 ; 书挡 ; 북엔드 ; serre-livres ; Buchstütze ; sujetalibros ; coppia di fermalibri ; boekensteunen ; подставки для книг ; 
 036B ; FtrBreaker ; breaker ; ブレーカー ; 電源總開關 ; 电源总开关 ; 전원 차단기 ; disjoncteur ; Sicherungskasten ; interruptor ; quadro interruttori ; zekeringkast ; электрощит ; 
 0370 ; FtrBucketWood ; wooden bucket ; もくせいのバケツ ; 木製水桶 ; 木制水桶 ; 나무 양동이 ; seau en bois ; Holzeimer ; cubo de madera ; secchio di legno ; houten emmer ; деревянное ведро ; 
@@ -91,6 +92,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 03CF ; FtrFruitbasket ; fruit basket ; フルーツバスケット ; 水果籃 ; 水果篮 ; 과일 바구니 ; panier de fruits ; Fruchtkorb ; cesta de frutas ; cestino di frutta ; fruitmand ; корзина с фруктами ; 
 03D5 ; FtrGo ; go board ; ごばん ; 圍棋桌 ; 围棋桌 ; 바둑판 ; table de go ; Go-Brett ; tablero de go ; tavola da go ; go-bord ; доска для го ; 
 03DB ; FtrHarp ; harp ; ハープ ; 豎琴 ; 竖琴 ; 하프 ; harpe ; Harfe ; arpa ; arpa ; harp ; арфа ; 
+03DC ; FtrHinadolls ; hinaningyo ; ひなにんぎょう ; 女兒節娃娃 ; 女儿节娃娃 ; 인형 장식 ; hinaningyo ; Puppenset ; hinaningyo ; hinaningyo ; hinaningyo-poppen ; коллекция кукол ; 
 03E5 ; FtrIncense ; incense burner ; おこう ; 線香盤 ; 线香盘 ; 향 ; porte-encens ; Räucherstäbchen-Set ; quemador de incienso ; brucia incensi ; wierookbrander ; курильница ; 
 03E6 ; FtrKitchenIsland ; kitchen island ; アイランドキッチン ; 島式廚房 ; 岛式厨房 ; 아일랜드 키친 ; îlot de cuisine ; Kücheninsel ; isla de cocina ; isola da cucina ; keukeneiland ; кухонный островок ; 
 03EC ; FtrKadomatsu ; kadomatsu ; かどまつ ; 門松 ; 门松 ; 새해맞이 대나무 ; kadomatsu ; Kadomatsu ; kadomatsu ; kadomatsu ; bamboe-ornament ; кадомацу ; 
@@ -914,9 +916,27 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 35FA ; FtrHarvestEnamelpod ; Turkey Day casserole ; サンクスギビングなキャセロール ; 感恩節砂鍋燉菜 ; 感恩节砂锅炖菜 ; 하베스트 캐서롤 ; plat à gratin fête du partage ; Schlemmfest-Bräter ; cazuela Día del Pavo ; casseruola primizie ; smakenfestijnpan ; утятница «День изобилия» ; 
 35FB ; FtrHarvestWheat ; Turkey Day wheat decor ; サンクスギビングなむぎかざり ; 感恩節麥子裝飾 ; 感恩节麦子装饰 ; 하베스트 밀 장식 ; décor de blé du partage ; Schlemmfest-Getreidedeko ; adorno trigo Día del Pavo ; ornamento primizie ; smakenfestijn-tarwebundel ; пшеница ко Дню изобилия ; 
 35FC ; FtrHarvestTablesetting ; Turkey Day table setting ; サンクスギビングテーブルウェア ; 感恩節桌上布置 ; 感恩节桌上布置 ; 하베스트 테이블 세팅 ; service fête du partage ; Schlemmfest-Tischgedeck ; servicio mesa Día del Pavo ; set da tavola primizie ; smakenfestijnservies ; посуда ко Дню изобилия ; 
+35FD ; FtrMarioSquareA ; ? Block ; ハテナブロック ; ？磚塊 ; ？砖块 ; ?블록 ; bloc ? ; ?-Block ; bloque ? ; blocco ? ; ?-blok ; блок «?» ; 
+35FE ; FtrMarioSquareB ; block ; レンガブロック ; 磚塊 ; 砖块 ; 블록 ; bloc ; Block ; bloque ; blocco ; blok ; блок ; 
+35FF ; FtrMarioHall ; pipe ; どかん ; 水管 ; 水管 ; 토관 ; tuyau ; Röhre ; tubería ; tubo ; buis ; труба ; 
+3600 ; FtrMarioFablic ; Goal Pole ; ゴールポール ; 終點旗桿 ; 终点旗杆 ; 골깃대 ; drapeau Mario ; Zielpfahl ; banderín ; asta della bandiera ; vlaggenstok ; финальный флаг ; 
+3601 ; FtrMarioPentagon ; Super Star ; スーパースター ; 無敵星 ; 无敌星 ; 슈퍼스타 ; super étoile ; Superstern ; superestrella ; super stella ; superster ; суперзвезда ; 
+3602 ; FtrMarioGrass ; Fire Flower ; ファイアフラワー ; 火之花 ; 火之花 ; 파이어플라워 ; fleur de feu ; Feuerblume ; flor de fuego ; fiore di fuoco ; vuurbloem ; огненный цветок ; 
+3603 ; FtrMarioRoundA ; Super Mushroom ; スーパーキノコ ; 超級蘑菇 ; 超级蘑菇 ; 슈퍼버섯 ; super champignon ; Superpilz ; superchampiñón ; super fungo ; superpaddenstoel ; супергриб ; 
+3604 ; FtrMarioRoundB ; 1-Up Mushroom ; 1UPキノコ ; 1UP蘑菇 ; 1UP蘑菇 ; 1UP버섯 ; champignon 1UP ; 1-Up-Pilz ; champiñón vida extra ; fungo 1-UP ; 1UP-paddenstoel ; гриб жизни ; 
+3605 ; FtrMarioShield ; Shell ; こうら ; 龜殼 ; 龟壳 ; 등껍질 ; carapace ; Koopa-Panzer ; caparazón ; guscio ; schild ; панцирь ; 
+3606 ; FtrMarioGold ; coin ; コイン ; 金幣 ; 金币 ; 코인 ; pièce ; Münze ; moneda ; moneta ; munt ; монетка ; 
+3607 ; FtrMarioGroundobjectL ; large Mushroom Platform ; キノコちけいL ; 蘑菇地形L ; 蘑菇地形L ; 버섯 지형 L ; plateforme champignon XL ; Pilzplattform (L) ; plataforma champiñón XL ; piattaforma fungo grande ; groot paddenstoelplatform ; больш. гриб-платформа ; 
+3608 ; FtrMarioGroundobjectS ; small Mushroom Platform ; キノコちけいS ; 蘑菇地形S ; 蘑菇地形S ; 버섯 지형 S ; plateforme champignon ; Pilzplattform (S) ; plataforma champiñón ; piattaforma fungo piccola ; klein paddenstoelplatform ; малый гриб-платформа ; 
+3609 ; FtrMarioRock ; Thwomp ; ドッスン ; 咚咚 ; 咚咚 ; 쿵쿵 ; Thwomp ; Steinblock ; Roca Picuda ; Twomp ; Thwomp ; бамс ; 
 362B ; FtrConstructFigure ; Resetti model ; グラウンドホッグのもけい ; 土撥鼠模型 ; 土拨鼠模型 ; 그라운드호그 모형 ; figurine de Resetti ; Resetti-Figur ; mini Rese T. Ado ; modellino di Resetti ; model-Resetti ; модель Ресетти ; 
 366A ; FtrCrsSocksWallColor ; set of stockings ; かべかけソックス ; 壁掛式襪子 ; 壁挂式袜子 ; 벽걸이 양말 ; lot de chaussettes déco ; Wunschsocken-Set ; lote de calcetines de pared ; set di calze per regali ; sokkenset ; набор носков ; 
+36C4 ; FtrPiePi ; π pie ; πパイ ; 圓周率派 ; 圆周率派 ; π 파이 ; tarte π ; Pi-Kuchen ; pastel de π ; torta del Pi greco ; π-taart ; пирог π ; 
 36CD ; FtrRosebouquetHeart ; heart-shaped bouquet ; ハートのバラブーケ ; 愛心玫瑰花束 ; 心形玫瑰花束 ; 하트 장미 꽃다발 ; bouquet en forme de cœur ; Herz-Bouquet ; ramo de flores Enamorados ; bouquet a cuore ; hartvormig boeket ; букет в форме сердца ; 
+37BA ; FtrMarioSquareBAir ; floating block ; くうちゅうのレンガブロック ; 空中磚塊 ; 空中砖块 ; 떠 있는 블록 ; bloc flottant ; Schwebeblock ; bloque elevado ; blocco fluttuante ; zwevend blok ; парящий блок ; 
+37DC ; [MISSING] ; きゅうりのうま ; きゅうりのうま ; きゅうりのうま ; きゅうりのうま ; きゅうりのうま ; きゅうりのうま ; きゅうりのうま ; きゅうりのうま ; きゅうりのうま ; きゅうりのうま ; きゅうりのうま ; 
+3802 ; [MISSING] ; つきみだんご ; つきみだんご ; つきみだんご ; つきみだんご ; つきみだんご ; つきみだんご ; つきみだんご ; つきみだんご ; つきみだんご ; つきみだんご ; つきみだんご ; 
+3803 ; [MISSING] ; なすびのうし ; なすびのうし ; なすびのうし ; なすびのうし ; なすびのうし ; なすびのうし ; なすびのうし ; なすびのうし ; なすびのうし ; なすびのうし ; なすびのうし ; 
 0002 ; FtrArtHunterSnow ; scenic painting ; みごとなめいが ; 優美的名畫 ; 优美的名画 ; 뛰어난 명화 ; toile hivernale ; Wintergemälde ; cuadro invernal ; quadro invernale ; winters schilderij ; живописная картина ; 
 0005 ; FtrArtMikaeriFake ; [F]graceful painting ; しなやかなめいが ; 端莊的名畫 ; 端庄的名画 ; 절제된 명화 ; toile gracieuse ; Anmutsgemälde ; retrato oriental ; quadro armonioso ; sierlijk schilderij ; изящная картина ; 
 0006 ; FtrArtMikaeri ; graceful painting ; しなやかなめいが ; 端莊的名畫 ; 端庄的名画 ; 절제된 명화 ; toile gracieuse ; Anmutsgemälde ; retrato oriental ; quadro armonioso ; sierlijk schilderij ; изящная картина ; 
@@ -1116,6 +1136,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 3147 ; ToolAxeFragile ; worn axe ; こわれかけのオノ ; 快壞掉的斧頭 ; 快要坏掉的斧头 ; 튼튼하지 않은 도끼 ; hache émoussée ; Morschaxt ; hacha maltrecha ; ascia consumata ; versleten bijl ; видавший виды топор ; 
 3197 ; ToolStickJune ; wedding wand ; ウェディングなステッキ ; 婚禮棒 ; 婚礼棒 ; 웨딩 지팡이 ; baguette de mariage ; Hochzeitsstab ; varita ramo de boda ; bacchetta nuziale ; trouwstaf ; свадебная палочка ; 
 33B5 ; ToolStickHalloween ; spooky wand ; ハロウィンなステッキ ; 萬聖節棒 ; 万圣节棒 ; 할로윈 지팡이 ; baguette Halloween ; Kürbisstab ; varita calabaza ; bacchetta brividi ; pompoenstaf ; жуткая палочка ; 
+379F ; ToolStickShamrock ; shamrock wand ; シャムロックステッキ ; 三葉草棒 ; 三叶草棒 ; 성 패트릭 지팡이 ; baguette trèfle ; Kleeblattstab ; varita trébol ; bacchetta trifoglio ; klaverstaf ; палочка с трилистником ; 
 0246 ; FtrInsectAburazemi ; brown cicada ; アブラゼミ ; 油蟬 ; 油蝉 ; 유지매미 ; cigale cercope ; Braunzikade ; cigarra marrón ; cicala marrone ; bruine cicade ; коричневая цикада ; 
 0247 ; FtrInsectAgehacho ; tiger butterfly ; アゲハチョウ ; 鳳蝶 ; 凤蝶 ; 호랑나비 ; machaon ; Schwalbenschwanz ; mariposa tigre ; farfalla tigre ; koninginnenpage ; махаон ; 
 0248 ; FtrInsectAkaeritoribaneageha ; Rajah Brooke's birdwing ; アカエリトリバネアゲハ ; 紅頸鳳蝶 ; 红颈凤蝶 ; 붉은목도리비단나비 ; troides brookiana ; Troides brookiana ; mariposa alas de Brooke ; farfalla Raja Brooke ; Rajah Brooke-vlinder ; трогоноптера Брука ; 
@@ -2218,6 +2239,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 3406 ; RoomTexWallHarvest00 ; Turkey Day wall ; サンクスギビングなかべ ; 感恩節牆 ; 感恩节墙 ; 하베스트 벽 ; mur fête du partage ; Schlemmfest-Tapete ; pared Día del Pavo ; muro primizie ; smakenfestijnwand ; стена «День изобилия» ; 
 3523 ; RoomSpWallSnowy00 ; falling-snow wall ; ゆきのふるかべ ; 下雪牆 ; 下雪墙 ; 눈 내리는 벽 ; mur chute de neige ; Schneefall-Tapete ; pared noche nevada ; muro nevicata ; sneeuwvalwand ; стена со снегопадом ; 
 3529 ; RoomSpWallAurora00 ; aurora wall ; オーロラのかべ ; 極光牆 ; 极光墙 ; 오로라 벽 ; mur aurore polaire ; Aurora-Tapete ; pared aurora ; muro aurora boreale ; poollichtwand ; стена с полярным сиянием ; 
+35ED ; RoomSpWallMario00 ; mushroom mural ; スーパーマリオのかべ ; 超級瑪利歐牆 ; 超级马力欧墙 ; 슈퍼 마리오 벽 ; mur Mario ; Pilztapete ; pared champiñón ; muro dei funghi ; Mario-wand ; грибная стена ; 
 12BD ; RoomTexFloorBasement00 ; basement flooring ; ちかしつのゆか ; 地下室地板 ; 地下室地板 ; 지하실 바닥 ; sol de cave ; Kellerboden ; suelo sótano ; pavimento cantina ; keldervloer ; пол из булыжников ; 
 1356 ; RoomTexFloorSeaView00 ; ship deck ; かんぱんのゆか ; 甲板地板 ; 甲板地板 ; 갑판 바닥 ; sol pont de navire ; Schiffsdeck ; suelo cubierta ; pavimento ponte di nave ; scheepsdekvloer ; корабельный пол ; 
 1357 ; RoomTexFloorConcrete00 ; concrete flooring ; コンクリートのゆか ; 混凝土地板 ; 混凝土地板 ; 콘크리트 바닥 ; sol en béton ; Zementboden ; suelo hormigón ; pavimento grezzo ; betonvloer ; бетонный пол ; 
@@ -2398,6 +2420,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 3119 ; RoomTexFloorPirates00 ; pirate flooring ; かいぞくのゆか ; 海盜地板 ; 海盗地板 ; 해적 바닥 ; sol pirate ; Piratenboden ; suelo pirata ; pavimento pirata ; piratenvloer ; пиратский пол ; 
 33A9 ; RoomTexFloorHalloween00 ; spooky flooring ; ハロウィンなゆか ; 萬聖節地板 ; 万圣节地板 ; 할로윈 바닥 ; sol Halloween ; Kürbisboden ; suelo calabaza ; pavimento brividi ; pompoenvloer ; жуткий пол ; 
 3407 ; RoomTexFloorHarvest00 ; Turkey Day flooring ; サンクスギビングなゆか ; 感恩節地板 ; 感恩节地板 ; 하베스트 바닥 ; sol fête du partage ; Schlemmfest-Boden ; suelo Día del Pavo ; pavimento primizie ; smakenfestijnvloer ; пол «День изобилия» ; 
+35EC ; RoomTexFloorMario00 ; block flooring ; スーパーマリオのゆか ; 超級瑪利歐地板 ; 超级马力欧地板 ; 슈퍼 마리오 바닥 ; revêtement blocs ; Block-Boden ; suelo bloques ; pavimento mattoni ; blokkenvloer ; пол из блоков ; 
 1C9A ; RugOtherHeartM00 ; pink heart rug ; ピンクハートのラグ ; 粉紅色愛心地毯 ; 粉红色爱心地毯 ; 핑크 하트 러그 ; tapis amour rose ; Rosa-Herzteppich ; alfombra amor rosa ; tappeto amore rosa ; roze hartjestapijt ; розовый ковер-сердце ; 
 1C9B ; RugRectDeckM00 ; brown wooden-deck rug ; ちゃいろいウッドデッキのラグ ; 茶色木甲板地毯 ; 茶色仿木板地毯 ; 갈색 우드 덱 러그 ; tapis parquet marron ; Braun-Rustikalteppich ; alfombra tablas marrón ; tappeto legno marrone ; bruin vlondertapijt ; коричн. ковер под дерево ; 
 1C9C ; RugRectDoormatS00 ; rough rug ; ハードマット ; 硬地墊 ; 坚硬地垫 ; 하드 매트 ; paillasson ; Rau-Matte ; felpudo robusto ; tappetino ruvido ; ruw tapijt ; ковер из груб. материала ; 
@@ -2483,6 +2506,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 1D78 ; RugSquareChristmasL00 ; festive rug ; クリスマスなラグ ; 聖誕節地毯 ; 圣诞节地毯 ; 크리스마스 러그 ; tapis de fêtes ; Festtagsteppich ; alfombra festiva ; tappeto festivo ; feesttapijt ; ковер «Новый год» ; 
 1D79 ; RugSquareHalloweenL00 ; spooky rug ; ハロウィンなラグ ; 萬聖節地毯 ; 万圣节地毯 ; 할로윈 러그 ; tapis Halloween ; Kürbisteppich ; alfombra calabaza ; tappeto brividi ; pompoentapijt ; жуткий ковер ; 
 1D7A ; RugOtherEasterM00 ; Bunny Day rug ; イースターなラグ ; 復活節地毯 ; 复活节地毯 ; 이스터 러그 ; tapis fête des œufs ; Häschentag-Teppich ; alfombra Caza del Huevo ; tappeto caccia all'uovo ; eiertapijt ; ковер «День зайцев» ; 
+1D7B ; RugOtherShamrockM00 ; shamrock rug ; シャムロックのラグ ; 三葉草地毯 ; 三叶草地毯 ; 성 패트릭 러그 ; tapis trèfle ; Kleeblatttag-Teppich ; alfombra trébol ; tappeto trifoglio ; klavertapijt ; ковер-клевер ; 
 1D9A ; RugOtherHeartM03 ; white heart rug ; ホワイトハートのラグ ; 白色愛心地毯 ; 白色爱心地毯 ; 화이트 하트 러그 ; tapis amour blanc ; Weiß-Herzteppich ; alfombra amor blanca ; tappeto amore bianco ; wit hartjestapijt ; белый ковер-сердце ; 
 1D9B ; RugOtherHeartM01 ; turquoise heart rug ; ブルーハートのラグ ; 藍色愛心地毯 ; 蓝色爱心地毯 ; 블루 하트 러그 ; tapis amour turquoise ; Türkis-Herzteppich ; alfombra amor turquesa ; tappeto amore turchese ; turquoise hartjestapijt ; бирюзовый ковер-сердце ; 
 1D9C ; RugOtherHeartM02 ; purple heart rug ; パープルハートのラグ ; 紫色愛心地毯 ; 紫色爱心地毯 ; 퍼플 하트 러그 ; tapis amour mauve ; Lila-Herzteppich ; alfombra amor morada ; tappeto amore viola ; paars hartjestapijt ; сиреневый ковер-сердце ; 
@@ -2539,6 +2563,8 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 33E7 ; RugRoundMoonM00 ; moon rug ; つきのラグ ; 月之地毯 ; 月之地毯 ; 보름달 러그 ; tapis lune ; Mondteppich ; alfombra luna ; tappeto luna ; maantapijt ; лунный пол ; 
 34D5 ; RugSquareHarvestL00 ; Turkey Day rug ; サンクスギビングなラグ ; 感恩節地毯 ; 感恩节地毯 ; 하베스트 러그 ; tapis fête du partage ; Schlemmfest-Teppich ; alfombra Día del Pavo ; tappeto primizie ; smakenfestijntapijt ; ковер «День изобилия» ; 
 351C ; RugOtherSunflowerM00 ; sunflower rug ; ひまわりのラグ ; 向日葵地毯 ; 向日葵地毯 ; 해바라기 러그 ; tapis tournesol ; Sonnenblumenteppich ; alfombra girasol ; tappeto girasole ; zonnebloemtapijt ; подсолнуховый ковер ; 
+3630 ; RugOtherMarioAM00 ; Yoshi's Egg rug ; ヨッシーのタマゴのラグ ; 耀西蛋地毯 ; 耀西蛋地毯 ; 요시의 알 러그 ; tapis œuf de Yoshi ; Yoshi-Ei-Teppich ; alfombra huevo de Yoshi ; tappeto uovo di Yoshi ; Yoshi's-eitapijt ; ковер «Яйцо йоши» ; 
+3631 ; RugOtherMarioBM00 ; Lakitu's Cloud rug ; ジュゲムのくものラグ ; 球蓋姆的雲地毯 ; 球盖姆的云地毯 ; 김수한무 구름 러그 ; tapis nuage de Lakitu ; Lakitus-Wolke-Teppich ; alfombra nube de Lakitu ; tappeto nuvola di Lakitu ; Lakitu's-wolktapijt ; ковер «Облако лакиту» ; 
 3650 ; RugOtherFootballM00 ; football rug ; アメフトのラグ ; 美式足球地毯 ; 美式足球地毯 ; 미식축구 러그 ; tapis football américain ; Football-Teppich ; alfombra final deportiva ; tappeto football ; Americanfootballtapijt ; футбольный ковер ; 
 10C5 ; FtrDoorOrnamentWreathCosmos ; cosmos wreath ; コスモスのリース ; 波斯菊花圈 ; 波斯菊花环 ; 코스모스 리스 ; couronne cosmos ; Cosmeentürkranz ; corona cosmos ; ghirlanda cosmee ; cosmeakrans ; венок с космеями ; 
 1117 ; FtrDoorOrnamentWreathIce ; snowflake wreath ; ゆきのけっしょうのリース ; 雪花花圈 ; 雪花花环 ; 눈의 결정 리스 ; décoration flocon ; Schneeflockentürschmuck ; placa copo de nieve ; ghirlanda fiocco di neve ; sneeuwvlokkenkrans ; венок-снежинка ; 
@@ -2585,6 +2611,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 30E5 ; FtrDoorOrnamentWreathEaster ; Bunny Day wreath ; イースターなリース ; 復活節花圈 ; 复活节花环 ; 이스터 리스 ; couronne fête des œufs ; Häschentag-Türkranz ; corona Caza del Huevo ; ghirlanda caccia all'uovo ; eierkrans ; венок на День зайцев ; 
 342D ; FtrDoorOrnamentXmasWreath ; festive wreath ; クリスマスリース ; 聖誕節花圈 ; 圣诞节花环 ; 크리스마스 리스 ; couronne de sapin ; Festtagskranz ; corona festiva ; ghirlanda festiva ; feestkrans ; новогодний венок ; 
 34BD ; FtrDoorOrnamentWreathShimenawa ; New Year's shimekazari ; しめかざり ; 注連繩裝飾 ; 注连绳装饰 ; 일본 금줄 장식 ; shimekazari de nouvel an ; Neujahrs-Shimekazari ; shimekazari de Año Nuevo ; shimekazari di Capodanno ; nieuwjaars-shimekazari ; новогодний симэкадзари ; 
+36CF ; FtrDoorOrnamentShamrock ; shamrock doorplate ; シャムロックのドアプレート ; 三葉草門牌 ; 三叶草门牌 ; 성 패트릭 문패 ; plaque trèfle ; Kleeblatttürschild ; placa trébol ; targa da porta trifoglio ; klaverdeurplaatje ; табличка-трилистник ; 
 36D0 ; FtrDoorOrnamentShunsetsu ; Lunar New Year decoration ; しゅんせつのドアかざり ; 春節門飾 ; 春节门饰 ; 춘절 복 장식 ; déco de nouvel an lunaire ; Mondneujahr-Dekoration ; adorno Año Nuevo Lunar ; decoraz. Capodanno lunare ; maannieuwjaarversiering ; узор (лунный Новый год) ; 
 0A0B ; FtrPostStandard ; ordinary mailbox ; ふつうのポスト ; 普通郵筒 ; 普通信箱 ; 일반 우편함 ; boîte aux lettres ordinaire ; Standard-Briefkasten ; buzón clásico ; cassetta posta normale ; ronde brievenbus ; простой ящик ; 
 14DE ; FtrPostSquare ; square mailbox ; しかくいポスト ; 四角型郵筒 ; 方形信箱 ; 사각 우편함 ; b.a.l. rectangulaire ; Eckigbriefkasten ; buzón cuadrado ; cassetta posta cubica ; brievenbus ; ящик-куб ; 
@@ -2662,7 +2689,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 0AC1 ; ToolCracker ; party popper ; クラッカー ; 拉炮 ; 拉炮 ; 파티용 폭죽 ; pétard ; Partyknaller ; cañón de confeti ; sparacoriandoli ; confettiknaller ; хлопушка ; 
 0AC3 ; MuseumTent ; Blathers's tent marker ; フータさんのテントよていち ; 傅達帳篷預定地 ; 傅达帐篷用地 ; 부엉씨의 텐트 위치 ; site réservé par Thibou ; Markierung für Eugens Zelt ; carpa de Sócrates ; segnatenda di Blatero ; Blathers' tent-afbakening ; знак палатки Блезерса ; 
 0AC4 ; ShopTent ; shop construction kit ; おみせのこうじかんばん ; 商店施工告示牌 ; 商店的施工告示牌 ; 상점 공사 키트 ; kit chantier boutique ; Laden-Baukit ; kit de tienda ; kit negozio ; winkelbouwpakket ; набор строителя магазина ; 
-0AC5 ; NnpcTent ; <name>'s tent ; <name>のテント ; <name>的帳篷 ; <name>的帐篷 ; <name>의 텐트 ; tente \u000e2\n\u0010\u0006de \u0006d'⁠<name> ; Zelt von <name> ; tienda de <name> ; tenda di <name> ; tent van <name> ; палатка \u000e2\u0017\u0002촃<name> ; 
+0AC5 ; NnpcTent ; <name>'s tent ; <name>のテント ; <name>的帳篷 ; <name>的帐篷 ; <name>의 텐트 ; tente '⁠<name> ; Zelt von <name> ; tienda de <name> ; tenda di <name> ; tent van <name> ; палатка 촃<name> ; 
 0AD9 ; ItemMedicine ; medicine ; おくすり ; 藥 ; 药 ; 약 ; remède ; Medizin ; medicina ; medicina ; medicijn ; лекарство ; 
 0CBF ; Honeycomb ; wasp nest ; ハチのす ; 蜂巢 ; 蜂巢 ; 벌집 ; nid de guêpes ; Wespennest ; avispero ; vespaio ; wespennest ; осиное гнездо ; 
 0D15 ; NnpcNewHousingkit ; housing kit ; ハウジングキット ; 蓋房子工具組 ; 盖房子工具组 ; 하우징 키트 ; kit habitation ; Haus-Baukit ; kit de asentamiento ; kit abitativo ; huisbouwpakket ; набор поселенца ; 
@@ -2680,7 +2707,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 142E ; CampsiteReserveKit ; campsite construction kit ; キャンプサイトこうじキット ; 露營地施工工具組 ; 露营地施工工具组 ; 캠핑장 건축예정지 키트 ; kit camping ; Campingplatz-Baukit ; kit de zona de acampada ; kit area per campeggio ; kampeerplekpakket ; набор кемпинг-строителя ; 
 14C7 ; ToolPaperFan ; uchiwa fan ; うちわ ; 扇子 ; 扇子 ; 둥글부채 ; éventail uchiwa ; Uchiwa-Fächer ; paipay ; ventaglio uchiwa ; uchiwa-waaier ; веер утива ; 
 14C8 ; ToolOcarina ; ocarina ; オカリナ ; 陶笛 ; 陶笛 ; 오카리나 ; ocarina ; Okarina ; ocarina ; ocarina ; ocarina ; окарина ; 
-14ED ; MovingKitNNPC ; <name>'s kit ; <name>・いせつキット ; <name>搬遷工具組 ; <name>搬迁工具组 ; <name> 이전 키트 ; kit \u000e2\n\u0010\u0006de \u0006d'⁠<name> ; Kit von <name> ; kit de <name> ; kit di <name> ; <name>-pakket ; набор \u000e2\u0017\u0002촃<name> ; 
+14ED ; MovingKitNNPC ; <name>'s kit ; <name>・いせつキット ; <name>搬遷工具組 ; <name>搬迁工具组 ; <name> 이전 키트 ; kit'⁠<name> ; Kit von <name> ; kit de <name> ; kit di <name> ; <name>-pakket ; набор 촃<name> ; 
 14EE ; MovingKitPlayer ; moving kit ; いせつキット ; 搬遷工具組 ; 搬迁工具组 ; 이전 키트 ; kit déménagement ; Umzugskit ; kit de traslado ; kit trasloco ; verhuispakket ; набор переноса дома ; 
 14EF ; MovingKitTailor ; tailors moving kit ; したてや・いせつキット ; 裁縫屋搬遷工具組 ; 裁缝屋搬迁工具组 ; 옷가게 이전 키트 ; kit déménagement couture ; Schneiderei-Umzugskit ; kit de traslado de sastrería ; kit trasloco sartoria ; kleermakerijverhuispakket ; набор переноса ателье ; 
 14F0 ; MovingKitShop ; shop moving kit ; おみせ・いせつキット ; 商店搬遷工具組 ; 商店搬迁工具组 ; 가게 이전 키트 ; kit déménagement boutique ; Laden-Umzugskit ; kit de traslado de tienda ; kit trasloco negozio ; winkelverhuispakket ; набор переноса магазина ; 
@@ -2789,6 +2816,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 36BD ; ToolMegaphone1 ; fiery cheer megaphone ; おうえんメガホン・ファイアー ; 加油大聲公‧火焰 ; 助威扩音器·火焰 ; 파이어 응원 메가폰 ; még. de supporter flammes ; Fan-Megafon „Feuer“ ; megáfono ánimo encendido ; megafono fan con fiamme ; vurige megafoon ; огненный рупор ; 
 36BE ; ToolMegaphone2 ; starry cheer megaphone ; おうえんメガホン・スター ; 加油大聲公‧星星 ; 助威扩音器·星星 ; 스타 응원 메가폰 ; még. de supporter étoiles ; Fan-Megafon „Sterne“ ; megáfono de las estrellas ; megafono fan con stelle ; sterrenmegafoon ; звездный рупор ; 
 36BF ; ToolMegaphone3 ; glittery cheer megaphone ; おうえんメガホン・グリッター ; 加油大聲公‧閃亮 ; 助威扩音器·闪亮 ; 글리터 응원 메가폰 ; még. de supporter pailleté ; Fan-Megafon „Glitzer“ ; megáfono deslumbrante ; megafono fan luccicante ; glittermegafoon ; блестящий рупор ; 
+36CC ; ToolJuiceShamrock ; shamrock soda ; シャムロックソーダ ; 三葉草汽水 ; 三叶草苏打水 ; 성 패트릭 소다 ; soda trèfle ; Kleeblatt-Smoothie ; refresco trébol ; succo di trifoglio ; glas klaverprikdrank ; газировка «Трилистник» ; 
 36CE ; HowtoBookReactionCarnival ; Viva Festivale Reaction Set ; ビバ！カーニバルリアクション ; 歡樂！狂歡節表情 ; 欢乐！狂欢节反应 ; 비바! 카니발 리액션 ; lot de mimiques de carnaval ; Viva-Karneval-Emotionen ; Set de emociones Carnaval ; Set di emozioni Carnevale ; Dé emoties voor carnaval ; Реакции к Карнавалу ; 
 36DA ; DummyOtoshidamaCh ; lucky money ; しゅんせつのおとしだま ; 春節紅包 ; 春节红包 ; 춘절 세뱃돈 ; argent porte chance ; Glücksgeschenk ; aguinaldo Año Nuevo Lunar ; denaro della fortuna ; geluksgeld ; дини на удачу ; 
 36DB ; DummyOtoshidamaKr ; sebaetdon ; ソルラルのおとしだま ; 韓國新年紅包 ; 韩国新年红包 ; 설날 세뱃돈 ; sebaetdon ; Sebaetdon ; aguinaldo de Seollal ; sebaetdon ; nieuwjaarsgeld ; подарок «сэбэтон» ; 
@@ -2903,7 +2931,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 09A5 ; mjk_Napolitan ; Neapolitan ; ナポリタン ; 義大利麵 ; 意大利面 ; 토마토 스파게티 ; Napolitaine ; Neapolitaner ; Napolitana ; Napoletana ; Napolitain ; Неаполитанское ; 
 09A6 ; mjk_NiDanZaka ; Steep Hill ; にだんざか ; 二段斜坡 ; 二段斜坡 ; 오르막길 ; La pente ; Bergsteigung ; Colina arriba ; Irto colle ; Heuvelopwaarts ; Крутой холм ; 
 09A7 ; mjk_KekeBilly ; K.K. Rockabilly ; けけビリー ; K.K.鄉村搖滾 ; K.K.乡村摇滚 ; K.K.빌리 ; Rockabilly Kéké ; K.K. Rockabilly ; Tota-rockabilly ; K.K. Rockabilly ; K⁠.⁠K⁠.-⁠rockabilly ; Рокабилли К. К. ; 
-09A8 ; mjk_Keiji ; Agent K.K. ; けけけいじ ; K.K.刑警 ; K.K.刑警 ; K.K.형사 ; Agent Kéké ; Agent K.K. ; Agente Totakeke ; Agente K.K. ; ⁠\u000e2\u0000\u0004Ą촃Agent K.K. ; Агент К. К. ; 
+09A8 ; mjk_Keiji ; Agent K.K. ; けけけいじ ; K.K.刑警 ; K.K.刑警 ; K.K.형사 ; Agent Kéké ; Agent K.K. ; Agente Totakeke ; Agente K.K. ; ⁠Agent K.K. ; Агент К. К. ; 
 09A9 ; mjk_Ondo ; K.K. Rally ; けけおんど ; K.K.大和祭典 ; K.K.大和祭典 ; K.K.축제 ; Parade Kéké ; K.K. Parade 2 ; Tota-parada ; K.K. Gran galà ; K⁠.⁠K⁠.-⁠optocht ; Ралли К. К. ; 
 09AA ; mjk_Metal ; K.K. Metal ; けけメタル ; K.K.金屬搖滾 ; K.K.金属摇滚 ; K.K.메탈 ; Kéké metal ; K.K. Metal ; Tota-metal ; K.K. Metal ; K⁠.⁠K⁠.-⁠metal ; Металл К. К. ; 
 09AB ; mjk_BlueOnigiri ; Stale Cupcakes ; ブルーおにぎり ; 藍色飯糰 ; 蓝色饭团 ; 블루 삼각 김밥 ; Vieux biscuits ; Alter Kuchen ; Pastelito seco ; Vecchi dolcetti ; Oude cupcakes ; Черствые капкейки ; 
@@ -3923,7 +3951,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 08A2 ; 97000Bell ; 97,000 Bells ; 97000ベル ; 97000鈴錢 ; 97000铃钱 ; 97,000벨 ; sac de 97 000 clochettes ; 97.000-Sterni-Sack ; bolsa de 97 000 bayas ; sacco da 97.000 s ; 97.000 klingels ; 97 000 диней ; 
 08A3 ; 98000Bell ; 98,000 Bells ; 98000ベル ; 98000鈴錢 ; 98000铃钱 ; 98,000벨 ; sac de 98 000 clochettes ; 98.000-Sterni-Sack ; bolsa de 98 000 bayas ; sacco da 98.000 s ; 98.000 klingels ; 98 000 диней ; 
 08A4 ; 99000Bell ; 99,000 Bells ; 99000ベル ; 99000鈴錢 ; 99000铃钱 ; 99,000벨 ; sac de 99 000 clochettes ; 99.000-Sterni-Sack ; bolsa de 99 000 bayas ; sacco da 99.000 s ; 99.000 klingels ; 99 000 диней ; 
-1E32 ; PhotoStudioBell ; coin ; コイン ; 金幣 ; 金币 ; 동전 ; pièce ; Münze ; moneda ; moneta ; munt ; монетка ; 
+1E32 ; PhotoStudioBell ; Bell coin ; ベル（コイン） ; 鈴錢（金幣） ; 铃钱（金币） ; 동전 ; pièce de clochettes ; Sterni-Münze ; moneda baya ; stellina (moneta) ; klingelmunt ; динь ; 
 1E33 ; PhotoStudioBellBag ; Bell bag ; ベルぶくろ ; 鈴錢袋 ; 铃钱袋 ; 벨 주머니 ; sac de clochettes ; Sterni-Sack ; bolsa de bayas ; sacco di stelline ; zak klingels ; мешок с динями ; 
 1E34 ; PhotoStudioClams ; bivalve ; にまいがい ; 雙殼貝 ; 双壳贝 ; 조개 ; coquillage bivalve ; Klappmuschel ; bivalvo ; conchiglia bivalve ; schelp ; двустворчатая раковина ; 
 1E35 ; PhotoStudioSnail ; spiral shell ; まきがい ; 螺 ; 螺 ; 고둥 ; coquillage spiralé ; Spiralmuschel ; concha en espiral ; conchiglia a spirale ; spiraalschelp ; спиральная раковина ; 
@@ -4041,6 +4069,8 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2AFD ; AccessoryGlassBlind4 ; ladder shades ; ブラインドサングラス ; 百葉窗墨鏡 ; 百叶窗墨镜 ; 블라인드 선글라스 ; monture stores ; Lamellenbrille ; gafa de rejilla ; montatura a tapparella ; lamellenbril ; очки-решетки ; Yellow
 2AFE ; AccessoryGlassBlind5 ; ladder shades ; ブラインドサングラス ; 百葉窗墨鏡 ; 百叶窗墨镜 ; 블라인드 선글라스 ; monture stores ; Lamellenbrille ; gafa de rejilla ; montatura a tapparella ; lamellenbril ; очки-решетки ; Gold
 124A ; AccessoryMouthLeafGreen ; leaf ; はっぱ ; 葉子 ; 叶子 ; 나뭇잎 ; feuille ; Blatt ; hoja ; foglia ; blaadje ; листик ; Green
+34F7 ; AccessoryGlassmouthLuigi0 ; Luigi 'stache ; ルイージのひげ ; 路易吉鬍子 ; 路易吉胡子 ; 루이지 수염 ; moustache de Luigi ; Luigi-Schnauzer ; bigote de Luigi ; baffo di Luigi ; Luigi-snor ; усы Луиджи ; Black
+34F6 ; AccessoryGlassmouthMario0 ; Mario 'stache ; マリオのひげ ; 瑪利歐鬍子 ; 马力欧胡子 ; 마리오 수염 ; moustache de Mario ; Mario-Schnauzer ; bigote de Mario ; baffo di Mario ; Mario-snor ; усы Марио ; Black
 123B ; AccessoryGlassVenetian0 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz baile de máscaras ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Purple
 2B99 ; AccessoryGlassVenetian1 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz baile de máscaras ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Black
 2B9A ; AccessoryGlassVenetian2 ; masquerade mask ; ベネチアンマスク ; 威尼斯面具 ; 威尼斯面具 ; 베네치안 마스크 ; loup ; Ballmaske ; antifaz baile de máscaras ; mascherina festosa ; elegant balmasker ; маскарадная маска ; Blue
@@ -4115,6 +4145,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2BD6 ; AccessoryGlassRound3 ; round tinted shades ; ラウンドサングラス ; 圓形墨鏡 ; 圆形墨镜 ; 얇은 테 둥근 선글라스 ; monture teintée ronde ; Kunststoffsonnenbrille ; gafa de sol de carey ; montatura rotonda fumé ; halfgetinte zonnebril ; тонированные очки ; Green
 1247 ; AccessoryMouthBeardRoundBlack ; rounded beard ; ラウンドひげ ; 絡腮鬍 ; 络腮胡 ; 둥근 수염 ; collier de barbe ; Rundbart ; barba perfilada ; barba rifinita ; ringbaard ; борода «Короб» ; Hair Color
 118C ; AccessoryMouthSanta ; Santa beard ; サンタのヒゲ ; 聖誕老人鬍子 ; 圣诞老人胡子 ; 산타 수염 ; barbe de père Noël ; Weihnachtsmannbart ; barba Papá Noel ; barba da Babbo Natale ; kerstmanbaard ; борода Санты ; White
+379E ; AccessoryGlassShamrock0 ; shamrock sunglasses ; シャムロックサングラス ; 三葉草墨鏡 ; 三叶草墨镜 ; 성 패트릭 선글라스 ; monture solaire trèfle ; Kleeblattsonnenbrille ; gafa de sol trébol ; montatura trifoglio ; klaverzonnebril ; очки-трилистник ; Green
 10F1 ; AccessoryGlassCrackBlack ; shattered glasses ; ヒビわれめがね ; 有裂痕的眼鏡 ; 有裂痕的眼镜 ; 금이 간 안경 ; monture à verres brisés ; Kaputte Brille ; gafa rota ; montatura con lenti rotte ; kapotte bril ; очки с трещинами ; Black
 2CD7 ; AccessoryGlassGogglesski1 ; ski goggles ; スキーゴーグル ; 滑雪風鏡 ; 滑雪风镜 ; 스키 고글 ; masque de ski ; Skibrille ; gafa de esquí ; maschera da sci ; skibril ; лыжные очки ; Yellow
 1165 ; AccessoryGlassGogglesski0 ; ski goggles ; スキーゴーグル ; 滑雪風鏡 ; 滑雪风镜 ; 스키 고글 ; masque de ski ; Skibrille ; gafa de esquí ; maschera da sci ; skibril ; лыжные очки ; White
@@ -4161,6 +4192,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2BC6 ; AccessoryGlassTriangle4 ; triangle shades ; さんかくサングラス ; 三角形墨鏡 ; 三角形墨镜 ; 삼각 선글라스 ; monture triangle ; Dreiecksbrille ; gafa de sol roquera ; montatura triangolare ; driehoekige zonnebril ; треугольные очки ; Green
 2BC7 ; AccessoryGlassTriangle5 ; triangle shades ; さんかくサングラス ; 三角形墨鏡 ; 三角形墨镜 ; 삼각 선글라스 ; monture triangle ; Dreiecksbrille ; gafa de sol roquera ; montatura triangolare ; driehoekige zonnebril ; треугольные очки ; White
 2BC8 ; AccessoryGlassTriangle6 ; triangle shades ; さんかくサングラス ; 三角形墨鏡 ; 三角形墨镜 ; 삼각 선글라스 ; monture triangle ; Dreiecksbrille ; gafa de sol roquera ; montatura triangolare ; driehoekige zonnebril ; треугольные очки ; Black
+34F8 ; AccessoryGlassmouthWario0 ; Wario 'stache ; ワリオのひげ ; 瓦利歐鬍子 ; 瓦力欧胡子 ; 와리오 수염 ; moustache de Wario ; Wario-Schnauzer ; bigote de Wario ; baffo di Wario ; Wario-snor ; усы Варио ; Black
 2B55 ; AccessoryGlassWood1 ; wooden-frame glasses ; ウッドフレームめがね ; 木框眼鏡 ; 木框眼镜 ; 나무 프레임 안경 ; demi-monture en bois ; Holzbrille ; montura de madera ; montatura di legno ; bril met houten montuur ; очки в дерев. оправе ; Dark brown
 123D ; AccessoryGlassWood0 ; wooden-frame glasses ; ウッドフレームめがね ; 木框眼鏡 ; 木框眼镜 ; 나무 프레임 안경 ; demi-monture en bois ; Holzbrille ; montura de madera ; montatura di legno ; bril met houten montuur ; очки в дерев. оправе ; Brown
 1D44 ; BagShoulderAcorn0 ; acorn pochette ; どんぐりポシェット ; 橡栗側背包 ; 橡栗斜挎包 ; 도토리 미니백 ; pochette gland ; Eichel-Pochette ; bolsito bellota ; pochette ghianda ; eikeltasje ; сумочка-желудь ; Brown
@@ -5235,6 +5267,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 268A ; CapHatLogocap0 ; lettered cap ; もじキャップ ; 文字帽 ; 文字帽 ; 글자 모자 ; casquette à message ; Schriftzug-Mütze ; gorra serigrafiada ; cappello con scritta ; pet met tekst ; кепка с текстом ; Red
 13FA ; CapOrnamentYuri1 ; lily crown ; ユリのかんむり ; 百合花冠 ; 百合花冠 ; 백합 화관 ; coiffe lys ; Lilienkrone ; guirnalda lirio ; corona di gigli ; leliekroon ; венок из лилий ; Colorful
 13F5 ; CapOrnamentCosmos2 ; lovely cosmos crown ; コスモスのかんむり・ラブリー ; 甜美波斯菊花冠 ; 甜美波斯菊花冠 ; 러블리 코스모스 화관 ; jolie coiffe cosmos ; Buntcosmeenkrone ; guirnalda cosmos adorable ; corona di cosmee graziosa ; lieflijke cosmeakroon ; чудный венок из космей ; Colorful
+34EB ; CapHatLuigi0 ; Luigi hat ; ルイージのぼうし ; 路易吉帽子 ; 路易吉帽子 ; 루이지 모자 ; casquette de Luigi ; Luigi-Mütze ; gorra de Luigi ; cappello di Luigi ; Luigi-pet ; кепка Луиджи ; Green
 2E43 ; CapHatWitch1 ; mage's hat ; まじょのぼうし ; 魔女帽 ; 魔女帽 ; 마술사 모자 ; chapeau de sorcellerie ; Hexenhut ; sombrero de hechicería ; cappello da strega ; heksenhoed ; чародейская шляпа ; Blue
 2E44 ; CapHatWitch2 ; mage's hat ; まじょのぼうし ; 魔女帽 ; 魔女帽 ; 마술사 모자 ; chapeau de sorcellerie ; Hexenhut ; sombrero de hechicería ; cappello da strega ; heksenhoed ; чародейская шляпа ; White
 2E45 ; CapHatWitch3 ; mage's hat ; まじょのぼうし ; 魔女帽 ; 魔女帽 ; 마술사 모자 ; chapeau de sorcellerie ; Hexenhut ; sombrero de hechicería ; cappello da strega ; heksenhoed ; чародейская шляпа ; Red
@@ -5245,6 +5278,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 345E ; CapHatHalloween4 ; mage's striped hat ; まほうつかいのストライプぼう ; 魔法師條紋帽 ; 魔法师条纹帽 ; 줄무늬 마법사 모자 ; chapeau de mage rayé ; Streifen-Zauberhut ; sombrero hechicería rayas ; capp. stregonesco a strisce ; gestreepte heksenhoed ; колпак мага в полоску ; Red
 345F ; CapHatHalloween5 ; mage's striped hat ; まほうつかいのストライプぼう ; 魔法師條紋帽 ; 魔法师条纹帽 ; 줄무늬 마법사 모자 ; chapeau de mage rayé ; Streifen-Zauberhut ; sombrero hechicería rayas ; capp. stregonesco a strisce ; gestreepte heksenhoed ; колпак мага в полоску ; Black
 32D4 ; CapHatHalloween0 ; mage's striped hat ; まほうつかいのストライプぼう ; 魔法師條紋帽 ; 魔法师条纹帽 ; 줄무늬 마법사 모자 ; chapeau de mage rayé ; Streifen-Zauberhut ; sombrero hechicería rayas ; capp. stregonesco a strisce ; gestreepte heksenhoed ; колпак мага в полоску ; Orange
+34EA ; CapHatMario0 ; Mario hat ; マリオのぼうし ; 瑪利歐帽子 ; 马力欧帽子 ; 마리오 모자 ; casquette de Mario ; Mario-Mütze ; gorra de Mario ; cappello di Mario ; Mario-pet ; кепка Марио ; Red
 2F01 ; CapHatMatampushi1 ; matanpushi ; マタンプシ ; 阿伊努族頭巾 ; 阿伊努头巾 ; 아이누족 두건 ; matanpushi ; Matanpushi ; matanpushi ; matanpushi ; matanpushi ; повязка айнов ; Brown
 2F02 ; CapHatMatampushi2 ; matanpushi ; マタンプシ ; 阿伊努族頭巾 ; 阿伊努头巾 ; 아이누족 두건 ; matanpushi ; Matanpushi ; matanpushi ; matanpushi ; matanpushi ; повязка айнов ; Red
 2AA2 ; CapHatMatampushi0 ; matanpushi ; マタンプシ ; 阿伊努族頭巾 ; 阿伊努头巾 ; 아이누족 두건 ; matanpushi ; Matanpushi ; matanpushi ; matanpushi ; matanpushi ; повязка айнов ; Blue
@@ -5333,6 +5367,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2D15 ; CapHatKnitcasquette3 ; pom casquette ; ボンボンつきキャスケット ; 毛球報童帽 ; 毛球报童帽 ; 폼폼 카스케트 ; casquette à pompon ; Bommelhut ; gorra con pompón ; berretto con pon-pon ; muts met klep en pompon ; теплая каскетка ; Green
 2D16 ; CapHatKnitcasquette4 ; pom casquette ; ボンボンつきキャスケット ; 毛球報童帽 ; 毛球报童帽 ; 폼폼 카스케트 ; casquette à pompon ; Bommelhut ; gorra con pompón ; berretto con pon-pon ; muts met klep en pompon ; теплая каскетка ; Blue
 2D17 ; CapHatKnitcasquette5 ; pom casquette ; ボンボンつきキャスケット ; 毛球報童帽 ; 毛球报童帽 ; 폼폼 카스케트 ; casquette à pompon ; Bommelhut ; gorra con pompón ; berretto con pon-pon ; muts met klep en pompon ; теплая каскетка ; Gray
+34FB ; CapOrnamentAPeach0 ; Princess Peach crown ; ピーチひめのかんむり ; 碧姬公主王冠 ; 桃花公主王冠 ; 피치공주 왕관 ; couronne Princesse Peach ; Peach-Krone ; corona de Peach ; corona di Peach ; prinses-Peach-kroon ; корона принцессы Пич ; Gold
 13EA ; CapOrnamentHyacinth3 ; purple hyacinth crown ; ヒヤシンスのかんむり・パープル ; 紫色風信子花冠 ; 紫色风信子花冠 ; 퍼플 히아신스 화관 ; coiffe jacinthes mauves ; Purpurhyazinthenkrone ; guirnalda jacinto violeta ; corona di giacinti viola ; paarse-hyacintenkroon ; фиол. венок из гиацинтов ; Purple
 13F3 ; CapOrnamentPansy3 ; purple pansy crown ; パンジーのかんむり・パープル ; 紫色三色堇花冠 ; 紫色三色堇花冠 ; 퍼플 팬지 화관 ; coiffe pensées mauves ; Hainveilchenkrone ; guirnalda viola violeta ; corona di viole viola ; paarse-viooltjeskroon ; фиол. венок из фиалок ; Purple
 13ED ; CapOrnamentAnemone3 ; purple windflower crown ; アネモネのかんむり・パープル ; 紫色銀蓮花花冠 ; 紫色银莲花花冠 ; 퍼플 아네모네 화관 ; coiffe anémones mauves ; Purpuranemonenkrone ; guirnalda anémona violeta ; corona di anemoni viola ; paarse-anemonenkroon ; фиол. венок из ветрениц ; Purple
@@ -5383,6 +5418,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2ABD ; CapHatShallow4 ; shallow knit cap ; あさいニットぼう ; 短版針織帽 ; 短版针织帽 ; 얇은 털모자 ; mini bonnet tricoté ; Ministrickmütze ; minigorro de punto ; cappellino basso di lana ; korte muts ; вязаная мини-шапочка ; Purple
 2ABE ; CapHatShallow5 ; shallow knit cap ; あさいニットぼう ; 短版針織帽 ; 短版针织帽 ; 얇은 털모자 ; mini bonnet tricoté ; Ministrickmütze ; minigorro de punto ; cappellino basso di lana ; korte muts ; вязаная мини-шапочка ; Gray
 2ABF ; CapHatShallow6 ; shallow knit cap ; あさいニットぼう ; 短版針織帽 ; 短版针织帽 ; 얇은 털모자 ; mini bonnet tricoté ; Ministrickmütze ; minigorro de punto ; cappellino basso di lana ; korte muts ; вязаная мини-шапочка ; Brown
+379B ; CapHatShamrock0 ; shamrock hat ; シャムロックハット ; 三葉草帽 ; 三叶草帽 ; 성 패트릭 모자 ; chapeau trèfle ; Kleehut ; sombrero trébol ; cappello trifoglio ; klaverhoed ; шляпа с трилистником ; Green
 14A4 ; CapHatChina0 ; silk hat ; チャイナハット ; 唐裝帽 ; 唐装帽 ; 중국풍 모자 ; chapeau en soie ; Asia-Mütze ; gorro de seda ; cappello di seta ; zijden muts ; шелковая шапочка ; Green
 2E4A ; CapHatChina2 ; silk hat ; チャイナハット ; 唐裝帽 ; 唐装帽 ; 중국풍 모자 ; chapeau en soie ; Asia-Mütze ; gorro de seda ; cappello di seta ; zijden muts ; шелковая шапочка ; Yellow
 2E4B ; CapHatChina3 ; silk hat ; チャイナハット ; 唐裝帽 ; 唐装帽 ; 중국풍 모자 ; chapeau en soie ; Asia-Mütze ; gorro de seda ; cappello di seta ; zijden muts ; шелковая шапочка ; Black
@@ -5509,6 +5545,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 260C ; CapHatViking2 ; viking helmet ; バイキングのかぶと ; 維京人頭盔 ; 维京人头盔 ; 바이킹 투구 ; casque viking ; Wikingerhelm ; casco vikingo ; elmo vichingo ; Vikinghelm ; шлем викинга ; Blue
 260B ; CapHatViking1 ; viking helmet ; バイキングのかぶと ; 維京人頭盔 ; 维京人头盔 ; 바이킹 투구 ; casque viking ; Wikingerhelm ; casco vikingo ; elmo vichingo ; Vikinghelm ; шлем викинга ; Brown
 1492 ; CapHatViking0 ; viking helmet ; バイキングのかぶと ; 維京人頭盔 ; 维京人头盔 ; 바이킹 투구 ; casque viking ; Wikingerhelm ; casco vikingo ; elmo vichingo ; Vikinghelm ; шлем викинга ; Gray
+34EC ; CapHatWario0 ; Wario hat ; ワリオのぼうし ; 瓦利歐帽子 ; 瓦力欧帽子 ; 와리오 모자 ; casquette de Wario ; Wario-Mütze ; gorra de Wario ; cappello di Wario ; Wario-pet ; кепка Варио ; Yellow
 309C ; CapHatEggfish0 ; water-egg shell ; サカナのたまごのから ; 魚兒蛋殼 ; 鱼儿蛋壳 ; 물고기 달걀 껍질 ; coquille d'œuf aquatique ; Wasser-Eierschale ; cáscara de huevo acuático ; guscio d'uovo acquatico ; watereierschaal ; скорлупа водяного яйца ; Purple
 14A0 ; CapHatWatermelon ; watermelon hat ; スイカのぼうし ; 西瓜帽子 ; 西瓜帽子 ; 수박 모자 ; chapeau pastèque ; Melonenhut ; gorro sandía ; cappello anguria ; watermeloenmuts ; шапка-арбуз ; Red
 2A86 ; CapHatStraw1 ; wide-brim straw hat ; つばひろストローハット ; 寬邊草帽 ; 宽边草帽 ; 챙 넓은 밀짚모자 ; chapeau de paille large ; Florentinerhut ; pamela de paja ; cappello di paglia largo ; strohoed met brede rand ; широкополая «соломка» ; Beige
@@ -6238,6 +6275,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 22FB ; TopsTexOnepieceBoxLAutumncheck2 ; loose fall dress ; あきいろチェックワンピース ; 秋色格紋連身裙 ; 秋色格纹连身裙 ; 가을색 체크무늬 옷 ; robe automnale à carreaux ; Karo-Herbstkleid ; vestido suelto a cuadros ; vestito autunnale largo ; losse herfstjurk ; осеннее платье в клетку ; Orange
 22FC ; TopsTexOnepieceBoxLAutumncheck3 ; loose fall dress ; あきいろチェックワンピース ; 秋色格紋連身裙 ; 秋色格纹连身裙 ; 가을색 체크무늬 옷 ; robe automnale à carreaux ; Karo-Herbstkleid ; vestido suelto a cuadros ; vestito autunnale largo ; losse herfstjurk ; осеннее платье в клетку ; Blue
 112C ; TopsTexOnepieceBoxLAutumncheck0 ; loose fall dress ; あきいろチェックワンピース ; 秋色格紋連身裙 ; 秋色格纹连身裙 ; 가을색 체크무늬 옷 ; robe automnale à carreaux ; Karo-Herbstkleid ; vestido suelto a cuadros ; vestito autunnale largo ; losse herfstjurk ; осеннее платье в клетку ; Red
+34F4 ; TopsTexOnepieceSalopetteLLuigi0 ; Luigi outfit ; ルイージのふく ; 路易吉服 ; 路易吉服 ; 루이지 옷 ; tenue de Luigi ; Luigi-Outfit ; traje de Luigi ; tuta di Luigi ; Luigi-pak ; наряд Луиджи ; Navy blue
 3446 ; TopsTexOnepieceBalloonLHalloween1 ; mage's dress ; まほうつかいのドレス ; 魔法師洋裝 ; 魔法师洋装 ; 마법사 드레스 ; robe de mage ; Hexenkleid ; vestido de hechicería ; costume stregonesco ; heksenjurk ; платье колдуньи ; Purple
 3447 ; TopsTexOnepieceBalloonLHalloween2 ; mage's dress ; まほうつかいのドレス ; 魔法師洋裝 ; 魔法师洋装 ; 마법사 드레스 ; robe de mage ; Hexenkleid ; vestido de hechicería ; costume stregonesco ; heksenjurk ; платье колдуньи ; White
 3448 ; TopsTexOnepieceBalloonLHalloween3 ; mage's dress ; まほうつかいのドレス ; 魔法師洋裝 ; 魔法师洋装 ; 마법사 드레스 ; robe de mage ; Hexenkleid ; vestido de hechicería ; costume stregonesco ; heksenjurk ; платье колдуньи ; Green
@@ -6283,6 +6321,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 1FE6 ; TopsTexOnepieceOverallLMariachi3 ; mariachi clothing ; マリアッチのいしょう ; 墨西哥街頭樂隊服裝 ; 墨西哥街头乐队装 ; 악단 의상 ; tenue de mariachi ; Mariachi-Outfit ; traje de mariachi ; completo da mariachi ; mariachipak ; костюм мариачи ; Red
 1FE7 ; TopsTexOnepieceOverallLMariachi4 ; mariachi clothing ; マリアッチのいしょう ; 墨西哥街頭樂隊服裝 ; 墨西哥街头乐队装 ; 악단 의상 ; tenue de mariachi ; Mariachi-Outfit ; traje de mariachi ; completo da mariachi ; mariachipak ; костюм мариачи ; Blue
 1FE8 ; TopsTexOnepieceOverallLMariachi5 ; mariachi clothing ; マリアッチのいしょう ; 墨西哥街頭樂隊服裝 ; 墨西哥街头乐队装 ; 악단 의상 ; tenue de mariachi ; Mariachi-Outfit ; traje de mariachi ; completo da mariachi ; mariachipak ; костюм мариачи ; Orange
+34F3 ; TopsTexOnepieceSalopetteLMario0 ; Mario outfit ; マリオのふく ; 瑪利歐服 ; 马力欧服 ; 마리오 옷 ; tenue de Mario ; Mario-Outfit ; traje de Mario ; tuta di Mario ; Mario-pak ; наряд Марио ; Blue
 11A8 ; TopsTexOnepieceBlongLShirt0 ; maxi shirtdress ; ロングシャツワンピ ; 長版襯衫連身裙 ; 长版衬衫连身裙 ; 롱 셔츠 원피스 ; maxi robe chemise ; Karo-Hemdkleid ; vestido camisero extralargo ; camicione maxi ; maxi-overhemdjurk ; платье-рубашка в клетку ; Yellow
 22FD ; TopsTexOnepieceBlongLShirt1 ; maxi shirtdress ; ロングシャツワンピ ; 長版襯衫連身裙 ; 长版衬衫连身裙 ; 롱 셔츠 원피스 ; maxi robe chemise ; Karo-Hemdkleid ; vestido camisero extralargo ; camicione maxi ; maxi-overhemdjurk ; платье-рубашка в клетку ; Red
 22FE ; TopsTexOnepieceBlongLShirt2 ; maxi shirtdress ; ロングシャツワンピ ; 長版襯衫連身裙 ; 长版衬衫连身裙 ; 롱 셔츠 원피스 ; maxi robe chemise ; Karo-Hemdkleid ; vestido camisero extralargo ; camicione maxi ; maxi-overhemdjurk ; платье-рубашка в клетку ; Green
@@ -6436,6 +6475,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 202B ; TopsTexOnepieceDressLPrincess5 ; princess dress ; プリンセスなふく ; 公主服 ; 公主裙 ; 공주풍 옷 ; robe de princesse ; Prinzessinnenkleid ; vestido princesa ; vestito da principessa ; prinsessenjurk ; платье принцессы ; Mint
 202C ; TopsTexOnepieceDressLPrincess6 ; princess dress ; プリンセスなふく ; 公主服 ; 公主裙 ; 공주풍 옷 ; robe de princesse ; Prinzessinnenkleid ; vestido princesa ; vestito da principessa ; prinsessenjurk ; платье принцессы ; Orange
 202D ; TopsTexOnepieceDressLPrincess7 ; princess dress ; プリンセスなふく ; 公主服 ; 公主裙 ; 공주풍 옷 ; robe de princesse ; Prinzessinnenkleid ; vestido princesa ; vestito da principessa ; prinsessenjurk ; платье принцессы ; Gray
+34FC ; TopsTexOnepieceDressHPeach0 ; Princess Peach dress ; ピーチひめのドレス ; 碧姬公主洋裝 ; 桃花公主洋装 ; 피치공주 드레스 ; robe de Princesse Peach ; Peach-Kleid ; vestido de Peach ; vestito di Peach ; prinses-Peach-jurk ; наряд принцессы Пич ; Pink
 24FA ; TopsTexOnepieceOverallLRacer1 ; racing outfit ; レーサーなふく ; 賽車服 ; 赛车服 ; 카레이서 옷 ; combinaison de pilote ; Rennfahrer-Outfit ; mono de carreras ; tuta da pilota ; coureurspak ; костюм гонщика ; Blue
 24FB ; TopsTexOnepieceOverallLRacer2 ; racing outfit ; レーサーなふく ; 賽車服 ; 赛车服 ; 카레이서 옷 ; combinaison de pilote ; Rennfahrer-Outfit ; mono de carreras ; tuta da pilota ; coureurspak ; костюм гонщика ; Yellow
 24FC ; TopsTexOnepieceOverallLRacer3 ; racing outfit ; レーサーなふく ; 賽車服 ; 赛车服 ; 카레이서 옷 ; combinaison de pilote ; Rennfahrer-Outfit ; mono de carreras ; tuta da pilota ; coureurspak ; костюм гонщика ; Black
@@ -6508,6 +6548,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 0A27 ; TopsTexOnepieceBalloonNSatin0 ; satin dress ; サテンのワンピース ; 緞面連身裙 ; 缎面连身裙 ; 새틴 원피스 ; robe ballon en satin ; Satinkleid ; vestido de satén ; vestito satinato ; satijnen jurk ; атласное платье ; Green
 15BF ; TopsTexOnepieceBoxLSchoolsmockNavy ; school smock ; スクールスモック ; 學校罩衣 ; 学生罩衣 ; 둥근 칼라 버튼 원피스 ; blouse d'école ; Schülerkittel ; bata escolar ; grembiulino scolastico ; schoolkieltje ; школьный блузон ; Blue
 0DED ; TopsTexOnepieceOverallLPoliceNavy ; security uniform ; けいかんのふく ; 警官服 ; 警服 ; 경찰복 ; tenue de policier ; Polizeiuniform ; uniforme de policía ; uniforme di polizia ; bewakersuniform ; форма охранника ; Navy blue
+379C ; TopsTexOnepieceSalopetteLShamrock0 ; shamrock suit ; シャムロックスーツ ; 三葉草裝 ; 三叶草装 ; 성 패트릭 의상 ; costume trèfle ; Kleeblatt-Outfit ; traje trébol ; vestito trifoglio ; klaverpak ; наряд «Трилистник» ; Green
 1189 ; TopsTexOnepieceRibLShawl0 ; shawl-and-dress combo ; ショールコーデワンピ ; 披肩配連身裙 ; 连身裙配披肩 ; 숄을 두른 원피스 ; robe avec écharpe ; Schal-Kleid ; vestido de punto con chal ; vestito con scialle ; jurk met sjaal ; платье с шалью ; Black
 2193 ; TopsTexOnepieceRibLShawl1 ; shawl-and-dress combo ; ショールコーデワンピ ; 披肩配連身裙 ; 连身裙配披肩 ; 숄을 두른 원피스 ; robe avec écharpe ; Schal-Kleid ; vestido de punto con chal ; vestito con scialle ; jurk met sjaal ; платье с шалью ; Ochre
 2194 ; TopsTexOnepieceRibLShawl2 ; shawl-and-dress combo ; ショールコーデワンピ ; 披肩配連身裙 ; 连身裙配披肩 ; 숄을 두른 원피스 ; robe avec écharpe ; Schal-Kleid ; vestido de punto con chal ; vestito con scialle ; jurk met sjaal ; платье с шалью ; Green
@@ -6681,6 +6722,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2F32 ; TopsTexOnepieceDressLMexico5 ; Victorian dress ; セニョリータなドレス ; 墨西哥少女洋裝 ; 西班牙少女洋装 ; 세뇨리따 드레스 ; robe victorienne ; Señorita-Kleid ; vestido de época ; abito d'epoca ; saloonjurk ; викторианское платье ; Orange
 2BAB ; TopsTexOnepieceBalloonHVisual0 ; visual-punk dress ; ヴィジュアルけいドレス ; 視覺系洋裝 ; 视觉系连身裙 ; 고딕풍 드레스 ; robe visual kei ; Visual-Kei-Kleid ; vestido punk ; vestito visual kei ; Japanse punkjurk ; панковское платье ; Black
 11D3 ; TopsTexOnepieceOverallLVisualBlack ; visual-punk outfit ; ヴィジュアルけいコスチューム ; 視覺系服裝 ; 视觉系服装 ; 펑크 스타일 의상 ; tenue visual kei ; Visual-Kei-Outfit ; traje punk ; abito visual kei ; Japanse punkoutfit ; панковский костюм ; Black
+34F5 ; TopsTexOnepieceOverallHWario0 ; Wario outfit ; ワリオのふく ; 瓦利歐服 ; 瓦力欧服 ; 와리오 옷 ; tenue de Wario ; Wario-Outfit ; traje de Wario ; tuta di Wario ; Wario-pak ; наряд Варио ; Purple
 30A6 ; TopsTexOnepieceRibNEggfish0 ; water-egg outfit ; サカナのたまごのふく ; 魚兒蛋衣服 ; 鱼儿蛋衣服 ; 물고기 달걀 옷 ; tenue œuf aquatique ; Wasser-Glücksei-Outfit ; traje de huevo acuático ; abito a uovo acquatico ; waterei-outfit ; наряд «Водяное яйцо» ; Purple
 0CD7 ; TopsTexOnepieceAlineNWatermelon ; watermelon dress ; スイカのふく ; 西瓜服 ; 西瓜服 ; 수박 옷 ; robe pastèque ; Wassermelonenkleid ; vestido sandía ; vestito anguria ; watermeloenjurk ; платье «Арбуз» ; Red
 0D08 ; TopsTexOnepieceDressNWedding ; wedding dress ; じゅんぱくのドレス ; 純白洋裝 ; 纯白洋装 ; 순백 드레스 ; robe de mariée ; Brautkleid ; vestido nupcial ; vestito da sposa ; trouwjurk ; свадебное платье ; White
@@ -6911,6 +6953,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2CBD ; ShoesLowcutLoafers5 ; loafers ; ローファー ; 樂福鞋 ; 乐福鞋 ; 로퍼 ; paire de chaussures bateau ; Paar Slipper ; mocasín ; paio di mocassini ; instappers ; лоферы ; Yellow
 2CBE ; ShoesLowcutLoafers6 ; loafers ; ローファー ; 樂福鞋 ; 乐福鞋 ; 로퍼 ; paire de chaussures bateau ; Paar Slipper ; mocasín ; paio di mocassini ; instappers ; лоферы ; Red
 1274 ; ShoesLowcutLoafers0 ; loafers ; ローファー ; 樂福鞋 ; 乐福鞋 ; 로퍼 ; paire de chaussures bateau ; Paar Slipper ; mocasín ; paio di mocassini ; instappers ; лоферы ; Brown
+37A3 ; ShoesLowcutLuigi0 ; Luigi shoes ; ルイージのくつ ; 路易吉鞋 ; 路易吉鞋 ; 루이지 신발 ; p. de chaussures de Luigi ; Paar Luigi-Schuhe ; zapato de Luigi ; paio di scarpe di Luigi ; Luigi-schoenen ; ботинки Луиджи ; Brown
 1AEE ; ShoesKneeWitch0 ; mage's booties ; とんがりブーツ ; 尖頭靴 ; 尖头靴 ; 마술사 부츠 ; paire de bottines pointues ; Paar Spitz-Stiefelchen ; botín de hechicería ; paio di stivaletti appuntiti ; heksenlaarsjes ; чародейские ботинки ; Black
 2D29 ; ShoesKneeWitch1 ; mage's booties ; とんがりブーツ ; 尖頭靴 ; 尖头靴 ; 마술사 부츠 ; paire de bottines pointues ; Paar Spitz-Stiefelchen ; botín de hechicería ; paio di stivaletti appuntiti ; heksenlaarsjes ; чародейские ботинки ; Blue
 2D2A ; ShoesKneeWitch2 ; mage's booties ; とんがりブーツ ; 尖頭靴 ; 尖头靴 ; 마술사 부츠 ; paire de bottines pointues ; Paar Spitz-Stiefelchen ; botín de hechicería ; paio di stivaletti appuntiti ; heksenlaarsjes ; чародейские ботинки ; White
@@ -6921,6 +6964,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 32D9 ; ShoesHighcutHalloween0 ; mage's boots ; まほうつかいのブーツ ; 魔法師靴子 ; 魔法师靴子 ; 마법사 부츠 ; paire de bottes de mage ; Paar Zauberschuhe ; bota de hechicería ; paio di stivali stregoneschi ; heksenlaarzen ; полусапоги мага ; Orange
 3474 ; ShoesHighcutHalloween1 ; mage's boots ; まほうつかいのブーツ ; 魔法師靴子 ; 魔法师靴子 ; 마법사 부츠 ; paire de bottes de mage ; Paar Zauberschuhe ; bota de hechicería ; paio di stivali stregoneschi ; heksenlaarzen ; полусапоги мага ; Purple
 3475 ; ShoesHighcutHalloween2 ; mage's boots ; まほうつかいのブーツ ; 魔法師靴子 ; 魔法师靴子 ; 마법사 부츠 ; paire de bottes de mage ; Paar Zauberschuhe ; bota de hechicería ; paio di stivali stregoneschi ; heksenlaarzen ; полусапоги мага ; White
+34F9 ; ShoesLowcutMario0 ; Mario shoes ; マリオのくつ ; 瑪利歐鞋 ; 马力欧鞋 ; 마리오 신발 ; p. de chaussures de Mario ; Paar Mario-Schuhe ; zapato de Mario ; paio di scarpe di Mario ; Mario-schoenen ; ботинки Марио ; Brown
 27B2 ; ShoesLowcutStrap1 ; mary janes ; ストラップシューズ ; 扣帶鞋 ; 扣带鞋 ; 메리제인 슈즈 ; paire de babies ; Paar Riemchenschuhe ; mercedita ; paio di scarpe con cinturino ; kinderschoenen ; туфли с перемычкой ; Red
 27B3 ; ShoesLowcutStrap2 ; mary janes ; ストラップシューズ ; 扣帶鞋 ; 扣带鞋 ; 메리제인 슈즈 ; paire de babies ; Paar Riemchenschuhe ; mercedita ; paio di scarpe con cinturino ; kinderschoenen ; туфли с перемычкой ; White
 27B4 ; ShoesLowcutStrap3 ; mary janes ; ストラップシューズ ; 扣帶鞋 ; 扣带鞋 ; 메리제인 슈즈 ; paire de babies ; Paar Riemchenschuhe ; mercedita ; paio di scarpe con cinturino ; kinderschoenen ; туфли с перемычкой ; Light blue
@@ -6983,6 +7027,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2E15 ; ShoesKneePowered1 ; power boots ; パワードブーツ ; 動力靴 ; 动力靴 ; 파워 부츠 ; paire bottes de puissance ; Paar Power-Stiefel ; bota de energía ; paio stivali tuta potenziata ; superkrachtlaarzen ; силовые ботинки ; Blue
 2E16 ; ShoesKneePowered2 ; power boots ; パワードブーツ ; 動力靴 ; 动力靴 ; 파워 부츠 ; paire bottes de puissance ; Paar Power-Stiefel ; bota de energía ; paio stivali tuta potenziata ; superkrachtlaarzen ; силовые ботинки ; Green
 2E17 ; ShoesKneePowered3 ; power boots ; パワードブーツ ; 動力靴 ; 动力靴 ; 파워 부츠 ; paire bottes de puissance ; Paar Power-Stiefel ; bota de energía ; paio stivali tuta potenziata ; superkrachtlaarzen ; силовые ботинки ; Black
+3522 ; ShoesLowcutPeach0 ; Princess Peach shoes ; ピーチひめのくつ ; 碧姬公主鞋 ; 桃花公主鞋 ; 피치공주 구두 ; p. chauss. Princesse Peach ; Paar Peach-Pumps ; zapato de Peach ; paio di scarpe di Peach ; prinses-Peach-pumps ; туфли принцессы Пич ; Red
 2D1F ; ShoesKneeRainboots1 ; rain boots ; レインブーツ ; 雨靴 ; 雨靴 ; 레인 부츠 ; paire de bottes de pluie ; Paar Regenstiefel ; katiuska ; paio di stivali da pioggia ; regenlaarzen ; резиновые сапоги ; Green
 2D20 ; ShoesKneeRainboots2 ; rain boots ; レインブーツ ; 雨靴 ; 雨靴 ; 레인 부츠 ; paire de bottes de pluie ; Paar Regenstiefel ; katiuska ; paio di stivali da pioggia ; regenlaarzen ; резиновые сапоги ; Blue
 2D21 ; ShoesKneeRainboots3 ; rain boots ; レインブーツ ; 雨靴 ; 雨靴 ; 레인 부츠 ; paire de bottes de pluie ; Paar Regenstiefel ; katiuska ; paio di stivali da pioggia ; regenlaarzen ; резиновые сапоги ; Purple
@@ -7026,6 +7071,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 2D2F ; ShoesKneeLegguard1 ; samurai greaves ; かっちゅうのすねあて ; 盔甲護腿鞋 ; 盔甲护腿靴 ; 갑옷 다리 보호대 ; paire de grèves de samouraï ; Paar Samuraistiefel ; bota de samurái ; paio di gambiere da samurai ; samoerai-sandalen ; поножи воина ; Black
 2D30 ; ShoesKneeLegguard2 ; samurai greaves ; かっちゅうのすねあて ; 盔甲護腿鞋 ; 盔甲护腿靴 ; 갑옷 다리 보호대 ; paire de grèves de samouraï ; Paar Samuraistiefel ; bota de samurái ; paio di gambiere da samurai ; samoerai-sandalen ; поножи воина ; Blue
 2D31 ; ShoesKneeLegguard3 ; samurai greaves ; かっちゅうのすねあて ; 盔甲護腿鞋 ; 盔甲护腿靴 ; 갑옷 다리 보호대 ; paire de grèves de samouraï ; Paar Samuraistiefel ; bota de samurái ; paio di gambiere da samurai ; samoerai-sandalen ; поножи воина ; White
+379D ; ShoesLowcutShamrock0 ; shamrock shoes ; シャムロックシューズ ; 三葉草鞋 ; 三叶草鞋 ; 성 패트릭 슈즈 ; paire de chaussures trèfle ; Paar Kleeblattschuhe ; botín trébol ; paio di scarpe trifoglio ; klaverschoenen ; туфли «Трилистник» ; Green
 27A5 ; ShoesLowcutLolita1 ; shiny bow platform shoes ; ロリータシューズ ; 蘿莉塔鞋 ; 洛丽塔鞋 ; 리본 레이스 슈즈 ; paire de babies à rubans ; Paar Prinzessinnenschuhe ; zapato muñequita ; paio di scarpette bambolina ; schoenen met enkelbandjes ; милые туфли ; Black
 15E6 ; ShoesLowcutLolita0 ; shiny bow platform shoes ; ロリータシューズ ; 蘿莉塔鞋 ; 洛丽塔鞋 ; 리본 레이스 슈즈 ; paire de babies à rubans ; Paar Prinzessinnenschuhe ; zapato muñequita ; paio di scarpette bambolina ; schoenen met enkelbandjes ; милые туфли ; Pink
 27A6 ; ShoesLowcutLolita2 ; shiny bow platform shoes ; ロリータシューズ ; 蘿莉塔鞋 ; 洛丽塔鞋 ; 리본 레이스 슈즈 ; paire de babies à rubans ; Paar Prinzessinnenschuhe ; zapato muñequita ; paio di scarpette bambolina ; schoenen met enkelbandjes ; милые туфли ; Red
@@ -7126,6 +7172,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 168F ; ShoesLowcutHealth0 ; walking shoes ; ウォーキングシューズ ; 步行鞋 ; 步行鞋 ; 워킹 슈즈 ; p. chaussures confortables ; Paar Spazierschuhe ; zapatilla anatómica ; paio di scarpe da passeggio ; gemakkelijke schoenen ; легкие слипоны ; Pink
 2AF5 ; ShoesLowcutHealth1 ; walking shoes ; ウォーキングシューズ ; 步行鞋 ; 步行鞋 ; 워킹 슈즈 ; p. chaussures confortables ; Paar Spazierschuhe ; zapatilla anatómica ; paio di scarpe da passeggio ; gemakkelijke schoenen ; легкие слипоны ; Beige
 2AF6 ; ShoesLowcutHealth2 ; walking shoes ; ウォーキングシューズ ; 步行鞋 ; 步行鞋 ; 워킹 슈즈 ; p. chaussures confortables ; Paar Spazierschuhe ; zapatilla anatómica ; paio di scarpe da passeggio ; gemakkelijke schoenen ; легкие слипоны ; Red
+34FA ; ShoesLowcutWario0 ; Wario shoes ; ワリオのくつ ; 瓦利歐鞋 ; 瓦力欧鞋 ; 와리오 신발 ; p. de chaussures de Wario ; Paar Wario-Latschen ; zapato de Wario ; paio di scarpe di Wario ; Wario-schoenen ; туфли Варио ; Green
 1614 ; ShoesSandalAqua0 ; water sandals ; アクアサンダル ; 水涼鞋 ; 水陆凉鞋 ; 아쿠아 샌들 ; paire sandalettes de plage ; Paar Strandsandalen ; sandalia de goma ; paio di sandali da mare ; watersandalen ; пляжные сандалии ; Pink
 29E0 ; ShoesSandalAqua7 ; water sandals ; アクアサンダル ; 水涼鞋 ; 水陆凉鞋 ; 아쿠아 샌들 ; paire sandalettes de plage ; Paar Strandsandalen ; sandalia de goma ; paio di sandali da mare ; watersandalen ; пляжные сандалии ; Yellow
 29DA ; ShoesSandalAqua1 ; water sandals ; アクアサンダル ; 水涼鞋 ; 水陆凉鞋 ; 아쿠아 샌들 ; paire sandalettes de plage ; Paar Strandsandalen ; sandalia de goma ; paio di sandali da mare ; watersandalen ; пляжные сандалии ; Navy blue

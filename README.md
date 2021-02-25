@@ -146,9 +146,9 @@ https://youtu.be/-zztRgmtXig
 	* Redo the "Map Dropper" with mini map control.
 * R12.3
 	* Added "Remove item..." option to bulk spawn item
-	* Added Auto-save detection to try and avoid crashes due to write durning saveing.
+	* Added Auto-save detection to try and avoid crashes due to write during auto save.
 	* Added background color for the "Map Dropper"
-	* Added a bit more code and a log file to try and cath exception.
+	* Added a bit more code and a log file to try and catch exception.
 * R13
 	* Update for Game version number 1.7.0
 * R13.1
@@ -180,7 +180,12 @@ https://youtu.be/-zztRgmtXig
 	* Added "idle emote" which will randomly do a emote after some idle time.
       * Do NOT use if you have discord bot dropping item.
 	* Fixed the program crash due to incomplete villager images download(Again).
-	
+* R14
+	* Update for Game version number 1.8.0
+	* Added webhook support to let the dodo helper to post the dodo code to a discord channel.
+      * You need a "webhook.txt" file in /save folder containing two lines : 1) The Webhook URL & 2) what the bot will say (You can ping someone here)
+	* Added a "villager.txt" containing the villager list on the island.
+      * Only updated when you press the button to START the regen.
     
 ## Contributing
 
