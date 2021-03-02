@@ -16,8 +16,9 @@ namespace ACNHPoker
     {
         private string UpdateTownID()
         {
-            byte[] townID = Utilities.GetTownID(s, bot);
-            return "  |  Island Name : " + Encoding.Unicode.GetString(townID, 4, 0x18);
+            byte[] townID = Utilities.GetTownID(s, null);
+            IslandName = Utilities.GetString(townID, 0x04, 10);
+            return "  |  Island Name : " + IslandName;
         }
 
         private void readWeatherSeed()

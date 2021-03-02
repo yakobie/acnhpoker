@@ -17,6 +17,7 @@ namespace ACNHPoker
         public Boolean dodoSetupDone = false;
         private Boolean idleEmote = false;
         private int idleNum = 0;
+        private Boolean HoldingL = false;
         public dodo(Form owner)
         {
             InitializeComponent();
@@ -511,7 +512,6 @@ namespace ACNHPoker
                 WriteLog("[Warning] Disconnected.", true);
                 WriteLog("Please wait a moment for the restore.", true);
                 LockControl();
-                Thread.Sleep(5000);
 
                 int retry = 0;
                 do
@@ -522,14 +522,29 @@ namespace ACNHPoker
                         HardRestore();
                         break;
                     }
-                    WriteLog("Waiting for Overworld", true);
+                    if (teleport.GetLocationState() == teleport.LocationState.Announcement)
+                    {
+                        WriteLog("In Announcement", true);
+                        if (!HoldingL)
+                        {
+                            controller.pressL();
+                            HoldingL = true;
+                        }
+                        retry = 0;
+                    }
+                    else
+                    {
+                        WriteLog("Waiting for Overworld", true);
+                    }
                     controller.clickA();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(3000);
                     retry++;
                 }
                 while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
 
-                Thread.Sleep(10000);
+                //Thread.Sleep(2000);
+                controller.releaseL();
+                HoldingL = false;
                 WriteLog("[Warning] Start Normal Restore", true);
                 WriteLog("Please wait for the bot to finish the sequence.", true);
                 NormalRestore();
@@ -543,12 +558,27 @@ namespace ACNHPoker
         {
             do
             {
-                WriteLog("Confirming Overworld", true);
-                Thread.Sleep(2000);
+                if (teleport.GetLocationState() == teleport.LocationState.Announcement)
+                {
+                    WriteLog("In Announcement", true);
+                    if (!HoldingL)
+                    {
+                        controller.pressL();
+                        HoldingL = true;
+                    }
+                }
+                else
+                {
+                    WriteLog("Confirming Overworld", true);
+                }
+                controller.clickA();
+                Thread.Sleep(3000);
             }
             while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
 
-            Thread.Sleep(5000);
+            controller.releaseL();
+            HoldingL = false;
+            Thread.Sleep(2000);
             controller.clickDown(); // Hide Weapon
             Thread.Sleep(1000);
 
@@ -571,7 +601,10 @@ namespace ACNHPoker
             teleport.TeleportToAnchor(3);
 
             WriteLog("Try Getting Dodo", true);
-            DisplayDodo(controller.talkAndGetDodoCode());
+            if (skipDialogCheckBox.Checked)
+                DisplayDodo(controller.talkAndGetDodoCode());
+            else
+                DisplayDodo(controller.talkAndGetDodoCodeLegacy());
             WriteLog("Finish Getting Dodo", true);
             CheckOnlineStatus();
 
@@ -622,14 +655,25 @@ namespace ACNHPoker
             {
                 //Debug.Print(teleport.GetOverworldState().ToString());
                 //Debug.Print("Waiting for Overworld");
+                if (teleport.GetLocationState() == teleport.LocationState.Announcement)
+                {
+                    WriteLog("In Announcement", true);
+                    if (!HoldingL)
+                    {
+                        controller.pressL();
+                        HoldingL = true;
+                    }
+                }
                 controller.clickA();
                 Thread.Sleep(2000);
                 retry++;
             }
             while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
 
+            controller.releaseL();
+            HoldingL = false;
             WriteLog("Exiting House", true);
-            Thread.Sleep(5000);
+            Thread.Sleep(2000);
         }
 
         private void CloseGate()

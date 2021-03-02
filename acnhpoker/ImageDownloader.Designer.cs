@@ -28,65 +28,113 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImageDownloader));
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.yesBtn = new System.Windows.Forms.Button();
+            this.noBtn = new System.Windows.Forms.Button();
+            this.msg = new System.Windows.Forms.Label();
+            this.waitmsg = new System.Windows.Forms.Label();
+            this.configBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // progressBar1
+            // progressBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 181);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(267, 23);
-            this.progressBar1.TabIndex = 0;
+            this.progressBar.BackColor = System.Drawing.Color.Black;
+            this.progressBar.ForeColor = System.Drawing.Color.Pink;
+            this.progressBar.Location = new System.Drawing.Point(4, 125);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(425, 23);
+            this.progressBar.TabIndex = 0;
             // 
-            // button1
+            // yesBtn
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 107);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 57);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Yes";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.yesBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.yesBtn.FlatAppearance.BorderSize = 0;
+            this.yesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.yesBtn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.yesBtn.ForeColor = System.Drawing.Color.Transparent;
+            this.yesBtn.Location = new System.Drawing.Point(87, 85);
+            this.yesBtn.Name = "yesBtn";
+            this.yesBtn.Size = new System.Drawing.Size(116, 34);
+            this.yesBtn.TabIndex = 1;
+            this.yesBtn.Text = "Yes";
+            this.yesBtn.UseVisualStyleBackColor = false;
+            this.yesBtn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // noBtn
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.button2.Location = new System.Drawing.Point(163, 107);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 57);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "No";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.noBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.noBtn.FlatAppearance.BorderSize = 0;
+            this.noBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.noBtn.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.noBtn.ForeColor = System.Drawing.Color.White;
+            this.noBtn.Location = new System.Drawing.Point(238, 85);
+            this.noBtn.Name = "noBtn";
+            this.noBtn.Size = new System.Drawing.Size(116, 34);
+            this.noBtn.TabIndex = 2;
+            this.noBtn.Text = "No";
+            this.noBtn.UseVisualStyleBackColor = false;
+            this.noBtn.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label1
+            // msg
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(265, 80);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "It appears that you do not have the  \r\nimages downloaded for the item list. \r\nWou" +
-    "ld you like to automatically \r\ndownload them now?";
+            this.msg.AutoSize = true;
+            this.msg.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.msg.ForeColor = System.Drawing.Color.White;
+            this.msg.Location = new System.Drawing.Point(0, 3);
+            this.msg.Name = "msg";
+            this.msg.Size = new System.Drawing.Size(438, 76);
+            this.msg.TabIndex = 3;
+            this.msg.Text = "It appears that you do not have the images downloaded. \r\nWould you like to downlo" +
+    "ad them now?\r\n\r\n(You can find this dialog in           again if needed)";
+            this.msg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // waitmsg
+            // 
+            this.waitmsg.AutoSize = true;
+            this.waitmsg.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.waitmsg.ForeColor = System.Drawing.Color.Pink;
+            this.waitmsg.Location = new System.Drawing.Point(56, 122);
+            this.waitmsg.Name = "waitmsg";
+            this.waitmsg.Size = new System.Drawing.Size(327, 38);
+            this.waitmsg.TabIndex = 4;
+            this.waitmsg.Text = "Download Finished! \r\nPlease wait patiently for the file extraction.";
+            this.waitmsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.waitmsg.Visible = false;
+            // 
+            // configBtn
+            // 
+            this.configBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.configBtn.FlatAppearance.BorderSize = 0;
+            this.configBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.configBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.configBtn.ForeColor = System.Drawing.Color.White;
+            this.configBtn.Image = global::ACNHPoker.Properties.Resources.gear;
+            this.configBtn.Location = new System.Drawing.Point(243, 52);
+            this.configBtn.Name = "configBtn";
+            this.configBtn.Size = new System.Drawing.Size(30, 30);
+            this.configBtn.TabIndex = 156;
+            this.configBtn.UseVisualStyleBackColor = false;
             // 
             // ImageDownloader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(291, 220);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.progressBar1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.ClientSize = new System.Drawing.Size(434, 167);
+            this.Controls.Add(this.configBtn);
+            this.Controls.Add(this.waitmsg);
+            this.Controls.Add(this.msg);
+            this.Controls.Add(this.noBtn);
+            this.Controls.Add(this.yesBtn);
+            this.Controls.Add(this.progressBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ImageDownloader";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Images";
             this.TopMost = true;
             this.ResumeLayout(false);
@@ -96,9 +144,11 @@
 
         #endregion
 
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Button yesBtn;
+        private System.Windows.Forms.Button noBtn;
+        private System.Windows.Forms.Label msg;
+        private System.Windows.Forms.Label waitmsg;
+        private System.Windows.Forms.Button configBtn;
     }
 }

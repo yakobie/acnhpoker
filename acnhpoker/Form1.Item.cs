@@ -99,8 +99,24 @@ namespace ACNHPoker
                                 this.pictureBox1.Invoke((MethodInvoker)delegate
                                 {
                                     Log.logEvent("MainForm", "Connection Failed : " + ipBox.Text);
-                                    this.pictureBox1.BackColor = System.Drawing.Color.Red;
+                                    this.pictureBox1.BackColor = Color.Red;
                                 });
+                                myMessageBox.Show("You have successfully started a connection!\n" +
+                                                "Your Switch IP address is correct!\n" +
+                                                "However...\n" +
+                                                "Sys-botbase is not responding...\n\n\n" +
+
+                                                "First, \n" +
+                                                "check that your Switch is running in CFW mode.\n" +
+                                                "On your Switch, go to \"System Settings\"->\"System\"\n" +
+                                                "Check \"Current version:\" and make sure you have \"AMS\" in it.\n\n" +
+                                                "Second, \n" +
+                                                "check that you have the latest version of Sys-botbase installed.\n" +
+                                                "You can get the latest version at \n        https://github.com/olliz0r/sys-botbase/releases \n" +
+                                                "Double check your installation and make sure that the \n \"430000000000000B\" folder is inside the \"atmosphere\\contents\" folder.\n\n"
+
+                                                , "Where are you, my socket 6000?", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                                 return;
                             }
 
@@ -195,7 +211,7 @@ namespace ACNHPoker
                                 LoadGridView(CreatureSeaAppearParam, seaCreatureGridView, ref seaCreatureRate, Utilities.SeaCreatureDataSize, Utilities.SeaCreatureNumRecords, 1);
 
                                 teleporter = new teleport(s);
-                                Controller = new controller(s);
+                                Controller = new controller(s, IslandName);
                             });
 
                         }

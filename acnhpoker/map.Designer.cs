@@ -81,6 +81,7 @@ namespace ACNHPoker
             this.reAnchorBtn = new System.Windows.Forms.Button();
             this.saveDebug = new System.Windows.Forms.Button();
             this.clearGridBtn = new System.Windows.Forms.Button();
+            this.ClearCopiedAreaBtn = new System.Windows.Forms.Button();
             this.LayerPanel = new System.Windows.Forms.Panel();
             this.functionPanel = new System.Windows.Forms.Panel();
             this.variationBtn = new System.Windows.Forms.Button();
@@ -111,7 +112,6 @@ namespace ACNHPoker
             this.Corner1XBox = new System.Windows.Forms.RichTextBox();
             this.Corner2YBox = new System.Windows.Forms.RichTextBox();
             this.Corner2XBox = new System.Windows.Forms.RichTextBox();
-            this.ClearCopiedAreaBtn = new System.Windows.Forms.Button();
             this.HexTextbox = new HexUpDown();
             this.selectedItem = new ACNHPoker.inventorySlot();
             this.floor1 = new ACNHPoker.floorSlot();
@@ -972,6 +972,24 @@ namespace ACNHPoker
             this.clearGridBtn.UseVisualStyleBackColor = false;
             this.clearGridBtn.Click += new System.EventHandler(this.clearGridBtn_Click);
             // 
+            // ClearCopiedAreaBtn
+            // 
+            this.ClearCopiedAreaBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.ClearCopiedAreaBtn.FlatAppearance.BorderSize = 0;
+            this.ClearCopiedAreaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClearCopiedAreaBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ClearCopiedAreaBtn.ForeColor = System.Drawing.Color.White;
+            this.ClearCopiedAreaBtn.Location = new System.Drawing.Point(359, 591);
+            this.ClearCopiedAreaBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.ClearCopiedAreaBtn.Name = "ClearCopiedAreaBtn";
+            this.ClearCopiedAreaBtn.Size = new System.Drawing.Size(137, 28);
+            this.ClearCopiedAreaBtn.TabIndex = 232;
+            this.ClearCopiedAreaBtn.Text = "Clear Copied Area";
+            this.formToolTip.SetToolTip(this.ClearCopiedAreaBtn, "Clear the stored area in the clipboard.");
+            this.ClearCopiedAreaBtn.UseVisualStyleBackColor = false;
+            this.ClearCopiedAreaBtn.Visible = false;
+            this.ClearCopiedAreaBtn.Click += new System.EventHandler(this.ClearCopiedAreaBtn_Click);
+            // 
             // LayerPanel
             // 
             this.LayerPanel.Controls.Add(this.layer2Btn);
@@ -1293,24 +1311,6 @@ namespace ACNHPoker
             this.Corner2XBox.Size = new System.Drawing.Size(40, 18);
             this.Corner2XBox.TabIndex = 228;
             this.Corner2XBox.Text = "0";
-            // 
-            // ClearCopiedAreaBtn
-            // 
-            this.ClearCopiedAreaBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.ClearCopiedAreaBtn.FlatAppearance.BorderSize = 0;
-            this.ClearCopiedAreaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ClearCopiedAreaBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.ClearCopiedAreaBtn.ForeColor = System.Drawing.Color.White;
-            this.ClearCopiedAreaBtn.Location = new System.Drawing.Point(359, 591);
-            this.ClearCopiedAreaBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.ClearCopiedAreaBtn.Name = "ClearCopiedAreaBtn";
-            this.ClearCopiedAreaBtn.Size = new System.Drawing.Size(137, 28);
-            this.ClearCopiedAreaBtn.TabIndex = 232;
-            this.ClearCopiedAreaBtn.Text = "Clear Copied Area";
-            this.formToolTip.SetToolTip(this.ClearCopiedAreaBtn, "Clear the stored area in the clipboard.");
-            this.ClearCopiedAreaBtn.UseVisualStyleBackColor = false;
-            this.ClearCopiedAreaBtn.Visible = false;
-            this.ClearCopiedAreaBtn.Click += new System.EventHandler(this.ClearCopiedAreaBtn_Click);
             // 
             // HexTextbox
             // 

@@ -186,7 +186,17 @@ https://youtu.be/-zztRgmtXig
       * You need a "webhook.txt" file in /save folder containing two lines : 1) The Webhook URL & 2) what the bot will say (You can ping someone here)
 	* Added a "villager.txt" containing the villager list on the island.
       * Only updated when you press the button to START the regen.
-    
+* R14.1	  
+	* Added option to speed up orville's dialog.
+	* Added handle to the dodo helper to try to finish Isabelle's announcement.
+	* Added error message when Sys-botbase/socket 6000 is not reponding when connecting.
+	* Villager and turnip write will now also write to the save buffer.
+	* Rework the forever untouched "Image Downloader".
+	* Added the "Image Downloader" to setting.
+	* Yeeted some of the offensive error messages of regenerator.
+	* Added the missing new recipes to .nhbs.
+	* Other minor adjustments have been made to enhance the user experience.
+	
 ## Contributing
 
 1. Fork it (<https://github.com/KingLycosa/acnhpoker/fork>)

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace ACNHPoker
 {
@@ -3195,6 +3196,10 @@ namespace ACNHPoker
 
         private void miniMapBox_MouseDown(object sender, MouseEventArgs e)
         {
+            /*
+            if (drawing)
+                return;
+
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
                 Debug.Print(e.X.ToString() + " " + e.Y.ToString());
@@ -3229,6 +3234,7 @@ namespace ACNHPoker
 
                 _ = displayAnchor2(getMapColumns(anchorX, anchorY));
             }
+            */
         }
 
         private async Task displayAnchor2(byte[][] floorByte)
@@ -3351,6 +3357,8 @@ namespace ACNHPoker
 
         private void miniMapBox_MouseMove(object sender, MouseEventArgs e)
         {
+            if (drawing)
+                return;
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
                 int x;

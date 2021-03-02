@@ -497,21 +497,6 @@ namespace ACNHPoker
             friendship = new Friendship(this, i, s, bot, img, V[i].GetRealName(), sound);
             friendship.Show();
             friendship.Location = new System.Drawing.Point(this.Location.X + 30, this.Location.Y + 30);
-            /*
-            int value = Int16.Parse(FriendShipValue.Text);
-
-            if (value < 25)
-                value = 25;
-            else if (value > 255)
-                value = 255;
-
-            int player = 0;
-
-            Utilities.SetFriendship(s, bot, i, player, value.ToString("X"));
-
-            V[i].Friendship[player] = (byte)value;
-            RefreshVillagerUI(false);
-            */
         }
 
         public string PassPlayerName(int i, int p)
@@ -796,7 +781,7 @@ namespace ACNHPoker
 
         private void loadvillager(int i, byte[] villager, string msg)
         {
-            showVillagerWait((int)Utilities.VillagerSize, msg);
+            showVillagerWait((int)Utilities.VillagerSize * 2, msg);
 
             blocker = true;
 
@@ -904,8 +889,6 @@ namespace ACNHPoker
             HouseList[j] = i;
 
             Utilities.LoadHouse(s, bot, j, modifiedHouse, ref counter);
-            Utilities.LoadHouse(s, bot, j, modifiedHouse, ref counter, Utilities.VillagerHouseBufferDiff);
-
 
             this.Invoke((MethodInvoker)delegate
             {
@@ -1013,7 +996,7 @@ namespace ACNHPoker
                 return;
             }
 
-            showVillagerWait((int)Utilities.VillagerSize + (int)Utilities.VillagerHouseSize * 2, msg);
+            showVillagerWait((int)Utilities.VillagerSize * 2 + (int)Utilities.VillagerHouseSize * 2, msg);
 
             blocker = true;
 
@@ -1045,8 +1028,6 @@ namespace ACNHPoker
 
             Utilities.LoadVillager(s, bot, i, modifiedVillager, ref counter);
             Utilities.LoadHouse(s, bot, j, modifiedHouse, ref counter);
-            Utilities.LoadHouse(s, bot, j, modifiedHouse, ref counter, Utilities.VillagerHouseBufferDiff);
-
 
             this.Invoke((MethodInvoker)delegate
             {

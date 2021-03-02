@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -39,6 +40,14 @@ namespace ACNHPoker
             OverworldOrInAirport,
             Loading,
             UserArriveLeavingOrTitleScreen,
+            Unknown
+        }
+
+        public enum LocationState
+        {
+            Loading,
+            Indoor,
+            Announcement,
             Unknown
         }
 
@@ -256,7 +265,7 @@ namespace ACNHPoker
 
             if ($"{value:X8}".EndsWith("C906"))
                 return OverworldState.Loading;
-            else if ($"{value:X8}".EndsWith("A812D"))
+            else if ($"{value:X8}".EndsWith("0652"))
                 return OverworldState.Loading;
             switch (value)
             {
@@ -264,6 +273,59 @@ namespace ACNHPoker
                 case 0xC0066666: return OverworldState.OverworldOrInAirport;
                 case 0xBE200000: return OverworldState.UserArriveLeavingOrTitleScreen;
                 default: return OverworldState.Unknown;
+            };
+        }
+
+        public static void dump()
+        {
+            ulong address = GetCoordinateAddress();
+
+            SaveFileDialog file = new SaveFileDialog()
+            {
+                Filter = "binbin (*.bin)|*.bin",
+            };
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastSave"].Value;
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            byte[] b = Utilities.peekAbsoluteAddress(s, (address).ToString("X"), 8192);
+
+            File.WriteAllBytes(file.FileName, b);
+        }
+
+        public static LocationState GetLocationState()
+        {
+            ulong address = GetCoordinateAddress();
+            uint value = BitConverter.ToUInt32(Utilities.peekAbsoluteAddress(s, (address + 0x6E).ToString("X"), 0x4), 0);
+
+            switch (value)
+            {
+                case 0x3EB44F1A: return LocationState.Announcement;
+                case 0xB5CA1578:
+                case 0x432A0CCD:
+                case 0x430C0CCD:
+                case 0x43200CCD: return LocationState.Indoor;
+                case 0x0:
+                case 0xFF: return LocationState.Loading;
+                default: return LocationState.Unknown;
             };
         }
     }

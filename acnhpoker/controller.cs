@@ -72,12 +72,10 @@ namespace ACNHPoker
         private static string webhookPath = saveFolder + webhookFile;
         private static string IslandName = "";
 
-        public controller(Socket S)
+        public controller(Socket S, string islandName)
         {
             s = S;
-
-            byte[] townID = Utilities.GetTownID(s, null);
-            IslandName = Utilities.GetString(townID, 0x04, 10);
+            IslandName = islandName;
         }
 
         public static void clickA()
@@ -287,7 +285,93 @@ namespace ACNHPoker
             clickA();
             clickB();
         }
+
+        public static void skip(int before = 900, int after = 500)
+        {
+            Thread.Sleep(before);
+            Utilities.SetTextSpeed(s,null);
+            Thread.Sleep(after);
+        }
+
         public static string talkAndGetDodoCode()
+        {
+            clickA(); // Talk
+            Thread.Sleep(1800); // He might need to put away the stupid book
+            skip();
+            clickA(); // End Line "Hey Hey Hey"
+            Thread.Sleep(1000);
+            //clickA(); // End Line "How can"
+            //Thread.Sleep(1000);
+
+            clickDown(); // move to "I want visitors"
+            Thread.Sleep(500);
+
+            clickA(); // Click "I want visitors"
+
+            skip(); // Thread.Sleep(3000);
+            clickA(); // End Line "You wanna"
+            Thread.Sleep(1000);
+
+            clickDown(); // move to "Online"
+            Thread.Sleep(500);
+            clickA(); // Via online play
+
+            skip();
+
+            clickA(); // End Line "Gotcha"
+            Thread.Sleep(1000);
+
+            clickA(); // Roger!
+            Thread.Sleep(20000); // Saving
+
+            clickA(); // End Line "So who"
+            Thread.Sleep(1000);
+
+
+
+            clickUp(); // move to "Actually, I'm good."
+            Thread.Sleep(500);
+            clickUp(); // move to "Invite via Dodo Code"
+            Thread.Sleep(500);
+            clickA(); // Click "Invite via Dodo Code"
+
+            skip();
+
+            clickA(); // End Line "Dodo Code TM"
+            Thread.Sleep(1000);
+
+            clickUp(); // move to "The more the merrier"
+            Thread.Sleep(500);
+            clickA(); // Click "The more the merrier"
+
+            skip();
+
+            clickA(); // End Line "Just so you know"
+            //Thread.Sleep(1000);
+            //clickA(); // End Line "You good"
+            Thread.Sleep(1000);
+
+            clickA(); // Click "Yeah, invite anyone"
+
+            Thread.Sleep(6000); // fucking gate open animation
+
+            clickA(); // End Line "Alright"
+
+            skip();
+
+            clickA(); // End Line "Dodo"
+            string dodo = setupDodo();
+
+            skip();
+
+            clickA(); // End Line "Just tell"
+            Thread.Sleep(2000);
+            //releaseL();
+
+            return dodo;
+        }
+
+        public static string talkAndGetDodoCodeLegacy()
         {
             releaseL();
             Thread.Sleep(500);
@@ -439,11 +523,32 @@ namespace ACNHPoker
                 {
                     string url;
                     string content;
-
+                    string color;
+                    Color SideColor;
+                    string imageURL;
                     using (StreamReader sr = new StreamReader(webhookPath))
                     {
                         url = sr.ReadLine();
                         content = sr.ReadLine();
+                        color = sr.ReadLine();
+                        imageURL = sr.ReadLine();
+                    }
+
+                    if (content == null)
+                    {
+                        content = "";
+                    }
+                    if (color == null)
+                    {
+                        SideColor = Color.Pink;
+                    }
+                    else
+                    {
+                        SideColor = System.Drawing.ColorTranslator.FromHtml(color);
+                    }
+                    if (imageURL == null)
+                    {
+                        imageURL = "https://i.ibb.co/J3M4r2V/ea89143aecfea678b93848a367099b20.png";
                     }
 
                     DiscordWebhook hook = new DiscordWebhook();
@@ -458,8 +563,8 @@ namespace ACNHPoker
                     embed.Title = "New Dodo Code for " + IslandName + " :";
                     embed.Description = dodo;
                     embed.Timestamp = DateTime.Now;
-                    embed.Color = Color.Pink; //alpha will be ignored, you can use any RGB color
-                    embed.Thumbnail = new EmbedMedia() { Url = "https://i.ibb.co/J3M4r2V/ea89143aecfea678b93848a367099b20.png" };
+                    embed.Color = SideColor; //alpha will be ignored, you can use any RGB color
+                    embed.Thumbnail = new EmbedMedia() { Url = imageURL };
                     embed.Footer = new EmbedFooter() { Text = "Sent From ACNHPoker" };
 
                     message.Embeds = new[] { embed };

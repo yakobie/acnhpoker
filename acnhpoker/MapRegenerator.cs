@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -396,7 +397,10 @@ namespace ACNHPoker
                             PauseTimeLabel.Text = pauseTime.ToString();
                             WaitMessagebox.Text = regenMsg;
                         });
+
+                        state = teleport.GetOverworldState();
                     }
+
                     if (state == teleport.OverworldState.Loading || state == teleport.OverworldState.UserArriveLeavingOrTitleScreen)
                     {
                         Debug.Print("Loading Detected");
@@ -456,7 +460,6 @@ namespace ACNHPoker
                     {
                         stopWatch.Stop();
                         hideMapWait();
-                        loop = false;
                         Log.logEvent("Regen", "Regen1 Stopped");
                         loop = false;
                         startRegen.Tag = "Start";
@@ -472,10 +475,31 @@ namespace ACNHPoker
                 }
                 catch (Exception ex)
                 {
-                    Log.logEvent("Regen", "Regen1: " + ex.Message.ToString());
-                    DateTime localDate = DateTime.Now;
-                    CreateLog("[Connection Lost]");
-                    myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        Log.logEvent("Regen", "Regen1: " + ex.Message.ToString());
+                        DateTime localDate = DateTime.Now;
+                        //myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        myMessageBox.Show("Connection Lost.", "Yeeted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        CreateLog("[Connection Lost]");
+                        this.Close();
+                        /*
+                        stopWatch.Stop();
+                        hideMapWait();
+                        loop = false;
+                        Log.logEvent("Regen", "Regen1 Stopped");
+                        loop = false;
+                        startRegen.Tag = "Start";
+                        startRegen.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+                        startRegen.Text = "Cast Regen";
+                        saveMapBtn.Enabled = true;
+                        loadMapBtn.Enabled = true;
+                        backBtn.Enabled = true;
+                        startRegen2.Enabled = true;
+                        keepVillagerBox.Enabled = true;
+                        dodoSetupBtn.Enabled = true;
+                        */
+                    });
                     break;
                 }
             } while (loop);
@@ -575,6 +599,8 @@ namespace ACNHPoker
                             PauseTimeLabel.Text = pauseTime.ToString();
                             WaitMessagebox.Text = regenMsg;
                         });
+
+                        state = teleport.GetOverworldState();
                     }
 
                     if (state == teleport.OverworldState.Loading || state == teleport.OverworldState.UserArriveLeavingOrTitleScreen)
@@ -651,10 +677,30 @@ namespace ACNHPoker
                 }
                 catch (Exception ex)
                 {
-                    Log.logEvent("Regen", "Regen2: " + ex.Message.ToString());
-                    DateTime localDate = DateTime.Now;
-                    CreateLog("[Connection Lost]");
-                    myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        Log.logEvent("Regen", "Regen2: " + ex.Message.ToString());
+                        DateTime localDate = DateTime.Now;
+                        //myMessageBox.Show("Hey you! Stop messing with the switch!\n\n" + "Lost connection to the switch on " + localDate.ToString(), "Hey Listen!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        myMessageBox.Show("Connection Lost.", "Yeeted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        CreateLog("[Connection Lost]");
+                        this.Close();
+                        /*
+                        stopWatch.Stop();
+                        hideMapWait();
+                        Log.logEvent("Regen", "Regen2 Stopped");
+                        loop = false;
+                        startRegen2.Tag = "Start";
+                        startRegen2.BackColor = Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+                        startRegen2.Text = "Cast Moogle Regenja";
+                        saveMapBtn.Enabled = true;
+                        loadMapBtn.Enabled = true;
+                        backBtn.Enabled = true;
+                        startRegen.Enabled = true;
+                        keepVillagerBox.Enabled = true;
+                        dodoSetupBtn.Enabled = true;
+                        */
+                    });
                     break;
                 }
             } while (loop);
@@ -716,6 +762,10 @@ namespace ACNHPoker
         }
 
         private void MapRegenerator_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CloseCleaning();
+        }
+        private void CloseCleaning()
         {
             Log.logEvent("Regen", "Form Closed");
             if (RegenThread != null)

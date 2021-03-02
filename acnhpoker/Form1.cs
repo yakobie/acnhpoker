@@ -6,8 +6,11 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
 
@@ -17,7 +20,7 @@ namespace ACNHPoker
     {
         #region variable
         private static Socket s;
-        private string version = "ACNH Poker R14 for v1.8.0";
+        private string version = "ACNH Poker R14.1 for v1.8.0";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;
@@ -28,7 +31,6 @@ namespace ACNHPoker
         private bool firstWarning = false;
         private int selectedSlot = 1;
         private Button selectedVillagerButton = null;
-        private bool playerSelectorOtherInit = false;
         private DataGridViewRow lastRow;
         private DataGridViewRow recipelastRow;
         private DataGridViewRow flowerlastRow;
@@ -59,6 +61,7 @@ namespace ACNHPoker
         private teleport teleporter;
         private controller Controller;
         public dodo dodoSetup;
+        private string IslandName = "";
         private readonly string settingFile = @"ACNHPoker.exe.config";
         private string languageSetting = "eng";
 
@@ -861,11 +864,53 @@ namespace ACNHPoker
 
         private void regeneratorBtn_Click(object sender, EventArgs e)
         {
+            if (!Utilities.IsConnected(s))
+            {
+                if (!reconnect())
+                    return;
+            }
+
             if (R == null)
             {
                 R = new MapRegenerator(s, this, sound);
                 //this.Hide();
                 R.Show();
+            }
+        }
+
+        private bool reconnect()
+        {
+            s.Close();
+
+            s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ipBox.Text), 6000);
+
+            IAsyncResult result = s.BeginConnect(ep, null, null);
+            bool conSuceded = result.AsyncWaitHandle.WaitOne(3000, true);
+
+
+            if (conSuceded == true)
+            {
+                try
+                {
+                    s.EndConnect(result);
+                    teleporter = new teleport(s);
+                    Controller = new controller(s, IslandName);
+                    return true;
+                }
+                catch
+                {
+                    myMessageBox.Show("Connection Totally Wrecked. Application restarting...", "Why did you leave me?", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Restart();
+                    return false;
+                }
+            }
+            else
+            {
+                myMessageBox.Show("Connection Totally Wrecked. Application restarting...", "Why did you leave me?", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Restart();
+                return false;
             }
         }
 
@@ -884,5 +929,82 @@ namespace ACNHPoker
         }
         #endregion
 
+        private void button11_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+
+            SaveFileDialog file = new SaveFileDialog()
+            {
+                Filter = "New Horizons Villager (*.nhv2)|*.nhv2",
+                //FileName = V[i].GetInternalName() + ".nhv2",
+            };
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastSave"].Value;
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int j = 0; j < temp.Length - 1; j++)
+                path = path + temp[j] + "\\";
+
+            config.AppSettings.Settings["LastSave"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            Thread dumpThread = new Thread(delegate () { dumpVillager2(i, file); });
+            dumpThread.Start();
+        }
+
+        private void dumpVillager2(int i, SaveFileDialog file)
+        {
+            byte[] b1 = Utilities.ReadByteArray(s, Utilities.VillagerBuffer1 + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
+            byte[] b2 = Utilities.ReadByteArray(s, Utilities.VillagerAddress + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
+            byte[] b3 = Utilities.ReadByteArray(s, Utilities.VillagerBuffer2 + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
+
+            File.WriteAllBytes(file.FileName + "1", b1);
+            File.WriteAllBytes(file.FileName + "2", b2);
+            File.WriteAllBytes(file.FileName + "3", b3);
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            teleport.dump();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            Thread stateThread = new Thread(delegate () { trystate(); });
+            stateThread.Start();
+        }
+        private void trystate()
+        {
+            do
+            {
+                Debug.Print(teleport.GetLocationState().ToString());
+                Thread.Sleep(2000);
+            } while (true);
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            controller.talkAndGetDodoCode();
+        }
     }
 }

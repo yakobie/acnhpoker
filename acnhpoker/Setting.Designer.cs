@@ -76,6 +76,7 @@
             this.addresses = new System.Windows.Forms.Panel();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.soundBtn = new System.Windows.Forms.Button();
+            this.ImageBtn = new System.Windows.Forms.Button();
             this.addresses.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -758,12 +759,28 @@
             this.soundBtn.UseVisualStyleBackColor = false;
             this.soundBtn.Click += new System.EventHandler(this.soundBtn_Click);
             // 
+            // ImageBtn
+            // 
+            this.ImageBtn.BackColor = System.Drawing.Color.Orange;
+            this.ImageBtn.FlatAppearance.BorderSize = 0;
+            this.ImageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ImageBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ImageBtn.ForeColor = System.Drawing.Color.White;
+            this.ImageBtn.Location = new System.Drawing.Point(590, 13);
+            this.ImageBtn.Name = "ImageBtn";
+            this.ImageBtn.Size = new System.Drawing.Size(180, 30);
+            this.ImageBtn.TabIndex = 100;
+            this.ImageBtn.Text = "Download Image";
+            this.ImageBtn.UseVisualStyleBackColor = false;
+            this.ImageBtn.Click += new System.EventHandler(this.ImageBtn_Click);
+            // 
             // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(970, 513);
+            this.Controls.Add(this.ImageBtn);
             this.Controls.Add(this.soundBtn);
             this.Controls.Add(this.addresses);
             this.Controls.Add(this.enableOverrideBtn);
@@ -831,5 +848,6 @@
         private System.Windows.Forms.Panel addresses;
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Button soundBtn;
+        private System.Windows.Forms.Button ImageBtn;
     }
 }

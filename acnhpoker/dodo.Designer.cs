@@ -32,6 +32,7 @@ namespace ACNHPoker
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dodo));
             this.FullPanel = new System.Windows.Forms.Panel();
+            this.AbortBtn = new System.Windows.Forms.Button();
             this.functionPanel = new System.Windows.Forms.Panel();
             this.emoteBottomLeftBtn = new System.Windows.Forms.Button();
             this.emoteTopLeftBtn = new System.Windows.Forms.Button();
@@ -157,7 +158,7 @@ namespace ACNHPoker
             this.Anchor0Label = new System.Windows.Forms.Label();
             this.StartLine1 = new System.Windows.Forms.Label();
             this.HoverToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.AbortBtn = new System.Windows.Forms.Button();
+            this.skipDialogCheckBox = new System.Windows.Forms.CheckBox();
             this.FullPanel.SuspendLayout();
             this.functionPanel.SuspendLayout();
             this.controllerPanel.SuspendLayout();
@@ -266,14 +267,35 @@ namespace ACNHPoker
             this.FullPanel.Controls.Add(this.StartLine2);
             this.FullPanel.Controls.Add(this.Anchor0Label);
             this.FullPanel.Controls.Add(this.StartLine1);
-            this.FullPanel.Location = new System.Drawing.Point(-4200, 0);
+            this.FullPanel.Location = new System.Drawing.Point(0, 0);
             this.FullPanel.Margin = new System.Windows.Forms.Padding(4);
             this.FullPanel.Name = "FullPanel";
             this.FullPanel.Size = new System.Drawing.Size(4800, 300);
             this.FullPanel.TabIndex = 0;
             // 
+            // AbortBtn
+            // 
+            this.AbortBtn.BackColor = System.Drawing.Color.Red;
+            this.AbortBtn.FlatAppearance.BorderSize = 0;
+            this.AbortBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AbortBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.AbortBtn.ForeColor = System.Drawing.Color.White;
+            this.AbortBtn.Location = new System.Drawing.Point(4589, 8);
+            this.AbortBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.AbortBtn.Name = "AbortBtn";
+            this.AbortBtn.Size = new System.Drawing.Size(74, 25);
+            this.AbortBtn.TabIndex = 334;
+            this.AbortBtn.Text = "Abort";
+            this.HoverToolTip.SetToolTip(this.AbortBtn, "Stop the regen and dodo restore sequence.\r\n\r\n[Warning]Only use it if you see some" +
+        "thing goes wrong.\r\nFor example :\r\nVirtual controller not responding.\r\nYour chara" +
+        "cter got teleported to the ocean.");
+            this.AbortBtn.UseVisualStyleBackColor = false;
+            this.AbortBtn.Visible = false;
+            this.AbortBtn.Click += new System.EventHandler(this.AbortBtn_Click);
+            // 
             // functionPanel
             // 
+            this.functionPanel.Controls.Add(this.skipDialogCheckBox);
             this.functionPanel.Controls.Add(this.emoteBottomLeftBtn);
             this.functionPanel.Controls.Add(this.emoteTopLeftBtn);
             this.functionPanel.Controls.Add(this.emoteBottomRightBtn);
@@ -507,9 +529,9 @@ namespace ACNHPoker
             this.idleEmoteCheckBox.ForeColor = System.Drawing.Color.White;
             this.idleEmoteCheckBox.Location = new System.Drawing.Point(20, 126);
             this.idleEmoteCheckBox.Name = "idleEmoteCheckBox";
-            this.idleEmoteCheckBox.Size = new System.Drawing.Size(95, 20);
+            this.idleEmoteCheckBox.Size = new System.Drawing.Size(99, 20);
             this.idleEmoteCheckBox.TabIndex = 333;
-            this.idleEmoteCheckBox.Text = "Idle Emote";
+            this.idleEmoteCheckBox.Text = " Idle Emote";
             this.idleEmoteCheckBox.UseVisualStyleBackColor = false;
             this.idleEmoteCheckBox.CheckedChanged += new System.EventHandler(this.idleEmoteCheckBox_CheckedChanged);
             // 
@@ -2039,25 +2061,19 @@ namespace ACNHPoker
             this.StartLine1.Text = "The following guide will help you setup your \r\nteleport anchors for the Dodo rest" +
     "oring function.\r\n";
             // 
-            // AbortBtn
+            // skipDialogCheckBox
             // 
-            this.AbortBtn.BackColor = System.Drawing.Color.Red;
-            this.AbortBtn.FlatAppearance.BorderSize = 0;
-            this.AbortBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AbortBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
-            this.AbortBtn.ForeColor = System.Drawing.Color.White;
-            this.AbortBtn.Location = new System.Drawing.Point(4589, 8);
-            this.AbortBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.AbortBtn.Name = "AbortBtn";
-            this.AbortBtn.Size = new System.Drawing.Size(74, 25);
-            this.AbortBtn.TabIndex = 334;
-            this.AbortBtn.Text = "Abort";
-            this.HoverToolTip.SetToolTip(this.AbortBtn, "Stop the regen and dodo restore sequence.\r\n\r\n[Warning]Only use it if you see some" +
-        "thing goes wrong.\r\nFor example :\r\nVirtual controller not responding.\r\nYour chara" +
-        "cter got teleported to the ocean.");
-            this.AbortBtn.UseVisualStyleBackColor = false;
-            this.AbortBtn.Visible = false;
-            this.AbortBtn.Click += new System.EventHandler(this.AbortBtn_Click);
+            this.skipDialogCheckBox.AutoSize = true;
+            this.skipDialogCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.skipDialogCheckBox.Checked = true;
+            this.skipDialogCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.skipDialogCheckBox.ForeColor = System.Drawing.Color.White;
+            this.skipDialogCheckBox.Location = new System.Drawing.Point(20, 102);
+            this.skipDialogCheckBox.Name = "skipDialogCheckBox";
+            this.skipDialogCheckBox.Size = new System.Drawing.Size(100, 20);
+            this.skipDialogCheckBox.TabIndex = 334;
+            this.skipDialogCheckBox.Text = "Skip Dialog";
+            this.skipDialogCheckBox.UseVisualStyleBackColor = false;
             // 
             // dodo
             // 
@@ -2232,5 +2248,6 @@ namespace ACNHPoker
         private System.Windows.Forms.Button emoteTopRightBtn;
         private System.Windows.Forms.CheckBox idleEmoteCheckBox;
         private System.Windows.Forms.Button AbortBtn;
+        private System.Windows.Forms.CheckBox skipDialogCheckBox;
     }
 }

@@ -26,6 +26,10 @@ namespace ACNHPoker
 
         public static UInt32 TurnipPurchasePriceAddr = 0xABE181EC; //0xABE151EC; //0xABE0AEE0; 
         public static  UInt32 TurnipSellPriceAddr = TurnipPurchasePriceAddr + 0xC;
+        public static UInt32 TurnipBuffer = 0x849C50;
+
+        public static UInt32 VillagerBuffer1 = 0x22443D40;
+        public static UInt32 VillagerBuffer2 = 0xAC246920;
 
         public static UInt32 VillagerAddress = 0xAB9FCCD0; //0xAB9F9CD0; // 0xAB9EDA90; 
         public static  UInt32 VillagerSize = 0x13230;
@@ -68,9 +72,9 @@ namespace ACNHPoker
 
         public static UInt32 dodoAddress = 0xA98115C; //0xA97E15C;
         public static UInt32 OnlineSessionAddress = 0x9200740; //0x91FD740;
+        public static UInt32 TextSpeedAddress = 0xBA24BC8;
 
-
-        public static UInt32 TerrainOffset = mapZero + 0xAAA10;
+        public static UInt32 TerrainOffset = mapZero + 0xAAA00; //0xAAA10;
 
         public static UInt32 AcreOffset = mapZero + 0xCF998;
 
@@ -527,16 +531,20 @@ namespace ACNHPoker
                 if (bot == null)
                 {
                     SendUInt32Array(socket, TurnipPurchasePriceAddr, prices, 4, 12);
+                    SendUInt32Array(socket, TurnipPurchasePriceAddr + TurnipBuffer, prices, 4, 12);
                     SendUInt32Array(socket, TurnipSellPriceAddr, prices, 4 * 12);
+                    SendUInt32Array(socket, TurnipSellPriceAddr + TurnipBuffer, prices, 4 * 12);
                 }
                 else
                 {
                     byte[] BuyPrice = stringToByte(flip(precedingZeros(prices[12].ToString("X"), 8)));
                     bot.WriteBytes(BuyPrice, TurnipPurchasePriceAddr);
+                    bot.WriteBytes(BuyPrice, TurnipPurchasePriceAddr + TurnipBuffer);
 
                     for (int i = 0; i < 12; i++)
                     {
                         bot.WriteBytes(stringToByte(flip(precedingZeros(prices[i].ToString("X"), 8))), (uint)(TurnipSellPriceAddr + (4 * i)));
+                        bot.WriteBytes(stringToByte(flip(precedingZeros(prices[i].ToString("X"), 8))), (uint)(TurnipSellPriceAddr + (4 * i) + TurnipBuffer));
                     }
                 }
                 return false;
@@ -1449,10 +1457,14 @@ namespace ACNHPoker
                 if (bot == null)
                 {
                     SendByteArray(socket, VillagerAddress + (num * VillagerSize), villager, (int)VillagerSize, ref counter);
+
+                    SendByteArray(socket, VillagerAddress + (num * VillagerSize) + VillagerHouseBufferDiff, villager, (int)VillagerSize, ref counter);
                 }
                 else
                 {
                     WriteLargeBytes(bot, VillagerAddress + (num * VillagerSize), villager, (int)VillagerSize, ref counter);
+
+                    WriteLargeBytes(bot, VillagerAddress + (num * VillagerSize) + VillagerHouseBufferDiff, villager, (int)VillagerSize, ref counter);
                 }
             }
         }
@@ -1538,17 +1550,21 @@ namespace ACNHPoker
             }
         }
 
-        public static void LoadHouse(Socket socket, USBBot bot, int num, byte[] house, ref int counter, uint diff = 0)
+        public static void LoadHouse(Socket socket, USBBot bot, int num, byte[] house, ref int counter)
         {
             lock (botLock)
             {
                 if (bot == null)
                 {
-                    SendByteArray(socket, VillagerHouseAddress + (num * VillagerHouseSize) + diff, house, (int)VillagerHouseSize, ref counter);
+                    SendByteArray(socket, VillagerHouseAddress + (num * VillagerHouseSize), house, (int)VillagerHouseSize, ref counter);
+
+                    SendByteArray(socket, VillagerHouseAddress + (num * VillagerHouseSize) + VillagerHouseBufferDiff, house, (int)VillagerHouseSize, ref counter);
                 }
                 else
                 {
-                    WriteLargeBytes(bot, VillagerHouseAddress + (num * VillagerHouseSize) + diff, house, (int)VillagerHouseSize, ref counter);
+                    WriteLargeBytes(bot, VillagerHouseAddress + (num * VillagerHouseSize), house, (int)VillagerHouseSize, ref counter);
+
+                    WriteLargeBytes(bot, VillagerHouseAddress + (num * VillagerHouseSize) + VillagerHouseBufferDiff, house, (int)VillagerHouseSize, ref counter);
                 }
             }
         }
@@ -1629,13 +1645,21 @@ namespace ACNHPoker
                 {
                     if (bot == null)
                     {
-                        string msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerCatchphraseOffset).ToString("X"), ByteToHexString(pharse));
+                        string msg;
+
+                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerCatchphraseOffset).ToString("X"), ByteToHexString(pharse));
+                        Debug.Print("Poke Catchphrase: " + msg);
+                        SendString(socket, Encoding.UTF8.GetBytes(msg));
+
+                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerCatchphraseOffset + VillagerHouseBufferDiff).ToString("X"), ByteToHexString(pharse));
                         Debug.Print("Poke Catchphrase: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
                     }
                     else
                     {
                         bot.WriteBytes(pharse, (uint)(VillagerAddress + (num * VillagerSize) + VillagerCatchphraseOffset));
+
+                        bot.WriteBytes(pharse, (uint)(VillagerAddress + (num * VillagerSize) + VillagerCatchphraseOffset + VillagerHouseBufferDiff));
                     }
                 }
                 catch
@@ -1729,7 +1753,9 @@ namespace ACNHPoker
                 {
                     if (bot == null)
                     {
-                        string msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset).ToString("X"), MoveoutFlag);
+                        string msg;
+
+                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset).ToString("X"), MoveoutFlag);
                         Debug.Print("Poke Moveout: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
 
@@ -1740,12 +1766,32 @@ namespace ACNHPoker
                         msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerAbandonHouseOffset).ToString("X"), "0");
                         Debug.Print("Poke AbandonHouse: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
+
+                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset + VillagerHouseBufferDiff).ToString("X"), MoveoutFlag);
+                        Debug.Print("Poke Moveout: " + msg);
+                        SendString(socket, Encoding.UTF8.GetBytes(msg));
+
+                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerForceMoveoutOffset + VillagerHouseBufferDiff).ToString("X"), ForceMoveoutFlag);
+                        Debug.Print("Poke ForceMoveout: " + msg);
+                        SendString(socket, Encoding.UTF8.GetBytes(msg));
+
+                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerAbandonHouseOffset + VillagerHouseBufferDiff).ToString("X"), "0");
+                        Debug.Print("Poke AbandonHouse: " + msg);
+                        SendString(socket, Encoding.UTF8.GetBytes(msg));
                     }
                     else
                     {
                         bot.WriteBytes(stringToByte(MoveoutFlag), (uint)(VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset));
 
                         bot.WriteBytes(stringToByte(ForceMoveoutFlag), (uint)(VillagerAddress + (num * VillagerSize) + VillagerForceMoveoutOffset));
+
+                        bot.WriteBytes(stringToByte("0"), (uint)(VillagerAddress + (num * VillagerSize) + VillagerAbandonHouseOffset));
+
+                        bot.WriteBytes(stringToByte(MoveoutFlag), (uint)(VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset + VillagerHouseBufferDiff));
+
+                        bot.WriteBytes(stringToByte(ForceMoveoutFlag), (uint)(VillagerAddress + (num * VillagerSize) + VillagerForceMoveoutOffset + VillagerHouseBufferDiff));
+
+                        bot.WriteBytes(stringToByte("0"), (uint)(VillagerAddress + (num * VillagerSize) + VillagerAbandonHouseOffset + VillagerHouseBufferDiff));
                     }
                 }
                 catch
@@ -1763,13 +1809,20 @@ namespace ACNHPoker
                 {
                     if (bot == null)
                     {
-                        string msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset) + VillagerFriendshipOffset).ToString("X"), FriendshipFlag);
+                        string msg;
+                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset) + VillagerFriendshipOffset).ToString("X"), FriendshipFlag);
+                        Debug.Print("Poke Friendship: " + msg);
+                        SendString(socket, Encoding.UTF8.GetBytes(msg));
+
+                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset) + VillagerFriendshipOffset + VillagerHouseBufferDiff).ToString("X"), FriendshipFlag);
                         Debug.Print("Poke Friendship: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
                     }
                     else
                     {
                         bot.WriteBytes(stringToByte(FriendshipFlag), (uint)(VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset) + VillagerFriendshipOffset));
+
+                        bot.WriteBytes(stringToByte(FriendshipFlag), (uint)(VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset) + VillagerFriendshipOffset + VillagerHouseBufferDiff));
                     }
                 }
                 catch
@@ -2360,6 +2413,33 @@ namespace ACNHPoker
             }
         }
 
+        public static void SetTextSpeed(Socket socket, USBBot bot)
+        {
+            lock (botLock)
+            {
+                try
+                {
+                    if (bot == null)
+                    {
+                        string msg;
+
+                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", TextSpeedAddress.ToString("X"), "3");
+                        Debug.Print("Poke TextSpeed: " + msg);
+                        SendString(socket, Encoding.UTF8.GetBytes(msg));
+
+                    }
+                    else
+                    {
+                        bot.WriteBytes(stringToByte("3"), TextSpeedAddress);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Exception, try restarting the program or reconnecting to the switch.");
+                }
+            }
+        }
+
         public static string TrimFromZero(string input) => TrimFromFirst(input, '\0');
 
         private static string TrimFromFirst(string input, char c)
@@ -2556,8 +2636,16 @@ namespace ACNHPoker
 
         private static bool IsNum(char c) => (uint)(c - '0') <= 9;
         private static bool IsHexUpper(char c) => (uint)(c - 'A') <= 5;
+        public static bool IsConnected(Socket socket)
+        {
+            try
+            {
+                return !(socket.Poll(1, SelectMode.SelectRead) && socket.Available == 0);
+            }
+            catch (SocketException) { return false; }
+        }
 
-
+        #region Villager
         public enum VillagerPersonality : byte
         {
             Lazy,
@@ -3051,5 +3139,6 @@ namespace ACNHPoker
                 {"wol12", "Audie"},
                 {"non00", "Empty" }
             };
+        #endregion
     }
 }

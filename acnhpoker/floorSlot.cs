@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace ACNHPoker
@@ -77,7 +78,6 @@ namespace ACNHPoker
 
         private Boolean refreshing = false;
         private static object syncRoot = new Object();
-
         public floorSlot()
         {
             if (File.Exists(RecipeOverlayPath))
@@ -134,8 +134,15 @@ namespace ACNHPoker
                     this.Text = "";
                     if (this.Image != null)
                     {
-                        this.Image.Dispose();
-                        this.Image = null;
+                        try
+                        {
+                            this.Image.Dispose();
+                            this.Image = null;
+                        }
+                        catch
+                        {
+                            return;
+                        }
                     }
                 });
 
@@ -146,35 +153,43 @@ namespace ACNHPoker
                 UInt32 P3Id = part3Data & 0x0000FFFF;
                 UInt32 P4Id = part4Data & 0x0000FFFF;
 
-                if (itemID != 0xFFFE && (itemID == P2Id && P2Id == P3Id && P3Id == P4Id)) // Filled Slot
+                try
                 {
+                    if (itemID != 0xFFFE && (itemID == P2Id && P2Id == P3Id && P3Id == P4Id)) // Filled Slot
+                    {
 
-                    if (flag2 != "20" || flag1 != "00")
+                        if (flag2 != "20" || flag1 != "00")
+                        {
+                            locked = true;
+                        }
+                        //this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+
+                        this.Image = displayItemImage(large, false);
+                    }
+                    else if (itemID == 0xFFFE && part2 == 0xFFFE && part3 == 0xFFFE && part4 == 0xFFFE) // Empty
+                    {
+                        //this.BackColor = Color.LightSalmon;
+                    }
+                    else if (itemID != 0xFFFE && flag1 != "00") // wrapped
+                    {
+                        this.Image = displayItemImage(large, false);
+                    }
+                    else // seperate
                     {
                         locked = true;
+
+                        if (flag1 != "00")
+                        {
+                            locked = true;
+                        }
+
+                        this.Image = displayItemImage(large, true);
                     }
-                    //this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-
-                    this.Image = displayItemImage(large, false);
                 }
-                else if (itemID == 0xFFFE && part2 == 0xFFFE && part3 == 0xFFFE && part4 == 0xFFFE) // Empty
+                catch
                 {
-                    //this.BackColor = Color.LightSalmon;
-                }
-                else if (itemID != 0xFFFE && flag1 != "00") // wrapped
-                {
-                    this.Image = displayItemImage(large, false);
-                }
-                else // seperate
-                {
-                    locked = true;
-
-                    if (flag1 != "00")
-                    {
-                        locked = true;
-                    }
-
-                    this.Image = displayItemImage(large, true);
+                    refreshing = false;
+                    return;
                 }
 
                 refreshing = false;
@@ -357,20 +372,14 @@ namespace ACNHPoker
                 if (separate)
                 {
                     Size size;
-                    Double recipeMultiplier;
-                    Double wallMultiplier;
 
                     if (large)
                     {
                         size = new Size(128, 128);
-                        recipeMultiplier = 0.3;
-                        wallMultiplier = 0.45;
                     }
                     else
                     {
                         size = new Size(64, 64);
-                        recipeMultiplier = 0.35;
-                        wallMultiplier = 0.6;
                     }
 
                     if (large)
@@ -379,7 +388,7 @@ namespace ACNHPoker
                     }
                     else
                     {
-                        Image background = (new Bitmap(75, 75));
+                        Image background = new Bitmap(75, 75);
                         Image topleft = null;
                         Image topright = null;
                         Image bottomleft = null;

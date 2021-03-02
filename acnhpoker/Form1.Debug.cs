@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
@@ -29,7 +30,6 @@ namespace ACNHPoker
 
         byte[] save = null;
 
-        byte[] bank;
         private void PokeBtn_Click(object sender, EventArgs e)
         {
             Utilities.pokeAddress(s, bot, "0x" + debugAddress.Text, debugAmount.Text);
@@ -516,6 +516,8 @@ namespace ACNHPoker
         private void button1_Click_1(object sender, EventArgs e)
         {
             string bank = "";
+            recipeGridView.Sort(recipeGridView.Columns["id"], ListSortDirection.Ascending);
+
             for (int i = 0; i < recipeGridView.Rows.Count; i++)
             {
                 string recipeid = recipeGridView.Rows[i].Cells["id"].Value.ToString();
@@ -641,6 +643,18 @@ namespace ACNHPoker
         private void button5_Click_1(object sender, EventArgs e)
         {
             controller.setupDodo();
+        }
+        private void button14_Click(object sender, EventArgs e)
+        {
+            dodoSetup = new dodo(this);
+            dodoSetup.Show();
+            Thread testThread = new Thread(delegate () { testrestore(); });
+            testThread.Start();
+        }
+
+        private void testrestore()
+        {
+            dodoSetup.HardRestore();
         }
     }
 }

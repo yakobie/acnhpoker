@@ -80,6 +80,8 @@ namespace ACNHPoker
                 Config.AppSettings.Settings["disableValidation"].Value = "false";
                 Config.Save(ConfigurationSaveMode.Minimal);
                 disableValidationBtn.Text = "Disable Validation";
+
+                mainForm.toggleValidation();
             }
             else
             {
@@ -89,10 +91,10 @@ namespace ACNHPoker
                     Config.AppSettings.Settings["disableValidation"].Value = "true";
                     Config.Save(ConfigurationSaveMode.Minimal);
                     disableValidationBtn.Text = "Enable Validation";
+
+                    mainForm.toggleValidation();
                 }
             }
-
-            mainForm.toggleValidation();
 
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
@@ -320,6 +322,12 @@ namespace ACNHPoker
             }
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
+        }
+
+        private void ImageBtn_Click(object sender, EventArgs e)
+        {
+            ImageDownloader imageDownloader = new ImageDownloader();
+            imageDownloader.ShowDialog();
         }
     }
 }
