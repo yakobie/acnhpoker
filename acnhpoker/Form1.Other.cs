@@ -5,9 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ACNHPoker
@@ -158,7 +156,7 @@ namespace ACNHPoker
             }
         }
 
-        public string GetImagePathFromID(string itemID, DataTable source, UInt32 data = 0)
+        public static string GetImagePathFromID(string itemID, DataTable source, UInt32 data = 0)
         {
             if (source == null)
             {
@@ -180,7 +178,7 @@ namespace ACNHPoker
                 string path;
                 if (VarRow != null & source != recipeSource)
                 {
-                    path = imagePath + VarRow["iName"] + ".png";
+                    path = Utilities.imagePath + VarRow["iName"] + ".png";
                     if (File.Exists(path))
                     {
                         return path;
@@ -188,7 +186,7 @@ namespace ACNHPoker
                     string main = (data & 0xF).ToString();
                     string sub = (((data & 0xFF) - (data & 0xF)) / 0x20).ToString();
                     //Debug.Print("data " + data.ToString("X") + " Main " + main + " Sub " + sub);
-                    path = imagePath + VarRow["iName"] + "_Remake_" + main + "_" + sub + ".png";
+                    path = Utilities.imagePath + VarRow["iName"] + "_Remake_" + main + "_" + sub + ".png";
                     if (File.Exists(path))
                     {
                         return path;
@@ -200,28 +198,28 @@ namespace ACNHPoker
 
                 if (OverrideDict.ContainsKey(imageName))
                 {
-                    path = imagePath + OverrideDict[imageName] + ".png";
+                    path = Utilities.imagePath + OverrideDict[imageName] + ".png";
                     if (File.Exists(path))
                     {
                         return path;
                     }
                 }
 
-                path = imagePath + imageName + ".png";
+                path = Utilities.imagePath + imageName + ".png";
                 if (File.Exists(path))
                 {
                     return path;
                 }
                 else
                 {
-                    path = imagePath + imageName + "_Remake_0_0.png";
+                    path = Utilities.imagePath + imageName + "_Remake_0_0.png";
                     if (File.Exists(path))
                     {
                         return path;
                     }
                     else
                     {
-                        path = imagePath + removeNumber(imageName) + ".png";
+                        path = Utilities.imagePath + removeNumber(imageName) + ".png";
                         if (File.Exists(path))
                         {
                             return path;
@@ -764,7 +762,7 @@ namespace ACNHPoker
             byte[] tempItem = new byte[8];
             bool[] isItem = new bool[40];
             int numOfitem = 0;
-            
+
             for (int i = 0; i < 40; i++)
             {
                 Buffer.BlockCopy(data, 0x8 * i, tempItem, 0, 8);
@@ -779,7 +777,7 @@ namespace ACNHPoker
             int itemNum = 0;
             for (int j = 0; j < 40; j++)
             {
-                if(isItem[j])
+                if (isItem[j])
                 {
                     item[itemNum] = new byte[8];
                     Buffer.BlockCopy(data, 0x8 * j, item[itemNum], 0, 8);
@@ -1069,19 +1067,17 @@ namespace ACNHPoker
 
         private void setReactionBtn_Click(object sender, EventArgs e)
         {
+            //DialogResult dialogResult = myMessageBox.Show("Are you sure you want to change your reaction wheel?\n[Warning] Your previous reaction wheel will be overwritten!", "Change Reaction Wheel", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            int player = playerSelectorOther.SelectedIndex;
+
+            string reaction1 = (Utilities.precedingZeros((reactionSlot1.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot2.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot3.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot4.SelectedIndex + 1).ToString("X"), 2));
+            string reaction2 = (Utilities.precedingZeros((reactionSlot5.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot6.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot7.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot8.SelectedIndex + 1).ToString("X"), 2));
+            Utilities.setReaction(s, bot, player, reaction1, reaction2);
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
-            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to change your reaction wheel?\n[Warning] Your previous reaction wheel will be overwritten!", "Change Reaction Wheel", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (dialogResult == DialogResult.Yes)
-            {
-                int player = playerSelectorOther.SelectedIndex;
-
-                string reaction1 = (Utilities.precedingZeros((reactionSlot1.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot2.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot3.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot4.SelectedIndex + 1).ToString("X"), 2));
-                string reaction2 = (Utilities.precedingZeros((reactionSlot5.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot6.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot7.SelectedIndex + 1).ToString("X"), 2) + Utilities.precedingZeros((reactionSlot8.SelectedIndex + 1).ToString("X"), 2));
-                Utilities.setReaction(s, bot, player,  reaction1, reaction2);
-                if (sound)
-                    System.Media.SystemSounds.Asterisk.Play();
-            }
+            //}
         }
 
         private void speedX4Btn_Click(object sender, EventArgs e)

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -187,6 +186,7 @@ namespace ACNHPoker
                                 this.configBtn.Visible = false;
                                 this.mapDropperBtn.Visible = true;
                                 this.regeneratorBtn.Visible = true;
+                                this.dodoHelperBtn.Visible = true;
                                 offline = false;
 
                                 int CurrentPlayerIndex = updateDropdownBox();
@@ -254,6 +254,7 @@ namespace ACNHPoker
                 cleanVillagerPage();
                 this.mapDropperBtn.Visible = false;
                 this.regeneratorBtn.Visible = false;
+                this.dodoHelperBtn.Visible = false;
                 offline = true;
 
                 this.connectBtn.Tag = "connect";
@@ -277,7 +278,8 @@ namespace ACNHPoker
             try
             {
                 if (s != null && s.Connected == true && autoRefreshCheckBox.Checked && allowUpdate)
-                    Invoke((MethodInvoker)delegate {
+                    Invoke((MethodInvoker)delegate
+                    {
                         UpdateInventory();
                     });
             }
@@ -308,11 +310,11 @@ namespace ACNHPoker
                 {
                     return true;
                 }
-            //string Bank1 = Utilities.ByteToHexString(Bank01to20);
-            //string Bank2 = Utilities.ByteToHexString(Bank21to40);
+                //string Bank1 = Utilities.ByteToHexString(Bank01to20);
+                //string Bank2 = Utilities.ByteToHexString(Bank21to40);
 
-            //Debug.Print(Bank1);
-            //Debug.Print(Bank2);
+                //Debug.Print(Bank1);
+                //Debug.Print(Bank2);
 
                 foreach (inventorySlot btn in this.inventoryPanel.Controls.OfType<inventorySlot>())
                 {
@@ -1134,7 +1136,7 @@ namespace ACNHPoker
 
                     if (OverrideDict.ContainsKey(imageName))
                     {
-                        path = imagePath + OverrideDict[imageName] + ".png";
+                        path = Utilities.imagePath + OverrideDict[imageName] + ".png";
                         if (File.Exists(path))
                         {
                             Image img = Image.FromFile(path);
@@ -1145,7 +1147,7 @@ namespace ACNHPoker
                         }
                     }
 
-                    path = imagePath + imageName + ".png";
+                    path = Utilities.imagePath + imageName + ".png";
                     if (File.Exists(path))
                     {
                         Image img = Image.FromFile(path);
@@ -1153,7 +1155,7 @@ namespace ACNHPoker
                     }
                     else
                     {
-                        path = imagePath + imageName + "_Remake_0_0.png";
+                        path = Utilities.imagePath + imageName + "_Remake_0_0.png";
                         if (File.Exists(path))
                         {
                             Image img = Image.FromFile(path);
@@ -1162,7 +1164,7 @@ namespace ACNHPoker
                         }
                         else
                         {
-                            path = imagePath + removeNumber(imageName) + ".png";
+                            path = Utilities.imagePath + removeNumber(imageName) + ".png";
                             if (File.Exists(path))
                             {
                                 Image img = Image.FromFile(path);
@@ -1279,7 +1281,7 @@ namespace ACNHPoker
 
                     if (OverrideDict.ContainsKey(imageName))
                     {
-                        path = imagePath + OverrideDict[imageName] + ".png";
+                        path = Utilities.imagePath + OverrideDict[imageName] + ".png";
                         if (File.Exists(path))
                         {
                             Image img = Image.FromFile(path);
@@ -1290,7 +1292,7 @@ namespace ACNHPoker
                         }
                     }
 
-                    path = imagePath + imageName + ".png";
+                    path = Utilities.imagePath + imageName + ".png";
                     if (File.Exists(path))
                     {
                         Image img = Image.FromFile(path);
@@ -1298,7 +1300,7 @@ namespace ACNHPoker
                     }
                     else
                     {
-                        path = imagePath + imageName + "_Remake_0_0.png";
+                        path = Utilities.imagePath + imageName + "_Remake_0_0.png";
                         if (File.Exists(path))
                         {
                             Image img = Image.FromFile(path);
@@ -1342,7 +1344,7 @@ namespace ACNHPoker
 
                     if (OverrideDict.ContainsKey(imageName))
                     {
-                        string path = imagePath + OverrideDict[imageName] + ".png";
+                        string path = Utilities.imagePath + OverrideDict[imageName] + ".png";
                         if (File.Exists(path))
                         {
                             Image img = Image.FromFile(path);
@@ -1389,7 +1391,7 @@ namespace ACNHPoker
 
                     if (OverrideDict.ContainsKey(imageName))
                     {
-                        path = imagePath + OverrideDict[imageName] + ".png";
+                        path = Utilities.imagePath + OverrideDict[imageName] + ".png";
                         if (File.Exists(path))
                         {
                             Image img = Image.FromFile(path);
@@ -1400,7 +1402,7 @@ namespace ACNHPoker
                         }
                     }
 
-                    path = imagePath + imageName + ".png";
+                    path = Utilities.imagePath + imageName + ".png";
                     if (File.Exists(path))
                     {
                         Image img = Image.FromFile(path);
@@ -1408,7 +1410,7 @@ namespace ACNHPoker
                     }
                     else
                     {
-                        path = imagePath + imageName + "_Remake_0_0.png";
+                        path = Utilities.imagePath + imageName + "_Remake_0_0.png";
                         if (File.Exists(path))
                         {
                             Image img = Image.FromFile(path);
@@ -1417,7 +1419,7 @@ namespace ACNHPoker
                         }
                         else
                         {
-                            path = imagePath + removeNumber(imageName) + ".png";
+                            path = Utilities.imagePath + removeNumber(imageName) + ".png";
                             if (File.Exists(path))
                             {
                                 Image img = Image.FromFile(path);
@@ -1921,8 +1923,23 @@ namespace ACNHPoker
             //Debug.Print(e.KeyCode.ToString());
             if (e.KeyCode.ToString() == "F12" && teleporter != null)
             {
-                dodoSetup = new dodo(this);
-                dodoSetup.Show();
+                if (dodoSetup == null)
+                {
+                    dodoSetup = new dodo(s, this, true)
+                    {
+                        ControlBox = true,
+                        ShowInTaskbar = true
+                    };
+                    dodoSetup.Show();
+                    dodoSetup.WriteLog("[You have started dodo helper in standalone mode.]\n\n" +
+                                        "1. Disconnect all controller by selecting \"Controllers\" > \"Change Grip/Order\"\n" +
+                                        "2. Leave only the Joy-Con docked on your Switch.\n" +
+                                        "3. Return to the game and dock your Switch if needed. Try pressing the buttons below to test the controller.\n" +
+                                        "4. If the virtual controller does not response, try the \"Detach\" button on the right, then the \"A\" button.\n" +
+                                        "5. If the virtual controller still does not appear, try restart your Switch.\n\n" +
+                                        ">> Please try the buttons below to test the virtual controller. <<"
+                                        );
+                }
             }
             else if (e.KeyCode.ToString() == "F2" || e.KeyCode.ToString() == "Insert")
             {
@@ -2069,7 +2086,7 @@ namespace ACNHPoker
 
                         recipeNum.Text = recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells["id"].Value.ToString();
 
-                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[0].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells["id"].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells["id"].Value.ToString(), recipeSource), true);
+                        selectedItem.setup(recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[languageSetting].Value.ToString(), 0x16A2, Convert.ToUInt32("0x" + recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells["id"].Value.ToString(), 16), GetImagePathFromID(recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells["id"].Value.ToString(), recipeSource), true);
                         updateSelectedItemInfo(selectedItem.displayItemName(), selectedItem.displayItemID(), selectedItem.displayItemData());
 
                         recipeGridView.CurrentCell = recipeGridView.Rows[recipeGridView.CurrentRow.Index + 1].Cells[languageSetting];
@@ -2665,8 +2682,6 @@ namespace ACNHPoker
                 MessageBox.Show("Turnip prices cannot be empty");
                 return;
             }
-            if (sound)
-                System.Media.SystemSounds.Asterisk.Play();
 
             DialogResult dialogResult = myMessageBox.Show("Are you sure you want to set the turnip prices?\n[Warning] All original prices will be overwritten!", "Set turnip prices", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (dialogResult == DialogResult.Yes)
@@ -2695,6 +2710,38 @@ namespace ACNHPoker
                     System.Media.SystemSounds.Asterisk.Play();
             }
         }
+
+        private void setMaxBtn_Click(object sender, EventArgs e)
+        {
+            string max = "999999999";
+            string min = "1";
+            DialogResult dialogResult = myMessageBox.Show("Are you sure you want to set all the turnip prices to MAX?\n[Warning] All original prices will be overwritten!", "Set all turnip prices", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (dialogResult == DialogResult.Yes)
+            {
+                UInt32[] prices = new UInt32[13] {
+                Convert.ToUInt32(max, 10), Convert.ToUInt32(max, 10),
+                Convert.ToUInt32(max, 10), Convert.ToUInt32(max, 10),
+                Convert.ToUInt32(max, 10), Convert.ToUInt32(max, 10),
+                Convert.ToUInt32(max, 10), Convert.ToUInt32(max, 10),
+                Convert.ToUInt32(max, 10), Convert.ToUInt32(max, 10),
+                Convert.ToUInt32(max, 10), Convert.ToUInt32(max, 10),
+                Convert.ToUInt32(min, 10)};
+
+                try
+                {
+                    Utilities.ChangeTurnipPrices(s, bot, prices);
+                    UpdateTurnipPrices();
+                }
+                catch (Exception ex)
+                {
+                    Log.logEvent("MainForm", "SetAllTurnip: " + ex.Message.ToString());
+                    myMessageBox.Show(ex.Message.ToString(), "This is a terrible way of doing this!");
+                }
+
+                if (sound)
+                    System.Media.SystemSounds.Asterisk.Play();
+            }
+        }
         #endregion
 
         #region Tooltip
@@ -2710,7 +2757,7 @@ namespace ACNHPoker
                 }
                 else
                 {*/
-                    btnToolTip.SetToolTip(button, button.displayItemName() + "\n\nID : " + button.displayItemID() + "\nCount : " + button.displayItemData() + "\nFlag : 0x" + button.getFlag1() + button.getFlag2());
+                btnToolTip.SetToolTip(button, button.displayItemName() + "\n\nID : " + button.displayItemID() + "\nCount : " + button.displayItemData() + "\nFlag : 0x" + button.getFlag1() + button.getFlag2());
                 //}
             }
         }
@@ -2780,7 +2827,7 @@ namespace ACNHPoker
                     }
 
                     string count = translateVariationValue(select.fillItemData()) + Utilities.precedingZeros(select.fillItemID(), 4);
-                    selectedItem.setup(GetNameFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + count, 16), GetImagePathFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource), true, select.getPath(),selectedItem.getFlag1(), selectedItem.getFlag2());
+                    selectedItem.setup(GetNameFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource), Convert.ToUInt16("0x" + customIdTextbox.Text, 16), Convert.ToUInt32("0x" + count, 16), GetImagePathFromID(Utilities.turn2bytes(customIdTextbox.Text), itemSource), true, select.getPath(), selectedItem.getFlag1(), selectedItem.getFlag2());
                     customAmountTxt.Text = count;
                 }
             }
@@ -2833,7 +2880,7 @@ namespace ACNHPoker
                 secondHalf = (hexValue - 0xE0);
             }
 
-            output = Utilities.precedingZeros((firstHalf + secondHalf).ToString("X"),4);
+            output = Utilities.precedingZeros((firstHalf + secondHalf).ToString("X"), 4);
             return output;
         }
 
@@ -3292,25 +3339,25 @@ namespace ACNHPoker
                         dr["Name"] = btn.displayItemName();
                         dr["value"] = Utilities.precedingZeros(btn.fillItemData(), 8);
 
-                            dt.Rows.Add(dr);
-                            favGridView.DataSource = dt;
+                        dt.Rows.Add(dr);
+                        favGridView.DataSource = dt;
 
-                            string line = dr["id"] + " ; " + dr["iName"] + " ; " + dr["Name"] + " ; " + dr["value"] + " ; ";
+                        string line = dr["id"] + " ; " + dr["iName"] + " ; " + dr["Name"] + " ; " + dr["value"] + " ; ";
 
-                            if (!File.Exists(favPath))
+                        if (!File.Exists(Utilities.favPath))
+                        {
+                            string favheader = "id" + " ; " + "iName" + " ; " + "Name" + " ; " + "value" + " ; ";
+
+                            using (StreamWriter sw = File.CreateText(Utilities.favPath))
                             {
-                                string favheader = "id" + " ; " + "iName" + " ; " + "Name" + " ; " + "value" + " ; ";
-
-                                using (StreamWriter sw = File.CreateText(favPath))
-                                {
-                                    sw.WriteLine(favheader);
-                                }
+                                sw.WriteLine(favheader);
                             }
+                        }
 
-                            using (StreamWriter sw = File.AppendText(favPath))
-                            {
-                                sw.WriteLine(line);
-                            }
+                        using (StreamWriter sw = File.AppendText(Utilities.favPath))
+                        {
+                            sw.WriteLine(line);
+                        }
 
                     }
                     if (sound)
@@ -3354,8 +3401,8 @@ namespace ACNHPoker
                 {
                     playerSelectorInventory.Items.RemoveAt(i);
                     playerSelectorInventory.Items.Insert(i, namelist[i]);
-                    playerSelectorInventory.Items.RemoveAt(i+8);
-                    playerSelectorInventory.Items.Insert(i+8, namelist[i] + "'s House");
+                    playerSelectorInventory.Items.RemoveAt(i + 8);
+                    playerSelectorInventory.Items.Insert(i + 8, namelist[i] + "'s House");
 
                     playerSelectorOther.Items.RemoveAt(i);
                     playerSelectorOther.Items.Insert(i, namelist[i]);
@@ -3367,7 +3414,7 @@ namespace ACNHPoker
         }
         #endregion
 
-        private string removeNumber(string filename)
+        private static string removeNumber(string filename)
         {
             char[] MyChar = { '0', '1', '2', '3', '4' };
             return filename.Trim(MyChar);

@@ -178,38 +178,8 @@
             this.speedX2Btn = new System.Windows.Forms.Button();
             this.speedX3Btn = new System.Windows.Forms.Button();
             this.animationSpdx5 = new System.Windows.Forms.Button();
+            this.setMaxBtn = new System.Windows.Forms.Button();
             this.selectedItem = new ACNHPoker.inventorySlot();
-            this.playerSelectorOther = new System.Windows.Forms.ComboBox();
-            this.playerSelectorInventory = new System.Windows.Forms.ComboBox();
-            this.saveBtn = new System.Windows.Forms.Button();
-            this.loadBtn = new System.Windows.Forms.Button();
-            this.inventoryLargePanel = new System.Windows.Forms.Panel();
-            this.button13 = new System.Windows.Forms.Button();
-            this.regeneratorBtn = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.favModeBtn = new System.Windows.Forms.Button();
-            this.Language = new System.Windows.Forms.ComboBox();
-            this.mapDropperBtn = new System.Windows.Forms.Button();
-            this.configBtn = new System.Windows.Forms.Button();
-            this.pacman2 = new System.Windows.Forms.PictureBox();
-            this.selectedFlag2 = new System.Windows.Forms.Label();
-            this.selectedFlag1 = new System.Windows.Forms.Label();
-            this.variationModeButton = new System.Windows.Forms.Button();
-            this.paginationPanel = new System.Windows.Forms.Panel();
-            this.pageLabel = new System.Windows.Forms.Label();
-            this.favGridView = new System.Windows.Forms.DataGridView();
-            this.GridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button11 = new System.Windows.Forms.Button();
-            this.addressDebug = new System.Windows.Forms.Button();
-            this.debugVillager = new System.Windows.Forms.Button();
-            this.inventoryBtn = new System.Windows.Forms.Button();
-            this.critterBtn = new System.Windows.Forms.Button();
-            this.otherBtn = new System.Windows.Forms.Button();
-            this.otherLargePanel = new System.Windows.Forms.Panel();
-            this.SeedTextbox = new System.Windows.Forms.RichTextBox();
-            this.SeedLabel = new System.Windows.Forms.Label();
             this.pokeMainCheatPanel = new System.Windows.Forms.Panel();
             this.timePanel = new System.Windows.Forms.Panel();
             this.label28 = new System.Windows.Forms.Label();
@@ -226,6 +196,39 @@
             this.label23 = new System.Windows.Forms.Label();
             this.Label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.playerSelectorOther = new System.Windows.Forms.ComboBox();
+            this.playerSelectorInventory = new System.Windows.Forms.ComboBox();
+            this.saveBtn = new System.Windows.Forms.Button();
+            this.loadBtn = new System.Windows.Forms.Button();
+            this.inventoryLargePanel = new System.Windows.Forms.Panel();
+            this.dodoHelperBtn = new System.Windows.Forms.Button();
+            this.regeneratorBtn = new System.Windows.Forms.Button();
+            this.favModeBtn = new System.Windows.Forms.Button();
+            this.Language = new System.Windows.Forms.ComboBox();
+            this.mapDropperBtn = new System.Windows.Forms.Button();
+            this.configBtn = new System.Windows.Forms.Button();
+            this.pacman2 = new System.Windows.Forms.PictureBox();
+            this.selectedFlag2 = new System.Windows.Forms.Label();
+            this.selectedFlag1 = new System.Windows.Forms.Label();
+            this.variationModeButton = new System.Windows.Forms.Button();
+            this.paginationPanel = new System.Windows.Forms.Panel();
+            this.pageLabel = new System.Windows.Forms.Label();
+            this.favGridView = new System.Windows.Forms.DataGridView();
+            this.GridRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.addressDebug = new System.Windows.Forms.Button();
+            this.debugVillager = new System.Windows.Forms.Button();
+            this.inventoryBtn = new System.Windows.Forms.Button();
+            this.critterBtn = new System.Windows.Forms.Button();
+            this.otherBtn = new System.Windows.Forms.Button();
+            this.otherLargePanel = new System.Windows.Forms.Panel();
+            this.SeedTextbox = new System.Windows.Forms.RichTextBox();
+            this.SeedLabel = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.reactionSlot2 = new System.Windows.Forms.ComboBox();
             this.reactionSlot3 = new System.Windows.Forms.ComboBox();
@@ -297,6 +300,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label29 = new System.Windows.Forms.Label();
             this.MysteryIslandToursLabel = new System.Windows.Forms.Label();
+            this.RefreshVillagerBtn = new System.Windows.Forms.Button();
             this.CatchphraseLabel = new System.Windows.Forms.Label();
             this.MoveInFlagLabel = new System.Windows.Forms.Label();
             this.MoveInFlag = new System.Windows.Forms.RichTextBox();
@@ -318,11 +322,13 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.IndexLabel = new System.Windows.Forms.Label();
             this.VillagerControl = new System.Windows.Forms.Panel();
+            this.CancelMoveOutAllBtn = new System.Windows.Forms.Button();
+            this.StayMoveAllBtn = new System.Windows.Forms.Button();
+            this.MoveOutAllBtn = new System.Windows.Forms.Button();
             this.MysSelector = new ACNHPoker.VillagerSelector();
             this.IslandSearch = new System.Windows.Forms.TextBox();
             this.VillagerSearch = new System.Windows.Forms.TextBox();
             this.ReplaceSelector = new ACNHPoker.VillagerSelector();
-            this.RefreshVillagerBtn = new System.Windows.Forms.Button();
             this.LockBox = new System.Windows.Forms.CheckBox();
             this.MysVillagerBtn = new System.Windows.Forms.Button();
             this.ResetCatchphraseBtn = new System.Windows.Forms.Button();
@@ -351,6 +357,7 @@
             this.debugBtn = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.itemRightClick.SuspendLayout();
             this.inventoryPanel.SuspendLayout();
@@ -362,14 +369,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.recipeGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.flowerGridView)).BeginInit();
             this.flowerModePanel.SuspendLayout();
+            this.pokeMainCheatPanel.SuspendLayout();
+            this.timePanel.SuspendLayout();
             this.inventoryLargePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pacman2)).BeginInit();
             this.paginationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.favGridView)).BeginInit();
             this.GridRightClick.SuspendLayout();
             this.otherLargePanel.SuspendLayout();
-            this.pokeMainCheatPanel.SuspendLayout();
-            this.timePanel.SuspendLayout();
             this.critterLargePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pacman)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.insectGridView)).BeginInit();
@@ -2353,7 +2360,7 @@
             this.setTurnipBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.setTurnipBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.setTurnipBtn.ForeColor = System.Drawing.Color.White;
-            this.setTurnipBtn.Location = new System.Drawing.Point(274, 79);
+            this.setTurnipBtn.Location = new System.Drawing.Point(297, 93);
             this.setTurnipBtn.Name = "setTurnipBtn";
             this.setTurnipBtn.Size = new System.Drawing.Size(120, 24);
             this.setTurnipBtn.TabIndex = 134;
@@ -2656,7 +2663,7 @@
             this.MoveOutBtn.ForeColor = System.Drawing.Color.White;
             this.MoveOutBtn.Location = new System.Drawing.Point(520, 435);
             this.MoveOutBtn.Name = "MoveOutBtn";
-            this.MoveOutBtn.Size = new System.Drawing.Size(80, 66);
+            this.MoveOutBtn.Size = new System.Drawing.Size(80, 42);
             this.MoveOutBtn.TabIndex = 182;
             this.MoveOutBtn.Tag = "";
             this.MoveOutBtn.Text = "Forced Move out";
@@ -2673,7 +2680,7 @@
             this.CancelMoveOutBtn.ForeColor = System.Drawing.Color.White;
             this.CancelMoveOutBtn.Location = new System.Drawing.Point(692, 435);
             this.CancelMoveOutBtn.Name = "CancelMoveOutBtn";
-            this.CancelMoveOutBtn.Size = new System.Drawing.Size(80, 66);
+            this.CancelMoveOutBtn.Size = new System.Drawing.Size(80, 42);
             this.CancelMoveOutBtn.TabIndex = 183;
             this.CancelMoveOutBtn.Tag = "";
             this.CancelMoveOutBtn.Text = "Cancel Move out";
@@ -2745,7 +2752,7 @@
             this.StayMoveBtn.ForeColor = System.Drawing.Color.White;
             this.StayMoveBtn.Location = new System.Drawing.Point(606, 435);
             this.StayMoveBtn.Name = "StayMoveBtn";
-            this.StayMoveBtn.Size = new System.Drawing.Size(80, 66);
+            this.StayMoveBtn.Size = new System.Drawing.Size(80, 42);
             this.StayMoveBtn.TabIndex = 195;
             this.StayMoveBtn.Tag = "";
             this.StayMoveBtn.Text = "Irregular Move out";
@@ -2871,6 +2878,22 @@
             this.animationSpdx5.UseVisualStyleBackColor = false;
             this.animationSpdx5.Click += new System.EventHandler(this.animationSpdx5_Click);
             // 
+            // setMaxBtn
+            // 
+            this.setMaxBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.setMaxBtn.FlatAppearance.BorderSize = 0;
+            this.setMaxBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.setMaxBtn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setMaxBtn.ForeColor = System.Drawing.Color.White;
+            this.setMaxBtn.Location = new System.Drawing.Point(297, 63);
+            this.setMaxBtn.Name = "setMaxBtn";
+            this.setMaxBtn.Size = new System.Drawing.Size(120, 24);
+            this.setMaxBtn.TabIndex = 177;
+            this.setMaxBtn.Text = "Set All to MAX";
+            this.formToolTip.SetToolTip(this.setMaxBtn, "Game Stonks");
+            this.setMaxBtn.UseVisualStyleBackColor = false;
+            this.setMaxBtn.Click += new System.EventHandler(this.setMaxBtn_Click);
+            // 
             // selectedItem
             // 
             this.selectedItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -2891,579 +2914,6 @@
             this.formToolTip.SetToolTip(this.selectedItem, "Click to spawn selected item.");
             this.selectedItem.UseVisualStyleBackColor = false;
             this.selectedItem.Click += new System.EventHandler(this.selectedItem_Click);
-            // 
-            // playerSelectorOther
-            // 
-            this.playerSelectorOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.playerSelectorOther.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.playerSelectorOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playerSelectorOther.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.playerSelectorOther.ForeColor = System.Drawing.Color.White;
-            this.playerSelectorOther.FormattingEnabled = true;
-            this.playerSelectorOther.ItemHeight = 16;
-            this.playerSelectorOther.Items.AddRange(new object[] {
-            "Player 1",
-            "Player 2",
-            "Player 3",
-            "Player 4",
-            "Player 5",
-            "Player 6",
-            "Player 7",
-            "Player 8"});
-            this.playerSelectorOther.Location = new System.Drawing.Point(987, 37);
-            this.playerSelectorOther.Name = "playerSelectorOther";
-            this.playerSelectorOther.Size = new System.Drawing.Size(140, 24);
-            this.playerSelectorOther.TabIndex = 176;
-            this.playerSelectorOther.SelectedIndexChanged += new System.EventHandler(this.playerSelectorOther_SelectedIndexChanged);
-            // 
-            // playerSelectorInventory
-            // 
-            this.playerSelectorInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.playerSelectorInventory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.playerSelectorInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playerSelectorInventory.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.playerSelectorInventory.ForeColor = System.Drawing.Color.White;
-            this.playerSelectorInventory.FormattingEnabled = true;
-            this.playerSelectorInventory.ItemHeight = 16;
-            this.playerSelectorInventory.Items.AddRange(new object[] {
-            "Player 1",
-            "Player 2",
-            "Player 3",
-            "Player 4",
-            "Player 5",
-            "Player 6",
-            "Player 7",
-            "Player 8",
-            "Player 1 House",
-            "Player 2 House",
-            "Player 3 House",
-            "Player 4 House",
-            "Player 5 House",
-            "Player 6 House",
-            "Player 7 House",
-            "Player 8 House",
-            "Recycling Bin"});
-            this.playerSelectorInventory.Location = new System.Drawing.Point(564, 11);
-            this.playerSelectorInventory.Name = "playerSelectorInventory";
-            this.playerSelectorInventory.Size = new System.Drawing.Size(147, 24);
-            this.playerSelectorInventory.TabIndex = 98;
-            this.playerSelectorInventory.Visible = false;
-            this.playerSelectorInventory.SelectedIndexChanged += new System.EventHandler(this.inventorySelector_SelectedIndexChanged);
-            // 
-            // saveBtn
-            // 
-            this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.saveBtn.FlatAppearance.BorderSize = 0;
-            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.saveBtn.ForeColor = System.Drawing.Color.White;
-            this.saveBtn.Location = new System.Drawing.Point(717, 1);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(60, 23);
-            this.saveBtn.TabIndex = 89;
-            this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = false;
-            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
-            // 
-            // loadBtn
-            // 
-            this.loadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.loadBtn.FlatAppearance.BorderSize = 0;
-            this.loadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loadBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.loadBtn.ForeColor = System.Drawing.Color.White;
-            this.loadBtn.Location = new System.Drawing.Point(717, 25);
-            this.loadBtn.Name = "loadBtn";
-            this.loadBtn.Size = new System.Drawing.Size(60, 23);
-            this.loadBtn.TabIndex = 90;
-            this.loadBtn.Text = "Load";
-            this.loadBtn.UseVisualStyleBackColor = false;
-            this.loadBtn.Click += new System.EventHandler(this.loadBtn_Click);
-            // 
-            // inventoryLargePanel
-            // 
-            this.inventoryLargePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.inventoryLargePanel.Controls.Add(this.regeneratorBtn);
-            this.inventoryLargePanel.Controls.Add(this.favModeBtn);
-            this.inventoryLargePanel.Controls.Add(this.Language);
-            this.inventoryLargePanel.Controls.Add(this.mapDropperBtn);
-            this.inventoryLargePanel.Controls.Add(this.label18);
-            this.inventoryLargePanel.Controls.Add(this.configBtn);
-            this.inventoryLargePanel.Controls.Add(this.playerSelectorInventory);
-            this.inventoryLargePanel.Controls.Add(this.pacman2);
-            this.inventoryLargePanel.Controls.Add(this.selectedFlag2);
-            this.inventoryLargePanel.Controls.Add(this.selectedFlag1);
-            this.inventoryLargePanel.Controls.Add(this.selectedItemName);
-            this.inventoryLargePanel.Controls.Add(this.wrapSetting);
-            this.inventoryLargePanel.Controls.Add(this.variationModeButton);
-            this.inventoryLargePanel.Controls.Add(this.inventoryPanel);
-            this.inventoryLargePanel.Controls.Add(this.RetainNameCheckBox);
-            this.inventoryLargePanel.Controls.Add(this.loadBtn);
-            this.inventoryLargePanel.Controls.Add(this.waitMsg);
-            this.inventoryLargePanel.Controls.Add(this.saveBtn);
-            this.inventoryLargePanel.Controls.Add(this.msgLabel);
-            this.inventoryLargePanel.Controls.Add(this.itemSearchBox);
-            this.inventoryLargePanel.Controls.Add(this.refreshBtn);
-            this.inventoryLargePanel.Controls.Add(this.itemModeBtn);
-            this.inventoryLargePanel.Controls.Add(this.selectedItem);
-            this.inventoryLargePanel.Controls.Add(this.recipeModeBtn);
-            this.inventoryLargePanel.Controls.Add(this.flowerModeBtn);
-            this.inventoryLargePanel.Controls.Add(this.selectedID);
-            this.inventoryLargePanel.Controls.Add(this.autoRefreshCheckBox);
-            this.inventoryLargePanel.Controls.Add(this.selectedData);
-            this.inventoryLargePanel.Controls.Add(this.paginationPanel);
-            this.inventoryLargePanel.Controls.Add(this.itemGridView);
-            this.inventoryLargePanel.Controls.Add(this.flowerGridView);
-            this.inventoryLargePanel.Controls.Add(this.recipeGridView);
-            this.inventoryLargePanel.Controls.Add(this.itemModePanel);
-            this.inventoryLargePanel.Controls.Add(this.flowerModePanel);
-            this.inventoryLargePanel.Controls.Add(this.recipeModePanel);
-            this.inventoryLargePanel.Controls.Add(this.favGridView);
-            this.inventoryLargePanel.Location = new System.Drawing.Point(0, 0);
-            this.inventoryLargePanel.Name = "inventoryLargePanel";
-            this.inventoryLargePanel.Size = new System.Drawing.Size(1225, 550);
-            this.inventoryLargePanel.TabIndex = 91;
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(735, 787);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(85, 23);
-            this.button13.TabIndex = 240;
-            this.button13.Tag = "";
-            this.button13.Text = "state";
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // regeneratorBtn
-            // 
-            this.regeneratorBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.regeneratorBtn.FlatAppearance.BorderSize = 0;
-            this.regeneratorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.regeneratorBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.regeneratorBtn.ForeColor = System.Drawing.Color.White;
-            this.regeneratorBtn.Location = new System.Drawing.Point(265, 25);
-            this.regeneratorBtn.Name = "regeneratorBtn";
-            this.regeneratorBtn.Size = new System.Drawing.Size(99, 24);
-            this.regeneratorBtn.TabIndex = 170;
-            this.regeneratorBtn.Text = "Regenerator";
-            this.regeneratorBtn.UseVisualStyleBackColor = false;
-            this.regeneratorBtn.Visible = false;
-            this.regeneratorBtn.Click += new System.EventHandler(this.regeneratorBtn_Click);
-            // 
-            // button15
-            // 
-            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.button15.FlatAppearance.BorderSize = 0;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button15.ForeColor = System.Drawing.Color.White;
-            this.button15.Location = new System.Drawing.Point(644, 813);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(85, 23);
-            this.button15.TabIndex = 241;
-            this.button15.Tag = "";
-            this.button15.Text = "talk";
-            this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
-            // button12
-            // 
-            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.Location = new System.Drawing.Point(644, 787);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(85, 23);
-            this.button12.TabIndex = 239;
-            this.button12.Tag = "";
-            this.button12.Text = "state";
-            this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // favModeBtn
-            // 
-            this.favModeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.favModeBtn.FlatAppearance.BorderSize = 0;
-            this.favModeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.favModeBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.favModeBtn.ForeColor = System.Drawing.Color.White;
-            this.favModeBtn.Location = new System.Drawing.Point(311, 390);
-            this.favModeBtn.Name = "favModeBtn";
-            this.favModeBtn.Size = new System.Drawing.Size(79, 23);
-            this.favModeBtn.TabIndex = 167;
-            this.favModeBtn.Text = "Favorite";
-            this.favModeBtn.UseVisualStyleBackColor = false;
-            this.favModeBtn.Click += new System.EventHandler(this.favModeBtn_Click);
-            // 
-            // Language
-            // 
-            this.Language.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Language.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Language.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.Language.ForeColor = System.Drawing.Color.White;
-            this.Language.FormattingEnabled = true;
-            this.Language.ItemHeight = 16;
-            this.Language.Items.AddRange(new object[] {
-            "English",
-            "Japanese",
-            "T. Chinese",
-            "S. Chinese",
-            "Korean",
-            "French",
-            "German",
-            "Spanish",
-            "Italian",
-            "Dutch",
-            "Russian"});
-            this.Language.Location = new System.Drawing.Point(1081, 2);
-            this.Language.Name = "Language";
-            this.Language.Size = new System.Drawing.Size(118, 24);
-            this.Language.TabIndex = 166;
-            this.Language.SelectedIndexChanged += new System.EventHandler(this.Language_SelectedIndexChanged);
-            // 
-            // mapDropperBtn
-            // 
-            this.mapDropperBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.mapDropperBtn.FlatAppearance.BorderSize = 0;
-            this.mapDropperBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mapDropperBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.mapDropperBtn.ForeColor = System.Drawing.Color.White;
-            this.mapDropperBtn.Location = new System.Drawing.Point(265, 1);
-            this.mapDropperBtn.Name = "mapDropperBtn";
-            this.mapDropperBtn.Size = new System.Drawing.Size(99, 23);
-            this.mapDropperBtn.TabIndex = 169;
-            this.mapDropperBtn.Text = "Map Dropper";
-            this.mapDropperBtn.UseVisualStyleBackColor = false;
-            this.mapDropperBtn.Visible = false;
-            this.mapDropperBtn.Click += new System.EventHandler(this.mapDropperBtn_Click);
-            // 
-            // configBtn
-            // 
-            this.configBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.configBtn.FlatAppearance.BorderSize = 0;
-            this.configBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.configBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.configBtn.ForeColor = System.Drawing.Color.White;
-            this.configBtn.Image = global::ACNHPoker.Properties.Resources.gear;
-            this.configBtn.Location = new System.Drawing.Point(2, 9);
-            this.configBtn.Name = "configBtn";
-            this.configBtn.Size = new System.Drawing.Size(30, 30);
-            this.configBtn.TabIndex = 155;
-            this.configBtn.UseVisualStyleBackColor = false;
-            this.configBtn.Click += new System.EventHandler(this.configBtn_Click);
-            // 
-            // pacman2
-            // 
-            this.pacman2.Image = global::ACNHPoker.Properties.Resources.loading;
-            this.pacman2.Location = new System.Drawing.Point(474, 389);
-            this.pacman2.Name = "pacman2";
-            this.pacman2.Size = new System.Drawing.Size(24, 24);
-            this.pacman2.TabIndex = 154;
-            this.pacman2.TabStop = false;
-            this.pacman2.Visible = false;
-            // 
-            // selectedFlag2
-            // 
-            this.selectedFlag2.AutoSize = true;
-            this.selectedFlag2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.selectedFlag2.ForeColor = System.Drawing.Color.White;
-            this.selectedFlag2.Location = new System.Drawing.Point(267, 533);
-            this.selectedFlag2.Name = "selectedFlag2";
-            this.selectedFlag2.Size = new System.Drawing.Size(42, 16);
-            this.selectedFlag2.TabIndex = 139;
-            this.selectedFlag2.Text = "flag2";
-            // 
-            // selectedFlag1
-            // 
-            this.selectedFlag1.AutoSize = true;
-            this.selectedFlag1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.selectedFlag1.ForeColor = System.Drawing.Color.White;
-            this.selectedFlag1.Location = new System.Drawing.Point(206, 533);
-            this.selectedFlag1.Name = "selectedFlag1";
-            this.selectedFlag1.Size = new System.Drawing.Size(42, 16);
-            this.selectedFlag1.TabIndex = 138;
-            this.selectedFlag1.Text = "flag1";
-            // 
-            // variationModeButton
-            // 
-            this.variationModeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.variationModeButton.FlatAppearance.BorderSize = 0;
-            this.variationModeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.variationModeButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.variationModeButton.ForeColor = System.Drawing.Color.White;
-            this.variationModeButton.Location = new System.Drawing.Point(396, 390);
-            this.variationModeButton.Name = "variationModeButton";
-            this.variationModeButton.Size = new System.Drawing.Size(74, 23);
-            this.variationModeButton.TabIndex = 97;
-            this.variationModeButton.Text = "Variation";
-            this.variationModeButton.UseVisualStyleBackColor = false;
-            this.variationModeButton.Click += new System.EventHandler(this.variationModeButton_Click);
-            // 
-            // paginationPanel
-            // 
-            this.paginationPanel.Controls.Add(this.fastBackBtn);
-            this.paginationPanel.Controls.Add(this.pageLabel);
-            this.paginationPanel.Controls.Add(this.fastNextBtn);
-            this.paginationPanel.Controls.Add(this.nextBtn);
-            this.paginationPanel.Controls.Add(this.backBtn);
-            this.paginationPanel.Location = new System.Drawing.Point(601, 386);
-            this.paginationPanel.Name = "paginationPanel";
-            this.paginationPanel.Size = new System.Drawing.Size(240, 32);
-            this.paginationPanel.TabIndex = 96;
-            this.paginationPanel.Visible = false;
-            // 
-            // pageLabel
-            // 
-            this.pageLabel.AutoSize = true;
-            this.pageLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.pageLabel.ForeColor = System.Drawing.Color.White;
-            this.pageLabel.Location = new System.Drawing.Point(85, 6);
-            this.pageLabel.Name = "pageLabel";
-            this.pageLabel.Size = new System.Drawing.Size(61, 19);
-            this.pageLabel.TabIndex = 95;
-            this.pageLabel.Text = "Page 1";
-            // 
-            // favGridView
-            // 
-            this.favGridView.AllowUserToAddRows = false;
-            this.favGridView.AllowUserToDeleteRows = false;
-            this.favGridView.AllowUserToResizeRows = false;
-            this.favGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
-            this.favGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.favGridView.ContextMenuStrip = this.GridRightClick;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.favGridView.DefaultCellStyle = dataGridViewCellStyle4;
-            this.favGridView.Location = new System.Drawing.Point(854, 30);
-            this.favGridView.MultiSelect = false;
-            this.favGridView.Name = "favGridView";
-            this.favGridView.ReadOnly = true;
-            this.favGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.favGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.favGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.favGridView.Size = new System.Drawing.Size(345, 465);
-            this.favGridView.TabIndex = 168;
-            this.favGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.favGridView_CellFormatting);
-            this.favGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.favGridView_CellMouseUp);
-            // 
-            // GridRightClick
-            // 
-            this.GridRightClick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.GridRightClick.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.GridRightClick.ImageScalingSize = new System.Drawing.Size(0, 0);
-            this.GridRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteToolStripMenuItem});
-            this.GridRightClick.Name = "GridRightClick";
-            this.GridRightClick.ShowImageMargin = false;
-            this.GridRightClick.Size = new System.Drawing.Size(153, 26);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.deleteToolStripMenuItem.Text = "Delete Selected";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.button11.FlatAppearance.BorderSize = 0;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(882, 751);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(99, 23);
-            this.button11.TabIndex = 171;
-            this.button11.Text = "villager";
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // addressDebug
-            // 
-            this.addressDebug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.addressDebug.FlatAppearance.BorderSize = 0;
-            this.addressDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addressDebug.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.addressDebug.ForeColor = System.Drawing.Color.White;
-            this.addressDebug.Location = new System.Drawing.Point(1081, 557);
-            this.addressDebug.Name = "addressDebug";
-            this.addressDebug.Size = new System.Drawing.Size(85, 23);
-            this.addressDebug.TabIndex = 165;
-            this.addressDebug.Tag = "";
-            this.addressDebug.Text = "addressdebug";
-            this.addressDebug.UseVisualStyleBackColor = false;
-            this.addressDebug.Click += new System.EventHandler(this.addressDebug_Click);
-            // 
-            // debugVillager
-            // 
-            this.debugVillager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.debugVillager.FlatAppearance.BorderSize = 0;
-            this.debugVillager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.debugVillager.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.debugVillager.ForeColor = System.Drawing.Color.White;
-            this.debugVillager.Location = new System.Drawing.Point(1208, 333);
-            this.debugVillager.Name = "debugVillager";
-            this.debugVillager.Size = new System.Drawing.Size(85, 23);
-            this.debugVillager.TabIndex = 164;
-            this.debugVillager.Tag = "";
-            this.debugVillager.Text = "debug";
-            this.debugVillager.UseVisualStyleBackColor = false;
-            // 
-            // inventoryBtn
-            // 
-            this.inventoryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
-            this.inventoryBtn.FlatAppearance.BorderSize = 0;
-            this.inventoryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inventoryBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.inventoryBtn.ForeColor = System.Drawing.Color.White;
-            this.inventoryBtn.Location = new System.Drawing.Point(0, 55);
-            this.inventoryBtn.Name = "inventoryBtn";
-            this.inventoryBtn.Size = new System.Drawing.Size(25, 75);
-            this.inventoryBtn.TabIndex = 91;
-            this.inventoryBtn.Tag = "Inventory";
-            this.inventoryBtn.UseVisualStyleBackColor = false;
-            this.inventoryBtn.Click += new System.EventHandler(this.inventoryBtn_Click);
-            this.inventoryBtn.Paint += new System.Windows.Forms.PaintEventHandler(this.inventoryBtn_Paint);
-            // 
-            // critterBtn
-            // 
-            this.critterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.critterBtn.FlatAppearance.BorderSize = 0;
-            this.critterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.critterBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.critterBtn.ForeColor = System.Drawing.Color.White;
-            this.critterBtn.Location = new System.Drawing.Point(0, 217);
-            this.critterBtn.Name = "critterBtn";
-            this.critterBtn.Size = new System.Drawing.Size(25, 75);
-            this.critterBtn.TabIndex = 92;
-            this.critterBtn.Tag = "Critter";
-            this.critterBtn.UseVisualStyleBackColor = false;
-            this.critterBtn.Visible = false;
-            this.critterBtn.Click += new System.EventHandler(this.critterBtn_Click);
-            this.critterBtn.Paint += new System.Windows.Forms.PaintEventHandler(this.critterBtn_Paint);
-            // 
-            // otherBtn
-            // 
-            this.otherBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.otherBtn.FlatAppearance.BorderSize = 0;
-            this.otherBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.otherBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.otherBtn.ForeColor = System.Drawing.Color.White;
-            this.otherBtn.Location = new System.Drawing.Point(0, 136);
-            this.otherBtn.Name = "otherBtn";
-            this.otherBtn.Size = new System.Drawing.Size(25, 75);
-            this.otherBtn.TabIndex = 93;
-            this.otherBtn.Tag = "Other";
-            this.otherBtn.UseVisualStyleBackColor = false;
-            this.otherBtn.Visible = false;
-            this.otherBtn.Click += new System.EventHandler(this.otherBtn_Click);
-            this.otherBtn.Paint += new System.Windows.Forms.PaintEventHandler(this.otherBtn_Paint);
-            // 
-            // otherLargePanel
-            // 
-            this.otherLargePanel.Controls.Add(this.playerSelectorOther);
-            this.otherLargePanel.Controls.Add(this.SeedTextbox);
-            this.otherLargePanel.Controls.Add(this.SeedLabel);
-            this.otherLargePanel.Controls.Add(this.pokeMainCheatPanel);
-            this.otherLargePanel.Controls.Add(this.setReactionBtn);
-            this.otherLargePanel.Controls.Add(this.label19);
-            this.otherLargePanel.Controls.Add(this.reactionSlot2);
-            this.otherLargePanel.Controls.Add(this.reactionSlot3);
-            this.otherLargePanel.Controls.Add(this.reactionSlot4);
-            this.otherLargePanel.Controls.Add(this.reactionSlot1);
-            this.otherLargePanel.Controls.Add(this.reactionSlot8);
-            this.otherLargePanel.Controls.Add(this.reactionSlot7);
-            this.otherLargePanel.Controls.Add(this.reactionSlot6);
-            this.otherLargePanel.Controls.Add(this.reactionSlot5);
-            this.otherLargePanel.Controls.Add(this.setTurnipBtn);
-            this.otherLargePanel.Controls.Add(this.poopBtn);
-            this.otherLargePanel.Controls.Add(this.label17);
-            this.otherLargePanel.Controls.Add(this.label15);
-            this.otherLargePanel.Controls.Add(this.label16);
-            this.otherLargePanel.Controls.Add(this.label13);
-            this.otherLargePanel.Controls.Add(this.label14);
-            this.otherLargePanel.Controls.Add(this.label11);
-            this.otherLargePanel.Controls.Add(this.label12);
-            this.otherLargePanel.Controls.Add(this.label9);
-            this.otherLargePanel.Controls.Add(this.label10);
-            this.otherLargePanel.Controls.Add(this.label7);
-            this.otherLargePanel.Controls.Add(this.label8);
-            this.otherLargePanel.Controls.Add(this.label6);
-            this.otherLargePanel.Controls.Add(this.label5);
-            this.otherLargePanel.Controls.Add(this.label2);
-            this.otherLargePanel.Controls.Add(this.turnipSell6PM);
-            this.otherLargePanel.Controls.Add(this.turnipSell6AM);
-            this.otherLargePanel.Controls.Add(this.turnipSell5PM);
-            this.otherLargePanel.Controls.Add(this.turnipSell5AM);
-            this.otherLargePanel.Controls.Add(this.turnipSell4PM);
-            this.otherLargePanel.Controls.Add(this.turnipSell4AM);
-            this.otherLargePanel.Controls.Add(this.turnipSell3PM);
-            this.otherLargePanel.Controls.Add(this.turnipSell3AM);
-            this.otherLargePanel.Controls.Add(this.turnipSell2PM);
-            this.otherLargePanel.Controls.Add(this.turnipSell2AM);
-            this.otherLargePanel.Controls.Add(this.eatBtn);
-            this.otherLargePanel.Controls.Add(this.turnipSell1PM);
-            this.otherLargePanel.Controls.Add(this.turnipSell1AM);
-            this.otherLargePanel.Controls.Add(this.turnipBuyPrice);
-            this.otherLargePanel.Controls.Add(this.saturdayPMStar);
-            this.otherLargePanel.Controls.Add(this.fridayPMStar);
-            this.otherLargePanel.Controls.Add(this.thursdayPMStar);
-            this.otherLargePanel.Controls.Add(this.wednesdayPMStar);
-            this.otherLargePanel.Controls.Add(this.mondayPMStar);
-            this.otherLargePanel.Controls.Add(this.tuesdayPMStar);
-            this.otherLargePanel.Controls.Add(this.saturdayAMStar);
-            this.otherLargePanel.Controls.Add(this.fridayAMStar);
-            this.otherLargePanel.Controls.Add(this.thursdayAMStar);
-            this.otherLargePanel.Controls.Add(this.wednesdayAMStar);
-            this.otherLargePanel.Controls.Add(this.mondayAMStar);
-            this.otherLargePanel.Controls.Add(this.tuesdayAMStar);
-            this.otherLargePanel.Location = new System.Drawing.Point(25, 1);
-            this.otherLargePanel.Name = "otherLargePanel";
-            this.otherLargePanel.Size = new System.Drawing.Size(1200, 550);
-            this.otherLargePanel.TabIndex = 94;
-            // 
-            // SeedTextbox
-            // 
-            this.VillagerSearchMenu.SetAutocompleteMenu(this.SeedTextbox, null);
-            this.SeedTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.SeedTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.SeedTextbox.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
-            this.SeedTextbox.ForeColor = System.Drawing.Color.White;
-            this.SeedTextbox.Location = new System.Drawing.Point(904, 267);
-            this.SeedTextbox.MaxLength = 4;
-            this.SeedTextbox.Multiline = false;
-            this.SeedTextbox.Name = "SeedTextbox";
-            this.SeedTextbox.Size = new System.Drawing.Size(219, 25);
-            this.SeedTextbox.TabIndex = 175;
-            this.SeedTextbox.Text = "";
-            // 
-            // SeedLabel
-            // 
-            this.SeedLabel.AutoSize = true;
-            this.SeedLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.SeedLabel.ForeColor = System.Drawing.Color.White;
-            this.SeedLabel.Location = new System.Drawing.Point(783, 271);
-            this.SeedLabel.Name = "SeedLabel";
-            this.SeedLabel.Size = new System.Drawing.Size(115, 16);
-            this.SeedLabel.TabIndex = 175;
-            this.SeedLabel.Text = "Weather Seed :";
             // 
             // pokeMainCheatPanel
             // 
@@ -3489,6 +2939,7 @@
             this.pokeMainCheatPanel.Name = "pokeMainCheatPanel";
             this.pokeMainCheatPanel.Size = new System.Drawing.Size(702, 197);
             this.pokeMainCheatPanel.TabIndex = 161;
+            this.formToolTip.SetToolTip(this.pokeMainCheatPanel, resources.GetString("pokeMainCheatPanel.ToolTip"));
             // 
             // timePanel
             // 
@@ -3684,6 +3135,612 @@
             this.label22.Size = new System.Drawing.Size(179, 22);
             this.label22.TabIndex = 155;
             this.label22.Text = "Animation Speed :";
+            // 
+            // playerSelectorOther
+            // 
+            this.playerSelectorOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.playerSelectorOther.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.playerSelectorOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playerSelectorOther.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.playerSelectorOther.ForeColor = System.Drawing.Color.White;
+            this.playerSelectorOther.FormattingEnabled = true;
+            this.playerSelectorOther.ItemHeight = 16;
+            this.playerSelectorOther.Items.AddRange(new object[] {
+            "Player 1",
+            "Player 2",
+            "Player 3",
+            "Player 4",
+            "Player 5",
+            "Player 6",
+            "Player 7",
+            "Player 8"});
+            this.playerSelectorOther.Location = new System.Drawing.Point(987, 37);
+            this.playerSelectorOther.Name = "playerSelectorOther";
+            this.playerSelectorOther.Size = new System.Drawing.Size(140, 24);
+            this.playerSelectorOther.TabIndex = 176;
+            this.playerSelectorOther.SelectedIndexChanged += new System.EventHandler(this.playerSelectorOther_SelectedIndexChanged);
+            // 
+            // playerSelectorInventory
+            // 
+            this.playerSelectorInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.playerSelectorInventory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.playerSelectorInventory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.playerSelectorInventory.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.playerSelectorInventory.ForeColor = System.Drawing.Color.White;
+            this.playerSelectorInventory.FormattingEnabled = true;
+            this.playerSelectorInventory.ItemHeight = 16;
+            this.playerSelectorInventory.Items.AddRange(new object[] {
+            "Player 1",
+            "Player 2",
+            "Player 3",
+            "Player 4",
+            "Player 5",
+            "Player 6",
+            "Player 7",
+            "Player 8",
+            "Player 1 House",
+            "Player 2 House",
+            "Player 3 House",
+            "Player 4 House",
+            "Player 5 House",
+            "Player 6 House",
+            "Player 7 House",
+            "Player 8 House",
+            "Recycling Bin"});
+            this.playerSelectorInventory.Location = new System.Drawing.Point(564, 11);
+            this.playerSelectorInventory.Name = "playerSelectorInventory";
+            this.playerSelectorInventory.Size = new System.Drawing.Size(147, 24);
+            this.playerSelectorInventory.TabIndex = 98;
+            this.playerSelectorInventory.Visible = false;
+            this.playerSelectorInventory.SelectedIndexChanged += new System.EventHandler(this.inventorySelector_SelectedIndexChanged);
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.saveBtn.FlatAppearance.BorderSize = 0;
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.saveBtn.ForeColor = System.Drawing.Color.White;
+            this.saveBtn.Location = new System.Drawing.Point(717, 1);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(60, 23);
+            this.saveBtn.TabIndex = 89;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = false;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // loadBtn
+            // 
+            this.loadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.loadBtn.FlatAppearance.BorderSize = 0;
+            this.loadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.loadBtn.ForeColor = System.Drawing.Color.White;
+            this.loadBtn.Location = new System.Drawing.Point(717, 25);
+            this.loadBtn.Name = "loadBtn";
+            this.loadBtn.Size = new System.Drawing.Size(60, 23);
+            this.loadBtn.TabIndex = 90;
+            this.loadBtn.Text = "Load";
+            this.loadBtn.UseVisualStyleBackColor = false;
+            this.loadBtn.Click += new System.EventHandler(this.loadBtn_Click);
+            // 
+            // inventoryLargePanel
+            // 
+            this.inventoryLargePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.inventoryLargePanel.Controls.Add(this.dodoHelperBtn);
+            this.inventoryLargePanel.Controls.Add(this.regeneratorBtn);
+            this.inventoryLargePanel.Controls.Add(this.favModeBtn);
+            this.inventoryLargePanel.Controls.Add(this.Language);
+            this.inventoryLargePanel.Controls.Add(this.mapDropperBtn);
+            this.inventoryLargePanel.Controls.Add(this.label18);
+            this.inventoryLargePanel.Controls.Add(this.configBtn);
+            this.inventoryLargePanel.Controls.Add(this.playerSelectorInventory);
+            this.inventoryLargePanel.Controls.Add(this.pacman2);
+            this.inventoryLargePanel.Controls.Add(this.selectedFlag2);
+            this.inventoryLargePanel.Controls.Add(this.selectedFlag1);
+            this.inventoryLargePanel.Controls.Add(this.selectedItemName);
+            this.inventoryLargePanel.Controls.Add(this.wrapSetting);
+            this.inventoryLargePanel.Controls.Add(this.variationModeButton);
+            this.inventoryLargePanel.Controls.Add(this.inventoryPanel);
+            this.inventoryLargePanel.Controls.Add(this.RetainNameCheckBox);
+            this.inventoryLargePanel.Controls.Add(this.loadBtn);
+            this.inventoryLargePanel.Controls.Add(this.waitMsg);
+            this.inventoryLargePanel.Controls.Add(this.saveBtn);
+            this.inventoryLargePanel.Controls.Add(this.msgLabel);
+            this.inventoryLargePanel.Controls.Add(this.itemSearchBox);
+            this.inventoryLargePanel.Controls.Add(this.refreshBtn);
+            this.inventoryLargePanel.Controls.Add(this.itemModeBtn);
+            this.inventoryLargePanel.Controls.Add(this.selectedItem);
+            this.inventoryLargePanel.Controls.Add(this.recipeModeBtn);
+            this.inventoryLargePanel.Controls.Add(this.flowerModeBtn);
+            this.inventoryLargePanel.Controls.Add(this.selectedID);
+            this.inventoryLargePanel.Controls.Add(this.autoRefreshCheckBox);
+            this.inventoryLargePanel.Controls.Add(this.selectedData);
+            this.inventoryLargePanel.Controls.Add(this.paginationPanel);
+            this.inventoryLargePanel.Controls.Add(this.itemGridView);
+            this.inventoryLargePanel.Controls.Add(this.flowerGridView);
+            this.inventoryLargePanel.Controls.Add(this.recipeGridView);
+            this.inventoryLargePanel.Controls.Add(this.itemModePanel);
+            this.inventoryLargePanel.Controls.Add(this.flowerModePanel);
+            this.inventoryLargePanel.Controls.Add(this.recipeModePanel);
+            this.inventoryLargePanel.Controls.Add(this.favGridView);
+            this.inventoryLargePanel.Location = new System.Drawing.Point(0, 0);
+            this.inventoryLargePanel.Name = "inventoryLargePanel";
+            this.inventoryLargePanel.Size = new System.Drawing.Size(1225, 550);
+            this.inventoryLargePanel.TabIndex = 91;
+            // 
+            // dodoHelperBtn
+            // 
+            this.dodoHelperBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.dodoHelperBtn.FlatAppearance.BorderSize = 0;
+            this.dodoHelperBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dodoHelperBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.dodoHelperBtn.ForeColor = System.Drawing.Color.White;
+            this.dodoHelperBtn.Location = new System.Drawing.Point(464, 25);
+            this.dodoHelperBtn.Name = "dodoHelperBtn";
+            this.dodoHelperBtn.Size = new System.Drawing.Size(99, 23);
+            this.dodoHelperBtn.TabIndex = 171;
+            this.dodoHelperBtn.Text = "Dodo Helper";
+            this.dodoHelperBtn.UseVisualStyleBackColor = false;
+            this.dodoHelperBtn.Visible = false;
+            this.dodoHelperBtn.Click += new System.EventHandler(this.dodoHelperBtn_Click);
+            // 
+            // regeneratorBtn
+            // 
+            this.regeneratorBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.regeneratorBtn.FlatAppearance.BorderSize = 0;
+            this.regeneratorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.regeneratorBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.regeneratorBtn.ForeColor = System.Drawing.Color.White;
+            this.regeneratorBtn.Location = new System.Drawing.Point(265, 25);
+            this.regeneratorBtn.Name = "regeneratorBtn";
+            this.regeneratorBtn.Size = new System.Drawing.Size(99, 24);
+            this.regeneratorBtn.TabIndex = 170;
+            this.regeneratorBtn.Text = "Regenerator";
+            this.regeneratorBtn.UseVisualStyleBackColor = false;
+            this.regeneratorBtn.Visible = false;
+            this.regeneratorBtn.Click += new System.EventHandler(this.regeneratorBtn_Click);
+            // 
+            // favModeBtn
+            // 
+            this.favModeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.favModeBtn.FlatAppearance.BorderSize = 0;
+            this.favModeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.favModeBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.favModeBtn.ForeColor = System.Drawing.Color.White;
+            this.favModeBtn.Location = new System.Drawing.Point(311, 390);
+            this.favModeBtn.Name = "favModeBtn";
+            this.favModeBtn.Size = new System.Drawing.Size(79, 23);
+            this.favModeBtn.TabIndex = 167;
+            this.favModeBtn.Text = "Favorite";
+            this.favModeBtn.UseVisualStyleBackColor = false;
+            this.favModeBtn.Click += new System.EventHandler(this.favModeBtn_Click);
+            // 
+            // Language
+            // 
+            this.Language.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Language.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Language.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.Language.ForeColor = System.Drawing.Color.White;
+            this.Language.FormattingEnabled = true;
+            this.Language.ItemHeight = 16;
+            this.Language.Items.AddRange(new object[] {
+            "English",
+            "Japanese",
+            "T. Chinese",
+            "S. Chinese",
+            "Korean",
+            "French",
+            "German",
+            "Spanish",
+            "Italian",
+            "Dutch",
+            "Russian"});
+            this.Language.Location = new System.Drawing.Point(1081, 2);
+            this.Language.Name = "Language";
+            this.Language.Size = new System.Drawing.Size(118, 24);
+            this.Language.TabIndex = 166;
+            this.Language.SelectedIndexChanged += new System.EventHandler(this.Language_SelectedIndexChanged);
+            // 
+            // mapDropperBtn
+            // 
+            this.mapDropperBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.mapDropperBtn.FlatAppearance.BorderSize = 0;
+            this.mapDropperBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mapDropperBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.mapDropperBtn.ForeColor = System.Drawing.Color.White;
+            this.mapDropperBtn.Location = new System.Drawing.Point(265, 1);
+            this.mapDropperBtn.Name = "mapDropperBtn";
+            this.mapDropperBtn.Size = new System.Drawing.Size(99, 23);
+            this.mapDropperBtn.TabIndex = 169;
+            this.mapDropperBtn.Text = "Map Dropper";
+            this.mapDropperBtn.UseVisualStyleBackColor = false;
+            this.mapDropperBtn.Visible = false;
+            this.mapDropperBtn.Click += new System.EventHandler(this.mapDropperBtn_Click);
+            // 
+            // configBtn
+            // 
+            this.configBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.configBtn.FlatAppearance.BorderSize = 0;
+            this.configBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.configBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.configBtn.ForeColor = System.Drawing.Color.White;
+            this.configBtn.Image = global::ACNHPoker.Properties.Resources.gear;
+            this.configBtn.Location = new System.Drawing.Point(2, 9);
+            this.configBtn.Name = "configBtn";
+            this.configBtn.Size = new System.Drawing.Size(30, 30);
+            this.configBtn.TabIndex = 155;
+            this.configBtn.UseVisualStyleBackColor = false;
+            this.configBtn.Click += new System.EventHandler(this.configBtn_Click);
+            // 
+            // pacman2
+            // 
+            this.pacman2.Image = global::ACNHPoker.Properties.Resources.loading;
+            this.pacman2.Location = new System.Drawing.Point(474, 389);
+            this.pacman2.Name = "pacman2";
+            this.pacman2.Size = new System.Drawing.Size(24, 24);
+            this.pacman2.TabIndex = 154;
+            this.pacman2.TabStop = false;
+            this.pacman2.Visible = false;
+            // 
+            // selectedFlag2
+            // 
+            this.selectedFlag2.AutoSize = true;
+            this.selectedFlag2.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.selectedFlag2.ForeColor = System.Drawing.Color.White;
+            this.selectedFlag2.Location = new System.Drawing.Point(267, 533);
+            this.selectedFlag2.Name = "selectedFlag2";
+            this.selectedFlag2.Size = new System.Drawing.Size(42, 16);
+            this.selectedFlag2.TabIndex = 139;
+            this.selectedFlag2.Text = "flag2";
+            // 
+            // selectedFlag1
+            // 
+            this.selectedFlag1.AutoSize = true;
+            this.selectedFlag1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.selectedFlag1.ForeColor = System.Drawing.Color.White;
+            this.selectedFlag1.Location = new System.Drawing.Point(206, 533);
+            this.selectedFlag1.Name = "selectedFlag1";
+            this.selectedFlag1.Size = new System.Drawing.Size(42, 16);
+            this.selectedFlag1.TabIndex = 138;
+            this.selectedFlag1.Text = "flag1";
+            // 
+            // variationModeButton
+            // 
+            this.variationModeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.variationModeButton.FlatAppearance.BorderSize = 0;
+            this.variationModeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.variationModeButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.variationModeButton.ForeColor = System.Drawing.Color.White;
+            this.variationModeButton.Location = new System.Drawing.Point(396, 390);
+            this.variationModeButton.Name = "variationModeButton";
+            this.variationModeButton.Size = new System.Drawing.Size(74, 23);
+            this.variationModeButton.TabIndex = 97;
+            this.variationModeButton.Text = "Variation";
+            this.variationModeButton.UseVisualStyleBackColor = false;
+            this.variationModeButton.Click += new System.EventHandler(this.variationModeButton_Click);
+            // 
+            // paginationPanel
+            // 
+            this.paginationPanel.Controls.Add(this.fastBackBtn);
+            this.paginationPanel.Controls.Add(this.pageLabel);
+            this.paginationPanel.Controls.Add(this.fastNextBtn);
+            this.paginationPanel.Controls.Add(this.nextBtn);
+            this.paginationPanel.Controls.Add(this.backBtn);
+            this.paginationPanel.Location = new System.Drawing.Point(601, 386);
+            this.paginationPanel.Name = "paginationPanel";
+            this.paginationPanel.Size = new System.Drawing.Size(240, 32);
+            this.paginationPanel.TabIndex = 96;
+            this.paginationPanel.Visible = false;
+            // 
+            // pageLabel
+            // 
+            this.pageLabel.AutoSize = true;
+            this.pageLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.pageLabel.ForeColor = System.Drawing.Color.White;
+            this.pageLabel.Location = new System.Drawing.Point(85, 6);
+            this.pageLabel.Name = "pageLabel";
+            this.pageLabel.Size = new System.Drawing.Size(61, 19);
+            this.pageLabel.TabIndex = 95;
+            this.pageLabel.Text = "Page 1";
+            // 
+            // favGridView
+            // 
+            this.favGridView.AllowUserToAddRows = false;
+            this.favGridView.AllowUserToDeleteRows = false;
+            this.favGridView.AllowUserToResizeRows = false;
+            this.favGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
+            this.favGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.favGridView.ContextMenuStrip = this.GridRightClick;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.favGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            this.favGridView.Location = new System.Drawing.Point(854, 30);
+            this.favGridView.MultiSelect = false;
+            this.favGridView.Name = "favGridView";
+            this.favGridView.ReadOnly = true;
+            this.favGridView.RowHeadersVisible = false;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.favGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.favGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.favGridView.Size = new System.Drawing.Size(345, 465);
+            this.favGridView.TabIndex = 168;
+            this.favGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.favGridView_CellFormatting);
+            this.favGridView.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.favGridView_CellMouseUp);
+            // 
+            // GridRightClick
+            // 
+            this.GridRightClick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.GridRightClick.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.GridRightClick.ImageScalingSize = new System.Drawing.Size(0, 0);
+            this.GridRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.GridRightClick.Name = "GridRightClick";
+            this.GridRightClick.ShowImageMargin = false;
+            this.GridRightClick.Size = new System.Drawing.Size(153, 26);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Text = "Delete Selected";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // button17
+            // 
+            this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button17.FlatAppearance.BorderSize = 0;
+            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button17.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button17.ForeColor = System.Drawing.Color.White;
+            this.button17.Location = new System.Drawing.Point(891, 813);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(99, 24);
+            this.button17.TabIndex = 171;
+            this.button17.Text = "Name";
+            this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.Location = new System.Drawing.Point(735, 787);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(85, 23);
+            this.button13.TabIndex = 240;
+            this.button13.Tag = "";
+            this.button13.Text = "state";
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button15.FlatAppearance.BorderSize = 0;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button15.ForeColor = System.Drawing.Color.White;
+            this.button15.Location = new System.Drawing.Point(644, 813);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(85, 23);
+            this.button15.TabIndex = 241;
+            this.button15.Tag = "";
+            this.button15.Text = "talk";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button12.ForeColor = System.Drawing.Color.White;
+            this.button12.Location = new System.Drawing.Point(644, 787);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(85, 23);
+            this.button12.TabIndex = 239;
+            this.button12.Tag = "";
+            this.button12.Text = "state";
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.Location = new System.Drawing.Point(882, 751);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(99, 23);
+            this.button11.TabIndex = 171;
+            this.button11.Text = "villager";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // addressDebug
+            // 
+            this.addressDebug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.addressDebug.FlatAppearance.BorderSize = 0;
+            this.addressDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addressDebug.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.addressDebug.ForeColor = System.Drawing.Color.White;
+            this.addressDebug.Location = new System.Drawing.Point(1081, 557);
+            this.addressDebug.Name = "addressDebug";
+            this.addressDebug.Size = new System.Drawing.Size(85, 23);
+            this.addressDebug.TabIndex = 165;
+            this.addressDebug.Tag = "";
+            this.addressDebug.Text = "addressdebug";
+            this.addressDebug.UseVisualStyleBackColor = false;
+            this.addressDebug.Click += new System.EventHandler(this.addressDebug_Click);
+            // 
+            // debugVillager
+            // 
+            this.debugVillager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.debugVillager.FlatAppearance.BorderSize = 0;
+            this.debugVillager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.debugVillager.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.debugVillager.ForeColor = System.Drawing.Color.White;
+            this.debugVillager.Location = new System.Drawing.Point(1208, 333);
+            this.debugVillager.Name = "debugVillager";
+            this.debugVillager.Size = new System.Drawing.Size(85, 23);
+            this.debugVillager.TabIndex = 164;
+            this.debugVillager.Tag = "";
+            this.debugVillager.Text = "debug";
+            this.debugVillager.UseVisualStyleBackColor = false;
+            // 
+            // inventoryBtn
+            // 
+            this.inventoryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            this.inventoryBtn.FlatAppearance.BorderSize = 0;
+            this.inventoryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inventoryBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.inventoryBtn.ForeColor = System.Drawing.Color.White;
+            this.inventoryBtn.Location = new System.Drawing.Point(0, 55);
+            this.inventoryBtn.Name = "inventoryBtn";
+            this.inventoryBtn.Size = new System.Drawing.Size(25, 75);
+            this.inventoryBtn.TabIndex = 91;
+            this.inventoryBtn.Tag = "Inventory";
+            this.inventoryBtn.UseVisualStyleBackColor = false;
+            this.inventoryBtn.Click += new System.EventHandler(this.inventoryBtn_Click);
+            this.inventoryBtn.Paint += new System.Windows.Forms.PaintEventHandler(this.inventoryBtn_Paint);
+            // 
+            // critterBtn
+            // 
+            this.critterBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.critterBtn.FlatAppearance.BorderSize = 0;
+            this.critterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.critterBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.critterBtn.ForeColor = System.Drawing.Color.White;
+            this.critterBtn.Location = new System.Drawing.Point(0, 217);
+            this.critterBtn.Name = "critterBtn";
+            this.critterBtn.Size = new System.Drawing.Size(25, 75);
+            this.critterBtn.TabIndex = 92;
+            this.critterBtn.Tag = "Critter";
+            this.critterBtn.UseVisualStyleBackColor = false;
+            this.critterBtn.Visible = false;
+            this.critterBtn.Click += new System.EventHandler(this.critterBtn_Click);
+            this.critterBtn.Paint += new System.Windows.Forms.PaintEventHandler(this.critterBtn_Paint);
+            // 
+            // otherBtn
+            // 
+            this.otherBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.otherBtn.FlatAppearance.BorderSize = 0;
+            this.otherBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.otherBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.otherBtn.ForeColor = System.Drawing.Color.White;
+            this.otherBtn.Location = new System.Drawing.Point(0, 136);
+            this.otherBtn.Name = "otherBtn";
+            this.otherBtn.Size = new System.Drawing.Size(25, 75);
+            this.otherBtn.TabIndex = 93;
+            this.otherBtn.Tag = "Other";
+            this.otherBtn.UseVisualStyleBackColor = false;
+            this.otherBtn.Visible = false;
+            this.otherBtn.Click += new System.EventHandler(this.otherBtn_Click);
+            this.otherBtn.Paint += new System.Windows.Forms.PaintEventHandler(this.otherBtn_Paint);
+            // 
+            // otherLargePanel
+            // 
+            this.otherLargePanel.Controls.Add(this.setMaxBtn);
+            this.otherLargePanel.Controls.Add(this.playerSelectorOther);
+            this.otherLargePanel.Controls.Add(this.SeedTextbox);
+            this.otherLargePanel.Controls.Add(this.SeedLabel);
+            this.otherLargePanel.Controls.Add(this.pokeMainCheatPanel);
+            this.otherLargePanel.Controls.Add(this.setReactionBtn);
+            this.otherLargePanel.Controls.Add(this.label19);
+            this.otherLargePanel.Controls.Add(this.reactionSlot2);
+            this.otherLargePanel.Controls.Add(this.reactionSlot3);
+            this.otherLargePanel.Controls.Add(this.reactionSlot4);
+            this.otherLargePanel.Controls.Add(this.reactionSlot1);
+            this.otherLargePanel.Controls.Add(this.reactionSlot8);
+            this.otherLargePanel.Controls.Add(this.reactionSlot7);
+            this.otherLargePanel.Controls.Add(this.reactionSlot6);
+            this.otherLargePanel.Controls.Add(this.reactionSlot5);
+            this.otherLargePanel.Controls.Add(this.setTurnipBtn);
+            this.otherLargePanel.Controls.Add(this.poopBtn);
+            this.otherLargePanel.Controls.Add(this.label17);
+            this.otherLargePanel.Controls.Add(this.label15);
+            this.otherLargePanel.Controls.Add(this.label16);
+            this.otherLargePanel.Controls.Add(this.label13);
+            this.otherLargePanel.Controls.Add(this.label14);
+            this.otherLargePanel.Controls.Add(this.label11);
+            this.otherLargePanel.Controls.Add(this.label12);
+            this.otherLargePanel.Controls.Add(this.label9);
+            this.otherLargePanel.Controls.Add(this.label10);
+            this.otherLargePanel.Controls.Add(this.label7);
+            this.otherLargePanel.Controls.Add(this.label8);
+            this.otherLargePanel.Controls.Add(this.label6);
+            this.otherLargePanel.Controls.Add(this.label5);
+            this.otherLargePanel.Controls.Add(this.label2);
+            this.otherLargePanel.Controls.Add(this.turnipSell6PM);
+            this.otherLargePanel.Controls.Add(this.turnipSell6AM);
+            this.otherLargePanel.Controls.Add(this.turnipSell5PM);
+            this.otherLargePanel.Controls.Add(this.turnipSell5AM);
+            this.otherLargePanel.Controls.Add(this.turnipSell4PM);
+            this.otherLargePanel.Controls.Add(this.turnipSell4AM);
+            this.otherLargePanel.Controls.Add(this.turnipSell3PM);
+            this.otherLargePanel.Controls.Add(this.turnipSell3AM);
+            this.otherLargePanel.Controls.Add(this.turnipSell2PM);
+            this.otherLargePanel.Controls.Add(this.turnipSell2AM);
+            this.otherLargePanel.Controls.Add(this.eatBtn);
+            this.otherLargePanel.Controls.Add(this.turnipSell1PM);
+            this.otherLargePanel.Controls.Add(this.turnipSell1AM);
+            this.otherLargePanel.Controls.Add(this.turnipBuyPrice);
+            this.otherLargePanel.Controls.Add(this.saturdayPMStar);
+            this.otherLargePanel.Controls.Add(this.fridayPMStar);
+            this.otherLargePanel.Controls.Add(this.thursdayPMStar);
+            this.otherLargePanel.Controls.Add(this.wednesdayPMStar);
+            this.otherLargePanel.Controls.Add(this.mondayPMStar);
+            this.otherLargePanel.Controls.Add(this.tuesdayPMStar);
+            this.otherLargePanel.Controls.Add(this.saturdayAMStar);
+            this.otherLargePanel.Controls.Add(this.fridayAMStar);
+            this.otherLargePanel.Controls.Add(this.thursdayAMStar);
+            this.otherLargePanel.Controls.Add(this.wednesdayAMStar);
+            this.otherLargePanel.Controls.Add(this.mondayAMStar);
+            this.otherLargePanel.Controls.Add(this.tuesdayAMStar);
+            this.otherLargePanel.Location = new System.Drawing.Point(25, 1);
+            this.otherLargePanel.Name = "otherLargePanel";
+            this.otherLargePanel.Size = new System.Drawing.Size(1200, 550);
+            this.otherLargePanel.TabIndex = 94;
+            // 
+            // SeedTextbox
+            // 
+            this.VillagerSearchMenu.SetAutocompleteMenu(this.SeedTextbox, null);
+            this.SeedTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.SeedTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SeedTextbox.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Bold);
+            this.SeedTextbox.ForeColor = System.Drawing.Color.White;
+            this.SeedTextbox.Location = new System.Drawing.Point(904, 267);
+            this.SeedTextbox.MaxLength = 4;
+            this.SeedTextbox.Multiline = false;
+            this.SeedTextbox.Name = "SeedTextbox";
+            this.SeedTextbox.Size = new System.Drawing.Size(219, 25);
+            this.SeedTextbox.TabIndex = 175;
+            this.SeedTextbox.Text = "";
+            // 
+            // SeedLabel
+            // 
+            this.SeedLabel.AutoSize = true;
+            this.SeedLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.SeedLabel.ForeColor = System.Drawing.Color.White;
+            this.SeedLabel.Location = new System.Drawing.Point(783, 271);
+            this.SeedLabel.Name = "SeedLabel";
+            this.SeedLabel.Size = new System.Drawing.Size(115, 16);
+            this.SeedLabel.TabIndex = 175;
+            this.SeedLabel.Text = "Weather Seed :";
             // 
             // label19
             // 
@@ -5216,6 +5273,7 @@
             this.villagerLargePanel.Controls.Add(this.overlay);
             this.villagerLargePanel.Controls.Add(this.PleaseWaitPanel);
             this.villagerLargePanel.Controls.Add(this.MysteryIslandToursLabel);
+            this.villagerLargePanel.Controls.Add(this.RefreshVillagerBtn);
             this.villagerLargePanel.Controls.Add(this.CatchphraseLabel);
             this.villagerLargePanel.Controls.Add(this.MoveInFlagLabel);
             this.villagerLargePanel.Controls.Add(this.MoveInFlag);
@@ -5330,6 +5388,23 @@
             this.MysteryIslandToursLabel.Size = new System.Drawing.Size(218, 22);
             this.MysteryIslandToursLabel.TabIndex = 210;
             this.MysteryIslandToursLabel.Text = "Mystery Island Tours :";
+            // 
+            // RefreshVillagerBtn
+            // 
+            this.RefreshVillagerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.RefreshVillagerBtn.Enabled = false;
+            this.RefreshVillagerBtn.FlatAppearance.BorderSize = 0;
+            this.RefreshVillagerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshVillagerBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.RefreshVillagerBtn.ForeColor = System.Drawing.Color.White;
+            this.RefreshVillagerBtn.Location = new System.Drawing.Point(644, 29);
+            this.RefreshVillagerBtn.Name = "RefreshVillagerBtn";
+            this.RefreshVillagerBtn.Size = new System.Drawing.Size(85, 23);
+            this.RefreshVillagerBtn.TabIndex = 215;
+            this.RefreshVillagerBtn.Tag = "";
+            this.RefreshVillagerBtn.Text = "Refresh";
+            this.RefreshVillagerBtn.UseVisualStyleBackColor = false;
+            this.RefreshVillagerBtn.Click += new System.EventHandler(this.RefreshVillagerBtn_Click);
             // 
             // CatchphraseLabel
             // 
@@ -5594,11 +5669,13 @@
             // VillagerControl
             // 
             this.VillagerControl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.VillagerControl.Controls.Add(this.CancelMoveOutAllBtn);
+            this.VillagerControl.Controls.Add(this.StayMoveAllBtn);
+            this.VillagerControl.Controls.Add(this.MoveOutAllBtn);
             this.VillagerControl.Controls.Add(this.MysSelector);
             this.VillagerControl.Controls.Add(this.IslandSearch);
             this.VillagerControl.Controls.Add(this.VillagerSearch);
             this.VillagerControl.Controls.Add(this.ReplaceSelector);
-            this.VillagerControl.Controls.Add(this.RefreshVillagerBtn);
             this.VillagerControl.Controls.Add(this.LockBox);
             this.VillagerControl.Controls.Add(this.MysVillagerBtn);
             this.VillagerControl.Controls.Add(this.ResetCatchphraseBtn);
@@ -5624,6 +5701,54 @@
             this.VillagerControl.Name = "VillagerControl";
             this.VillagerControl.Size = new System.Drawing.Size(1192, 515);
             this.VillagerControl.TabIndex = 215;
+            // 
+            // CancelMoveOutAllBtn
+            // 
+            this.CancelMoveOutAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.CancelMoveOutAllBtn.FlatAppearance.BorderSize = 0;
+            this.CancelMoveOutAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelMoveOutAllBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.CancelMoveOutAllBtn.ForeColor = System.Drawing.Color.White;
+            this.CancelMoveOutAllBtn.Location = new System.Drawing.Point(692, 483);
+            this.CancelMoveOutAllBtn.Name = "CancelMoveOutAllBtn";
+            this.CancelMoveOutAllBtn.Size = new System.Drawing.Size(80, 23);
+            this.CancelMoveOutAllBtn.TabIndex = 225;
+            this.CancelMoveOutAllBtn.Tag = "";
+            this.CancelMoveOutAllBtn.Text = "All";
+            this.CancelMoveOutAllBtn.UseVisualStyleBackColor = false;
+            this.CancelMoveOutAllBtn.Click += new System.EventHandler(this.CancelMoveOutAllBtn_Click);
+            // 
+            // StayMoveAllBtn
+            // 
+            this.StayMoveAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.StayMoveAllBtn.FlatAppearance.BorderSize = 0;
+            this.StayMoveAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StayMoveAllBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.StayMoveAllBtn.ForeColor = System.Drawing.Color.White;
+            this.StayMoveAllBtn.Location = new System.Drawing.Point(606, 483);
+            this.StayMoveAllBtn.Name = "StayMoveAllBtn";
+            this.StayMoveAllBtn.Size = new System.Drawing.Size(80, 23);
+            this.StayMoveAllBtn.TabIndex = 224;
+            this.StayMoveAllBtn.Tag = "";
+            this.StayMoveAllBtn.Text = "All";
+            this.StayMoveAllBtn.UseVisualStyleBackColor = false;
+            this.StayMoveAllBtn.Click += new System.EventHandler(this.StayMoveAllBtn_Click);
+            // 
+            // MoveOutAllBtn
+            // 
+            this.MoveOutAllBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.MoveOutAllBtn.FlatAppearance.BorderSize = 0;
+            this.MoveOutAllBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MoveOutAllBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.MoveOutAllBtn.ForeColor = System.Drawing.Color.White;
+            this.MoveOutAllBtn.Location = new System.Drawing.Point(520, 483);
+            this.MoveOutAllBtn.Name = "MoveOutAllBtn";
+            this.MoveOutAllBtn.Size = new System.Drawing.Size(80, 23);
+            this.MoveOutAllBtn.TabIndex = 223;
+            this.MoveOutAllBtn.Tag = "";
+            this.MoveOutAllBtn.Text = "All";
+            this.MoveOutAllBtn.UseVisualStyleBackColor = false;
+            this.MoveOutAllBtn.Click += new System.EventHandler(this.MoveOutAllBtn_Click);
             // 
             // MysSelector
             // 
@@ -6489,22 +6614,6 @@
             this.ReplaceSelector.Size = new System.Drawing.Size(200, 66);
             this.ReplaceSelector.TabIndex = 217;
             // 
-            // RefreshVillagerBtn
-            // 
-            this.RefreshVillagerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.RefreshVillagerBtn.FlatAppearance.BorderSize = 0;
-            this.RefreshVillagerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RefreshVillagerBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.RefreshVillagerBtn.ForeColor = System.Drawing.Color.White;
-            this.RefreshVillagerBtn.Location = new System.Drawing.Point(644, 24);
-            this.RefreshVillagerBtn.Name = "RefreshVillagerBtn";
-            this.RefreshVillagerBtn.Size = new System.Drawing.Size(85, 23);
-            this.RefreshVillagerBtn.TabIndex = 215;
-            this.RefreshVillagerBtn.Tag = "";
-            this.RefreshVillagerBtn.Text = "Refresh";
-            this.RefreshVillagerBtn.UseVisualStyleBackColor = false;
-            this.RefreshVillagerBtn.Click += new System.EventHandler(this.RefreshVillagerBtn_Click);
-            // 
             // LockBox
             // 
             this.LockBox.AutoSize = true;
@@ -7332,12 +7441,29 @@
             this.button14.UseVisualStyleBackColor = false;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
+            // button16
+            // 
+            this.button16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.button16.FlatAppearance.BorderSize = 0;
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.button16.ForeColor = System.Drawing.Color.White;
+            this.button16.Location = new System.Drawing.Point(889, 780);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(111, 23);
+            this.button16.TabIndex = 242;
+            this.button16.Tag = "";
+            this.button16.Text = "villager head";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1204, 516);
+            this.Controls.Add(this.button17);
+            this.Controls.Add(this.button16);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button15);
@@ -7405,6 +7531,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.flowerGridView)).EndInit();
             this.flowerModePanel.ResumeLayout(false);
             this.flowerModePanel.PerformLayout();
+            this.pokeMainCheatPanel.ResumeLayout(false);
+            this.pokeMainCheatPanel.PerformLayout();
+            this.timePanel.ResumeLayout(false);
+            this.timePanel.PerformLayout();
             this.inventoryLargePanel.ResumeLayout(false);
             this.inventoryLargePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pacman2)).EndInit();
@@ -7414,10 +7544,6 @@
             this.GridRightClick.ResumeLayout(false);
             this.otherLargePanel.ResumeLayout(false);
             this.otherLargePanel.PerformLayout();
-            this.pokeMainCheatPanel.ResumeLayout(false);
-            this.pokeMainCheatPanel.PerformLayout();
-            this.timePanel.ResumeLayout(false);
-            this.timePanel.PerformLayout();
             this.critterLargePanel.ResumeLayout(false);
             this.critterLargePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pacman)).EndInit();
@@ -7754,6 +7880,13 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button setMaxBtn;
+        private System.Windows.Forms.Button CancelMoveOutAllBtn;
+        private System.Windows.Forms.Button StayMoveAllBtn;
+        private System.Windows.Forms.Button MoveOutAllBtn;
+        private System.Windows.Forms.Button dodoHelperBtn;
     }
 }
 

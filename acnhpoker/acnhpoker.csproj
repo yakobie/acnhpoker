@@ -117,11 +117,17 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AsyncAwaitBestPractices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=532360cfd341384d, processorArchitecture=MSIL">
+      <HintPath>..\packages\AsyncAwaitBestPractices.5.0.2\lib\netstandard2.0\AsyncAwaitBestPractices.dll</HintPath>
+    </Reference>
     <Reference Include="AutocompleteMenu-ScintillaNET, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoCompleteMenu-ScintillaNET.1.6.2\lib\net461\AutocompleteMenu-ScintillaNET.dll</HintPath>
     </Reference>
     <Reference Include="LibUsbDotNet.LibUsbDotNet, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c677239abe1e02a9, processorArchitecture=MSIL">
       <HintPath>..\packages\LibUsbDotNet.2.2.29\lib\net45\LibUsbDotNet.LibUsbDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
@@ -165,6 +171,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Extensions, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.Extensions.4.3.1\lib\net462\System.Runtime.Extensions.dll</HintPath>
       <Private>True</Private>
@@ -176,6 +185,9 @@
     <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Principal.Windows.4.7.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -186,84 +198,99 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TwitchLib.Communication, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TwitchLib.Communication.1.0.3\lib\netstandard2.0\TwitchLib.Communication.dll</HintPath>
+    </Reference>
+    <Reference Include="TwitchLib.PubSub, Version=3.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TwitchLib.PubSub.3.2.2-preview-6a44755dce41da85bc90910f923e9a4a7f46b774\lib\netstandard2.0\TwitchLib.PubSub.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoyerMoore.cs" />
-    <Compile Include="bulkSpawn.cs">
+    <Compile Include="Debug\BoyerMoore.cs" />
+    <Compile Include="Map\bulkSpawn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="bulkSpawn.Designer.cs">
+    <Compile Include="Map\bulkSpawn.Designer.cs">
       <DependentUpon>bulkSpawn.cs</DependentUpon>
     </Compile>
-    <Compile Include="controller.cs" />
-    <Compile Include="DataGridViewProgressColumn.cs" />
-    <Compile Include="DiscordWebHook.cs" />
-    <Compile Include="dodo.cs">
+    <Compile Include="Dodo\controller.cs" />
+    <Compile Include="Custom\DataGridViewProgressColumn.cs" />
+    <Compile Include="Discord\DiscordWebHook.cs" />
+    <Compile Include="Dodo\dodo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dodo.Designer.cs">
+    <Compile Include="Dodo\dodo.Designer.cs">
       <DependentUpon>dodo.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExtendedPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="floorSlot.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Friendship.cs">
+    <Compile Include="Twitch\OrderDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Friendship.Designer.cs">
+    <Compile Include="Twitch\OrderDisplay.Designer.cs">
+      <DependentUpon>OrderDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Twitch\DropOrder.cs" />
+    <Compile Include="Custom\ExtendedPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Map\floorSlot.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Villager\Friendship.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Villager\Friendship.Designer.cs">
       <DependentUpon>Friendship.cs</DependentUpon>
     </Compile>
-    <Compile Include="Log.cs" />
-    <Compile Include="LoopStream.cs" />
-    <Compile Include="map.cs">
+    <Compile Include="Setting\Log.cs" />
+    <Compile Include="Custom\LoopStream.cs" />
+    <Compile Include="Map\map.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="map.Designer.cs">
+    <Compile Include="Map\map.Designer.cs">
       <DependentUpon>map.cs</DependentUpon>
     </Compile>
-    <Compile Include="MapRegenerator.cs">
+    <Compile Include="Map\MapRegenerator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MapRegenerator.Designer.cs">
+    <Compile Include="Map\MapRegenerator.Designer.cs">
       <DependentUpon>MapRegenerator.cs</DependentUpon>
     </Compile>
-    <Compile Include="miniMap.cs" />
-    <Compile Include="MyComboBox.cs">
+    <Compile Include="Map\miniMap.cs" />
+    <Compile Include="Custom\MyComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="myMessageBox.cs" />
-    <Compile Include="MyProgressBar.cs">
+    <Compile Include="Custom\myMessageBox.cs" />
+    <Compile Include="Custom\MyProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Properties\HexUpDown.cs">
+    <Compile Include="Custom\HexUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Setting.cs">
+    <Compile Include="Twitch\PubSub.cs" />
+    <Compile Include="Setting\Setting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Setting.Designer.cs">
+    <Compile Include="Setting\Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
     </Compile>
-    <Compile Include="DiscordStructs.cs" />
-    <Compile Include="teleport.cs">
+    <Compile Include="Discord\DiscordStructs.cs" />
+    <Compile Include="Dodo\teleport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="teleport.Designer.cs">
+    <Compile Include="Dodo\teleport.Designer.cs">
       <DependentUpon>teleport.cs</DependentUpon>
     </Compile>
-    <Compile Include="USBBot.cs" />
-    <Compile Include="DiscordUtils.cs" />
-    <Compile Include="variation.cs">
+    <Compile Include="Twitch\TwitchBot.cs" />
+    <Compile Include="Custom\USBBot.cs" />
+    <Compile Include="Discord\DiscordUtils.cs" />
+    <Compile Include="Custom\variation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="variation.Designer.cs">
+    <Compile Include="Custom\variation.Designer.cs">
       <DependentUpon>variation.cs</DependentUpon>
     </Compile>
-    <Compile Include="inventorySlot.cs">
+    <Compile Include="Inventory\inventorySlot.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Form1.cs">
@@ -292,51 +319,54 @@
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImageDownloader.cs">
+    <Compile Include="Custom\ImageDownloader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImageDownloader.Designer.cs">
+    <Compile Include="Custom\ImageDownloader.Designer.cs">
       <DependentUpon>ImageDownloader.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemAttr.cs" />
+    <Compile Include="Inventory\ItemAttr.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities.cs" />
-    <Compile Include="villager.cs" />
-    <Compile Include="VillagerMemory.cs" />
-    <Compile Include="VillagerSelector.cs">
+    <Compile Include="Villager\villager.cs" />
+    <Compile Include="Villager\VillagerMemory.cs" />
+    <Compile Include="Custom\VillagerSelector.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="bulkSpawn.resx">
+    <EmbeddedResource Include="Map\bulkSpawn.resx">
       <DependentUpon>bulkSpawn.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="dodo.resx">
+    <EmbeddedResource Include="Dodo\dodo.resx">
       <DependentUpon>dodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Friendship.resx">
+    <EmbeddedResource Include="Twitch\OrderDisplay.resx">
+      <DependentUpon>OrderDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Villager\Friendship.resx">
       <DependentUpon>Friendship.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="map.resx">
+    <EmbeddedResource Include="Map\map.resx">
       <DependentUpon>map.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MapRegenerator.resx">
+    <EmbeddedResource Include="Map\MapRegenerator.resx">
       <DependentUpon>MapRegenerator.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Setting.resx">
+    <EmbeddedResource Include="Setting\Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="teleport.resx">
+    <EmbeddedResource Include="Dodo\teleport.resx">
       <DependentUpon>teleport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="variation.resx">
+    <EmbeddedResource Include="Custom\variation.resx">
       <DependentUpon>variation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImageDownloader.resx">
+    <EmbeddedResource Include="Custom\ImageDownloader.resx">
       <DependentUpon>ImageDownloader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -385,8 +415,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ACLeaf.ico" />
-    <Content Include="ACLeaf2.ico" />
     <None Include="Resources\marker.png" />
     <None Include="Resources\ACLeaf2.ico" />
     <None Include="bin\Debug\img\Leaf.png" />
@@ -399,6 +427,7 @@
     <None Include="Resources\3.png" />
     <None Include="Resources\4.png" />
     <None Include="Resources\5.png" />
+    <Content Include="ACLeaf.ico" />
     <Content Include="Resources\gear.png" />
     <None Include="Resources\k.ico" />
     <None Include="Resources\height.png" />

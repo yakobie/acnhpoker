@@ -186,6 +186,15 @@ Everything should work as intended.</value>
     <value>"Dirtier" Method
 
 Save and reload if the villager is not packing boxes and sweeping floor.
+
+⚠️⚠️⚠️⚠️⚠️
+Ever since game version 1.7.0, the behavior of "Irregular Move Out" has been changed. 
+The villager will no longer be stuck at the "Moving out" state forever. 
+You WILL lose at least one villager a day if you put multiple of them in "Irregular Move Out".
+However, this is still better than "Forced Move Out" because you will lose ALL of them by using that.
+⚠️⚠️⚠️⚠️⚠️
+
+[Deprecated]
 Villager will be stuck at "Moving out" state.
 It could be fixed by cancelling it or invited by a visitor.
 Great if you don't know when your visitor is coming.
@@ -201,6 +210,17 @@ Use BEFORE you talk to and invite them.
 Noted that ONLY the name would change but not appearance.
 
 Only works when you are on a mystery island and there is a villager in there.</value>
+  </data>
+  <data name="pokeMainCheatPanel.ToolTip" xml:space="preserve">
+    <value>⚠️ Warning ⚠️ ⚠️ Warning ⚠️
+
+Functions in the panel will create the "Interference Error" if you activate them.
+You will not be able to have any visitors if you activate them.
+Deactivate them will NOT fix the problem.
+
+If you ever activate one of these, you MUST close the game and restart it in order to get rid of the error.
+
+⚠️ Warning ⚠️ ⚠️ Warning ⚠️</value>
   </data>
   <metadata name="GridRightClick.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>614, 0</value>

@@ -40,7 +40,7 @@ namespace ACNHPoker
 
         private void loadAllVillager(int player)
         {
-            lock(villagerLock)
+            lock (villagerLock)
             {
                 if (bot == null)
                     showVillagerWait(25000, "Acquiring villager data...");
@@ -172,6 +172,8 @@ namespace ACNHPoker
                     ForceMoveOutValue.Text = "";
                     CatchphraseValue.Text = "";
                     FullAddress.Text = "";
+
+                    RefreshVillagerBtn.Enabled = true;
                 });
 
                 if (sound)
@@ -444,7 +446,6 @@ namespace ACNHPoker
             V[i].InvitedFlag = 0;
             RefreshVillagerUI(false);
         }
-
         private void CancelMoveOutBtn_Click(object sender, EventArgs e)
         {
             if (IndexValue.Text == "")
@@ -456,6 +457,54 @@ namespace ACNHPoker
             V[i].ForceMoveOutFlag = 0;
             V[i].InvitedFlag = 0;
             RefreshVillagerUI(false);
+        }
+
+        private void MoveOutAllBtn_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Utilities.SetMoveout(s, bot, i);
+
+                V[i].AbandonedHouseFlag = 2;
+                V[i].ForceMoveOutFlag = 1;
+                V[i].InvitedFlag = 0;
+            }
+            RefreshVillagerUI(false);
+
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
+        }
+
+        private void StayMoveAllBtn_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Utilities.SetMoveout(s, bot, i, "2", "0");
+
+                V[i].AbandonedHouseFlag = 2;
+                V[i].ForceMoveOutFlag = 0;
+                V[i].InvitedFlag = 0;
+            }
+            RefreshVillagerUI(false);
+
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
+        }
+
+        private void CancelMoveOutAllBtn_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Utilities.SetMoveout(s, bot, i, "0", "0");
+
+                V[i].AbandonedHouseFlag = 0;
+                V[i].ForceMoveOutFlag = 0;
+                V[i].InvitedFlag = 0;
+            }
+            RefreshVillagerUI(false);
+
+            if (sound)
+                System.Media.SystemSounds.Asterisk.Play();
         }
 
         private void MaxFriendshipBtn_Click(object sender, EventArgs e)
@@ -473,7 +522,7 @@ namespace ACNHPoker
         }
         private void SetFriendshipBtn_Click(object sender, EventArgs e)
         {
-            
+
             if (IndexValue.Text == "")
                 return;
             int i = Int16.Parse(IndexValue.Text);
@@ -720,11 +769,11 @@ namespace ACNHPoker
 
         private void LoadVillagerBtn_Click(object sender, EventArgs e)
         {
-            
+
             if (IndexValue.Text == "")
                 return;
             int i = Int16.Parse(IndexValue.Text);
-            
+
             OpenFileDialog file = new OpenFileDialog()
             {
                 Filter = "New Horizons Villager (*.nhv2)|*.nhv2|New Horizons Villager (*.nhv)|*.nhv",
@@ -1106,7 +1155,7 @@ namespace ACNHPoker
                 return true;
             else
             */
-                return false;
+            return false;
         }
 
         private int findEmptyHouse()

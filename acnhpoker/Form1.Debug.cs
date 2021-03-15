@@ -2,13 +2,9 @@
 using System.ComponentModel;
 using System.Configuration;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-
-using Discord;
-using Discord.Webhook;
 
 namespace ACNHPoker
 {
@@ -143,10 +139,10 @@ namespace ACNHPoker
 
             byte[] b = File.ReadAllBytes(file.FileName);
 
-            
+
             if (MiniMap == null)
                 MiniMap = new miniMap(b, null, 3);
-            
+
             //miniMapBox.Visible = true;
             //miniMapBox.Image = MiniMap.drawItemMap();
         }
@@ -569,44 +565,44 @@ namespace ACNHPoker
 
         private void freezeBtn_Click(object sender, EventArgs e)
         {
-                OpenFileDialog file = new OpenFileDialog()
-                {
-                    Filter = "New Horizons Inventory (*.nhi)|*.nhi|All files (*.*)|*.*",
-                    FileName = "items.nhi",
-                };
+            OpenFileDialog file = new OpenFileDialog()
+            {
+                Filter = "New Horizons Inventory (*.nhi)|*.nhi|All files (*.*)|*.*",
+                FileName = "items.nhi",
+            };
 
-                Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
 
-                string savepath;
+            string savepath;
 
-                if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
-                    savepath = Directory.GetCurrentDirectory() + @"\save";
-                else
-                    savepath = config.AppSettings.Settings["LastLoad"].Value;
+            if (config.AppSettings.Settings["LastLoad"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastLoad"].Value;
 
-                if (Directory.Exists(savepath))
-                {
-                    file.InitialDirectory = savepath;
-                }
-                else
-                {
-                    file.InitialDirectory = @"C:\";
-                }
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
 
-                if (file.ShowDialog() != DialogResult.OK)
-                    return;
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
 
-                string[] temp = file.FileName.Split('\\');
-                string path = "";
-                for (int i = 0; i < temp.Length - 1; i++)
-                    path = path + temp[i] + "\\";
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int i = 0; i < temp.Length - 1; i++)
+                path = path + temp[i] + "\\";
 
-                config.AppSettings.Settings["LastLoad"].Value = path;
-                config.Save(ConfigurationSaveMode.Minimal);
+            config.AppSettings.Settings["LastLoad"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
 
-                byte[] data = File.ReadAllBytes(file.FileName);
+            byte[] data = File.ReadAllBytes(file.FileName);
 
-                btnToolTip.RemoveAll();
+            btnToolTip.RemoveAll();
 
 
             byte[] b1 = new byte[160];
@@ -646,7 +642,7 @@ namespace ACNHPoker
         }
         private void button14_Click(object sender, EventArgs e)
         {
-            dodoSetup = new dodo(this);
+            dodoSetup = new dodo(s, this);
             dodoSetup.Show();
             Thread testThread = new Thread(delegate () { testrestore(); });
             testThread.Start();

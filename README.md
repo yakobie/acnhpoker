@@ -186,16 +186,33 @@ https://youtu.be/-zztRgmtXig
       * You need a "webhook.txt" file in /save folder containing two lines : 1) The Webhook URL & 2) what the bot will say (You can ping someone here)
 	* Added a "villager.txt" containing the villager list on the island.
       * Only updated when you press the button to START the regen.
-* R14.1	  
-	* Added option to speed up orville's dialog.
+* R14.1
+	* Added option to speed up Orville's dialog.
 	* Added handle to the dodo helper to try to finish Isabelle's announcement.
-	* Added error message when Sys-botbase/socket 6000 is not reponding when connecting.
+	* Added error message when Sys-botbase/socket 6000 is not responding.
 	* Villager and turnip write will now also write to the save buffer.
 	* Rework the forever untouched "Image Downloader".
-	* Added the "Image Downloader" to setting.
+	* Added the "Image Downloader" to the setting.
 	* Yeeted some of the offensive error messages of regenerator.
 	* Added the missing new recipes to .nhbs.
 	* Other minor adjustments have been made to enhance the user experience.
+* R14.2
+	* Added a standalone mode for "Dodo Helper"
+      * This will run "Dodo Helper" or "Twitch Drop" WITHOUT any regen.
+      * This also means you can run things in many combinations. Like running "Dodo Helper" + "Twitch Drop" without regen.
+	* Added "Twitch Drop" Twitch Chat item ordering. (You will need to set up a "twitch.json" file in the /save folder. See the "twitch[template].json" file for the info)
+      * This uses the channel point reward system of Twitch and you can change the point needed & cooldown if you want.
+	* Added an "Order Display" with a green screen showing the last 3 ordered items of "Twitch Drop".
+      * You can use a chroma key to show the item order on your stream. Letting the viewer see what they have ordered.
+	* Added a "visitor.txt" containing names of visitors currently on the island. (Only activate when regen is running)
+      * Empty slot will show "[Empty]". And the last line will show the "Num of Visitor". Resize the control if you want to hide some of the information on stream.
+	* Added "Map Zero" to Setting. You can override it when the update happens.
+	* Added Max turnip price button.
+      * You are setting all to "999,999,999 bells" anyways...
+	* Added Moveout All buttons.
+      * You are putting them all in "Irregular Move out" anyways...
+	* As of game version 1.7.0, "Irregular Move out" no longer seems to work like intended. Changing the description of it.
+	* Moved code into folders for better management. This will break the diff most likely... and screw some people over.
 	
 ## Contributing
 

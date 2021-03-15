@@ -6,7 +6,6 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -20,7 +19,7 @@ namespace ACNHPoker
     {
         #region variable
         private static Socket s;
-        private string version = "ACNH Poker R14.1 for v1.8.0";
+        private string version = "ACNH Poker R14.2 for v1.8.0";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;
@@ -38,11 +37,11 @@ namespace ACNHPoker
 
         private Panel currentPanel;
         private Timer refreshTimer;
-        private DataTable itemSource = null;
-        private DataTable recipeSource = null;
+        private static DataTable itemSource = null;
+        private static DataTable recipeSource = null;
         private DataTable flowerSource = null;
         private DataTable favSource = null;
-        private DataTable variationSource = null;
+        private static DataTable variationSource = null;
 
         //private Boolean offsetFound = false;
         private int maxPage = 1;
@@ -52,8 +51,8 @@ namespace ACNHPoker
         public MapRegenerator R = null;
         private miniMap MiniMap = null;
         private USBBot bot = null;
-        private Boolean offline = true;
-        private Boolean allowUpdate = true;
+        private bool offline = true;
+        private bool allowUpdate = true;
         private int counter = 0;
 
         private Setting setting;
@@ -81,22 +80,7 @@ namespace ACNHPoker
         private int[] seaCreatureRate;
         private DataGridView currentGridView;
 
-        private const string csvFolder = @"csv\";
-        private const string itemFile = @"items.csv";
-        private const string itemPath = csvFolder + itemFile;
-        private const string overrideFile = @"override.csv";
-        private const string overridePath = csvFolder + overrideFile;
-        private const string recipeFile = @"recipes.csv";
-        private const string recipePath = csvFolder + recipeFile;
-        private const string flowerFile = @"flowers.csv";
-        private const string flowerPath = csvFolder + flowerFile;
-        private const string variationFile = @"variations.csv";
-        private const string variationPath = csvFolder + variationFile;
-        private const string favFile = @"fav.csv";
-        private const string favPath = csvFolder + favFile; 
-
-        public const string imagePath = @"img\";
-        private Dictionary<string, string> OverrideDict;
+        private static Dictionary<string, string> OverrideDict;
 
         const string villagerPath = @"villager\";
 
@@ -143,10 +127,10 @@ namespace ACNHPoker
             if (overrideSetting)
                 setting.overrideAddresses();
 
-            if (File.Exists(itemPath))
+            if (File.Exists(Utilities.itemPath))
             {
                 //load the csv
-                itemSource = loadItemCSV(itemPath);
+                itemSource = loadItemCSV(Utilities.itemPath);
                 itemGridView.DataSource = itemSource;
 
                 //set the ID row invisible
@@ -218,14 +202,14 @@ namespace ACNHPoker
                 myMessageBox.Show("[Warning] Missing items.csv file!", "Missing file!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (File.Exists(overridePath))
+            if (File.Exists(Utilities.overridePath))
             {
-                OverrideDict = CreateOverride(overridePath);
+                OverrideDict = CreateOverride(Utilities.overridePath);
             }
 
-            if (File.Exists(recipePath))
+            if (File.Exists(Utilities.recipePath))
             {
-                recipeSource = loadItemCSV(recipePath);
+                recipeSource = loadItemCSV(Utilities.recipePath);
                 recipeGridView.DataSource = recipeSource;
 
                 recipeGridView.Columns["id"].Visible = false;
@@ -293,9 +277,9 @@ namespace ACNHPoker
                 recipeGridView.Visible = false;
             }
 
-            if (File.Exists(flowerPath))
+            if (File.Exists(Utilities.flowerPath))
             {
-                flowerSource = loadItemCSV(flowerPath);
+                flowerSource = loadItemCSV(Utilities.flowerPath);
                 flowerGridView.DataSource = flowerSource;
 
                 flowerGridView.Columns["id"].Visible = false;
@@ -364,54 +348,54 @@ namespace ACNHPoker
                 flowerGridView.Visible = false;
             }
 
-            if (File.Exists(variationPath))
+            if (File.Exists(Utilities.variationPath))
             {
-                variationSource = loadItemCSV(variationPath);
+                variationSource = loadItemCSV(Utilities.variationPath);
             }
             else
             {
                 variationModeButton.Visible = false;
             }
 
-            if (!File.Exists(favPath))
+            if (!File.Exists(Utilities.favPath))
             {
                 string favheader = "id" + " ; " + "iName" + " ; " + "Name" + " ; " + "value" + " ; ";
 
-                using (StreamWriter sw = File.CreateText(favPath))
+                using (StreamWriter sw = File.CreateText(Utilities.favPath))
                 {
                     sw.WriteLine(favheader);
                 }
             }
 
-                favSource = loadCSVwoKey(favPath);
-                favGridView.DataSource = favSource;
+            favSource = loadCSVwoKey(Utilities.favPath);
+            favGridView.DataSource = favSource;
 
-                favGridView.Columns["id"].Visible = false;
-                favGridView.Columns["iName"].Visible = false;
-                favGridView.Columns["value"].Visible = false;
+            favGridView.Columns["id"].Visible = false;
+            favGridView.Columns["iName"].Visible = false;
+            favGridView.Columns["value"].Visible = false;
 
-                favGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                favGridView.DefaultCellStyle.BackColor = Color.FromArgb(255, 47, 49, 54);
-                favGridView.DefaultCellStyle.ForeColor = Color.FromArgb(255, 114, 105, 110);
-                favGridView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 60, 67);
+            favGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            favGridView.DefaultCellStyle.BackColor = Color.FromArgb(255, 47, 49, 54);
+            favGridView.DefaultCellStyle.ForeColor = Color.FromArgb(255, 114, 105, 110);
+            favGridView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 60, 67);
 
-                favGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 57, 60, 67);
-                favGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-                favGridView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 60, 67);
+            favGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 57, 60, 67);
+            favGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            favGridView.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 57, 60, 67);
 
-                favGridView.EnableHeadersVisualStyles = false;
+            favGridView.EnableHeadersVisualStyles = false;
 
-                DataGridViewImageColumn favimageColumn = new DataGridViewImageColumn
-                {
-                    Name = "Image",
-                    HeaderText = "Image",
-                    ImageLayout = DataGridViewImageCellLayout.Zoom
-                };
-                favGridView.Columns.Insert(4, favimageColumn);
-                favimageColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+            DataGridViewImageColumn favimageColumn = new DataGridViewImageColumn
+            {
+                Name = "Image",
+                HeaderText = "Image",
+                ImageLayout = DataGridViewImageCellLayout.Zoom
+            };
+            favGridView.Columns.Insert(4, favimageColumn);
+            favimageColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
 
-                favGridView.Columns["Name"].Width = 195;
-                favGridView.Columns["Image"].Width = 128;
+            favGridView.Columns["Name"].Width = 195;
+            favGridView.Columns["Image"].Width = 128;
 
 
             if (!Directory.Exists(Directory.GetCurrentDirectory() + "\\" + "img"))
@@ -750,7 +734,7 @@ namespace ACNHPoker
                 string iName = favGridView.Rows[index].Cells["iName"].Value.ToString();
                 string value = favGridView.Rows[index].Cells["value"].Value.ToString();
 
-                File_DeleteLine(favPath, id, iName, value);
+                File_DeleteLine(Utilities.favPath, id, iName, value);
 
                 favGridView.Rows.RemoveAt(index);
                 if (sound)
@@ -857,7 +841,7 @@ namespace ACNHPoker
 
             if (Map == null)
             {
-                Map = new map(s, bot, itemPath, recipePath, flowerPath, variationPath, favPath, this, imagePath, OverrideDict, sound);
+                Map = new map(s, bot, Utilities.itemPath, Utilities.recipePath, Utilities.flowerPath, Utilities.variationPath, Utilities.favPath, this, Utilities.imagePath, OverrideDict, sound);
                 Map.Show();
             }
         }
@@ -1005,6 +989,115 @@ namespace ACNHPoker
         private void button15_Click(object sender, EventArgs e)
         {
             controller.talkAndGetDodoCode();
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog file = new SaveFileDialog()
+            {
+                Filter = "New Horizons Villager (*.nhv2)|*.nhv2",
+                //FileName = V[i].GetInternalName() + ".nhv2",
+            };
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+
+            string savepath;
+
+            if (config.AppSettings.Settings["LastSave"].Value.Equals(string.Empty))
+                savepath = Directory.GetCurrentDirectory() + @"\save";
+            else
+                savepath = config.AppSettings.Settings["LastSave"].Value;
+
+            if (Directory.Exists(savepath))
+            {
+                file.InitialDirectory = savepath;
+            }
+            else
+            {
+                file.InitialDirectory = @"C:\";
+            }
+
+            if (file.ShowDialog() != DialogResult.OK)
+                return;
+
+            string[] temp = file.FileName.Split('\\');
+            string path = "";
+            for (int j = 0; j < temp.Length - 1; j++)
+                path = path + temp[j] + "\\";
+
+            config.AppSettings.Settings["LastSave"].Value = path;
+            config.Save(ConfigurationSaveMode.Minimal);
+
+            Thread dumpThread = new Thread(delegate () { dumpHead(file); });
+            dumpThread.Start();
+        }
+
+        private void dumpHead(SaveFileDialog file)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                byte[] b = Utilities.ReadByteArray(s, Utilities.VillagerBuffer1 + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
+                File.WriteAllBytes(file.FileName + i, b);
+            }
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            string[] namelist = new string[8];
+
+            string saveFolder = @"save\";
+
+            int num = 0;
+
+            using (StreamWriter sw = File.CreateText(saveFolder + "visitor.txt"))
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    if (i == 0)
+                        continue;
+                    namelist[i] = Utilities.GetVisitorName(s, null, i);
+                    if (namelist[i].Equals(String.Empty))
+                        sw.WriteLine("[Empty]");
+                    else
+                    {
+                        sw.WriteLine(namelist[i]);
+                        num++;
+                    }
+                }
+                if (num >= 7)
+                {
+                    sw.WriteLine("Num of Visitor : " + num);
+                    sw.WriteLine(" [Island Full] ");
+                }
+            }
+
+
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            controller.dropItem();
+        }
+
+        private void dodoHelperBtn_Click(object sender, EventArgs e)
+        {
+            if (dodoSetup == null)
+            {
+                dodoSetup = new dodo(s, this, true)
+                {
+                    ControlBox = true,
+                    ShowInTaskbar = true
+                };
+                dodoSetup.Show();
+                dodoSetup.WriteLog("[You have started dodo helper in standalone mode.]\n\n" +
+                                    "1. Disconnect all controller by selecting \"Controllers\" > \"Change Grip/Order\"\n" +
+                                    "2. Leave only the Joy-Con docked on your Switch.\n" +
+                                    "3. Return to the game and dock your Switch if needed. Try pressing the button below to test the control.\n" +
+                                    "4. If the virtual controller does not response, try the \"Detach\" button on the right, then the \"A\" button.\n" +
+                                    "5. If the virtual controller still does not appear, try restart your Switch.\n\n" +
+                                    ">> Please try the buttons below to test the virtual controller. <<"
+                                    );
+            }
         }
     }
 }
