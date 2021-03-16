@@ -27,6 +27,7 @@ namespace ACNHPoker
         private Dictionary<string, string> ReverseDict;
         private Dictionary<string, string> ColorDict;
         private Dictionary<string, string> RecipeDict;
+        private Dictionary<string, string> VillagerDict;
 
         private dodo dodoSetup;
 
@@ -35,6 +36,7 @@ namespace ACNHPoker
 
         private string DropItemRewardId;
         private string DropRecipeRewardId;
+        private string InjectVillagerRewardId;
 
         public PubSub(TwitchBot TwitchBot, string TwitchChannelid, string TwitchChannelAccessToken, dodo owner)
         {
@@ -42,6 +44,7 @@ namespace ACNHPoker
             accessToken = TwitchChannelAccessToken;
             DropItemRewardId = Utilities.GetJsonSetting(Utilities.TwitchSettingPath, "DropItemRewardId");
             DropRecipeRewardId = Utilities.GetJsonSetting(Utilities.TwitchSettingPath, "DropRecipeRewardId");
+            InjectVillagerRewardId = Utilities.GetJsonSetting(Utilities.TwitchSettingPath, "InjectVillagerRewardId");
 
             dodoSetup = owner;
 
@@ -55,6 +58,7 @@ namespace ACNHPoker
                 ReverseDict = CreateReverseDictionary(Utilities.itemPath); // ID -> Name
                 ColorDict = CreateColorDictionary(Utilities.itemPath); // ID -> Color
                 RecipeDict = CreateRecipeDictionary(Utilities.recipePath); // ID <-> Name
+                VillagerDict = CreateVillagerDictionary(); // Rname -> Iname
             }
 
             connect().SafeFireAndForget();
@@ -230,6 +234,12 @@ namespace ACNHPoker
                 string name = e.Message.Replace('’', '\'').Trim();
 
                 await CheckAndAddRecipe(name, e.DisplayName);
+            }
+            else if (e.RewardId.ToString().Equals(InjectVillagerRewardId)) // Inject villager
+            {
+                string name = e.Message.Replace('’', '\'').Replace('é','e').Replace('É','E').Replace('[', ' ').Replace(']', ' ').Trim();
+
+                await CheckAndAddVillager(name, e.DisplayName, e.Message);
             }
         }
 
@@ -459,6 +469,32 @@ namespace ACNHPoker
                 dodo.AddItem(displayName, ItemId, RecipeId, RecipeDict[RecipeId] + " recipe", "");
             }
         }
+
+        private async Task CheckAndAddVillager(string name, string displayName, string userInput)
+        {
+            if (VillagerDict.ContainsKey(name.ToLower()))
+            {
+                string Iname = VillagerDict[name.ToLower()];
+                string Rname = Utilities.RealName[Iname];
+                Image img;
+                string path = Utilities.GetVillagerImage(Iname);
+
+                if (!path.Equals(string.Empty))
+                    img = Image.FromFile(path);
+                else
+                    img = new Bitmap(Properties.Resources.Leaf, new Size(110, 110));
+
+                await MyTwitchBot.SendMessage($"{displayName}, villager \"{name}\" is now packing up. Please wait for the confirmation before flying in.");
+                dodoSetup.WriteLog($"{displayName} | {Iname} | {Rname} ", true);
+                dodo.AddVillager(displayName, Iname, Rname, img);
+            }
+            else
+            {
+                await MyTwitchBot.SendMessage($"Sorry, I am unable to find a villager with the name \"{userInput}\". Are you sure you are using the correct \"English\" name?");
+                return;
+            }
+        }
+
         public static string EscapeLikeValue(string valueWithoutWildcards)
         {
             StringBuilder sb = new StringBuilder();
@@ -581,6 +617,21 @@ namespace ACNHPoker
                     }
                 }
             }
+
+            return dict;
+        }
+
+        private Dictionary<string, string> CreateVillagerDictionary()
+        {
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+
+            foreach (KeyValuePair<string, string> entry in Utilities.RealName)
+            {
+                dict.Add(entry.Value.Replace('é', 'e').Replace('É', 'E').ToLower(), entry.Key);
+            }
+
+            if (dict.ContainsKey("empty"))
+                dict.Remove("empty");
 
             return dict;
         }

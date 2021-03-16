@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ACNHPoker
@@ -1500,6 +1501,35 @@ namespace ACNHPoker
             }
         }
 
+        public static byte[] GetVillager(Socket socket, USBBot bot, int num, int size)
+        {
+            lock (botLock)
+            {
+                if (bot == null)
+                {
+                    byte[] b = ReadByteArray(socket, VillagerAddress + (num * VillagerSize), size);
+
+                    if (b == null)
+                    {
+                        MessageBox.Show("Wait something is wrong here!? \n\n Villager");
+                    }
+
+                    return b;
+                }
+                else
+                {
+                    byte[] b = ReadLargeBytes(bot, (uint)(VillagerAddress + (num * VillagerSize)), size);
+
+                    if (b == null)
+                    {
+                        MessageBox.Show("Wait something is wrong here!? \n\n Villager");
+                    }
+
+                    return b;
+                }
+            }
+        }
+
         public static void LoadVillager(Socket socket, USBBot bot, int num, byte[] villager, ref int counter)
         {
             lock (botLock)
@@ -1541,6 +1571,37 @@ namespace ACNHPoker
                     Debug.Print("[Usb] Peek : Moveout " + (VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset).ToString("X") + " " + size);
 
                     byte[] b = ReadLargeBytes(bot, (uint)(VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset), size, ref counter);
+
+                    if (b == null)
+                    {
+                        MessageBox.Show("Wait something is wrong here!? \n\n Moveout");
+                    }
+
+                    return b;
+                }
+            }
+        }
+
+        public static byte[] GetMoveout(Socket socket, USBBot bot, int num, int size)
+        {
+            lock (botLock)
+            {
+                if (bot == null)
+                {
+
+                    byte[] b = ReadByteArray(socket, VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset, size);
+
+                    if (b == null)
+                    {
+                        MessageBox.Show("Wait something is wrong here!? \n\n Moveout");
+                    }
+
+                    return b;
+                }
+                else
+                {
+
+                    byte[] b = ReadLargeBytes(bot, (uint)(VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset), size);
 
                     if (b == null)
                     {
@@ -1646,7 +1707,38 @@ namespace ACNHPoker
                     if (b == null)
                     {
                         MessageBox.Show("Wait something is wrong here!? \n\n HouseOwner");
-                        return 0xFF;
+                        return 0xDD;
+                    }
+
+                    return b[0];
+                }
+            }
+        }
+
+        public static byte GetHouseOwner(Socket socket, USBBot bot, int num)
+        {
+            lock (botLock)
+            {
+                if (bot == null)
+                {
+                    byte[] b = ReadByteArray(socket, VillagerHouseAddress + (num * VillagerHouseSize) + VillagerHouseOwnerOffset, 1);
+
+                    if (b == null)
+                    {
+                        MessageBox.Show("Wait something is wrong here!? \n\n HouseOwner");
+                        return 0xDD;
+                    }
+
+                    return b[0];
+                }
+                else
+                {
+                    byte[] b = ReadLargeBytes(bot, (uint)(VillagerHouseAddress + (num * VillagerHouseSize) + VillagerHouseOwnerOffset), 1);
+
+                    if (b == null)
+                    {
+                        MessageBox.Show("Wait something is wrong here!? \n\n HouseOwner");
+                        return 0xDD;
                     }
 
                     return b[0];
@@ -2791,6 +2883,45 @@ namespace ACNHPoker
                 else
                     return true;
             }
+        }
+
+        public static List<string> GetVillagerList(Socket socket, USBBot bot = null)
+        {
+            lock (botLock)
+            {
+                List<string> VillagerList = new List<string>();
+                byte[] b;
+
+                for (int i = 0; i < 10; i++)
+                {
+                    b = GetVillager(socket, bot, i, 0x2);
+                    string InternalName = GetVillagerInternalName(b[0], b[1]);
+                    VillagerList.Add(InternalName);
+                }
+                return VillagerList;
+            }
+        }
+
+        public static async Task loadBoth(Socket socket, int villagerIndex, byte[] villager, int houseIndex, byte[] house)
+        {
+            await Task.Run(() => SendByteArray(socket, VillagerAddress + (villagerIndex * VillagerSize), villager, (int)VillagerSize));
+            await Task.Run(() => SendByteArray(socket, VillagerHouseAddress + (houseIndex * VillagerHouseSize), house, (int)VillagerHouseSize));
+        }
+
+        public static async Task SetMoveout(Socket socket, int villagerIndex, string MoveoutFlag = "2", string ForceMoveoutFlag = "1")
+        {
+            await Task.Run(() =>
+            {
+                string msg;
+                msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (villagerIndex * VillagerSize) + VillagerMoveoutOffset).ToString("X"), MoveoutFlag);
+                SendString(socket, Encoding.UTF8.GetBytes(msg));
+
+                msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (villagerIndex * VillagerSize) + VillagerForceMoveoutOffset).ToString("X"), ForceMoveoutFlag);
+                SendString(socket, Encoding.UTF8.GetBytes(msg));
+
+                msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (villagerIndex * VillagerSize) + VillagerAbandonHouseOffset).ToString("X"), "0");
+                SendString(socket, Encoding.UTF8.GetBytes(msg));
+            });
         }
 
         #region Villager

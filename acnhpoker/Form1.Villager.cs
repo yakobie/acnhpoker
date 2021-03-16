@@ -976,8 +976,8 @@ namespace ACNHPoker
             //byte[] IName = Encoding.Default.GetBytes(lines[lines.Length - 1]);
             string IName = lines[lines.Length - 1];
             string RealName = lines[0];
-            string IVpath = villagerPath + IName + ".nhv2";
-            string RVpath = villagerPath + RealName + ".nhv2";
+            string IVpath = Utilities.villagerPath + IName + ".nhv2";
+            string RVpath = Utilities.villagerPath + RealName + ".nhv2";
             byte[] villagerData;
             byte[] houseData;
 
@@ -1008,8 +1008,8 @@ namespace ACNHPoker
                 return;
             }
 
-            string IHpath = villagerPath + IName + ".nhvh";
-            string RHpath = villagerPath + RealName + ".nhvh";
+            string IHpath = Utilities.villagerPath + IName + ".nhvh";
+            string RHpath = Utilities.villagerPath + RealName + ".nhvh";
             if (File.Exists(IHpath))
             {
                 Debug.Print("FOUND: " + IHpath);

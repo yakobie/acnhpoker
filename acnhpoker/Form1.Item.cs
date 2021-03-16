@@ -3391,6 +3391,11 @@ namespace ACNHPoker
             return namelist;
         }
 
+        public static byte[] getHeader()
+        {
+            return header;
+        }
+
         private int updateDropdownBox()
         {
             string[] namelist = getInventoryName();

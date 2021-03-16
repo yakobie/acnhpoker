@@ -82,8 +82,6 @@ namespace ACNHPoker
 
         private static Dictionary<string, string> OverrideDict;
 
-        const string villagerPath = @"villager\";
-
         private bool overrideSetting = false;
         private bool disableValidation = false;
         public bool sound = true;

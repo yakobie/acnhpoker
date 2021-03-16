@@ -22,6 +22,7 @@ namespace ACNHPoker
         private PubSub MyPubSub;
         private TwitchBot MyTwitchBot;
         private static List<DropOrder> DropOrderList = new List<DropOrder>();
+        private static List<VillagerOrder> VillagerOrderList = new List<VillagerOrder>();
         private string TwitchBotUserName;
         private string TwitchBotOauth;
         private string TwitchChannelName;
@@ -31,8 +32,9 @@ namespace ACNHPoker
         private bool lastOrderIsRecipe = false;
         private static OrderDisplay itemDisplay;
 
-        bool restoreDodo = false;
         bool dropItem = false;
+        bool injectVillager = false;
+        bool restoreDodo = true;
 
         Thread standaloneThread;
         private bool standaloneRunning = false;
@@ -55,12 +57,11 @@ namespace ACNHPoker
                 TwitchBtn.Visible = true;
                 itemDisplayBtn.Visible = true;
                 dropItemBox.Enabled = true;
+                injectVillagerBox.Enabled = true;
             }
 
             if (standaloneMode)
             {
-                dropItemBox.Visible = true;
-                restoreDodobox.Visible = true;
                 standaloneStart.Visible = true;
             }
         }
@@ -546,20 +547,72 @@ namespace ACNHPoker
 
         public teleport.OverworldState DodoMonitor()
         {
+            teleport.OverworldState state = teleport.GetOverworldState();
+            WriteLog(state.ToString() + " " + idleNum, true);
+
             if (CheckOnlineStatus() == 1)
             {
-                teleport.OverworldState state = teleport.GetOverworldState();
-                WriteLog(state.ToString() + " " + idleNum, true);
-
                 if (state == teleport.OverworldState.Loading || state == teleport.OverworldState.UserArriveLeavingOrTitleScreen)
                 {
                     idleNum = 0;
                     wasLoading = true;
                 }
-                else
+            }
+            else
+            {
+                if (restoreDodo)
                 {
-                    idleNum++;
-                    if (idleNum >= 2)
+                    WriteLog("[Warning] Disconnected.", true);
+                    WriteLog("Please wait a moment for the restore.", true);
+                    LockControl();
+
+                    int retry = 0;
+                    do
+                    {
+                        if (retry >= 30)
+                        {
+                            WriteLog("[Warning] Start Hard Restore", true);
+                            HardRestore();
+                            break;
+                        }
+                        if (teleport.GetLocationState() == teleport.LocationState.Announcement)
+                        {
+                            WriteLog("In Announcement", true);
+                            if (!HoldingL)
+                            {
+                                controller.pressL();
+                                HoldingL = true;
+                            }
+                            retry = 0;
+                        }
+                        else
+                        {
+                            WriteLog("Waiting for Overworld", true);
+                        }
+                        controller.clickA();
+                        Thread.Sleep(3000);
+                        retry++;
+                    }
+                    while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
+
+                    //Thread.Sleep(2000);
+                    controller.releaseL();
+                    HoldingL = false;
+                    WriteLog("[Warning] Start Normal Restore", true);
+                    WriteLog("Please wait for the bot to finish the sequence.", true);
+                    NormalRestore();
+                    unLockControl();
+                    WriteLog("Restore sequence finished.", true);
+                    idleNum = 0;
+                    state = teleport.OverworldState.OverworldOrInAirport;
+                }
+            }
+
+            if (state != teleport.OverworldState.Loading && state != teleport.OverworldState.UserArriveLeavingOrTitleScreen)
+            {
+                if (idleNum >= 2)
+                {
+                    if (dropItem)
                     {
                         if (wasLoading)
                         {
@@ -576,7 +629,7 @@ namespace ACNHPoker
 
                         if (DropOrderList.Count <= 0)
                         {
-                            Debug.Print("No item needed to drop");
+                            Debug.Print("No Item Drop Order");
                         }
                         else
                         {
@@ -586,63 +639,32 @@ namespace ACNHPoker
                         }
                     }
 
-                    if (idleEmote && state == teleport.OverworldState.OverworldOrInAirport)
+                    if (injectVillager)
                     {
-                        if (idleNum >= 5 && idleNum % 5 == 0)
+                        if (VillagerOrderList.Count <= 0)
                         {
-                            Random random = new Random();
-                            int v = random.Next(0, 10);
-                            controller.emote(v);
+                            Debug.Print("No Villager Order");
+                        }
+                        else if (state != teleport.OverworldState.ItemDropping)
+                        {
+                            _ = InjectVillager(VillagerOrderList.ElementAt(0));
                         }
                     }
                 }
-                return state;
-            }
-            else
-            {
-                WriteLog("[Warning] Disconnected.", true);
-                WriteLog("Please wait a moment for the restore.", true);
-                LockControl();
 
-                int retry = 0;
-                do
+                if (idleEmote && state == teleport.OverworldState.OverworldOrInAirport)
                 {
-                    if (retry >= 30)
+                    if (idleNum >= 5 && idleNum % 5 == 0)
                     {
-                        WriteLog("[Warning] Start Hard Restore", true);
-                        HardRestore();
-                        break;
+                        Random random = new Random();
+                        int v = random.Next(0, 10);
+                        controller.emote(v);
                     }
-                    if (teleport.GetLocationState() == teleport.LocationState.Announcement)
-                    {
-                        WriteLog("In Announcement", true);
-                        if (!HoldingL)
-                        {
-                            controller.pressL();
-                            HoldingL = true;
-                        }
-                        retry = 0;
-                    }
-                    else
-                    {
-                        WriteLog("Waiting for Overworld", true);
-                    }
-                    controller.clickA();
-                    Thread.Sleep(3000);
-                    retry++;
                 }
-                while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
-
-                //Thread.Sleep(2000);
-                controller.releaseL();
-                HoldingL = false;
-                WriteLog("[Warning] Start Normal Restore", true);
-                WriteLog("Please wait for the bot to finish the sequence.", true);
-                NormalRestore();
-                unLockControl();
-                WriteLog("Restore sequence finished.", true);
-                return teleport.OverworldState.OverworldOrInAirport;
             }
+
+            idleNum++;
+            return state;
         }
 
         public void NormalRestore()
@@ -851,6 +873,86 @@ namespace ACNHPoker
             //await MyTwitchBot.SendMessage($"If you can't find your order, people flying in/out might have canceled it. We are very sorry. Feel free to place your order again.");
 
             DropOrderList.RemoveAt(0);
+        }
+
+        public static void AddVillager(string Owner, string Iname, string Rname, Image Image = null)
+        {
+            VillagerOrderList.Add(new VillagerOrder() { owner = Owner, InternalName = Iname, RealName = Rname, image = Image });
+
+            Debug.Print($"{Owner} - Villager Added : {Rname} [{Iname}] ");
+        }
+
+        private async Task InjectVillager(VillagerOrder CurrentOrder)
+        {
+            List<string> VillagerList = Utilities.GetVillagerList(s);
+
+            if (VillagerList.Contains(CurrentOrder.InternalName))
+            {
+                int i = VillagerList.IndexOf(CurrentOrder.InternalName);
+
+                Utilities.SetMoveout(s, null, i, "2", "0");
+
+                await MyTwitchBot.SendMessage($"{CurrentOrder.owner}, \"{CurrentOrder.RealName}\" is already waiting for you on the island.");
+
+                VillagerOrderList.RemoveAt(0);
+
+                MapRegenerator.updateVillager(s, i);
+            }
+            else
+            {
+                int houseIndex = 0;
+                int villagerIndex = Convert.ToInt32(Utilities.GetHouseOwner(s, null, houseIndex));
+
+                string IVpath = Utilities.villagerPath + CurrentOrder.InternalName + ".nhv2";
+                string RVpath = Utilities.villagerPath + CurrentOrder.RealName + ".nhv2";
+
+                byte[] villagerData;
+                byte[] houseData;
+
+                if (File.Exists(IVpath))
+                    villagerData = File.ReadAllBytes(IVpath);
+                else if (File.Exists(RVpath))
+                    villagerData = File.ReadAllBytes(RVpath);
+                else
+                {
+                    WriteLog("Villager files \"" + CurrentOrder.InternalName + ".nhv2\" " + "/ \"" + CurrentOrder.RealName + ".nhv2\" " + "not found!", true);
+                    VillagerOrderList.RemoveAt(0);
+                    return;
+                }
+
+                string IHpath = Utilities.villagerPath + CurrentOrder.InternalName + ".nhvh";
+                string RHpath = Utilities.villagerPath + CurrentOrder.RealName + ".nhvh";
+                if (File.Exists(IHpath))
+                    houseData = File.ReadAllBytes(IHpath);
+                else if (File.Exists(RHpath))
+                    houseData = File.ReadAllBytes(RHpath);
+                else
+                {
+                    WriteLog("Villager house files \"" + CurrentOrder.InternalName + ".nhvh\" " + "/ \"" + CurrentOrder.RealName + ".nhvh\" " + "not found!", true);
+                    VillagerOrderList.RemoveAt(0);
+                    return;
+                }
+
+                WriteLog($"Loading villager... \"{CurrentOrder.RealName}\"", true);
+
+                byte[] modifiedVillager = villagerData;
+                Buffer.BlockCopy(Form1.getHeader(), 0x0, modifiedVillager, 0x4, 52);
+
+                byte[] modifiedHouse = houseData;
+
+                byte h = (Byte)villagerIndex;
+                modifiedHouse[Utilities.VillagerHouseOwnerOffset] = h;
+
+                await Utilities.loadBoth(s, villagerIndex, villagerData, houseIndex, houseData);
+                await Utilities.SetMoveout(s, villagerIndex, "2", "0");
+
+                await MyTwitchBot.SendMessage($"{CurrentOrder.owner}, \"{CurrentOrder.RealName}\" is now waiting for you on the island.");
+
+                VillagerOrderList.RemoveAt(0);
+
+                MapRegenerator.updateVillager(s, villagerIndex);
+            }
+
         }
 
         private void dodoLog_TextChanged(object sender, EventArgs e)
@@ -1071,6 +1173,30 @@ namespace ACNHPoker
                 idleEmote = false;
         }
 
+        private void dropItemBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dropItemBox.Checked)
+                dropItem = true;
+            else
+                dropItem = false;
+        }
+
+        private void injectVillagerBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (injectVillagerBox.Checked)
+                injectVillager = true;
+            else
+                injectVillager = false;
+        }
+
+        private void restoreDodobox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (restoreDodobox.Checked)
+                restoreDodo = true;
+            else
+                restoreDodo = false;
+        }
+
         private void AbortBtn_Click(object sender, EventArgs e)
         {
             if (mainForm is MapRegenerator)
@@ -1168,71 +1294,15 @@ namespace ACNHPoker
         {
             do
             {
-                this.Invoke((MethodInvoker)delegate
+                teleport.OverworldState state = teleport.GetOverworldState();
+                WriteLog(state.ToString() + " " + idleNum, true);
+
+                if (CheckOnlineStatus() == 1)
                 {
-                    if (restoreDodobox.Checked)
-                        restoreDodo = true;
-                    else
-                        restoreDodo = false;
-
-                    if (dropItemBox.Checked)
-                        dropItem = true;
-                    else
-                        dropItem = false;
-                });
-
-                if (CheckOnlineStatus() == 1 || !restoreDodo)
-                {
-                    teleport.OverworldState state = teleport.GetOverworldState();
-                    WriteLog(state.ToString() + " " + idleNum, true);
-
                     if (state == teleport.OverworldState.Loading || state == teleport.OverworldState.UserArriveLeavingOrTitleScreen)
                     {
                         idleNum = 0;
                         wasLoading = true;
-                    }
-                    else
-                    {
-                        idleNum++;
-                        if (idleNum >= 2)
-                        {
-                            if (dropItem)
-                            {
-                                if (wasLoading)
-                                {
-                                    if (Utilities.hasItemInFirstSlot(s))
-                                    {
-                                        if (lastOrderIsRecipe)
-                                            controller.dropRecipe();
-                                        else
-                                            controller.dropItem();
-                                    }
-
-                                    wasLoading = false;
-                                }
-
-                                if (DropOrderList.Count <= 0)
-                                {
-                                    Debug.Print("No item needed to drop");
-                                }
-                                else
-                                {
-                                    _ = DropItem(DropOrderList.ElementAt(0));
-                                    if (DropOrderList.Count > 0)
-                                        state = teleport.OverworldState.ItemDropping;
-                                }
-                            }
-                        }
-
-                        if (idleEmote && state == teleport.OverworldState.OverworldOrInAirport)
-                        {
-                            if (idleNum >= 10 && idleNum % 10 == 0)
-                            {
-                                Random random = new Random();
-                                int v = random.Next(0, 10);
-                                controller.emote(v);
-                            }
-                        }
                     }
                 }
                 else
@@ -1280,10 +1350,60 @@ namespace ACNHPoker
                         NormalRestore();
                         unLockControl();
                         WriteLog("Restore sequence finished.", true);
-
                     }
                 }
 
+                if (state != teleport.OverworldState.Loading && state != teleport.OverworldState.UserArriveLeavingOrTitleScreen)
+                {
+                    if (idleNum >= 2)
+                    {
+                        if (dropItem)
+                        {
+                            if (wasLoading)
+                            {
+                                if (Utilities.hasItemInFirstSlot(s))
+                                {
+                                    if (lastOrderIsRecipe)
+                                        controller.dropRecipe();
+                                    else
+                                        controller.dropItem();
+                                }
+                                wasLoading = false;
+                            }
+
+                            if (DropOrderList.Count <= 0)
+                                Debug.Print("No Item Drop Order");
+                            else
+                            {
+                                _ = DropItem(DropOrderList.ElementAt(0));
+                                if (DropOrderList.Count > 0)
+                                    state = teleport.OverworldState.ItemDropping;
+                            }
+                        }
+
+                        if (injectVillager)
+                        {
+                            if (VillagerOrderList.Count <= 0)
+                                Debug.Print("No Villager Order");
+                            else if (state != teleport.OverworldState.ItemDropping)
+                            {
+                                _ = InjectVillager(VillagerOrderList.ElementAt(0));
+                            }
+                        }
+                    }
+
+                    if (idleEmote && state == teleport.OverworldState.OverworldOrInAirport)
+                    {
+                        if (idleNum >= 10 && idleNum % 10 == 0)
+                        {
+                            Random random = new Random();
+                            int v = random.Next(0, 10);
+                            controller.emote(v);
+                        }
+                    }
+                }
+
+                idleNum++;
                 Thread.Sleep(2000);
 
             } while (standaloneRunning);

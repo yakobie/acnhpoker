@@ -34,6 +34,7 @@ namespace ACNHPoker
             this.FullPanel = new System.Windows.Forms.Panel();
             this.AbortBtn = new System.Windows.Forms.Button();
             this.functionPanel = new System.Windows.Forms.Panel();
+            this.dropItemBox = new System.Windows.Forms.CheckBox();
             this.standaloneStart = new System.Windows.Forms.Button();
             this.restoreDodobox = new System.Windows.Forms.CheckBox();
             this.itemDisplayBtn = new System.Windows.Forms.Button();
@@ -163,7 +164,7 @@ namespace ACNHPoker
             this.DoneAnchor1Btn = new System.Windows.Forms.Button();
             this.DoneAnchor0Btn = new System.Windows.Forms.Button();
             this.HoverToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.dropItemBox = new System.Windows.Forms.CheckBox();
+            this.injectVillagerBox = new System.Windows.Forms.CheckBox();
             this.FullPanel.SuspendLayout();
             this.functionPanel.SuspendLayout();
             this.controllerPanel.SuspendLayout();
@@ -300,9 +301,10 @@ namespace ACNHPoker
             // 
             // functionPanel
             // 
+            this.functionPanel.Controls.Add(this.restoreDodobox);
+            this.functionPanel.Controls.Add(this.injectVillagerBox);
             this.functionPanel.Controls.Add(this.dropItemBox);
             this.functionPanel.Controls.Add(this.standaloneStart);
-            this.functionPanel.Controls.Add(this.restoreDodobox);
             this.functionPanel.Controls.Add(this.itemDisplayBtn);
             this.functionPanel.Controls.Add(this.TwitchBtn);
             this.functionPanel.Controls.Add(this.skipDialogCheckBox);
@@ -321,6 +323,23 @@ namespace ACNHPoker
             this.functionPanel.Size = new System.Drawing.Size(119, 258);
             this.functionPanel.TabIndex = 318;
             // 
+            // dropItemBox
+            // 
+            this.dropItemBox.AutoSize = true;
+            this.dropItemBox.BackColor = System.Drawing.Color.Transparent;
+            this.dropItemBox.Enabled = false;
+            this.dropItemBox.ForeColor = System.Drawing.Color.White;
+            this.dropItemBox.Location = new System.Drawing.Point(5, 53);
+            this.dropItemBox.Name = "dropItemBox";
+            this.dropItemBox.Size = new System.Drawing.Size(95, 20);
+            this.dropItemBox.TabIndex = 339;
+            this.dropItemBox.Text = "Drop items";
+            this.HoverToolTip.SetToolTip(this.dropItemBox, "Control whether the bot will drop the item order from Twitch.\r\n*Require you to ha" +
+        "ve Twitch properly set up and connected.\r\n\r\nYou can toggle this on and off witho" +
+        "ut stopping the process.");
+            this.dropItemBox.UseVisualStyleBackColor = false;
+            this.dropItemBox.CheckedChanged += new System.EventHandler(this.dropItemBox_CheckedChanged);
+            // 
             // standaloneStart
             // 
             this.standaloneStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -328,7 +347,7 @@ namespace ACNHPoker
             this.standaloneStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.standaloneStart.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
             this.standaloneStart.ForeColor = System.Drawing.Color.White;
-            this.standaloneStart.Location = new System.Drawing.Point(3, 91);
+            this.standaloneStart.Location = new System.Drawing.Point(3, 108);
             this.standaloneStart.Margin = new System.Windows.Forms.Padding(4);
             this.standaloneStart.Name = "standaloneStart";
             this.standaloneStart.Size = new System.Drawing.Size(112, 22);
@@ -343,8 +362,10 @@ namespace ACNHPoker
             // 
             this.restoreDodobox.AutoSize = true;
             this.restoreDodobox.BackColor = System.Drawing.Color.Transparent;
+            this.restoreDodobox.Checked = true;
+            this.restoreDodobox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.restoreDodobox.ForeColor = System.Drawing.Color.White;
-            this.restoreDodobox.Location = new System.Drawing.Point(5, 70);
+            this.restoreDodobox.Location = new System.Drawing.Point(5, 87);
             this.restoreDodobox.Name = "restoreDodobox";
             this.restoreDodobox.Size = new System.Drawing.Size(112, 20);
             this.restoreDodobox.TabIndex = 337;
@@ -352,7 +373,7 @@ namespace ACNHPoker
             this.HoverToolTip.SetToolTip(this.restoreDodobox, "Control whether the bot will try to restore the Dodo code\r\nwhen the island is dis" +
         "connected.\r\n\r\nYou can toggle this on and off without stopping the process.");
             this.restoreDodobox.UseVisualStyleBackColor = false;
-            this.restoreDodobox.Visible = false;
+            this.restoreDodobox.CheckedChanged += new System.EventHandler(this.restoreDodobox_CheckedChanged);
             // 
             // itemDisplayBtn
             // 
@@ -2154,24 +2175,22 @@ namespace ACNHPoker
             this.DoneAnchor0Btn.Visible = false;
             this.DoneAnchor0Btn.Click += new System.EventHandler(this.DoneAnchor0Btn_Click);
             // 
-            // dropItemBox
+            // injectVillagerBox
             // 
-            this.dropItemBox.AutoSize = true;
-            this.dropItemBox.BackColor = System.Drawing.Color.Transparent;
-            this.dropItemBox.Checked = true;
-            this.dropItemBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.dropItemBox.Enabled = false;
-            this.dropItemBox.ForeColor = System.Drawing.Color.White;
-            this.dropItemBox.Location = new System.Drawing.Point(5, 53);
-            this.dropItemBox.Name = "dropItemBox";
-            this.dropItemBox.Size = new System.Drawing.Size(95, 20);
-            this.dropItemBox.TabIndex = 339;
-            this.dropItemBox.Text = "Drop items";
-            this.HoverToolTip.SetToolTip(this.dropItemBox, "Control whether the bot will drop the item order from Twitch.\r\n*Require you to ha" +
-        "ve Twitch properly set up and connected.\r\n\r\nYou can toggle this on and off witho" +
-        "ut stopping the process.");
-            this.dropItemBox.UseVisualStyleBackColor = false;
-            this.dropItemBox.Visible = false;
+            this.injectVillagerBox.AutoSize = true;
+            this.injectVillagerBox.BackColor = System.Drawing.Color.Transparent;
+            this.injectVillagerBox.Enabled = false;
+            this.injectVillagerBox.ForeColor = System.Drawing.Color.White;
+            this.injectVillagerBox.Location = new System.Drawing.Point(5, 70);
+            this.injectVillagerBox.Name = "injectVillagerBox";
+            this.injectVillagerBox.Size = new System.Drawing.Size(122, 20);
+            this.injectVillagerBox.TabIndex = 340;
+            this.injectVillagerBox.Text = "Inject Villagers";
+            this.HoverToolTip.SetToolTip(this.injectVillagerBox, "Control whether the bot will process villager order from Twitch.\r\n*Require you to" +
+        " have Twitch properly set up and connected.\r\n\r\nYou can toggle this on and off wi" +
+        "thout stopping the process.");
+            this.injectVillagerBox.UseVisualStyleBackColor = false;
+            this.injectVillagerBox.CheckedChanged += new System.EventHandler(this.injectVillagerBox_CheckedChanged);
             // 
             // dodo
             // 
@@ -2189,6 +2208,7 @@ namespace ACNHPoker
             this.MaximumSize = new System.Drawing.Size(1200, 330);
             this.MinimumSize = new System.Drawing.Size(600, 330);
             this.Name = "dodo";
+            this.ShowInTaskbar = false;
             this.Text = "Dutch Sailors";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.dodo_FormClosed);
             this.FullPanel.ResumeLayout(false);
@@ -2351,5 +2371,6 @@ namespace ACNHPoker
         private System.Windows.Forms.Button standaloneStart;
         private System.Windows.Forms.CheckBox restoreDodobox;
         private System.Windows.Forms.CheckBox dropItemBox;
+        private System.Windows.Forms.CheckBox injectVillagerBox;
     }
 }

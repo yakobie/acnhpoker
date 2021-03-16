@@ -32,6 +32,10 @@ namespace ACNHPoker
         private byte[] tempData;
         private string tempFilename;
 
+        private static byte[][] villageFlag;
+        private static byte[][] villager;
+        private static Boolean[] haveVillager;
+
         public dodo dodoSetup = null;
 
         #region Form Load
@@ -55,6 +59,7 @@ namespace ACNHPoker
                     this.trayIcon.Icon = this.Icon = ACNHPoker.Properties.Resources.k;
                     Log.logEvent("Regen", "A Shiny Has Appeared!");
                 }
+
                 Log.logEvent("Regen", "RegenForm Started Successfully");
             }
             catch (Exception ex)
@@ -575,19 +580,8 @@ namespace ACNHPoker
 
             showMapWait(42, regenMsg);
 
-            byte[][] villageFlag = new byte[10][];
-            byte[][] villager = new byte[10][];
-            Boolean[] haveVillager = new Boolean[10];
             if (keepVillagerBox.Checked)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    villager[i] = Utilities.GetVillager(s, null, i, 0x3, ref counter);
-                    villageFlag[i] = Utilities.GetMoveout(s, null, i, (int)0x33, ref counter);
-                    haveVillager[i] = checkHaveVillager(villager[i]);
-                }
-                writeVillager(villager, haveVillager);
-            }
+                prepareVillager(s);
 
             byte[] c = new byte[0x2000];
 
@@ -792,19 +786,8 @@ namespace ACNHPoker
                 Buffer.BlockCopy(b[i], 0, u[i], 0x0, 0x1800);
             }
 
-            byte[][] villageFlag = new byte[10][];
-            byte[][] villager = new byte[10][];
-            Boolean[] haveVillager = new Boolean[10];
             if (keepVillagerBox.Checked)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    villager[i] = Utilities.GetVillager(s, null, i, 0x3, ref counter);
-                    villageFlag[i] = Utilities.GetMoveout(s, null, i, (int)0x33, ref counter);
-                    haveVillager[i] = checkHaveVillager(villager[i]);
-                }
-                writeVillager(villager, haveVillager);
-            }
+                prepareVillager(s);
 
             byte[] c = new byte[0x2000];
 
@@ -1481,7 +1464,36 @@ namespace ACNHPoker
 
         #region Villager
 
-        private Boolean checkHaveVillager(byte[] villager)
+        private static void prepareVillager(Socket s)
+        {
+            villageFlag = new byte[10][];
+            villager = new byte[10][];
+            haveVillager = new Boolean[10];
+
+            for (int i = 0; i < 10; i++)
+            {
+                villager[i] = Utilities.GetVillager(s, null, i, 0x3);
+                villageFlag[i] = Utilities.GetMoveout(s, null, i, (int)0x33);
+                haveVillager[i] = checkHaveVillager(villager[i]);
+            }
+            writeVillager(villager, haveVillager);
+        }
+
+        public static void updateVillager(Socket s, int index)
+        {
+            if (villager == null)
+                prepareVillager(s);
+            else
+            {
+                villager[index] = Utilities.GetVillager(s, null, index, 0x3);
+                villageFlag[index] = Utilities.GetMoveout(s, null, index, (int)0x33);
+                haveVillager[index] = true;
+
+                writeVillager(villager, haveVillager);
+            }
+        }
+
+        private static Boolean checkHaveVillager(byte[] villager)
         {
             if (villager[0] >= 0x23)
                 return false;
@@ -1489,7 +1501,7 @@ namespace ACNHPoker
                 return true;
         }
 
-        private void writeVillager(byte[][] villager, Boolean[] haveVillager)
+        private static void writeVillager(byte[][] villager, Boolean[] haveVillager)
         {
             string villagerStr = " | ";
             for (int i = 0; i < 10; i++)

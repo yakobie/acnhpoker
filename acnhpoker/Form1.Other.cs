@@ -1484,7 +1484,7 @@ namespace ACNHPoker
             {
                 Log.logEvent("MainForm", "EasterEgg Started");
                 string path = AppDomain.CurrentDomain.BaseDirectory;
-                AudioFileReader audioFileReader = new AudioFileReader(path + villagerPath + "Io.nhv2");
+                AudioFileReader audioFileReader = new AudioFileReader(path + Utilities.villagerPath + "Io.nhv2");
                 LoopStream loop = new LoopStream(audioFileReader);
                 waveOut = new WaveOut();
                 waveOut.Init(loop);
