@@ -72,11 +72,11 @@
             this.disableValidationBtn = new System.Windows.Forms.Button();
             this.enableOverrideBtn = new System.Windows.Forms.Button();
             this.addresses = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.MapZero = new System.Windows.Forms.TextBox();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.soundBtn = new System.Windows.Forms.Button();
             this.ImageBtn = new System.Windows.Forms.Button();
-            this.MapZero = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.addresses.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,7 +102,7 @@
             this.PlayerSlot.Name = "PlayerSlot";
             this.PlayerSlot.Size = new System.Drawing.Size(180, 31);
             this.PlayerSlot.TabIndex = 38;
-            this.PlayerSlot.Text = "ACDB0530";
+            this.PlayerSlot.Text = "AE19C778";
             this.PlayerSlot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerSlot.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.PlayerSlot.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -166,7 +166,7 @@
             this.PlayerOffset.Name = "PlayerOffset";
             this.PlayerOffset.Size = new System.Drawing.Size(180, 31);
             this.PlayerOffset.TabIndex = 42;
-            this.PlayerOffset.Text = "10E3A8";
+            this.PlayerOffset.Text = "10E500";
             this.PlayerOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.PlayerOffset.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.PlayerOffset.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -182,7 +182,7 @@
             this.Villager.Name = "Villager";
             this.Villager.Size = new System.Drawing.Size(180, 31);
             this.Villager.TabIndex = 43;
-            this.Villager.Text = "AB9FCCD0";
+            this.Villager.Text = "ACD57028";
             this.Villager.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Villager.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.Villager.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -281,7 +281,7 @@
             this.VillagerHouse.Name = "VillagerHouse";
             this.VillagerHouse.Size = new System.Drawing.Size(180, 31);
             this.VillagerHouse.TabIndex = 51;
-            this.VillagerHouse.Text = "ABE142F4";
+            this.VillagerHouse.Text = "AD191BEC";
             this.VillagerHouse.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.VillagerHouse.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.VillagerHouse.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -346,7 +346,7 @@
             this.VillagerHouseBuffer.Name = "VillagerHouseBuffer";
             this.VillagerHouseBuffer.Size = new System.Drawing.Size(180, 31);
             this.VillagerHouseBuffer.TabIndex = 56;
-            this.VillagerHouseBuffer.Text = "849C50";
+            this.VillagerHouseBuffer.Text = "86D580";
             this.VillagerHouseBuffer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.VillagerHouseBuffer.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.VillagerHouseBuffer.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -373,7 +373,7 @@
             this.Stamina.Name = "Stamina";
             this.Stamina.Size = new System.Drawing.Size(180, 31);
             this.Stamina.TabIndex = 58;
-            this.Stamina.Text = "B5E86798";
+            this.Stamina.Text = "B5ADF9F8";
             this.Stamina.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Stamina.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.Stamina.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -411,7 +411,7 @@
             this.WalkSpeed.Name = "WalkSpeed";
             this.WalkSpeed.Size = new System.Drawing.Size(180, 31);
             this.WalkSpeed.TabIndex = 61;
-            this.WalkSpeed.Text = "010F09C0";
+            this.WalkSpeed.Text = "01115CE0";
             this.WalkSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.WalkSpeed.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.WalkSpeed.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -427,7 +427,7 @@
             this.AnimationSpeed.Name = "AnimationSpeed";
             this.AnimationSpeed.Size = new System.Drawing.Size(180, 31);
             this.AnimationSpeed.TabIndex = 62;
-            this.AnimationSpeed.Text = "03755B70";
+            this.AnimationSpeed.Text = "037A41E8";
             this.AnimationSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.AnimationSpeed.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.AnimationSpeed.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -454,7 +454,7 @@
             this.Collision.Name = "Collision";
             this.Collision.Size = new System.Drawing.Size(180, 31);
             this.Collision.TabIndex = 64;
-            this.Collision.Text = "01061730";
+            this.Collision.Text = "01084140";
             this.Collision.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Collision.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.Collision.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -481,7 +481,7 @@
             this.FreezeTime.Name = "FreezeTime";
             this.FreezeTime.Size = new System.Drawing.Size(180, 31);
             this.FreezeTime.TabIndex = 66;
-            this.FreezeTime.Text = "0026BB30";
+            this.FreezeTime.Text = "002704C0";
             this.FreezeTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.FreezeTime.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.FreezeTime.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -508,7 +508,7 @@
             this.ReadTime.Name = "ReadTime";
             this.ReadTime.Size = new System.Drawing.Size(180, 31);
             this.ReadTime.TabIndex = 68;
-            this.ReadTime.Text = "0BA1BCF8";
+            this.ReadTime.Text = "0BA7FCF8";
             this.ReadTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ReadTime.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.ReadTime.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -546,7 +546,7 @@
             this.RecyclingBin.Name = "RecyclingBin";
             this.RecyclingBin.Size = new System.Drawing.Size(180, 31);
             this.RecyclingBin.TabIndex = 73;
-            this.RecyclingBin.Text = "AC2416A0";
+            this.RecyclingBin.Text = "AC561908";
             this.RecyclingBin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.RecyclingBin.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.RecyclingBin.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -562,7 +562,7 @@
             this.Turnip.Name = "Turnip";
             this.Turnip.Size = new System.Drawing.Size(180, 31);
             this.Turnip.TabIndex = 74;
-            this.Turnip.Text = "ABE181EC";
+            this.Turnip.Text = "AD195B74";
             this.Turnip.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Turnip.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.Turnip.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -589,7 +589,7 @@
             this.IslandName.Name = "IslandName";
             this.IslandName.Size = new System.Drawing.Size(180, 31);
             this.IslandName.TabIndex = 76;
-            this.IslandName.Text = "ACDE8C30";
+            this.IslandName.Text = "AE1D4E98";
             this.IslandName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.IslandName.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.IslandName.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -616,7 +616,7 @@
             this.WeatherSeed.Name = "WeatherSeed";
             this.WeatherSeed.Size = new System.Drawing.Size(180, 31);
             this.WeatherSeed.TabIndex = 78;
-            this.WeatherSeed.Text = "ABBDF088";
+            this.WeatherSeed.Text = "ABEDBA80";
             this.WeatherSeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.WeatherSeed.TextChanged += new System.EventHandler(this.BoxTextChanged);
             this.WeatherSeed.Validating += new System.ComponentModel.CancelEventHandler(this.BoxValidating);
@@ -702,6 +702,31 @@
             this.addresses.Size = new System.Drawing.Size(967, 466);
             this.addresses.TabIndex = 98;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(508, 346);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(79, 19);
+            this.label22.TabIndex = 101;
+            this.label22.Text = "Map Zero";
+            // 
+            // MapZero
+            // 
+            this.MapZero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.MapZero.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.MapZero.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold);
+            this.MapZero.ForeColor = System.Drawing.Color.White;
+            this.MapZero.Location = new System.Drawing.Point(778, 346);
+            this.MapZero.MaxLength = 8;
+            this.MapZero.Name = "MapZero";
+            this.MapZero.Size = new System.Drawing.Size(180, 31);
+            this.MapZero.TabIndex = 100;
+            this.MapZero.Text = "ACF851C0";
+            this.MapZero.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // SaveBtn
             // 
             this.SaveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
@@ -746,31 +771,6 @@
             this.ImageBtn.Text = "Download Image";
             this.ImageBtn.UseVisualStyleBackColor = false;
             this.ImageBtn.Click += new System.EventHandler(this.ImageBtn_Click);
-            // 
-            // MapZero
-            // 
-            this.MapZero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.MapZero.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.MapZero.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Bold);
-            this.MapZero.ForeColor = System.Drawing.Color.White;
-            this.MapZero.Location = new System.Drawing.Point(778, 346);
-            this.MapZero.MaxLength = 8;
-            this.MapZero.Name = "MapZero";
-            this.MapZero.Size = new System.Drawing.Size(180, 31);
-            this.MapZero.TabIndex = 100;
-            this.MapZero.Text = "ABC078C8";
-            this.MapZero.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(508, 346);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(79, 19);
-            this.label22.TabIndex = 101;
-            this.label22.Text = "Map Zero";
             // 
             // Setting
             // 

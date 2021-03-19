@@ -23,6 +23,12 @@ namespace ACNHPoker
         public event TwitchChatEventHandler OnMessage = delegate { };
         public delegate void TwitchChatEventHandler(object sender, TwitchChatMessage e);
 
+        private string AllowCommand;
+        private string DropItemCommand;
+        private string DropRecipeCommand;
+
+        private bool commandMode;
+
         private bool stop = false;
         public class TwitchChatMessage : EventArgs
         {
@@ -33,6 +39,15 @@ namespace ACNHPoker
 
         public TwitchBot(string TwitchBotUserName, string TwitchBotOauth, string TwitchChannelName)
         {
+            AllowCommand = Utilities.GetJsonSetting(Utilities.TwitchSettingPath, "AllowCommand");
+            DropItemCommand = Utilities.GetJsonSetting(Utilities.TwitchSettingPath, "DropItemCommand");
+            DropRecipeCommand = Utilities.GetJsonSetting(Utilities.TwitchSettingPath, "DropRecipeCommand");
+
+            if (AllowCommand.ToLower().Equals("true"))
+            {
+                commandMode = true;
+            }
+
             botUsername = TwitchBotUserName;
             password = TwitchBotOauth;
             channel = TwitchChannelName;
@@ -45,15 +60,54 @@ namespace ACNHPoker
             Start().SafeFireAndForget();
             //We could .SafeFireAndForget() these two calls if we want to
             await JoinChannel(channel);
-            await SendMessage(channel, "Chat bot has started up!");
+            if (commandMode)
+                await SendMessage(channel, "Chat bot has started up! (Accept Commands)");
+            else
+                await SendMessage(channel, "Chat bot has started up!");
 
             OnMessage += async (sender, twitchChatMessage) =>
             {
-                Console.WriteLine($"{twitchChatMessage.Sender} said '{twitchChatMessage.Message}'");
+                //Console.WriteLine($"{twitchChatMessage.Sender} said '{twitchChatMessage.Message}'");
                 //Listen for !hey command
                 if (twitchChatMessage.Message.StartsWith("!hey"))
                 {
                     await SendMessage(twitchChatMessage.Channel, $"Hey there {twitchChatMessage.Sender}");
+                }
+
+                if (commandMode)
+                {
+                    string message;
+                    if (twitchChatMessage.Message.StartsWith(DropItemCommand))
+                    {
+                        message = twitchChatMessage.Message.Replace(DropItemCommand,"").Replace('’', '\'').Trim();
+                        //Console.WriteLine(message);
+
+                        string name = "";
+                        string num = "0";
+
+                        if (message.Contains(","))
+                        {
+                            string[] temp = message.Split(',');
+                            if (temp.Length >= 2)
+                            {
+                                name = temp[0].Trim();
+                                num = temp[temp.Length - 1].Trim();
+                            }
+                        }
+                        else
+                        {
+                            name = message;
+                        }
+
+                        await PubSub.CheckAndAddItem(name, num, twitchChatMessage.Sender);
+                    }
+                    else if (twitchChatMessage.Message.StartsWith(DropRecipeCommand))
+                    {
+                        message = twitchChatMessage.Message.Replace(DropRecipeCommand, "").Replace('’', '\'').Trim();
+                        //Console.WriteLine(message);
+
+                        await PubSub.CheckAndAddRecipe(message, twitchChatMessage.Sender);
+                    }
                 }
             };
 

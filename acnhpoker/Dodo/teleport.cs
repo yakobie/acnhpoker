@@ -17,7 +17,7 @@ namespace ACNHPoker
         private static byte[] teleportByte;
         private static byte[] anchorByte;
 
-        private static string offset = "[[[[main+398C380]+18]+178]+D0]+DA";//"[[[[main+396F5A0]+18]+178]+D0]+DA";
+        private static string offset = "[[[[main+39DC030]+18]+178]+D0]+DA";//"[[[[main+398C380]+18]+178]+D0]+DA";//"[[[[main+396F5A0]+18]+178]+D0]+DA";
         private static readonly long[] PlayerCoordJumps = new long[5] { 0x396F5A0L, 0x18L, 0x178L, 0xD0L, 0xDAL };
 
 
@@ -262,7 +262,7 @@ namespace ACNHPoker
 
             if ($"{value:X8}".EndsWith("C906"))
                 return OverworldState.Loading;
-            else if ($"{value:X8}".EndsWith("0652"))
+            else if ($"{value:X8}".EndsWith("33D0"))
                 return OverworldState.Loading;
             switch (value)
             {
@@ -331,7 +331,7 @@ namespace ACNHPoker
         {
             ulong address = GetCoordinateAddress();
             uint value = BitConverter.ToUInt32(Utilities.peekAbsoluteAddress(s, (address + 0x6E).ToString("X"), 0x4), 0);
-
+            Debug.Print("Location : " + value.ToString("X"));
             switch (value)
             {
                 case 0x3EB44F1A: return LocationState.Announcement;

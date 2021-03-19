@@ -348,7 +348,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 0F7F ; FtrCleaningset ; broom and dustpan ; ほうきとちりとり ; 掃把畚箕組 ; 扫把畚箕组 ; 빗자루와 쓰레받기 ; kit de balayage ; Kehrset ; set de escoba y recogedor ; ramazza con paletta ; bezem en stofblik ; метлы с совком
 0F82 ; FtrOrientalShelfWall ; imperial decorative shelves ; オリエンタルなかざりだな ; 東方風裝飾架 ; 东方风装饰架 ; 오리엔탈 쉘프 ; étagère impériale ; Asienregal ; estantería dinastía ; scaffale da parete dinastia ; keizerlijke wandkast ; азиатская полочка
 0F83 ; FtrOrientalScreen ; imperial partition ; オリエンタルなスクリーン ; 東方風屏風 ; 东方风屏风 ; 오리엔탈 파티션 ; paravent impérial ; Asienwandschirm ; biombo dinastía ; paravento dinastia ; keizerlijk scherm ; азиатская ширма
-0F84 ; FtrOrientalChest ; imperial chest ; オリエンタルなチェスト ; 東方風矮櫃 ; 东方风矮柜 ; 오리엔탈 수납장 ; commode impériale ; Asienkommode ; cajonera dinastía ; comò dinastia ; keizerlijke ladenkast ; азиатский комод
+0F84 ; FtrOrientalChest ; imperial chest ; オリエンタルなチェスト ; 東方風矮櫃 ; 东方风矮柜 ; 오리엔탈 수납장 ; commode impériale ; Asienkommode ; cajonera dinastía ; comò dinastia ; keizerlijke ladekast ; азиатский комод
 0F85 ; FtrOrientalBedW ; imperial bed ; オリエンタルなベッド ; 東方風床鋪 ; 东方风床铺 ; 오리엔탈 침대 ; lit impérial ; Asienbett ; cama dinastía ; letto dinastia ; keizerlijk bed ; азиатская кровать
 0F86 ; FtrOrientalTableM ; imperial low table ; オリエンタルなローテーブル ; 東方風矮桌 ; 东方风矮桌 ; 오리엔탈 낮은 테이블 ; table basse impériale ; Asiensofatisch ; mesa baja dinastía ; tavolinetto dinastia ; keizerlijke bijzettafel ; азиатский столик
 0F87 ; FtrFruitsTableS ; orange end table ; オレンジのサイドテーブル ; 橘子邊桌 ; 橘子边桌 ; 오렌지 사이드 테이블 ; guéridon orange ; Orange-Tischchen ; mesa auxiliar naranja ; tavolino arancia ; sinaasappeltafeltje ; столик-апельсин
@@ -677,8 +677,10 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 3605 ; FtrMarioShield ; Shell ; こうら ; 龜殼 ; 龟壳 ; 등껍질 ; carapace ; Koopa-Panzer ; caparazón ; guscio ; schild ; панцирь
 3607 ; FtrMarioGroundobjectL ; large Mushroom Platform ; キノコちけいL ; 蘑菇地形L ; 蘑菇地形L ; 버섯 지형 L ; plateforme champignon XL ; Pilzplattform (L) ; plataforma champiñón XL ; piattaforma fungo grande ; groot paddenstoelplatform ; больш. гриб-платформа
 3608 ; FtrMarioGroundobjectS ; small Mushroom Platform ; キノコちけいS ; 蘑菇地形S ; 蘑菇地形S ; 버섯 지형 S ; plateforme champignon ; Pilzplattform (S) ; plataforma champiñón ; piattaforma fungo piccola ; klein paddenstoelplatform ; малый гриб-платформа
+3667 ; FtrSwitchLite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite ; Nintendo Switch Lite
 366A ; FtrCrsSocksWallColor ; set of stockings ; かべかけソックス ; 壁掛式襪子 ; 壁挂式袜子 ; 벽걸이 양말 ; lot de chaussettes déco ; Wunschsocken-Set ; lote de calcetines de pared ; set di calze per regali ; sokkenset ; набор носков
 36CD ; FtrRosebouquetHeart ; heart-shaped bouquet ; ハートのバラブーケ ; 愛心玫瑰花束 ; 心形玫瑰花束 ; 하트 장미 꽃다발 ; bouquet en forme de cœur ; Herz-Bouquet ; ramo de flores Enamorados ; bouquet a cuore ; hartvormig boeket ; букет в форме сердца
+3804 ; FtrCushionWhoopee ; whoopee cushion ; ブーブークッション ; 放屁坐墊 ; 放屁坐垫 ; 방귀 쿠션 ; coussin péteur ; Pupskissen ; cojín de broma ; petofono ; scheetkussen ; подушка для розыгрыша
 0833 ; ToolScoop ; shovel ; スコップ ; 鏟子 ; 铲子 ; 삽 ; pelle ; Schaufel ; pala ; pala ; schep ; лопата
 0949 ; ToolAngling ; fishing rod ; つりざお ; 釣竿 ; 钓竿 ; 낚싯대 ; canne à pêche ; Angel ; caña ; canna da pesca ; hengel ; удочка
 094B ; ToolWatering ; watering can ; ジョウロ ; 澆花壺 ; 浇花壶 ; 물뿌리개 ; arrosoir ; Gießkanne ; regadera ; annaffiatoio ; gieter ; лейка
@@ -1102,4 +1104,13 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 1B55 ; BromideNpcNmlElp12 ; Cyd's photo ; パンクスのしゃしん ; 龐克斯的照片 ; 庞克斯的照片 ; 펑크스의 사진 ; photo de Punk ; Foto von Sid ; foto de Ramón ; foto di Sid ; foto van Cyd ; фото Сида
 1C2C ; BromideNpcNmlGoa09 ; Sherb's photo ; レムのしゃしん ; 雷姆的照片 ; 雷姆的照片 ; 래미의 사진 ; photo de Capri ; Foto von Morpheus ; foto de Morfeo ; foto di Capraldo ; foto van Sherb ; фото Шерба
 1C2D ; BromideNpcNmlShp15 ; Dom's photo ; ちゃちゃまるのしゃしん ; 茶茶丸的照片 ; 茶茶丸的照片 ; 차둘의 사진 ; photo de Bouloche ; Foto von Dominik ; foto de Fibrilio ; foto di Ovilio ; foto van Donny ; фото Дома
+2B6B ; BromideNpcNmlGor11 ; Rilla's photo ; リラのしゃしん ; 莉拉的照片 ; 莉拉的照片 ; 릴라의 사진 ; photo de Rilla ; Foto von Rilla ; foto de Rila ; foto di Rilla ; foto van Rilla ; фото Риллы
+2B6C ; BromideNpcNmlCbr18 ; Marty's photo ; マーティーのしゃしん ; 瑪丁的照片 ; 玛丁的照片 ; 마티의 사진 ; photo de Marty ; Foto von Marty ; foto de Marty ; foto di Marty ; foto van Marty ; фото Марти
+2B6D ; BromideNpcNmlShp14 ; Étoile's photo ; エトワールのしゃしん ; 彩星的照片 ; 彩星的照片 ; 에뜨와르의 사진 ; photo d'Étoile ; Foto von Etoile ; foto de Etoile ; foto di Étoile ; foto van Étoile ; фото Этуаль
+2B6E ; BromideNpcNmlElp11 ; Chai's photo ; フィーカのしゃしん ; 啡卡的照片 ; 啡卡的照片 ; 피카의 사진 ; photo de Chaï ; Foto von Chai ; foto de Chai ; foto di Chai ; foto van Chai ; фото Чай
+2B6F ; BromideNpcNmlDer10 ; Chelsea's photo ; チェルシーのしゃしん ; 雀兒喜的照片 ; 雀儿喜的照片 ; 첼시의 사진 ; photo de Chelsea ; Foto von Chelsea ; foto de Chelsea ; foto di Chelsea ; foto van Chelsea ; фото Челси
+2B70 ; BromideNpcNmlRbt20 ; Toby's photo ; トビーのしゃしん ; 咚比的照片 ; 咚比的照片 ; 토비의 사진 ; photo de Toby ; Foto von Toby ; foto de Toby ; foto di Toby ; foto van Toby ; фото Тоби
 3626 ; BromideNpcSpRei ; Jingle's photo ; ジングルのしゃしん ; 鈴鈴鹿的照片 ; 铃铃鹿的照片 ; 루돌의 사진 ; photo de Rodolphe ; Foto von Chris ; foto de Renato ; foto di Jingle ; foto van Jingle ; фото Джингла
+37AE ; BromideNpcSpRco ; Tom Nook's photo ; たぬきちのしゃしん ; 狸克的照片 ; 狸克的照片 ; 너굴의 사진 ; photo de Tom Nook ; Foto von Tom Nook ; foto de Tom Nook ; foto di Tom Nook ; foto van Tom Nook ; фото Тома Нука
+37AF ; BromideNpcSpRcm ; Timmy and Tommy's photo ; まめきち&つぶきちのしゃしん ; 豆狸&粒狸的照片 ; 豆狸&粒狸的照片 ; 콩돌이&밤돌이의 사진 ; photo de Méli et Mélo ; Foto von Nepp & Schlepp ; foto de Tendo y Nendo ; foto di Mirco e Marco ; foto van Timmy en Tommy ; фото Тимми и Томми
+37B0 ; BromideNpcSpSza ; Isabelle's photo ; しずえのしゃしん ; 西施惠的照片 ; 西施惠的照片 ; 여울의 사진 ; photo de Marie ; Foto von Melinda ; foto de Canela ; foto di Fuffi ; foto van Isabelle ; фото Изабель

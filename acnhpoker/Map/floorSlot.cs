@@ -234,8 +234,11 @@ namespace ACNHPoker
                 {
                     try
                     {
-                        this.Image.Dispose();
-                        this.Image = null;
+                        lock (syncRoot)
+                        {
+                            this.Image.Dispose();
+                            this.Image = null;
+                        };
                     }
                     catch
                     {
@@ -262,7 +265,12 @@ namespace ACNHPoker
                     }
                     //this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
 
-                    this.Image = await displayItemImageAsync(large, false);
+                    await Task.Run(() => {
+                        lock (syncRoot)
+                        {
+                            this.Image = displayItemImage(large, false);
+                        };
+                    });
                 }
                 else if (itemID == 0xFFFE && part2 == 0xFFFE && part3 == 0xFFFE && part4 == 0xFFFE) // Empty
                 {
@@ -270,7 +278,12 @@ namespace ACNHPoker
                 }
                 else if (itemID != 0xFFFE && flag1 != "00") // wrapped
                 {
-                    this.Image = await displayItemImageAsync(large, false);
+                    await Task.Run(() => {
+                        lock (syncRoot)
+                        {
+                            this.Image = displayItemImage(large, false);
+                        };
+                    });
                 }
                 else // seperate
                 {
@@ -281,7 +294,12 @@ namespace ACNHPoker
                         locked = true;
                     }
 
-                    this.Image = await displayItemImageAsync(large, true);
+                    await Task.Run(() => {
+                        lock (syncRoot)
+                        {
+                            this.Image = displayItemImage(large, true);
+                        };
+                    });
                 }
             }
             catch
@@ -795,20 +813,23 @@ namespace ACNHPoker
             {
                 using (Graphics graphics = Graphics.FromImage(output))
                 {
-                    var cm = new ColorMatrix();
-                    cm.Matrix33 = alpha;
+                    lock (syncRoot)
+                    {
+                        var cm = new ColorMatrix();
+                        cm.Matrix33 = alpha;
 
-                    var ia = new ImageAttributes();
-                    ia.SetColorMatrix(cm);
+                        var ia = new ImageAttributes();
+                        ia.SetColorMatrix(cm);
 
-                    if (topleft != null)
-                        graphics.DrawImage(topleft, new Rectangle(0, 0, topleft.Width, topleft.Height), 0, 0, topleft.Width, topleft.Height, GraphicsUnit.Pixel, ia);
-                    if (topright != null)
-                        graphics.DrawImage(topright, new Rectangle(38, 0, topright.Width, topright.Height), 0, 0, topright.Width, topright.Height, GraphicsUnit.Pixel, ia);
-                    if (bottomleft != null)
-                        graphics.DrawImage(bottomleft, new Rectangle(0, 38, bottomleft.Width, bottomleft.Height), 0, 0, bottomleft.Width, bottomleft.Height, GraphicsUnit.Pixel, ia);
-                    if (bottomright != null)
-                        graphics.DrawImage(bottomright, new Rectangle(38, 38, bottomright.Width, bottomright.Height), 0, 0, bottomright.Width, bottomright.Height, GraphicsUnit.Pixel, ia);
+                        if (topleft != null)
+                            graphics.DrawImage(topleft, new Rectangle(0, 0, topleft.Width, topleft.Height), 0, 0, topleft.Width, topleft.Height, GraphicsUnit.Pixel, ia);
+                        if (topright != null)
+                            graphics.DrawImage(topright, new Rectangle(38, 0, topright.Width, topright.Height), 0, 0, topright.Width, topright.Height, GraphicsUnit.Pixel, ia);
+                        if (bottomleft != null)
+                            graphics.DrawImage(bottomleft, new Rectangle(0, 38, bottomleft.Width, bottomleft.Height), 0, 0, bottomleft.Width, bottomleft.Height, GraphicsUnit.Pixel, ia);
+                        if (bottomright != null)
+                            graphics.DrawImage(bottomright, new Rectangle(38, 38, bottomright.Width, bottomright.Height), 0, 0, bottomright.Width, bottomright.Height, GraphicsUnit.Pixel, ia);
+                    }
                 }
             });
 

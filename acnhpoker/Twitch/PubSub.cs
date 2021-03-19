@@ -19,17 +19,17 @@ namespace ACNHPoker
     {
         public static ITwitchPubSub MyPubSub;
 
-        private TwitchBot MyTwitchBot;
+        private static TwitchBot MyTwitchBot;
 
-        private DataTable itemSource = null;
-        private DataTable recipeSource = null;
-        private Dictionary<string, string> ItemDict;
-        private Dictionary<string, string> ReverseDict;
-        private Dictionary<string, string> ColorDict;
-        private Dictionary<string, string> RecipeDict;
-        private Dictionary<string, string> VillagerDict;
+        private static DataTable itemSource = null;
+        private static DataTable recipeSource = null;
+        private static Dictionary<string, string> ItemDict;
+        private static Dictionary<string, string> ReverseDict;
+        private static Dictionary<string, string> ColorDict;
+        private static Dictionary<string, string> RecipeDict;
+        private static Dictionary<string, string> VillagerDict;
 
-        private dodo dodoSetup;
+        private static dodo dodoSetup;
 
         private string channelId;
         private string accessToken;
@@ -243,7 +243,7 @@ namespace ACNHPoker
             }
         }
 
-        private async Task CheckAndAddItem(string name, string numStr, string displayName)
+        public static async Task CheckAndAddItem(string name, string numStr, string displayName)
         {
             int num = 0;
             int otherColor = 0;
@@ -426,7 +426,7 @@ namespace ACNHPoker
             }
         }
 
-        private async Task CheckAndAddRecipe(string name, string displayName)
+        public static async Task CheckAndAddRecipe(string name, string displayName)
         {
             string ItemId = "16A2";
 
@@ -475,6 +475,13 @@ namespace ACNHPoker
             if (VillagerDict.ContainsKey(name.ToLower()))
             {
                 string Iname = VillagerDict[name.ToLower()];
+
+                if (Iname.Equals("cbr18") || Iname.Equals("der10") || Iname.Equals("elp11") || Iname.Equals("gor11") || Iname.Equals("rbt20") || Iname.Equals("shp14"))
+                {
+                    await MyTwitchBot.SendMessage($"Sorry, but Sanrio Villagers cannot be invited. Amiibo is the only way to get them legitimately.");
+                    return;
+                }
+
                 string Rname = Utilities.RealName[Iname];
                 Image img;
                 string path = Utilities.GetVillagerImage(Iname);

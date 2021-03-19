@@ -66,37 +66,59 @@ EBC0 ; PltTreeCherry3 ; Cherry Tree (Grow 3) ; 00000000
 EAC9 ; PltTreeCherry ; Cherry Tree (Full-grown) ; 00000000
 EACC ; PltBushAzalea0White ; white-azalea (Sapling) ; 00000000
 EAD0 ; PltBushAzalea1White ; white-azalea (Grow 1) ; 00000000
-EACF ; PltBushAzalea2White ; white-azalea (Bush) ; 00000000
+EACD ; PltBushAzalea2White ; white-azalea (Flower bud) ; 00000000
+EACB ; PltBushAzalea3White ; white-azalea (Full-grown Flower) ; 00000000
+EACF ; PltBushAzalea4White ; white-azalea (Full-grown no Flower) ; 00000000
 EC21 ; PltBushAzalea0Pink ; pink-azalea (Sapling) ; 00000000
 EC20 ; PltBushAzalea1Pink ; pink-azalea (Grow 1) ; 00000000
-EC24 ; PltBushAzalea2Pink ; pink-azalea (Bush) ; 00000000
+EC22 ; PltBushAzalea2Pink ; pink-azalea (Flower bud) ; 00000000
+EC23 ; PltBushAzalea3Pink ; pink-azalea (Full-grown Flower) ; 00000000
+EC24 ; PltBushAzalea4Pink ; pink-azalea (Full-grown no Flower) ; 00000000
 EBF9 ; PltBushHydrangea ; blue-hydrangea (Sapling) ; 00000000
 EBFC ; PltBushHydrangea1Blue ; blue-hydrangea (Grow 1) ; 00000000
-EBFF ; PltBushHydrangea2Blue ; blue-hydrangea (Bush) ; 00000000
+EBFD ; PltBushHydrangea2Blue ; blue-hydrangea (Flower bud) ; 00000000
+EBFE ; PltBushHydrangea3Blue ; blue-hydrangea (Full-grown Flower) ; 00000000
+EBFF ; PltBushHydrangea4Blue ; blue-hydrangea (Full-grown no Flower) ; 00000000
 EBFB ; PltBushHydrangea0Pink ; pink-hydrangea (Sapling) ; 00000000
 EC00 ; PltBushHydrangea1Pink ; pink-hydrangea (Grow 1) ; 00000000
-EC03 ; PltBushHydrangea2Pink ; pink-hydrangea (Bush) ; 00000000
+EC01 ; PltBushHydrangea2Pink ; pink-hydrangea (Flower bud) ; 00000000
+EC02 ; PltBushHydrangea3Pink ; pink-hydrangea (Full-grown Flower) ; 00000000
+EC03 ; PltBushHydrangea4Pink ; pink-hydrangea (Full-grown no Flower) ; 00000000
 EAD2 ; PltBushHibiscus0Red ; red-hibiscus (Sapling) ; 00000000
 EAD5 ; PltBushHibiscus1Red ; red-hibiscus (Grow 1) ; 00000000
-EAD4 ; PltBushHibiscus2Red ; red-hibiscus (Bush) ; 00000000
+EAD3 ; PltBushHibiscus2Red ; red-hibiscus (Flower bud) ; 00000000
+EAD1 ; PltBushHibiscus3Red ; red-hibiscus (Full-grown Flower) ; 00000000
+EAD4 ; PltBushHibiscus4Red ; red-hibiscus (Full-grown no Flower) ; 00000000
 EC25 ; PltBushHibiscus0Yellow ; yellow-hibiscus (Sapling) ; 00000000
 EC26 ; PltBushHibiscus1Yellow ; yellow-hibiscus (Grow 1) ; 00000000
-EC29 ; PltBushHibiscus2Yellow ; yellow-hibiscus (Bush) ; 00000000
+EC27 ; PltBushHibiscus2Yellow ; yellow-hibiscus (Flower bud) ; 00000000
+EC28 ; PltBushHibiscus3Yellow ; yellow-hibiscus (Full-grown Flower) ; 00000000
+EC29 ; PltBushHibiscus4Yellow ; yellow-hibiscus (Full-grown no Flower) ; 00000000
 EAD7 ; PltBushHolly0 ; holly (Sapling) ; 00000000
 EAD9 ; PltBushHolly1 ; holly (Grow 1) ; 00000000
-EADA ; PltBushHolly2 ; holly (Bush) ; 00000000
+EAD8 ; PltBushHolly2 ; holly (Flower bud) ; 00000000
+EAD6 ; PltBushHolly3 ; holly (Full-grown Flower) ; 00000000
+EADA ; PltBushHolly4 ; holly (Full-grown no Flower) ; 00000000
 ECF8 ; PltBushOsmathus1Yello ; yellow-tea-olive (Sapling) ; 00000000
 ECF6 ; PltBushOsmathus2Yello ; yellow-tea-olive (Grow 1) ; 00000000
-ECF4 ; PltBushOsmathus3Yello ; yellow-tea-olive (Bush) ; 00000000
+ECF7 ; PltBushOsmathus3Yello ; yellow-tea-olive (Flower bud) ; 00000000
+ECF5 ; PltBushOsmathus4Yello ; yellow-tea-olive (Full-grown Flower) ; 00000000
+ECF4 ; PltBushOsmathus5Yello ; yellow-tea-olive (Full-grown no Flower) ; 00000000
 ECFC ; PltBushOsmathus1Orange ; orange-tea-olive (Sapling) ; 00000000
 ECFD ; PltBushOsmathus2Orange ; orange-tea-olive (Grow 1) ; 00000000
-ECF9 ; PltBushOsmathus3Orange ; orange-tea-olive (Bush) ; 00000000
+ECFB ; PltBushOsmathus3Orange ; orange-tea-olive (Flower bud) ; 00000000
+ECFA ; PltBushOsmathus4Orange ; orange-tea-olive (Full-grown Flower) ; 00000000
+ECF9 ; PltBushOsmathus5Orange ; orange-tea-olive (Full-grown no Flower) ; 00000000
 ED02 ; PltBushCamellia1Red ; red-camellia (Sapling) ; 00000000
 ED04 ; PltBushCamellia2Red ; red-camellia (Grow 1) ; 00000000
-ED06 ; PltBushCamellia3Red ; red-camellia (Bush) ; 00000000
+ED05 ; PltBushCamellia3Red ; red-camellia (Flower bud) ; 00000000
+ED06 ; PltBushCamellia4Red ; red-camellia (Full-grown Flower) ; 00000000
+ED07 ; PltBushCamellia5Red ; red-camellia (Full-grown no Flower) ; 00000000
 ECFE ; PltBushCamellia1Pink ; pink-camellia (Sapling) ; 00000000
 ECFF ; PltBushCamellia2Pink ; pink-camellia (Grow 1) ; 00000000
-ED01 ; PltBushCamellia3Pink ; pink-camellia (Bush) ; 00000000
+ED00 ; PltBushCamellia3Pink ; pink-camellia (Flower bud) ; 00000000
+ED01 ; PltBushCamellia4Pink ; pink-camellia (Full-grown Flower) ; 00000000
+ED03 ; PltBushCamellia5Pink ; pink-camellia (Full-grown no Flower) ; 00000000
 ECAF ; PltVgtSquash0Orange ; orange pumpkin (Sapling) ; 00000000
 ECB0 ; PltVgtSquash1Orange ; orange pumpkin (Grow 1) ; 00000000
 ECB1 ; PltVgtSquash2Orange ; orange pumpkin (Grow 2) ; 00000000
