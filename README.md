@@ -213,6 +213,13 @@ https://youtu.be/-zztRgmtXig
       * You are putting them all in "Irregular Move out" anyways...
 	* As of game version 1.7.0, "Irregular Move out" no longer seems to work like intended. Changing the description of it.
 	* Moved code into folders for better management. This will break the diff most likely... and screw some people over.
+* R15
+	* Update for Game version number 1.8.0
+* R15.1
+	* Fixed the villager inject game crash.
+	* Fixed the turnip prices game crash.
+	* Added option for "Twitch Drop" to use command instead of channel points.
+      * See the new "twitch[template].json" file for settings.
 	
 ## Contributing
 

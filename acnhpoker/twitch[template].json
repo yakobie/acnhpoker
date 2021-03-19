@@ -8,5 +8,9 @@
   "______________comment3______________" : "You can get this AFTER you connect to Twitch using ACNHPoker with the above setting",
   "DropItemRewardId" : "XXXXXXXX-xxxx-xxxx-xxxx-XXXXXXXXXXXX",
   "DropRecipeRewardId" : "YYYYYYYY-yyyy-yyyy-yyyy-YYYYYYYYYYYY",
-  "InjectVillagerRewardId" : "ZZZZZZZZ-zzzz-zzzz-zzzz-ZZZZZZZZZZZZ"
+  "InjectVillagerRewardId" : "ZZZZZZZZ-zzzz-zzzz-zzzz-ZZZZZZZZZZZZ",
+  "______________comment4______________" : "Control if item or recipe drop can be done by using commands",
+  "AllowCommand" : "false",
+  "DropItemCommand" : "!item",
+  "DropRecipeCommand" : "!recipe"
 }
