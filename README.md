@@ -233,7 +233,7 @@ https://youtu.be/-zztRgmtXig
 	  * Q = ZL button
 	  * O = ZR button
 	  * However, do note that Sys-botbase cannot handle too many commands at once. So when the regen is running (The green bar is filling up) or item/villager inject is in process, the keyboard control will be wonky. Please wait patiently for other process to finish first before using the keyboard control.
-	* Also to prevent triggering anti-virus software detecting keylogging behavior. Keyboard control only works when the "Dodo Helper" window is in focus.
+	* Also to prevent triggering anti-virus software detecting keylogging behavior. Keyboard control only works when the "Dodo Helper"(Dutch Sailors) window is in focus.
 	  * Which mean if you want to use the keyboard control, you must first use your mouse to click the form so that it is in focus.
 	  
 ## Contributing
