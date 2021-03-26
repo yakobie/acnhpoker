@@ -1090,12 +1090,17 @@ namespace ACNHPoker
                 dodoSetup.WriteLog("[You have started dodo helper in standalone mode.]\n\n" +
                                     "1. Disconnect all controller by selecting \"Controllers\" > \"Change Grip/Order\"\n" +
                                     "2. Leave only the Joy-Con docked on your Switch.\n" +
-                                    "3. Return to the game and dock your Switch if needed. Try pressing the button below to test the control.\n" +
-                                    "4. If the virtual controller does not response, try the \"Detach\" button on the right, then the \"A\" button.\n" +
+                                    "3. Return to the game and dock your Switch if needed. Try pressing the buttons below to test the virtual controller.\n" +
+                                    "4. If the virtual controller does not response, try the \"Detach\" button first, then the \"A\" button.\n" +
                                     "5. If the virtual controller still does not appear, try restart your Switch.\n\n" +
                                     ">> Please try the buttons below to test the virtual controller. <<"
                                     );
             }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            controller.emote(0);
         }
     }
 }

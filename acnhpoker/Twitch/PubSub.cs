@@ -206,40 +206,62 @@ namespace ACNHPoker
             }
             */
             //Debug.Print($"Reward from {e.DisplayName} ({e.RewardTitle}) ({e.RewardId}) ({e.Message}) has been marked as complete");
+
             Debug.Print($"{e.TimeStamp} {e.ChannelId} {e.DisplayName} {e.RewardTitle} {e.RewardId} : {e.Message}");
 
             if (e.RewardId.ToString().Equals(DropItemRewardId)) // Drop item
             {
-                string name = "";
-                string num = "0";
-                string message = e.Message.Replace('’', '\'').Trim();
-                if (message.Contains(","))
+                if (e.Message == null)
                 {
-                    string[] temp = message.Split(',');
-                    if (temp.Length >= 2)
-                    {
-                        name = temp[0].Trim();
-                        num = temp[temp.Length - 1].Trim();
-                    }
+                    dodoSetup.WriteLog($">>> Reward : \"{e.RewardTitle}\" is missing the \"Require Viewer to Enter Text\" setting! <<< ", false);
+                    return;
                 }
                 else
                 {
-                    name = message;
+                    string name = "";
+                    string num = "0";
+                    string message = e.Message.Replace('’', '\'').Trim();
+                    if (message.Contains(","))
+                    {
+                        string[] temp = message.Split(',');
+                        if (temp.Length >= 2)
+                        {
+                            name = temp[0].Trim();
+                            num = temp[temp.Length - 1].Trim();
+                        }
+                    }
+                    else
+                    {
+                        name = message;
+                    }
+                    await CheckAndAddItem(name, num, e.DisplayName);
                 }
-
-                await CheckAndAddItem(name, num, e.DisplayName);
             }
             else if (e.RewardId.ToString().Equals(DropRecipeRewardId)) // Drop recipe
             {
-                string name = e.Message.Replace('’', '\'').Trim();
-
-                await CheckAndAddRecipe(name, e.DisplayName);
+                if (e.Message == null)
+                {
+                    dodoSetup.WriteLog($">>> Reward : \"{e.RewardTitle}\" is missing the \"Require Viewer to Enter Text\" setting! <<< ", false);
+                    return;
+                }
+                else
+                {
+                    string name = e.Message.Replace('’', '\'').Trim();
+                    await CheckAndAddRecipe(name, e.DisplayName);
+                }
             }
             else if (e.RewardId.ToString().Equals(InjectVillagerRewardId)) // Inject villager
             {
-                string name = e.Message.Replace('’', '\'').Replace('é','e').Replace('É','E').Replace('[', ' ').Replace(']', ' ').Trim();
-
-                await CheckAndAddVillager(name, e.DisplayName, e.Message);
+                if (e.Message == null)
+                {
+                    dodoSetup.WriteLog($">>> Reward : \"{e.RewardTitle}\" is missing the \"Require Viewer to Enter Text\" setting! <<< ", false);
+                    return;
+                }
+                else
+                {
+                    string name = e.Message.Replace('’', '\'').Replace('é', 'e').Replace('É', 'E').Replace('[', ' ').Replace(']', ' ').Trim();
+                    await CheckAndAddVillager(name, e.DisplayName, e.Message);
+                }
             }
         }
 

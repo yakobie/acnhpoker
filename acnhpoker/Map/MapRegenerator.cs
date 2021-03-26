@@ -665,39 +665,43 @@ namespace ACNHPoker
                         {
                             GetVisitorList();
                             wasLoading = false;
-                        }
 
-                        //--------------------------------------------------------------------------------------------------
-                        for (int i = 0; i < 42; i++)
-                        {
-                            lock (mapLock)
+                            //--------------------------------------------------------------------------------------------------
+                            for (int i = 0; i < 42; i++)
                             {
-                                c = Utilities.ReadByteArray8(s, address + (i * 0x2000), 0x2000, ref counter);
-
-                                if (c != null)
+                                lock (mapLock)
                                 {
-                                    if (SafeEquals(b[i], c))
+                                    c = Utilities.ReadByteArray8(s, address + (i * 0x2000), 0x2000, ref counter);
+
+                                    if (c != null)
                                     {
-                                        //Debug.Print("Same " + i);
-                                        Thread.Sleep(delayTime);
+                                        if (SafeEquals(b[i], c))
+                                        {
+                                            //Debug.Print("Same " + i);
+                                            Thread.Sleep(delayTime);
+                                        }
+                                        else
+                                        {
+                                            Debug.Print("Replace " + i);
+                                            Utilities.SendByteArray8(s, address + (i * 0x2000), b[i], 0x2000, ref writeCount);
+                                            Thread.Sleep(500);
+                                        }
                                     }
                                     else
                                     {
-                                        Debug.Print("Replace " + i);
-                                        Utilities.SendByteArray8(s, address + (i * 0x2000), b[i], 0x2000, ref writeCount);
-                                        Thread.Sleep(500);
+                                        Debug.Print("Null " + i);
+                                        Thread.Sleep(10000);
                                     }
                                 }
-                                else
-                                {
-                                    Debug.Print("Null " + i);
-                                    Thread.Sleep(10000);
-                                }
+                                if (!loop)
+                                    break;
                             }
-                            if (!loop)
-                                break;
+                            //--------------------------------------------------------------------------------------------------
                         }
-                        //--------------------------------------------------------------------------------------------------
+                        else
+                        {
+                            Thread.Sleep(2000);
+                        }
                     }
 
                     this.Invoke((MethodInvoker)delegate
@@ -869,39 +873,43 @@ namespace ACNHPoker
                         {
                             GetVisitorList();
                             wasLoading = false;
-                        }
 
-                        //--------------------------------------------------------------------------------------------------
-                        for (int i = 0; i < 56; i++)
-                        {
-                            lock (mapLock)
+                            //--------------------------------------------------------------------------------------------------
+                            for (int i = 0; i < 56; i++)
                             {
-                                c = Utilities.ReadByteArray8(s, address + (i * 0x1800), 0x1800, ref counter);
-
-                                if (c != null)
+                                lock (mapLock)
                                 {
-                                    if (Difference(b[i], ref u[i], isEmpty[i], c))
+                                    c = Utilities.ReadByteArray8(s, address + (i * 0x1800), 0x1800, ref counter);
+
+                                    if (c != null)
                                     {
-                                        //Debug.Print("Same " + i);
-                                        Thread.Sleep(delayTime);
+                                        if (Difference(b[i], ref u[i], isEmpty[i], c))
+                                        {
+                                            //Debug.Print("Same " + i);
+                                            Thread.Sleep(delayTime);
+                                        }
+                                        else
+                                        {
+                                            Debug.Print("Replace " + i);
+                                            Utilities.SendByteArray8(s, address + (i * 0x1800), u[i], 0x1800, ref writeCount);
+                                            Thread.Sleep(500);
+                                        }
                                     }
                                     else
                                     {
-                                        Debug.Print("Replace " + i);
-                                        Utilities.SendByteArray8(s, address + (i * 0x1800), u[i], 0x1800, ref writeCount);
-                                        Thread.Sleep(500);
+                                        Debug.Print("Null " + i);
+                                        Thread.Sleep(10000);
                                     }
                                 }
-                                else
-                                {
-                                    Debug.Print("Null " + i);
-                                    Thread.Sleep(10000);
-                                }
+                                if (!loop)
+                                    break;
                             }
-                            if (!loop)
-                                break;
+                            //--------------------------------------------------------------------------------------------------
                         }
-                        //--------------------------------------------------------------------------------------------------
+                        else
+                        {
+                            Thread.Sleep(2000);
+                        }
                     }
 
                     this.Invoke((MethodInvoker)delegate
@@ -1585,8 +1593,8 @@ namespace ACNHPoker
                 dodoSetup.WriteLog("[Dodo Helper Ready! Waiting for Regen.]\n\n" +
                     "1. Disconnect all controller by selecting \"Controllers\" > \"Change Grip/Order\"\n" +
                     "2. Leave only the Joy-Con docked on your Switch.\n" +
-                    "3. Return to the game and dock your Switch if needed. Try pressing the buttons below to test the controller.\n" +
-                    "4. If the virtual controller does not response, try the \"Detach\" button on the right, then the \"A\" button.\n" +
+                    "3. Return to the game and dock your Switch if needed. Try pressing the buttons below to test the virtual controller.\n" +
+                    "4. If the virtual controller does not response, try the \"Detach\" button first, then the \"A\" button.\n" +
                     "5. If the virtual controller still does not appear, try restart your Switch.\n\n" +
                     ">> Please try the buttons below to test the virtual controller. <<"
                     );

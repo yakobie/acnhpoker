@@ -64,7 +64,8 @@ namespace ACNHPoker
             // 
             // OrderDisplay
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Lime;
             this.ClientSize = new System.Drawing.Size(288, 128);
             this.Controls.Add(this.itemImage3);
@@ -75,6 +76,7 @@ namespace ACNHPoker
             this.MaximumSize = new System.Drawing.Size(304, 167);
             this.MinimumSize = new System.Drawing.Size(304, 167);
             this.Name = "OrderDisplay";
+            this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "OrderDisplay";
             ((System.ComponentModel.ISupportInitialize)(this.itemImage1)).EndInit();

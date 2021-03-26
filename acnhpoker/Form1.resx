@@ -214,8 +214,8 @@ Only works when you are on a mystery island and there is a villager in there.</v
   <data name="pokeMainCheatPanel.ToolTip" xml:space="preserve">
     <value>⚠️ Warning ⚠️ ⚠️ Warning ⚠️
 
-Functions in the panel will create the "Interference Error" if you activate them.
-You will not be able to have any visitors if you activate them.
+Functions in this panel will create the "Wuh-oh Interference Error" if you activate them.
+Visitor will not be able to join your island. 
 Deactivate them will NOT fix the problem.
 
 If you ever activate one of these, you MUST close the game and restart it in order to get rid of the error.

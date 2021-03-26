@@ -542,6 +542,23 @@ namespace ACNHPoker
             }
         }
 
+        public static void OverwriteAll(Socket socket, USBBot bot, byte[] buffer1, byte[] buffer2)
+        {
+            lock (botLock)
+            {
+                if (bot == null)
+                {
+                    SendByteArray(socket, GetItemSlotUIntAddress(1), buffer1, 160);
+                    SendByteArray(socket, GetItemSlotUIntAddress(21), buffer2, 160);
+                }
+                else
+                {
+                    bot.WriteBytes(buffer1, GetItemSlotUIntAddress(1));
+                    bot.WriteBytes(buffer2, GetItemSlotUIntAddress(21));
+                }
+            }
+        }
+
         public static UInt64[] GetTurnipPrices(Socket socket, USBBot bot)
         {
             lock (botLock)
@@ -1537,13 +1554,13 @@ namespace ACNHPoker
                 {
                     SendByteArray(socket, VillagerAddress + (num * VillagerSize), villager, (int)VillagerSize, ref counter);
 
-                    SendByteArray(socket, VillagerAddress + (num * VillagerSize) + VillagerHouseBufferDiff, villager, (int)VillagerSize, ref counter);
+                    //SendByteArray(socket, VillagerAddress + (num * VillagerSize) + VillagerHouseBufferDiff, villager, (int)VillagerSize, ref counter);
                 }
                 else
                 {
                     WriteLargeBytes(bot, VillagerAddress + (num * VillagerSize), villager, (int)VillagerSize, ref counter);
 
-                    WriteLargeBytes(bot, VillagerAddress + (num * VillagerSize) + VillagerHouseBufferDiff, villager, (int)VillagerSize, ref counter);
+                    //WriteLargeBytes(bot, VillagerAddress + (num * VillagerSize) + VillagerHouseBufferDiff, villager, (int)VillagerSize, ref counter);
                 }
             }
         }
@@ -1792,15 +1809,15 @@ namespace ACNHPoker
                         Debug.Print("Poke Catchphrase: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerCatchphraseOffset + VillagerHouseBufferDiff).ToString("X"), ByteToHexString(pharse));
-                        Debug.Print("Poke Catchphrase: " + msg);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg));
+                        //msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerCatchphraseOffset + VillagerHouseBufferDiff).ToString("X"), ByteToHexString(pharse));
+                        //Debug.Print("Poke Catchphrase: " + msg);
+                        //SendString(socket, Encoding.UTF8.GetBytes(msg));
                     }
                     else
                     {
                         bot.WriteBytes(pharse, (uint)(VillagerAddress + (num * VillagerSize) + VillagerCatchphraseOffset));
 
-                        bot.WriteBytes(pharse, (uint)(VillagerAddress + (num * VillagerSize) + VillagerCatchphraseOffset + VillagerHouseBufferDiff));
+                        //bot.WriteBytes(pharse, (uint)(VillagerAddress + (num * VillagerSize) + VillagerCatchphraseOffset + VillagerHouseBufferDiff));
                     }
                 }
                 catch
@@ -1900,40 +1917,39 @@ namespace ACNHPoker
                         Debug.Print("Poke Moveout: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset + VillagerHouseBufferDiff).ToString("X"), MoveoutFlag);
-                        Debug.Print("Poke Moveout: " + msg);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg));
+                        //msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset + VillagerHouseBufferDiff).ToString("X"), MoveoutFlag);
+                        //Debug.Print("Poke Moveout: " + msg);
+                        //SendString(socket, Encoding.UTF8.GetBytes(msg));
 
                         msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerForceMoveoutOffset).ToString("X"), ForceMoveoutFlag);
                         Debug.Print("Poke ForceMoveout: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerForceMoveoutOffset + VillagerHouseBufferDiff).ToString("X"), ForceMoveoutFlag);
-                        Debug.Print("Poke ForceMoveout: " + msg);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg));
+                        //msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerForceMoveoutOffset + VillagerHouseBufferDiff).ToString("X"), ForceMoveoutFlag);
+                        //Debug.Print("Poke ForceMoveout: " + msg);
+                        //SendString(socket, Encoding.UTF8.GetBytes(msg));
 
                         msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerAbandonHouseOffset).ToString("X"), "0");
                         Debug.Print("Poke AbandonHouse: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-
-                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerAbandonHouseOffset + VillagerHouseBufferDiff).ToString("X"), "0");
-                        Debug.Print("Poke AbandonHouse: " + msg);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg));
+                        //msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + VillagerAbandonHouseOffset + VillagerHouseBufferDiff).ToString("X"), "0");
+                        //Debug.Print("Poke AbandonHouse: " + msg);
+                        //SendString(socket, Encoding.UTF8.GetBytes(msg));
                     }
                     else
                     {
                         bot.WriteBytes(stringToByte(MoveoutFlag), (uint)(VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset));
 
-                        bot.WriteBytes(stringToByte(MoveoutFlag), (uint)(VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset + VillagerHouseBufferDiff));
+                        //bot.WriteBytes(stringToByte(MoveoutFlag), (uint)(VillagerAddress + (num * VillagerSize) + VillagerMoveoutOffset + VillagerHouseBufferDiff));
 
                         bot.WriteBytes(stringToByte(ForceMoveoutFlag), (uint)(VillagerAddress + (num * VillagerSize) + VillagerForceMoveoutOffset));
 
-                        bot.WriteBytes(stringToByte(ForceMoveoutFlag), (uint)(VillagerAddress + (num * VillagerSize) + VillagerForceMoveoutOffset + VillagerHouseBufferDiff));
+                        //bot.WriteBytes(stringToByte(ForceMoveoutFlag), (uint)(VillagerAddress + (num * VillagerSize) + VillagerForceMoveoutOffset + VillagerHouseBufferDiff));
 
                         bot.WriteBytes(stringToByte("0"), (uint)(VillagerAddress + (num * VillagerSize) + VillagerAbandonHouseOffset));
 
-                        bot.WriteBytes(stringToByte("0"), (uint)(VillagerAddress + (num * VillagerSize) + VillagerAbandonHouseOffset + VillagerHouseBufferDiff));
+                        //bot.WriteBytes(stringToByte("0"), (uint)(VillagerAddress + (num * VillagerSize) + VillagerAbandonHouseOffset + VillagerHouseBufferDiff));
                     }
                 }
                 catch
@@ -1956,15 +1972,15 @@ namespace ACNHPoker
                         Debug.Print("Poke Friendship: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
 
-                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset) + VillagerFriendshipOffset + VillagerHouseBufferDiff).ToString("X"), FriendshipFlag);
-                        Debug.Print("Poke Friendship: " + msg);
-                        SendString(socket, Encoding.UTF8.GetBytes(msg));
+                        //msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset) + VillagerFriendshipOffset + VillagerHouseBufferDiff).ToString("X"), FriendshipFlag);
+                        //Debug.Print("Poke Friendship: " + msg);
+                        //SendString(socket, Encoding.UTF8.GetBytes(msg));
                     }
                     else
                     {
                         bot.WriteBytes(stringToByte(FriendshipFlag), (uint)(VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset) + VillagerFriendshipOffset));
 
-                        bot.WriteBytes(stringToByte(FriendshipFlag), (uint)(VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset) + VillagerFriendshipOffset + VillagerHouseBufferDiff));
+                        //bot.WriteBytes(stringToByte(FriendshipFlag), (uint)(VillagerAddress + (num * VillagerSize) + (player * VillagerPlayerOffset) + VillagerFriendshipOffset + VillagerHouseBufferDiff));
                     }
                 }
                 catch

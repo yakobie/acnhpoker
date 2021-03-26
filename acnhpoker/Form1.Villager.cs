@@ -265,15 +265,22 @@ namespace ACNHPoker
 
                     int i = Int16.Parse(selectedVillagerButton.Tag.ToString());
 
-                    if (blocker == false)
-                        VillagerControl.Enabled = true;
-                    else
-                        VillagerControl.Enabled = false;
-
-                    if (V[i].MoveInFlag == 0xC || V[i].MoveInFlag == 0xB)
+                    if (ignoreHeader.Checked)
                     {
-                        if (V[i].IsReal())
+                        VillagerControl.Enabled = true;
+                    }
+                    else
+                    {
+                        if (blocker == false)
+                            VillagerControl.Enabled = true;
+                        else
                             VillagerControl.Enabled = false;
+
+                        if (V[i].MoveInFlag == 0xC || V[i].MoveInFlag == 0xB)
+                        {
+                            if (V[i].IsReal())
+                                VillagerControl.Enabled = false;
+                        }
                     }
 
                     IndexValue.Text = V[i].Index.ToString();
@@ -507,19 +514,6 @@ namespace ACNHPoker
                 System.Media.SystemSounds.Asterisk.Play();
         }
 
-        private void MaxFriendshipBtn_Click(object sender, EventArgs e)
-        {
-            if (IndexValue.Text == "")
-                return;
-            int i = Int16.Parse(IndexValue.Text);
-
-            int player = 0;
-
-            Utilities.SetFriendship(s, bot, i, player);
-
-            V[i].Friendship[player] = 255;
-            RefreshVillagerUI(false);
-        }
         private void SetFriendshipBtn_Click(object sender, EventArgs e)
         {
 

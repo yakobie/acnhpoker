@@ -220,7 +220,22 @@ https://youtu.be/-zztRgmtXig
 	* Fixed the turnip prices game crash.
 	* Added option for "Twitch Drop" to use command instead of channel points.
       * See the new "twitch[template].json" file for settings.
-	
+* R15.2
+	* Added "PocketCham's Timer". A standalone timer that you could once again chroma-key to your stream.
+      * So that you do not need to use the in-game one risking it being dropped by the drop bot.
+	* Reduce the regen rate of regenerator. It will now only regen when people fly-in, fly-out or the player go in & out of building.
+	* Reduce the status output of "Dodo Helper".
+	* Added keyboard control to "Dodo Helper". This allow you to control your character using your keyboard if needed.
+      * WASD = Left stick control (8 directional movement)
+      * IJKL = XYBA buttons (Hold and release)
+      * R = "-" button (Minus button)
+	  * Y = "+" button (Plus button)
+	  * Q = ZL button
+	  * O = ZR button
+	  * However, do note that Sys-botbase cannot handle too many commands at once. So when the regen is running (The green bar is filling up) or item/villager inject is in process, the keyboard control will be wonky. Please wait patiently for other process to finish first before using the keyboard control.
+	* Also to prevent triggering anti-virus software detecting keylogging behavior. Keyboard control only works when the "Dodo Helper" window is in focus.
+	  * Which mean if you want to use the keyboard control, you must first use your mouse to click the form so that it is in focus.
+	  
 ## Contributing
 
 1. Fork it (<https://github.com/KingLycosa/acnhpoker/fork>)

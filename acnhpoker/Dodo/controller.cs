@@ -18,9 +18,17 @@ namespace ACNHPoker
         private static readonly Encoding Encoder = Encoding.UTF8;
         private static byte[] Encode(string command, bool addrn = true) => Encoder.GetBytes(addrn ? command + "\r\n" : command);
         private static byte[] X() => Encode("click X");
+        private static byte[] pX() => Encode("press X");
+        private static byte[] rX() => Encode("release X");
         private static byte[] Y() => Encode("click Y");
+        private static byte[] pY() => Encode("press Y");
+        private static byte[] rY() => Encode("release Y");
         private static byte[] A() => Encode("click A");
+        private static byte[] pA() => Encode("press A");
+        private static byte[] rA() => Encode("release A");
         private static byte[] B() => Encode("click B");
+        private static byte[] pB() => Encode("press B");
+        private static byte[] rB() => Encode("release B");
 
         private static byte[] L() => Encode("click L");
         private static byte[] R() => Encode("click R");
@@ -74,9 +82,29 @@ namespace ACNHPoker
             Utilities.SendString(s, A());
         }
 
+        public static void pressA()
+        {
+            Utilities.SendString(s, pA());
+        }
+
+        public static void releaseA()
+        {
+            Utilities.SendString(s, rA());
+        }
+
         public static void clickB()
         {
             Utilities.SendString(s, B());
+        }
+
+        public static void pressB()
+        {
+            Utilities.SendString(s, pB());
+        }
+
+        public static void releaseB()
+        {
+            Utilities.SendString(s, rB());
         }
 
         public static void clickX()
@@ -84,9 +112,29 @@ namespace ACNHPoker
             Utilities.SendString(s, X());
         }
 
+        public static void pressX()
+        {
+            Utilities.SendString(s, pX());
+        }
+
+        public static void releaseX()
+        {
+            Utilities.SendString(s, rX());
+        }
+
         public static void clickY()
         {
             Utilities.SendString(s, Y());
+        }
+
+        public static void pressY()
+        {
+            Utilities.SendString(s, pY());
+        }
+
+        public static void releaseY()
+        {
+            Utilities.SendString(s, rY());
         }
 
         public static void clickL()
@@ -272,8 +320,10 @@ namespace ACNHPoker
             }
             Thread.Sleep(500);
             resetLeftStick();
-            Thread.Sleep(500);
+            Thread.Sleep(600);
             clickA();
+            clickB();
+            clickB();
             clickB();
         }
 

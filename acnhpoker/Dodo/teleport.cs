@@ -336,6 +336,7 @@ namespace ACNHPoker
             {
                 case 0x3EB44F1A: return LocationState.Announcement;
                 case 0xB5CA1578:
+                case 0x43140000:
                 case 0x432A0CCD:
                 case 0x430C0CCD:
                 case 0x43200CCD: return LocationState.Indoor;

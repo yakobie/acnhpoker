@@ -34,9 +34,10 @@ namespace ACNHPoker
             this.FullPanel = new System.Windows.Forms.Panel();
             this.AbortBtn = new System.Windows.Forms.Button();
             this.functionPanel = new System.Windows.Forms.Panel();
+            this.restoreDodobox = new System.Windows.Forms.CheckBox();
+            this.injectVillagerBox = new System.Windows.Forms.CheckBox();
             this.dropItemBox = new System.Windows.Forms.CheckBox();
             this.standaloneStart = new System.Windows.Forms.Button();
-            this.restoreDodobox = new System.Windows.Forms.CheckBox();
             this.itemDisplayBtn = new System.Windows.Forms.Button();
             this.TwitchBtn = new System.Windows.Forms.Button();
             this.skipDialogCheckBox = new System.Windows.Forms.CheckBox();
@@ -51,6 +52,8 @@ namespace ACNHPoker
             this.emoteUPBtn = new System.Windows.Forms.Button();
             this.idleEmoteCheckBox = new System.Windows.Forms.CheckBox();
             this.controllerPanel = new System.Windows.Forms.Panel();
+            this.clearSlotBtn = new System.Windows.Forms.Button();
+            this.TimerBtn = new System.Windows.Forms.Button();
             this.HomeBtn = new System.Windows.Forms.Button();
             this.caputureBtn = new System.Windows.Forms.Button();
             this.plusBtn = new System.Windows.Forms.Button();
@@ -164,7 +167,29 @@ namespace ACNHPoker
             this.DoneAnchor1Btn = new System.Windows.Forms.Button();
             this.DoneAnchor0Btn = new System.Windows.Forms.Button();
             this.HoverToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.injectVillagerBox = new System.Windows.Forms.CheckBox();
+            this.timerSettingPanel = new System.Windows.Forms.Panel();
+            this.secPlus5Btn = new System.Windows.Forms.Button();
+            this.secMinus5Btn = new System.Windows.Forms.Button();
+            this.secPlus1Btn = new System.Windows.Forms.Button();
+            this.secMinus1Btn = new System.Windows.Forms.Button();
+            this.minPlus5Btn = new System.Windows.Forms.Button();
+            this.minMinus5Btn = new System.Windows.Forms.Button();
+            this.minPlus1Btn = new System.Windows.Forms.Button();
+            this.minMinus1Btn = new System.Windows.Forms.Button();
+            this.sce30Btn = new System.Windows.Forms.Button();
+            this.sce0Btn = new System.Windows.Forms.Button();
+            this.min15Btn = new System.Windows.Forms.Button();
+            this.min10Btn = new System.Windows.Forms.Button();
+            this.min5Btn = new System.Windows.Forms.Button();
+            this.min3Btn = new System.Windows.Forms.Button();
+            this.min1Btn = new System.Windows.Forms.Button();
+            this.secondslabel = new System.Windows.Forms.Label();
+            this.minutesLabel = new System.Windows.Forms.Label();
+            this.timerStartBtn = new System.Windows.Forms.Button();
+            this.timerPauseBtn = new System.Windows.Forms.Button();
+            this.timerResetBtn = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.controllerTimer = new System.Windows.Forms.Timer(this.components);
             this.FullPanel.SuspendLayout();
             this.functionPanel.SuspendLayout();
             this.controllerPanel.SuspendLayout();
@@ -184,6 +209,8 @@ namespace ACNHPoker
             ((System.ComponentModel.ISupportInitialize)(this.Anchor0Image2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Anchor0Image1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartImage)).BeginInit();
+            this.timerSettingPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // FullPanel
@@ -323,6 +350,40 @@ namespace ACNHPoker
             this.functionPanel.Size = new System.Drawing.Size(119, 258);
             this.functionPanel.TabIndex = 318;
             // 
+            // restoreDodobox
+            // 
+            this.restoreDodobox.AutoSize = true;
+            this.restoreDodobox.BackColor = System.Drawing.Color.Transparent;
+            this.restoreDodobox.Checked = true;
+            this.restoreDodobox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.restoreDodobox.ForeColor = System.Drawing.Color.White;
+            this.restoreDodobox.Location = new System.Drawing.Point(5, 87);
+            this.restoreDodobox.Name = "restoreDodobox";
+            this.restoreDodobox.Size = new System.Drawing.Size(112, 20);
+            this.restoreDodobox.TabIndex = 337;
+            this.restoreDodobox.Text = "Restore Dodo";
+            this.HoverToolTip.SetToolTip(this.restoreDodobox, "Control whether the bot will try to restore the Dodo code\r\nwhen the island is dis" +
+        "connected.\r\n\r\nYou can toggle this on and off without stopping the process.");
+            this.restoreDodobox.UseVisualStyleBackColor = false;
+            this.restoreDodobox.CheckedChanged += new System.EventHandler(this.restoreDodobox_CheckedChanged);
+            // 
+            // injectVillagerBox
+            // 
+            this.injectVillagerBox.AutoSize = true;
+            this.injectVillagerBox.BackColor = System.Drawing.Color.Transparent;
+            this.injectVillagerBox.Enabled = false;
+            this.injectVillagerBox.ForeColor = System.Drawing.Color.White;
+            this.injectVillagerBox.Location = new System.Drawing.Point(5, 70);
+            this.injectVillagerBox.Name = "injectVillagerBox";
+            this.injectVillagerBox.Size = new System.Drawing.Size(122, 20);
+            this.injectVillagerBox.TabIndex = 340;
+            this.injectVillagerBox.Text = "Inject Villagers";
+            this.HoverToolTip.SetToolTip(this.injectVillagerBox, "Control whether the bot will process villager order from Twitch.\r\n*Require you to" +
+        " have Twitch properly set up and connected.\r\n\r\nYou can toggle this on and off wi" +
+        "thout stopping the process.");
+            this.injectVillagerBox.UseVisualStyleBackColor = false;
+            this.injectVillagerBox.CheckedChanged += new System.EventHandler(this.injectVillagerBox_CheckedChanged);
+            // 
             // dropItemBox
             // 
             this.dropItemBox.AutoSize = true;
@@ -354,26 +415,10 @@ namespace ACNHPoker
             this.standaloneStart.TabIndex = 338;
             this.standaloneStart.Tag = "Start";
             this.standaloneStart.Text = "Start";
+            this.HoverToolTip.SetToolTip(this.standaloneStart, "Start standalone mode");
             this.standaloneStart.UseVisualStyleBackColor = false;
             this.standaloneStart.Visible = false;
             this.standaloneStart.Click += new System.EventHandler(this.standaloneStart_Click);
-            // 
-            // restoreDodobox
-            // 
-            this.restoreDodobox.AutoSize = true;
-            this.restoreDodobox.BackColor = System.Drawing.Color.Transparent;
-            this.restoreDodobox.Checked = true;
-            this.restoreDodobox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.restoreDodobox.ForeColor = System.Drawing.Color.White;
-            this.restoreDodobox.Location = new System.Drawing.Point(5, 87);
-            this.restoreDodobox.Name = "restoreDodobox";
-            this.restoreDodobox.Size = new System.Drawing.Size(112, 20);
-            this.restoreDodobox.TabIndex = 337;
-            this.restoreDodobox.Text = "Restore Dodo";
-            this.HoverToolTip.SetToolTip(this.restoreDodobox, "Control whether the bot will try to restore the Dodo code\r\nwhen the island is dis" +
-        "connected.\r\n\r\nYou can toggle this on and off without stopping the process.");
-            this.restoreDodobox.UseVisualStyleBackColor = false;
-            this.restoreDodobox.CheckedChanged += new System.EventHandler(this.restoreDodobox_CheckedChanged);
             // 
             // itemDisplayBtn
             // 
@@ -389,6 +434,8 @@ namespace ACNHPoker
             this.itemDisplayBtn.Size = new System.Drawing.Size(112, 22);
             this.itemDisplayBtn.TabIndex = 336;
             this.itemDisplayBtn.Text = "Item Display";
+            this.HoverToolTip.SetToolTip(this.itemDisplayBtn, "Open the ordering display.\r\nA display for the last three ordered items.\r\nUse chro" +
+        "ma-key if you want to display it on stream.");
             this.itemDisplayBtn.UseVisualStyleBackColor = false;
             this.itemDisplayBtn.Visible = false;
             this.itemDisplayBtn.Click += new System.EventHandler(this.itemDisplayBtn_Click);
@@ -406,6 +453,9 @@ namespace ACNHPoker
             this.TwitchBtn.Size = new System.Drawing.Size(112, 22);
             this.TwitchBtn.TabIndex = 335;
             this.TwitchBtn.Text = "Twitch";
+            this.HoverToolTip.SetToolTip(this.TwitchBtn, "Connect the chatbot and pubsub server.\r\nRequired if you want to use Twitch drop a" +
+        "nd villager inject.\r\n\r\nNeed \"twitch.json\" file in /save folder configure properl" +
+        "y.");
             this.TwitchBtn.UseVisualStyleBackColor = false;
             this.TwitchBtn.Visible = false;
             this.TwitchBtn.Click += new System.EventHandler(this.TwitchBtn_Click);
@@ -583,6 +633,8 @@ namespace ACNHPoker
             // 
             // controllerPanel
             // 
+            this.controllerPanel.Controls.Add(this.clearSlotBtn);
+            this.controllerPanel.Controls.Add(this.TimerBtn);
             this.controllerPanel.Controls.Add(this.HomeBtn);
             this.controllerPanel.Controls.Add(this.caputureBtn);
             this.controllerPanel.Controls.Add(this.plusBtn);
@@ -614,6 +666,42 @@ namespace ACNHPoker
             this.controllerPanel.Name = "controllerPanel";
             this.controllerPanel.Size = new System.Drawing.Size(448, 76);
             this.controllerPanel.TabIndex = 317;
+            // 
+            // clearSlotBtn
+            // 
+            this.clearSlotBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.clearSlotBtn.FlatAppearance.BorderSize = 0;
+            this.clearSlotBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearSlotBtn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.clearSlotBtn.ForeColor = System.Drawing.Color.White;
+            this.clearSlotBtn.Location = new System.Drawing.Point(189, 25);
+            this.clearSlotBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.clearSlotBtn.Name = "clearSlotBtn";
+            this.clearSlotBtn.Size = new System.Drawing.Size(69, 20);
+            this.clearSlotBtn.TabIndex = 340;
+            this.clearSlotBtn.Text = "Clr Slot 1";
+            this.HoverToolTip.SetToolTip(this.clearSlotBtn, "Clear the first inventory slot.\r\nUseful if you have something in there which migh" +
+        "t interrupt the drop bot.");
+            this.clearSlotBtn.UseVisualStyleBackColor = false;
+            this.clearSlotBtn.Click += new System.EventHandler(this.clearInvBtn_Click);
+            // 
+            // TimerBtn
+            // 
+            this.TimerBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(152)))), ((int)(((byte)(8)))));
+            this.TimerBtn.FlatAppearance.BorderSize = 0;
+            this.TimerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TimerBtn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.TimerBtn.ForeColor = System.Drawing.Color.White;
+            this.TimerBtn.Location = new System.Drawing.Point(189, 4);
+            this.TimerBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.TimerBtn.Name = "TimerBtn";
+            this.TimerBtn.Size = new System.Drawing.Size(69, 20);
+            this.TimerBtn.TabIndex = 339;
+            this.TimerBtn.Text = "Timer";
+            this.HoverToolTip.SetToolTip(this.TimerBtn, "Open the countdown timer.\r\nA useful tool if you don\'t want to use the in-game one" +
+        ".\r\nUse chroma-key if you want to display it on stream.");
+            this.TimerBtn.UseVisualStyleBackColor = false;
+            this.TimerBtn.Click += new System.EventHandler(this.TimerBtn_Click);
             // 
             // HomeBtn
             // 
@@ -660,6 +748,7 @@ namespace ACNHPoker
             this.plusBtn.Size = new System.Drawing.Size(20, 20);
             this.plusBtn.TabIndex = 336;
             this.plusBtn.Text = "➕";
+            this.HoverToolTip.SetToolTip(this.plusBtn, "Keyboard : Y");
             this.plusBtn.UseVisualStyleBackColor = false;
             this.plusBtn.Click += new System.EventHandler(this.plusBtn_Click);
             // 
@@ -676,6 +765,7 @@ namespace ACNHPoker
             this.minusBtn.Size = new System.Drawing.Size(20, 20);
             this.minusBtn.TabIndex = 335;
             this.minusBtn.Text = "➖";
+            this.HoverToolTip.SetToolTip(this.minusBtn, "Keyboard : R");
             this.minusBtn.UseVisualStyleBackColor = false;
             this.minusBtn.Click += new System.EventHandler(this.minusBtn_Click);
             // 
@@ -725,6 +815,7 @@ namespace ACNHPoker
             this.ZLBtn.TabIndex = 332;
             this.ZLBtn.Text = "ZL";
             this.ZLBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.HoverToolTip.SetToolTip(this.ZLBtn, "Keyboard : Q");
             this.ZLBtn.UseVisualStyleBackColor = false;
             this.ZLBtn.Click += new System.EventHandler(this.ZLBtn_Click);
             // 
@@ -735,12 +826,14 @@ namespace ACNHPoker
             this.DetachBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DetachBtn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
             this.DetachBtn.ForeColor = System.Drawing.Color.White;
-            this.DetachBtn.Location = new System.Drawing.Point(193, 46);
+            this.DetachBtn.Location = new System.Drawing.Point(189, 46);
             this.DetachBtn.Margin = new System.Windows.Forms.Padding(4);
             this.DetachBtn.Name = "DetachBtn";
-            this.DetachBtn.Size = new System.Drawing.Size(62, 20);
+            this.DetachBtn.Size = new System.Drawing.Size(69, 20);
             this.DetachBtn.TabIndex = 325;
             this.DetachBtn.Text = "Detach";
+            this.HoverToolTip.SetToolTip(this.DetachBtn, "Detach the virtual controller.\r\nPress this first if other buttons are not respond" +
+        "ing.");
             this.DetachBtn.UseVisualStyleBackColor = false;
             this.DetachBtn.Click += new System.EventHandler(this.DetachBtn_Click);
             // 
@@ -757,6 +850,7 @@ namespace ACNHPoker
             this.ZRBtn.Size = new System.Drawing.Size(30, 20);
             this.ZRBtn.TabIndex = 331;
             this.ZRBtn.Text = "ZR";
+            this.HoverToolTip.SetToolTip(this.ZRBtn, "Keyboard : O");
             this.ZRBtn.UseVisualStyleBackColor = false;
             this.ZRBtn.Click += new System.EventHandler(this.ZRBtn_Click);
             // 
@@ -937,6 +1031,7 @@ namespace ACNHPoker
             this.ABtn.Size = new System.Drawing.Size(20, 20);
             this.ABtn.TabIndex = 320;
             this.ABtn.Text = "A";
+            this.HoverToolTip.SetToolTip(this.ABtn, "Keyboard : L");
             this.ABtn.UseVisualStyleBackColor = false;
             this.ABtn.Click += new System.EventHandler(this.ABtn_Click);
             // 
@@ -953,6 +1048,7 @@ namespace ACNHPoker
             this.YBtn.Size = new System.Drawing.Size(20, 20);
             this.YBtn.TabIndex = 319;
             this.YBtn.Text = "Y";
+            this.HoverToolTip.SetToolTip(this.YBtn, "Keyboard : J");
             this.YBtn.UseVisualStyleBackColor = false;
             this.YBtn.Click += new System.EventHandler(this.YBtn_Click);
             // 
@@ -969,6 +1065,7 @@ namespace ACNHPoker
             this.BBtn.Size = new System.Drawing.Size(20, 20);
             this.BBtn.TabIndex = 318;
             this.BBtn.Text = "B";
+            this.HoverToolTip.SetToolTip(this.BBtn, "Keyboard : K");
             this.BBtn.UseVisualStyleBackColor = false;
             this.BBtn.Click += new System.EventHandler(this.BBtn_Click);
             // 
@@ -985,6 +1082,7 @@ namespace ACNHPoker
             this.XBtn.Size = new System.Drawing.Size(20, 20);
             this.XBtn.TabIndex = 317;
             this.XBtn.Text = "X";
+            this.HoverToolTip.SetToolTip(this.XBtn, "Keyboard : I");
             this.XBtn.UseVisualStyleBackColor = false;
             this.XBtn.Click += new System.EventHandler(this.XBtn_Click);
             // 
@@ -1001,6 +1099,7 @@ namespace ACNHPoker
             this.LstickRIGHTBtn.Size = new System.Drawing.Size(20, 20);
             this.LstickRIGHTBtn.TabIndex = 316;
             this.LstickRIGHTBtn.Text = "🠊";
+            this.HoverToolTip.SetToolTip(this.LstickRIGHTBtn, "Keyboard : D");
             this.LstickRIGHTBtn.UseVisualStyleBackColor = false;
             this.LstickRIGHTBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LstickRIGHTBtn_MouseDown);
             this.LstickRIGHTBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LstickMouseUp);
@@ -1018,6 +1117,7 @@ namespace ACNHPoker
             this.LstickLEFTBtn.Size = new System.Drawing.Size(20, 20);
             this.LstickLEFTBtn.TabIndex = 315;
             this.LstickLEFTBtn.Text = "🠈";
+            this.HoverToolTip.SetToolTip(this.LstickLEFTBtn, "Keyboard : A");
             this.LstickLEFTBtn.UseVisualStyleBackColor = false;
             this.LstickLEFTBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LstickLEFTBtn_MouseDown);
             this.LstickLEFTBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LstickMouseUp);
@@ -1035,6 +1135,7 @@ namespace ACNHPoker
             this.LstickDOWNBtn.Size = new System.Drawing.Size(20, 20);
             this.LstickDOWNBtn.TabIndex = 314;
             this.LstickDOWNBtn.Text = "🠋";
+            this.HoverToolTip.SetToolTip(this.LstickDOWNBtn, "Keyboard : S");
             this.LstickDOWNBtn.UseVisualStyleBackColor = false;
             this.LstickDOWNBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LstickDOWNBtn_MouseDown);
             this.LstickDOWNBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LstickMouseUp);
@@ -1052,6 +1153,7 @@ namespace ACNHPoker
             this.LstickUPBtn.Size = new System.Drawing.Size(20, 20);
             this.LstickUPBtn.TabIndex = 313;
             this.LstickUPBtn.Text = "🠉";
+            this.HoverToolTip.SetToolTip(this.LstickUPBtn, "Keyboard : W");
             this.LstickUPBtn.UseVisualStyleBackColor = false;
             this.LstickUPBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LstickUPBtn_MouseDown);
             this.LstickUPBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LstickMouseUp);
@@ -2175,29 +2277,366 @@ namespace ACNHPoker
             this.DoneAnchor0Btn.Visible = false;
             this.DoneAnchor0Btn.Click += new System.EventHandler(this.DoneAnchor0Btn_Click);
             // 
-            // injectVillagerBox
+            // timerSettingPanel
             // 
-            this.injectVillagerBox.AutoSize = true;
-            this.injectVillagerBox.BackColor = System.Drawing.Color.Transparent;
-            this.injectVillagerBox.Enabled = false;
-            this.injectVillagerBox.ForeColor = System.Drawing.Color.White;
-            this.injectVillagerBox.Location = new System.Drawing.Point(5, 70);
-            this.injectVillagerBox.Name = "injectVillagerBox";
-            this.injectVillagerBox.Size = new System.Drawing.Size(122, 20);
-            this.injectVillagerBox.TabIndex = 340;
-            this.injectVillagerBox.Text = "Inject Villagers";
-            this.HoverToolTip.SetToolTip(this.injectVillagerBox, "Control whether the bot will process villager order from Twitch.\r\n*Require you to" +
-        " have Twitch properly set up and connected.\r\n\r\nYou can toggle this on and off wi" +
-        "thout stopping the process.");
-            this.injectVillagerBox.UseVisualStyleBackColor = false;
-            this.injectVillagerBox.CheckedChanged += new System.EventHandler(this.injectVillagerBox_CheckedChanged);
+            this.timerSettingPanel.Controls.Add(this.secPlus5Btn);
+            this.timerSettingPanel.Controls.Add(this.secMinus5Btn);
+            this.timerSettingPanel.Controls.Add(this.secPlus1Btn);
+            this.timerSettingPanel.Controls.Add(this.secMinus1Btn);
+            this.timerSettingPanel.Controls.Add(this.minPlus5Btn);
+            this.timerSettingPanel.Controls.Add(this.minMinus5Btn);
+            this.timerSettingPanel.Controls.Add(this.minPlus1Btn);
+            this.timerSettingPanel.Controls.Add(this.minMinus1Btn);
+            this.timerSettingPanel.Controls.Add(this.sce30Btn);
+            this.timerSettingPanel.Controls.Add(this.sce0Btn);
+            this.timerSettingPanel.Controls.Add(this.min15Btn);
+            this.timerSettingPanel.Controls.Add(this.min10Btn);
+            this.timerSettingPanel.Controls.Add(this.min5Btn);
+            this.timerSettingPanel.Controls.Add(this.min3Btn);
+            this.timerSettingPanel.Controls.Add(this.min1Btn);
+            this.timerSettingPanel.Controls.Add(this.secondslabel);
+            this.timerSettingPanel.Controls.Add(this.minutesLabel);
+            this.timerSettingPanel.Location = new System.Drawing.Point(12, 303);
+            this.timerSettingPanel.Name = "timerSettingPanel";
+            this.timerSettingPanel.Size = new System.Drawing.Size(423, 86);
+            this.timerSettingPanel.TabIndex = 340;
+            // 
+            // secPlus5Btn
+            // 
+            this.secPlus5Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.secPlus5Btn.FlatAppearance.BorderSize = 0;
+            this.secPlus5Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.secPlus5Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.secPlus5Btn.ForeColor = System.Drawing.Color.White;
+            this.secPlus5Btn.Location = new System.Drawing.Point(370, 52);
+            this.secPlus5Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.secPlus5Btn.Name = "secPlus5Btn";
+            this.secPlus5Btn.Size = new System.Drawing.Size(40, 24);
+            this.secPlus5Btn.TabIndex = 357;
+            this.secPlus5Btn.Text = "+5";
+            this.secPlus5Btn.UseVisualStyleBackColor = false;
+            this.secPlus5Btn.Click += new System.EventHandler(this.secPlus5Btn_Click);
+            // 
+            // secMinus5Btn
+            // 
+            this.secMinus5Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.secMinus5Btn.FlatAppearance.BorderSize = 0;
+            this.secMinus5Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.secMinus5Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.secMinus5Btn.ForeColor = System.Drawing.Color.White;
+            this.secMinus5Btn.Location = new System.Drawing.Point(328, 52);
+            this.secMinus5Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.secMinus5Btn.Name = "secMinus5Btn";
+            this.secMinus5Btn.Size = new System.Drawing.Size(40, 24);
+            this.secMinus5Btn.TabIndex = 356;
+            this.secMinus5Btn.Text = "-5";
+            this.secMinus5Btn.UseVisualStyleBackColor = false;
+            this.secMinus5Btn.Click += new System.EventHandler(this.secMinus5Btn_Click);
+            // 
+            // secPlus1Btn
+            // 
+            this.secPlus1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.secPlus1Btn.FlatAppearance.BorderSize = 0;
+            this.secPlus1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.secPlus1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.secPlus1Btn.ForeColor = System.Drawing.Color.White;
+            this.secPlus1Btn.Location = new System.Drawing.Point(275, 52);
+            this.secPlus1Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.secPlus1Btn.Name = "secPlus1Btn";
+            this.secPlus1Btn.Size = new System.Drawing.Size(40, 24);
+            this.secPlus1Btn.TabIndex = 355;
+            this.secPlus1Btn.Text = "+1";
+            this.secPlus1Btn.UseVisualStyleBackColor = false;
+            this.secPlus1Btn.Click += new System.EventHandler(this.secPlus1Btn_Click);
+            // 
+            // secMinus1Btn
+            // 
+            this.secMinus1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.secMinus1Btn.FlatAppearance.BorderSize = 0;
+            this.secMinus1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.secMinus1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.secMinus1Btn.ForeColor = System.Drawing.Color.White;
+            this.secMinus1Btn.Location = new System.Drawing.Point(233, 52);
+            this.secMinus1Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.secMinus1Btn.Name = "secMinus1Btn";
+            this.secMinus1Btn.Size = new System.Drawing.Size(40, 24);
+            this.secMinus1Btn.TabIndex = 354;
+            this.secMinus1Btn.Text = "-1";
+            this.secMinus1Btn.UseVisualStyleBackColor = false;
+            this.secMinus1Btn.Click += new System.EventHandler(this.secMinus1Btn_Click);
+            // 
+            // minPlus5Btn
+            // 
+            this.minPlus5Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.minPlus5Btn.FlatAppearance.BorderSize = 0;
+            this.minPlus5Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minPlus5Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.minPlus5Btn.ForeColor = System.Drawing.Color.White;
+            this.minPlus5Btn.Location = new System.Drawing.Point(171, 52);
+            this.minPlus5Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.minPlus5Btn.Name = "minPlus5Btn";
+            this.minPlus5Btn.Size = new System.Drawing.Size(40, 24);
+            this.minPlus5Btn.TabIndex = 353;
+            this.minPlus5Btn.Text = "+5";
+            this.minPlus5Btn.UseVisualStyleBackColor = false;
+            this.minPlus5Btn.Click += new System.EventHandler(this.minPlus5Btn_Click);
+            // 
+            // minMinus5Btn
+            // 
+            this.minMinus5Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.minMinus5Btn.FlatAppearance.BorderSize = 0;
+            this.minMinus5Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minMinus5Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.minMinus5Btn.ForeColor = System.Drawing.Color.White;
+            this.minMinus5Btn.Location = new System.Drawing.Point(129, 52);
+            this.minMinus5Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.minMinus5Btn.Name = "minMinus5Btn";
+            this.minMinus5Btn.Size = new System.Drawing.Size(40, 24);
+            this.minMinus5Btn.TabIndex = 352;
+            this.minMinus5Btn.Text = "-5";
+            this.minMinus5Btn.UseVisualStyleBackColor = false;
+            this.minMinus5Btn.Click += new System.EventHandler(this.minMinus5Btn_Click);
+            // 
+            // minPlus1Btn
+            // 
+            this.minPlus1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.minPlus1Btn.FlatAppearance.BorderSize = 0;
+            this.minPlus1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minPlus1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.minPlus1Btn.ForeColor = System.Drawing.Color.White;
+            this.minPlus1Btn.Location = new System.Drawing.Point(45, 52);
+            this.minPlus1Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.minPlus1Btn.Name = "minPlus1Btn";
+            this.minPlus1Btn.Size = new System.Drawing.Size(40, 24);
+            this.minPlus1Btn.TabIndex = 351;
+            this.minPlus1Btn.Text = "+1";
+            this.minPlus1Btn.UseVisualStyleBackColor = false;
+            this.minPlus1Btn.Click += new System.EventHandler(this.minPlus1Btn_Click);
+            // 
+            // minMinus1Btn
+            // 
+            this.minMinus1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.minMinus1Btn.FlatAppearance.BorderSize = 0;
+            this.minMinus1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.minMinus1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.minMinus1Btn.ForeColor = System.Drawing.Color.White;
+            this.minMinus1Btn.Location = new System.Drawing.Point(3, 52);
+            this.minMinus1Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.minMinus1Btn.Name = "minMinus1Btn";
+            this.minMinus1Btn.Size = new System.Drawing.Size(40, 24);
+            this.minMinus1Btn.TabIndex = 350;
+            this.minMinus1Btn.Text = "-1";
+            this.minMinus1Btn.UseVisualStyleBackColor = false;
+            this.minMinus1Btn.Click += new System.EventHandler(this.minMinus1Btn_Click);
+            // 
+            // sce30Btn
+            // 
+            this.sce30Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.sce30Btn.FlatAppearance.BorderSize = 0;
+            this.sce30Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sce30Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.sce30Btn.ForeColor = System.Drawing.Color.White;
+            this.sce30Btn.Location = new System.Drawing.Point(322, 20);
+            this.sce30Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.sce30Btn.Name = "sce30Btn";
+            this.sce30Btn.Size = new System.Drawing.Size(40, 24);
+            this.sce30Btn.TabIndex = 349;
+            this.sce30Btn.Text = "30";
+            this.sce30Btn.UseVisualStyleBackColor = false;
+            this.sce30Btn.Click += new System.EventHandler(this.sce30Btn_Click);
+            // 
+            // sce0Btn
+            // 
+            this.sce0Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.sce0Btn.FlatAppearance.BorderSize = 0;
+            this.sce0Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sce0Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.sce0Btn.ForeColor = System.Drawing.Color.White;
+            this.sce0Btn.Location = new System.Drawing.Point(280, 20);
+            this.sce0Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.sce0Btn.Name = "sce0Btn";
+            this.sce0Btn.Size = new System.Drawing.Size(40, 24);
+            this.sce0Btn.TabIndex = 348;
+            this.sce0Btn.Text = "0";
+            this.sce0Btn.UseVisualStyleBackColor = false;
+            this.sce0Btn.Click += new System.EventHandler(this.sce0Btn_Click);
+            // 
+            // min15Btn
+            // 
+            this.min15Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.min15Btn.FlatAppearance.BorderSize = 0;
+            this.min15Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.min15Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.min15Btn.ForeColor = System.Drawing.Color.White;
+            this.min15Btn.Location = new System.Drawing.Point(171, 21);
+            this.min15Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.min15Btn.Name = "min15Btn";
+            this.min15Btn.Size = new System.Drawing.Size(40, 24);
+            this.min15Btn.TabIndex = 347;
+            this.min15Btn.Text = "15";
+            this.min15Btn.UseVisualStyleBackColor = false;
+            this.min15Btn.Click += new System.EventHandler(this.min15Btn_Click);
+            // 
+            // min10Btn
+            // 
+            this.min10Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.min10Btn.FlatAppearance.BorderSize = 0;
+            this.min10Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.min10Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.min10Btn.ForeColor = System.Drawing.Color.White;
+            this.min10Btn.Location = new System.Drawing.Point(129, 21);
+            this.min10Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.min10Btn.Name = "min10Btn";
+            this.min10Btn.Size = new System.Drawing.Size(40, 24);
+            this.min10Btn.TabIndex = 346;
+            this.min10Btn.Text = "10";
+            this.min10Btn.UseVisualStyleBackColor = false;
+            this.min10Btn.Click += new System.EventHandler(this.min10Btn_Click);
+            // 
+            // min5Btn
+            // 
+            this.min5Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.min5Btn.FlatAppearance.BorderSize = 0;
+            this.min5Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.min5Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.min5Btn.ForeColor = System.Drawing.Color.White;
+            this.min5Btn.Location = new System.Drawing.Point(87, 21);
+            this.min5Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.min5Btn.Name = "min5Btn";
+            this.min5Btn.Size = new System.Drawing.Size(40, 24);
+            this.min5Btn.TabIndex = 345;
+            this.min5Btn.Text = "5";
+            this.min5Btn.UseVisualStyleBackColor = false;
+            this.min5Btn.Click += new System.EventHandler(this.min5Btn_Click);
+            // 
+            // min3Btn
+            // 
+            this.min3Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.min3Btn.FlatAppearance.BorderSize = 0;
+            this.min3Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.min3Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.min3Btn.ForeColor = System.Drawing.Color.White;
+            this.min3Btn.Location = new System.Drawing.Point(45, 21);
+            this.min3Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.min3Btn.Name = "min3Btn";
+            this.min3Btn.Size = new System.Drawing.Size(40, 24);
+            this.min3Btn.TabIndex = 344;
+            this.min3Btn.Text = "3";
+            this.min3Btn.UseVisualStyleBackColor = false;
+            this.min3Btn.Click += new System.EventHandler(this.min3Btn_Click);
+            // 
+            // min1Btn
+            // 
+            this.min1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.min1Btn.FlatAppearance.BorderSize = 0;
+            this.min1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.min1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.min1Btn.ForeColor = System.Drawing.Color.White;
+            this.min1Btn.Location = new System.Drawing.Point(3, 21);
+            this.min1Btn.Margin = new System.Windows.Forms.Padding(4);
+            this.min1Btn.Name = "min1Btn";
+            this.min1Btn.Size = new System.Drawing.Size(40, 24);
+            this.min1Btn.TabIndex = 343;
+            this.min1Btn.Text = "1";
+            this.min1Btn.UseVisualStyleBackColor = false;
+            this.min1Btn.Click += new System.EventHandler(this.min1Btn_Click);
+            // 
+            // secondslabel
+            // 
+            this.secondslabel.AutoSize = true;
+            this.secondslabel.BackColor = System.Drawing.Color.Transparent;
+            this.secondslabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.secondslabel.ForeColor = System.Drawing.Color.White;
+            this.secondslabel.Location = new System.Drawing.Point(230, 1);
+            this.secondslabel.Name = "secondslabel";
+            this.secondslabel.Size = new System.Drawing.Size(77, 16);
+            this.secondslabel.TabIndex = 342;
+            this.secondslabel.Text = "Seconds :";
+            // 
+            // minutesLabel
+            // 
+            this.minutesLabel.AutoSize = true;
+            this.minutesLabel.BackColor = System.Drawing.Color.Transparent;
+            this.minutesLabel.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.minutesLabel.ForeColor = System.Drawing.Color.White;
+            this.minutesLabel.Location = new System.Drawing.Point(3, 1);
+            this.minutesLabel.Name = "minutesLabel";
+            this.minutesLabel.Size = new System.Drawing.Size(73, 16);
+            this.minutesLabel.TabIndex = 341;
+            this.minutesLabel.Text = "Minutes :";
+            // 
+            // timerStartBtn
+            // 
+            this.timerStartBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.timerStartBtn.FlatAppearance.BorderSize = 0;
+            this.timerStartBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.timerStartBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.timerStartBtn.ForeColor = System.Drawing.Color.White;
+            this.timerStartBtn.Location = new System.Drawing.Point(1, 1);
+            this.timerStartBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.timerStartBtn.Name = "timerStartBtn";
+            this.timerStartBtn.Size = new System.Drawing.Size(65, 39);
+            this.timerStartBtn.TabIndex = 358;
+            this.timerStartBtn.Text = "Start";
+            this.timerStartBtn.UseVisualStyleBackColor = false;
+            this.timerStartBtn.Click += new System.EventHandler(this.timerStartBtn_Click);
+            // 
+            // timerPauseBtn
+            // 
+            this.timerPauseBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.timerPauseBtn.FlatAppearance.BorderSize = 0;
+            this.timerPauseBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.timerPauseBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.timerPauseBtn.ForeColor = System.Drawing.Color.White;
+            this.timerPauseBtn.Location = new System.Drawing.Point(70, 1);
+            this.timerPauseBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.timerPauseBtn.Name = "timerPauseBtn";
+            this.timerPauseBtn.Size = new System.Drawing.Size(65, 39);
+            this.timerPauseBtn.TabIndex = 359;
+            this.timerPauseBtn.Text = "Pause";
+            this.timerPauseBtn.UseVisualStyleBackColor = false;
+            this.timerPauseBtn.Click += new System.EventHandler(this.timerPauseBtn_Click);
+            // 
+            // timerResetBtn
+            // 
+            this.timerResetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.timerResetBtn.FlatAppearance.BorderSize = 0;
+            this.timerResetBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.timerResetBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.timerResetBtn.ForeColor = System.Drawing.Color.White;
+            this.timerResetBtn.Location = new System.Drawing.Point(70, 44);
+            this.timerResetBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.timerResetBtn.Name = "timerResetBtn";
+            this.timerResetBtn.Size = new System.Drawing.Size(65, 39);
+            this.timerResetBtn.TabIndex = 360;
+            this.timerResetBtn.Text = "Reset";
+            this.timerResetBtn.UseVisualStyleBackColor = false;
+            this.timerResetBtn.Click += new System.EventHandler(this.timerResetBtn_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.timerResetBtn);
+            this.panel2.Controls.Add(this.timerStartBtn);
+            this.panel2.Controls.Add(this.timerPauseBtn);
+            this.panel2.Location = new System.Drawing.Point(444, 303);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(138, 86);
+            this.panel2.TabIndex = 361;
+            // 
+            // controllerTimer
+            // 
+            this.controllerTimer.Interval = 15;
+            this.controllerTimer.Tick += new System.EventHandler(this.controllerTimer_Tick);
             // 
             // dodo
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(584, 291);
             this.ControlBox = false;
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.timerSettingPanel);
             this.Controls.Add(this.FullPanel);
             this.Controls.Add(this.DoneAnchor1Btn);
             this.Controls.Add(this.DoneAnchor0Btn);
@@ -2205,12 +2644,15 @@ namespace ACNHPoker
             this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1200, 330);
+            this.MaximumSize = new System.Drawing.Size(1200, 430);
             this.MinimumSize = new System.Drawing.Size(600, 330);
             this.Name = "dodo";
             this.ShowInTaskbar = false;
-            this.Text = "Dutch Sailors";
+            this.Text = "Dutch Sailors            -> Click here to allow keyboard control <-";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.dodo_FormClosed);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dodo_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dodo_KeyUp);
+            this.Move += new System.EventHandler(this.dodo_Move);
             this.FullPanel.ResumeLayout(false);
             this.FullPanel.PerformLayout();
             this.functionPanel.ResumeLayout(false);
@@ -2232,6 +2674,9 @@ namespace ACNHPoker
             ((System.ComponentModel.ISupportInitialize)(this.Anchor0Image2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Anchor0Image1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartImage)).EndInit();
+            this.timerSettingPanel.ResumeLayout(false);
+            this.timerSettingPanel.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2372,5 +2817,30 @@ namespace ACNHPoker
         private System.Windows.Forms.CheckBox restoreDodobox;
         private System.Windows.Forms.CheckBox dropItemBox;
         private System.Windows.Forms.CheckBox injectVillagerBox;
+        private System.Windows.Forms.Button TimerBtn;
+        private System.Windows.Forms.Panel timerSettingPanel;
+        private System.Windows.Forms.Button secPlus5Btn;
+        private System.Windows.Forms.Button secMinus5Btn;
+        private System.Windows.Forms.Button secPlus1Btn;
+        private System.Windows.Forms.Button secMinus1Btn;
+        private System.Windows.Forms.Button minPlus5Btn;
+        private System.Windows.Forms.Button minMinus5Btn;
+        private System.Windows.Forms.Button minPlus1Btn;
+        private System.Windows.Forms.Button minMinus1Btn;
+        private System.Windows.Forms.Button sce30Btn;
+        private System.Windows.Forms.Button sce0Btn;
+        private System.Windows.Forms.Button min15Btn;
+        private System.Windows.Forms.Button min10Btn;
+        private System.Windows.Forms.Button min5Btn;
+        private System.Windows.Forms.Button min3Btn;
+        private System.Windows.Forms.Button min1Btn;
+        private System.Windows.Forms.Label secondslabel;
+        private System.Windows.Forms.Label minutesLabel;
+        private System.Windows.Forms.Button timerResetBtn;
+        private System.Windows.Forms.Button timerPauseBtn;
+        private System.Windows.Forms.Button timerStartBtn;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Timer controllerTimer;
+        private System.Windows.Forms.Button clearSlotBtn;
     }
 }

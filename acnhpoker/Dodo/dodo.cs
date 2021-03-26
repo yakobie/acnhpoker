@@ -31,13 +31,43 @@ namespace ACNHPoker
         private bool wasLoading = false;
         private bool lastOrderIsRecipe = false;
         private static OrderDisplay itemDisplay;
-
+        private static MyTimer mytimer;
         bool dropItem = false;
         bool injectVillager = false;
         bool restoreDodo = true;
 
         Thread standaloneThread;
         private bool standaloneRunning = false;
+
+
+        bool W = false;
+        bool A = false;
+        bool S = false;
+        bool D = false;
+        bool resetted = true;
+        private MovingDirection currentDirection = MovingDirection.Null;
+
+        bool I = false;
+        bool holdingI = false;
+        bool J = false;
+        bool holdingJ = false;
+        bool K = false;
+        bool holdingK = false;
+        bool L = false;
+        bool holdingL = false;
+
+        public enum MovingDirection
+        {
+            Up,
+            Down,
+            Left,
+            Right,
+            UpRight,
+            UpLeft,
+            DownRight,
+            DownLeft,
+            Null
+        }
 
         public dodo(Socket S, Form main, bool standaloneMode = false)
         {
@@ -64,6 +94,8 @@ namespace ACNHPoker
             {
                 standaloneStart.Visible = true;
             }
+            controllerTimer.Start();
+            this.KeyPreview = true;
         }
 
         #region Teleport Setup
@@ -445,6 +477,8 @@ namespace ACNHPoker
 
         private void dodo_FormClosed(object sender, FormClosedEventArgs e)
         {
+            controllerTimer.Stop();
+
             if (MyPubSub != null)
             {
                 MyPubSub.Dispose();
@@ -458,6 +492,12 @@ namespace ACNHPoker
             {
                 itemDisplay.Close();
                 itemDisplay = null;
+            }
+            if (mytimer != null)
+            {
+                mytimer.Close();
+                mytimer.Dispose();
+                mytimer = null;
             }
             if (mainForm is Form1)
             {
@@ -548,7 +588,7 @@ namespace ACNHPoker
         public teleport.OverworldState DodoMonitor()
         {
             teleport.OverworldState state = teleport.GetOverworldState();
-            WriteLog(state.ToString() + " " + idleNum, true);
+            //WriteLog(state.ToString() + " " + idleNum, true);
 
             if (CheckOnlineStatus() == 1)
             {
@@ -610,9 +650,9 @@ namespace ACNHPoker
 
             if (state != teleport.OverworldState.Loading && state != teleport.OverworldState.UserArriveLeavingOrTitleScreen)
             {
-                if (idleNum >= 2)
+                if (dropItem)
                 {
-                    if (dropItem)
+                    if (idleNum >= 2)
                     {
                         if (wasLoading)
                         {
@@ -639,25 +679,28 @@ namespace ACNHPoker
                         }
                     }
 
-                    if (injectVillager)
+                    if (DropOrderList.Count > 0)
+                        state = teleport.OverworldState.ItemDropping;
+                }
+
+                if (injectVillager)
+                {
+                    if (VillagerOrderList.Count <= 0)
                     {
-                        if (VillagerOrderList.Count <= 0)
-                        {
-                            Debug.Print("No Villager Order");
-                        }
-                        else if (state != teleport.OverworldState.ItemDropping)
-                        {
-                            _ = InjectVillager(VillagerOrderList.ElementAt(0));
-                        }
+                        Debug.Print("No Villager Order");
+                    }
+                    else if (state != teleport.OverworldState.ItemDropping && idleNum >= 2)
+                    {
+                        _ = InjectVillager(VillagerOrderList.ElementAt(0));
                     }
                 }
 
                 if (idleEmote && state == teleport.OverworldState.OverworldOrInAirport)
                 {
-                    if (idleNum >= 5 && idleNum % 5 == 0)
+                    if (idleNum >= 10 && idleNum % 10 == 0)
                     {
                         Random random = new Random();
-                        int v = random.Next(0, 10);
+                        int v = random.Next(0, 8);
                         controller.emote(v);
                     }
                 }
@@ -695,21 +738,29 @@ namespace ACNHPoker
             controller.clickDown(); // Hide Weapon
             Thread.Sleep(1000);
 
-            teleport.TeleportToAnchor(2);
+            string locationState = teleport.GetLocationState().ToString();
+            Debug.Print(">>>>>>>>>>>>>>>>>>>>>>>>>>" + locationState);
 
-            WriteLog("Teleport to Airport", true);
-
-            do
+            if (teleport.GetLocationState() == teleport.LocationState.Indoor)
             {
-                //Debug.Print(teleport.GetOverworldState().ToString());
-                WriteLog("Try Entering Airport", true);
-                controller.EnterAirport();
+                WriteLog("Indoor Detected", true);
+            }
+            else
+            {
+                teleport.TeleportToAnchor(2);
+                WriteLog("Teleport to Airport", true);
+
+                do
+                {
+                    WriteLog("Try Entering Airport", true);
+                    controller.EnterAirport();
+                    Thread.Sleep(2000);
+                }
+                while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
+
+                WriteLog("Inside Airport", true);
                 Thread.Sleep(2000);
             }
-            while (teleport.GetOverworldState() != teleport.OverworldState.OverworldOrInAirport);
-
-            WriteLog("Inside Airport", true);
-            Thread.Sleep(2000);
 
             teleport.TeleportToAnchor(3);
 
@@ -951,6 +1002,7 @@ namespace ACNHPoker
                 VillagerOrderList.RemoveAt(0);
 
                 MapRegenerator.updateVillager(s, villagerIndex);
+                WriteLog($"Villager \"{CurrentOrder.RealName}\" loaded!", true);
             }
 
         }
@@ -965,27 +1017,30 @@ namespace ACNHPoker
 
         private void LstickMouseUp(object sender, MouseEventArgs e)
         {
-            controller.resetLeftStick();
+            W = false;
+            A = false;
+            S = false;
+            D = false;
         }
 
         private void LstickUPBtn_MouseDown(object sender, MouseEventArgs e)
         {
-            controller.LstickUp();
+            W = true;
         }
 
         private void LstickRIGHTBtn_MouseDown(object sender, MouseEventArgs e)
         {
-            controller.LstickRight();
+            D = true;
         }
 
         private void LstickDOWNBtn_MouseDown(object sender, MouseEventArgs e)
         {
-            controller.LstickDown();
+            S = true;
         }
 
         private void LstickLEFTBtn_MouseDown(object sender, MouseEventArgs e)
         {
-            controller.LstickLeft();
+            A = true;
         }
 
         private void XBtn_Click(object sender, EventArgs e)
@@ -1263,6 +1318,7 @@ namespace ACNHPoker
             {
                 itemDisplay = new OrderDisplay();
                 itemDisplay.Show();
+                itemDisplay.Location = new Point(this.Location.X + 290, this.Location.Y - 160);
             }
             else
             {
@@ -1355,9 +1411,9 @@ namespace ACNHPoker
 
                 if (state != teleport.OverworldState.Loading && state != teleport.OverworldState.UserArriveLeavingOrTitleScreen)
                 {
-                    if (idleNum >= 2)
+                    if (dropItem)
                     {
-                        if (dropItem)
+                        if (idleNum >= 2)
                         {
                             if (wasLoading)
                             {
@@ -1381,14 +1437,17 @@ namespace ACNHPoker
                             }
                         }
 
-                        if (injectVillager)
+                        if (DropOrderList.Count > 0)
+                            state = teleport.OverworldState.ItemDropping;
+                    }
+
+                    if (injectVillager)
+                    {
+                        if (VillagerOrderList.Count <= 0)
+                            Debug.Print("No Villager Order");
+                        else if (state != teleport.OverworldState.ItemDropping && idleNum >= 2)
                         {
-                            if (VillagerOrderList.Count <= 0)
-                                Debug.Print("No Villager Order");
-                            else if (state != teleport.OverworldState.ItemDropping)
-                            {
-                                _ = InjectVillager(VillagerOrderList.ElementAt(0));
-                            }
+                            _ = InjectVillager(VillagerOrderList.ElementAt(0));
                         }
                     }
 
@@ -1397,7 +1456,7 @@ namespace ACNHPoker
                         if (idleNum >= 10 && idleNum % 10 == 0)
                         {
                             Random random = new Random();
-                            int v = random.Next(0, 10);
+                            int v = random.Next(0, 8);
                             controller.emote(v);
                         }
                     }
@@ -1408,5 +1467,423 @@ namespace ACNHPoker
 
             } while (standaloneRunning);
         }
+
+        private void TimerBtn_Click(object sender, EventArgs e)
+        {
+            if (this.Height < 430)
+            {
+                this.Height = 430;
+                if (mytimer == null)
+                {
+                    mytimer = new MyTimer();
+                    mytimer.Show();
+                    timerSettingPanel.Enabled = true;
+                    mytimer.Location = new Point(this.Location.X, this.Location.Y - 140);
+                }
+            }
+            else
+            {
+                this.Height = 330;
+                if (mytimer != null)
+                {
+                    mytimer.Close();
+                    mytimer.Dispose();
+                    mytimer = null;
+                }
+            }
+        }
+
+        private void dodo_Move(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.Location = new Point(this.Location.X, this.Location.Y - 140);
+                mytimer.BringToFront();
+            }
+
+            if (itemDisplay != null)
+            {
+                itemDisplay.Location = new Point(this.Location.X + 290, this.Location.Y - 160);
+                itemDisplay.BringToFront();
+            }
+        }
+
+        #region Timer Control
+        private void min1Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.set(1, mytimer.seconds);
+            }
+        }
+
+        private void min3Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.set(3, mytimer.seconds);
+            }
+        }
+
+        private void min5Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.set(5, mytimer.seconds);
+            }
+        }
+
+        private void min10Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.set(10, mytimer.seconds);
+            }
+        }
+
+        private void min15Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.set(15, mytimer.seconds);
+            }
+        }
+
+        private void sce0Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.set(mytimer.minutes, 0);
+            }
+        }
+
+        private void sce30Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.set(mytimer.minutes, 30);
+            }
+        }
+
+        private void minMinus1Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.minusMin(1);
+            }
+        }
+
+        private void minPlus1Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.addMin(1);
+            }
+        }
+
+        private void minMinus5Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.minusMin(5);
+            }
+        }
+
+        private void minPlus5Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.addMin(5);
+            }
+        }
+
+        private void secMinus1Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.minusSec(1);
+            }
+        }
+
+        private void secPlus1Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.addSec(1);
+            }
+        }
+
+        private void secMinus5Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.minusSec(5);
+            }
+        }
+
+        private void secPlus5Btn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.addSec(5);
+            }
+        }
+
+        private void timerStartBtn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                timerSettingPanel.Enabled = false;
+                mytimer.start();
+            }
+        }
+
+        private void timerPauseBtn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                mytimer.pause();
+            }
+        }
+
+        private void timerResetBtn_Click(object sender, EventArgs e)
+        {
+            if (mytimer != null)
+            {
+                timerSettingPanel.Enabled = true;
+                mytimer.reset();
+            }
+        }
+        #endregion
+
+        #region Keyboard Controller
+        private void dodo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.R)
+                controller.clickMINUS();
+            else if (e.KeyCode == Keys.Y)
+                controller.clickPLUS();
+            else if (e.KeyCode == Keys.Q)
+                controller.clickZL();
+            else if (e.KeyCode == Keys.O)
+                controller.clickZR();
+
+            if (e.KeyCode == Keys.I)
+                I = true;
+            if (e.KeyCode == Keys.K)
+                K = true;
+            if (e.KeyCode == Keys.J)
+                J = true;
+            if (e.KeyCode == Keys.L)
+                L = true;
+            if (e.KeyCode == Keys.W)
+                W = true;
+            if (e.KeyCode == Keys.S)
+                S = true;
+            if (e.KeyCode == Keys.A)
+                A = true;
+            if (e.KeyCode == Keys.D)
+                D = true;
+        }
+
+        private void dodo_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.I)
+                I = false;
+            if (e.KeyCode == Keys.K)
+                K = false;
+            if (e.KeyCode == Keys.J)
+                J = false;
+            if (e.KeyCode == Keys.L)
+                L = false;
+            if (e.KeyCode == Keys.W)
+                W = false;
+            if (e.KeyCode == Keys.S)
+                S = false;
+            if (e.KeyCode == Keys.A)
+                A = false;
+            if (e.KeyCode == Keys.D)
+                D = false;
+        }
+
+        private void controllerTimer_Tick(object sender, EventArgs e)
+        {
+            if (!W && !A && !S && !D)
+            {
+                if (!resetted)
+                {
+                    currentDirection = MovingDirection.Null;
+                    resetted = true;
+                    //Debug.Print("Reset Stick");
+                    controller.resetLeftStick();
+                }
+            }
+            else if (W && D)
+            {
+                if (currentDirection != MovingDirection.UpRight)
+                {
+                    currentDirection = MovingDirection.UpRight;
+                    resetted = false;
+                    Debug.Print("TopRight");
+                    controller.LstickTopRight();
+                }
+            }
+            else if (W && A)
+            {
+                if (currentDirection != MovingDirection.UpLeft)
+                {
+                    currentDirection = MovingDirection.UpLeft;
+                    resetted = false;
+                    //Debug.Print("TopLeft");
+                    controller.LstickTopLeft();
+                }
+            }
+            else if (W)
+            {
+                if (currentDirection != MovingDirection.Up)
+                {
+                    currentDirection = MovingDirection.Up;
+                    resetted = false;
+                    //Debug.Print("Up");
+                    controller.LstickUp();
+                }
+            }
+            else if (S && D)
+            {
+                if (currentDirection != MovingDirection.DownRight)
+                {
+                    currentDirection = MovingDirection.DownRight;
+                    resetted = false;
+                    //Debug.Print("BottomRight");
+                    controller.LstickBottomRight();
+                }
+            }
+            else if (S && A)
+            {
+                if (currentDirection != MovingDirection.DownLeft)
+                {
+                    currentDirection = MovingDirection.DownLeft;
+                    resetted = false;
+                    //Debug.Print("BottomLeft");
+                    controller.LstickBottomLeft();
+                }
+            }
+            else if (S)
+            {
+                if (currentDirection != MovingDirection.Down)
+                {
+                    currentDirection = MovingDirection.Down;
+                    resetted = false;
+                    //Debug.Print("Down");
+                    controller.LstickDown();
+                }
+            }
+            else if (A)
+            {
+                if (currentDirection != MovingDirection.Left)
+                {
+                    currentDirection = MovingDirection.Left;
+                    resetted = false;
+                    //Debug.Print("Left");
+                    controller.LstickLeft();
+                }
+            }
+            else if (D)
+            {
+                if (currentDirection != MovingDirection.Right)
+                {
+                    currentDirection = MovingDirection.Right;
+                    resetted = false;
+                    //Debug.Print("Right");
+                    controller.LstickRight();
+                }
+            }
+
+            if (I)
+            {
+                if (!holdingI)
+                {
+                    holdingI = true;
+                    //Debug.Print("Press X");
+                    controller.pressX();
+                }
+            }
+            else if (!I)
+            {
+                if (holdingI)
+                {
+                    holdingI = false;
+                    //Debug.Print("Release X");
+                    controller.releaseX();
+                }
+            }
+
+            if (J)
+            {
+                if (!holdingJ)
+                {
+                    holdingJ = true;
+                    //Debug.Print("Press Y");
+                    controller.pressY();
+                }
+            }
+            else if (!J)
+            {
+                if (holdingJ)
+                {
+                    holdingJ = false;
+                    //Debug.Print("Release Y");
+                    controller.releaseY();
+                }
+            }
+
+            if (K)
+            {
+                if (!holdingK)
+                {
+                    holdingK = true;
+                    //Debug.Print("Press B");
+                    controller.pressB();
+                }
+            }
+            else if (!K)
+            {
+                if (holdingK)
+                {
+                    holdingK = false;
+                    //Debug.Print("Release B");
+                    controller.releaseB();
+                }
+            }
+
+            if (L)
+            {
+                if (!holdingL)
+                {
+                    holdingL = true;
+                    //Debug.Print("Press A");
+                    controller.pressA();
+                }
+            }
+            else if (!L)
+            {
+                if (holdingL)
+                {
+                    holdingL = false;
+                    //Debug.Print("Release A");
+                    controller.releaseA();
+                }
+            }
+        }
+        #endregion
+
+        private void clearInvBtn_Click(object sender, EventArgs e)
+        {
+            Utilities.DeleteSlot(s,null, 0);
+            WriteLog("First inventory slot cleared!", true);
+            WriteLog("please remember to reset your cursor to the first inventory slot for the drop bot to function properly!", true);
+        }
+
+        
     }
 }
