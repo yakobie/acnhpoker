@@ -463,8 +463,7 @@ namespace ACNHPoker
             // 
             // bulkSpawn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(674, 411);
             this.Controls.Add(this.PleaseWaitPanel);
@@ -484,6 +483,7 @@ namespace ACNHPoker
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(690, 450);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(690, 450);
             this.Name = "bulkSpawn";

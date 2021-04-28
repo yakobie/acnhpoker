@@ -214,7 +214,7 @@ https://youtu.be/-zztRgmtXig
 	* As of game version 1.7.0, "Irregular Move out" no longer seems to work like intended. Changing the description of it.
 	* Moved code into folders for better management. This will break the diff most likely... and screw some people over.
 * R15
-	* Update for Game version number 1.8.0
+	* Update for Game version number 1.9.0
 * R15.1
 	* Fixed the villager inject game crash.
 	* Fixed the turnip prices game crash.
@@ -235,7 +235,8 @@ https://youtu.be/-zztRgmtXig
 	  * However, do note that Sys-botbase cannot handle too many commands at once. So when the regen is running (The green bar is filling up) or item/villager inject is in process, the keyboard control will be wonky. Please wait patiently for other process to finish first before using the keyboard control.
 	* Also to prevent triggering anti-virus software detecting keylogging behavior. Keyboard control only works when the "Dodo Helper"(Dutch Sailors) window is in focus.
 	  * Which mean if you want to use the keyboard control, you must first use your mouse to click the form so that it is in focus.
-	  
+* R16
+	* Update for Game version number 1.10.0	  
 ## Contributing
 
 1. Fork it (<https://github.com/KingLycosa/acnhpoker/fork>)

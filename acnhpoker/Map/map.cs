@@ -97,6 +97,7 @@ namespace ACNHPoker
                     floorSlots[i] = btn;
                 }
 
+                
                 if (source != null)
                 {
                     fieldGridView.DataSource = source;
@@ -165,6 +166,7 @@ namespace ACNHPoker
 
                     currentDataTable = source;
                 }
+                
 
                 //this.BringToFront();
                 //this.Focus();
@@ -174,7 +176,7 @@ namespace ACNHPoker
                 PasteArea = new ToolStripMenuItem("Paste Area", null, pasteAreaToolStripMenuItem_Click);
                 PasteArea.ForeColor = Color.White;
 
-                this.KeyPreview = true;
+                //this.KeyPreview = true;
                 Log.logEvent("Map", "MapForm Started Successfully");
             }
             catch (Exception ex)
@@ -216,9 +218,7 @@ namespace ACNHPoker
                 if (Layer1 != null && Layer2 != null && Acre != null)
                 {
                     if (MiniMap == null)
-                        MiniMap = new miniMap(Layer1, Acre);
-
-                    miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawBackground(), MiniMap.drawItemMap());
+                        MiniMap = new miniMap(Layer1, Acre, 2);
                 }
                 else
                     throw new NullReferenceException("Layer1/Layer2/Acre");
@@ -242,13 +242,12 @@ namespace ACNHPoker
 
                     this.Invoke((MethodInvoker)delegate
                     {
+                        miniMapBox.BackgroundImage = MiniMap.combineMap(MiniMap.drawBackground(), MiniMap.drawItemMap());
                         displayAnchor(getMapColumns(anchorX, anchorY));
-
                         xCoordinate.Text = anchorX.ToString();
                         yCoordinate.Text = anchorX.ToString();
                         enableBtn();
                         fetchMapBtn.Visible = false;
-                        //if (Utilities.getDodo(s, bot) == string.Empty)
                         NextSaveTimer.Start();
                     });
                 }

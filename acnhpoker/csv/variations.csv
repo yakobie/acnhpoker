@@ -681,6 +681,8 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 366A ; FtrCrsSocksWallColor ; set of stockings ; かべかけソックス ; 壁掛式襪子 ; 壁挂式袜子 ; 벽걸이 양말 ; lot de chaussettes déco ; Wunschsocken-Set ; lote de calcetines de pared ; set di calze per regali ; sokkenset ; набор носков
 36CD ; FtrRosebouquetHeart ; heart-shaped bouquet ; ハートのバラブーケ ; 愛心玫瑰花束 ; 心形玫瑰花束 ; 하트 장미 꽃다발 ; bouquet en forme de cœur ; Herz-Bouquet ; ramo de flores Enamorados ; bouquet a cuore ; hartvormig boeket ; букет в форме сердца
 3804 ; FtrCushionWhoopee ; whoopee cushion ; ブーブークッション ; 放屁坐墊 ; 放屁坐垫 ; 방귀 쿠션 ; coussin péteur ; Pupskissen ; cojín de broma ; petofono ; scheetkussen ; подушка для розыгрыша
+388C ; FtrWeddingBell ; nuptial bell ; ウェディングベル ; 結婚鐘 ; 结婚钟 ; 결혼식 종 ; cloche nuptiale ; Vermählungs-Glocke ; campana nupcial ; campana sposini ; liefdesbel ; брачный колокол
+388D ; FtrWeddingRingpillow ; nuptial ring pillow ; リングピロー ; 戒枕 ; 戒枕 ; 결혼식 링 필로 ; coussin d'alliances nuptial ; Vermählungs-Ringkissen ; cojín con alianzas nupciales ; portanelli sposini ; liefdesringenkussentje ; подушечка с кольцами
 0833 ; ToolScoop ; shovel ; スコップ ; 鏟子 ; 铲子 ; 삽 ; pelle ; Schaufel ; pala ; pala ; schep ; лопата
 0949 ; ToolAngling ; fishing rod ; つりざお ; 釣竿 ; 钓竿 ; 낚싯대 ; canne à pêche ; Angel ; caña ; canna da pesca ; hengel ; удочка
 094B ; ToolWatering ; watering can ; ジョウロ ; 澆花壺 ; 浇花壶 ; 물뿌리개 ; arrosoir ; Gießkanne ; regadera ; annaffiatoio ; gieter ; лейка
@@ -712,6 +714,7 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 1655 ; FtrDoorOrnamentCrest ; crest doorplate ; エンブレムなドアプレート ; 徽章門牌 ; 纹章门牌 ; 엠블럼 문패 ; plaque blason ; Wappentürschild ; placa escudo de armas ; targa da porta stemma ; schildwapendeurplaatje ; герб
 1656 ; FtrDoorOrnamentLog ; timber doorplate ; ログなドアプレート ; 原木門牌 ; 原木门牌 ; 통나무 문패 ; plaque bûche ; Holztürschild ; placa de leña ; targa da porta ciocco ; deurplaatje ; табличка-срез
 1657 ; FtrDoorOrnamentFossil ; fossil doorplate ; かせきのドアプレート ; 化石門牌 ; 化石门牌 ; 화석 문패 ; plaque fossile ; Fossilientürschild ; placa fósil ; targa da porta fossile ; fossieldeurplaatje ; декоративный аммонит
+388B ; FtrDoorOrnamentWreathWedding ; nuptial doorplate ; ウェディングのドアプレート ; 結婚門牌 ; 结婚门牌 ; 결혼식 문패 ; plaque nuptiale ; Vermählungs-Türschild ; corona nupcial ; targa da porta sposini ; liefdesdeurplaatje ; брачный венок на дверь
 2238 ; SmartphoneCase ; customizable phone case kit ; スマホケースリメイクキット ; 手機殼改造工具組 ; 手机壳改造工具组 ; 스마트폰 케이스 리폼 키트 ; kit coque personnalisable ; NookPhone-Gestaltungskit ; funda móvil personalizable ; kit personaliz. Nook Phone ; NookPhone-hoesje ; набор: переделка чехла
 191A ; BromideNpcNmlAnt00 ; Cyrano's photo ; さくらじまのしゃしん ; 陽明的照片 ; 阳明的照片 ; 사지마의 사진 ; photo de Cyrano ; Foto von Theo ; foto de Cirano ; foto di Cirano ; foto van Cyrano ; фото Сирано
 191B ; BromideNpcNmlBea02 ; Curt's photo ; ガンテツのしゃしん ; 鐵熊的照片 ; 铁熊的照片 ; 뚝심의 사진 ; photo de Curt ; Foto von Kurt ; foto de Gorbaché ; foto di Curt ; foto van Curt ; фото Керта
@@ -1114,3 +1117,4 @@ id ; iName ; eng ; jpn ; tchi ; schi ; kor ; fre ; ger ; spa ; ita ; dut ; rus ;
 37AE ; BromideNpcSpRco ; Tom Nook's photo ; たぬきちのしゃしん ; 狸克的照片 ; 狸克的照片 ; 너굴의 사진 ; photo de Tom Nook ; Foto von Tom Nook ; foto de Tom Nook ; foto di Tom Nook ; foto van Tom Nook ; фото Тома Нука
 37AF ; BromideNpcSpRcm ; Timmy and Tommy's photo ; まめきち&つぶきちのしゃしん ; 豆狸&粒狸的照片 ; 豆狸&粒狸的照片 ; 콩돌이&밤돌이의 사진 ; photo de Méli et Mélo ; Foto von Nepp & Schlepp ; foto de Tendo y Nendo ; foto di Mirco e Marco ; foto van Timmy en Tommy ; фото Тимми и Томми
 37B0 ; BromideNpcSpSza ; Isabelle's photo ; しずえのしゃしん ; 西施惠的照片 ; 西施惠的照片 ; 여울의 사진 ; photo de Marie ; Foto von Melinda ; foto de Canela ; foto di Fuffi ; foto van Isabelle ; фото Изабель
+3888 ; BromideNpcSpXct ; Rover's photo ; みしらぬネコのしゃしん ; 陌陌的照片 ; 陌陌的照片 ; 낯선고양이의 사진 ; photo de Charly ; Foto von Olli ; foto de Fran ; foto di Girolamo ; foto van Rover ; фото Ровера

@@ -19,7 +19,7 @@ namespace ACNHPoker
     {
         #region variable
         private static Socket s;
-        private string version = "ACNH Poker R15.1 for v1.9.0";
+        private string version = "ACNH Poker R16 for v1.10.0";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;
@@ -956,13 +956,13 @@ namespace ACNHPoker
 
         private void dumpVillager2(int i, SaveFileDialog file)
         {
-            byte[] b1 = Utilities.ReadByteArray(s, Utilities.VillagerBuffer1 + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
+            //byte[] b1 = Utilities.ReadByteArray(s, Utilities.VillagerBuffer1 + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
             byte[] b2 = Utilities.ReadByteArray(s, Utilities.VillagerAddress + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
-            byte[] b3 = Utilities.ReadByteArray(s, Utilities.VillagerBuffer2 + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
+            //byte[] b3 = Utilities.ReadByteArray(s, Utilities.VillagerBuffer2 + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
 
-            File.WriteAllBytes(file.FileName + "1", b1);
+            //File.WriteAllBytes(file.FileName + "1", b1);
             File.WriteAllBytes(file.FileName + "2", b2);
-            File.WriteAllBytes(file.FileName + "3", b3);
+            //File.WriteAllBytes(file.FileName + "3", b3);
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -1034,8 +1034,8 @@ namespace ACNHPoker
         {
             for (int i = 0; i < 10; i++)
             {
-                byte[] b = Utilities.ReadByteArray(s, Utilities.VillagerBuffer1 + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
-                File.WriteAllBytes(file.FileName + i, b);
+                //byte[] b = Utilities.ReadByteArray(s, Utilities.VillagerBuffer1 + (i * Utilities.VillagerSize), (int)Utilities.VillagerSize, ref counter);
+                //File.WriteAllBytes(file.FileName + i, b);
             }
         }
 

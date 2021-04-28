@@ -57,11 +57,65 @@ namespace ACNHPoker
             this.flowerModeBtn = new System.Windows.Forms.Button();
             this.itemSearchBox = new System.Windows.Forms.RichTextBox();
             this.BtnPanel = new System.Windows.Forms.Panel();
-            this.floor1 = new ACNHPoker.floorSlot();
             this.floorRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replaceItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveMap = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.saveTopngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fillRemainBtn = new System.Windows.Forms.Button();
+            this.refreshBtn = new System.Windows.Forms.Button();
+            this.saveBtn = new System.Windows.Forms.Button();
+            this.loadBtn = new System.Windows.Forms.Button();
+            this.fieldModeBtn = new System.Windows.Forms.Button();
+            this.moveRight7Btn = new System.Windows.Forms.Button();
+            this.moveLeft7Btn = new System.Windows.Forms.Button();
+            this.moveDown7Btn = new System.Windows.Forms.Button();
+            this.moveUp7Btn = new System.Windows.Forms.Button();
+            this.formToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.layer1Btn = new System.Windows.Forms.RadioButton();
+            this.layer2Btn = new System.Windows.Forms.RadioButton();
+            this.bulkSpawnBtn = new System.Windows.Forms.Button();
+            this.fetchMapBtn = new System.Windows.Forms.Button();
+            this.reAnchorBtn = new System.Windows.Forms.Button();
+            this.saveDebug = new System.Windows.Forms.Button();
+            this.clearGridBtn = new System.Windows.Forms.Button();
+            this.ClearCopiedAreaBtn = new System.Windows.Forms.Button();
+            this.LayerPanel = new System.Windows.Forms.Panel();
+            this.functionPanel = new System.Windows.Forms.Panel();
+            this.variationBtn = new System.Windows.Forms.Button();
+            this.PleaseWaitPanel = new System.Windows.Forms.Panel();
+            this.WaitMessagebox = new System.Windows.Forms.RichTextBox();
+            this.MapProgressBar = new System.Windows.Forms.ProgressBar();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.ProgressTimer = new System.Windows.Forms.Timer(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.removeItemClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.weedsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flowersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.treesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bushesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shellsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.diysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.everythingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bulkSpawnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nextAutoSaveSecond = new System.Windows.Forms.RichTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.NextSaveTimer = new System.Windows.Forms.Timer(this.components);
+            this.Corner1YBox = new System.Windows.Forms.RichTextBox();
+            this.Corner1XBox = new System.Windows.Forms.RichTextBox();
+            this.Corner2YBox = new System.Windows.Forms.RichTextBox();
+            this.Corner2XBox = new System.Windows.Forms.RichTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.miniMapBox = new System.Windows.Forms.PictureBox();
+            this.HexTextbox = new HexUpDown();
+            this.selectedItem = new ACNHPoker.inventorySlot();
+            this.floor1 = new ACNHPoker.floorSlot();
             this.floor2 = new ACNHPoker.floorSlot();
             this.floor3 = new ACNHPoker.floorSlot();
             this.floor8 = new ACNHPoker.floorSlot();
@@ -110,72 +164,20 @@ namespace ACNHPoker
             this.floor41 = new ACNHPoker.floorSlot();
             this.floor39 = new ACNHPoker.floorSlot();
             this.floor40 = new ACNHPoker.floorSlot();
-            this.miniMapBox = new System.Windows.Forms.PictureBox();
-            this.saveMap = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.saveTopngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fillRemainBtn = new System.Windows.Forms.Button();
-            this.refreshBtn = new System.Windows.Forms.Button();
-            this.saveBtn = new System.Windows.Forms.Button();
-            this.loadBtn = new System.Windows.Forms.Button();
-            this.fieldModeBtn = new System.Windows.Forms.Button();
-            this.moveRight7Btn = new System.Windows.Forms.Button();
-            this.moveLeft7Btn = new System.Windows.Forms.Button();
-            this.moveDown7Btn = new System.Windows.Forms.Button();
-            this.moveUp7Btn = new System.Windows.Forms.Button();
-            this.formToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.layer1Btn = new System.Windows.Forms.RadioButton();
-            this.layer2Btn = new System.Windows.Forms.RadioButton();
-            this.bulkSpawnBtn = new System.Windows.Forms.Button();
-            this.fetchMapBtn = new System.Windows.Forms.Button();
-            this.reAnchorBtn = new System.Windows.Forms.Button();
-            this.saveDebug = new System.Windows.Forms.Button();
-            this.clearGridBtn = new System.Windows.Forms.Button();
-            this.ClearCopiedAreaBtn = new System.Windows.Forms.Button();
             this.FlagTextbox = new HexUpDown();
-            this.LayerPanel = new System.Windows.Forms.Panel();
-            this.functionPanel = new System.Windows.Forms.Panel();
-            this.variationBtn = new System.Windows.Forms.Button();
-            this.PleaseWaitPanel = new System.Windows.Forms.Panel();
-            this.WaitMessagebox = new System.Windows.Forms.RichTextBox();
-            this.MapProgressBar = new System.Windows.Forms.ProgressBar();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.ProgressTimer = new System.Windows.Forms.Timer(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.removeItemClick = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.weedsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flowersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.treesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bushesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.shellsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.diysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rocksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.everythingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bulkSpawnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nextAutoSaveSecond = new System.Windows.Forms.RichTextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.NextSaveTimer = new System.Windows.Forms.Timer(this.components);
-            this.Corner1YBox = new System.Windows.Forms.RichTextBox();
-            this.Corner1XBox = new System.Windows.Forms.RichTextBox();
-            this.Corner2YBox = new System.Windows.Forms.RichTextBox();
-            this.Corner2XBox = new System.Windows.Forms.RichTextBox();
-            this.HexTextbox = new HexUpDown();
-            this.selectedItem = new ACNHPoker.inventorySlot();
             ((System.ComponentModel.ISupportInitialize)(this.fieldGridView)).BeginInit();
             this.BtnPanel.SuspendLayout();
             this.floorRightClick.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).BeginInit();
             this.saveMap.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FlagTextbox)).BeginInit();
             this.LayerPanel.SuspendLayout();
             this.functionPanel.SuspendLayout();
             this.PleaseWaitPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.removeItemClick.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HexTextbox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FlagTextbox)).BeginInit();
             this.SuspendLayout();
             // 
             // xCoordinate
@@ -429,6 +431,7 @@ namespace ACNHPoker
             this.fieldGridView.Name = "fieldGridView";
             this.fieldGridView.ReadOnly = true;
             this.fieldGridView.RowHeadersVisible = false;
+            this.fieldGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.fieldGridView.Size = new System.Drawing.Size(345, 463);
             this.fieldGridView.TabIndex = 147;
             this.fieldGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.fieldGridView_CellFormatting);
@@ -615,41 +618,6 @@ namespace ACNHPoker
             this.BtnPanel.Size = new System.Drawing.Size(536, 536);
             this.BtnPanel.TabIndex = 176;
             // 
-            // floor1
-            // 
-            this.floor1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.floor1.ContextMenuStrip = this.floorRightClick;
-            this.floor1.flag1 = "00";
-            this.floor1.flag2 = "00";
-            this.floor1.FlatAppearance.BorderSize = 0;
-            this.floor1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.floor1.flowerQuantity = ((ushort)(0));
-            this.floor1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.floor1.ForeColor = System.Drawing.Color.White;
-            this.floor1.itemData = ((uint)(0u));
-            this.floor1.itemDurability = ((ushort)(0));
-            this.floor1.itemID = ((ushort)(65534));
-            this.floor1.itemName = "";
-            this.floor1.itemQuantity = ((ushort)(0));
-            this.floor1.Location = new System.Drawing.Point(3, 2);
-            this.floor1.mapX = -1;
-            this.floor1.mapY = -1;
-            this.floor1.Margin = new System.Windows.Forms.Padding(0);
-            this.floor1.Name = "floor1";
-            this.floor1.part2 = ((uint)(0u));
-            this.floor1.part2Data = ((uint)(0u));
-            this.floor1.part3 = ((uint)(0u));
-            this.floor1.part3Data = ((uint)(0u));
-            this.floor1.part4 = ((uint)(0u));
-            this.floor1.part4Data = ((uint)(0u));
-            this.floor1.Size = new System.Drawing.Size(75, 75);
-            this.floor1.TabIndex = 74;
-            this.floor1.Tag = "0";
-            this.floor1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.floor1.UseVisualStyleBackColor = false;
-            this.floor1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.floor_MouseDown);
-            this.floor1.MouseHover += new System.EventHandler(this.floor_MouseHover);
-            // 
             // floorRightClick
             // 
             this.floorRightClick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
@@ -687,6 +655,755 @@ namespace ACNHPoker
             this.replaceItemToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.replaceItemToolStripMenuItem.Text = "Replace Item";
             this.replaceItemToolStripMenuItem.Click += new System.EventHandler(this.replaceItemToolStripMenuItem_Click);
+            // 
+            // saveMap
+            // 
+            this.saveMap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.saveMap.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.saveMap.ImageScalingSize = new System.Drawing.Size(0, 0);
+            this.saveMap.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveTopngToolStripMenuItem});
+            this.saveMap.Name = "floorRightClick";
+            this.saveMap.ShowImageMargin = false;
+            this.saveMap.Size = new System.Drawing.Size(132, 26);
+            // 
+            // saveTopngToolStripMenuItem
+            // 
+            this.saveTopngToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.saveTopngToolStripMenuItem.Name = "saveTopngToolStripMenuItem";
+            this.saveTopngToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.saveTopngToolStripMenuItem.Text = "Save to .png";
+            this.saveTopngToolStripMenuItem.Click += new System.EventHandler(this.saveTopngToolStripMenuItem_Click);
+            // 
+            // fillRemainBtn
+            // 
+            this.fillRemainBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.fillRemainBtn.FlatAppearance.BorderSize = 0;
+            this.fillRemainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fillRemainBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.fillRemainBtn.ForeColor = System.Drawing.Color.White;
+            this.fillRemainBtn.Location = new System.Drawing.Point(17, 465);
+            this.fillRemainBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.fillRemainBtn.Name = "fillRemainBtn";
+            this.fillRemainBtn.Size = new System.Drawing.Size(138, 28);
+            this.fillRemainBtn.TabIndex = 177;
+            this.fillRemainBtn.Text = "Fill Remain";
+            this.formToolTip.SetToolTip(this.fillRemainBtn, "Fill the remaining empty spot with the selected item.\r\n\r\n[WARNING]\r\nThe current i" +
+        "mplementation is slow... \r\nPlease wait for a while after you use it.");
+            this.fillRemainBtn.UseVisualStyleBackColor = false;
+            this.fillRemainBtn.Click += new System.EventHandler(this.fillRemainBtn_Click);
+            // 
+            // refreshBtn
+            // 
+            this.refreshBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.refreshBtn.FlatAppearance.BorderSize = 0;
+            this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.refreshBtn.ForeColor = System.Drawing.Color.White;
+            this.refreshBtn.Location = new System.Drawing.Point(18, 43);
+            this.refreshBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.refreshBtn.Name = "refreshBtn";
+            this.refreshBtn.Size = new System.Drawing.Size(138, 28);
+            this.refreshBtn.TabIndex = 178;
+            this.refreshBtn.Text = "Refresh";
+            this.formToolTip.SetToolTip(this.refreshBtn, "Refetch the map data. (Both Layer 1 & 2)");
+            this.refreshBtn.UseVisualStyleBackColor = false;
+            this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.saveBtn.FlatAppearance.BorderSize = 0;
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.saveBtn.ForeColor = System.Drawing.Color.White;
+            this.saveBtn.Location = new System.Drawing.Point(18, 393);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(62, 28);
+            this.saveBtn.TabIndex = 179;
+            this.saveBtn.Text = "Save";
+            this.formToolTip.SetToolTip(this.saveBtn, "Save the displaying 7×7 grid to a .nhg file.");
+            this.saveBtn.UseVisualStyleBackColor = false;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // loadBtn
+            // 
+            this.loadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.loadBtn.FlatAppearance.BorderSize = 0;
+            this.loadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.loadBtn.ForeColor = System.Drawing.Color.White;
+            this.loadBtn.Location = new System.Drawing.Point(92, 393);
+            this.loadBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.loadBtn.Name = "loadBtn";
+            this.loadBtn.Size = new System.Drawing.Size(63, 28);
+            this.loadBtn.TabIndex = 180;
+            this.loadBtn.Text = "Load";
+            this.formToolTip.SetToolTip(this.loadBtn, "Load a .nhg/.nhi file to the displaying 7×7 grid.\r\n[WARNING] For .nhg file, this " +
+        "will overwrite everything currently on the floor.");
+            this.loadBtn.UseVisualStyleBackColor = false;
+            this.loadBtn.Click += new System.EventHandler(this.loadBtn_Click);
+            // 
+            // fieldModeBtn
+            // 
+            this.fieldModeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.fieldModeBtn.FlatAppearance.BorderSize = 0;
+            this.fieldModeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fieldModeBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.fieldModeBtn.ForeColor = System.Drawing.Color.White;
+            this.fieldModeBtn.Location = new System.Drawing.Point(1127, 3);
+            this.fieldModeBtn.Name = "fieldModeBtn";
+            this.fieldModeBtn.Size = new System.Drawing.Size(60, 23);
+            this.fieldModeBtn.TabIndex = 181;
+            this.fieldModeBtn.Text = "Field";
+            this.fieldModeBtn.UseVisualStyleBackColor = false;
+            this.fieldModeBtn.Click += new System.EventHandler(this.fieldModeBtn_Click);
+            // 
+            // moveRight7Btn
+            // 
+            this.moveRight7Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.moveRight7Btn.Enabled = false;
+            this.moveRight7Btn.FlatAppearance.BorderSize = 0;
+            this.moveRight7Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.moveRight7Btn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.moveRight7Btn.ForeColor = System.Drawing.Color.White;
+            this.moveRight7Btn.Location = new System.Drawing.Point(811, 314);
+            this.moveRight7Btn.Margin = new System.Windows.Forms.Padding(0);
+            this.moveRight7Btn.Name = "moveRight7Btn";
+            this.moveRight7Btn.Size = new System.Drawing.Size(42, 42);
+            this.moveRight7Btn.TabIndex = 182;
+            this.moveRight7Btn.Text = "🠊 ×7";
+            this.moveRight7Btn.UseVisualStyleBackColor = false;
+            this.moveRight7Btn.Click += new System.EventHandler(this.moveRight7Btn_Click);
+            // 
+            // moveLeft7Btn
+            // 
+            this.moveLeft7Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.moveLeft7Btn.Enabled = false;
+            this.moveLeft7Btn.FlatAppearance.BorderSize = 0;
+            this.moveLeft7Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.moveLeft7Btn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.moveLeft7Btn.ForeColor = System.Drawing.Color.White;
+            this.moveLeft7Btn.Location = new System.Drawing.Point(232, 313);
+            this.moveLeft7Btn.Margin = new System.Windows.Forms.Padding(0);
+            this.moveLeft7Btn.Name = "moveLeft7Btn";
+            this.moveLeft7Btn.Size = new System.Drawing.Size(42, 42);
+            this.moveLeft7Btn.TabIndex = 183;
+            this.moveLeft7Btn.Text = "×7 🠈";
+            this.moveLeft7Btn.UseVisualStyleBackColor = false;
+            this.moveLeft7Btn.Click += new System.EventHandler(this.moveLeft7Btn_Click);
+            // 
+            // moveDown7Btn
+            // 
+            this.moveDown7Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.moveDown7Btn.Enabled = false;
+            this.moveDown7Btn.FlatAppearance.BorderSize = 0;
+            this.moveDown7Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.moveDown7Btn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.moveDown7Btn.ForeColor = System.Drawing.Color.White;
+            this.moveDown7Btn.Location = new System.Drawing.Point(543, 582);
+            this.moveDown7Btn.Margin = new System.Windows.Forms.Padding(0);
+            this.moveDown7Btn.Name = "moveDown7Btn";
+            this.moveDown7Btn.Size = new System.Drawing.Size(42, 42);
+            this.moveDown7Btn.TabIndex = 184;
+            this.moveDown7Btn.Text = "🠋 ×7";
+            this.moveDown7Btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.moveDown7Btn.UseVisualStyleBackColor = false;
+            this.moveDown7Btn.Click += new System.EventHandler(this.moveDown7Btn_Click);
+            // 
+            // moveUp7Btn
+            // 
+            this.moveUp7Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.moveUp7Btn.Enabled = false;
+            this.moveUp7Btn.FlatAppearance.BorderSize = 0;
+            this.moveUp7Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.moveUp7Btn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.moveUp7Btn.ForeColor = System.Drawing.Color.White;
+            this.moveUp7Btn.Location = new System.Drawing.Point(543, 3);
+            this.moveUp7Btn.Margin = new System.Windows.Forms.Padding(0);
+            this.moveUp7Btn.Name = "moveUp7Btn";
+            this.moveUp7Btn.Size = new System.Drawing.Size(42, 42);
+            this.moveUp7Btn.TabIndex = 185;
+            this.moveUp7Btn.Text = "×7 🠉";
+            this.moveUp7Btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.moveUp7Btn.UseVisualStyleBackColor = false;
+            this.moveUp7Btn.Click += new System.EventHandler(this.moveUp7Btn_Click);
+            // 
+            // formToolTip
+            // 
+            this.formToolTip.AutomaticDelay = 100;
+            this.formToolTip.AutoPopDelay = 10000;
+            this.formToolTip.InitialDelay = 100;
+            this.formToolTip.IsBalloon = true;
+            this.formToolTip.ReshowDelay = 20;
+            this.formToolTip.ShowAlways = true;
+            this.formToolTip.UseAnimation = false;
+            this.formToolTip.UseFading = false;
+            // 
+            // layer1Btn
+            // 
+            this.layer1Btn.AutoSize = true;
+            this.layer1Btn.BackColor = System.Drawing.Color.Transparent;
+            this.layer1Btn.Checked = true;
+            this.layer1Btn.ForeColor = System.Drawing.Color.White;
+            this.layer1Btn.Location = new System.Drawing.Point(3, 26);
+            this.layer1Btn.Name = "layer1Btn";
+            this.layer1Btn.Size = new System.Drawing.Size(73, 20);
+            this.layer1Btn.TabIndex = 0;
+            this.layer1Btn.TabStop = true;
+            this.layer1Btn.Text = "Layer 1";
+            this.formToolTip.SetToolTip(this.layer1Btn, "Change to the bottom layer. (Usually the floor... or seabed/stream bed)");
+            this.layer1Btn.UseVisualStyleBackColor = false;
+            this.layer1Btn.Click += new System.EventHandler(this.layer1Btn_Click);
+            // 
+            // layer2Btn
+            // 
+            this.layer2Btn.AutoSize = true;
+            this.layer2Btn.BackColor = System.Drawing.Color.Transparent;
+            this.layer2Btn.ForeColor = System.Drawing.Color.White;
+            this.layer2Btn.Location = new System.Drawing.Point(3, 3);
+            this.layer2Btn.Name = "layer2Btn";
+            this.layer2Btn.Size = new System.Drawing.Size(73, 20);
+            this.layer2Btn.TabIndex = 1;
+            this.layer2Btn.Text = "Layer 2";
+            this.formToolTip.SetToolTip(this.layer2Btn, "Change to the top layer. (On top of furnitures. Like tables)");
+            this.layer2Btn.UseVisualStyleBackColor = false;
+            this.layer2Btn.Click += new System.EventHandler(this.layer2Btn_Click);
+            // 
+            // bulkSpawnBtn
+            // 
+            this.bulkSpawnBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.bulkSpawnBtn.FlatAppearance.BorderSize = 0;
+            this.bulkSpawnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bulkSpawnBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.bulkSpawnBtn.ForeColor = System.Drawing.Color.White;
+            this.bulkSpawnBtn.Location = new System.Drawing.Point(18, 356);
+            this.bulkSpawnBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.bulkSpawnBtn.Name = "bulkSpawnBtn";
+            this.bulkSpawnBtn.Size = new System.Drawing.Size(138, 28);
+            this.bulkSpawnBtn.TabIndex = 181;
+            this.bulkSpawnBtn.Text = "Remove Items...";
+            this.formToolTip.SetToolTip(this.bulkSpawnBtn, "This is the BULK SPAWN button too.\r\nYes, you bulk spawn by selecting \"Remove Item" +
+        "s...\"");
+            this.bulkSpawnBtn.UseVisualStyleBackColor = false;
+            this.bulkSpawnBtn.Click += new System.EventHandler(this.bulkSpawnBtn_Click);
+            // 
+            // fetchMapBtn
+            // 
+            this.fetchMapBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.fetchMapBtn.FlatAppearance.BorderSize = 0;
+            this.fetchMapBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fetchMapBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.fetchMapBtn.ForeColor = System.Drawing.Color.White;
+            this.fetchMapBtn.Location = new System.Drawing.Point(47, 35);
+            this.fetchMapBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.fetchMapBtn.Name = "fetchMapBtn";
+            this.fetchMapBtn.Size = new System.Drawing.Size(138, 28);
+            this.fetchMapBtn.TabIndex = 0;
+            this.fetchMapBtn.Text = "Fetch Map";
+            this.formToolTip.SetToolTip(this.fetchMapBtn, "Fetch the map data. (Both Layer 1 & 2)");
+            this.fetchMapBtn.UseVisualStyleBackColor = false;
+            this.fetchMapBtn.Click += new System.EventHandler(this.fetchMapBtn_Click);
+            // 
+            // reAnchorBtn
+            // 
+            this.reAnchorBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.reAnchorBtn.FlatAppearance.BorderSize = 0;
+            this.reAnchorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reAnchorBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.reAnchorBtn.ForeColor = System.Drawing.Color.White;
+            this.reAnchorBtn.Location = new System.Drawing.Point(18, 7);
+            this.reAnchorBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.reAnchorBtn.Name = "reAnchorBtn";
+            this.reAnchorBtn.Size = new System.Drawing.Size(138, 28);
+            this.reAnchorBtn.TabIndex = 223;
+            this.reAnchorBtn.Text = "Re-Anchor";
+            this.formToolTip.SetToolTip(this.reAnchorBtn, "Move the anchor to your current in-game position.");
+            this.reAnchorBtn.UseVisualStyleBackColor = false;
+            this.reAnchorBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.reAnchorBtn_MouseClick);
+            // 
+            // saveDebug
+            // 
+            this.saveDebug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.saveDebug.FlatAppearance.BorderSize = 0;
+            this.saveDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveDebug.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.saveDebug.ForeColor = System.Drawing.Color.White;
+            this.saveDebug.Location = new System.Drawing.Point(657, 719);
+            this.saveDebug.Margin = new System.Windows.Forms.Padding(4);
+            this.saveDebug.Name = "saveDebug";
+            this.saveDebug.Size = new System.Drawing.Size(138, 28);
+            this.saveDebug.TabIndex = 182;
+            this.saveDebug.Text = "saveDebug";
+            this.formToolTip.SetToolTip(this.saveDebug, "Fill the remaining empty spot with the selected item.\r\n\r\n[WARNING]\r\nThe current i" +
+        "mplementation is slow... \r\nPlease wait for a while after you use it.");
+            this.saveDebug.UseVisualStyleBackColor = false;
+            this.saveDebug.Click += new System.EventHandler(this.saveDebug_Click);
+            // 
+            // clearGridBtn
+            // 
+            this.clearGridBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.clearGridBtn.FlatAppearance.BorderSize = 0;
+            this.clearGridBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearGridBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.clearGridBtn.ForeColor = System.Drawing.Color.White;
+            this.clearGridBtn.Location = new System.Drawing.Point(17, 429);
+            this.clearGridBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.clearGridBtn.Name = "clearGridBtn";
+            this.clearGridBtn.Size = new System.Drawing.Size(138, 28);
+            this.clearGridBtn.TabIndex = 224;
+            this.clearGridBtn.Text = "Clear Grid";
+            this.formToolTip.SetToolTip(this.clearGridBtn, "Remove all items in the displaying 7×7 grid.\r\n\r\n[WARNING]\r\nYou will lose your ite" +
+        "m obviously... \r\nWhat do you expect? An easter egg to popup?");
+            this.clearGridBtn.UseVisualStyleBackColor = false;
+            this.clearGridBtn.Click += new System.EventHandler(this.clearGridBtn_Click);
+            // 
+            // ClearCopiedAreaBtn
+            // 
+            this.ClearCopiedAreaBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.ClearCopiedAreaBtn.FlatAppearance.BorderSize = 0;
+            this.ClearCopiedAreaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClearCopiedAreaBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.ClearCopiedAreaBtn.ForeColor = System.Drawing.Color.White;
+            this.ClearCopiedAreaBtn.Location = new System.Drawing.Point(359, 591);
+            this.ClearCopiedAreaBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.ClearCopiedAreaBtn.Name = "ClearCopiedAreaBtn";
+            this.ClearCopiedAreaBtn.Size = new System.Drawing.Size(137, 28);
+            this.ClearCopiedAreaBtn.TabIndex = 232;
+            this.ClearCopiedAreaBtn.Text = "Clear Copied Area";
+            this.formToolTip.SetToolTip(this.ClearCopiedAreaBtn, "Clear the stored area in the clipboard.");
+            this.ClearCopiedAreaBtn.UseVisualStyleBackColor = false;
+            this.ClearCopiedAreaBtn.Visible = false;
+            this.ClearCopiedAreaBtn.Click += new System.EventHandler(this.ClearCopiedAreaBtn_Click);
+            // 
+            // LayerPanel
+            // 
+            this.LayerPanel.Controls.Add(this.layer2Btn);
+            this.LayerPanel.Controls.Add(this.layer1Btn);
+            this.LayerPanel.Location = new System.Drawing.Point(46, 78);
+            this.LayerPanel.Name = "LayerPanel";
+            this.LayerPanel.Size = new System.Drawing.Size(82, 49);
+            this.LayerPanel.TabIndex = 186;
+            // 
+            // functionPanel
+            // 
+            this.functionPanel.Controls.Add(this.clearGridBtn);
+            this.functionPanel.Controls.Add(this.bulkSpawnBtn);
+            this.functionPanel.Controls.Add(this.loadBtn);
+            this.functionPanel.Controls.Add(this.fillRemainBtn);
+            this.functionPanel.Controls.Add(this.saveBtn);
+            this.functionPanel.Controls.Add(this.refreshBtn);
+            this.functionPanel.Controls.Add(this.LayerPanel);
+            this.functionPanel.Controls.Add(this.reAnchorBtn);
+            this.functionPanel.Enabled = false;
+            this.functionPanel.Location = new System.Drawing.Point(29, 28);
+            this.functionPanel.Name = "functionPanel";
+            this.functionPanel.Size = new System.Drawing.Size(175, 532);
+            this.functionPanel.TabIndex = 187;
+            // 
+            // variationBtn
+            // 
+            this.variationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.variationBtn.FlatAppearance.BorderSize = 0;
+            this.variationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.variationBtn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
+            this.variationBtn.ForeColor = System.Drawing.Color.White;
+            this.variationBtn.Location = new System.Drawing.Point(1127, 566);
+            this.variationBtn.Name = "variationBtn";
+            this.variationBtn.Size = new System.Drawing.Size(73, 21);
+            this.variationBtn.TabIndex = 188;
+            this.variationBtn.Text = "Variation";
+            this.variationBtn.UseVisualStyleBackColor = false;
+            this.variationBtn.Click += new System.EventHandler(this.variationButton_Click);
+            // 
+            // PleaseWaitPanel
+            // 
+            this.PleaseWaitPanel.Controls.Add(this.WaitMessagebox);
+            this.PleaseWaitPanel.Controls.Add(this.MapProgressBar);
+            this.PleaseWaitPanel.Controls.Add(this.pictureBox2);
+            this.PleaseWaitPanel.Controls.Add(this.label29);
+            this.PleaseWaitPanel.Location = new System.Drawing.Point(4, 564);
+            this.PleaseWaitPanel.Name = "PleaseWaitPanel";
+            this.PleaseWaitPanel.Size = new System.Drawing.Size(225, 60);
+            this.PleaseWaitPanel.TabIndex = 219;
+            this.PleaseWaitPanel.Visible = false;
+            // 
+            // WaitMessagebox
+            // 
+            this.WaitMessagebox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.WaitMessagebox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.WaitMessagebox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.WaitMessagebox.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.WaitMessagebox.ForeColor = System.Drawing.Color.White;
+            this.WaitMessagebox.Location = new System.Drawing.Point(1, 32);
+            this.WaitMessagebox.Multiline = false;
+            this.WaitMessagebox.Name = "WaitMessagebox";
+            this.WaitMessagebox.ReadOnly = true;
+            this.WaitMessagebox.Size = new System.Drawing.Size(222, 27);
+            this.WaitMessagebox.TabIndex = 215;
+            this.WaitMessagebox.Text = "";
+            // 
+            // MapProgressBar
+            // 
+            this.MapProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
+            this.MapProgressBar.ForeColor = System.Drawing.Color.LawnGreen;
+            this.MapProgressBar.Location = new System.Drawing.Point(4, 28);
+            this.MapProgressBar.Maximum = 260;
+            this.MapProgressBar.Name = "MapProgressBar";
+            this.MapProgressBar.Size = new System.Drawing.Size(217, 10);
+            this.MapProgressBar.TabIndex = 215;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ACNHPoker.Properties.Resources.loading;
+            this.pictureBox2.Location = new System.Drawing.Point(47, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox2.TabIndex = 216;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label29.ForeColor = System.Drawing.Color.White;
+            this.label29.Location = new System.Drawing.Point(73, 7);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(100, 16);
+            this.label29.TabIndex = 215;
+            this.label29.Text = "Please Wait...";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ProgressTimer
+            // 
+            this.ProgressTimer.Interval = 1000;
+            this.ProgressTimer.Tick += new System.EventHandler(this.ProgressTimer_Tick);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(44, 358);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 16);
+            this.label4.TabIndex = 221;
+            this.label4.Text = "X :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(119, 358);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 16);
+            this.label5.TabIndex = 222;
+            this.label5.Text = "Y :";
+            // 
+            // removeItemClick
+            // 
+            this.removeItemClick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.removeItemClick.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.removeItemClick.ImageScalingSize = new System.Drawing.Size(0, 0);
+            this.removeItemClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.weedsToolStripMenuItem,
+            this.flowersToolStripMenuItem,
+            this.treesToolStripMenuItem,
+            this.bushesToolStripMenuItem,
+            this.fencesToolStripMenuItem,
+            this.shellsToolStripMenuItem,
+            this.diysToolStripMenuItem,
+            this.rocksToolStripMenuItem,
+            this.everythingToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.bulkSpawnToolStripMenuItem});
+            this.removeItemClick.Name = "floorRightClick";
+            this.removeItemClick.ShowImageMargin = false;
+            this.removeItemClick.Size = new System.Drawing.Size(128, 230);
+            // 
+            // weedsToolStripMenuItem
+            // 
+            this.weedsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.weedsToolStripMenuItem.Name = "weedsToolStripMenuItem";
+            this.weedsToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.weedsToolStripMenuItem.Text = "Weeds";
+            this.weedsToolStripMenuItem.Click += new System.EventHandler(this.weedsToolStripMenuItem_Click);
+            // 
+            // flowersToolStripMenuItem
+            // 
+            this.flowersToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.flowersToolStripMenuItem.Name = "flowersToolStripMenuItem";
+            this.flowersToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.flowersToolStripMenuItem.Text = "Flowers";
+            this.flowersToolStripMenuItem.Click += new System.EventHandler(this.flowersToolStripMenuItem_Click);
+            // 
+            // treesToolStripMenuItem
+            // 
+            this.treesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.treesToolStripMenuItem.Name = "treesToolStripMenuItem";
+            this.treesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.treesToolStripMenuItem.Text = "Trees";
+            this.treesToolStripMenuItem.Click += new System.EventHandler(this.treesToolStripMenuItem_Click);
+            // 
+            // bushesToolStripMenuItem
+            // 
+            this.bushesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.bushesToolStripMenuItem.Name = "bushesToolStripMenuItem";
+            this.bushesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.bushesToolStripMenuItem.Text = "Bushes";
+            this.bushesToolStripMenuItem.Click += new System.EventHandler(this.bushesToolStripMenuItem_Click);
+            // 
+            // fencesToolStripMenuItem
+            // 
+            this.fencesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.fencesToolStripMenuItem.Name = "fencesToolStripMenuItem";
+            this.fencesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.fencesToolStripMenuItem.Text = "Fences";
+            this.fencesToolStripMenuItem.Click += new System.EventHandler(this.fencesToolStripMenuItem_Click);
+            // 
+            // shellsToolStripMenuItem
+            // 
+            this.shellsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.shellsToolStripMenuItem.Name = "shellsToolStripMenuItem";
+            this.shellsToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.shellsToolStripMenuItem.Text = "Shells";
+            this.shellsToolStripMenuItem.Click += new System.EventHandler(this.shellsToolStripMenuItem_Click);
+            // 
+            // diysToolStripMenuItem
+            // 
+            this.diysToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.diysToolStripMenuItem.Name = "diysToolStripMenuItem";
+            this.diysToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.diysToolStripMenuItem.Text = "DIYs";
+            this.diysToolStripMenuItem.Click += new System.EventHandler(this.diysToolStripMenuItem_Click);
+            // 
+            // rocksToolStripMenuItem
+            // 
+            this.rocksToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.rocksToolStripMenuItem.Name = "rocksToolStripMenuItem";
+            this.rocksToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.rocksToolStripMenuItem.Text = "Rocks";
+            this.rocksToolStripMenuItem.Click += new System.EventHandler(this.rocksToolStripMenuItem_Click);
+            // 
+            // everythingToolStripMenuItem
+            // 
+            this.everythingToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.everythingToolStripMenuItem.Name = "everythingToolStripMenuItem";
+            this.everythingToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.everythingToolStripMenuItem.Text = "All";
+            this.everythingToolStripMenuItem.Click += new System.EventHandler(this.everythingToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(124, 6);
+            // 
+            // bulkSpawnToolStripMenuItem
+            // 
+            this.bulkSpawnToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.bulkSpawnToolStripMenuItem.Name = "bulkSpawnToolStripMenuItem";
+            this.bulkSpawnToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.bulkSpawnToolStripMenuItem.Text = "Bulk Spawn";
+            this.bulkSpawnToolStripMenuItem.Click += new System.EventHandler(this.bulkSpawnToolStripMenuItem_Click);
+            // 
+            // nextAutoSaveSecond
+            // 
+            this.nextAutoSaveSecond.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.nextAutoSaveSecond.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nextAutoSaveSecond.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nextAutoSaveSecond.ForeColor = System.Drawing.Color.White;
+            this.nextAutoSaveSecond.Location = new System.Drawing.Point(152, 3);
+            this.nextAutoSaveSecond.MaxLength = 3;
+            this.nextAutoSaveSecond.Multiline = false;
+            this.nextAutoSaveSecond.Name = "nextAutoSaveSecond";
+            this.nextAutoSaveSecond.ReadOnly = true;
+            this.nextAutoSaveSecond.Size = new System.Drawing.Size(40, 18);
+            this.nextAutoSaveSecond.TabIndex = 224;
+            this.nextAutoSaveSecond.Text = "";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(38, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(117, 16);
+            this.label6.TabIndex = 225;
+            this.label6.Text = "Est. Next Save :";
+            // 
+            // NextSaveTimer
+            // 
+            this.NextSaveTimer.Interval = 1000;
+            this.NextSaveTimer.Tick += new System.EventHandler(this.NextSaveTimer_Tick);
+            // 
+            // Corner1YBox
+            // 
+            this.Corner1YBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Corner1YBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Corner1YBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Corner1YBox.ForeColor = System.Drawing.Color.White;
+            this.Corner1YBox.Location = new System.Drawing.Point(318, 587);
+            this.Corner1YBox.MaxLength = 3;
+            this.Corner1YBox.Multiline = false;
+            this.Corner1YBox.Name = "Corner1YBox";
+            this.Corner1YBox.ReadOnly = true;
+            this.Corner1YBox.Size = new System.Drawing.Size(40, 18);
+            this.Corner1YBox.TabIndex = 227;
+            this.Corner1YBox.Text = "0";
+            // 
+            // Corner1XBox
+            // 
+            this.Corner1XBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Corner1XBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Corner1XBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Corner1XBox.ForeColor = System.Drawing.Color.White;
+            this.Corner1XBox.Location = new System.Drawing.Point(277, 587);
+            this.Corner1XBox.MaxLength = 3;
+            this.Corner1XBox.Multiline = false;
+            this.Corner1XBox.Name = "Corner1XBox";
+            this.Corner1XBox.ReadOnly = true;
+            this.Corner1XBox.Size = new System.Drawing.Size(40, 18);
+            this.Corner1XBox.TabIndex = 226;
+            this.Corner1XBox.Text = "0";
+            // 
+            // Corner2YBox
+            // 
+            this.Corner2YBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Corner2YBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Corner2YBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Corner2YBox.ForeColor = System.Drawing.Color.White;
+            this.Corner2YBox.Location = new System.Drawing.Point(318, 606);
+            this.Corner2YBox.MaxLength = 3;
+            this.Corner2YBox.Multiline = false;
+            this.Corner2YBox.Name = "Corner2YBox";
+            this.Corner2YBox.ReadOnly = true;
+            this.Corner2YBox.Size = new System.Drawing.Size(40, 18);
+            this.Corner2YBox.TabIndex = 229;
+            this.Corner2YBox.Text = "0";
+            // 
+            // Corner2XBox
+            // 
+            this.Corner2XBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.Corner2XBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Corner2XBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Corner2XBox.ForeColor = System.Drawing.Color.White;
+            this.Corner2XBox.Location = new System.Drawing.Point(277, 606);
+            this.Corner2XBox.MaxLength = 3;
+            this.Corner2XBox.Multiline = false;
+            this.Corner2XBox.Name = "Corner2XBox";
+            this.Corner2XBox.ReadOnly = true;
+            this.Corner2XBox.Size = new System.Drawing.Size(40, 18);
+            this.Corner2XBox.TabIndex = 228;
+            this.Corner2XBox.Text = "0";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.miniMapBox);
+            this.panel1.Location = new System.Drawing.Point(4, 163);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.MaximumSize = new System.Drawing.Size(224, 192);
+            this.panel1.MinimumSize = new System.Drawing.Size(224, 192);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(224, 192);
+            this.panel1.TabIndex = 190;
+            // 
+            // miniMapBox
+            // 
+            this.miniMapBox.BackColor = System.Drawing.Color.Transparent;
+            this.miniMapBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.miniMapBox.ContextMenuStrip = this.saveMap;
+            this.miniMapBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.miniMapBox.ErrorImage = null;
+            this.miniMapBox.InitialImage = null;
+            this.miniMapBox.Location = new System.Drawing.Point(0, 0);
+            this.miniMapBox.Margin = new System.Windows.Forms.Padding(0);
+            this.miniMapBox.MaximumSize = new System.Drawing.Size(224, 192);
+            this.miniMapBox.MinimumSize = new System.Drawing.Size(224, 192);
+            this.miniMapBox.Name = "miniMapBox";
+            this.miniMapBox.Size = new System.Drawing.Size(224, 192);
+            this.miniMapBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.miniMapBox.TabIndex = 189;
+            this.miniMapBox.TabStop = false;
+            this.miniMapBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseDown);
+            this.miniMapBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseMove);
+            // 
+            // HexTextbox
+            // 
+            this.HexTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
+            this.HexTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.HexTextbox.Font = new System.Drawing.Font("Arial", 22F, System.Drawing.FontStyle.Bold);
+            this.HexTextbox.ForeColor = System.Drawing.Color.White;
+            this.HexTextbox.Hexadecimal = true;
+            this.HexTextbox.HexLength = 8;
+            this.HexTextbox.Location = new System.Drawing.Point(971, 586);
+            this.HexTextbox.Maximum = new decimal(new int[] {
+            -1,
+            0,
+            0,
+            0});
+            this.HexTextbox.Name = "HexTextbox";
+            this.HexTextbox.Size = new System.Drawing.Size(229, 37);
+            this.HexTextbox.TabIndex = 230;
+            this.HexTextbox.ValueChanged += new System.EventHandler(this.Hex_ValueChanged);
+            this.HexTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Hex_KeyPress);
+            // 
+            // selectedItem
+            // 
+            this.selectedItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.selectedItem.FlatAppearance.BorderSize = 0;
+            this.selectedItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.selectedItem.flowerQuantity = ((ushort)(0));
+            this.selectedItem.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.selectedItem.ForeColor = System.Drawing.Color.White;
+            this.selectedItem.itemDurability = ((ushort)(0));
+            this.selectedItem.itemQuantity = ((ushort)(0));
+            this.selectedItem.Location = new System.Drawing.Point(856, 514);
+            this.selectedItem.Margin = new System.Windows.Forms.Padding(0);
+            this.selectedItem.Name = "selectedItem";
+            this.selectedItem.Size = new System.Drawing.Size(110, 110);
+            this.selectedItem.TabIndex = 148;
+            this.selectedItem.Tag = "";
+            this.selectedItem.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.selectedItem.UseVisualStyleBackColor = false;
+            this.selectedItem.Click += new System.EventHandler(this.selectedItem_Click);
+            // 
+            // floor1
+            // 
+            this.floor1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.floor1.ContextMenuStrip = this.floorRightClick;
+            this.floor1.flag1 = "00";
+            this.floor1.flag2 = "00";
+            this.floor1.FlatAppearance.BorderSize = 0;
+            this.floor1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.floor1.flowerQuantity = ((ushort)(0));
+            this.floor1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.floor1.ForeColor = System.Drawing.Color.White;
+            this.floor1.itemData = ((uint)(0u));
+            this.floor1.itemDurability = ((ushort)(0));
+            this.floor1.itemID = ((ushort)(65534));
+            this.floor1.itemName = "";
+            this.floor1.itemQuantity = ((ushort)(0));
+            this.floor1.Location = new System.Drawing.Point(3, 2);
+            this.floor1.mapX = -1;
+            this.floor1.mapY = -1;
+            this.floor1.Margin = new System.Windows.Forms.Padding(0);
+            this.floor1.Name = "floor1";
+            this.floor1.part2 = ((uint)(0u));
+            this.floor1.part2Data = ((uint)(0u));
+            this.floor1.part3 = ((uint)(0u));
+            this.floor1.part3Data = ((uint)(0u));
+            this.floor1.part4 = ((uint)(0u));
+            this.floor1.part4Data = ((uint)(0u));
+            this.floor1.Size = new System.Drawing.Size(75, 75);
+            this.floor1.TabIndex = 74;
+            this.floor1.Tag = "0";
+            this.floor1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.floor1.UseVisualStyleBackColor = false;
+            this.floor1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.floor_MouseDown);
+            this.floor1.MouseHover += new System.EventHandler(this.floor_MouseHover);
             // 
             // floor2
             // 
@@ -2368,343 +3085,6 @@ namespace ACNHPoker
             this.floor40.MouseDown += new System.Windows.Forms.MouseEventHandler(this.floor_MouseDown);
             this.floor40.MouseHover += new System.EventHandler(this.floor_MouseHover);
             // 
-            // miniMapBox
-            // 
-            this.miniMapBox.BackColor = System.Drawing.Color.Transparent;
-            this.miniMapBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.miniMapBox.ContextMenuStrip = this.saveMap;
-            this.miniMapBox.ErrorImage = null;
-            this.miniMapBox.InitialImage = null;
-            this.miniMapBox.Location = new System.Drawing.Point(4, 163);
-            this.miniMapBox.Name = "miniMapBox";
-            this.miniMapBox.Size = new System.Drawing.Size(224, 192);
-            this.miniMapBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.miniMapBox.TabIndex = 189;
-            this.miniMapBox.TabStop = false;
-            this.miniMapBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseDown);
-            this.miniMapBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.miniMapBox_MouseMove);
-            // 
-            // saveMap
-            // 
-            this.saveMap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.saveMap.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.saveMap.ImageScalingSize = new System.Drawing.Size(0, 0);
-            this.saveMap.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveTopngToolStripMenuItem});
-            this.saveMap.Name = "floorRightClick";
-            this.saveMap.ShowImageMargin = false;
-            this.saveMap.Size = new System.Drawing.Size(132, 26);
-            // 
-            // saveTopngToolStripMenuItem
-            // 
-            this.saveTopngToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.saveTopngToolStripMenuItem.Name = "saveTopngToolStripMenuItem";
-            this.saveTopngToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.saveTopngToolStripMenuItem.Text = "Save to .png";
-            this.saveTopngToolStripMenuItem.Click += new System.EventHandler(this.saveTopngToolStripMenuItem_Click);
-            // 
-            // fillRemainBtn
-            // 
-            this.fillRemainBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.fillRemainBtn.FlatAppearance.BorderSize = 0;
-            this.fillRemainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fillRemainBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.fillRemainBtn.ForeColor = System.Drawing.Color.White;
-            this.fillRemainBtn.Location = new System.Drawing.Point(17, 465);
-            this.fillRemainBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.fillRemainBtn.Name = "fillRemainBtn";
-            this.fillRemainBtn.Size = new System.Drawing.Size(138, 28);
-            this.fillRemainBtn.TabIndex = 177;
-            this.fillRemainBtn.Text = "Fill Remain";
-            this.formToolTip.SetToolTip(this.fillRemainBtn, "Fill the remaining empty spot with the selected item.\r\n\r\n[WARNING]\r\nThe current i" +
-        "mplementation is slow... \r\nPlease wait for a while after you use it.");
-            this.fillRemainBtn.UseVisualStyleBackColor = false;
-            this.fillRemainBtn.Click += new System.EventHandler(this.fillRemainBtn_Click);
-            // 
-            // refreshBtn
-            // 
-            this.refreshBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.refreshBtn.FlatAppearance.BorderSize = 0;
-            this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.refreshBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.refreshBtn.ForeColor = System.Drawing.Color.White;
-            this.refreshBtn.Location = new System.Drawing.Point(18, 43);
-            this.refreshBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.refreshBtn.Name = "refreshBtn";
-            this.refreshBtn.Size = new System.Drawing.Size(138, 28);
-            this.refreshBtn.TabIndex = 178;
-            this.refreshBtn.Text = "Refresh";
-            this.formToolTip.SetToolTip(this.refreshBtn, "Refetch the map data. (Both Layer 1 & 2)");
-            this.refreshBtn.UseVisualStyleBackColor = false;
-            this.refreshBtn.Click += new System.EventHandler(this.refreshBtn_Click);
-            // 
-            // saveBtn
-            // 
-            this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.saveBtn.FlatAppearance.BorderSize = 0;
-            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.saveBtn.ForeColor = System.Drawing.Color.White;
-            this.saveBtn.Location = new System.Drawing.Point(18, 393);
-            this.saveBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(62, 28);
-            this.saveBtn.TabIndex = 179;
-            this.saveBtn.Text = "Save";
-            this.formToolTip.SetToolTip(this.saveBtn, "Save the displaying 7×7 grid to a .nhg file.");
-            this.saveBtn.UseVisualStyleBackColor = false;
-            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
-            // 
-            // loadBtn
-            // 
-            this.loadBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.loadBtn.FlatAppearance.BorderSize = 0;
-            this.loadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loadBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.loadBtn.ForeColor = System.Drawing.Color.White;
-            this.loadBtn.Location = new System.Drawing.Point(92, 393);
-            this.loadBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.loadBtn.Name = "loadBtn";
-            this.loadBtn.Size = new System.Drawing.Size(63, 28);
-            this.loadBtn.TabIndex = 180;
-            this.loadBtn.Text = "Load";
-            this.formToolTip.SetToolTip(this.loadBtn, "Load a .nhg/.nhi file to the displaying 7×7 grid.\r\n[WARNING] For .nhg file, this " +
-        "will overwrite everything currently on the floor.");
-            this.loadBtn.UseVisualStyleBackColor = false;
-            this.loadBtn.Click += new System.EventHandler(this.loadBtn_Click);
-            // 
-            // fieldModeBtn
-            // 
-            this.fieldModeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.fieldModeBtn.FlatAppearance.BorderSize = 0;
-            this.fieldModeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fieldModeBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.fieldModeBtn.ForeColor = System.Drawing.Color.White;
-            this.fieldModeBtn.Location = new System.Drawing.Point(1127, 3);
-            this.fieldModeBtn.Name = "fieldModeBtn";
-            this.fieldModeBtn.Size = new System.Drawing.Size(60, 23);
-            this.fieldModeBtn.TabIndex = 181;
-            this.fieldModeBtn.Text = "Field";
-            this.fieldModeBtn.UseVisualStyleBackColor = false;
-            this.fieldModeBtn.Click += new System.EventHandler(this.fieldModeBtn_Click);
-            // 
-            // moveRight7Btn
-            // 
-            this.moveRight7Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.moveRight7Btn.Enabled = false;
-            this.moveRight7Btn.FlatAppearance.BorderSize = 0;
-            this.moveRight7Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.moveRight7Btn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.moveRight7Btn.ForeColor = System.Drawing.Color.White;
-            this.moveRight7Btn.Location = new System.Drawing.Point(811, 314);
-            this.moveRight7Btn.Margin = new System.Windows.Forms.Padding(0);
-            this.moveRight7Btn.Name = "moveRight7Btn";
-            this.moveRight7Btn.Size = new System.Drawing.Size(42, 42);
-            this.moveRight7Btn.TabIndex = 182;
-            this.moveRight7Btn.Text = "🠊 ×7";
-            this.moveRight7Btn.UseVisualStyleBackColor = false;
-            this.moveRight7Btn.Click += new System.EventHandler(this.moveRight7Btn_Click);
-            // 
-            // moveLeft7Btn
-            // 
-            this.moveLeft7Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.moveLeft7Btn.Enabled = false;
-            this.moveLeft7Btn.FlatAppearance.BorderSize = 0;
-            this.moveLeft7Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.moveLeft7Btn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.moveLeft7Btn.ForeColor = System.Drawing.Color.White;
-            this.moveLeft7Btn.Location = new System.Drawing.Point(232, 313);
-            this.moveLeft7Btn.Margin = new System.Windows.Forms.Padding(0);
-            this.moveLeft7Btn.Name = "moveLeft7Btn";
-            this.moveLeft7Btn.Size = new System.Drawing.Size(42, 42);
-            this.moveLeft7Btn.TabIndex = 183;
-            this.moveLeft7Btn.Text = "×7 🠈";
-            this.moveLeft7Btn.UseVisualStyleBackColor = false;
-            this.moveLeft7Btn.Click += new System.EventHandler(this.moveLeft7Btn_Click);
-            // 
-            // moveDown7Btn
-            // 
-            this.moveDown7Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.moveDown7Btn.Enabled = false;
-            this.moveDown7Btn.FlatAppearance.BorderSize = 0;
-            this.moveDown7Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.moveDown7Btn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.moveDown7Btn.ForeColor = System.Drawing.Color.White;
-            this.moveDown7Btn.Location = new System.Drawing.Point(543, 582);
-            this.moveDown7Btn.Margin = new System.Windows.Forms.Padding(0);
-            this.moveDown7Btn.Name = "moveDown7Btn";
-            this.moveDown7Btn.Size = new System.Drawing.Size(42, 42);
-            this.moveDown7Btn.TabIndex = 184;
-            this.moveDown7Btn.Text = "🠋 ×7";
-            this.moveDown7Btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.moveDown7Btn.UseVisualStyleBackColor = false;
-            this.moveDown7Btn.Click += new System.EventHandler(this.moveDown7Btn_Click);
-            // 
-            // moveUp7Btn
-            // 
-            this.moveUp7Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.moveUp7Btn.Enabled = false;
-            this.moveUp7Btn.FlatAppearance.BorderSize = 0;
-            this.moveUp7Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.moveUp7Btn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.moveUp7Btn.ForeColor = System.Drawing.Color.White;
-            this.moveUp7Btn.Location = new System.Drawing.Point(543, 3);
-            this.moveUp7Btn.Margin = new System.Windows.Forms.Padding(0);
-            this.moveUp7Btn.Name = "moveUp7Btn";
-            this.moveUp7Btn.Size = new System.Drawing.Size(42, 42);
-            this.moveUp7Btn.TabIndex = 185;
-            this.moveUp7Btn.Text = "×7 🠉";
-            this.moveUp7Btn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.moveUp7Btn.UseVisualStyleBackColor = false;
-            this.moveUp7Btn.Click += new System.EventHandler(this.moveUp7Btn_Click);
-            // 
-            // formToolTip
-            // 
-            this.formToolTip.AutomaticDelay = 100;
-            this.formToolTip.AutoPopDelay = 10000;
-            this.formToolTip.InitialDelay = 100;
-            this.formToolTip.IsBalloon = true;
-            this.formToolTip.ReshowDelay = 20;
-            this.formToolTip.ShowAlways = true;
-            this.formToolTip.UseAnimation = false;
-            this.formToolTip.UseFading = false;
-            // 
-            // layer1Btn
-            // 
-            this.layer1Btn.AutoSize = true;
-            this.layer1Btn.BackColor = System.Drawing.Color.Transparent;
-            this.layer1Btn.Checked = true;
-            this.layer1Btn.ForeColor = System.Drawing.Color.White;
-            this.layer1Btn.Location = new System.Drawing.Point(3, 26);
-            this.layer1Btn.Name = "layer1Btn";
-            this.layer1Btn.Size = new System.Drawing.Size(73, 20);
-            this.layer1Btn.TabIndex = 0;
-            this.layer1Btn.TabStop = true;
-            this.layer1Btn.Text = "Layer 1";
-            this.formToolTip.SetToolTip(this.layer1Btn, "Change to the bottom layer. (Usually the floor... or seabed/stream bed)");
-            this.layer1Btn.UseVisualStyleBackColor = false;
-            this.layer1Btn.Click += new System.EventHandler(this.layer1Btn_Click);
-            // 
-            // layer2Btn
-            // 
-            this.layer2Btn.AutoSize = true;
-            this.layer2Btn.BackColor = System.Drawing.Color.Transparent;
-            this.layer2Btn.ForeColor = System.Drawing.Color.White;
-            this.layer2Btn.Location = new System.Drawing.Point(3, 3);
-            this.layer2Btn.Name = "layer2Btn";
-            this.layer2Btn.Size = new System.Drawing.Size(73, 20);
-            this.layer2Btn.TabIndex = 1;
-            this.layer2Btn.Text = "Layer 2";
-            this.formToolTip.SetToolTip(this.layer2Btn, "Change to the top layer. (On top of furnitures. Like tables)");
-            this.layer2Btn.UseVisualStyleBackColor = false;
-            this.layer2Btn.Click += new System.EventHandler(this.layer2Btn_Click);
-            // 
-            // bulkSpawnBtn
-            // 
-            this.bulkSpawnBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.bulkSpawnBtn.FlatAppearance.BorderSize = 0;
-            this.bulkSpawnBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bulkSpawnBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.bulkSpawnBtn.ForeColor = System.Drawing.Color.White;
-            this.bulkSpawnBtn.Location = new System.Drawing.Point(18, 356);
-            this.bulkSpawnBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.bulkSpawnBtn.Name = "bulkSpawnBtn";
-            this.bulkSpawnBtn.Size = new System.Drawing.Size(138, 28);
-            this.bulkSpawnBtn.TabIndex = 181;
-            this.bulkSpawnBtn.Text = "Remove Items...";
-            this.formToolTip.SetToolTip(this.bulkSpawnBtn, "This is the BULK SPAWN button too.\r\nYes, you bulk spawn by selecting \"Remove Item" +
-        "s...\"");
-            this.bulkSpawnBtn.UseVisualStyleBackColor = false;
-            this.bulkSpawnBtn.Click += new System.EventHandler(this.bulkSpawnBtn_Click);
-            // 
-            // fetchMapBtn
-            // 
-            this.fetchMapBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.fetchMapBtn.FlatAppearance.BorderSize = 0;
-            this.fetchMapBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fetchMapBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.fetchMapBtn.ForeColor = System.Drawing.Color.White;
-            this.fetchMapBtn.Location = new System.Drawing.Point(47, 35);
-            this.fetchMapBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.fetchMapBtn.Name = "fetchMapBtn";
-            this.fetchMapBtn.Size = new System.Drawing.Size(138, 28);
-            this.fetchMapBtn.TabIndex = 0;
-            this.fetchMapBtn.Text = "Fetch Map";
-            this.formToolTip.SetToolTip(this.fetchMapBtn, "Fetch the map data. (Both Layer 1 & 2)");
-            this.fetchMapBtn.UseVisualStyleBackColor = false;
-            this.fetchMapBtn.Click += new System.EventHandler(this.fetchMapBtn_Click);
-            // 
-            // reAnchorBtn
-            // 
-            this.reAnchorBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.reAnchorBtn.FlatAppearance.BorderSize = 0;
-            this.reAnchorBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.reAnchorBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.reAnchorBtn.ForeColor = System.Drawing.Color.White;
-            this.reAnchorBtn.Location = new System.Drawing.Point(18, 7);
-            this.reAnchorBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.reAnchorBtn.Name = "reAnchorBtn";
-            this.reAnchorBtn.Size = new System.Drawing.Size(138, 28);
-            this.reAnchorBtn.TabIndex = 223;
-            this.reAnchorBtn.Text = "Re-Anchor";
-            this.formToolTip.SetToolTip(this.reAnchorBtn, "Move the anchor to your current in-game position.");
-            this.reAnchorBtn.UseVisualStyleBackColor = false;
-            this.reAnchorBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.reAnchorBtn_MouseClick);
-            // 
-            // saveDebug
-            // 
-            this.saveDebug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.saveDebug.FlatAppearance.BorderSize = 0;
-            this.saveDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.saveDebug.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.saveDebug.ForeColor = System.Drawing.Color.White;
-            this.saveDebug.Location = new System.Drawing.Point(657, 719);
-            this.saveDebug.Margin = new System.Windows.Forms.Padding(4);
-            this.saveDebug.Name = "saveDebug";
-            this.saveDebug.Size = new System.Drawing.Size(138, 28);
-            this.saveDebug.TabIndex = 182;
-            this.saveDebug.Text = "saveDebug";
-            this.formToolTip.SetToolTip(this.saveDebug, "Fill the remaining empty spot with the selected item.\r\n\r\n[WARNING]\r\nThe current i" +
-        "mplementation is slow... \r\nPlease wait for a while after you use it.");
-            this.saveDebug.UseVisualStyleBackColor = false;
-            this.saveDebug.Click += new System.EventHandler(this.saveDebug_Click);
-            // 
-            // clearGridBtn
-            // 
-            this.clearGridBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.clearGridBtn.FlatAppearance.BorderSize = 0;
-            this.clearGridBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clearGridBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.clearGridBtn.ForeColor = System.Drawing.Color.White;
-            this.clearGridBtn.Location = new System.Drawing.Point(17, 429);
-            this.clearGridBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.clearGridBtn.Name = "clearGridBtn";
-            this.clearGridBtn.Size = new System.Drawing.Size(138, 28);
-            this.clearGridBtn.TabIndex = 224;
-            this.clearGridBtn.Text = "Clear Grid";
-            this.formToolTip.SetToolTip(this.clearGridBtn, "Remove all items in the displaying 7×7 grid.\r\n\r\n[WARNING]\r\nYou will lose your ite" +
-        "m obviously... \r\nWhat do you expect? An easter egg to popup?");
-            this.clearGridBtn.UseVisualStyleBackColor = false;
-            this.clearGridBtn.Click += new System.EventHandler(this.clearGridBtn_Click);
-            // 
-            // ClearCopiedAreaBtn
-            // 
-            this.ClearCopiedAreaBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.ClearCopiedAreaBtn.FlatAppearance.BorderSize = 0;
-            this.ClearCopiedAreaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ClearCopiedAreaBtn.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.ClearCopiedAreaBtn.ForeColor = System.Drawing.Color.White;
-            this.ClearCopiedAreaBtn.Location = new System.Drawing.Point(359, 591);
-            this.ClearCopiedAreaBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.ClearCopiedAreaBtn.Name = "ClearCopiedAreaBtn";
-            this.ClearCopiedAreaBtn.Size = new System.Drawing.Size(137, 28);
-            this.ClearCopiedAreaBtn.TabIndex = 232;
-            this.ClearCopiedAreaBtn.Text = "Clear Copied Area";
-            this.formToolTip.SetToolTip(this.ClearCopiedAreaBtn, "Clear the stored area in the clipboard.");
-            this.ClearCopiedAreaBtn.UseVisualStyleBackColor = false;
-            this.ClearCopiedAreaBtn.Visible = false;
-            this.ClearCopiedAreaBtn.Click += new System.EventHandler(this.ClearCopiedAreaBtn_Click);
-            // 
             // FlagTextbox
             // 
             this.FlagTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
@@ -2730,374 +3110,12 @@ namespace ACNHPoker
             0});
             this.FlagTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Hex_KeyPress);
             // 
-            // LayerPanel
-            // 
-            this.LayerPanel.Controls.Add(this.layer2Btn);
-            this.LayerPanel.Controls.Add(this.layer1Btn);
-            this.LayerPanel.Location = new System.Drawing.Point(46, 78);
-            this.LayerPanel.Name = "LayerPanel";
-            this.LayerPanel.Size = new System.Drawing.Size(82, 49);
-            this.LayerPanel.TabIndex = 186;
-            // 
-            // functionPanel
-            // 
-            this.functionPanel.Controls.Add(this.clearGridBtn);
-            this.functionPanel.Controls.Add(this.bulkSpawnBtn);
-            this.functionPanel.Controls.Add(this.loadBtn);
-            this.functionPanel.Controls.Add(this.fillRemainBtn);
-            this.functionPanel.Controls.Add(this.saveBtn);
-            this.functionPanel.Controls.Add(this.refreshBtn);
-            this.functionPanel.Controls.Add(this.LayerPanel);
-            this.functionPanel.Controls.Add(this.reAnchorBtn);
-            this.functionPanel.Enabled = false;
-            this.functionPanel.Location = new System.Drawing.Point(29, 28);
-            this.functionPanel.Name = "functionPanel";
-            this.functionPanel.Size = new System.Drawing.Size(175, 532);
-            this.functionPanel.TabIndex = 187;
-            // 
-            // variationBtn
-            // 
-            this.variationBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.variationBtn.FlatAppearance.BorderSize = 0;
-            this.variationBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.variationBtn.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Bold);
-            this.variationBtn.ForeColor = System.Drawing.Color.White;
-            this.variationBtn.Location = new System.Drawing.Point(1127, 566);
-            this.variationBtn.Name = "variationBtn";
-            this.variationBtn.Size = new System.Drawing.Size(73, 21);
-            this.variationBtn.TabIndex = 188;
-            this.variationBtn.Text = "Variation";
-            this.variationBtn.UseVisualStyleBackColor = false;
-            this.variationBtn.Click += new System.EventHandler(this.variationButton_Click);
-            // 
-            // PleaseWaitPanel
-            // 
-            this.PleaseWaitPanel.Controls.Add(this.WaitMessagebox);
-            this.PleaseWaitPanel.Controls.Add(this.MapProgressBar);
-            this.PleaseWaitPanel.Controls.Add(this.pictureBox2);
-            this.PleaseWaitPanel.Controls.Add(this.label29);
-            this.PleaseWaitPanel.Location = new System.Drawing.Point(4, 564);
-            this.PleaseWaitPanel.Name = "PleaseWaitPanel";
-            this.PleaseWaitPanel.Size = new System.Drawing.Size(225, 60);
-            this.PleaseWaitPanel.TabIndex = 219;
-            this.PleaseWaitPanel.Visible = false;
-            // 
-            // WaitMessagebox
-            // 
-            this.WaitMessagebox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.WaitMessagebox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.WaitMessagebox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.WaitMessagebox.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.WaitMessagebox.ForeColor = System.Drawing.Color.White;
-            this.WaitMessagebox.Location = new System.Drawing.Point(1, 32);
-            this.WaitMessagebox.Multiline = false;
-            this.WaitMessagebox.Name = "WaitMessagebox";
-            this.WaitMessagebox.ReadOnly = true;
-            this.WaitMessagebox.Size = new System.Drawing.Size(222, 27);
-            this.WaitMessagebox.TabIndex = 215;
-            this.WaitMessagebox.Text = "";
-            // 
-            // MapProgressBar
-            // 
-            this.MapProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
-            this.MapProgressBar.ForeColor = System.Drawing.Color.LawnGreen;
-            this.MapProgressBar.Location = new System.Drawing.Point(4, 28);
-            this.MapProgressBar.Maximum = 260;
-            this.MapProgressBar.Name = "MapProgressBar";
-            this.MapProgressBar.Size = new System.Drawing.Size(217, 10);
-            this.MapProgressBar.TabIndex = 215;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::ACNHPoker.Properties.Resources.loading;
-            this.pictureBox2.Location = new System.Drawing.Point(47, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.TabIndex = 216;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(73, 7);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(100, 16);
-            this.label29.TabIndex = 215;
-            this.label29.Text = "Please Wait...";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ProgressTimer
-            // 
-            this.ProgressTimer.Interval = 1000;
-            this.ProgressTimer.Tick += new System.EventHandler(this.ProgressTimer_Tick);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(44, 358);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 16);
-            this.label4.TabIndex = 221;
-            this.label4.Text = "X :";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(119, 358);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 16);
-            this.label5.TabIndex = 222;
-            this.label5.Text = "Y :";
-            // 
-            // removeItemClick
-            // 
-            this.removeItemClick.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.removeItemClick.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.removeItemClick.ImageScalingSize = new System.Drawing.Size(0, 0);
-            this.removeItemClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.weedsToolStripMenuItem,
-            this.flowersToolStripMenuItem,
-            this.treesToolStripMenuItem,
-            this.bushesToolStripMenuItem,
-            this.fencesToolStripMenuItem,
-            this.shellsToolStripMenuItem,
-            this.diysToolStripMenuItem,
-            this.rocksToolStripMenuItem,
-            this.everythingToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.bulkSpawnToolStripMenuItem});
-            this.removeItemClick.Name = "floorRightClick";
-            this.removeItemClick.ShowImageMargin = false;
-            this.removeItemClick.Size = new System.Drawing.Size(128, 230);
-            // 
-            // weedsToolStripMenuItem
-            // 
-            this.weedsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.weedsToolStripMenuItem.Name = "weedsToolStripMenuItem";
-            this.weedsToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.weedsToolStripMenuItem.Text = "Weeds";
-            this.weedsToolStripMenuItem.Click += new System.EventHandler(this.weedsToolStripMenuItem_Click);
-            // 
-            // flowersToolStripMenuItem
-            // 
-            this.flowersToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.flowersToolStripMenuItem.Name = "flowersToolStripMenuItem";
-            this.flowersToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.flowersToolStripMenuItem.Text = "Flowers";
-            this.flowersToolStripMenuItem.Click += new System.EventHandler(this.flowersToolStripMenuItem_Click);
-            // 
-            // treesToolStripMenuItem
-            // 
-            this.treesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.treesToolStripMenuItem.Name = "treesToolStripMenuItem";
-            this.treesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.treesToolStripMenuItem.Text = "Trees";
-            this.treesToolStripMenuItem.Click += new System.EventHandler(this.treesToolStripMenuItem_Click);
-            // 
-            // bushesToolStripMenuItem
-            // 
-            this.bushesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.bushesToolStripMenuItem.Name = "bushesToolStripMenuItem";
-            this.bushesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.bushesToolStripMenuItem.Text = "Bushes";
-            this.bushesToolStripMenuItem.Click += new System.EventHandler(this.bushesToolStripMenuItem_Click);
-            // 
-            // fencesToolStripMenuItem
-            // 
-            this.fencesToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.fencesToolStripMenuItem.Name = "fencesToolStripMenuItem";
-            this.fencesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.fencesToolStripMenuItem.Text = "Fences";
-            this.fencesToolStripMenuItem.Click += new System.EventHandler(this.fencesToolStripMenuItem_Click);
-            // 
-            // shellsToolStripMenuItem
-            // 
-            this.shellsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.shellsToolStripMenuItem.Name = "shellsToolStripMenuItem";
-            this.shellsToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.shellsToolStripMenuItem.Text = "Shells";
-            this.shellsToolStripMenuItem.Click += new System.EventHandler(this.shellsToolStripMenuItem_Click);
-            // 
-            // diysToolStripMenuItem
-            // 
-            this.diysToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.diysToolStripMenuItem.Name = "diysToolStripMenuItem";
-            this.diysToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.diysToolStripMenuItem.Text = "DIYs";
-            this.diysToolStripMenuItem.Click += new System.EventHandler(this.diysToolStripMenuItem_Click);
-            // 
-            // rocksToolStripMenuItem
-            // 
-            this.rocksToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.rocksToolStripMenuItem.Name = "rocksToolStripMenuItem";
-            this.rocksToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.rocksToolStripMenuItem.Text = "Rocks";
-            this.rocksToolStripMenuItem.Click += new System.EventHandler(this.rocksToolStripMenuItem_Click);
-            // 
-            // everythingToolStripMenuItem
-            // 
-            this.everythingToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.everythingToolStripMenuItem.Name = "everythingToolStripMenuItem";
-            this.everythingToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.everythingToolStripMenuItem.Text = "All";
-            this.everythingToolStripMenuItem.Click += new System.EventHandler(this.everythingToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(124, 6);
-            // 
-            // bulkSpawnToolStripMenuItem
-            // 
-            this.bulkSpawnToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.bulkSpawnToolStripMenuItem.Name = "bulkSpawnToolStripMenuItem";
-            this.bulkSpawnToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.bulkSpawnToolStripMenuItem.Text = "Bulk Spawn";
-            this.bulkSpawnToolStripMenuItem.Click += new System.EventHandler(this.bulkSpawnToolStripMenuItem_Click);
-            // 
-            // nextAutoSaveSecond
-            // 
-            this.nextAutoSaveSecond.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.nextAutoSaveSecond.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.nextAutoSaveSecond.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextAutoSaveSecond.ForeColor = System.Drawing.Color.White;
-            this.nextAutoSaveSecond.Location = new System.Drawing.Point(152, 3);
-            this.nextAutoSaveSecond.MaxLength = 3;
-            this.nextAutoSaveSecond.Multiline = false;
-            this.nextAutoSaveSecond.Name = "nextAutoSaveSecond";
-            this.nextAutoSaveSecond.ReadOnly = true;
-            this.nextAutoSaveSecond.Size = new System.Drawing.Size(40, 18);
-            this.nextAutoSaveSecond.TabIndex = 224;
-            this.nextAutoSaveSecond.Text = "";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(38, 4);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(117, 16);
-            this.label6.TabIndex = 225;
-            this.label6.Text = "Est. Next Save :";
-            // 
-            // NextSaveTimer
-            // 
-            this.NextSaveTimer.Interval = 1000;
-            this.NextSaveTimer.Tick += new System.EventHandler(this.NextSaveTimer_Tick);
-            // 
-            // Corner1YBox
-            // 
-            this.Corner1YBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.Corner1YBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Corner1YBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Corner1YBox.ForeColor = System.Drawing.Color.White;
-            this.Corner1YBox.Location = new System.Drawing.Point(318, 587);
-            this.Corner1YBox.MaxLength = 3;
-            this.Corner1YBox.Multiline = false;
-            this.Corner1YBox.Name = "Corner1YBox";
-            this.Corner1YBox.ReadOnly = true;
-            this.Corner1YBox.Size = new System.Drawing.Size(40, 18);
-            this.Corner1YBox.TabIndex = 227;
-            this.Corner1YBox.Text = "0";
-            // 
-            // Corner1XBox
-            // 
-            this.Corner1XBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.Corner1XBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Corner1XBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Corner1XBox.ForeColor = System.Drawing.Color.White;
-            this.Corner1XBox.Location = new System.Drawing.Point(277, 587);
-            this.Corner1XBox.MaxLength = 3;
-            this.Corner1XBox.Multiline = false;
-            this.Corner1XBox.Name = "Corner1XBox";
-            this.Corner1XBox.ReadOnly = true;
-            this.Corner1XBox.Size = new System.Drawing.Size(40, 18);
-            this.Corner1XBox.TabIndex = 226;
-            this.Corner1XBox.Text = "0";
-            // 
-            // Corner2YBox
-            // 
-            this.Corner2YBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.Corner2YBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Corner2YBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Corner2YBox.ForeColor = System.Drawing.Color.White;
-            this.Corner2YBox.Location = new System.Drawing.Point(318, 606);
-            this.Corner2YBox.MaxLength = 3;
-            this.Corner2YBox.Multiline = false;
-            this.Corner2YBox.Name = "Corner2YBox";
-            this.Corner2YBox.ReadOnly = true;
-            this.Corner2YBox.Size = new System.Drawing.Size(40, 18);
-            this.Corner2YBox.TabIndex = 229;
-            this.Corner2YBox.Text = "0";
-            // 
-            // Corner2XBox
-            // 
-            this.Corner2XBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.Corner2XBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Corner2XBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Corner2XBox.ForeColor = System.Drawing.Color.White;
-            this.Corner2XBox.Location = new System.Drawing.Point(277, 606);
-            this.Corner2XBox.MaxLength = 3;
-            this.Corner2XBox.Multiline = false;
-            this.Corner2XBox.Name = "Corner2XBox";
-            this.Corner2XBox.ReadOnly = true;
-            this.Corner2XBox.Size = new System.Drawing.Size(40, 18);
-            this.Corner2XBox.TabIndex = 228;
-            this.Corner2XBox.Text = "0";
-            // 
-            // HexTextbox
-            // 
-            this.HexTextbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(68)))), ((int)(((byte)(75)))));
-            this.HexTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.HexTextbox.Font = new System.Drawing.Font("Arial", 22F, System.Drawing.FontStyle.Bold);
-            this.HexTextbox.ForeColor = System.Drawing.Color.White;
-            this.HexTextbox.Hexadecimal = true;
-            this.HexTextbox.HexLength = 8;
-            this.HexTextbox.Location = new System.Drawing.Point(971, 586);
-            this.HexTextbox.Maximum = new decimal(new int[] {
-            -1,
-            0,
-            0,
-            0});
-            this.HexTextbox.Name = "HexTextbox";
-            this.HexTextbox.Size = new System.Drawing.Size(229, 37);
-            this.HexTextbox.TabIndex = 230;
-            this.HexTextbox.ValueChanged += new System.EventHandler(this.Hex_ValueChanged);
-            this.HexTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Hex_KeyPress);
-            // 
-            // selectedItem
-            // 
-            this.selectedItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.selectedItem.FlatAppearance.BorderSize = 0;
-            this.selectedItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.selectedItem.flowerQuantity = ((ushort)(0));
-            this.selectedItem.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.selectedItem.ForeColor = System.Drawing.Color.White;
-            this.selectedItem.itemDurability = ((ushort)(0));
-            this.selectedItem.itemQuantity = ((ushort)(0));
-            this.selectedItem.Location = new System.Drawing.Point(856, 514);
-            this.selectedItem.Margin = new System.Windows.Forms.Padding(0);
-            this.selectedItem.Name = "selectedItem";
-            this.selectedItem.Size = new System.Drawing.Size(110, 110);
-            this.selectedItem.TabIndex = 148;
-            this.selectedItem.Tag = "";
-            this.selectedItem.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.selectedItem.UseVisualStyleBackColor = false;
-            this.selectedItem.Click += new System.EventHandler(this.selectedItem_Click);
-            // 
             // map
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1204, 631);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.ClearCopiedAreaBtn);
             this.Controls.Add(this.variationBtn);
             this.Controls.Add(this.HexTextbox);
@@ -3112,7 +3130,6 @@ namespace ACNHPoker
             this.Controls.Add(this.label4);
             this.Controls.Add(this.fetchMapBtn);
             this.Controls.Add(this.PleaseWaitPanel);
-            this.Controls.Add(this.miniMapBox);
             this.Controls.Add(this.moveUp7Btn);
             this.Controls.Add(this.moveDown7Btn);
             this.Controls.Add(this.moveLeft7Btn);
@@ -3144,8 +3161,8 @@ namespace ACNHPoker
             this.Controls.Add(this.xCoordinate);
             this.Controls.Add(this.itemSearchBox);
             this.Controls.Add(this.BtnPanel);
-            this.Controls.Add(this.functionPanel);
             this.Controls.Add(this.FlagTextbox);
+            this.Controls.Add(this.functionPanel);
             this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -3160,9 +3177,7 @@ namespace ACNHPoker
             ((System.ComponentModel.ISupportInitialize)(this.fieldGridView)).EndInit();
             this.BtnPanel.ResumeLayout(false);
             this.floorRightClick.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).EndInit();
             this.saveMap.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.FlagTextbox)).EndInit();
             this.LayerPanel.ResumeLayout(false);
             this.LayerPanel.PerformLayout();
             this.functionPanel.ResumeLayout(false);
@@ -3170,7 +3185,10 @@ namespace ACNHPoker
             this.PleaseWaitPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.removeItemClick.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.miniMapBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HexTextbox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FlagTextbox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3272,7 +3290,6 @@ namespace ACNHPoker
         private System.Windows.Forms.Panel functionPanel;
         private System.Windows.Forms.Button bulkSpawnBtn;
         private System.Windows.Forms.Button variationBtn;
-        private System.Windows.Forms.PictureBox miniMapBox;
         private System.Windows.Forms.Panel PleaseWaitPanel;
         private System.Windows.Forms.RichTextBox WaitMessagebox;
         private System.Windows.Forms.ProgressBar MapProgressBar;
@@ -3310,5 +3327,7 @@ namespace ACNHPoker
         private HexUpDown HexTextbox;
         private HexUpDown FlagTextbox;
         private System.Windows.Forms.Button ClearCopiedAreaBtn;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox miniMapBox;
     }
 }

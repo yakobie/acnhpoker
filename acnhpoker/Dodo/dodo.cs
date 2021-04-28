@@ -1479,6 +1479,7 @@ namespace ACNHPoker
                     mytimer.Show();
                     timerSettingPanel.Enabled = true;
                     mytimer.Location = new Point(this.Location.X, this.Location.Y - 140);
+                    mytimer.ControlBox = false;
                 }
             }
             else

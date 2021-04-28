@@ -167,11 +167,12 @@ namespace ACNHPoker
 
                 graphics.DrawImage(top, new Rectangle(0, 0, top.Width, top.Height), 0, 0, top.Width, top.Height, GraphicsUnit.Pixel, ia);
             }
+            
 
             return myBitmap;
         }
 
-        public Bitmap refreshItemMap(byte[] itemData)
+        public Image refreshItemMap(byte[] itemData)
         {
             ItemMapData = null;
             tilesType = null;
@@ -185,8 +186,8 @@ namespace ACNHPoker
             }
             transformItemMap();
 
-            Bitmap itemMap = drawItemMap();
-            Bitmap myBitmap = drawBackground();
+            Image itemMap = drawItemMap();
+            Image myBitmap = drawBackground();
 
             using (Graphics graphics = Graphics.FromImage(myBitmap))
             {
@@ -500,7 +501,9 @@ namespace ACNHPoker
 
         public static Color GetBackgroundColor(int x, int y, bool Layer1 = true)
         {
-            if (Layer1)
+            if (floorBackgroundColor == null)
+                return Color.White;
+            else if (Layer1)
                 return floorBackgroundColor[y][x];
             else
             {

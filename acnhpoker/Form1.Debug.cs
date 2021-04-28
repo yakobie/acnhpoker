@@ -633,7 +633,7 @@ namespace ACNHPoker
 
         private void button10_Click(object sender, EventArgs e)
         {
-            Debug.Print(Utilities.getVersion(s));
+            myMessageBox.Show(Utilities.getVersion(s), "Sys-botbase Version");
         }
 
         private void button5_Click_1(object sender, EventArgs e)

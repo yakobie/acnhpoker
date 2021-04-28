@@ -587,6 +587,7 @@ namespace ACNHPoker
 
             int writeCount;
             int runCount = 0;
+            int PauseCount = 0;
 
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -653,18 +654,21 @@ namespace ACNHPoker
                     {
                         Debug.Print("Loading Detected");
                         wasLoading = true;
+                        PauseCount = 0;
                         Thread.Sleep(5000);
                     }
                     else if (state == teleport.OverworldState.ItemDropping)
                     {
                         Debug.Print("Item Dropping");
+                        PauseCount = 0;
                     }
                     else
                     {
-                        if (wasLoading)
+                        if (wasLoading || PauseCount > 60)
                         {
                             GetVisitorList();
                             wasLoading = false;
+                            PauseCount = 0;
 
                             //--------------------------------------------------------------------------------------------------
                             for (int i = 0; i < 42; i++)
@@ -700,6 +704,7 @@ namespace ACNHPoker
                         }
                         else
                         {
+                            PauseCount++;
                             Thread.Sleep(2000);
                         }
                     }
@@ -715,7 +720,7 @@ namespace ACNHPoker
                         }
                         runCount++;
                     });
-                    Debug.Print("------ " + runCount);
+                    Debug.Print("------ " + runCount + " " + PauseCount);
                 }
                 catch (ThreadAbortException ex)
                 {
@@ -797,6 +802,7 @@ namespace ACNHPoker
 
             int writeCount;
             int runCount = 0;
+            int PauseCount = 0;
 
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
@@ -861,18 +867,21 @@ namespace ACNHPoker
                     {
                         Debug.Print("Loading Detected");
                         wasLoading = true;
+                        PauseCount = 0;
                         Thread.Sleep(5000);
                     }
                     else if (state == teleport.OverworldState.ItemDropping)
                     {
                         Debug.Print("Item Dropping");
+                        PauseCount = 0;
                     }
                     else
                     {
-                        if (wasLoading)
+                        if (wasLoading || PauseCount > 60)
                         {
                             GetVisitorList();
                             wasLoading = false;
+                            PauseCount = 0;
 
                             //--------------------------------------------------------------------------------------------------
                             for (int i = 0; i < 56; i++)
@@ -908,6 +917,7 @@ namespace ACNHPoker
                         }
                         else
                         {
+                            PauseCount++;
                             Thread.Sleep(2000);
                         }
                     }
@@ -923,7 +933,7 @@ namespace ACNHPoker
                         }
                         runCount++;
                     });
-                    Debug.Print("------ " + runCount);
+                    Debug.Print("------ " + runCount + " " + PauseCount);
                 }
                 catch (ThreadAbortException ex)
                 {
@@ -1590,6 +1600,7 @@ namespace ACNHPoker
                 dodoSetup = new dodo(s, this);
                 dodoSetup.Show();
                 dodoSetup.Location = new Point(this.Location.X - 590, this.Location.Y);
+                dodoSetup.ControlBox = false;
                 dodoSetup.WriteLog("[Dodo Helper Ready! Waiting for Regen.]\n\n" +
                     "1. Disconnect all controller by selecting \"Controllers\" > \"Change Grip/Order\"\n" +
                     "2. Leave only the Joy-Con docked on your Switch.\n" +
