@@ -772,6 +772,7 @@ namespace ACNHPoker
         #region Validation
         private Boolean validation()
         {
+            //return true;
             if (disableValidation)
                 return false;
             try

@@ -38,6 +38,7 @@ namespace ACNHPoker
 
         Thread standaloneThread;
         private bool standaloneRunning = false;
+        private bool resetSession = false;
 
 
         bool W = false;
@@ -739,7 +740,7 @@ namespace ACNHPoker
             Thread.Sleep(1000);
 
             string locationState = teleport.GetLocationState().ToString();
-            Debug.Print(">>>>>>>>>>>>>>>>>>>>>>>>>>" + locationState);
+            //Debug.Print(">>>>>>>>>>>>>>>>>>>>>>>>>>" + locationState);
 
             if (teleport.GetLocationState() == teleport.LocationState.Indoor)
             {
@@ -882,6 +883,21 @@ namespace ACNHPoker
             Debug.Print("Back to Overworld");
             Thread.Sleep(2000);
 
+        }
+
+        public void EndSession()
+        {
+            controller.clickDown(); // Hide Weapon
+            Thread.Sleep(1000);
+
+            controller.clickMINUS(); // Open menu
+            Thread.Sleep(2000);
+
+            controller.clickA(); // Open Selection
+            Thread.Sleep(1000); 
+
+            controller.clickA(); // Select End Session.
+            Thread.Sleep(10000);
         }
 
         public static void AddItem(string Owner, string Id, string Count, string Name, string Color, Image Image = null)
@@ -1346,8 +1362,24 @@ namespace ACNHPoker
             }
         }
 
+        private int GetVisitorNumber()
+        {
+            string[] namelist = new string[8];
+            int num = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                if (i == 0)
+                    continue;
+                namelist[i] = Utilities.GetVisitorName(s, null, i);
+                if (!namelist[i].Equals(String.Empty))
+                    num++;
+            }
+            return num;
+        }
+
         private void standaloneLoop()
         {
+            bool init = true;
             do
             {
                 teleport.OverworldState state = teleport.GetOverworldState();
@@ -1355,10 +1387,32 @@ namespace ACNHPoker
 
                 if (CheckOnlineStatus() == 1)
                 {
+                    if (init)
+                    {
+                        DisplayDodo(controller.setupDodo());
+                        init = false;
+                    }
                     if (state == teleport.OverworldState.Loading || state == teleport.OverworldState.UserArriveLeavingOrTitleScreen)
                     {
                         idleNum = 0;
                         wasLoading = true;
+                    }
+
+                    if (mytimer != null)
+                    {
+                        if (resetSession && mytimer.isDone())
+                        {
+                            if (GetVisitorNumber() >= 1)
+                            {
+                                WriteLog("Time's up! Resetting session!", true);
+                                EndSession();
+                                mytimer.done = false;
+                                continue;
+                            }
+                            else
+                            {
+                            }
+                        }
                     }
                 }
                 else
@@ -1405,6 +1459,12 @@ namespace ACNHPoker
                         WriteLog("Please wait for the bot to finish the sequence.", true);
                         NormalRestore();
                         unLockControl();
+
+                        if (mytimer != null && resetSession)
+                        {
+                            mytimer.reset();
+                        }
+
                         WriteLog("Restore sequence finished.", true);
                     }
                 }
@@ -1470,9 +1530,9 @@ namespace ACNHPoker
 
         private void TimerBtn_Click(object sender, EventArgs e)
         {
-            if (this.Height < 430)
+            if (this.Height < 440)
             {
-                this.Height = 430;
+                this.Height = 440;
                 if (mytimer == null)
                 {
                     mytimer = new MyTimer();
@@ -1885,6 +1945,9 @@ namespace ACNHPoker
             WriteLog("please remember to reset your cursor to the first inventory slot for the drop bot to function properly!", true);
         }
 
-        
+        private void sessionBox_CheckedChanged(object sender, EventArgs e)
+        {
+            resetSession = sessionBox.Checked;
+        }
     }
 }

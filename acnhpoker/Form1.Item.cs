@@ -143,6 +143,7 @@ namespace ACNHPoker
 
                                 if (validation())
                                 {
+                                    string sysbotbaseVersion = Utilities.getVersion(s);
                                     myMessageBox.Show("You have successfully established a connection!\n" +
                                                     "Your Sys-botbase installation and IP address are correct.\n" +
                                                     "However...\n" +
@@ -151,7 +152,9 @@ namespace ACNHPoker
                                                     "First, \n" +
                                                     "check that you have the correct matching version.\n" +
                                                     "You are using \"" + version + "\" right now.\n" +
-                                                    "You can find the latest version at : \n   https://github.com/MyShiLingStar/ACNHPoker/releases \n\n" +
+                                                    "You can find the latest version at : \n   https://github.com/MyShiLingStar/ACNHPoker/releases \n" +
+                                                    "Your sys-botbase version is :  " + sysbotbaseVersion + "\n" +
+                                                    "You can find the latest version at : \n   https://github.com/olliz0r/sys-botbase/releases \n\n" +
                                                     "Second, \n" +
                                                     "try holding the power button and restart your switch.\n" +
                                                     "Then press and HOLD the \"L\" button while you are selecting the game to boot up.\n" +

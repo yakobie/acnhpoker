@@ -416,7 +416,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\Nintendo Font.otf" />
     <None Include="twitch[template].json" />
   </ItemGroup>
   <ItemGroup>
@@ -439,7 +438,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\timer.png" />
-    <None Include="Resources\timer.bmp" />
     <None Include="Resources\marker.png" />
     <None Include="Resources\ACLeaf2.ico" />
     <None Include="bin\Debug\img\Leaf.png" />
@@ -453,7 +451,6 @@
     <None Include="Resources\4.png" />
     <None Include="Resources\5.png" />
     <Content Include="ACLeaf.ico" />
-    <None Include="Resources\31.png" />
     <Content Include="Resources\gear.png" />
     <None Include="Resources\k.ico" />
     <None Include="Resources\height.png" />

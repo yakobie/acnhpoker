@@ -190,6 +190,7 @@ namespace ACNHPoker
             this.timerResetBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.controllerTimer = new System.Windows.Forms.Timer(this.components);
+            this.sessionBox = new System.Windows.Forms.CheckBox();
             this.FullPanel.SuspendLayout();
             this.functionPanel.SuspendLayout();
             this.controllerPanel.SuspendLayout();
@@ -2279,6 +2280,7 @@ namespace ACNHPoker
             // 
             // timerSettingPanel
             // 
+            this.timerSettingPanel.Controls.Add(this.sessionBox);
             this.timerSettingPanel.Controls.Add(this.secPlus5Btn);
             this.timerSettingPanel.Controls.Add(this.secMinus5Btn);
             this.timerSettingPanel.Controls.Add(this.secPlus1Btn);
@@ -2298,7 +2300,7 @@ namespace ACNHPoker
             this.timerSettingPanel.Controls.Add(this.minutesLabel);
             this.timerSettingPanel.Location = new System.Drawing.Point(12, 303);
             this.timerSettingPanel.Name = "timerSettingPanel";
-            this.timerSettingPanel.Size = new System.Drawing.Size(423, 86);
+            this.timerSettingPanel.Size = new System.Drawing.Size(423, 104);
             this.timerSettingPanel.TabIndex = 340;
             // 
             // secPlus5Btn
@@ -2620,13 +2622,27 @@ namespace ACNHPoker
             this.panel2.Controls.Add(this.timerPauseBtn);
             this.panel2.Location = new System.Drawing.Point(444, 303);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(138, 86);
+            this.panel2.Size = new System.Drawing.Size(138, 104);
             this.panel2.TabIndex = 361;
             // 
             // controllerTimer
             // 
             this.controllerTimer.Interval = 15;
             this.controllerTimer.Tick += new System.EventHandler(this.controllerTimer_Tick);
+            // 
+            // sessionBox
+            // 
+            this.sessionBox.AutoSize = true;
+            this.sessionBox.BackColor = System.Drawing.Color.Transparent;
+            this.sessionBox.ForeColor = System.Drawing.Color.White;
+            this.sessionBox.Location = new System.Drawing.Point(3, 78);
+            this.sessionBox.Name = "sessionBox";
+            this.sessionBox.Size = new System.Drawing.Size(201, 20);
+            this.sessionBox.TabIndex = 341;
+            this.sessionBox.Text = "End session when time\'s up";
+            this.HoverToolTip.SetToolTip(this.sessionBox, "This will end the session and kick everyone off the island.");
+            this.sessionBox.UseVisualStyleBackColor = false;
+            this.sessionBox.CheckedChanged += new System.EventHandler(this.sessionBox_CheckedChanged);
             // 
             // dodo
             // 
@@ -2642,7 +2658,7 @@ namespace ACNHPoker
             this.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximumSize = new System.Drawing.Size(1200, 430);
+            this.MaximumSize = new System.Drawing.Size(1200, 440);
             this.MinimumSize = new System.Drawing.Size(600, 330);
             this.Name = "dodo";
             this.ShowInTaskbar = false;
@@ -2840,5 +2856,6 @@ namespace ACNHPoker
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Timer controllerTimer;
         private System.Windows.Forms.Button clearSlotBtn;
+        private System.Windows.Forms.CheckBox sessionBox;
     }
 }

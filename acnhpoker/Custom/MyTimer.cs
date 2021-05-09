@@ -10,6 +10,7 @@ namespace ACNHPoker
 
         public int minutes = 10;
         public int seconds = 0;
+        public bool done = false;
 
         public MyTimer()
         {
@@ -31,11 +32,18 @@ namespace ACNHPoker
         private void toRed()
         {
             timeLabel.ForeColor = Color.Red;
+            done = true;
         }
 
         private void toOrange()
         {
             timeLabel.ForeColor = Color.FromArgb(243, 152, 8);
+            done = false;
+        }
+
+        public bool isDone()
+        {
+            return done;
         }
 
         public void set(int min, int sec)
@@ -44,6 +52,7 @@ namespace ACNHPoker
             seconds = sec;
             timer.SetTime(minutes, seconds);
             updateLabel();
+            done = false;
         }
 
         public void addMin(int min)
