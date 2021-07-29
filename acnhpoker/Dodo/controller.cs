@@ -320,7 +320,7 @@ namespace ACNHPoker
             }
             Thread.Sleep(500);
             resetLeftStick();
-            Thread.Sleep(600);
+            Thread.Sleep(1000);
             clickA();
             clickA();
             clickB();

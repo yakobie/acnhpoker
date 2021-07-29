@@ -217,6 +217,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BadTimeSimulator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BadTimeSimulator.Designer.cs">
+      <DependentUpon>BadTimeSimulator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Custom\CountDownTimer.cs" />
     <Compile Include="Debug\BoyerMoore.cs" />
     <Compile Include="Map\bulkSpawn.cs">
@@ -352,6 +358,9 @@
     <Compile Include="Custom\VillagerSelector.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="BadTimeSimulator.resx">
+      <DependentUpon>BadTimeSimulator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Map\bulkSpawn.resx">
       <DependentUpon>bulkSpawn.cs</DependentUpon>
       <SubType>Designer</SubType>

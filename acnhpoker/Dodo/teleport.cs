@@ -17,7 +17,7 @@ namespace ACNHPoker
         private static byte[] teleportByte;
         private static byte[] anchorByte;
 
-        private static string offset = "[[[[main+3A08B40]+18]+178]+D0]+DA"; //"[[[[main+39DC030]+18]+178]+D0]+DA";//"[[[[main+398C380]+18]+178]+D0]+DA";//"[[[[main+396F5A0]+18]+178]+D0]+DA";
+        private static string offset = "[[[[main+3A32980]+18]+178]+D0]+DA"; //"[[[[main+3A08B40]+18]+178]+D0]+DA"; //"[[[[main+39DC030]+18]+178]+D0]+DA";//"[[[[main+398C380]+18]+178]+D0]+DA";//"[[[[main+396F5A0]+18]+178]+D0]+DA";
         private static readonly long[] PlayerCoordJumps = new long[5] { 0x396F5A0L, 0x18L, 0x178L, 0xD0L, 0xDAL };
 
 
@@ -265,6 +265,8 @@ namespace ACNHPoker
             else if ($"{value:X8}".EndsWith("33D0"))
                 return OverworldState.Loading;
             else if ($"{value:X8}".EndsWith("AE07"))
+                return OverworldState.Loading;
+            else if ($"{value:X8}".EndsWith("EC17"))
                 return OverworldState.Loading;
             switch (value)
             {

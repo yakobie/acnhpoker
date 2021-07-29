@@ -122,7 +122,6 @@ namespace ACNHPoker
             this.Collision.Text = Config.AppSettings.Settings["Collision"].Value;
             this.FreezeTime.Text = Config.AppSettings.Settings["FreezeTime"].Value;
             this.ReadTime.Text = Config.AppSettings.Settings["ReadTime"].Value;
-            this.IslandName.Text = Config.AppSettings.Settings["IslandName"].Value;
             this.WeatherSeed.Text = Config.AppSettings.Settings["WeatherSeed"].Value;
             this.MapZero.Text = Config.AppSettings.Settings["MapZero"].Value;
 
@@ -168,8 +167,6 @@ namespace ACNHPoker
             if (Utilities.readTimeAddress != Convert.ToUInt32(ReadTime.Text, 16))
                 ReadTime.ForeColor = Color.Red;
 
-            if (Utilities.TownNameddress != Convert.ToUInt32(IslandName.Text, 16))
-                IslandName.ForeColor = Color.Red;
             if (Utilities.weatherSeed != Convert.ToUInt32(WeatherSeed.Text, 16))
                 WeatherSeed.ForeColor = Color.Red;
             if (Utilities.mapZero != Convert.ToUInt32(MapZero.Text, 16))
@@ -195,7 +192,6 @@ namespace ACNHPoker
             ConfigValue.Add("Collision", Convert.ToUInt32(Collision.Text, 16));
             ConfigValue.Add("FreezeTime", Convert.ToUInt32(FreezeTime.Text, 16));
             ConfigValue.Add("ReadTime", Convert.ToUInt32(ReadTime.Text, 16));
-            ConfigValue.Add("IslandName", Convert.ToUInt32(IslandName.Text, 16));
             ConfigValue.Add("WeatherSeed", Convert.ToUInt32(WeatherSeed.Text, 16));
             ConfigValue.Add("MapZero", Convert.ToUInt32(MapZero.Text, 16));
 
@@ -265,7 +261,6 @@ namespace ACNHPoker
             Config.AppSettings.Settings["Collision"].Value = this.Collision.Text;
             Config.AppSettings.Settings["FreezeTime"].Value = this.FreezeTime.Text;
             Config.AppSettings.Settings["ReadTime"].Value = this.ReadTime.Text;
-            Config.AppSettings.Settings["IslandName"].Value = this.IslandName.Text;
             Config.AppSettings.Settings["WeatherSeed"].Value = this.WeatherSeed.Text;
             Config.AppSettings.Settings["MapZero"].Value = this.MapZero.Text;
 
@@ -289,7 +284,6 @@ namespace ACNHPoker
             ConfigValue.Add("Collision", Convert.ToUInt32(Collision.Text, 16));
             ConfigValue.Add("FreezeTime", Convert.ToUInt32(FreezeTime.Text, 16));
             ConfigValue.Add("ReadTime", Convert.ToUInt32(ReadTime.Text, 16));
-            ConfigValue.Add("IslandName", Convert.ToUInt32(IslandName.Text, 16));
             ConfigValue.Add("WeatherSeed", Convert.ToUInt32(WeatherSeed.Text, 16));
             ConfigValue.Add("MapZero", Convert.ToUInt32(MapZero.Text, 16));
 

@@ -472,7 +472,7 @@ namespace ACNHPoker
                 if (stringRows == null) return;
 
                 //Calculate whole text height
-                var textHeight = TextRenderer.MeasureText(text, FONT).Height;
+                var textHeight = TextRenderer.MeasureText(text, FONT).Height + 20;
 
                 //Calculate width for longest text line
                 const int SCROLLBAR_WIDTH_OFFSET = 15;

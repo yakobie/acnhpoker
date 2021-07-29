@@ -664,7 +664,7 @@ namespace ACNHPoker
                     }
                     else
                     {
-                        if (wasLoading || PauseCount > 60)
+                        if (wasLoading || PauseCount >= 30)
                         {
                             GetVisitorList();
                             wasLoading = false;
@@ -705,6 +705,7 @@ namespace ACNHPoker
                         else
                         {
                             PauseCount++;
+                            counter = PauseCount * 2;
                             Thread.Sleep(2000);
                         }
                     }
@@ -719,6 +720,14 @@ namespace ACNHPoker
                             CheckAndResetVillager(villageFlag[index], haveVillager[index], index, ref writeCount);
                         }
                         runCount++;
+                        if (PauseCount > 0)
+                        {
+                            WaitMessagebox.Text = "Regen idling...";
+                        }
+                        else
+                        {
+                            WaitMessagebox.Text = regenMsg;
+                        }
                     });
                     Debug.Print("------ " + runCount + " " + PauseCount);
                 }
@@ -877,7 +886,7 @@ namespace ACNHPoker
                     }
                     else
                     {
-                        if (wasLoading || PauseCount > 60)
+                        if (wasLoading || PauseCount >= 30)
                         {
                             GetVisitorList();
                             wasLoading = false;
@@ -918,6 +927,7 @@ namespace ACNHPoker
                         else
                         {
                             PauseCount++;
+                            counter = PauseCount * 2;
                             Thread.Sleep(2000);
                         }
                     }
@@ -932,6 +942,14 @@ namespace ACNHPoker
                             CheckAndResetVillager(villageFlag[index], haveVillager[index], index, ref writeCount);
                         }
                         runCount++;
+                        if (PauseCount > 0)
+                        {
+                            WaitMessagebox.Text = "Regen idling...";
+                        }
+                        else
+                        {
+                            WaitMessagebox.Text = regenMsg;
+                        }
                     });
                     Debug.Print("------ " + runCount + " " + PauseCount);
                 }
