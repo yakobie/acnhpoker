@@ -236,7 +236,11 @@ https://youtu.be/-zztRgmtXig
 	* Also to prevent triggering anti-virus software detecting keylogging behavior. Keyboard control only works when the "Dodo Helper"(Dutch Sailors) window is in focus.
 	  * Which mean if you want to use the keyboard control, you must first use your mouse to click the form so that it is in focus.
 * R16
-	* Update for Game version number 1.10.0	  
+	* Update for Game version number 1.10.0
+* R17
+	* Update for Game version number 1.11.0
+	* Adjust the regen rate of Map Regenerator during idle time. Max idle time is about 1 minute.
+	
 ## Contributing
 
 1. Fork it (<https://github.com/KingLycosa/acnhpoker/fork>)
