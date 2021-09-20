@@ -240,6 +240,9 @@ https://youtu.be/-zztRgmtXig
 * R17
 	* Update for Game version number 1.11.0
 	* Adjust the regen rate of Map Regenerator during idle time. Max idle time is about 1 minute.
+* R17.1
+	* Update for Game version number 1.11.1
+	* Rework the "Setting" for easier future update.
 	
 ## Contributing
 

@@ -12,6 +12,7 @@ namespace ACNHPoker
     {
         Form1 mainForm;
         bool sound;
+        bool startup = true;
         public Setting(Form1 main, bool overrideSetting, bool disableValidation, bool Sound)
         {
             InitializeComponent();
@@ -20,12 +21,14 @@ namespace ACNHPoker
 
             if (overrideSetting)
             {
+                enableOverrideBtn.BackColor = Color.Red;
                 enableOverrideBtn.Text = "Disable Override";
                 this.addresses.Enabled = true;
             }
 
             if (disableValidation)
             {
+                disableValidationBtn.BackColor = Color.Red;
                 disableValidationBtn.Text = "Enable Validation";
             }
 
@@ -33,6 +36,29 @@ namespace ACNHPoker
             {
                 soundBtn.Text = "Enable Sound";
             }
+
+            this.PlayerSlot.Text = Utilities.player1SlotBase.ToString("X");
+            this.PlayerOffset.Text = Utilities.playerOffset.ToString("X");
+            this.Slot21Offset.Text = Utilities.Slot21Offset.ToString("X");
+            this.HomeOffset.Text = Utilities.HomeOffset.ToString("X");
+            this.ReactionOffset.Text = Utilities.ReactionOffset.ToString("X");
+            this.Villager.Text = Utilities.VillagerAddress.ToString("X");
+            this.VillagerOffset.Text = Utilities.VillagerSize.ToString("X");
+            this.VillagerHouse.Text = Utilities.VillagerHouseAddress.ToString("X");
+            this.VillagerHouseOffset.Text = Utilities.VillagerHouseSize.ToString("X");
+            this.VillagerHouseBuffer.Text = Utilities.VillagerHouseBufferDiff.ToString("X");
+            this.RecyclingBin.Text = Utilities.MasterRecyclingBase.ToString("X");
+            this.Turnip.Text = Utilities.TurnipPurchasePriceAddr.ToString("X");
+            this.Stamina.Text = Utilities.precedingZeros(Utilities.staminaAddress.ToString("X"), 8);
+            this.WalkSpeed.Text = Utilities.precedingZeros(Utilities.wSpeedAddress.ToString("X"), 8);
+            this.AnimationSpeed.Text = Utilities.precedingZeros(Utilities.aSpeedAddress.ToString("X"), 8);
+            this.Collision.Text = Utilities.precedingZeros(Utilities.CollisionAddress.ToString("X"), 8);
+            this.FreezeTime.Text = Utilities.precedingZeros(Utilities.freezeTimeAddress.ToString("X"), 8);
+            this.ReadTime.Text = Utilities.precedingZeros(Utilities.readTimeAddress.ToString("X"), 8);
+            this.WeatherSeed.Text = Utilities.weatherSeed.ToString("X");
+            this.MapZero.Text = Utilities.mapZero.ToString("X");
+
+            startup = false;
         }
 
         private void enableOverrideBtn_Click(object sender, EventArgs e)
@@ -47,6 +73,7 @@ namespace ACNHPoker
                     Config.AppSettings.Settings["override"].Value = "false";
                     Config.Save(ConfigurationSaveMode.Minimal);
                     enableOverrideBtn.Text = "Enable Override";
+                    enableOverrideBtn.BackColor = Color.FromArgb(114, 137, 218);
                     this.addresses.Enabled = false;
                     resetAddresses();
                 }
@@ -59,6 +86,7 @@ namespace ACNHPoker
                     Config.AppSettings.Settings["override"].Value = "true";
                     Config.Save(ConfigurationSaveMode.Minimal);
                     enableOverrideBtn.Text = "Disable Override";
+                    enableOverrideBtn.BackColor = Color.Red;
                     this.addresses.Enabled = true;
                     overrideAddresses();
                 }
@@ -80,7 +108,7 @@ namespace ACNHPoker
                 Config.AppSettings.Settings["disableValidation"].Value = "false";
                 Config.Save(ConfigurationSaveMode.Minimal);
                 disableValidationBtn.Text = "Disable Validation";
-
+                disableValidationBtn.BackColor = Color.FromArgb(114, 137, 218);
                 mainForm.toggleValidation();
             }
             else
@@ -91,7 +119,7 @@ namespace ACNHPoker
                     Config.AppSettings.Settings["disableValidation"].Value = "true";
                     Config.Save(ConfigurationSaveMode.Minimal);
                     disableValidationBtn.Text = "Enable Validation";
-
+                    disableValidationBtn.BackColor = Color.Red;
                     mainForm.toggleValidation();
                 }
             }
@@ -233,6 +261,8 @@ namespace ACNHPoker
 
         private void BoxTextChanged(object sender, EventArgs e)
         {
+            if (startup)
+                return;
             TextBox box = (TextBox)sender;
             box.ForeColor = Color.Red;
         }
