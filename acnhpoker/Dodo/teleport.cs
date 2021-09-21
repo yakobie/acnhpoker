@@ -242,9 +242,13 @@ namespace ACNHPoker
 
             File.WriteAllBytes(Utilities.anchorPath, anchorByte);
         }
-        public static byte checkOnlineStatus()
+        public static byte checkOnlineStatus(bool chi = false)
         {
-            byte[] b = Utilities.ReadByteArray(s, Utilities.OnlineSessionAddress, 0x1);
+            byte[] b;
+            if (chi)
+                b = Utilities.ReadByteArray(s, Utilities.OnlineSessionAddress + Utilities.ChineseLanguageOffset , 0x1);
+            else
+                b = Utilities.ReadByteArray(s, Utilities.OnlineSessionAddress, 0x1);
             return b[0];
         }
 

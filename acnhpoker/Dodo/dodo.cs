@@ -525,6 +525,15 @@ namespace ACNHPoker
                 });
                 return 1;
             }
+            else if (teleport.checkOnlineStatus(true) == 0x1) //Check again for Chinese
+            {
+                onlineLabel.Invoke((MethodInvoker)delegate
+                {
+                    onlineLabel.Text = "ONLINE";
+                    onlineLabel.ForeColor = Color.Lime;
+                });
+                return 1;
+            }
             else
             {
                 onlineLabel.Invoke((MethodInvoker)delegate

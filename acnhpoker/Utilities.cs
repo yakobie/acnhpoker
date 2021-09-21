@@ -77,6 +77,8 @@ namespace ACNHPoker
 
         public static UInt32 TextSpeedAddress = 0xBACF20C; //0xBACE3B8; //0xBA88BC8;
 
+        public static UInt32 ChineseLanguageOffset = 0x7000;
+
         public static UInt32 savingOffset = 0x452845AC; //0x453825AC; //0x451805AC;
 
         //=================================================================
@@ -2527,7 +2529,7 @@ namespace ACNHPoker
             }
         }
 
-        public static string getDodo(Socket socket, USBBot bot = null)
+        public static string getDodo(Socket socket, bool chi = false, USBBot bot = null)
         {
             lock (botLock)
             {
@@ -2536,8 +2538,10 @@ namespace ACNHPoker
                 if (bot == null)
                 {
                     //Debug.Print("[Sys] Peek : Dodo " + dodoAddress.ToString("X"));
-
-                    b = ReadByteArray(socket, dodoAddress, 5);
+                    if (chi)
+                        b = ReadByteArray(socket, dodoAddress + ChineseLanguageOffset, 5);
+                    else
+                        b = ReadByteArray(socket, dodoAddress, 5);
 
                     if (b == null)
                     {
@@ -2586,10 +2590,14 @@ namespace ACNHPoker
                         Debug.Print("Poke TextSpeed: " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
 
+                        msg = String.Format("poke 0x{0:X8} 0x{1}\r\n", (TextSpeedAddress + ChineseLanguageOffset).ToString("X"), "3");
+                        Debug.Print("Poke TextSpeedChi: " + msg);
+                        SendString(socket, Encoding.UTF8.GetBytes(msg));
                     }
                     else
                     {
                         bot.WriteBytes(stringToByte("3"), TextSpeedAddress);
+                        bot.WriteBytes(stringToByte("3"), TextSpeedAddress + ChineseLanguageOffset);
                     }
                 }
                 catch

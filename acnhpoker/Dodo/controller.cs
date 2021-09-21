@@ -364,7 +364,7 @@ namespace ACNHPoker
             Thread.Sleep(1000);
 
             clickA(); // Roger!
-            Thread.Sleep(20000); // Saving
+            Thread.Sleep(30000); // Saving
 
             clickA(); // End Line "So who"
             Thread.Sleep(1000);
@@ -442,7 +442,7 @@ namespace ACNHPoker
             Thread.Sleep(1000);
 
             clickA(); // Roger!
-            Thread.Sleep(20000); // Saving
+            Thread.Sleep(30000); // Saving
 
             clickA(); // End Line "So who"
             Thread.Sleep(1000);
@@ -574,6 +574,9 @@ namespace ACNHPoker
             {
                 //string dodo = "12345";
                 string dodo = Utilities.getDodo(s).Replace("\0", "");
+
+                if (dodo == "") // Try again for Chinese
+                    dodo = Utilities.getDodo(s,true).Replace("\0", "");
 
                 if (File.Exists(Utilities.dodoPath))
                 {
