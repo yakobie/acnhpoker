@@ -243,6 +243,8 @@ https://youtu.be/-zztRgmtXig
 * R17.1
 	* Update for Game version number 1.11.1
 	* Rework the "Setting" for easier future update.
+* R17.2
+	* Try to fix "dodo Helper" for Chinese.
 	
 ## Contributing
 
