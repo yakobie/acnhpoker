@@ -1,5 +1,7 @@
 # ACNHPoker
 
+	![Release Image](https://i.ibb.co/txCNG22/131313.png)
+
    1. Spawns items for you on Animal Crossing New Horizons using [sys-botbase](https://github.com/olliz0r/sys-botbase) or [USB-Botbase](https://github.com/fishguy6564/USB-Botbase).
    2. Manipulate in-game critter spawn rate.
    3. Contorl turnip buying/selling price.
@@ -244,7 +246,7 @@ https://youtu.be/-zztRgmtXig
 	* Update for Game version number 1.11.1
 	* Rework the "Setting" for easier future update.
 * R17.2
-	* Try to fix "dodo Helper" for Chinese.
+	* Try to fix "Dodo Helper" for Chinese.
 	
 ## Contributing
 
