@@ -909,6 +909,14 @@ namespace ACNHPoker
                         {
                             return path;
                         }
+                        else
+                        {
+                            path = imagePath + OverrideDict[imageName] + "_Remake_0_0.png";
+                            if (File.Exists(path))
+                            {
+                                return path;
+                            }
+                        }
                     }
                 }
 
@@ -953,6 +961,14 @@ namespace ACNHPoker
                     if (File.Exists(path))
                     {
                         return path;
+                    }
+                    else
+                    {
+                        path = imagePath + imageName + "_Remake_0_0.png";
+                        if (File.Exists(path))
+                        {
+                            return path;
+                        }
                     }
                 }
 
@@ -1035,10 +1051,22 @@ namespace ACNHPoker
                         if (File.Exists(path))
                         {
                             Image img = Image.FromFile(path);
-                            //e.CellStyle.BackColor = Color.Green;
+                            e.CellStyle.BackColor = Color.Green;
                             e.Value = img;
 
                             return;
+                        }
+                        else
+                        {
+                            path = imagePath + OverrideDict[imageName] + "_Remake_0_0.png";
+                            if (File.Exists(path))
+                            {
+                                Image img = Image.FromFile(path);
+                                e.CellStyle.BackColor = Color.Green;
+                                e.Value = img;
+
+                                return;
+                            }
                         }
                     }
 

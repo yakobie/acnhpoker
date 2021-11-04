@@ -158,6 +158,9 @@ Right click the inventory slot to wrap the item in it.
 
 * Lucky money &amp; Sebaetdon only works on bells</value>
   </data>
+  <metadata name="formToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>117, 0</value>
+  </metadata>
   <data name="setReactionBtn.ToolTip" xml:space="preserve">
     <value>No, seriously, I don't know what to write in here.
 

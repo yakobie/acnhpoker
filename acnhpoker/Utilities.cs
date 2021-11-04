@@ -16,21 +16,23 @@ namespace ACNHPoker
 {
     class Utilities
     {
-        public static UInt32 masterAddress = 0xAED22840; //0xAE61F840; //0xAE19C778;
+        public static UInt32 masterAddress = 0xAF70D6E0; 
 
         public static UInt32 ItemSlotBase = masterAddress;
         public static UInt32 ItemSlot21Base = masterAddress - 0xB8;
 
 
 
-        public static UInt32 MasterRecyclingBase = 0xAE145278; //0xADA42278; //0xAC561908;
+        public static UInt32 MasterRecyclingBase = 0xAEA5E978;
         public static UInt32 MasterRecycling21Base = MasterRecyclingBase + 0xA0;
 
-        public static UInt32 TurnipPurchasePriceAddr = 0xADD1BB84; //0xAD618B84; //0xAD195B74;
+        public static UInt32 TurnipPurchasePriceAddr = 0xAE6030F4;
         public static UInt32 TurnipSellPriceAddr = TurnipPurchasePriceAddr + 0xC;
-        public static UInt32 TurnipBuffer = 0x86D590; //0x86D580;
+        public static UInt32 TurnipBuffer = 0x8F1BD0;
 
-        public static UInt32 VillagerAddress = 0xAD8DD028; //0xAD1DA028; //0xACD57028;
+        //=================================================================
+
+        public static UInt32 VillagerAddress = 0xAE1A4EB8;
         public static UInt32 VillagerSize = 0x13230;
         public static UInt32 VillagerOldSize = 0x12AB0;
         public static UInt32 VillagerMemorySize = 0x5F0;
@@ -45,41 +47,42 @@ namespace ACNHPoker
         public static UInt32 VillagerFriendshipOffset = 0x46;
         public static UInt32 VillagerCatchphraseOffset = 0x10794;
 
-        public static UInt32 VillagerHouseAddress = 0xADD17BFC; //0xAD614BFC; //0xAD191BEC;
+        public static UInt32 VillagerHouseAddress = 0xAE5F46A4;
         public static UInt32 VillagerHouseSize = 0x1D4;
-        public static UInt32 VillagerHouseBufferDiff = 0x86D590; //0x86D580; 
+        public static UInt32 VillagerHousePadding = 0x1114;
+        public static UInt32 VillagerHouseBufferDiff = 0x8F1BD0;
         public static UInt32 VillagerHouseOwnerOffset = 0x1C4;
 
-        public static UInt32 MysIslandVillagerAddress = 0x38674B5C; //0x38772B5C; //0x3856EB5C;
+        public static UInt32 MysIslandVillagerAddress = 0x38B23C1C;
         public static UInt32 MysIslandVillagerSpecies = MysIslandVillagerAddress + 0x110;
 
+        //=================================================================
 
+        public static UInt32 weatherSeed = 0xAE3884B0;
 
-        public static UInt32 weatherSeed = 0xADABF3F0; //0xAC35EA90; //0xABEDBA80;
+        public static UInt32 coordinate = 0x3E32A288;
+        
+        public static UInt32 mapZero = 0xAE3D4298;
 
-        public static UInt32 coordinate = 0x3DE7B288; //0x3DF79280; //0x3DD75280;
-
-        public static UInt32 mapZero = 0xADB0B1D0; //0xAD4081D0; //0xACF851C0;
-
-        public static UInt32 mapOffset = 0x86D590; //0x86D580;
+        public static UInt32 mapOffset = 0x8F1BD0;
 
         public static UInt32 mapSize = 0x54000;
 
         //=================================================================
 
-        public static UInt32 VisitorNameAddress = 0xB67D67B8; //0xB66D6FF8; //0xB6351EA0;
+        public static UInt32 VisitorNameAddress = 0xB70FDD30;
 
-        public static UInt32 dodoAddress = 0xA99015C; //0xA98F15C; //0xA98D15C;
-        public static UInt32 OnlineSessionAddress = 0x920F740; //0x920E740; //0x920C740;
+        public static UInt32 dodoAddress = 0xABCF15C;
+        public static UInt32 OnlineSessionAddress = 0x944E740;
 
         public static UInt32 VisitorList = VisitorNameAddress - 0x118;
         public static UInt32 VisitorListSize = 0x1C;
 
-        public static UInt32 TextSpeedAddress = 0xBACF20C; //0xBACE3B8; //0xBA88BC8;
+        public static UInt32 TextSpeedAddress = 0xBD32084;
 
         public static UInt32 ChineseLanguageOffset = 0x7000;
 
-        public static UInt32 savingOffset = 0x452845AC; //0x453825AC; //0x451805AC;
+        public static UInt32 savingOffset = 0x457A05AC;
 
         //=================================================================
 
@@ -96,11 +99,11 @@ namespace ACNHPoker
         public static UInt32 BuildingOffset = mapZero + 0xCF610; //TODO?
 
         public static UInt32 player1SlotBase = masterAddress;
-        public static UInt32 playerOffset = 0x10E500;
+        public static UInt32 playerOffset = 0x11B968;
         public static UInt32 Slot21Offset = 0xB8;
         public static UInt32 HomeOffset = 0xC4;
         public static UInt32 ReactionOffset = 0xAFB4;
-        public static UInt32 InventoryNameOffset = 0x38720;
+        public static UInt32 InventoryNameOffset = 0x3EAE0;
 
         public static UInt32 TownNameddress = player1SlotBase + InventoryNameOffset;
 
@@ -146,31 +149,31 @@ namespace ACNHPoker
         public static UInt32 player8House21Base = player8HouseBase + 0xA0;
 
         // ---- Critter
-        public static UInt32 InsectAppearPointer = 0x40344E38; //0x4043E558; //0x403259B8; 
+        public static UInt32 InsectAppearPointer = 0x404C4BF8;
         public static Int32 InsectDataSize = 2 * (1 + 6 * 12 + 5);
         public static Int32 InsectNumRecords = 166;
 
         public static Int32 FishDataSize = 88;
 
-        public static UInt32 FishRiverAppearPointer = 0x403845C8; //0x4047DCE8; //0x40365148; 
+        public static UInt32 FishRiverAppearPointer = 0x40504388; 
         public static Int32 FishRiverNumRecords = 100;
 
-        public static UInt32 FishSeaAppearPointer = 0x4039A7A8; //0x40493EC8; //0x4037B328; 
+        public static UInt32 FishSeaAppearPointer = 0x4051A568;
         public static Int32 FishSeaNumRecords = 76;
 
-        public static UInt32 CreatureSeaAppearPointer = 0x40306ACC; //0x404001EC; //0x402E764C; 
+        public static UInt32 CreatureSeaAppearPointer = 0x4048688C;
         public static Int32 SeaCreatureDataSize = 88;
         public static Int32 SeaCreatureNumRecords = 41 * 2;
         // ----
 
         // ---- Main
-        public static UInt32 staminaAddress = 0xB5F64090; //0xB5E64B50; //0xB5ADF9F8;
+        public static UInt32 staminaAddress = 0xB6861358;
 
-        public static UInt32 freezeTimeAddress = 0x0027DD60; //0x00278C20; //0x002704C0; 
+        public static UInt32 freezeTimeAddress = 0x00328530; 
         public static readonly string freezeTimeValue = "D503201F";
         public static readonly string unfreezeTimeValue = "F9203260";
 
-        public static UInt32 readTimeAddress = 0x0BAC6338; //0x0BAC54E8; //0x0BA7FCF8;
+        public static UInt32 readTimeAddress = 0x0BD29188;
 
         public static UInt32 wSpeedAddress = 0x0114A670; //0x01134780; //0x01115CE0;
         public static readonly string wSpeedX1 = "BD530E61";
@@ -182,7 +185,7 @@ namespace ACNHPoker
         public static readonly string CollisionDisable = "12800014";
         public static readonly string CollisionEnable = "B9572814";
 
-        public static UInt32 aSpeedAddress = 0x037FA200; //0x037F9200; //0x037D0090; //0x037A41E8;
+        public static UInt32 aSpeedAddress = 0x043A4B30;
         public static readonly string aSpeedX1 = "3F800000";
         public static readonly string aSpeedX2 = "40000000";
         public static readonly string aSpeedX5 = "40A00000";
@@ -1653,9 +1656,9 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    Debug.Print("[Sys] Peek : House " + (VillagerHouseAddress + (num * VillagerHouseSize) + diff).ToString("X") + " " + (int)VillagerHouseSize);
+                    Debug.Print("[Sys] Peek : House " + (VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + diff).ToString("X") + " " + (int)VillagerHouseSize);
 
-                    byte[] b = ReadByteArray(socket, VillagerHouseAddress + (num * VillagerHouseSize) + diff, (int)VillagerHouseSize, ref counter);
+                    byte[] b = ReadByteArray(socket, VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + diff, (int)VillagerHouseSize, ref counter);
 
                     if (b == null)
                     {
@@ -1666,9 +1669,9 @@ namespace ACNHPoker
                 }
                 else
                 {
-                    Debug.Print("[Usb] Peek : House " + (VillagerHouseAddress + (num * VillagerHouseSize) + diff).ToString("X") + " " + (int)VillagerHouseSize);
+                    Debug.Print("[Usb] Peek : House " + (VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + diff).ToString("X") + " " + (int)VillagerHouseSize);
 
-                    byte[] b = ReadLargeBytes(bot, (uint)(VillagerHouseAddress + (num * VillagerHouseSize) + diff), (int)VillagerHouseSize);
+                    byte[] b = ReadLargeBytes(bot, (uint)(VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + diff), (int)VillagerHouseSize);
 
                     if (b == null)
                     {
@@ -1686,15 +1689,15 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    SendByteArray(socket, VillagerHouseAddress + (num * VillagerHouseSize), house, (int)VillagerHouseSize, ref counter);
+                    SendByteArray(socket, VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)), house, (int)VillagerHouseSize, ref counter);
 
-                    SendByteArray(socket, VillagerHouseAddress + (num * VillagerHouseSize) + VillagerHouseBufferDiff, house, (int)VillagerHouseSize, ref counter);
+                    SendByteArray(socket, VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + VillagerHouseBufferDiff, house, (int)VillagerHouseSize, ref counter);
                 }
                 else
                 {
-                    WriteLargeBytes(bot, VillagerHouseAddress + (num * VillagerHouseSize), house, (int)VillagerHouseSize, ref counter);
+                    WriteLargeBytes(bot, VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)), house, (int)VillagerHouseSize, ref counter);
 
-                    WriteLargeBytes(bot, VillagerHouseAddress + (num * VillagerHouseSize) + VillagerHouseBufferDiff, house, (int)VillagerHouseSize, ref counter);
+                    WriteLargeBytes(bot, VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + VillagerHouseBufferDiff, house, (int)VillagerHouseSize, ref counter);
                 }
             }
         }
@@ -1705,9 +1708,9 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    Debug.Print("[Sys] Peek : HouseOwner " + (VillagerHouseAddress + (num * VillagerHouseSize) + VillagerHouseOwnerOffset).ToString("X"));
+                    Debug.Print("[Sys] Peek : HouseOwner " + (VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + VillagerHouseOwnerOffset).ToString("X"));
 
-                    byte[] b = ReadByteArray(socket, VillagerHouseAddress + (num * VillagerHouseSize) + VillagerHouseOwnerOffset, 1, ref counter);
+                    byte[] b = ReadByteArray(socket, VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + VillagerHouseOwnerOffset, 1, ref counter);
 
                     if (b == null)
                     {
@@ -1719,9 +1722,9 @@ namespace ACNHPoker
                 }
                 else
                 {
-                    Debug.Print("[Usb] Peek : HouseOwner " + (VillagerHouseAddress + (num * VillagerHouseSize) + VillagerHouseOwnerOffset).ToString("X"));
+                    Debug.Print("[Usb] Peek : HouseOwner " + (VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + VillagerHouseOwnerOffset).ToString("X"));
 
-                    byte[] b = ReadLargeBytes(bot, (uint)(VillagerHouseAddress + (num * VillagerHouseSize) + VillagerHouseOwnerOffset), 1, ref counter);
+                    byte[] b = ReadLargeBytes(bot, (uint)(VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + VillagerHouseOwnerOffset), 1, ref counter);
 
                     if (b == null)
                     {
@@ -1740,7 +1743,7 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    byte[] b = ReadByteArray(socket, VillagerHouseAddress + (num * VillagerHouseSize) + VillagerHouseOwnerOffset, 1);
+                    byte[] b = ReadByteArray(socket, VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + VillagerHouseOwnerOffset, 1);
 
                     if (b == null)
                     {
@@ -1752,7 +1755,7 @@ namespace ACNHPoker
                 }
                 else
                 {
-                    byte[] b = ReadLargeBytes(bot, (uint)(VillagerHouseAddress + (num * VillagerHouseSize) + VillagerHouseOwnerOffset), 1);
+                    byte[] b = ReadLargeBytes(bot, (uint)(VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + VillagerHouseOwnerOffset), 1);
 
                     if (b == null)
                     {
@@ -1869,9 +1872,9 @@ namespace ACNHPoker
             {
                 if (bot == null)
                 {
-                    Debug.Print("[Sys] Peek : VillagerHouseFlag " + (VillagerHouseAddress + (num * VillagerHouseSize) + offset).ToString("X"));
+                    Debug.Print("[Sys] Peek : VillagerHouseFlag " + (VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + offset).ToString("X"));
 
-                    byte[] b = ReadByteArray(socket, VillagerHouseAddress + (num * VillagerHouseSize) + offset, 1, ref counter);
+                    byte[] b = ReadByteArray(socket, VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + offset, 1, ref counter);
 
                     if (b == null)
                     {
@@ -1882,9 +1885,9 @@ namespace ACNHPoker
                 }
                 else
                 {
-                    Debug.Print("[Usb] Peek : VillagerHouseFlag " + (VillagerHouseAddress + (num * VillagerHouseSize) + offset).ToString("X"));
+                    Debug.Print("[Usb] Peek : VillagerHouseFlag " + (VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + offset).ToString("X"));
 
-                    byte[] b = ReadLargeBytes(bot, (uint)(VillagerHouseAddress + (num * VillagerHouseSize) + offset), 1, ref counter);
+                    byte[] b = ReadLargeBytes(bot, (uint)(VillagerHouseAddress + (num * (VillagerHouseSize + VillagerHousePadding)) + offset), 1, ref counter);
 
                     if (b == null)
                     {
@@ -2927,8 +2930,8 @@ namespace ACNHPoker
 
         public static async Task loadBoth(Socket socket, int villagerIndex, byte[] villager, int houseIndex, byte[] house)
         {
-            await Task.Run(() => SendByteArray(socket, VillagerAddress + (villagerIndex * VillagerSize), villager, (int)VillagerSize));
-            await Task.Run(() => SendByteArray(socket, VillagerHouseAddress + (houseIndex * VillagerHouseSize), house, (int)VillagerHouseSize));
+            await Task.Run(() => SendByteArray(socket, VillagerAddress + (villagerIndex * (VillagerHouseSize + VillagerHousePadding)), villager, (int)VillagerSize));
+            await Task.Run(() => SendByteArray(socket, VillagerHouseAddress + (houseIndex * (VillagerHouseSize + VillagerHousePadding)), house, (int)VillagerHouseSize));
         }
 
         public static async Task SetMoveout(Socket socket, int villagerIndex, string MoveoutFlag = "2", string ForceMoveoutFlag = "1")
@@ -3046,6 +3049,7 @@ namespace ACNHPoker
                 {"ant01", "Antonio"},
                 {"ant02", "Pango"},
                 {"ant03", "Anabelle"},
+                {"ant05", "Zoe"},
                 {"ant06", "Snooty"},
                 {"ant08", "Annalisa"},
                 {"ant09", "Olaf"},
@@ -3072,6 +3076,7 @@ namespace ACNHPoker
                 {"brd05", "Piper"},
                 {"brd06", "Admiral"},
                 {"brd08", "Midge"},
+                {"brd09", "Ace"},
                 {"brd11", "Jacob"},
                 {"brd15", "Lucha"},
                 {"brd16", "Jacques"},
@@ -3140,6 +3145,7 @@ namespace ACNHPoker
                 {"crd01", "Alli"},
                 {"crd02", "Boots"},
                 {"crd04", "Del"},
+                {"crd05", "Roswell"},
                 {"crd06", "Sly"},
                 {"crd07", "Gayle"},
                 {"crd08", "Drago"},
@@ -3154,6 +3160,7 @@ namespace ACNHPoker
                 {"der08", "Diana"},
                 {"der09", "Erik"},
                 {"der10", "Chelsea"},
+                {"der11", "Shino"},
                 {"dog00", "Goldie"},
                 {"dog01", "Butch"},
                 {"dog02", "Lucky"},
@@ -3165,6 +3172,7 @@ namespace ACNHPoker
                 {"dog08", "Cookie"},
                 {"dog09", "Maddie"},
                 {"dog10", "Bea"},
+                {"dog11", "Frett"},
                 {"dog14", "Mac"},
                 {"dog15", "Marcel"},
                 {"dog16", "Benjamin"},
@@ -3243,6 +3251,7 @@ namespace ACNHPoker
                 {"ham05", "Clay"},
                 {"ham06", "Flurry"},
                 {"ham07", "Hamphrey"},
+                {"ham09", "Marlo"},
                 {"hip00", "Rocco"},
                 {"hip02", "Bubbles"},
                 {"hip03", "Bertha"},
@@ -3272,6 +3281,7 @@ namespace ACNHPoker
                 {"kal04", "Gonzo"},
                 {"kal05", "Ozzie"},
                 {"kal08", "Canberra"},
+                {"kal07", "Faith"},
                 {"kal09", "Lyman"},
                 {"kal10", "Eugene"},
                 {"kgr00", "Kitt"},
@@ -3297,6 +3307,7 @@ namespace ACNHPoker
                 {"mnk06", "Flip"},
                 {"mnk07", "Shari"},
                 {"mnk08", "Deli"},
+                {"mnk09", "Tiansheng"},
                 {"mus00", "Dora"},
                 {"mus01", "Limberg"},
                 {"mus02", "Bella"},
@@ -3312,13 +3323,16 @@ namespace ACNHPoker
                 {"mus16", "Greta"},
                 {"mus17", "Penelope"},
                 {"mus18", "Chadder"},
+                {"mus19", "Petri"},
                 {"ocp00", "Octavian"},
                 {"ocp01", "Marina"},
                 {"ocp02", "Zucker"},
+                {"ocp04", "Cephalobot"},
                 {"ost00", "Queenie"},
                 {"ost01", "Gladys"},
                 {"ost02", "Sandy"},
                 {"ost03", "Sprocket"},
+                {"ost04", "Rio"},
                 {"ost05", "Julia"},
                 {"ost06", "Cranston"},
                 {"ost07", "Phil"},
@@ -3334,6 +3348,7 @@ namespace ACNHPoker
                 {"pbr07", "Sterling"},
                 {"pbr08", "Keaton"},
                 {"pbr09", "Celia"},
+                {"pbr10", "Quinn"},
                 {"pgn00", "Aurora"},
                 {"pgn01", "Roald"},
                 {"pgn02", "Cube"},
@@ -3341,6 +3356,7 @@ namespace ACNHPoker
                 {"pgn04", "Friga"},
                 {"pgn05", "Gwen"},
                 {"pgn06", "Puck"},
+                {"pgn07", "Chabwick"},
                 {"pgn09", "Wade"},
                 {"pgn10", "Boomer"},
                 {"pgn11", "Iggly"},
@@ -3383,10 +3399,12 @@ namespace ACNHPoker
                 {"rbt18", "Cole"},
                 {"rbt19", "Mira"},
                 {"rbt20", "Toby"},
+                {"rbt21", "Sasha"},
                 {"rhn00", "Tank"},
                 {"rhn01", "Rhonda"},
                 {"rhn02", "Spike"},
                 {"rhn04", "Hornsby"},
+                {"rhn05", "Azalea"},
                 {"rhn07", "Merengue"},
                 {"rhn08", "Renée"},
                 {"shp00", "Vesta"},
@@ -3421,6 +3439,7 @@ namespace ACNHPoker
                 {"squ16", "Sheldon"},
                 {"squ17", "Marshal"},
                 {"squ18", "Hazel"},
+                {"squ21", "Ione"},
                 {"tig00", "Rolf"},
                 {"tig01", "Rowan"},
                 {"tig02", "Tybalt"},

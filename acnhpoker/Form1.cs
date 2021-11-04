@@ -19,7 +19,7 @@ namespace ACNHPoker
     {
         #region variable
         private static Socket s;
-        private string version = "ACNH Poker R17.2 for v1.11.1";
+        private string version = "ACNH Poker R18 for v2.0.0";
         private inventorySlot selectedButton;
         private Villager[] V = null;
         private Button[] villagerButton = null;
@@ -53,6 +53,7 @@ namespace ACNHPoker
         private USBBot bot = null;
         private bool offline = true;
         private bool allowUpdate = true;
+        private bool ChineseFlag = false;
         private int counter = 0;
 
         private Setting setting;
@@ -980,6 +981,7 @@ namespace ACNHPoker
         {
             do
             {
+                Debug.Print(teleport.GetOverworldState().ToString());
                 Debug.Print(teleport.GetLocationState().ToString());
                 Thread.Sleep(2000);
             } while (true);

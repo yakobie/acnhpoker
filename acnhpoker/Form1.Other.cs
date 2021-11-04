@@ -1241,6 +1241,16 @@ namespace ACNHPoker
         {
             byte[] b = Utilities.peekAddress(s, bot, Utilities.readTimeAddress, 6);
             string time = Utilities.ByteToHexString(b);
+            
+            if (time.Equals("000000000000")) //Try for Chineses
+            {
+                b = Utilities.peekAddress(s, bot, Utilities.readTimeAddress + Utilities.ChineseLanguageOffset, 6);
+                time = Utilities.ByteToHexString(b);
+
+                if (!time.Equals("000000000000"))
+                    ChineseFlag = true;
+            }
+
             Debug.Print(time);
 
             yearTextbox.Clear();
@@ -1328,9 +1338,16 @@ namespace ACNHPoker
             minTextbox.Text = decMin.ToString();
             string hexMin = decMin.ToString("X");
 
-            Utilities.pokeAddress(s, bot, "0x" + Utilities.readTimeAddress.ToString("X"), Utilities.flip(Utilities.precedingZeros(hexYear, 4)));
-
-            Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x2).ToString("X"), Utilities.precedingZeros(hexMonth, 2) + Utilities.precedingZeros(hexDay, 2) + Utilities.precedingZeros(hexHour, 2) + Utilities.precedingZeros(hexMin, 2));
+            if (ChineseFlag)
+            {
+                Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + Utilities.ChineseLanguageOffset).ToString("X"), Utilities.flip(Utilities.precedingZeros(hexYear, 4)));
+                Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x2 + Utilities.ChineseLanguageOffset).ToString("X"), Utilities.precedingZeros(hexMonth, 2) + Utilities.precedingZeros(hexDay, 2) + Utilities.precedingZeros(hexHour, 2) + Utilities.precedingZeros(hexMin, 2));
+            }
+            else
+            {
+                Utilities.pokeAddress(s, bot, "0x" + Utilities.readTimeAddress.ToString("X"), Utilities.flip(Utilities.precedingZeros(hexYear, 4)));
+                Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x2).ToString("X"), Utilities.precedingZeros(hexMonth, 2) + Utilities.precedingZeros(hexDay, 2) + Utilities.precedingZeros(hexHour, 2) + Utilities.precedingZeros(hexMin, 2));
+            }
 
             if (sound)
                 System.Media.SystemSounds.Asterisk.Play();
@@ -1346,13 +1363,18 @@ namespace ACNHPoker
 
                 int decDay = int.Parse(dayTextbox.Text) - 1;
                 string hexDay = decDay.ToString("X");
-
-                Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x3).ToString("X"), Utilities.precedingZeros(hexDay, 2) + Utilities.precedingZeros(hexHour, 2));
+                if (ChineseFlag)
+                    Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x3 + Utilities.ChineseLanguageOffset).ToString("X"), Utilities.precedingZeros(hexDay, 2) + Utilities.precedingZeros(hexHour, 2));
+                else
+                    Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x3).ToString("X"), Utilities.precedingZeros(hexDay, 2) + Utilities.precedingZeros(hexHour, 2));
             }
             else
             {
                 string hexHour = decHour.ToString("X");
-                Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x4).ToString("X"), Utilities.precedingZeros(hexHour, 2));
+                if (ChineseFlag)
+                    Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x4 + Utilities.ChineseLanguageOffset).ToString("X"), Utilities.precedingZeros(hexHour, 2));
+                else
+                    Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x4).ToString("X"), Utilities.precedingZeros(hexHour, 2));
             }
             readtime();
             if (sound)
@@ -1369,13 +1391,18 @@ namespace ACNHPoker
 
                 int decDay = int.Parse(dayTextbox.Text) + 1;
                 string hexDay = decDay.ToString("X");
-
-                Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x3).ToString("X"), Utilities.precedingZeros(hexDay, 2) + Utilities.precedingZeros(hexHour, 2));
+                if (ChineseFlag)
+                    Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x3 + Utilities.ChineseLanguageOffset).ToString("X"), Utilities.precedingZeros(hexDay, 2) + Utilities.precedingZeros(hexHour, 2));
+                else
+                    Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x3).ToString("X"), Utilities.precedingZeros(hexDay, 2) + Utilities.precedingZeros(hexHour, 2));
             }
             else
             {
                 string hexHour = decHour.ToString("X");
-                Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x4).ToString("X"), Utilities.precedingZeros(hexHour, 2));
+                if (ChineseFlag)
+                    Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x4 + Utilities.ChineseLanguageOffset).ToString("X"), Utilities.precedingZeros(hexHour, 2));
+                else
+                    Utilities.pokeAddress(s, bot, "0x" + (Utilities.readTimeAddress + 0x4).ToString("X"), Utilities.precedingZeros(hexHour, 2));
             }
             readtime();
             if (sound)

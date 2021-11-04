@@ -1,6 +1,6 @@
 # ACNHPoker
 
-	![Release Image](https://i.ibb.co/txCNG22/131313.png)
+![Release Image](https://i.ibb.co/txCNG22/131313.png)
 
    1. Spawns items for you on Animal Crossing New Horizons using [sys-botbase](https://github.com/olliz0r/sys-botbase) or [USB-Botbase](https://github.com/fishguy6564/USB-Botbase).
    2. Manipulate in-game critter spawn rate.
@@ -247,7 +247,8 @@ https://youtu.be/-zztRgmtXig
 	* Rework the "Setting" for easier future update.
 * R17.2
 	* Try to fix "Dodo Helper" for Chinese.
-	
+* R18
+	* Update for Game version number 2.0.0
 ## Contributing
 
 1. Fork it (<https://github.com/KingLycosa/acnhpoker/fork>)

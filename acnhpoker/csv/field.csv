@@ -94,6 +94,16 @@ EC26 ; PltBushHibiscus1Yellow ; yellow-hibiscus (Grow 1) ; 00000000
 EC27 ; PltBushHibiscus2Yellow ; yellow-hibiscus (Flower bud) ; 00000000
 EC28 ; PltBushHibiscus3Yellow ; yellow-hibiscus (Full-grown Flower) ; 00000000
 EC29 ; PltBushHibiscus4Yellow ; yellow-hibiscus (Full-grown no Flower) ; 00000000
+ED2A ; PltBushPlumeria0Pink ; pink-plumeria(Sapling) ; 00000000
+ED28 ; PltBushPlumeria1Pink ; pink-plumeria(Grow 1) ; 00000000
+ED29 ; PltBushPlumeria2Pink ; pink-plumeria(Flower bud) ; 00000000
+ED27 ; PltBushPlumeria3Pink ; pink-plumeria(Full-grown Flower) ; 00000000
+ED26 ; PltBushPlumeria4Pink ; pink-plumeria(Full-grown no Flower) ; 00000000
+ED2E ; PltBushPlumeria0White ; white-plumeria(Sapling) ; 00000000
+ED2F ; PltBushPlumeria1White ; white-plumeria(Grow 1) ; 00000000
+ED2D ; PltBushPlumeria2White ; white-plumeria(Flower bud) ; 00000000
+ED2C ; PltBushPlumeria3White ; white-plumeria(Full-grown Flower) ; 00000000
+ED2B ; PltBushPlumeria4White ; white-plumeria(Full-grown no Flower) ; 00000000
 EAD7 ; PltBushHolly0 ; holly (Sapling) ; 00000000
 EAD9 ; PltBushHolly1 ; holly (Grow 1) ; 00000000
 EAD8 ; PltBushHolly2 ; holly (Flower bud) ; 00000000
@@ -119,6 +129,26 @@ ECFF ; PltBushCamellia2Pink ; pink-camellia (Grow 1) ; 00000000
 ED00 ; PltBushCamellia3Pink ; pink-camellia (Flower bud) ; 00000000
 ED01 ; PltBushCamellia4Pink ; pink-camellia (Full-grown Flower) ; 00000000
 ED03 ; PltBushCamellia5Pink ; pink-camellia (Full-grown no Flower) ; 00000000
+EA7C ; PltVgtTomato0 ; tomato(Sapling) ; 00000000
+EA7D ; PltVgtTomato1 ; tomato(Grow 1) ; 00000000
+EA7E ; PltVgtTomato2 ; tomato(Grow 2) ; 00000000
+EA7F ; PltVgtTomato3 ; tomato(Full-grown) ; 00000000
+EADF ; PltVgtWheat0 ; wheat(Sapling) ; 00000000
+EADE ; PltVgtWheat1 ; wheat(Grow 1) ; 00000000
+EADC ; PltVgtWheat2 ; wheat(Grow 2) ; 00000000
+EADD ; PltVgtWheat3 ; wheat(Full-grown) ; 00000000
+EAE8 ; PltVgtSugarCane0 ; sugarcane(Sapling) ; 00000000
+EAE7 ; PltVgtSugarCane1 ; sugarcane(Grow 1) ; 00000000
+EAE9 ; PltVgtSugarCane2 ; sugarcane(Grow 2) ; 00000000
+EAE6 ; PltVgtSugarCane3 ; sugarcane(Full-grown) ; 00000000
+EAEC ; PltVgtPotato0 ; potato(Sapling) ; 00000000
+EAEB ; PltVgtPotato1 ; potato(Grow 1) ; 00000000
+EAED ; PltVgtPotato2 ; potato(Grow 2) ; 00000000
+EAEA ; PltVgtPotato3 ; potato(Full-grown) ; 00000000
+EAF0 ; PltVgtCarrot0 ; carrot(Sapling) ; 00000000
+EAEF ; PltVgtCarrot1 ; carrot(Grow 1) ; 00000000
+EAF1 ; PltVgtCarrot2 ; carrot(Grow 2) ; 00000000
+EAEE ; PltVgtCarrot3 ; carrot(Full-grown) ; 00000000
 ECAF ; PltVgtSquash0Orange ; orange pumpkin (Sapling) ; 00000000
 ECB0 ; PltVgtSquash1Orange ; orange pumpkin (Grow 1) ; 00000000
 ECB1 ; PltVgtSquash2Orange ; orange pumpkin (Grow 2) ; 00000000
@@ -187,6 +217,13 @@ EC8F ; PltWeedWin12A ; Winter Weed 12A ; 00000000
 EC90 ; PltWeedWin12B ; Winter Weed 12B ; 00000000
 EC8E ; PltWeedWin12C ; Winter Weed 12C ; 00000000
 EC8D ; PltWeedWin13 ; Winter Weed 13 ; 00000000
+ED12 ; PltWeedLight1A ; Luminous Moss 1A ; 00000000
+ED14 ; PltWeedLight1B ; Luminous Moss 1B ; 00000000
+ED15 ; PltWeedLight1C ; Luminous Moss 1C ; 00000000
+ED13 ; PltWeedLight2A ; Luminous Moss 2A ; 00000000
+ED11 ; PltWeedLight2B ; Luminous Moss 2B ; 00000000
+ED10 ; PltWeedLight2C ; Luminous Moss 2C ; 00000000
+ED0F ; PltWeedLight3 ; Luminous Moss 3 ; 00000000
 EC9A ; PltTreeCedarDecoA ; Cedar (Deco) A ; 00200000
 EC97 ; PltTreeCedarDecoB ; Cedar (Deco) B ; 00200000
 EC9F ; PltTreeMoney0 ; Money Tree (Sapling) ; 002008A4
@@ -195,6 +232,22 @@ EC9E ; PltTreeMoney2 ; Money Tree (Grow 2) ; 002008A4
 EC9D ; PltTreeMoney3 ; Money Tree (Grow 3) ; 002008A4
 EC9C ; PltTreeMoney4 ; Money Tree (Full-grown) ; 002008A4
 ED16 ; PltTreeEasterEgg ; Tree (Easter Egg) ; 00200000
+ED17 ; PltVine ; Vine A ; 00000000
+ED31 ; PltVineB ; Vine B ; 00000000
+ED30 ; PltVineC ; Vine C ; 00000000
+ED3A ; LadderKitA0 ; Ladder A0 ; 00000000
+ED3B ; LadderKitA1 ; Ladder A1 ; 00000000
+ED3C ; LadderKitA2 ; Ladder A2 ; 00000000
+ED36 ; LadderKitB0 ; Ladder B0 ; 00000000
+ED37 ; LadderKitB1 ; Ladder B1 ; 00000000
+ED38 ; LadderKitB2 ; Ladder B2 ; 00000000
+ED39 ; LadderKitB3 ; Ladder B3 ; 00000000
+ED34 ; LadderKitC0 ; Ladder C0 ; 00000000
+ED35 ; LadderKitC1 ; Ladder C1 ; 00000000
+ED33 ; LadderKitC2 ; Ladder C2 ; 00000000
+ED42 ; LadderKitD ; Ladder D0 ; 00000000
+ED43 ; LadderKitB4 ; Ladder B4 ; 00000000
+ED44 ; LadderKitB5 ; Ladder B5 ; 00000000
 EC62 ; PltFlwCosmos0Red ; red-cosmos (Sprout) ; 0083E003
 EA6F ; PltFlwCosmos1Red ; red-cosmos (Stem) ; 0083E003
 EA70 ; PltFlwCosmos2Red ; red-cosmos (Bud) ; 0083E003
@@ -380,28 +433,107 @@ EBF0 ; PltFlwHyacinth2Orange ; orange-hyacinth (Bud) ; 0083E00D
 EBEC ; PltFlwHyacinth3Orange ; orange-hyacinth (Flower) ; 0083E00D
 ECC1 ; PltFlwLily3 ; lily-of-the-valley (Flower) ; 00000000
 EA79 ; Hole ; Hole ; 00000000
-ECC2 ; FenceWoodNatural ; simple wooden fence ; 00000000
-EB00 ; FenceWallRenga ; brick fence ; 00000000
-EBBA ; FenceVerticalWood ; vertical-board fence ; 00000000
-EBBF ; FenceBamboo ; bamboo lattice fence ; 00000000
-ECC3 ; FenceLattice3 ; lattice fence ; 00000000
 EBD5 ; FenceHorizontalWood ; corral fence ; 00000000
+EBBA ; FenceVerticalWood ; vertical-board fence ; 00000000
+ECB8 ; FenceVerticalWood2 ; vertical-board fence (Black) ; 00000000
+ECC9 ; FenceVerticalWood6 ; vertical-board fence (Blue) ; 00000000
+ECCA ; FenceVerticalWood5 ; vertical-board fence (Green) ; 00000000
+ECCB ; FenceVerticalWood3 ; vertical-board fence (Pink) ; 00000000
+ECCC ; FenceVerticalWood4 ; vertical-board fence (Yellow) ; 00000000
+ED5B ; FenceVerticalWood8 ; vertical-board fence (Purple) ; 00000000
+ED5C ; FenceVerticalWood7 ; vertical-board fence (White) ; 00000000
 EBD6 ; FenceLog ; country fence ; 00000000
-EBD8 ; FencePegRope ; rope fence ; 00000000
-EC74 ; FenceChinese ; imperial fence ; 00000000
-EC7C ; FenceDriedStraw ; straw fence ; 00000000
-EC7D ; FenceSteel ; iron fence ; 00000000
 EC7E ; FenceSharply ; spiky fence ; 00000000
-EC9B ; FenceStone ; stone fence ; 00000000
 ECB2 ; FenceBarbedWire ; barbed-wire fence ; 00000000
-ECB6 ; FenceJapanese ; zen fence ; 00000000
+ECB3 ; FenceLogWall ; log-wall fence ; 00000000
+EBD7 ; FenceHorizontalLog ; log fence ; 00000000
+EAA1 ; FenceWoodWhite ; simple wooden fence (White) ; 00000000
+EC94 ; FenceWoodBlue ; simple wooden fence (Blue) ; 00000000
+ECB5 ; FenceWoodPink ; simple wooden fence (Pink) ; 00000000
+ECC2 ; FenceWoodNatural ; simple wooden fence ; 00000000
+ECC5 ; FenceWoodYellow ; simple wooden fence (Black) ; 00000000
+ECC6 ; FenceWoodOrange ; simple wooden fence (Orange) ; 00000000
+ECC7 ; FenceWoodPurple ; simple wooden fence (Purple) ; 00000000
+ECC8 ; FenceWoodGreen ; simple wooden fence (Green) ; 00000000
+EBD4 ; FenceLattice ; lattice fence (Blue) ; 00000000
+ECBA ; FenceLattice2 ; lattice fence (White) ; 00000000
+ECC3 ; FenceLattice3 ; lattice fence ; 00000000
+ECCD ; FenceLattice8 ; lattice fence (Purple) ; 00000000
+ECCE ; FenceLattice7 ; lattice fence (Black) ; 00000000
+ECCF ; FenceLattice5 ; lattice fence (Yellow) ; 00000000
+ECD0 ; FenceLattice6 ; lattice fence (Green) ; 00000000
+ECD1 ; FenceLattice4 ; lattice fence (Pink) ; 00000000
+ECB4 ; FenceLatticeBig ; large lattice fence ; 00000000
+ECBB ; FenceLatticeBig2 ; large lattice fence (White) ; 00000000
+ECD2 ; FenceLatticeBig8 ; large lattice fence (Black) ; 00000000
+ECD3 ; FenceLatticeBig7 ; large lattice fence (Blue) ; 00000000
+ECD4 ; FenceLatticeBig5 ; large lattice fence (Green) ; 00000000
+ECD5 ; FenceLatticeBig6 ; large lattice fence (Purple) ; 00000000
+ECD6 ; FenceLatticeBig3 ; large lattice fence (Red) ; 00000000
+ECD7 ; FenceLatticeBig4 ; large lattice fence (Orange) ; 00000000
+EC74 ; FenceChinese ; imperial fence ; 00000000
+EB00 ; FenceWallRenga ; brick fence ; 00000000
+EC9B ; FenceStone ; stone fence ; 00000000
 ECB7 ; FenceIronAndStone ; iron-and-stone fence ; 00000000
-ED0C ; FenceEasterEgg ; Bunny Day fence ; 00000000
-ED0D ; FenceJuneBride ; wedding fence ; 00000000
+EC7B ; FenceConcreteBlock ; block fence ; 00000000
+ECB6 ; FenceJapanese ; zen fence ; 00000000
+ECD8 ; FenceJapanese8 ; zen fence (Purple) ; 00000000
+ECD9 ; FenceJapanese7 ; zen fence (Green) ; 00000000
+ECDA ; FenceJapanese5 ; zen fence (Yellow) ; 00000000
+ECDB ; FenceJapanese6 ; zen fence (Beige) ; 00000000
+ECDC ; FenceJapanese2 ; zen fence (Blue) ; 00000000
+ECDD ; FenceJapanese3 ; zen fence (Red) ; 00000000
+ECDE ; FenceJapanese4 ; zen fence (Orange) ; 00000000
+EBD8 ; FencePegRope ; rope fence ; 00000000
+EC7D ; FenceSteel ; iron fence ; 00000000
+ECDF ; FenceSteel2 ; iron fence (Red) ; 00000000
+ECE0 ; FenceSteel3 ; iron fence (Yellow) ; 00000000
+ECE1 ; FenceSteel4 ; iron fence (Green) ; 00000000
+ED55 ; FenceSteel8 ; iron fence (Black) ; 00000000
+ED56 ; FenceSteel7 ; iron fence (White) ; 00000000
+ED57 ; FenceSteel6 ; iron fence (Navy) ; 00000000
+ED58 ; FenceSteel5 ; iron fence (Orange) ; 00000000
+ED48 ; FencePark ; park fence (Blue) ; 00000000
+ED49 ; FencePark2 ; park fence (Red) ; 00000000
+ED4A ; FencePark5 ; park fence (Pink) ; 00000000
+ED4B ; FencePark4 ; park fence (Green) ; 00000000
+ED4C ; FencePark6 ; park fence (Red and Yellow) ; 00000000
+ED4D ; FencePark3 ; park fence (Yellow) ; 00000000
+ED4E ; FencePark8 ; park fence (Blue and Pink) ; 00000000
+ED4F ; FencePark7 ; park fence (Green and Orange) ; 00000000
+ED47 ; FenceCorrugatedIron ; corrugated iron fence ; 00000000
+ED50 ; FenceCorrugatedIron1 ; corrugated iron fence (Blue) ; 00000000
+ED51 ; FenceCorrugatedIron2 ; corrugated iron fence (Yellow) ; 00000000
+ED52 ; FenceCorrugatedIron3 ; corrugated iron fence (Green) ; 00000000
+ED53 ; FenceCorrugatedIron5 ; corrugated iron fence (Orange) ; 00000000
+ED54 ; FenceCorrugatedIron4 ; corrugated iron fence (Red) ; 00000000
+ED59 ; FenceCorrugatedIron6 ; corrugated iron fence (White) ; 00000000
+ED5A ; FenceCorrugatedIron7 ; corrugated iron fence (Black) ; 00000000
+EC7C ; FenceDriedStraw ; straw fence ; 00000000
 ED08 ; FenceIkegaki ; hedge ; 00000000
+EBBF ; FenceBamboo ; bamboo lattice fence ; 00000000
+ECE3 ; FenceCrossedBamboo ; green bamboo fence ; 00000000
+ECE2 ; FenceSandProtection ; bamboo-slats fence ; 00000000
 ED21 ; FenceMermaid ; mermaid fence ; 00000000
+ECE4 ; FenceIce ; frozen fence ; 00000000
+ECE6 ; FenceIce05 ; frozen fence (Green) ; 00000000
+ECE7 ; FenceIce04 ; frozen fence (Orange) ; 00000000
+ECE8 ; FenceIce06 ; frozen fence (Purple) ; 00000000
+ECE9 ; FenceIce01 ; frozen fence (Blue) ; 00000000
+ECEA ; FenceIce02 ; frozen fence (Pink) ; 00000000
+ECEB ; FenceIce03 ; frozen fence (Yellow) ; 00000000
+ED0C ; FenceEasterEgg ; Bunny Day fence ; 00000000
+ED09 ; FenceJuneBride4 ; wedding fence (Red) ; 00000000
+ED0A ; FenceJuneBride2 ; wedding fence (Blue) ; 00000000
+ED0B ; FenceJuneBride3 ; wedding fence (Green) ; 00000000
+ED0D ; FenceJuneBride ; wedding fence ; 00000000
+ED0E ; FenceJuneBride1 ; wedding fence (Pink) ; 00000000
+ED5D ; FenceJuneBride7 ; wedding fence (Black) ; 00000000
+ED5E ; FenceJuneBride6 ; wedding fence (Purple) ; 00000000
+ED5F ; FenceJuneBride5 ; wedding fence (Yellow) ; 00000000
 ED25 ; FenceHalloween ; spooky fence ; 00000000
 ECC4 ; FenceCommune ; Harvey's island fence ; 00000000
+ED46 ; FenceGardenPegRope ; 庭専用柵（編集外用） ; 00000000
 EB12 ; StoneA ; Stone A ; 00000000
 EB13 ; StoneB ; Stone B ; 00000000
 EB16 ; StoneC ; Stone C ; 00000000

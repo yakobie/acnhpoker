@@ -1420,6 +1420,10 @@ namespace ACNHPoker
                             }
                             else
                             {
+                                WriteLog("Time's up! Save and reboot!", true);
+                                EndSession();
+                                mytimer.done = false;
+                                continue;
                             }
                         }
                     }
@@ -1471,7 +1475,11 @@ namespace ACNHPoker
 
                         if (mytimer != null && resetSession)
                         {
-                            mytimer.reset();
+                            this.Invoke((MethodInvoker)delegate
+                            {
+                                mytimer.reset();
+                                mytimer.start();
+                            });
                         }
 
                         WriteLog("Restore sequence finished.", true);
