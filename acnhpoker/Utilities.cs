@@ -181,15 +181,15 @@ namespace ACNHPoker
         public static readonly string freezeTimeValue = "D503201F";
         public static readonly string unfreezeTimeValue = "F9203260";
 
-        public static UInt32 wSpeedAddress = 0x0114A670; //0x01134780; //0x01115CE0;
-        public static readonly string wSpeedX1 = "BD530E61";
+        public static UInt32 wSpeedAddress = 0x01605DF0;
+        public static readonly string wSpeedX1 = "BD578661";
         public static readonly string wSpeedX2 = "1E201001";
         public static readonly string wSpeedX3 = "1E211001";
         public static readonly string wSpeedX4 = "1E221001";
 
-        public static UInt32 CollisionAddress = 0x010B7420; //0x010A1D80; //0x01084140;
+        public static UInt32 CollisionAddress = 0x01554D50;
         public static readonly string CollisionDisable = "12800014";
-        public static readonly string CollisionEnable = "B9572814";
+        public static readonly string CollisionEnable = "B95BA014";
 
         public static UInt32 aSpeedAddress = 0x043A4B30;
         public static readonly string aSpeedX1 = "3F800000";
