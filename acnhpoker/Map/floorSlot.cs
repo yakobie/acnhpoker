@@ -348,6 +348,11 @@ namespace ACNHPoker
                 this.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
                 this.Text = "Dur: " + itemDurability.ToString();
             }
+            else if (ItemAttr.hasUse(itemID)) // Food/Drink
+            {
+                this.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+                this.Text = "Use: " + itemDurability.ToString();
+            }
             else if (ItemAttr.isFlower(itemID)) //Flowers
             {
                 this.TextAlign = System.Drawing.ContentAlignment.BottomRight;

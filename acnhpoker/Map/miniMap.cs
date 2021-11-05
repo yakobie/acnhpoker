@@ -56,8 +56,6 @@ namespace ACNHPoker
 
         public Bitmap drawBackground()
         {
-            try
-            {
                 byte[] AllAcre = new byte[AcreMax];
                 byte plazeX;
                 byte plazeY;
@@ -88,7 +86,7 @@ namespace ACNHPoker
                 }
 
                 return toFullMap(AcreImage);
-            }
+            /*
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
@@ -97,6 +95,7 @@ namespace ACNHPoker
                 g.Clear(Color.White);
                 return myBitmap;
             }
+            */
         }
 
         private byte[] GetAcreData(byte Acre)
@@ -397,8 +396,6 @@ namespace ACNHPoker
 
         public Bitmap drawItemMap()
         {
-            try
-            {
                 Bitmap myBitmap;
 
                 myBitmap = new Bitmap(numOfColumn * mapSize, numOfRow * mapSize);
@@ -456,7 +453,7 @@ namespace ACNHPoker
                 }
 
                 return myBitmap;
-            }
+            /*
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
@@ -465,6 +462,7 @@ namespace ACNHPoker
                 g.Clear(Color.Transparent);
                 return myBitmap;
             }
+            */
         }
 
         private void buildBackgroundColor(byte[] AcreWOOutside)

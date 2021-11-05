@@ -43,6 +43,45 @@ namespace ACNHPoker
             0x2591, // golden axe
             0x3147, // worn axe
         };
+        private static readonly HashSet<UInt16> hasUseSet = new HashSet<UInt16>
+        {
+            0x0144, // rainbow soft serve
+            0x0145, // berry-vanilla soft serve
+            0x0146, // matcha-vanilla soft serve
+            0x0147, // chocolate soft serve
+            0x014C, // matcha donut
+            0x014E, // strawberry donut
+            0x0151, // white-chocolate donut
+            0x38CD, // takeout coffee
+            0x3924, // boba milk tea
+            0x3925, // plain cotton candy
+            0x3927, // chocolate frozen treat
+            0x3928, // ramune-soda frozen treat
+            0x3929, // orange frozen treat
+            0x392B, // vanilla cone
+            0x392C, // vanilla soft serve
+            0x392E, // canned orange juice
+            0x3931, // chocolate donut
+            0x398E, // ramune-soda-lemon cone
+            0x3996,
+            0x3997,
+            0x3998,
+            0x3999,
+            0x399A,
+            0x399B,
+            0x399C,
+            0x39B7,
+            0x39B8,
+            0x39B9,
+            0x39BA,
+            0x39BB,
+            0x39BC,
+            0x39BD,
+            0x39F4,
+            0x39F5,
+            0x3A04,
+            0x3A05,
+        };
         private static readonly HashSet<UInt16> hasGeneticsSet = new HashSet<UInt16>
         {
             0x0A43, // red-cosmos stems
@@ -639,6 +678,10 @@ namespace ACNHPoker
             0x176B, // Scorpius fragment
             0x176C, // Sagittarius fragment
             0x0A40, // clump of weeds
+            0x36AA, // flour
+            0x36AC, // whole-wheat flour
+            0x36AD, // sugar
+            0x36AE, // brown sugar
         };
         private static readonly HashSet<UInt16> isDummyContainerSet = new HashSet<UInt16>
         {
@@ -686,6 +729,18 @@ namespace ACNHPoker
             0x325E, // wedding fence
             0x33DB, // Spooky Fence,
             0x37C6, // mermaid fence
+            0x10FF,
+            0x1103,
+            0x1458,
+            0x145A,
+            0x39A3,
+            0x39A4,
+            0x39A5,
+            0x39A6,
+            0x39A7,
+
+
+            /*
                 0xECC2, // simple wooden fence
                 0xEB00, // brick fence
                 0xEBBA, // vertical-board fence
@@ -710,6 +765,7 @@ namespace ACNHPoker
                 0xED21, // mermaid fence
                 0xED25, // spooky fence
                 0xECC4, // Harvey's island fence
+            */
         };
         private static readonly HashSet<UInt16> isFlowerSet = new HashSet<UInt16>
         {
@@ -798,6 +854,11 @@ namespace ACNHPoker
             0x0EAF, // yellow-mum bag
             0x0EB9, // red-mum bag
             0x33AB, // Pumpkin Start
+            0x0A59, // tomato start
+            0x0BD6, // wheat start
+            0x0BDB, // sugarcane start
+            0x0BE0, // seed potato
+            0x0BE5, // arrot start
         };
         private static readonly HashSet<UInt16> isBushStartSet = new HashSet<UInt16>
         {
@@ -866,6 +927,13 @@ namespace ACNHPoker
                 0x0DD6,// FeatherBlue ; blue feather; あおいはね ; 藍色羽毛 ; 蓝色羽毛 ; 파란색 깃털; plume bleue; Azurfeder ; pluma azul; piuma blu; blauwe veer; синее перо; 
                 0x0DD7,// FeatherGreen ; green feather; みどりのはね ; 綠色羽毛 ; 绿色羽毛 ; 초록색 깃털; plume verte; Smaragdfeder ; pluma verde; piuma verde; groene veer; зеленое перо; 
                 0x0DD9,// FeatherPurple ; purple feather; むらさきのはね ; 紫色羽毛 ; 紫色羽毛 ; 보라색 깃털; plume violette; Lilafeder ; pluma morada; piuma viola; paarse veer; фиолетовое перо; 
+                        0x0A0A, // tomato
+                        0x0BD5, // wheat
+                        0x0BDA, // sugarcane
+                        0x0BDF, // potato
+                        0x0BE4, // carrot
+                        0x3106, // glowing moss
+                        0x3107, // vine
     }
             .Union(isCraftMaterialSet)
             .Union(isFenceSet)
@@ -957,6 +1025,7 @@ namespace ACNHPoker
                 0xEB14, // Stone E
             }
         );
+
         private static readonly HashSet<UInt16> isBushSet = new HashSet<UInt16>(
         new UInt16[] {
                 0xEACC,//PltBushAzalea0White,//white-azalea(Sapling); 00000000
@@ -998,6 +1067,10 @@ namespace ACNHPoker
         public static bool hasDurability(UInt16 item)
         {
             return hasDurabilitySet.Contains(item);
+        }
+        public static bool hasUse(UInt16 item)
+        {
+            return hasUseSet.Contains(item);
         }
         public static bool hasQuantity(UInt16 item)
         {

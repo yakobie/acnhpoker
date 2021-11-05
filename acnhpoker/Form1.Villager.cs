@@ -1088,7 +1088,7 @@ namespace ACNHPoker
             {
                 try
                 {
-                    Utilities.pokeAddress(s, bot, "0x0BA1E858", "3");
+                    Utilities.pokeAddress(s, bot, Utilities.TextSpeedAddress.ToString("X"), "3");
                 }
                 catch
                 {

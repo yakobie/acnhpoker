@@ -28,7 +28,7 @@ namespace ACNHPoker
 
         private void PokeBtn_Click(object sender, EventArgs e)
         {
-            Utilities.pokeAddress(s, bot, "0x" + debugAddress.Text, debugAmount.Text);
+            Utilities.pokeAddress(s, bot, debugAddress.Text, debugAmount.Text);
         }
         private void PeekBtn_Click(object sender, EventArgs e)
         {

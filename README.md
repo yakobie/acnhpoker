@@ -249,6 +249,13 @@ https://youtu.be/-zztRgmtXig
 	* Try to fix "Dodo Helper" for Chinese.
 * R18
 	* Update for Game version number 2.0.0
+* R18.1
+	* Fixed a nasty bug that cause the application window to shrink.
+	* Fixed the display for multiple-use items. (LikeBoba tea)
+	* Added the new reactions to the reaction wheel.
+	* Added a [!] to PhotoStudio items that would be stuck if dropped.
+	* Added the "Max Walk Speed" to the "Other" tab. Function similar to the old "Walk speed". Thanks to Red.
+	
 ## Contributing
 
 1. Fork it (<https://github.com/KingLycosa/acnhpoker/fork>)

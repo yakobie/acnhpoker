@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.connectBtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -180,6 +180,12 @@
             this.animationSpdx5 = new System.Windows.Forms.Button();
             this.setMaxBtn = new System.Windows.Forms.Button();
             this.pokeMainCheatPanel = new System.Windows.Forms.Panel();
+            this.maxSpeedX100Btn = new System.Windows.Forms.Button();
+            this.maxSpeedX2Btn = new System.Windows.Forms.Button();
+            this.maxSpeedX3Btn = new System.Windows.Forms.Button();
+            this.maxSpeedX5Btn = new System.Windows.Forms.Button();
+            this.maxSpeedX1Btn = new System.Windows.Forms.Button();
+            this.label30 = new System.Windows.Forms.Label();
             this.timePanel = new System.Windows.Forms.Panel();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
@@ -191,11 +197,11 @@
             this.hourTextbox = new System.Windows.Forms.RichTextBox();
             this.monthTextbox = new System.Windows.Forms.RichTextBox();
             this.dayTextbox = new System.Windows.Forms.RichTextBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.Label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.selectedItem = new ACNHPoker.inventorySlot();
+            this.label20 = new System.Windows.Forms.Label();
             this.playerSelectorOther = new System.Windows.Forms.ComboBox();
             this.playerSelectorInventory = new System.Windows.Forms.ComboBox();
             this.saveBtn = new System.Windows.Forms.Button();
@@ -1542,14 +1548,14 @@
             this.itemGridView.AllowUserToResizeRows = false;
             this.itemGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.itemGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.itemGridView.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.itemGridView.DefaultCellStyle = dataGridViewCellStyle1;
             this.itemGridView.Location = new System.Drawing.Point(854, 30);
             this.itemGridView.MultiSelect = false;
             this.itemGridView.Name = "itemGridView";
@@ -1919,14 +1925,14 @@
             this.recipeGridView.AllowUserToResizeRows = false;
             this.recipeGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.recipeGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.recipeGridView.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.recipeGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.recipeGridView.Location = new System.Drawing.Point(854, 30);
             this.recipeGridView.MultiSelect = false;
             this.recipeGridView.Name = "recipeGridView";
@@ -2053,14 +2059,14 @@
             this.flowerGridView.AllowUserToResizeRows = false;
             this.flowerGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.flowerGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.flowerGridView.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.flowerGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.flowerGridView.Location = new System.Drawing.Point(854, 30);
             this.flowerGridView.MultiSelect = false;
             this.flowerGridView.Name = "flowerGridView";
@@ -2410,7 +2416,7 @@
             this.speedX4Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speedX4Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.speedX4Btn.ForeColor = System.Drawing.Color.White;
-            this.speedX4Btn.Location = new System.Drawing.Point(8, 30);
+            this.speedX4Btn.Location = new System.Drawing.Point(1111, 902);
             this.speedX4Btn.Name = "speedX4Btn";
             this.speedX4Btn.Size = new System.Drawing.Size(75, 24);
             this.speedX4Btn.TabIndex = 150;
@@ -2428,7 +2434,7 @@
             this.speedX1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speedX1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.speedX1Btn.ForeColor = System.Drawing.Color.White;
-            this.speedX1Btn.Location = new System.Drawing.Point(251, 30);
+            this.speedX1Btn.Location = new System.Drawing.Point(1354, 902);
             this.speedX1Btn.Name = "speedX1Btn";
             this.speedX1Btn.Size = new System.Drawing.Size(75, 24);
             this.speedX1Btn.TabIndex = 151;
@@ -2841,7 +2847,7 @@
             this.speedX2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speedX2Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.speedX2Btn.ForeColor = System.Drawing.Color.White;
-            this.speedX2Btn.Location = new System.Drawing.Point(170, 30);
+            this.speedX2Btn.Location = new System.Drawing.Point(1273, 902);
             this.speedX2Btn.Name = "speedX2Btn";
             this.speedX2Btn.Size = new System.Drawing.Size(75, 24);
             this.speedX2Btn.TabIndex = 168;
@@ -2858,7 +2864,7 @@
             this.speedX3Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.speedX3Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.speedX3Btn.ForeColor = System.Drawing.Color.White;
-            this.speedX3Btn.Location = new System.Drawing.Point(89, 30);
+            this.speedX3Btn.Location = new System.Drawing.Point(1192, 902);
             this.speedX3Btn.Name = "speedX3Btn";
             this.speedX3Btn.Size = new System.Drawing.Size(75, 24);
             this.speedX3Btn.TabIndex = 169;
@@ -2902,17 +2908,18 @@
             // 
             // pokeMainCheatPanel
             // 
+            this.pokeMainCheatPanel.Controls.Add(this.maxSpeedX100Btn);
+            this.pokeMainCheatPanel.Controls.Add(this.maxSpeedX2Btn);
+            this.pokeMainCheatPanel.Controls.Add(this.maxSpeedX3Btn);
+            this.pokeMainCheatPanel.Controls.Add(this.maxSpeedX5Btn);
+            this.pokeMainCheatPanel.Controls.Add(this.maxSpeedX1Btn);
+            this.pokeMainCheatPanel.Controls.Add(this.label30);
             this.pokeMainCheatPanel.Controls.Add(this.animationSpdx5);
-            this.pokeMainCheatPanel.Controls.Add(this.speedX3Btn);
-            this.pokeMainCheatPanel.Controls.Add(this.speedX2Btn);
             this.pokeMainCheatPanel.Controls.Add(this.timePanel);
-            this.pokeMainCheatPanel.Controls.Add(this.label20);
             this.pokeMainCheatPanel.Controls.Add(this.label23);
             this.pokeMainCheatPanel.Controls.Add(this.unfreezeTimeBtn);
-            this.pokeMainCheatPanel.Controls.Add(this.speedX4Btn);
             this.pokeMainCheatPanel.Controls.Add(this.animationSpdx50);
             this.pokeMainCheatPanel.Controls.Add(this.freezeTimeBtn);
-            this.pokeMainCheatPanel.Controls.Add(this.speedX1Btn);
             this.pokeMainCheatPanel.Controls.Add(this.animationSpdx2);
             this.pokeMainCheatPanel.Controls.Add(this.Label21);
             this.pokeMainCheatPanel.Controls.Add(this.animationSpdx1);
@@ -2925,6 +2932,101 @@
             this.pokeMainCheatPanel.Size = new System.Drawing.Size(702, 197);
             this.pokeMainCheatPanel.TabIndex = 161;
             this.formToolTip.SetToolTip(this.pokeMainCheatPanel, resources.GetString("pokeMainCheatPanel.ToolTip"));
+            // 
+            // maxSpeedX100Btn
+            // 
+            this.maxSpeedX100Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.maxSpeedX100Btn.FlatAppearance.BorderSize = 0;
+            this.maxSpeedX100Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.maxSpeedX100Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxSpeedX100Btn.ForeColor = System.Drawing.Color.White;
+            this.maxSpeedX100Btn.Location = new System.Drawing.Point(6, 30);
+            this.maxSpeedX100Btn.Name = "maxSpeedX100Btn";
+            this.maxSpeedX100Btn.Size = new System.Drawing.Size(60, 24);
+            this.maxSpeedX100Btn.TabIndex = 176;
+            this.maxSpeedX100Btn.Text = "x100";
+            this.formToolTip.SetToolTip(this.maxSpeedX100Btn, "Change maximum walk speed to x100.\r\nYou can still hold the B button to move at no" +
+        "rmal run speed.\r\n\r\nSonic Boom! (Save the planet from disaster)");
+            this.maxSpeedX100Btn.UseVisualStyleBackColor = false;
+            this.maxSpeedX100Btn.Click += new System.EventHandler(this.maxSpeedX100Btn_Click);
+            // 
+            // maxSpeedX2Btn
+            // 
+            this.maxSpeedX2Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.maxSpeedX2Btn.FlatAppearance.BorderSize = 0;
+            this.maxSpeedX2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.maxSpeedX2Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxSpeedX2Btn.ForeColor = System.Drawing.Color.White;
+            this.maxSpeedX2Btn.Location = new System.Drawing.Point(201, 30);
+            this.maxSpeedX2Btn.Name = "maxSpeedX2Btn";
+            this.maxSpeedX2Btn.Size = new System.Drawing.Size(60, 24);
+            this.maxSpeedX2Btn.TabIndex = 174;
+            this.maxSpeedX2Btn.Text = "x2";
+            this.formToolTip.SetToolTip(this.maxSpeedX2Btn, "Change maximum walk speed to x2.\r\nYou can still hold the B button to move at norm" +
+        "al run speed.\r\n\r\nMovin\' at speed of sound!");
+            this.maxSpeedX2Btn.UseVisualStyleBackColor = false;
+            this.maxSpeedX2Btn.Click += new System.EventHandler(this.maxSpeedX2Btn_Click);
+            // 
+            // maxSpeedX3Btn
+            // 
+            this.maxSpeedX3Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.maxSpeedX3Btn.FlatAppearance.BorderSize = 0;
+            this.maxSpeedX3Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.maxSpeedX3Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxSpeedX3Btn.ForeColor = System.Drawing.Color.White;
+            this.maxSpeedX3Btn.Location = new System.Drawing.Point(136, 30);
+            this.maxSpeedX3Btn.Name = "maxSpeedX3Btn";
+            this.maxSpeedX3Btn.Size = new System.Drawing.Size(60, 24);
+            this.maxSpeedX3Btn.TabIndex = 175;
+            this.maxSpeedX3Btn.Text = "x3";
+            this.formToolTip.SetToolTip(this.maxSpeedX3Btn, "Change maximum walk speed to x3.\r\nYou can still hold the B button to move at norm" +
+        "al run speed.\r\n\r\nGotta go fast, gotta go fast!");
+            this.maxSpeedX3Btn.UseVisualStyleBackColor = false;
+            this.maxSpeedX3Btn.Click += new System.EventHandler(this.maxSpeedX3Btn_Click);
+            // 
+            // maxSpeedX5Btn
+            // 
+            this.maxSpeedX5Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.maxSpeedX5Btn.FlatAppearance.BorderSize = 0;
+            this.maxSpeedX5Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.maxSpeedX5Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxSpeedX5Btn.ForeColor = System.Drawing.Color.White;
+            this.maxSpeedX5Btn.Location = new System.Drawing.Point(71, 30);
+            this.maxSpeedX5Btn.Name = "maxSpeedX5Btn";
+            this.maxSpeedX5Btn.Size = new System.Drawing.Size(60, 24);
+            this.maxSpeedX5Btn.TabIndex = 172;
+            this.maxSpeedX5Btn.Text = "x5";
+            this.formToolTip.SetToolTip(this.maxSpeedX5Btn, "Change maximum walk speed to x5.\r\nYou can still hold the B button to move at norm" +
+        "al run speed.\r\n\r\nGotta go faster, faster, faster, faster, faster!");
+            this.maxSpeedX5Btn.UseVisualStyleBackColor = false;
+            this.maxSpeedX5Btn.Click += new System.EventHandler(this.maxSpeedX5Btn_Click);
+            // 
+            // maxSpeedX1Btn
+            // 
+            this.maxSpeedX1Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
+            this.maxSpeedX1Btn.FlatAppearance.BorderSize = 0;
+            this.maxSpeedX1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.maxSpeedX1Btn.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxSpeedX1Btn.ForeColor = System.Drawing.Color.White;
+            this.maxSpeedX1Btn.Location = new System.Drawing.Point(266, 30);
+            this.maxSpeedX1Btn.Name = "maxSpeedX1Btn";
+            this.maxSpeedX1Btn.Size = new System.Drawing.Size(60, 24);
+            this.maxSpeedX1Btn.TabIndex = 173;
+            this.maxSpeedX1Btn.Text = "x1";
+            this.formToolTip.SetToolTip(this.maxSpeedX1Btn, "Reset maximum walk speed to normal.\r\n\r\nWhen life is going way too fast...");
+            this.maxSpeedX1Btn.UseVisualStyleBackColor = false;
+            this.maxSpeedX1Btn.Click += new System.EventHandler(this.maxSpeedX1Btn_Click);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label30.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label30.Location = new System.Drawing.Point(4, 4);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(173, 22);
+            this.label30.TabIndex = 171;
+            this.label30.Text = "Max Walk Speed :";
             // 
             // timePanel
             // 
@@ -3077,17 +3179,6 @@
             this.dayTextbox.TabIndex = 164;
             this.dayTextbox.Text = "Day";
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label20.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label20.Location = new System.Drawing.Point(3, 4);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(129, 22);
-            this.label20.TabIndex = 149;
-            this.label20.Text = "Walk Speed :";
-            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -3141,6 +3232,17 @@
             this.formToolTip.SetToolTip(this.selectedItem, "Click to spawn selected item.");
             this.selectedItem.UseVisualStyleBackColor = false;
             this.selectedItem.Click += new System.EventHandler(this.selectedItem_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label20.ForeColor = System.Drawing.Color.Gainsboro;
+            this.label20.Location = new System.Drawing.Point(1106, 876);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(129, 22);
+            this.label20.TabIndex = 149;
+            this.label20.Text = "Walk Speed :";
             // 
             // playerSelectorOther
             // 
@@ -3493,21 +3595,21 @@
             this.favGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.favGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.favGridView.ContextMenuStrip = this.GridRightClick;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.favGridView.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft JhengHei", 10F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.favGridView.DefaultCellStyle = dataGridViewCellStyle4;
             this.favGridView.Location = new System.Drawing.Point(854, 30);
             this.favGridView.MultiSelect = false;
             this.favGridView.Name = "favGridView";
             this.favGridView.ReadOnly = true;
             this.favGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
-            this.favGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
+            this.favGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.favGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.favGridView.Size = new System.Drawing.Size(345, 465);
             this.favGridView.TabIndex = 168;
@@ -3857,17 +3959,49 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Confetti",
-            "48: Viva",
-            "49: Let\'s Go",
-            "4A: Feelin\' It",
-            "4B: Gulliver (Unused)",
-            "4C: Wasp (Unused)",
+            "47: Confetti (Festivale)",
+            "48: Viva (Festivale)",
+            "49: Let\'s Go (Festivale)",
+            "4A: Feelin\' It (Festivale)",
+            "4B: Raised Fist (Unused) ",
+            "4C: Say Cheese ",
+            "4D: Eager ",
+            "4E: Posture Warm-Up ",
+            "4F: Arm Circles ",
+            "50: Side Bends ",
+            "51: Body Twists ",
+            "52: Wide Arm Stretch ",
+            "53: Upper-Body Circles ",
+            "54: Jump ",
+            "55: Hula ",
+            "56: Double Wave ",
+            "57: Listening Ears ",
+            "58: Flex ",
+            "59: Jammin\' ",
+            "5A: Stretch ",
+            "5B: Behold ",
+            "5C: Work It ",
+            "5D: Act Natural ",
+            "5E: Grooving Hop ",
+            "5F: Groove Right ",
+            "60: Groove Left ",
+            "61: Soak It In ",
+            "62: Shimmy ",
+            "63: Airplane ",
+            "64: Twisty Dance ",
+            "65: Arm-Swing Dance ",
+            "66: Island Stomp ",
+            "67: Side-To-Side ",
+            "68: Turnip Patch ",
+            "69: Laughing (Unused) ",
+            "6A: Content (Unused) ",
+            "6B: Gulliver (Unused)",
+            "6C: Wasp (Unused)",
             "4D: Forehead (Unused)",
             "4E: Orville (Unused)",
-            "4F: K.K. Slider Sitting (Unused)",
-            "50: K.K. nodding while sitting (Unused)",
-            "51: K.K. thinking while sitting (Unused)"});
+            "6F: K.K. Slider Sitting (Unused)",
+            "70: K.K. nodding while sitting (Unused)",
+            "71: K.K. thinking while sitting (Unused)"});
             this.reactionSlot2.Location = new System.Drawing.Point(807, 82);
             this.reactionSlot2.Name = "reactionSlot2";
             this.reactionSlot2.Size = new System.Drawing.Size(255, 24);
@@ -3953,17 +4087,49 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Confetti",
-            "48: Viva",
-            "49: Let\'s Go",
-            "4A: Feelin\' It",
-            "4B: Gulliver (Unused)",
-            "4C: Wasp (Unused)",
+            "47: Confetti (Festivale)",
+            "48: Viva (Festivale)",
+            "49: Let\'s Go (Festivale)",
+            "4A: Feelin\' It (Festivale)",
+            "4B: Raised Fist (Unused) ",
+            "4C: Say Cheese ",
+            "4D: Eager ",
+            "4E: Posture Warm-Up ",
+            "4F: Arm Circles ",
+            "50: Side Bends ",
+            "51: Body Twists ",
+            "52: Wide Arm Stretch ",
+            "53: Upper-Body Circles ",
+            "54: Jump ",
+            "55: Hula ",
+            "56: Double Wave ",
+            "57: Listening Ears ",
+            "58: Flex ",
+            "59: Jammin\' ",
+            "5A: Stretch ",
+            "5B: Behold ",
+            "5C: Work It ",
+            "5D: Act Natural ",
+            "5E: Grooving Hop ",
+            "5F: Groove Right ",
+            "60: Groove Left ",
+            "61: Soak It In ",
+            "62: Shimmy ",
+            "63: Airplane ",
+            "64: Twisty Dance ",
+            "65: Arm-Swing Dance ",
+            "66: Island Stomp ",
+            "67: Side-To-Side ",
+            "68: Turnip Patch ",
+            "69: Laughing (Unused) ",
+            "6A: Content (Unused) ",
+            "6B: Gulliver (Unused)",
+            "6C: Wasp (Unused)",
             "4D: Forehead (Unused)",
             "4E: Orville (Unused)",
-            "4F: K.K. Slider Sitting (Unused)",
-            "50: K.K. nodding while sitting (Unused)",
-            "51: K.K. thinking while sitting (Unused)"});
+            "6F: K.K. Slider Sitting (Unused)",
+            "70: K.K. nodding while sitting (Unused)",
+            "71: K.K. thinking while sitting (Unused)"});
             this.reactionSlot3.Location = new System.Drawing.Point(872, 124);
             this.reactionSlot3.Name = "reactionSlot3";
             this.reactionSlot3.Size = new System.Drawing.Size(255, 24);
@@ -4049,17 +4215,49 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Confetti",
-            "48: Viva",
-            "49: Let\'s Go",
-            "4A: Feelin\' It",
-            "4B: Gulliver (Unused)",
-            "4C: Wasp (Unused)",
+            "47: Confetti (Festivale)",
+            "48: Viva (Festivale)",
+            "49: Let\'s Go (Festivale)",
+            "4A: Feelin\' It (Festivale)",
+            "4B: Raised Fist (Unused) ",
+            "4C: Say Cheese ",
+            "4D: Eager ",
+            "4E: Posture Warm-Up ",
+            "4F: Arm Circles ",
+            "50: Side Bends ",
+            "51: Body Twists ",
+            "52: Wide Arm Stretch ",
+            "53: Upper-Body Circles ",
+            "54: Jump ",
+            "55: Hula ",
+            "56: Double Wave ",
+            "57: Listening Ears ",
+            "58: Flex ",
+            "59: Jammin\' ",
+            "5A: Stretch ",
+            "5B: Behold ",
+            "5C: Work It ",
+            "5D: Act Natural ",
+            "5E: Grooving Hop ",
+            "5F: Groove Right ",
+            "60: Groove Left ",
+            "61: Soak It In ",
+            "62: Shimmy ",
+            "63: Airplane ",
+            "64: Twisty Dance ",
+            "65: Arm-Swing Dance ",
+            "66: Island Stomp ",
+            "67: Side-To-Side ",
+            "68: Turnip Patch ",
+            "69: Laughing (Unused) ",
+            "6A: Content (Unused) ",
+            "6B: Gulliver (Unused)",
+            "6C: Wasp (Unused)",
             "4D: Forehead (Unused)",
             "4E: Orville (Unused)",
-            "4F: K.K. Slider Sitting (Unused)",
-            "50: K.K. nodding while sitting (Unused)",
-            "51: K.K. thinking while sitting (Unused)"});
+            "6F: K.K. Slider Sitting (Unused)",
+            "70: K.K. nodding while sitting (Unused)",
+            "71: K.K. thinking while sitting (Unused)"});
             this.reactionSlot4.Location = new System.Drawing.Point(807, 166);
             this.reactionSlot4.Name = "reactionSlot4";
             this.reactionSlot4.Size = new System.Drawing.Size(255, 24);
@@ -4145,17 +4343,49 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Confetti",
-            "48: Viva",
-            "49: Let\'s Go",
-            "4A: Feelin\' It",
-            "4B: Gulliver (Unused)",
-            "4C: Wasp (Unused)",
+            "47: Confetti (Festivale)",
+            "48: Viva (Festivale)",
+            "49: Let\'s Go (Festivale)",
+            "4A: Feelin\' It (Festivale)",
+            "4B: Raised Fist (Unused) ",
+            "4C: Say Cheese ",
+            "4D: Eager ",
+            "4E: Posture Warm-Up ",
+            "4F: Arm Circles ",
+            "50: Side Bends ",
+            "51: Body Twists ",
+            "52: Wide Arm Stretch ",
+            "53: Upper-Body Circles ",
+            "54: Jump ",
+            "55: Hula ",
+            "56: Double Wave ",
+            "57: Listening Ears ",
+            "58: Flex ",
+            "59: Jammin\' ",
+            "5A: Stretch ",
+            "5B: Behold ",
+            "5C: Work It ",
+            "5D: Act Natural ",
+            "5E: Grooving Hop ",
+            "5F: Groove Right ",
+            "60: Groove Left ",
+            "61: Soak It In ",
+            "62: Shimmy ",
+            "63: Airplane ",
+            "64: Twisty Dance ",
+            "65: Arm-Swing Dance ",
+            "66: Island Stomp ",
+            "67: Side-To-Side ",
+            "68: Turnip Patch ",
+            "69: Laughing (Unused) ",
+            "6A: Content (Unused) ",
+            "6B: Gulliver (Unused)",
+            "6C: Wasp (Unused)",
             "4D: Forehead (Unused)",
             "4E: Orville (Unused)",
-            "4F: K.K. Slider Sitting (Unused)",
-            "50: K.K. nodding while sitting (Unused)",
-            "51: K.K. thinking while sitting (Unused)"});
+            "6F: K.K. Slider Sitting (Unused)",
+            "70: K.K. nodding while sitting (Unused)",
+            "71: K.K. thinking while sitting (Unused)"});
             this.reactionSlot1.Location = new System.Drawing.Point(638, 37);
             this.reactionSlot1.Name = "reactionSlot1";
             this.reactionSlot1.Size = new System.Drawing.Size(255, 24);
@@ -4241,17 +4471,49 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Confetti",
-            "48: Viva",
-            "49: Let\'s Go",
-            "4A: Feelin\' It",
-            "4B: Gulliver (Unused)",
-            "4C: Wasp (Unused)",
+            "47: Confetti (Festivale)",
+            "48: Viva (Festivale)",
+            "49: Let\'s Go (Festivale)",
+            "4A: Feelin\' It (Festivale)",
+            "4B: Raised Fist (Unused) ",
+            "4C: Say Cheese ",
+            "4D: Eager ",
+            "4E: Posture Warm-Up ",
+            "4F: Arm Circles ",
+            "50: Side Bends ",
+            "51: Body Twists ",
+            "52: Wide Arm Stretch ",
+            "53: Upper-Body Circles ",
+            "54: Jump ",
+            "55: Hula ",
+            "56: Double Wave ",
+            "57: Listening Ears ",
+            "58: Flex ",
+            "59: Jammin\' ",
+            "5A: Stretch ",
+            "5B: Behold ",
+            "5C: Work It ",
+            "5D: Act Natural ",
+            "5E: Grooving Hop ",
+            "5F: Groove Right ",
+            "60: Groove Left ",
+            "61: Soak It In ",
+            "62: Shimmy ",
+            "63: Airplane ",
+            "64: Twisty Dance ",
+            "65: Arm-Swing Dance ",
+            "66: Island Stomp ",
+            "67: Side-To-Side ",
+            "68: Turnip Patch ",
+            "69: Laughing (Unused) ",
+            "6A: Content (Unused) ",
+            "6B: Gulliver (Unused)",
+            "6C: Wasp (Unused)",
             "4D: Forehead (Unused)",
             "4E: Orville (Unused)",
-            "4F: K.K. Slider Sitting (Unused)",
-            "50: K.K. nodding while sitting (Unused)",
-            "51: K.K. thinking while sitting (Unused)"});
+            "6F: K.K. Slider Sitting (Unused)",
+            "70: K.K. nodding while sitting (Unused)",
+            "71: K.K. thinking while sitting (Unused)"});
             this.reactionSlot8.Location = new System.Drawing.Point(482, 82);
             this.reactionSlot8.Name = "reactionSlot8";
             this.reactionSlot8.Size = new System.Drawing.Size(255, 24);
@@ -4337,17 +4599,49 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Confetti",
-            "48: Viva",
-            "49: Let\'s Go",
-            "4A: Feelin\' It",
-            "4B: Gulliver (Unused)",
-            "4C: Wasp (Unused)",
+            "47: Confetti (Festivale)",
+            "48: Viva (Festivale)",
+            "49: Let\'s Go (Festivale)",
+            "4A: Feelin\' It (Festivale)",
+            "4B: Raised Fist (Unused) ",
+            "4C: Say Cheese ",
+            "4D: Eager ",
+            "4E: Posture Warm-Up ",
+            "4F: Arm Circles ",
+            "50: Side Bends ",
+            "51: Body Twists ",
+            "52: Wide Arm Stretch ",
+            "53: Upper-Body Circles ",
+            "54: Jump ",
+            "55: Hula ",
+            "56: Double Wave ",
+            "57: Listening Ears ",
+            "58: Flex ",
+            "59: Jammin\' ",
+            "5A: Stretch ",
+            "5B: Behold ",
+            "5C: Work It ",
+            "5D: Act Natural ",
+            "5E: Grooving Hop ",
+            "5F: Groove Right ",
+            "60: Groove Left ",
+            "61: Soak It In ",
+            "62: Shimmy ",
+            "63: Airplane ",
+            "64: Twisty Dance ",
+            "65: Arm-Swing Dance ",
+            "66: Island Stomp ",
+            "67: Side-To-Side ",
+            "68: Turnip Patch ",
+            "69: Laughing (Unused) ",
+            "6A: Content (Unused) ",
+            "6B: Gulliver (Unused)",
+            "6C: Wasp (Unused)",
             "4D: Forehead (Unused)",
             "4E: Orville (Unused)",
-            "4F: K.K. Slider Sitting (Unused)",
-            "50: K.K. nodding while sitting (Unused)",
-            "51: K.K. thinking while sitting (Unused)"});
+            "6F: K.K. Slider Sitting (Unused)",
+            "70: K.K. nodding while sitting (Unused)",
+            "71: K.K. thinking while sitting (Unused)"});
             this.reactionSlot7.Location = new System.Drawing.Point(425, 125);
             this.reactionSlot7.Name = "reactionSlot7";
             this.reactionSlot7.Size = new System.Drawing.Size(255, 24);
@@ -4433,17 +4727,49 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Confetti",
-            "48: Viva",
-            "49: Let\'s Go",
-            "4A: Feelin\' It",
-            "4B: Gulliver (Unused)",
-            "4C: Wasp (Unused)",
+            "47: Confetti (Festivale)",
+            "48: Viva (Festivale)",
+            "49: Let\'s Go (Festivale)",
+            "4A: Feelin\' It (Festivale)",
+            "4B: Raised Fist (Unused) ",
+            "4C: Say Cheese ",
+            "4D: Eager ",
+            "4E: Posture Warm-Up ",
+            "4F: Arm Circles ",
+            "50: Side Bends ",
+            "51: Body Twists ",
+            "52: Wide Arm Stretch ",
+            "53: Upper-Body Circles ",
+            "54: Jump ",
+            "55: Hula ",
+            "56: Double Wave ",
+            "57: Listening Ears ",
+            "58: Flex ",
+            "59: Jammin\' ",
+            "5A: Stretch ",
+            "5B: Behold ",
+            "5C: Work It ",
+            "5D: Act Natural ",
+            "5E: Grooving Hop ",
+            "5F: Groove Right ",
+            "60: Groove Left ",
+            "61: Soak It In ",
+            "62: Shimmy ",
+            "63: Airplane ",
+            "64: Twisty Dance ",
+            "65: Arm-Swing Dance ",
+            "66: Island Stomp ",
+            "67: Side-To-Side ",
+            "68: Turnip Patch ",
+            "69: Laughing (Unused) ",
+            "6A: Content (Unused) ",
+            "6B: Gulliver (Unused)",
+            "6C: Wasp (Unused)",
             "4D: Forehead (Unused)",
             "4E: Orville (Unused)",
-            "4F: K.K. Slider Sitting (Unused)",
-            "50: K.K. nodding while sitting (Unused)",
-            "51: K.K. thinking while sitting (Unused)"});
+            "6F: K.K. Slider Sitting (Unused)",
+            "70: K.K. nodding while sitting (Unused)",
+            "71: K.K. thinking while sitting (Unused)"});
             this.reactionSlot6.Location = new System.Drawing.Point(482, 166);
             this.reactionSlot6.Name = "reactionSlot6";
             this.reactionSlot6.Size = new System.Drawing.Size(255, 24);
@@ -4529,17 +4855,49 @@
             "44: Ta-da",
             "45: Wave Goodbye",
             "46: Excited",
-            "47: Confetti",
-            "48: Viva",
-            "49: Let\'s Go",
-            "4A: Feelin\' It",
-            "4B: Gulliver (Unused)",
-            "4C: Wasp (Unused)",
+            "47: Confetti (Festivale)",
+            "48: Viva (Festivale)",
+            "49: Let\'s Go (Festivale)",
+            "4A: Feelin\' It (Festivale)",
+            "4B: Raised Fist (Unused) ",
+            "4C: Say Cheese ",
+            "4D: Eager ",
+            "4E: Posture Warm-Up ",
+            "4F: Arm Circles ",
+            "50: Side Bends ",
+            "51: Body Twists ",
+            "52: Wide Arm Stretch ",
+            "53: Upper-Body Circles ",
+            "54: Jump ",
+            "55: Hula ",
+            "56: Double Wave ",
+            "57: Listening Ears ",
+            "58: Flex ",
+            "59: Jammin\' ",
+            "5A: Stretch ",
+            "5B: Behold ",
+            "5C: Work It ",
+            "5D: Act Natural ",
+            "5E: Grooving Hop ",
+            "5F: Groove Right ",
+            "60: Groove Left ",
+            "61: Soak It In ",
+            "62: Shimmy ",
+            "63: Airplane ",
+            "64: Twisty Dance ",
+            "65: Arm-Swing Dance ",
+            "66: Island Stomp ",
+            "67: Side-To-Side ",
+            "68: Turnip Patch ",
+            "69: Laughing (Unused) ",
+            "6A: Content (Unused) ",
+            "6B: Gulliver (Unused)",
+            "6C: Wasp (Unused)",
             "4D: Forehead (Unused)",
             "4E: Orville (Unused)",
-            "4F: K.K. Slider Sitting (Unused)",
-            "50: K.K. nodding while sitting (Unused)",
-            "51: K.K. thinking while sitting (Unused)"});
+            "6F: K.K. Slider Sitting (Unused)",
+            "70: K.K. nodding while sitting (Unused)",
+            "71: K.K. thinking while sitting (Unused)"});
             this.reactionSlot5.Location = new System.Drawing.Point(638, 209);
             this.reactionSlot5.Name = "reactionSlot5";
             this.reactionSlot5.Size = new System.Drawing.Size(255, 24);
@@ -7515,16 +7873,23 @@
             // 
             // Form1
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(57)))), ((int)(((byte)(63)))));
             this.ClientSize = new System.Drawing.Size(1204, 516);
+            this.Controls.Add(this.speedX2Btn);
+            this.Controls.Add(this.speedX3Btn);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button16);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button15);
+            this.Controls.Add(this.speedX4Btn);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button5);
+            this.Controls.Add(this.speedX1Btn);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -7566,6 +7931,7 @@
             this.MaximumSize = new System.Drawing.Size(1500, 1000);
             this.MinimumSize = new System.Drawing.Size(1220, 555);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.LocationChanged += new System.EventHandler(this.Form1_LocationChanged);
@@ -7613,6 +7979,7 @@
             this.VillagerControl.ResumeLayout(false);
             this.VillagerControl.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -7941,6 +8308,12 @@
         private System.Windows.Forms.Button StayMoveAllBtn;
         private System.Windows.Forms.Button MoveOutAllBtn;
         private System.Windows.Forms.Button dodoHelperBtn;
+        private System.Windows.Forms.Button maxSpeedX2Btn;
+        private System.Windows.Forms.Button maxSpeedX3Btn;
+        private System.Windows.Forms.Button maxSpeedX5Btn;
+        private System.Windows.Forms.Button maxSpeedX1Btn;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Button maxSpeedX100Btn;
     }
 }
 

@@ -420,7 +420,8 @@ namespace ACNHPoker
             {
                 Log.logEvent("MainForm", "UpdateInventory: " + ex.Message.ToString());
                 Invoke((MethodInvoker)delegate { this.autoRefreshCheckBox.Checked = false; });
-                refreshTimer.Stop();
+                if (refreshTimer != null)
+                    refreshTimer.Stop();
                 myMessageBox.Show(ex.Message.ToString(), "This seems like a bad idea but it's fine for now.");
                 return true;
             }

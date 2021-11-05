@@ -19,8 +19,8 @@
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
       <applicationRequestMinimum>
-        <PermissionSet class="System.Security.PermissionSet" version="1" Unrestricted="true" ID="Custom" SameSite="site" />
         <defaultAssemblyRequest permissionSetReference="Custom" />
+        <PermissionSet class="System.Security.PermissionSet" version="1" ID="Custom" SameSite="site" Unrestricted="true" />
       </applicationRequestMinimum>
     </security>
   </trustInfo>
@@ -45,7 +45,7 @@
        DPIs. Windows Presentation Foundation (WPF) applications are automatically DPI-aware and do not need 
        to opt in. Windows Forms applications targeting .NET Framework 4.6 that opt into this setting, should 
        also set the 'EnableWindowsFormsHighDpiAutoResizing' setting to 'true' in their app.config. -->
-	<!--<application xmlns="urn:schemas-microsoft-com:asm.v3">
+  <!--<application xmlns="urn:schemas-microsoft-com:asm.v3">
     <windowsSettings>
       <dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true</dpiAware>
     </windowsSettings>

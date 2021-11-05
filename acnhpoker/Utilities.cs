@@ -166,14 +166,20 @@ namespace ACNHPoker
         public static Int32 SeaCreatureNumRecords = 41 * 2;
         // ----
 
-        // ---- Main
         public static UInt32 staminaAddress = 0xB6861358;
+        public static UInt32 readTimeAddress = 0x0BD29188;
 
+        public static readonly UInt32 MaxSpeedAddress = 0x0BF4834C;
+        public static readonly string MaxSpeedX1 = "0000A03F";
+        public static readonly string MaxSpeedX2 = "00002040";
+        public static readonly string MaxSpeedX3 = "00007040";
+        public static readonly string MaxSpeedX5 = "0000C840";
+        public static readonly string MaxSpeedX100 = "0000FA42";
+
+        // ---- Main
         public static UInt32 freezeTimeAddress = 0x00328530; 
         public static readonly string freezeTimeValue = "D503201F";
         public static readonly string unfreezeTimeValue = "F9203260";
-
-        public static UInt32 readTimeAddress = 0x0BD29188;
 
         public static UInt32 wSpeedAddress = 0x0114A670; //0x01134780; //0x01115CE0;
         public static readonly string wSpeedX1 = "BD530E61";
@@ -304,11 +310,11 @@ namespace ACNHPoker
         {
             if (slot <= 20)
             {
-                return "0x" + (0x3 + ItemSlotBase + ((Clamp(slot, 1, 20) - 1) * 0x8)).ToString("X");
+                return (0x3 + ItemSlotBase + ((Clamp(slot, 1, 20) - 1) * 0x8)).ToString("X");
             }
             else
             {
-                return "0x" + (0x3 + ItemSlot21Base + ((Clamp(slot, 21, 40) - 21) * 0x8)).ToString("X");
+                return (0x3 + ItemSlot21Base + ((Clamp(slot, 21, 40) - 21) * 0x8)).ToString("X");
             }
         }
 
@@ -815,7 +821,7 @@ namespace ACNHPoker
                 {
                     if (bot == null)
                     {
-                        string msg = String.Format("poke {0:X8} {1}\r\n", address, "0x" + value);
+                        string msg = String.Format("poke 0x{0:X8} {1}\r\n", address, "0x" + value);
                         Debug.Print("Poke : " + msg);
                         SendString(socket, Encoding.UTF8.GetBytes(msg));
                     }
@@ -918,7 +924,7 @@ namespace ACNHPoker
 
         public static void setStamina(Socket socket, USBBot bot, string value)
         {
-            pokeAddress(socket, bot, "0x" + staminaAddress.ToString("X"), value);
+            pokeAddress(socket, bot, staminaAddress.ToString("X"), value);
         }
 
         public static void setFlag1(Socket socket, USBBot bot, int slot, string flag)
